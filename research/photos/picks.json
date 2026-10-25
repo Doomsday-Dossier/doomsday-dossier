@@ -1,0 +1,195 @@
+{
+  "note": "Recommended photo per character after viewing all 62 downloads. crop is {x,y,w,h} in source pixels; null means the whole image. Reasons explain the choice.",
+  "picks": {
+    "home": {
+      "file": "04-home-4.webp",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1086,
+        "h": 1330
+      },
+      "reason": "Doomsday teaser one-sheet: the cloaked Doom walking through smoke. Cropped above the title block."
+    },
+    "victor-von-doom": {
+      "file": "08-victor-von-doom-2.webp",
+      "crop": null,
+      "reason": "Doomsday trailer still of the masked Doom, the larger of two copies."
+    },
+    "steve-rogers": {
+      "file": "11-steve-rogers-3.webp",
+      "crop": null,
+      "reason": "Clean Infinity War still with no text. The Endgame poster is sharper but has a tagline across his forehead."
+    },
+    "thor": {
+      "file": "12-thor-1.webp",
+      "crop": null,
+      "reason": "Love and Thunder character card, no text; the grade will calm the pink."
+    },
+    "sam-wilson": {
+      "file": "16-sam-wilson-2.webp",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "w": 1040,
+        "h": 876
+      },
+      "reason": "Brave New World, Sam in the Captain America suit. Cropped to remove the film camera on the right. (His listed first choice was a merchandise photo and is rejected.)"
+    },
+    "bucky-barnes": {
+      "file": "19-bucky-barnes-2.webp",
+      "crop": null,
+      "reason": "Winter Soldier close-up; the Thunderbolts* still is a crowded press-pack scene."
+    },
+    "scott-lang": {
+      "file": "22-scott-lang-2.webp",
+      "crop": null,
+      "reason": "Quantumania character card, no title text."
+    },
+    "shang-chi": {
+      "file": "25-shang-chi-2.webp",
+      "crop": null,
+      "reason": "Character card, no title text."
+    },
+    "joaquin-torres": {
+      "file": "27-joaquin-torres-1.jpg",
+      "crop": {
+        "x": 430,
+        "y": 0,
+        "w": 560,
+        "h": 664
+      },
+      "reason": "Solo Brave New World still (D23). Cropped toward his face."
+    },
+    "reed-richards": {
+      "file": "30-reed-richards-2.jpg",
+      "crop": null,
+      "reason": "First Steps: Reed in the team suit against an explosion (D23)."
+    },
+    "sue-storm": {
+      "file": "33-sue-storm-2.jpg",
+      "crop": null,
+      "reason": "First Steps: Sue in the suit projecting a force field (D23)."
+    },
+    "johnny-storm": {
+      "file": "34-johnny-storm-1.jpg",
+      "crop": null,
+      "reason": "First Steps: Johnny falling, face visible. The flamed-on shot hides his face."
+    },
+    "ben-grimm": {
+      "file": "36-ben-grimm-1.jpg",
+      "crop": null,
+      "reason": "First Steps: the Thing, face to camera (D23)."
+    },
+    "professor-x": {
+      "file": "40-professor-x-3.jpg",
+      "crop": {
+        "x": 1500,
+        "y": 250,
+        "w": 360,
+        "h": 417
+      },
+      "reason": "Days of Future Past banner: Patrick Stewart as Professor X, the Doomsday actor."
+    },
+    "magneto": {
+      "file": "40-professor-x-3.jpg",
+      "crop": {
+        "x": 1800,
+        "y": 310,
+        "w": 200,
+        "h": 357
+      },
+      "reason": "Days of Future Past banner: Ian McKellen as Magneto, the Doomsday actor. Small crop, so it will be softer."
+    },
+    "cyclops": {
+      "file": null,
+      "crop": null,
+      "reason": "James Marsden does not appear in any official image found. Page keeps its abstract hero."
+    },
+    "nightcrawler": {
+      "file": "39-professor-x-2.webp",
+      "crop": {
+        "x": 1380,
+        "y": 560,
+        "w": 500,
+        "h": 900
+      },
+      "reason": "X2 poster: Alan Cumming as Nightcrawler. Crop avoids the title and the green Disney+ frame."
+    },
+    "mystique": {
+      "file": "38-professor-x-1.jpg",
+      "crop": {
+        "x": 170,
+        "y": 230,
+        "w": 800,
+        "h": 1100
+      },
+      "reason": "X-Men (2000) poster: Rebecca Romijn as Mystique. Crop stops above the title."
+    },
+    "beast": {
+      "file": null,
+      "crop": null,
+      "reason": "No official image of Kelsey Grammer as Beast found. Page keeps its abstract hero."
+    },
+    "gambit": {
+      "file": null,
+      "crop": null,
+      "reason": "No official image of Channing Tatum as Gambit found. Page keeps its abstract hero."
+    },
+    "yelena-belova": {
+      "file": "43-yelena-belova-3.jpg",
+      "crop": null,
+      "reason": "Character card with a clear portrait; the Thunderbolts* still is a tiny figure in a wide landscape."
+    },
+    "red-guardian": {
+      "file": "46-red-guardian-3.webp",
+      "crop": null,
+      "reason": "Character card portrait; the Thunderbolts* still is full-body and busy."
+    },
+    "john-walker": {
+      "file": "47-john-walker-1.webp",
+      "crop": null,
+      "reason": "Thunderbolts* still, red-lit. The Falcon and the Winter Soldier poster is small and covered in text."
+    },
+    "ghost": {
+      "file": "49-ghost-1.webp",
+      "crop": null,
+      "reason": "Only candidate: Thunderbolts* still."
+    },
+    "bob-reynolds": {
+      "file": "50-bob-reynolds-1.webp",
+      "crop": null,
+      "reason": "Only candidate: Thunderbolts* still of Bob."
+    },
+    "shuri": {
+      "file": "52-shuri-2.webp",
+      "crop": null,
+      "reason": "Wakanda Forever character card, no title text."
+    },
+    "mbaku": {
+      "file": "54-mbaku-2.webp",
+      "crop": null,
+      "reason": "Wakanda Forever character card, no title text."
+    },
+    "namor": {
+      "file": "56-namor-2.webp",
+      "crop": null,
+      "reason": "Wakanda Forever character card, no title text."
+    },
+    "loki": {
+      "file": "59-loki-3.webp",
+      "crop": null,
+      "reason": "Loki character card, no title text."
+    },
+    "peggy-carter": {
+      "file": "61-peggy-carter-2.webp",
+      "crop": {
+        "x": 300,
+        "y": 0,
+        "w": 1000,
+        "h": 1080
+      },
+      "reason": "Agent Carter still with her face clear; cropped to remove the second actor. The poster is small and carries the title."
+    }
+  }
+}
