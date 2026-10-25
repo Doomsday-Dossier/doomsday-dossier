@@ -1,0 +1,302 @@
+{
+  "group": "a",
+  "checkedOn": "2026-10-25",
+  "items": [
+    {
+      "slug": "victor-von-doom",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoctordoom_card.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-endgame-encore-robert-downey-jr-doctor-doom-casting-anthony-russo-interview",
+      "owner": "Marvel Studios",
+      "shows": "Header/og image of the official article on Robert Downey Jr. as Doctor Doom (Avengers: Doomsday); framing unknown",
+      "contentType": "image/webp",
+      "bytes": 42476,
+      "note": "Weak candidate. Not visually verified (no image was opened). Card-sized (2x variant), may be a graphic with text or a masked/hooded Doom rather than RDJ's face. No solo character still of RDJ as Doom found on allowed sources."
+    },
+    {
+      "slug": "victor-von-doom",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengers_trailerpull.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-endgame-encore-robert-downey-jr-doctor-doom-casting-anthony-russo-interview",
+      "owner": "Marvel Studios",
+      "shows": "Avengers: Doomsday trailer frame placed next to the Doom casting paragraph; subject and framing unknown",
+      "contentType": "image/webp",
+      "bytes": 45774,
+      "note": "Alt text is only 'Avengers: Doomsday'. Not visually verified; may not show Doom. Treat as fallback only."
+    },
+    {
+      "slug": "steve-rogers",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/online_char_avengehonor_series_captam_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-endgame",
+      "owner": "Marvel Studios",
+      "shows": "Avengers: Endgame character poster labelled 'Captain America' (Chris Evans as Steve Rogers), solo",
+      "contentType": "image/webp",
+      "bytes": 194408,
+      "note": "Page shows the 1x_masonry variant; 2x variant confirmed by header check. Endgame character posters carry title/tagline text, so the background cut-out will need care."
+    },
+    {
+      "slug": "steve-rogers",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/003cap_ons_fea_dsk_01.webp",
+      "sourcePage": "https://www.marvel.com/characters/captain-america-steve-rogers/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Wide feature still from the Captain America (Steve Rogers) on-screen bio page; alt text 'Captain America'",
+      "contentType": "image/webp",
+      "bytes": 70634,
+      "note": "Wide desktop banner; film and solo/group not stated in alt text. Not visually verified."
+    },
+    {
+      "slug": "steve-rogers",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/003cap_ons_mas_mob_03_0.webp",
+      "sourcePage": "https://www.marvel.com/characters/captain-america-steve-rogers/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Mobile masthead (og:image) of the Steve Rogers on-screen character page; alt text 'Captain America'",
+      "contentType": "image/webp",
+      "bytes": 22418,
+      "note": "Small file. Desktop masthead variant 003cap_ons_mas_dsk_03_0.webp is 20262 bytes."
+    },
+    {
+      "slug": "thor",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/004tho_ons_crd_04.webp",
+      "sourcePage": "https://www.marvel.com/movies/thor-love-and-thunder",
+      "owner": "Marvel Studios",
+      "shows": "Thor character card in the Characters section of the Thor: Love and Thunder page (Chris Hemsworth), solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 185046,
+      "note": "Page uses the 1x variant; 2x variant confirmed by header check. Most recent film for Thor."
+    },
+    {
+      "slug": "thor",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/online_char_avengehonor_series_thor_v1_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-endgame",
+      "owner": "Marvel Studios",
+      "shows": "Avengers: Endgame character poster labelled 'Thor', solo",
+      "contentType": "image/webp",
+      "bytes": 144334,
+      "note": "Page shows the 1x_masonry variant; 2x confirmed. Poster has text overlay."
+    },
+    {
+      "slug": "thor",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/004tho_ons_inl_10.webp",
+      "sourcePage": "https://www.marvel.com/characters/thor-thor-odinson/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Still captioned 'Thor Odinson with Stormbreaker' (Avengers: Infinity War era), solo",
+      "contentType": "image/webp",
+      "bytes": 53488,
+      "note": "Inline still; modest resolution."
+    },
+    {
+      "slug": "sam-wilson",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/cap2.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/captain-america-brave-new-world-anthony-mackie-sam-wilson",
+      "owner": "Marvel Studios",
+      "shows": "Still captioned 'Anthony Mackie in Captain America: Brave New World' (Sam Wilson as Captain America)",
+      "contentType": "image/webp",
+      "bytes": 166838,
+      "note": "Solo vs group not stated in the caption. Most recent film for Sam."
+    },
+    {
+      "slug": "sam-wilson",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/cap_8.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/captain-america-brave-new-world-anthony-mackie-sam-wilson",
+      "owner": "Marvel Studios",
+      "shows": "Still captioned 'Anthony Mackie in Captain America: Brave New World'",
+      "contentType": "image/webp",
+      "bytes": 45094,
+      "note": "Same byte count as the article's og:image cap_7.webp, so probably the same picture."
+    },
+    {
+      "slug": "sam-wilson",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/014fal_ons_mas_mob_03.webp",
+      "sourcePage": "https://www.marvel.com/characters/sam-wilson/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Mobile masthead of the Sam Wilson on-screen page; alt text 'Falcon (Sam Wilson)', so likely the Falcon era, not Captain America",
+      "contentType": "image/webp",
+      "bytes": 53998,
+      "note": "Fallback only: older look."
+    },
+    {
+      "slug": "bucky-barnes",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/thunderboltsbucky2.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/meet-the-thunderbolts-behind-the-scenes",
+      "owner": "Marvel Studios",
+      "shows": "Still captioned 'Sebastian Stan as Bucky Barnes in Thunderbolts*'",
+      "contentType": "image/webp",
+      "bytes": 85638,
+      "note": "Most recent film for Bucky. Framing not visually verified."
+    },
+    {
+      "slug": "bucky-barnes",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/015wsb_ons_mas_mob_03-v2.webp",
+      "sourcePage": "https://www.marvel.com/characters/winter-soldier-bucky-barnes/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Mobile masthead of the Winter Soldier (Bucky Barnes) on-screen page; alt text 'Winter Soldier (Bucky Barnes)'",
+      "contentType": "image/webp",
+      "bytes": 39674,
+      "note": "Page shows the desktop variant 015wsb_ons_mas_dsk_03-v2.webp (36060 bytes); mobile variant confirmed by header check."
+    },
+    {
+      "slug": "bucky-barnes",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/015wsb_ons_fea_dsk_01.webp",
+      "sourcePage": "https://www.marvel.com/characters/winter-soldier-bucky-barnes/on-screen",
+      "owner": "Marvel Studios",
+      "shows": "Wide feature still on the Bucky on-screen bio; alt text 'Winter Soldier (Bucky Barnes)'",
+      "contentType": "image/webp",
+      "bytes": 45932,
+      "note": "Wide banner; film not stated."
+    },
+    {
+      "slug": "scott-lang",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/db_characterseries_scott_v4_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/ant-man-and-the-wasp-quantumania",
+      "owner": "Marvel Studios",
+      "shows": "Ant-Man and The Wasp: Quantumania character poster titled 'Scott Lang / Ant-Man', solo",
+      "contentType": "image/webp",
+      "bytes": 559212,
+      "note": "Page shows the 1x_masonry variant; 2x confirmed (2x_masonry is 117856 bytes). Most recent film for Scott. Poster may carry title text, and the helmet may be on."
+    },
+    {
+      "slug": "scott-lang",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/010ant_ons_crd_05.webp",
+      "sourcePage": "https://www.marvel.com/movies/ant-man-and-the-wasp-quantumania",
+      "owner": "Marvel Studios",
+      "shows": "Ant-Man (Scott Lang) character card in the Characters section of the Quantumania page, solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 201072,
+      "note": "Page uses the 1x variant; 2x confirmed."
+    },
+    {
+      "slug": "scott-lang",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/ant-man_4.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/ant-man-and-the-wasp-quantumania-paul-rudd-evangeline-lilly-peyton-reed-legacy",
+      "owner": "Marvel Studios",
+      "shows": "Header (og:image) of the Quantumania article with Paul Rudd, Evangeline Lilly and Peyton Reed",
+      "contentType": "image/webp",
+      "bytes": 194626,
+      "note": "Subject not stated; may be a group or Ant-Man with Wasp."
+    },
+    {
+      "slug": "shang-chi",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/stmb_specialod_48.25x72_shang-chi_v1_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/shang-chi-and-the-legend-of-the-ten-rings",
+      "owner": "Marvel Studios",
+      "shows": "Shang-Chi character poster (Simu Liu) from the Character Posters section of the Shang-Chi and The Legend of The Ten Rings page, solo",
+      "contentType": "image/webp",
+      "bytes": 333632,
+      "note": "Page shows the 1x_masonry variant; 2x confirmed (2x_masonry is 91796 bytes). Most recent film for Shang-Chi. Poster likely has a title treatment."
+    },
+    {
+      "slug": "shang-chi",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/242shc_ons_crd_01.webp",
+      "sourcePage": "https://www.marvel.com/movies/shang-chi-and-the-legend-of-the-ten-rings",
+      "owner": "Marvel Studios",
+      "shows": "Shang-Chi character card in the Characters section of the film page, solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 137580,
+      "note": "Page uses the 1x variant; 2x confirmed."
+    },
+    {
+      "slug": "shang-chi",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/242shc_ons_mas_mob_01.webp",
+      "sourcePage": "https://www.marvel.com/characters/shang-chi",
+      "owner": "Marvel Studios",
+      "shows": "Mobile masthead (og:image) of the Shang-Chi character page",
+      "contentType": "image/webp",
+      "bytes": 123554,
+      "note": "Desktop variant 242shc_ons_mas_dsk_01.webp is 113416 bytes."
+    },
+    {
+      "slug": "home",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/doomsday_teaser_poster_1.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Official Avengers: Doomsday teaser poster from the Posters section (alt 'Marvel Studios' Avengers: Doomsday')",
+      "contentType": "image/webp",
+      "bytes": 235278,
+      "note": "Page shows 1x_masonry; 2x confirmed. Subject not described by the page."
+    },
+    {
+      "slug": "home",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoomsday_teaser-a_1830_fin16_digital_mech1.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Official Avengers: Doomsday teaser poster A from the Posters section",
+      "contentType": "image/webp",
+      "bytes": 157130,
+      "note": "Page shows 1x_masonry; 2x confirmed."
+    },
+    {
+      "slug": "home",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoomsday_d23_poster.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Official Avengers: Doomsday D23 poster from the Posters section",
+      "contentType": "image/webp",
+      "bytes": 131112,
+      "note": "Page shows 1x_masonry; 2x confirmed."
+    },
+    {
+      "slug": "home",
+      "rank": 4,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoomsday_1-sht_teaser_smokey_walk_2927_fin14_mech4_0.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Official Avengers: Doomsday one-sheet teaser poster ('smokey walk') from the Posters section",
+      "contentType": "image/webp",
+      "bytes": 97266,
+      "note": "Page shows 1x_masonry; 2x confirmed."
+    },
+    {
+      "slug": "home",
+      "rank": 5,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoomsday_lob_crd_03.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Movie poster card in the page's Overview block (alt 'movie poster')",
+      "contentType": "image/webp",
+      "bytes": 78600,
+      "note": "Page uses the 1x variant; 2x confirmed."
+    },
+    {
+      "slug": "home",
+      "rank": 6,
+      "imageUrl": "https://cdn.marvel.com/content/2x/avengersdoomsday_lob_mas_dsk_03.webp",
+      "sourcePage": "https://www.marvel.com/movies/avengers-doomsday",
+      "owner": "Marvel Studios",
+      "shows": "Wide desktop masthead at the top of the page (alt 'Marvel Studios' Avengers: Doomsday Movie Poster')",
+      "contentType": "image/jpeg",
+      "bytes": 114342,
+      "note": "Server returns image/jpeg despite the .webp name. Mobile masthead 2x/avengersdoomsday_lob_mas_mob_03.webp (og:image) is image/webp, 148882 bytes."
+    }
+  ],
+  "notFound": [
+    {
+      "slug": "victor-von-doom",
+      "searched": [
+        "https://www.marvel.com/movies/avengers-doomsday",
+        "https://www.marvel.com/characters/doctor-doom-victor-von-doom",
+        "https://www.marvel.com/articles/movies/avengers-endgame-encore-robert-downey-jr-doctor-doom-casting-anthony-russo-interview"
+      ]
+    }
+  ]
+}

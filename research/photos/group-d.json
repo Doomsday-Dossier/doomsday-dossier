@@ -1,0 +1,169 @@
+{
+  "group": "d",
+  "checkedOn": "2026-10-25",
+  "summary": "No solo still or character poster of any group-d actor in character was found on marvel.com, cdn.marvel.com, d23.com or thewaltdisneycompany.com. The only official images are 20th Century Fox film key art (group compositions) re-published by Marvel. Image contents were NOT viewed (no downloads); descriptions come from page context and alt text only, so each candidate must be eyeballed before approval.",
+  "items": [
+    {
+      "slug": "professor-x",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_xmen_ta_p67_2000x3000_en_v1_169261.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X-Men (2000), the film in which Patrick Stewart plays Professor X; group key art with title text, not a solo still",
+      "contentType": "image/jpeg",
+      "bytes": 767859,
+      "note": "Group key art; contents not visually verified (alt text is only 'X-Men'). The URL ends in .webp but the CDN serves image/jpeg. Would need cropping for a solo face."
+    },
+    {
+      "slug": "professor-x",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_x2xmenunited_ta_p67_2000x3000_en_v1_120280.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X2: X-Men United (2003), Patrick Stewart as Professor X; group key art with title text",
+      "contentType": "image/webp",
+      "bytes": 643968,
+      "note": "Group key art; contents not visually verified (alt text is only 'X2: X-Men United')."
+    },
+    {
+      "slug": "professor-x",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/fox_x-mendaysoffuturepast_lob_mas_dsk_01.webp",
+      "sourcePage": "https://www.marvel.com/movies/x-men-days-of-future-past",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Wide desktop masthead key art for X-Men: Days of Future Past (2014); ensemble film where both Patrick Stewart and James McAvoy play Xavier",
+      "contentType": "image/jpeg",
+      "bytes": 127263,
+      "note": "Group/banner art, low byte size; may show McAvoy rather than Stewart. Contents not visually verified. Served as image/jpeg despite .webp name."
+    },
+    {
+      "slug": "magneto",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_xmen_ta_p67_2000x3000_en_v1_169261.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X-Men (2000), the film in which Ian McKellen plays Magneto; group key art with title text",
+      "contentType": "image/jpeg",
+      "bytes": 767859,
+      "note": "Group key art; contents not visually verified. Same file as professor-x rank 1."
+    },
+    {
+      "slug": "magneto",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_x2xmenunited_ta_p67_2000x3000_en_v1_120280.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X2: X-Men United (2003), Ian McKellen as Magneto; group key art with title text",
+      "contentType": "image/webp",
+      "bytes": 643968,
+      "note": "Group key art; contents not visually verified."
+    },
+    {
+      "slug": "magneto",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/fox_x-mendaysoffuturepast_lob_mas_dsk_01.webp",
+      "sourcePage": "https://www.marvel.com/movies/x-men-days-of-future-past",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Wide desktop masthead key art for X-Men: Days of Future Past (2014); both Ian McKellen and Michael Fassbender play Magneto in this film",
+      "contentType": "image/jpeg",
+      "bytes": 127263,
+      "note": "Group/banner art; may show Fassbender rather than McKellen. Contents not visually verified."
+    },
+    {
+      "slug": "cyclops",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_xmen_ta_p67_2000x3000_en_v1_169261.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X-Men (2000), the film in which James Marsden plays Cyclops; group key art with title text",
+      "contentType": "image/jpeg",
+      "bytes": 767859,
+      "note": "Group key art; whether Cyclops appears on this art is unconfirmed (not viewed)."
+    },
+    {
+      "slug": "cyclops",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_x2xmenunited_ta_p67_2000x3000_en_v1_120280.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X2: X-Men United (2003), James Marsden as Cyclops; group key art with title text",
+      "contentType": "image/webp",
+      "bytes": 643968,
+      "note": "Group key art; whether Cyclops appears on this art is unconfirmed (not viewed)."
+    },
+    {
+      "slug": "nightcrawler",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_x2xmenunited_ta_p67_2000x3000_en_v1_120280.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X2: X-Men United (2003), Alan Cumming's only film as Nightcrawler; group key art with title text",
+      "contentType": "image/webp",
+      "bytes": 643968,
+      "note": "Group key art; whether Nightcrawler appears on this art is unconfirmed (not viewed). If he is absent, treat Nightcrawler as not found."
+    },
+    {
+      "slug": "mystique",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_xmen_ta_p67_2000x3000_en_v1_169261.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X-Men (2000), Rebecca Romijn as Mystique; group key art with title text",
+      "contentType": "image/jpeg",
+      "bytes": 767859,
+      "note": "Group key art; whether Mystique appears on this art is unconfirmed (not viewed)."
+    },
+    {
+      "slug": "mystique",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/is_x2xmenunited_ta_p67_2000x3000_en_v1_120280.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+      "owner": "20th Century Studios (Disney), published by Marvel",
+      "shows": "Disney+ key art (2000x3000 portrait) for X2: X-Men United (2003), Rebecca Romijn as Mystique; group key art with title text",
+      "contentType": "image/webp",
+      "bytes": 643968,
+      "note": "Group key art; whether Mystique appears on this art is unconfirmed (not viewed)."
+    }
+  ],
+  "notFound": [
+    {
+      "slug": "beast",
+      "searched": [
+        "https://www.marvel.com/movies/the-marvels (16 gallery stills, all alt 'Marvel Studios' The Marvels', none identified as Kelsey Grammer)",
+        "https://www.marvel.com/movies/x-men-the-last-stand (404)",
+        "https://www.marvel.com/movies/x-men-days-of-future-past (Beast there is Nicholas Hoult)",
+        "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus",
+        "https://www.marvel.com/movies/avengers-doomsday",
+        "d23.com search for Kelsey Grammer as Beast (no results)"
+      ]
+    },
+    {
+      "slug": "gambit",
+      "searched": [
+        "https://www.marvel.com/characters/gambit (comics art only)",
+        "https://www.marvel.com/characters/gambit/in-movies (404)",
+        "https://www.marvel.com/movies/deadpool-and-wolverine (16 gallery stills shown of 816, all alt 'Marvel Studios' Deadpool & Wolverine', none identified as Gambit; 4 posters are Deadpool/Wolverine)",
+        "https://www.marvel.com/articles/movies/marvel-studios-deadpool-and-wolverine-digital-4k-uhd-blu-ray-dvd (cast list names Channing Tatum as Gambit, no Gambit image)",
+        "https://thewaltdisneycompany.com/news/deadpool-and-wolverine-kevin-feige/ (Deadpool and Wolverine stills only)",
+        "d23.com search for Channing Tatum as Gambit (no results)"
+      ]
+    }
+  ],
+  "alsoChecked": [
+    "https://www.marvel.com/characters/professor-x (comics art only; no /in-movies page)",
+    "https://www.marvel.com/articles/movies/avengers-doomsday-teaser-trailer (YouTube embeds and teaser poster only)",
+    "https://www.marvel.com/articles/movies/avengers-doomsday-trailer-infinity-vision-tickets (poster only)",
+    "https://www.marvel.com/movies/doctor-strange-in-the-multiverse-of-madness (unlabelled gallery; character posters do not include Professor X)",
+    "https://www.marvel.com/movies/logan (posters are Hugh Jackman only)",
+    "https://www.marvel.com/movies/x-men (404)",
+    "https://www.marvel.com/movies/x2-x-men-united (404)",
+    "https://www.marvel.com/articles/movies/x-men-movies-streaming-disney-plus-summer (DOFP key art only)",
+    "https://d23.com/5-fantastic-things-to-watch-this-weekend-presented-by-state-farm-122922/ (X2 still is Hugh Jackman as Wolverine)",
+    "https://d23.com/5-fantastic-things-to-watch-this-weekend-presented-by-state-farm-081122/ (DOFP still is McAvoy, Hoult, Jackman)",
+    "https://d23.com/5-fantastic-things-to-watch-this-weekend/ (X-Men 2000 still, alt 'x-men', content unknown)",
+    "https://d23.com/5-fantastic-things-to-watch-this-week-october-5/ (X2 still, alt 'X2: X-Men', content unknown)",
+    "https://d23.com/5-things-to-watch-this-week-july-6-2020/ and https://d23.com/5-fantastic-things-to-watch-this-weekend-101421/ (DOFP stills, content unknown)",
+    "https://d23.com/russo-brothers-unpack-explosive-avengers-doomsday-footage-in-endgame-encore/ (Endgame stills only)",
+    "https://thewaltdisneycompany.com/news/marvel-studios-comic-con-2026/ (event photos with Getty-style file names; excluded)"
+  ]
+}
