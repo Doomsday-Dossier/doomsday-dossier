@@ -35,7 +35,7 @@ export const TEAMS = [
   { id: 'x-men', name: 'X-Men', short: 'X-Men', wave: 3, blurb: 'Mutants whose film history began at 20th Century Fox, teased by Marvel in January 2026.' },
   { id: 'thunderbolts', name: 'Thunderbolts*', short: 'Thunderbolts*', wave: 4, blurb: 'The unlikely team assembled in Thunderbolts* (2025).' },
   { id: 'wakanda-talokan', name: 'Wakanda and Talokan', short: 'Wakanda + Talokan', wave: 5, blurb: 'Two hidden nations, both featured in Marvel’s fourth teaser.' },
-  { id: 'more', name: 'More confirmed', short: 'More', wave: 6, blurb: 'Further names Marvel has confirmed, including Peggy Carter at D23 2026.' },
+  { id: 'more', name: 'More confirmed', short: 'More', wave: 5, blurb: 'Further names Marvel has confirmed, including Peggy Carter at D23 2026.' },
 ] as const;
 
 export const DESIGN: Record<string, Design> = {

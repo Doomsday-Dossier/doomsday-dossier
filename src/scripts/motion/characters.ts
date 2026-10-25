@@ -268,8 +268,8 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
       const lx = ctx.pointer.x * innerWidth;
       for (const c of chars) {
         const g = Math.max(0, 1 - Math.abs(c.x - lx) / (innerWidth * 0.35));
-        c.el.style.opacity = (0.35 + 0.65 * g).toFixed(2);
-        c.el.style.textShadow = g > 0.4 ? `0 0 ${(g * 28).toFixed(0)}px rgba(255,70,80,${(g * 0.6).toFixed(2)})` : '';
+        const o = (0.35 + 0.65 * g).toFixed(2);
+        if (c.el.style.opacity !== o) c.el.style.opacity = o;   // opacity only: no per-frame repaint
       }
     };
     gsap.ticker.add(tick);
@@ -306,10 +306,12 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
 
   if (scene === 'sunvoid' && ctx) {
     // a golden name that the void eats from the right as you scroll
+    title.style.textShadow = '0 0 28px rgba(255,200,90,0.4)';   // static glow; animating it repaints every frame
+    let last = '';
     const tick = () => {
-      const edge = 110 - ctx.signal * 130;
-      title.style.webkitMaskImage = title.style.maskImage = `linear-gradient(90deg, #000 ${edge - 20}%, transparent ${edge}%)`;
-      title.style.textShadow = `0 0 ${24 + 10 * Math.sin(performance.now() / 600)}px rgba(255,200,90,0.45)`;
+      const edge = Math.round(110 - ctx.signal * 130);
+      const m = `linear-gradient(90deg, #000 ${edge - 20}%, transparent ${edge}%)`;
+      if (m !== last) { last = m; title.style.webkitMaskImage = title.style.maskImage = m; }
     };
     gsap.ticker.add(tick);
     cleanups.push(() => gsap.ticker.remove(tick));

@@ -1,0 +1,86 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/bob-reynolds/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\c-bob-reynolds-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/ghost/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\c-ghost-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/john-walker/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\c-john-walker-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/red-guardian/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\c-red-guardian-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/yelena-belova/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\c-yelena-belova-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/thunderbolts/",
+    "view": "desktop",
+    "file": "screenshots\\wave-4\\teams-thunderbolts-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/bob-reynolds/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\c-bob-reynolds-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/ghost/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\c-ghost-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/john-walker/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\c-john-walker-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/red-guardian/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\c-red-guardian-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/yelena-belova/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\c-yelena-belova-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/thunderbolts/",
+    "view": "phone",
+    "file": "screenshots\\wave-4\\teams-thunderbolts-phone.jpg",
+    "errors": []
+  }
+]

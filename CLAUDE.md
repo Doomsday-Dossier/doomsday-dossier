@@ -20,12 +20,19 @@ of every session, then continue from the tracker at the bottom.
    Cinematic Universe Wiki or the named film. Every section ends with numbered sources.
 4. **All prose is our own words.** Never paste wiki sentences. Keep quotes from any
    source under 15 words and at most one per page.
-5. **No faces, likenesses, logos, posters, stills or Marvel artwork.** No shield,
-   hammer, helmet, A-logo, X-logo, FF-logo or character silhouettes. Identity comes
-   from colour, type and effects only.
-6. **Clearly unofficial.** A persistent "Unofficial fan site" marker on every page,
-   plus a footer disclaimer: not affiliated with or endorsed by Marvel or Disney,
-   all names and characters belong to their owners.
+5. **Photos only from official promo material (revised 25 October 2026).** Images may
+   come only from marvel.com (including cdn.marvel.com) and Disney's official press
+   and media pages (for example d23.com, Disney+ press). Never fan art, leaks,
+   screenshots, set photos or third-party sites. Every image has a credit line and a
+   source link on the page that uses it and on the credits page. Each image is
+   compressed to WebP and lazy-loaded. Before any bulk download, show the user a
+   manifest (file, source URL, size) and get a yes. Still no Marvel logos as design
+   elements; identity in the UI comes from colour, type and effects.
+6. **Clearly unofficial and non-commercial.** A persistent "Unofficial fan site"
+   marker on every page, plus a footer disclaimer: unofficial, non-commercial, not
+   affiliated with or endorsed by Marvel or Disney, all names, characters and images
+   belong to their owners, and any image will be removed on request (with a contact
+   route). Takedown process: delete the image, push, redeploy.
 7. **Unconfirmed names stay out.** Ryan Reynolds and Hugh Jackman asked to join on
    stage; Marvel did not confirm them, so they are excluded. Kathryn Newton and
    Mabel Cadena are on Marvel's cast list with no named role: they appear on the
@@ -48,6 +55,52 @@ of every session, then continue from the tracker at the bottom.
 | Team groups | **Six groups, Doom apart.** The Adversary (Doom), Avengers, Fantastic Four, X-Men, Thunderbolts*, Wakanda and Talokan, plus "More confirmed" (Loki, Peggy Carter, future names). Bucky lives in Avengers and is cross-linked from Thunderbolts*. |
 | Hosting | **GitHub Pages.** Repo https://github.com/prejith77/doomsday-dossier (public). Live at **https://prejith77.github.io/doomsday-dossier/**. `.github/workflows/deploy.yml` builds and deploys on every push to `main`; Astro `base` comes from the repo name. |
 | References | User will send motionsites.ai links later. Treat them as the minimum motion bar, never copy. A tuning pass follows when they arrive. |
+
+## Revised brief (second interview, 25 October 2026)
+
+| Topic | Decision |
+|---|---|
+| Approach | **Extend what's built.** Keep all dossiers, hero scenes and research; add photos, four interactive features, credits page and six original animation ideas. |
+| Photo look | **Graded to each palette.** Photos rest as a live shader duotone in the character's palette with crushed blacks, grain and vignette, and bloom to full colour on hover or at the scroll reveal. |
+| Depth layers | **Processed locally on this PC.** rembg for the cut-out and Depth Anything V2 (small) for a depth map, via Python, downloaded once (about 400 MB). Output per photo: graded base, cut-out and depth map as WebP. Images never leave the machine. |
+| Photo sources | **marvel.com plus Disney press.** marvel.com, cdn.marvel.com, d23.com and Disney's official press and media pages. If a character has no usable official photo, the page keeps its abstract hero and says so. |
+| Photo coverage | **Every character gets their photo**, not just the leads (user: "I want all the character's faces"). |
+| Character page | **I Hero** (graded photo with depth layers over the existing signature scene, plus the character's own photo shader: ripples, particle dissolve, liquid, fire, static and so on), **II Trailer** (pinned: zoom, colour shift, text beats), **III Origin**, **IV Two lives** (drag a divider between comics eras and on-screen history), **V Doomsday** (confirmed facts only), then photo credits. |
+| Navigation | **Team picker on home**, replacing the roster; the whole grid rearranges with animation. **/timeline/** and **/versus/** are new pages, linked from the header, menu and every character page. Versus is shareable (`/versus/?a=thor&b=magneto`). |
+| Versus data | **Official Handbook power grid** (intelligence, strength, speed, durability, energy projection, fighting skills, 1 to 7) as recorded on the Marvel Fandom wiki, with the edition cited. No grid means "Not rated in the Handbook". Abilities lists and connections (shared films, teams, wiki relationships) side by side. No "who would win" verdict. |
+| Timeline | **Every relevant title.** All released live-action films and series with a confirmed character (MCU, FOX, OTHER tagged), plus each character's comics debut and key eras, built from the research files. Characters appear at their first entry; Marvel's 2024 to 2026 milestones close the line at Doomsday. |
+| Original ideas chosen | **Halftone Lens** (cursor lens shows photos as comic halftone; long press on phones), **Photo Hand-off** (card photo flies into the next page's hero with depth layers intact), **Panel Flythrough** (comics eras as a 3D corridor of panels), **Magnetic Team Chain** (drag a card and its team follows on springs into formation), **Film-Burn Scrubber** (35 mm scrubber on the trailer, burns when scrolled fast), **Developing Credits** (credit prints develop like darkroom photos). Not chosen: Multiverse Tear, Name Constellation. |
+| Hosting | **Stays on GitHub Pages**, same URL. Accepted risk: a takedown notice can disable the whole Pages site; the fix is to remove the image and redeploy. |
+
+## Wave plan (revised)
+
+| Wave | Scope | Status |
+|---|---|---|
+| 1 | Home, Doom, Avengers core | done |
+| 2 | Fantastic Four | done |
+| 3 | X-Men | done |
+| 4 | Thunderbolts* (abstract heroes, no photos yet) | built; perf fix pending |
+| 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | todo |
+| 6 | Photos for every character: download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
+| 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
+
+## Feature tracker
+
+| Feature | Wave | Status |
+|---|---|---|
+| Official photos with depth layers and per-character photo shader | 6 | todo |
+| Trailer act (pinned zoom, colour shift, text beats) | 6 | todo |
+| Two lives slider (comics vs on screen) | 6 | todo |
+| Credits page (every image, owner, source, page used) | 6 | todo |
+| Halftone Lens | 6 | todo |
+| Photo Hand-off | 6 | todo |
+| Developing Credits | 6 | todo |
+| Team picker on home | 7 | todo |
+| Magnetic Team Chain | 7 | todo |
+| Timeline page | 7 | todo |
+| Versus page with power grid | 7 | todo |
+| Panel Flythrough | 7 | todo |
+| Film-Burn Scrubber | 7 | todo |
 
 ## Stack and why
 
@@ -142,16 +195,16 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 | 3 | X-Men | Mystique | Rebecca Romijn | No | done |
 | 3 | X-Men | Beast | Kelsey Grammer | No | done |
 | 3 | X-Men | Gambit | Channing Tatum | No | done |
-| 4 | Thunderbolts* | Yelena Belova | Florence Pugh | No | todo |
-| 4 | Thunderbolts* | Red Guardian | David Harbour | No | todo |
-| 4 | Thunderbolts* | John Walker | Wyatt Russell | No | todo |
-| 4 | Thunderbolts* | Ghost | Hannah John-Kamen | No | todo |
-| 4 | Thunderbolts* | Bob / Sentry | Lewis Pullman | No | todo |
+| 4 | Thunderbolts* | Yelena Belova | Florence Pugh | No | built |
+| 4 | Thunderbolts* | Red Guardian | David Harbour | No | built |
+| 4 | Thunderbolts* | John Walker | Wyatt Russell | No | built |
+| 4 | Thunderbolts* | Ghost | Hannah John-Kamen | No | built |
+| 4 | Thunderbolts* | Bob / Sentry | Lewis Pullman | No | built |
 | 5 | Wakanda and Talokan | Shuri | Letitia Wright | Yes (teaser) | todo |
 | 5 | Wakanda and Talokan | M'Baku | Winston Duke | Yes (teaser) | todo |
 | 5 | Wakanda and Talokan | Namor | Tenoch Huerta Mejia | Yes (teaser) | todo |
-| 6 | More confirmed | Loki | Tom Hiddleston | No | todo |
-| 6 | More confirmed | Peggy Carter | Hayley Atwell | Yes (D23 2026) | todo |
+| 5 | More confirmed | Loki | Tom Hiddleston | No | todo |
+| 5 | More confirmed | Peggy Carter | Hayley Atwell | Yes (D23 2026) | todo |
 | roster only | Unnamed | (role not named) | Kathryn Newton | No | roster only |
 | roster only | Unnamed | (role not named) | Mabel Cadena | No | roster only |
 
@@ -170,6 +223,8 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Build notes
 
+- Title effects must not animate `text-shadow`, `filter` or `font-variation-settings` every frame: each one repaints large text and cost Bob 25 fps and Yelena 11 fps at 4x CPU throttle. Animate `opacity` and `transform` only, and write styles only when the value changes. Tech debt: storm, optic, cards, fur, flame and cerebro still animate shadows or weight per frame; they measure 60 fps here, but audit them on a real phone.
+
 - Never name a GLSL variable `half` (reserved word). Three.js records shader compile errors in `renderer.info.programs[].diagnostics` without logging them. `shots.mjs` and `fps.mjs` now read those diagnostics on localhost (the engine is exposed as `window.__ddEngine` there only) and print SHADER errors; treat any as a blocker.
 - Hero names are capped by their longest word (`--hero-longest`) so wide faces can never break a word. Use `heroScale` for further tuning.
 - Letters that move after the intro (magnet, bamf) unclip their SplitText line masks after 2 s.
@@ -185,6 +240,8 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 ## Open items
 
 - motionsites.ai reference links from the user (triggers a motion tuning pass).
+- Wave 6 needs the user's yes on a download manifest before any photo is fetched.
+- Wave 6 must also rewrite the rules list on the sources page (`src/pages/about.astro`), which still says no likenesses are used.
 - Git has no global identity on this machine. The repo uses a local identity (Prejith, account email); the user may change the name.
 - GitHub CLI is installed per-user via winget at `%LOCALAPPDATA%MicrosoftWinGetPackagesGitHub.cli_*ingh.exe` (not on PATH in old shells) and signed in as prejith77. Use it to watch deploy runs.
 - If a push does not start a deploy run (seen once on 2026-10-25), start one by hand: `gh workflow run deploy.yml -R prejith77/doomsday-dossier --ref main`.
@@ -192,6 +249,8 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 4 perf fixed (title effects made repaint-free): all five Thunderbolts* heroes 60 fps at 4x CPU throttle. Footer now carries the non-commercial and removal-on-request lines.
+- 2026-10-25: Second interview on the revised brief (photos, interactive features, original ideas). Decisions in "Revised brief" above. Wave order changed to: finish the roster (4, 5), then photos (6), then features (7). Wave 4 committed locally, not deployed: Sun and Void 35 fps and Red Room 49 fps at 4x CPU throttle.
 - 2026-10-25: Wave 3 (X-Men) deployed and verified live (28 pages, no phone overflow, new heroes 59 to 60 fps). Built and checked: seven new heroes, no shader errors, 58 to 60 fps with CPU throttled 4x, no phone overflow on any page, reduced motion and navigation pass. Marvel cast unchanged; Marvel names Professor X, Magneto and Cyclops only. Found and fixed a silent shader compile failure (Magneto) and added shader-error detection to QA.
 - 2026-10-25: Wave 2 (Fantastic Four) deployed and verified live (21 pages, no phone overflow, new heroes 60 fps). Built and checked: four new heroes at 60 fps with CPU throttled 4x, no phone overflow, reduced motion and navigation pass. Marvel cast list re-checked, unchanged at 30 names; only the Thing has a Marvel-named role among the four. Engine now has a depth buffer for 3D scenes.
 - 2026-10-25: Wave 1 deployed to https://prejith77.github.io/doomsday-dossier/ (first run succeeded). Live QA passed: all 17 pages return 200, no phone overflow, reduced motion and navigation checks pass, WebGL scenes load from the sub-path.
