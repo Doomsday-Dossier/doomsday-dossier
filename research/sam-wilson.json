@@ -1,0 +1,291 @@
+{
+  "slug": "sam-wilson",
+  "name": "Samuel Wilson",
+  "alias": "Falcon / Captain America",
+  "origin": {
+    "firstAppearance": {
+      "title": "Captain America",
+      "issue": "#117",
+      "coverDate": "September 1969"
+    },
+    "creators": ["Stan Lee", "Gene Colan"],
+    "summary": [
+      "Sam Wilson grew up on rough Harlem streets as the son of Paul Wilson, a minister who kept the peace in his neighbourhood until he was killed trying to stop a gang fight. Years later a mugger killed his mother, Darlene, leaving Sam to look after his younger siblings, Sarah and Gideon. He worked his way through college, became one of Harlem's most respected social workers, and since childhood had kept pigeons on the roof and practised falconry. On a trip to Rio he found Redwing, the falcon who would become his partner.",
+      "Answering a call for a hunting falcon, Sam travelled to Exile Island in the Caribbean, which was run by the Exiles, the Red Skull's former henchmen. Seeing how they abused the locals, he turned against them and was holding out with Redwing when the Skull dropped a captive Captain America on the same island. Cap talked him into taking a symbolic identity to rally the islanders, the Falcon was born, and Steve Rogers trained him to fight before the two of them broke the Exiles. The Skull struck back with the Cosmic Cube, and exposure to it later proved to be the source of Sam's lasting mental bond with Redwing.",
+      "His beginnings were rewritten more than once. In Captain America #186 (1975) the Skull claimed he had arranged the meeting with Rogers and had used the Cube to overwrite a petty hustler called 'Snap' Wilson. Captain America #277 (1983) reworked that history, and All-New Captain America #3 (2015) finally exposed Snap as a racist lie by the Skull: Sam had never been a criminal. Flight came later, when the Black Panther built him glider wings in Captain America #170 (1974)."
+    ],
+    "sources": [
+      {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+      {"label": "Marvel Fandom: Captain America Vol 1 117", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_117"},
+      {"label": "Marvel Fandom: Captain America Vol 1 186", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_186"},
+      {"label": "Marvel Fandom: Captain America Vol 1 277", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_277"},
+      {"label": "Marvel Fandom: All-New Captain America Vol 1 3", "url": "https://marvel.fandom.com/wiki/All-New_Captain_America_Vol_1_3"},
+      {"label": "Marvel Fandom: Captain America Vol 1 170", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_170"}
+    ]
+  },
+  "comics": [
+    {
+      "era": "Debut",
+      "years": "1969-1970",
+      "title": "The Coming of the Falcon",
+      "summary": "A falconer from Harlem leads an island revolt beside Captain America and takes the name Falcon. Back home he works alone until a street gang's murder is pinned on him, and Cap helps him clear his name by exposing a Maggia plot to destabilise Harlem.",
+      "keyIssues": ["Captain America #117 (1969)", "Captain America #126 (1970)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America Vol 1 117", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_117"},
+        {"label": "Marvel Fandom: Captain America Vol 1 126", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_126"}
+      ]
+    },
+    {
+      "era": "Partnership",
+      "years": "1971-1974",
+      "title": "Captain America and the Falcon",
+      "summary": "Steve Rogers shares his secret identity, and the two become steady partners against everyone from street hoods to M.O.D.O.K. Sam's work as a Harlem social worker moves to the centre of his stories, which take on racial tension, extremism and his own doubts about standing in Cap's shadow. He splits off to fly solo, and later asks the Black Panther for an upgrade that gives him Wakandan glider wings.",
+      "keyIssues": ["Captain America #133 (1971)", "Captain America #144 (1971)", "Captain America #170 (1974)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America Vol 1 133", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_133"},
+        {"label": "Marvel Fandom: Captain America Vol 1 144", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_144"},
+        {"label": "Marvel Fandom: Captain America Vol 1 170", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_170"}
+      ]
+    },
+    {
+      "era": "The Snap retcon",
+      "years": "1975",
+      "title": "Mind Cage",
+      "summary": "The Red Skull takes control of the Falcon's mind and claims Sam's decent past was a fake he built with the Cosmic Cube on top of a criminal called Snap. Forced to attack Captain America, Sam is left catatonic, then faces trial for crimes he cannot remember until Nick Fury helps clear him. Later writers would undo the claim entirely.",
+      "keyIssues": ["Captain America #186 (1975)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America Vol 1 186", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_186"}
+      ]
+    },
+    {
+      "era": "Avenger and solo flight",
+      "years": "1979-1983",
+      "title": "The Quota Avenger",
+      "summary": "Government liaison Henry Gyrich forces the Avengers to admit the Falcon to meet a racial-equality standard. Sam joins only as a favour to Cap, feels sidelined, and resigns once Gyrich loses his authority. Back in Harlem he runs for Congress, goes public with his identity and loses the race, then returns to the skies in his own Falcon series.",
+      "keyIssues": ["Avengers #184 (1979)", "Captain America #277 (1983)", "Falcon #1 (1983)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Avengers Vol 1 184", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_184"},
+        {"label": "Marvel Fandom: Captain America Vol 1 277", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_277"},
+        {"label": "Marvel Fandom: Falcon Vol 1 1", "url": "https://marvel.fandom.com/wiki/Falcon_Vol_1_1"}
+      ]
+    },
+    {
+      "era": "Geoff Johns' Avengers",
+      "years": "2002-2003",
+      "title": "Sight Unseen",
+      "summary": "Now an urban planner in New York, Sam rejoins the Avengers while the United Nations hands the team temporary global authority. His bond with Redwing grows into a link with every bird alive, which he uses to spy on a suspicious Secretary of Defense. When that official turns out to be the Red Skull, the Falcon calls in a vast flock of birds to help the Black Panther bring him down.",
+      "keyIssues": ["Avengers Vol. 3 #57 (2002)", "Avengers Vol. 3 #64 (2003)", "Avengers Vol. 3 #70 (2003)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Avengers Vol 3 57", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_57"},
+        {"label": "Marvel Fandom: Avengers Vol 3 64", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_64"},
+        {"label": "Marvel Fandom: Avengers Vol 3 70", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_70"}
+      ]
+    },
+    {
+      "era": "Christopher Priest series",
+      "years": "2004-2005",
+      "title": "Brothers and Keepers",
+      "summary": "A rescue mission at Guantanamo Bay pits Sam against a rogue super-soldier posing as Captain America and a cartel with government friends. He gains hard-light wings designed by the Black Panther, but grows violent and erratic in a crisis later tied to the Scarlet Witch. By the end he has walked away from the Falcon identity altogether.",
+      "keyIssues": ["Captain America and the Falcon #1 (2004)", "Captain America and the Falcon #14 (2005)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America and the Falcon Vol 1 1", "url": "https://marvel.fandom.com/wiki/Captain_America_and_the_Falcon_Vol_1_1"},
+        {"label": "Marvel Fandom: Captain America and the Falcon Vol 1 14", "url": "https://marvel.fandom.com/wiki/Captain_America_and_the_Falcon_Vol_1_14"}
+      ]
+    },
+    {
+      "era": "Civil War and the Death of Captain America",
+      "years": "2006-2010",
+      "title": "Holding the Line",
+      "summary": "The Falcon is the first hero to side with Rogers against superhuman registration and helps organise the underground resistance. After Steve is assassinated, Sam backs Bucky Barnes as the new Captain America and searches for the brainwashed Sharon Carter. He then helps bring Steve back during Captain America: Reborn.",
+      "keyIssues": ["Civil War #2 (2006)", "Captain America #34 (2008)", "Captain America: Reborn #6 (2010)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Civil War Vol 1 2", "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_2"},
+        {"label": "Marvel Fandom: Captain America Vol 5 34", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_34"},
+        {"label": "Marvel Fandom: Captain America: Reborn Vol 1 6", "url": "https://marvel.fandom.com/wiki/Captain_America:_Reborn_Vol_1_6"}
+      ]
+    },
+    {
+      "era": "All-New Captain America",
+      "years": "2014-2015",
+      "title": "The Shield Changes Hands",
+      "summary": "After the Iron Nail drains the super-soldier serum from Steve Rogers and ages him to an old man, Sam carries one of Arnim Zola's bombs into space and survives. Rogers then hands him the shield and the name. As the new Captain America he battles a revived Hydra with Nomad, foils a plot to spread a deadly Inhuman's blood across the world, and leads the Avengers during AXIS.",
+      "keyIssues": ["Captain America Vol. 7 #25 (2014)", "All-New Captain America #1 (2015)", "All-New Captain America #3 (2015)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America Vol 7 25", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_7_25"},
+        {"label": "Marvel Fandom: All-New Captain America Vol 1 1", "url": "https://marvel.fandom.com/wiki/All-New_Captain_America_Vol_1_1"},
+        {"label": "Marvel Fandom: All-New Captain America Vol 1 3", "url": "https://marvel.fandom.com/wiki/All-New_Captain_America_Vol_1_3"}
+      ]
+    },
+    {
+      "era": "Nick Spencer era",
+      "years": "2015-2017",
+      "title": "Sam Wilson and the Secret Empire",
+      "summary": "Sam breaks with S.H.I.E.L.D., opens a public Hotline and takes firm political stands, which brings fierce public backlash. Worn down by the private Americops and the wrongful conviction of the young hero Rage, he gives up the shield. When a Hydra-loyal Steve Rogers seizes the country, Sam takes the mantle back to rally the resistance, then returns the shield to the real Steve and goes back to being the Falcon.",
+      "keyIssues": ["Captain America: Sam Wilson #1 (2015)", "Captain America: Sam Wilson #21 (2017)", "Secret Empire #10 (2017)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America: Sam Wilson Vol 1 1", "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_1"},
+        {"label": "Marvel Fandom: Captain America: Sam Wilson Vol 1 21", "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_21"},
+        {"label": "Marvel Fandom: Captain America: Sam Wilson Vol 1 24", "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_24"},
+        {"label": "Marvel Fandom: Secret Empire Vol 1 10", "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_10"},
+        {"label": "Marvel Fandom: Generations: Sam Wilson Captain America & Steve Rogers Captain America Vol 1 1", "url": "https://marvel.fandom.com/wiki/Generations:_Sam_Wilson_Captain_America_%26_Steve_Rogers_Captain_America_Vol_1_1"}
+      ]
+    },
+    {
+      "era": "Captain America again",
+      "years": "2021-2025",
+      "title": "Symbol of Truth",
+      "summary": "Sam suits up as Captain America once more to protect a grassroots network of everyday Captains, and then keeps the name for good with a new shield and Joaquin Torres flying beside him as the Falcon. His missions run from a Vibranium smuggling plot aimed at Wakanda to a seat on Captain Marvel's Avengers. In Sam Wilson, Captain America he takes down Eaglestar's floating Skydream colony and the forced-labour scheme behind it.",
+      "keyIssues": ["United States of Captain America #1 (2021)", "Captain America: Symbol of Truth #1 (2022)", "Sam Wilson, Captain America #1 (2025)"],
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: United States of Captain America Vol 1 1", "url": "https://marvel.fandom.com/wiki/United_States_of_Captain_America_Vol_1_1"},
+        {"label": "Marvel Fandom: Captain America: Symbol of Truth Vol 1 1", "url": "https://marvel.fandom.com/wiki/Captain_America:_Symbol_of_Truth_Vol_1_1"},
+        {"label": "Marvel Fandom: Avengers Vol 9 1", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_9_1"},
+        {"label": "Marvel Fandom: Sam Wilson, Captain America Vol 1 1", "url": "https://marvel.fandom.com/wiki/Sam_Wilson,_Captain_America_Vol_1_1"}
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Captain America: The Winter Soldier",
+      "year": 2014,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "A former Air Force pararescue airman now counselling veterans, Sam bonds with Steve Rogers on morning runs around Washington, D.C. When Hydra's grip on S.H.I.E.L.D. comes to light he straps on the EXO-7 Falcon wing pack, helps take the Triskelion, and keeps fighting at Steve's side.",
+      "sources": [
+        {"label": "MCU Wiki: Captain America: The Winter Soldier", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Avengers: Age of Ultron",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "A brief appearance. Sam shoots pool and swaps jokes with Steve at the Avengers Tower party, insisting he has no interest in joining the team. By the final scene he has arrived at the new Avengers Compound with upgraded wings as part of the new roster.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Age of Ultron", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Ant-Man",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Guarding the Avengers Compound, the Falcon catches Scott Lang breaking in to steal a piece of tech and is beaten when the shrunken thief gets inside his suit and disables it. Embarrassed but impressed, he later starts looking for the man who called himself Ant-Man.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Captain America: Civil War",
+      "year": 2016,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Sam refuses to sign the Sokovia Accords and stands with Steve and Bucky, recruiting help and fighting at Leipzig-Halle Airport. Captured afterwards, he is locked in the Raft until Steve breaks the team out.",
+      "sources": [
+        {"label": "MCU Wiki: Captain America: Civil War", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Still a fugitive, Sam helps Steve and Natasha save Vision and Wanda from Thanos's Black Order in Scotland, then flies cover in the Battle of Wakanda. He is among those turned to dust by the Snap.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Infinity War", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Restored to life, Sam flies through a portal to join the Battle of Earth. In the closing scene an elderly Steve Rogers hands him a new shield and with it the mantle of Captain America.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Endgame", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "The Falcon and The Winter Soldier",
+      "year": 2021,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Across six episodes, Sam gives the shield to the Smithsonian and then watches the government hand it to John Walker. He hunts the Flag Smashers with Bucky and an uneasy ally in Zemo, learns the hidden history of super-soldier Isaiah Bradley, and finally takes up the shield in a Wakandan Vibranium suit as Captain America, passing his old wings to Joaquin Torres.",
+      "sources": [
+        {"label": "MCU Wiki: The Falcon and The Winter Soldier", "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_The_Winter_Soldier"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    },
+    {
+      "title": "Captain America: Brave New World",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Anthony Mackie",
+      "cameo": false,
+      "summary": "Now Captain America, with Joaquin Torres as his Falcon, Sam is pulled into a crisis when a mind-controlled Isaiah Bradley tries to assassinate President Thaddeus Ross. Tracking the plot to Samuel Sterns, he heads off a clash with Japan over Celestial Island and stands his ground against Ross after the President transforms into the Red Hulk, clearing Isaiah's name.",
+      "sources": [
+        {"label": "MCU Wiki: Captain America: Brave New World", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"},
+        {"label": "MCU Wiki: Captain America (Sam Wilson)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"}
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Redwing, Sam's falcon partner, debuted in the same issue he did: Captain America #117 (September 1969).",
+      "sources": [
+        {"label": "Marvel Fandom: Captain America Vol 1 117", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_117"}
+      ]
+    },
+    {
+      "fact": "The wiki lists Captain America: Sentinel of Liberty #8 (April 1999) as Sam's first appearance as Captain America. It is a flashback tale set during his early Falcon days, published 15 years before he officially took the shield in Captain America Vol. 7 #25 (December 2014).",
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"},
+        {"label": "Marvel Fandom: Captain America: Sentinel of Liberty Vol 1 8", "url": "https://marvel.fandom.com/wiki/Captain_America:_Sentinel_of_Liberty_Vol_1_8"},
+        {"label": "Marvel Fandom: Captain America Vol 7 25", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_7_25"}
+      ]
+    },
+    {
+      "fact": "By coincidence, Sam shares his name with Samuel Wilson, the historical figure often credited as the inspiration for Uncle Sam.",
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"}
+      ]
+    },
+    {
+      "fact": "The wiki notes that Stan Lee unveiled the Falcon during a talk at Duke University about comics as a mirror of contemporary culture.",
+      "sources": [
+        {"label": "Marvel Fandom: Samuel Wilson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"}
+      ]
+    }
+  ],
+  "unverified": [
+    "The cameo flag is false for every entry. The MCU Wiki does not label Sam's brief appearances in Avengers: Age of Ultron and Ant-Man as cameos or credits scenes, so their summaries describe them as brief instead.",
+    "Left out on purpose: titles where the MCU Wiki lists Sam only as footage, a photo, art, archive audio or a mention (Spider-Man: Far From Home, Black Widow, Deadpool & Wolverine, Thunderbolts*, WandaVision, Loki, Ms. Marvel, She-Hulk: Attorney at Law), plus the WHiH Newsfront web series (footage).",
+    "No non-MCU live-action appearances of Sam Wilson turned up in the sources checked, but there was no exhaustive search beyond the MCU Wiki infobox.",
+    "Avengers: Doomsday and Avengers: Secret Wars are marked unreleased on the MCU Wiki and are left out, as instructed.",
+    "The Stan Lee Duke University detail rests on a citation inside the Marvel Fandom wiki (to an outside article) that was not opened directly.",
+    "The Falcon (1983) series is described as 'his own Falcon series' without a claim that it was his first solo title, because that was not confirmed."
+  ]
+}

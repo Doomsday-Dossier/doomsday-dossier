@@ -1,0 +1,543 @@
+{
+  "slug": "bucky-barnes",
+  "name": "James Buchanan \"Bucky\" Barnes",
+  "alias": "Winter Soldier",
+  "origin": {
+    "firstAppearance": {
+      "title": "Captain America Comics",
+      "issue": "1",
+      "coverDate": "March 1941"
+    },
+    "creators": [
+      "Joe Simon",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Born in 1925, James Buchanan Barnes lost both parents as a boy. His mother died when he was small, and his father, a soldier, was killed in a parachute exercise at Camp Lehigh, Virginia. His younger sister Rebecca went off to boarding school, but Bucky talked the Army into letting him stay on base as a ward of the state. He grew up as the camp's mascot and its resident troublemaker, picking fights and running a tidy contraband business.",
+      "The wartime comics said Bucky walked in on Steve Rogers changing into costume and talked his way into becoming Captain America's teenage partner. Later stories recast that as a cover story fed to the public. In this version, a drunken brawl on his sixteenth birthday got him shipped to Britain for commando training. He came home as a covert operative, there to handle the dirty work a flag-draped symbol could not be seen doing. Whichever version you read, he fought beside Cap, and later the Invaders, through World War II.",
+      "Near the end of the war, Bucky leapt onto a drone plane rigged by Baron Zemo and was caught in the blast. For decades, readers and heroes alike took him for dead. Modern stories revealed that he survived the fall into icy water without his left arm and was recovered by a Soviet submarine. From there he was handed to Vasily Karpov's program, fitted with a bionic arm, scrubbed of his memories and kept frozen between jobs. The result was the Winter Soldier, a ghost assassin who worked for Moscow for half a century."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+      },
+      {
+        "label": "Marvel Database: Captain America Comics Vol 1 1",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+      },
+      {
+        "label": "Marvel Database: Avengers Vol 1 4",
+        "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_4"
+      },
+      {
+        "label": "Marvel Database: Captain America Vol 5 11",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_11"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "Golden Age",
+      "years": "1941",
+      "title": "The Sentinel's Sidekick",
+      "summary": "Bucky debuted in the same issue as Captain America himself: a masked teenager trading punches with Nazi saboteurs, phony fortune tellers and an impostor Red Skull. The early adventures were pure pulp, with Cap often arriving at the last second to pull his partner out of a death trap.",
+      "keyIssues": [
+        "Captain America Comics #1 (1941)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America Comics Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Silver Age",
+      "years": "1964",
+      "title": "The Partner Who Never Came Home",
+      "summary": "When Marvel thawed out Captain America in the pages of The Avengers, it gave him a wound to carry. His last memory of the war was Bucky clinging to Baron Zemo's sabotaged plane moments before it exploded. For about four decades that loss drove Cap's guilt, and Bucky became famous as one of the few comic book deaths that actually stuck.",
+      "keyIssues": [
+        "Avengers #4 (1964)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Avengers Vol 1 4",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_4"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2005-2006",
+      "title": "The Winter Soldier",
+      "summary": "Writer Ed Brubaker and artist Steve Epting introduced a nameless Soviet-built assassin in the service of General Aleksander Lukin. He gunned down the Red Skull and set off a deadly firebomb in Philadelphia. The killer turned out to be Bucky, rebuilt with a cybernetic arm and kept in cold storage between missions since the 1950s. Steve used a Cosmic Cube to restore his friend's memories, and a shattered Bucky disappeared to hunt the men who had used him.",
+      "keyIssues": [
+        "Captain America Vol. 5 #1 (2005)",
+        "Captain America Vol. 5 #8 (2005)",
+        "Captain America Vol. 5 #14 (2006)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America Vol 5 1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_1"
+        },
+        {
+          "label": "Marvel Database: Captain America Vol 5 8",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_8"
+        },
+        {
+          "label": "Marvel Database: Captain America Vol 5 14",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_14"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Death of Captain America",
+      "years": "2008",
+      "title": "A New Man Behind the Shield",
+      "summary": "After Steve Rogers was assassinated, Bucky set out to kill the men he blamed. He took Cap's shield from Black Widow and fought Tony Stark to a standstill. Stark then showed him Steve's final wishes: that someone save Bucky from himself, and that the shield go on. Bucky took the job on his own terms, in a Stark-built costume and with firearms alongside the shield, and slowly won over a public that had doubted him.",
+      "keyIssues": [
+        "Captain America Vol. 5 #33 (2008)",
+        "Captain America Vol. 5 #34 (2008)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America Vol 5 33",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_33"
+        },
+        {
+          "label": "Marvel Database: Captain America Vol 5 34",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_34"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Reborn",
+      "years": "2009-2010",
+      "title": "Two Captain Americas",
+      "summary": "Steve turned out to have been lost in time rather than killed, and he returned while Bucky was a prisoner of Norman Osborn's forces. Bucky planned to hand the shield back, but after watching him in action Steve gave Bucky his blessing to keep it. Both men fought as Captain America during the Siege of Asgard, and Bucky then joined the reassembled Avengers.",
+      "keyIssues": [
+        "Captain America: Reborn #1 (2009)",
+        "Captain America: Who Will Wield the Shield? #1 (2010)",
+        "Avengers Vol. 4 #1 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America: Reborn Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Reborn_Vol_1_1"
+        },
+        {
+          "label": "Marvel Database: Captain America: Who Will Wield the Shield? Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Who_Will_Wield_the_Shield%3F_Vol_1_1"
+        },
+        {
+          "label": "Marvel Database: Avengers Vol 4 1",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_4_1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Trial and Fear Itself",
+      "years": "2011-2012",
+      "title": "Trial, Gulag and a Faked Funeral",
+      "summary": "Baron Zemo leaked Bucky's Winter Soldier past to the press, and the new Captain America was put on trial. The court found him guilty but ruled that his punishment had already been served. Russia then extradited him to a gulag over two killings from 1982, and he escaped with Black Widow's help. Months later, during Fear Itself, he was beaten nearly to death. Nick Fury saved him with the Infinity Formula, and the world was allowed to believe he had died. A decoy body was buried at Arlington.",
+      "keyIssues": [
+        "Captain America Vol. 5 #615 (2011)",
+        "Fear Itself #3 (2011)",
+        "Fear Itself #7.1 (2012)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America Vol 5 615",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_615"
+        },
+        {
+          "label": "Marvel Database: Captain America Vol 5 619",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_619"
+        },
+        {
+          "label": "Marvel Database: Fear Itself Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/Fear_Itself_Vol_1_3"
+        },
+        {
+          "label": "Marvel Database: Fear Itself Vol 1 7.1",
+          "url": "https://marvel.fandom.com/wiki/Fear_Itself_Vol_1_7.1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Shadow Work",
+      "years": "2012-2014",
+      "title": "Winter Soldier and the Man on the Wall",
+      "summary": "Officially dead, Bucky went back to the shadows with Black Widow to track down Soviet sleeper agents he had once trained. The mission cost him dearly: a rogue agent's scheme left Natasha with every memory except the ones of their romance. In Original Sin he was one of the heroes Nick Fury quietly drew together, and after Fury's apparent death Bucky took over Fury's secret post as the Man on the Wall, Earth's hidden first line of defense against threats from space.",
+      "keyIssues": [
+        "Winter Soldier #1 (2012)",
+        "Original Sin #8 (2014)",
+        "Bucky Barnes: The Winter Soldier #1 (2014)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Winter Soldier Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Winter_Soldier_Vol_1_1"
+        },
+        {
+          "label": "Marvel Database: Original Sin Vol 1 8",
+          "url": "https://marvel.fandom.com/wiki/Original_Sin_Vol_1_8"
+        },
+        {
+          "label": "Marvel Database: Bucky Barnes: The Winter Soldier Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Bucky_Barnes:_The_Winter_Soldier_Vol_1_1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Thunderbolts and Secret Empire",
+      "years": "2016-2017",
+      "title": "Guardian of a Living Cosmic Cube",
+      "summary": "After the Pleasant Hill crisis, Bucky took in Kobik, a Cosmic Cube that had become a child, and formed a new Thunderbolts team to protect her. He learned too late that Kobik had secretly rewritten Steve Rogers into a Hydra loyalist. Zemo then strapped Bucky to a replica of the plane that had 'killed' him in 1945 and blew it up over the ocean. Namor pulled him out of the water, and in the final battle of Secret Empire Ant-Man shrank Bucky down into the rebuilt Cube so the real Steve could be restored.",
+      "keyIssues": [
+        "Thunderbolts Vol. 4 #1 (2016)",
+        "Captain America: Steve Rogers #16 (2017)",
+        "Secret Empire #10 (2017)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Thunderbolts Vol 4 1",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_4_1"
+        },
+        {
+          "label": "Marvel Database: Captain America: Steve Rogers Vol 1 16",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Steve_Rogers_Vol_1_16"
+        },
+        {
+          "label": "Marvel Database: Secret Empire Vol 1 10",
+          "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_10"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "The Fixer",
+      "years": "2019",
+      "title": "Second Chances for Sale",
+      "summary": "In Kyle Higgins and Rod Reis's series, Bucky set himself up as a fixer, helping people get out of criminal lives the way he once had. He took a young Hydra-trained killer named RJ under his wing. The partnership collapsed when RJ discovered that Bucky had covered up his father's death.",
+      "keyIssues": [
+        "Winter Soldier Vol. 2 #1 (2019)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Winter Soldier Vol 2 1",
+          "url": "https://marvel.fandom.com/wiki/Winter_Soldier_Vol_2_1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "era": "Revolution",
+      "years": "2023-2025",
+      "title": "The New Revolution",
+      "summary": "Digging into the conspiracy that built the Winter Soldier, Bucky learned he had been one of five assassins controlled by a secret cabal called the Outer Circle. When the cabal's Revolution offered him a seat at the table, Bucky killed him and took his place, meaning to wreck the group from inside, and he broke with Steve to do it. As the New Revolution he went on to lead a black-ops Thunderbolts squad alongside Valentina Allegra de Fontaine, and in 2025 he teamed up with Black Widow to run a volatile New Avengers line-up.",
+      "keyIssues": [
+        "Captain America: Sentinel of Liberty Vol. 2 #6 (2023)",
+        "Thunderbolts Vol. 6 #1 (2024)",
+        "New Avengers Vol. 5 #1 (2025)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Database: Captain America: Sentinel of Liberty Vol 2 6",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Sentinel_of_Liberty_Vol_2_6"
+        },
+        {
+          "label": "Marvel Database: Thunderbolts Vol 6 1",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_1"
+        },
+        {
+          "label": "Marvel Database: New Avengers Vol 5 1",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_5_1"
+        },
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Captain America: The First Avenger",
+      "year": 2011,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Steve Rogers's best friend from Brooklyn, now a sergeant, is captured with his unit at Azzano and freed by the newly made Captain America. He becomes Steve's sharpshooter in the Howling Commandos, then falls from a speeding train toward an icy river far below during the mission to capture Arnim Zola.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Captain America: The First Avenger",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: The Winter Soldier",
+      "year": 2014,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Kept frozen and brainwashed by Hydra, Bucky returns as the Winter Soldier, ambushing Nick Fury and fighting Steve across Washington, D.C. During the battle on the helicarriers he starts to recognize his old friend. When Steve falls into the river, Bucky dives in and drags him to shore, then slips away.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Captain America: The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+        }
+      ]
+    },
+    {
+      "title": "Ant-Man",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": true,
+      "summary": "Shows up only in the post-credits scene. Steve Rogers and Sam Wilson have found him in Berlin, and since the Accords stop them calling on Tony Stark, Sam mentions he knows a guy who could help. Stan was uncredited for the appearance.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"
+        },
+        {
+          "label": "Marvel Database: Ant-Man (film)",
+          "url": "https://marvel.fandom.com/wiki/Ant-Man_(film)"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: Civil War",
+      "year": 2016,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Helmut Zemo frames Bucky for the Vienna bombing that kills King T'Chaka, and Steve chooses to protect his friend rather than sign the Sokovia Accords. In Siberia, the truth that the Winter Soldier killed Howard and Maria Stark sets off a brutal fight with Iron Man that costs Bucky his metal arm.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Captain America: Civil War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
+        }
+      ]
+    },
+    {
+      "title": "Black Panther",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": true,
+      "summary": "In a post-credits scene, Bucky wakes in Wakanda, where Shuri is helping him recover and the locals have nicknamed him the White Wolf. Stan was uncredited.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Black Panther (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)"
+        },
+        {
+          "label": "Marvel Database: Black Panther (film)",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_(film)"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Free of his Hydra programming and fitted with a new vibranium arm, Bucky is called out of his quiet life in Wakanda to fight Thanos's forces in the Battle of Wakanda. He is among those who turn to dust when Thanos snaps his fingers.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Avengers: Infinity War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Restored after five years, Bucky joins the final battle against Thanos. Afterward he attends Tony Stark's funeral and says a quiet goodbye to Steve before Steve leaves to return the Infinity Stones.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        }
+      ]
+    },
+    {
+      "title": "The Falcon and The Winter Soldier",
+      "year": 2021,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "A co-lead across all six episodes, Bucky works through court-ordered therapy and tries to make amends for the Winter Soldier's crimes. He teams up, uneasily, with Sam Wilson against the Flag Smashers and breaks Helmut Zemo out of prison to get answers. By the end he confesses to his friend Yori Nakajima that he was the one who killed Yori's son.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: The Falcon and The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_The_Winter_Soldier"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: Brave New World",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": true,
+      "summary": "In a short, uncredited appearance, Bucky is running for Congress. He visits Sam Wilson in the hospital after Joaquín Torres is badly hurt and tells a doubting Sam that he is the right person to carry the shield.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Captain America: Brave New World",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+        },
+        {
+          "label": "Marvel Database: Captain America: Brave New World",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Brave_New_World"
+        }
+      ]
+    },
+    {
+      "title": "Thunderbolts*",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Sebastian Stan",
+      "cameo": false,
+      "summary": "Now a first-term congressman from Brooklyn with no bills to his name, Bucky goes after Valentina Allegra de Fontaine. He ends up rallying her discarded operatives, Yelena Belova among them, to stop the Void from swallowing New York. When Valentina introduces the group to the press as the New Avengers, he goes along with it.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        },
+        {
+          "label": "MCU Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Database: Thunderbolts*",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts*"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The codename Winter Soldier nods to Thomas Paine's 1776 pamphlet The American Crisis and its famous jab at the 'summer soldier and sunshine patriot'.",
+      "sources": [
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Bucky's death held for so long that fans built a rule around it: no one in comics stays dead except Bucky, Jason Todd and Uncle Ben. The first two have since come back.",
+      "sources": [
+        {
+          "label": "Marvel Database: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Ed Brubaker, who co-created the Winter Soldier, appears in Captain America: The Winter Soldier as a Hydra doctor who helps repair Bucky's mechanical arm.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        }
+      ]
+    },
+    {
+      "fact": "Sebastian Stan went uncredited for his post-credits appearances in Ant-Man and Black Panther.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Cameo status of Captain America: Brave New World (2025): both wikis list Sebastian Stan in the cast, and the Marvel Database marks him as uncredited, but neither wiki tags the appearance as a cameo. It is marked cameo:false here and described as brief and uncredited.",
+    "The RJ / 'fixer' storyline is cited on the Earth-616 character page as 'Winter Soldier Vol 1 1-5', but the matching premise appears in the solicitation for Winter Soldier Vol 2 #1 (Kyle Higgins / Rod Reis, cover date February 2019). The Vol 2 issue page is used here. Story beats beyond #1 come only from the character page and were not checked against individual issue pages.",
+    "Location of the 1945 plane explosion: Avengers #4 (1964) has Steve falling into the waters off Newfoundland, while the Earth-616 page (citing Captain America: Reborn #4) places the fall in the English Channel. The location is left out of the origin.",
+    "Not counted as screen appearances: Deadpool & Wolverine (2024, archive footage only), Spider-Man: Far From Home (photo only), mentions in Iron Man 2, Avengers: Age of Ultron, Black Widow and other titles, and the animated What If...? (not live-action). Avengers: Doomsday is set for release on December 18, 2026, after today's date, so it is excluded.",
+    "No non-MCU live-action appearance was found. The Marvel Database pages for Captain America (1944 serial), Captain America (1979 TV film) and Captain America (1990 film) do not include Bucky, and the 1944 serial page says outright that he does not appear. No exhaustive cross-check beyond these pages was done."
+  ]
+}

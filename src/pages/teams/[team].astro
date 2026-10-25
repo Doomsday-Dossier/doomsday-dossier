@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/big-shoulders-stencil-display';
+import '@fontsource-variable/grenze-gotisch';
+import '@fontsource-variable/syne';
+import '@fontsource-variable/tektur';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/bodoni-moda';
+import '@fontsource/chakra-petch/700.css';
+import { TEAMS, CAST, DESIGN, isPublished, displayName, getResearch, u, heroName, SRC } from '../../data/site';
+
+export function getStaticPaths() {
+  return TEAMS.map((t) => ({ params: { team: t.id } }));
+}
+const { team } = Astro.params as { team: string };
+const t = TEAMS.find((x) => x.id === team)!;
+const members = CAST.filter((c) => c.team === team);
+const idx = TEAMS.findIndex((x) => x.id === team);
+const nextTeam = TEAMS[(idx + 1) % TEAMS.length];
+---
+<Base title={t.name} description={`${t.name}: every officially confirmed member in Avengers: Doomsday. Unofficial fan dossier.`} page="team" ease="power4.out" pace={1.1}>
+  <section class="tm-hero">
+    <div class="wrap">
+      <p class="label" data-hero-in>Team {String(idx + 1).padStart(2, '0')} / {String(TEAMS.length).padStart(2, '0')} &middot; Wave {t.wave}</p>
+      <h1 class="display tm-title" data-split="chars" data-split-on="load" data-split-style="drop">{t.name}</h1>
+      <p class="tm-blurb serif" data-hero-in>{t.blurb}</p>
+    </div>
+  </section>
+  <section class="tm-list">
+    <ol class="wrap">
+      {members.map((c, i) => {
+        const live = isPublished(c.slug);
+        const d = c.slug ? DESIGN[c.slug] : null;
+        const r = c.slug ? getResearch(c.slug) : null;
+        const style = d ? `--m-accent:${d.accent};--m-font:${d.font};--m-weight:${d.fontWeight};--m-case:${d.fontCase}` : '';
+        return (
+          <li class={`mem ${live ? 'live' : ''}`} style={style} data-reveal>
+            <span class="mem-n">{String(i + 1).padStart(2, '0')}</span>
+            {live ? (
+              <a class="mem-name" href={u(`/c/${c.slug}/`)} data-accent={d!.accent}>{heroName(c.slug!)}</a>
+            ) : (
+              <span class="mem-name">{displayName(c)}</span>
+            )}
+            <span class="mem-meta">
+              <span>{c.actor}</span>
+              <span class="label">{c.character ? 'Role named by Marvel' : c.team === 'unnamed' ? 'Role not yet named by Marvel' : 'Role not named by Marvel'}</span>
+              {live && r && <span class="mem-alias">{r.alias} &middot; first appeared {r.origin.firstAppearance.coverDate}</span>}
+              {!live && <span class="mem-alias">{c.team === 'unnamed' ? 'No page until Marvel names the role' : `Dossier coming in wave ${t.wave}`}</span>}
+            </span>
+          </li>
+        );
+      })}
+    </ol>
+    <div class="wrap">
+      <p class="tm-src">Cast confirmed on <a href={SRC.S_FILM.url} target="_blank" rel="noopener">Marvel&rsquo;s Avengers: Doomsday page</a>{team === 'more' && <>, with Hayley Atwell confirmed as Peggy Carter at <a href={SRC.S_D23.url} target="_blank" rel="noopener">D23 2026</a></>}. Teams are this site&rsquo;s grouping, not Marvel&rsquo;s.</p>
+      <a class="tm-next" href={u(`/teams/${nextTeam.id}/`)} data-magnet="0.2"><span class="label">Next team</span><span class="display">{nextTeam.name} &rarr;</span></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .tm-hero { min-height: 70svh; display: grid; align-items: end; padding: calc(var(--header-h) + 60px) 0 40px; background: radial-gradient(ellipse at 20% 120%, rgba(61,255,138,0.12), transparent 60%); }
+  .tm-title { font-size: clamp(60px, 13vw, 220px); }
+  .tm-blurb { font-size: clamp(22px, 2.4vw, 34px); max-width: 32ch; line-height: 1.1; margin: 20px 0 0; }
+  .tm-list { padding: 40px 0 100px; }
+  .tm-list ol { list-style: none; margin: 0 auto; }
+  .mem { display: grid; grid-template-columns: 50px 1fr; gap: 6px 20px; padding: 26px 0; border-top: 1px solid var(--iron-2); align-items: baseline; }
+  @media (min-width: 900px) { .mem { grid-template-columns: 60px 1.3fr 1fr; } }
+  .mem-n { font-family: var(--font-mono); font-size: 12px; color: var(--bone-dim); }
+  .mem-name { font-family: var(--font-serif); font-size: clamp(36px, 5vw, 76px); line-height: 0.95; text-decoration: none; color: var(--iron-2); }
+  .mem.live .mem-name { font-family: var(--m-font); font-weight: var(--m-weight); text-transform: var(--m-case); color: var(--bone); transition: color 0.4s; }
+  .mem.live .mem-name:hover { color: var(--m-accent); }
+  .mem-meta { display: grid; gap: 4px; grid-column: 2; font-size: 15px; }
+  @media (min-width: 900px) { .mem-meta { grid-column: 3; } }
+  .mem-alias { color: var(--bone-dim); font-size: 13px; }
+  .mem.live .mem-alias { color: var(--m-accent); }
+  .tm-src { color: var(--bone-dim); font-size: 14px; margin-top: 40px; }
+  .tm-next { display: grid; gap: 6px; text-decoration: none; margin-top: 60px; justify-self: start; width: max-content; }
+  .tm-next .display { font-size: clamp(36px, 5vw, 72px); }
+  .tm-next:hover .display { color: var(--doom); font-style: italic; }
+</style>

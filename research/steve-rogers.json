@@ -1,0 +1,620 @@
+{
+  "slug": "steve-rogers",
+  "name": "Steve Rogers",
+  "alias": "Captain America",
+  "origin": {
+    "firstAppearance": {
+      "title": "Captain America Comics",
+      "issue": "#1",
+      "coverDate": "March 1941"
+    },
+    "creators": [
+      "Joe Simon",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Steve Rogers was born in New York City in 1922 and grew up thin and sickly through the Great Depression. His father died while he was a boy and his mother was lost to pneumonia in his late teens, but both left him with a stubborn sense of duty. He studied art, and when newsreels showed fascist armies tearing through Europe and Asia he tried to enlist, only to be turned away as unfit. General Chester Phillips overheard how badly he wanted to serve and offered him a place in a secret programme called Operation Rebirth.",
+      "In a hidden Washington laboratory, Dr. Abraham Erskine, working under the cover name Professor Reinstein, gave Steve the Super-Soldier Serum and then flooded him with vita-rays. He walked out of the chamber at the very peak of human ability. Minutes later a Nazi spy shot Erskine dead, and because the scientist had never fully written down his formula, Steve remained its only success. After months of intensive training he was given a star-spangled costume as America's answer to the Red Skull, plus a cover identity as a clumsy private at Camp Lehigh, where the camp mascot Bucky Barnes stumbled on his secret and became his partner.",
+      "Through the war Captain America fought alongside Bucky and the Invaders, and President Roosevelt later presented him with the round shield that became his signature. In the closing days of the conflict the pair tried to stop a drone plane packed with explosives launched by Baron Zemo. The blast seemed to kill Bucky and hurled Steve into icy Arctic waters, where the serum preserved him in suspended animation. Decades later the Sub-Mariner found the frozen figure being worshipped by an Inuit tribe and flung it into the sea, and the newly formed Avengers pulled it out and revived him."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Comics Vol 1 #1 (March 1941)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #109 (January 1969)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_109"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #255 (March 1981)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_255"
+      },
+      {
+        "label": "Marvel Fandom wiki: Avengers Vol 1 #4 (March 1964)",
+        "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_4"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "Golden Age",
+      "years": "1941",
+      "title": "Meet Captain America",
+      "summary": "Captain America arrives fully formed in his first issue, with his super-soldier origin, his teenage partner Bucky and a sinister Red Skull all introduced in one go. Its cover, which went on sale in December 1940, famously shows him knocking Hitler flat. The origin was later expanded and reconciled in Silver Age retellings, including Captain America #109 and #255.",
+      "keyIssues": [
+        "Captain America Comics #1 (1941)",
+        "Captain America #109 (1969)",
+        "Captain America #255 (1981)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Comics Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #109",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_109"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #255",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_255"
+        }
+      ]
+    },
+    {
+      "era": "Silver Age return",
+      "years": "1964-1965",
+      "title": "Man out of time",
+      "summary": "Thawed out by the Avengers, Steve joins as the team's first new recruit and is later treated as an honorary founder. He clashes with his wartime enemy Baron Zemo and his Masters of Evil while still grieving the partner he believes he lost. When the founders step away, he takes command of a scrappy new lineup of Hawkeye, Quicksilver and the Scarlet Witch, later nicknamed Cap's Kooky Quartet.",
+      "keyIssues": [
+        "Avengers #4 (1964)",
+        "Avengers #16 (1965)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #16",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_16"
+        }
+      ]
+    },
+    {
+      "era": "Bronze Age crisis",
+      "years": "1974-1975",
+      "title": "Nomad",
+      "summary": "Investigating the Secret Empire, Steve discovers its leader is a senior figure in the US government, and the cover-up that follows shakes his faith in the flag he wears. He gives up the shield and becomes Nomad, a hero with no country. When a young admirer who took up the role is murdered by the Red Skull, Steve returns as Captain America, now standing for the nation's ideals rather than its officials.",
+      "keyIssues": [
+        "Captain America #176 (1974)",
+        "Captain America #180 (1974)",
+        "Captain America #183 (1975)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #176",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_176"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #180",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_180"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #183",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_183"
+        }
+      ]
+    },
+    {
+      "era": "Event era",
+      "years": "1984-1987",
+      "title": "Battleworld and the mansion siege",
+      "summary": "Steve is among the heroes the Beyonder snatches away to fight on Battleworld in the original Secret Wars. Back home, Helmut Zemo's Masters of Evil seize Avengers Mansion, torture Jarvis in front of him and destroy irreplaceable mementos of his past, including his only photo of his mother. He ends the siege by beating Zemo in a rooftop duel.",
+      "keyIssues": [
+        "Marvel Super Heroes Secret Wars #1 (1984)",
+        "Avengers #277 (1987)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #277",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_277"
+        }
+      ]
+    },
+    {
+      "era": "Late 1980s",
+      "years": "1988-1989",
+      "title": "The Captain",
+      "summary": "A government commission tells Steve he was never discharged and orders him to serve as a directed operative. Unwilling to take orders blindly, he hands the shield and the name to John Walker and carries on in a new uniform as the Captain. Once the Red Skull is exposed as the hidden hand behind the commission, Walker steps aside and Steve takes the shield back.",
+      "keyIssues": [
+        "Captain America #337 (1988)",
+        "Captain America #351 (1989)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #337",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_337"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #351",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_351"
+        }
+      ]
+    },
+    {
+      "era": "Modern era",
+      "years": "2005-2007",
+      "title": "The Winter Soldier and Civil War",
+      "summary": "Steve learns that a Soviet assassin called the Winter Soldier is his old partner Bucky, brainwashed and kept on ice between missions, and he uses a Cosmic Cube to give Bucky back his memories. When the Superhuman Registration Act divides the hero community, Steve goes underground to lead the resistance against Tony Stark's side. He wins the final battle but surrenders when he sees the damage the fight is doing to the people he wants to protect.",
+      "keyIssues": [
+        "Captain America Vol 5 #1 (2005)",
+        "Captain America Vol 5 #14 (2006)",
+        "Civil War #7 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 #14",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #7",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_7"
+        }
+      ]
+    },
+    {
+      "era": "Death and return",
+      "years": "2007-2010",
+      "title": "The Death of Captain America and Reborn",
+      "summary": "On the courthouse steps, a Red Skull plot ends with a sniper's bullet and shots from a brainwashed Sharon Carter, and Steve dies. In truth his mind had been cast adrift in time, reliving moments of his life, until he fights his way back into his own body. After helping topple Norman Osborn during the Siege of Asgard, he lets Bucky keep the shield and becomes America's chief of security.",
+      "keyIssues": [
+        "Captain America Vol 5 #25 (2007)",
+        "Captain America: Reborn #4 (2010)",
+        "Siege #4 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 #25",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America: Reborn Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Reborn_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Siege Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "Now era",
+      "years": "2013-2014",
+      "title": "Dimension Z and passing the shield",
+      "summary": "Arnim Zola drags Steve into the hostile realm of Dimension Z, where he spends more than a decade raising a rescued boy named Ian as his son, only to learn that no time at all has passed on Earth. Not long after his return, the villain Iron Nail switches off the serum in his body and Steve ages rapidly to his real age of over ninety. He names Sam Wilson as the new Captain America.",
+      "keyIssues": [
+        "Captain America Vol 7 #1 (2013)",
+        "Captain America Vol 7 #10 (2013)",
+        "Captain America Vol 7 #25 (2014)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 7 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_7_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 7 #10",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_7_10"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 7 #25",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_7_25"
+        }
+      ]
+    },
+    {
+      "era": "All-New, All-Different",
+      "years": "2016-2017",
+      "title": "Secret Empire",
+      "summary": "Kobik, a living Cosmic Cube with the mind of a child, restores Steve's youth, but she has been secretly schooled by the Red Skull and rewrites history to produce a Captain America loyal to Hydra. That double seizes the United States while the real Steve survives only as a memory inside Kobik's mind. When the Cube is made whole again, the true Steve returns and defeats his fascist counterpart.",
+      "keyIssues": [
+        "Captain America: Steve Rogers #1 (2016)",
+        "Secret Empire #1 (2017)",
+        "Secret Empire #10 (2017)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America: Steve Rogers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Steve_Rogers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Empire Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Empire Vol 1 #10",
+          "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_10"
+        }
+      ]
+    },
+    {
+      "era": "Recent years",
+      "years": "2019-2022",
+      "title": "Framed, empowered and sharing the shield",
+      "summary": "Framed for murder by a shadowy group, Steve is broken out of prison and declares Captain America dead, fighting on for a while under his own name. Back in the role, he is drawn into the Phoenix Force's tournament for a new host, where a Phoenix-powered Doctor Doom yields to him and the Phoenix later names him the winner of his bout with Shang-Chi. Afterwards he and Sam Wilson agree that both of them will carry the title of Captain America.",
+      "keyIssues": [
+        "Captain America Vol 10 #12 (2019)",
+        "Avengers Vol 8 #42 (2021)",
+        "Captain America Vol 11 #0 (2022)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 10 #12",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_10_12"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 8 #42",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_8_42"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 11 #0",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_11_0"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Captain America (TV film)",
+      "year": 1979,
+      "continuity": "OTHER",
+      "actor": "Reb Brown",
+      "cameo": false,
+      "summary": "In this CBS television film Steve is a former Marine turned travelling artist whose late father developed a strength serum called F.L.A.G. After an attempt on his life, doctors give him the serum to save him. He adopts a costume built on one of his own sketches and stops a villain who has built a neutron bomb.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America (1979 film)",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_(1979_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-600043)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-600043)"
+        }
+      ]
+    },
+    {
+      "title": "Captain America II: Death Too Soon (TV film)",
+      "year": 1979,
+      "continuity": "OTHER",
+      "actor": "Reb Brown",
+      "cameo": false,
+      "summary": "The second CBS film sends Steve after General Miguel, a terrorist who has kidnapped a scientist and forced him to produce a chemical that speeds up ageing. Miguel tests it on a small town and then threatens a city with it. Captain America tracks down his base, the villain is caught by his own weapon, and Steve secures the antidote.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America II: Death Too Soon",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_II:_Death_Too_Soon"
+        },
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-600043)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-600043)"
+        }
+      ]
+    },
+    {
+      "title": "Captain America",
+      "year": 1990,
+      "continuity": "OTHER",
+      "actor": "Matt Salinger",
+      "cameo": false,
+      "summary": "Barred from the draft because of polio, Steve volunteers for a secret super-serum project in World War II and becomes Captain America, facing an Italian-made Red Skull. He reawakens decades later in a very different 1990s America. There he discovers the Skull is still active and plotting against the President, his wartime comrade Tom Kimball.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America (1990 film)",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_(1990_film)"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: The First Avenger",
+      "year": 2011,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "A frail Brooklyn volunteer is chosen by Abraham Erskine for Project Rebirth and emerges as a super-soldier, only to be sent out to sell war bonds on a USO stage. He goes rogue to rescue captured troops, including Bucky Barnes, then leads the Howling Commandos against Hydra and the Red Skull. To stop a bomber aimed at America he brings the Valkyrie down in the Arctic ice, waking almost seventy years later.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The First Avenger",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "The Avengers",
+      "year": 2012,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Still adjusting to the modern world, Steve is recruited by Nick Fury to help recover the Tesseract from Loki. He butts heads with Tony Stark aboard the Helicarrier, but in the Battle of New York he takes tactical command and directs the team against the Chitauri invasion.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Avengers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: The Winter Soldier",
+      "year": 2014,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Working as a S.H.I.E.L.D. agent, Steve uncovers that Hydra has hollowed out the agency from within and plans to use Project Insight's Helicarriers to kill millions. Branded a fugitive, he teams with Natasha Romanoff and new ally Sam Wilson. The masked assassin hunting them turns out to be Bucky, and Steve refuses to fight him as the Helicarriers fall.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Age of Ultron",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Steve leads the Avengers in the raid on Hydra that recovers Loki's sceptre, then against Ultron, the rogue artificial intelligence that grows out of Tony Stark's peacekeeping plan. After the Battle of Sokovia he stays behind with Natasha to train a new Avengers lineup.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Age of Ultron",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Ant-Man",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": true,
+      "summary": "Cameo in the post-credits scene. Steve and Sam Wilson have finally tracked down Bucky Barnes, but the Sokovia Accords mean they cannot call Tony Stark for help. Sam says he knows someone who might do instead. Chris Evans is uncredited.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ant-Man (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Captain America: Civil War",
+      "year": 2016,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Steve refuses to sign the Sokovia Accords and goes on the run to protect Bucky, who has been framed for a deadly bombing. The split between the Avengers explodes in a clash at a German airport. It ends in a brutal fight with Tony Stark in Siberia, after which Steve leaves his shield behind.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: Civil War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Spider-Man: Homecoming",
+      "year": 2017,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": true,
+      "summary": "Cameo through archive classroom videos. Steve appears in the fitness challenge and public service films that Midtown School still plays for its students. The post-credits scene is one of these clips, a talk on patience that ends with him asking how many more he has to film.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Spider-Man: Homecoming",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Homecoming"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Living as a fugitive since the Civil War, Steve resurfaces with Natasha and Sam to rescue Wanda Maximoff and Vision. He leads the defence of Wakanda against Thanos's armies, but cannot prevent the Snap that wipes out half of all life.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Infinity War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Captain Marvel",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": true,
+      "summary": "Cameo in the credits scene set in 2018. Steve, Natasha, Bruce Banner and James Rhodes are studying Nick Fury's pager after the Snap when it goes dead. Carol Danvers suddenly appears and asks where Fury is. Chris Evans is uncredited.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain Marvel (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_Marvel_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Five years after the Snap, Steve helps plan the Time Heist to recover the Infinity Stones, and in the final battle proves worthy of lifting Mjolnir. Afterwards he returns the Stones to their places in time, stays in the past to build a life with Peggy Carter, and as an old man hands his shield to Sam Wilson. The MCU Wiki notes that the September 2026 Encore re-release extends his scene with Peggy, which Loki interrupts at the door.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Endgame (Encore re-release)",
+      "year": 2026,
+      "continuity": "MCU",
+      "actor": "Chris Evans",
+      "cameo": false,
+      "summary": "Marvel Studios returned Endgame to theaters in September 2026. Co-director Anthony Russo told Marvel that the Encore plays one beat past the moment where Steve Rogers’ story ended with Peggy Carter, and that the moment carries a different meaning.",
+      "sources": [
+        {
+          "label": "Marvel.com, Anthony Russo Talks Avengers Endgame: Encore (25 September 2026)",
+          "url": "https://www.marvel.com/articles/movies/avengers-endgame-encore-robert-downey-jr-doctor-doom-casting-anthony-russo-interview"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Joe Simon briefly considered calling the character Super American before settling on Captain America, reasoning that comics had plenty of Supers but few Captains.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Captain America Comics #1 went on sale on 20 December 1940 with a cover of Cap punching Hitler, an image later parodied in Captain America: The First Avenger.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Comics Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "fact": "His first shield was a wedge-shaped badge design; the familiar round disc arrived in his second issue.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Comics Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Comics_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "fact": "In the comics Steve has been shown worthy of lifting Thor's hammer more than once, including Thor #390, Fear Itself #7, Secret Empire #10 and Avengers Vol 8 #28.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Thor: The Dark World (2013) is left out. The MCU Wiki credits Chris Evans there as Loki disguised as Captain America, not as Steve Rogers.",
+    "Titles where Steve shows up only as archive footage, voice clips, photos or mentions (for example Loki, The Falcon and the Winter Soldier, Thunderbolts* and WHiH Newsfront, per the MCU Wiki appearance list) are left out because no new performance appears in them.",
+    "The 1944 Captain America serial is left out: its hero is Grant Gardner, not Steve Rogers.",
+    "Avengers: Doomsday (listed for 18 December 2026) is left out because it has not been released yet. No plot details were researched.",
+    "The note on the 2026 Endgame Encore extension rests only on the MCU Wiki's plot summary. No other allowed source was checked against it.",
+    "The 1990 film entry is based on a partial plot summary on the Marvel Fandom wiki film page. How the film ends was not confirmed, so it is not described."
+  ]
+}

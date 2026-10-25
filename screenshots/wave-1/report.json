@@ -1,0 +1,206 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/about/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\about-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/bucky-barnes/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-bucky-barnes-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/joaquin-torres/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-joaquin-torres-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/sam-wilson/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-sam-wilson-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/scott-lang/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-scott-lang-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shang-chi/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-shang-chi-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/steve-rogers/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-steve-rogers-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/thor/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-thor-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/victor-von-doom/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\c-victor-von-doom-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/adversary/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-adversary-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/avengers/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-avengers-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/fantastic-four/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-fantastic-four-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/more/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-more-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/thunderbolts/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-thunderbolts-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/wakanda-talokan/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-wakanda-talokan-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "desktop",
+    "file": "screenshots\\wave-1\\teams-x-men-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/about/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\about-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/bucky-barnes/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-bucky-barnes-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/joaquin-torres/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-joaquin-torres-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/sam-wilson/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-sam-wilson-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/scott-lang/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-scott-lang-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shang-chi/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-shang-chi-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/steve-rogers/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-steve-rogers-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/thor/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-thor-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/victor-von-doom/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\c-victor-von-doom-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/adversary/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-adversary-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/avengers/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-avengers-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/fantastic-four/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-fantastic-four-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/more/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-more-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/thunderbolts/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-thunderbolts-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/wakanda-talokan/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-wakanda-talokan-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "phone",
+    "file": "screenshots\\wave-1\\teams-x-men-phone.jpg",
+    "errors": []
+  }
+]

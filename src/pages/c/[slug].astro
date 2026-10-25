@@ -1,0 +1,341 @@
+---
+import Base from '../../layouts/Base.astro';
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/big-shoulders-stencil-display';
+import '@fontsource-variable/grenze-gotisch';
+import '@fontsource-variable/syne';
+import '@fontsource-variable/tektur';
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/bodoni-moda';
+import '@fontsource/chakra-petch/700.css';
+import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
+
+export function getStaticPaths() {
+  return publishedOrder().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const d = DESIGN[slug];
+const r = getResearch(slug)!;
+const c = castFor(slug)!;
+const team = TEAMS.find((t) => t.id === c.team)!;
+const order = publishedOrder();
+const next = DESIGN[order[(order.indexOf(slug) + 1) % order.length]];
+const nextR = getResearch(next.slug)!;
+
+const styleVars = [
+  `--c-bg:${d.bg}`, `--c-ink:${d.ink}`, `--c-dim:${d.dim}`, `--c-accent:${d.accent}`, `--c-accent-2:${d.accent2}`,
+  `--c-line:color-mix(in srgb, ${d.ink} 14%, transparent)`,
+  `--hero-scale:${d.heroScale ?? 1}`, `--font-display:${d.font}`, `--font-display-weight:${d.fontWeight}`, `--font-display-case:${d.fontCase}`, `--font-display-tracking:${d.tracking}`,
+].join(';');
+
+// Citations, numbered per act
+const cOrigin = new Citer(); const originNums = cOrigin.cite(r.origin.sources);
+const cComics = new Citer(); const comics = r.comics.map((e) => ({ ...e, nums: cComics.cite(e.sources) }));
+const cScreen = new Citer(); const screen = [...r.screen].sort((a, b) => a.year - b.year).map((s) => ({ ...s, nums: cScreen.cite(s.sources) }));
+const conts = [...new Set(screen.map((s) => s.continuity))];
+const trivia = r.trivia.map((t) => ({ ...t, nums: cOrigin.cite(t.sources) }));
+
+// Doomsday act: only Marvel-confirmed facts
+const cDoom = new Citer();
+const filmNum = cDoom.cite([SRC.S_FILM])[0];
+const roleNum = c.roleSource ? cDoom.cite([SRC[c.roleSource]])[0] : null;
+const surname = c.actor.replace(/ Jr\.$/, '').split(' ').slice(-1)[0];
+const wordRe = new RegExp(`\\b${surname}\\b`);
+const mentions = OFFICIAL.milestones
+  .filter((m) => m.text.includes(c.actor) || (c.character && m.text.includes(c.character)) || wordRe.test(m.text))
+  .map((m) => ({ ...m, num: cDoom.cite([SRC[m.source]])[0] }));
+const lastScreen = [...r.screen].filter((s) => s.actor === c.actor).sort((a, b) => b.year - a.year)[0];
+
+const fa = r.origin.firstAppearance;
+const issue = (s: string) => (s.startsWith('#') ? s : `#${s}`);
+const faYear = (fa.coverDate.match(/\d{4}/) || [''])[0];
+const sup = (nums: number[], anchor: string) => nums.map((n) => `<sup class="cite"><a href="#${anchor}">${n}</a></sup>`).join('');
+const desc = `${heroName(slug)}: origin, comics history and screen history ahead of Avengers: Doomsday. Unofficial fan dossier with every fact sourced.`;
+---
+<Base title={heroName(slug)} description={desc} page="character" scene={d.scene} styleVars={styleVars} ease={d.ease} pace={d.pace}>
+  <!-- ACT 1 HERO -->
+  <section class={`hero ch-hero scene-${d.scene}`} data-gl-region aria-labelledby="hero-name">
+    <div class="wrap ch-hero-inner">
+      <p class="label" data-hero-in>{team.name} &middot; Dossier {String(order.indexOf(slug) + 1).padStart(2, '0')}</p>
+      <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' ? 'stamp' : d.scene === 'storm' ? 'drop' : d.scene === 'slipstream' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
+      <p class="ch-alias" data-hero-in>{r.alias}</p>
+      <p class="ch-kicker serif" data-hero-in>{d.kicker}</p>
+      <dl class="ch-meta" data-hero-in>
+        <div><dt>In Doomsday</dt><dd>{c.actor}</dd></div>
+        <div><dt>Role</dt><dd>{c.character ? `Named by Marvel: ${c.character}` : 'Not yet named by Marvel'}</dd></div>
+        <div><dt>First appearance</dt><dd>{fa.title} {issue(fa.issue)}, {fa.coverDate}</dd></div>
+      </dl>
+      <p class="ch-motion" data-hero-in><span class="label">Motion</span> <b>{d.sceneName}.</b> {d.sceneNote}</p>
+    </div>
+    {d.scene === 'radar' && (
+      <div class="hud" aria-hidden="true"><i></i><span>LAT <b data-k="lat">0.000</b></span><span>LON <b data-k="lon">0.000</b></span></div>
+    )}
+  </section>
+
+  <!-- ACT 2 ORIGIN -->
+  <section class="act act-origin" aria-labelledby="origin-h">
+    <div class="big-year" aria-hidden="true" data-drift="-25">{faYear}</div>
+    <div class="wrap act-grid">
+      <header class="act-head">
+        <p class="label"><span class="act-num">II</span> Origin</p>
+        <h2 id="origin-h" class="display act-title" data-split="words">Where it began</h2>
+      </header>
+      <aside class="fa-card" data-reveal>
+        <p class="label">First appearance</p>
+        <p class="fa-title serif">{fa.title} <span class="accent">{issue(fa.issue)}</span></p>
+        <p class="fa-date">Cover date {fa.coverDate}</p>
+        <p class="label" style="margin-top:18px">Created by</p>
+        <p class="fa-creators">{r.origin.creators.join(', ')}</p>
+      </aside>
+      <div class="prose">
+        {r.origin.summary.map((p, i) => (
+          <p data-reveal set:html={p + (i === r.origin.summary.length - 1 ? sup(originNums, 'src-origin') : '')} />
+        ))}
+        {trivia.length > 0 && (
+          <div class="trivia" data-reveal>
+            <p class="label">Worth knowing</p>
+            <ul>{trivia.map((t) => <li set:html={t.fact + sup(t.nums, 'src-origin')} />)}</ul>
+          </div>
+        )}
+      </div>
+    </div>
+    <div class="wrap">
+      <details class="sources" id="src-origin"><summary>Origin sources ({cOrigin.list.length})</summary>
+        <ol>{cOrigin.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ACT 3 COMICS -->
+  <section class="act act-comics" data-timeline aria-labelledby="comics-h">
+    <div class="tl-head wrap">
+      <p class="label"><span class="act-num">III</span> In the comics</p>
+      <h2 id="comics-h" class="display act-title">{comics[0].years.slice(0, 4)}&ndash;{comics[comics.length - 1].years.slice(-4)}</h2>
+      <div class="tl-progress" aria-hidden="true"><i></i></div>
+    </div>
+    <ol class="tl-track">
+      {comics.map((e, i) => (
+        <li class="tl-card">
+          <p class="tl-in tl-years">{e.years}</p>
+          <p class="tl-in tl-era label">{String(i + 1).padStart(2, '0')} &middot; {e.era}</p>
+          <h3 class="tl-in tl-title display">{e.title}</h3>
+          <p class="tl-in tl-sum" set:html={e.summary + sup(e.nums, 'src-comics')} />
+          {e.keyIssues?.length > 0 && <p class="tl-in tl-keys"><span class="label">Key issues</span> {e.keyIssues.join(' · ')}</p>}
+        </li>
+      ))}
+    </ol>
+    <div class="wrap">
+      <details class="sources" id="src-comics"><summary>Comics sources ({cComics.list.length})</summary>
+        <ol>{cComics.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ACT 4 ON SCREEN -->
+  <section class="act act-screen" data-screens aria-labelledby="screen-h">
+    <div class="wrap scr-grid">
+      <header class="scr-side">
+        <p class="label"><span class="act-num">IV</span> On screen</p>
+        <h2 id="screen-h" class="display act-title" data-split="words">{screen.length} live-action {screen.length === 1 ? 'appearance' : 'appearances'}</h2>
+        <div class="scr-sticky" aria-hidden="true">
+          <span class="scr-year">{screen[0]?.year}</span>
+          <span class="scr-cont" data-cont={screen[0]?.continuity}>{screen[0]?.continuity}</span>
+        </div>
+        {conts.length > 1 && (
+          <div class="scr-filters" role="group" aria-label="Filter by continuity">
+            <button data-filter="ALL" aria-pressed="true">All</button>
+            {conts.map((k) => <button data-filter={k} aria-pressed="false">{k}</button>)}
+          </div>
+        )}
+        <p class="scr-key">Tags show which continuity each title belongs to: <b>MCU</b> is Marvel Studios, <b>FOX</b> is 20th Century Fox, <b>OTHER</b> is any other live-action production.</p>
+      </header>
+      <ol class="scr-list">
+        {screen.map((s) => (
+          <li class="scr-item" data-year={s.year} data-cont={s.continuity}>
+            <div class="scr-body">
+              <p class="scr-line"><span class="scr-tag" data-cont={s.continuity}>{s.continuity}</span>{s.cameo && <span class="scr-tag cameo">Cameo</span>}<span class="scr-y">{s.year}</span></p>
+              <h3 class="scr-title serif">{s.title}</h3>
+              <p class="scr-actor">Played by {s.actor}</p>
+              <p class="scr-sum" set:html={s.summary + sup(s.nums, 'src-screen')} />
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="wrap">
+      <details class="sources" id="src-screen"><summary>Screen sources ({cScreen.list.length})</summary>
+        <ol>{cScreen.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- ACT 5 DOOMSDAY -->
+  <section class="act act-doom" aria-labelledby="doom-h">
+    <div class="wrap">
+      <p class="label"><span class="act-num">V</span> In Avengers: Doomsday</p>
+      <h2 id="doom-h" class="display act-title doom-title" data-split="chars" data-split-style={d.scene === 'cryo' ? 'glitch' : 'rise'}>Confirmed</h2>
+      <p class="doom-rule">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
+      <div class="doom-grid">
+        <div class="doom-fact" data-reveal>
+          <p class="label">Cast</p>
+          <p class="doom-big serif">{c.actor}</p>
+          <p set:html={`Marvel lists ${c.actor} in the cast of Avengers: Doomsday.${sup([filmNum], 'src-doom')}`} />
+        </div>
+        <div class="doom-fact" data-reveal>
+          <p class="label">Role</p>
+          {c.character ? (
+            <>
+              <p class="doom-big serif">{c.character}</p>
+              <p set:html={`Marvel has named the role.${sup([roleNum!], 'src-doom')}`} />
+            </>
+          ) : (
+            <>
+              <p class="doom-big serif">Not yet named</p>
+              <p>Marvel has not said which character {c.actor} plays.{lastScreen && c.lastRole && <> For context only: the most recent released role for {c.actor} was {c.lastRole} in {lastScreen.title} ({lastScreen.year}), covered in act IV above.</>}</p>
+            </>
+          )}
+        </div>
+        <div class="doom-fact" data-reveal>
+          <p class="label">Release</p>
+          <p class="doom-big serif">{fmtDate(OFFICIAL.film.releaseDate)}</p>
+          <div class="mini-count" data-countdown><span data-k="d">000</span>d <span data-k="h">00</span>h <span data-k="m">00</span>m <span data-k="s">00</span>s</div>
+        </div>
+      </div>
+      {mentions.length > 0 && (
+        <ol class="doom-timeline">
+          {mentions.map((m) => (
+            <li data-reveal>
+              <span class="doom-date">{fmtDate(m.date)}</span>
+              <span class="doom-what"><b>{m.title}.</b> <span set:html={m.text + sup([m.num], 'src-doom')} /></span>
+            </li>
+          ))}
+        </ol>
+      )}
+      <details class="sources" id="src-doom"><summary>Marvel sources ({cDoom.list.length})</summary>
+        <ol>{cDoom.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </div>
+  </section>
+
+  <!-- NEXT -->
+  <section class="next" style={`--n-accent:${next.accent};--n-font:${next.font};--n-weight:${next.fontWeight};--n-case:${next.fontCase}`}>
+    <a class="next-link" href={u(`/c/${next.slug}/`)} data-accent={next.accent} data-magnet="0.15">
+      <span class="label">Next dossier</span>
+      <span class="next-name">{heroName(next.slug)}</span>
+      <span class="next-alias">{nextR.alias} &rarr;</span>
+    </a>
+    <a class="next-team label" href={u(`/teams/${team.id}/`)}>&larr; Back to {team.name}</a>
+  </section>
+</Base>
+
+<style>
+  .ch-hero { min-height: 100svh; display: grid; align-items: end; padding: calc(var(--header-h) + 40px) 0 48px; position: relative; }
+  .ch-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, color-mix(in srgb, var(--c-bg) 88%, transparent) 0%, color-mix(in srgb, var(--c-bg) 45%, transparent) 38%, transparent 70%), linear-gradient(to right, color-mix(in srgb, var(--c-bg) 55%, transparent), transparent 55%); }
+  .ch-hero-inner { position: relative; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+  .ch-hero-inner > * { min-width: 0; }
+  .hero-name { font-size: calc(clamp(44px, 14vw, 230px) * var(--hero-scale, 1)); line-height: 0.86; overflow-wrap: normal; word-break: keep-all; hyphens: none; position: relative; }
+  .ch-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-accent); margin: 0; }
+  .ch-kicker { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; max-width: 30ch; margin: 6px 0 0; }
+  .ch-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 28px; margin: 18px 0 0; border-top: 1px solid var(--c-line); padding-top: 16px; max-width: 980px; }
+  .ch-meta dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-dim); }
+  .ch-meta dd { margin: 4px 0 0; font-size: 15px; }
+  .ch-motion { font-size: 13px; color: var(--c-dim); max-width: 70ch; margin: 6px 0 0; }
+  .ch-motion b { color: var(--c-ink); font-weight: 500; }
+
+  :global(.plates) { display: grid; }
+  :global(.plates .plate) { grid-area: 1 / 1; display: block; }
+
+  .hud { transition: opacity 0.4s; position: fixed; left: 0; top: 0; z-index: 3; pointer-events: none; font-family: var(--font-mono); font-size: 10px; color: var(--c-accent); display: grid; gap: 2px; padding: 0 0 0 22px; margin-top: -8px; }
+  .hud i { position: absolute; left: -18px; top: -10px; width: 36px; height: 36px; border: 1px solid var(--c-accent); border-radius: 50%; }
+  .hud i::before, .hud i::after { content: ''; position: absolute; background: var(--c-accent); }
+  .hud i::before { left: 50%; top: -8px; bottom: -8px; width: 1px; }
+  .hud i::after { top: 50%; left: -8px; right: -8px; height: 1px; }
+  @media (hover: none) { .hud { display: none; } }
+
+  .act { position: relative; overflow-x: clip; padding: clamp(90px, 14vh, 160px) 0 60px; background: var(--c-bg); }
+  .act-num { color: var(--c-accent); margin-right: 10px; }
+  .act-title { font-size: clamp(44px, 7vw, 112px); margin: 12px 0 0; }
+  .act-grid { display: grid; gap: 40px; position: relative; }
+  @media (min-width: 900px) { .act-grid { grid-template-columns: 5fr 7fr; } .act-head { grid-column: 1 / -1; } }
+  .big-year { position: absolute; top: 40px; right: -2vw; font-family: var(--font-display); font-weight: var(--font-display-weight); font-size: clamp(140px, 28vw, 460px); line-height: 0.8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--c-accent) 35%, transparent); pointer-events: none; white-space: nowrap; }
+  .fa-card { border: 1px solid var(--c-line); padding: 24px; align-self: start; background: color-mix(in srgb, var(--c-bg) 80%, black); position: relative; }
+  .fa-title { font-size: clamp(30px, 3vw, 44px); line-height: 1; margin: 10px 0 6px; }
+  .fa-date, .fa-creators { margin: 0; color: var(--c-dim); }
+  .fa-creators { color: var(--c-ink); font-size: 18px; margin-top: 6px; }
+  .prose { position: relative; max-width: 68ch; }
+  .prose p { margin: 0 0 1.1em; }
+  .prose > p:first-child::first-letter { font-family: var(--font-display); font-weight: var(--font-display-weight); color: var(--c-accent); float: left; font-size: 4.2em; line-height: 0.8; padding: 0.06em 0.12em 0 0; }
+  .trivia { border-left: 2px solid var(--c-accent); padding: 6px 0 6px 20px; margin-top: 32px; }
+  .trivia ul { margin: 10px 0 0; padding-left: 18px; color: var(--c-dim); }
+  .trivia li { margin: 8px 0; }
+
+  .act-comics { padding-bottom: 40px; overflow: hidden; }
+  .tl-head { margin-bottom: 40px; }
+  .tl-progress { height: 1px; background: var(--c-line); margin-top: 24px; position: relative; }
+  .tl-progress i { position: absolute; inset: 0; background: var(--c-accent); transform-origin: left; transform: scaleX(0); }
+  .tl-track { list-style: none; margin: 0; padding: 0 var(--gutter); display: grid; gap: 28px; position: relative; }
+  .tl-card { border-top: 1px solid var(--c-line); padding-top: 20px; }
+  .tl-years { font-family: var(--font-mono); font-size: 12px; color: var(--c-accent); letter-spacing: 0.1em; margin: 0 0 6px; }
+  .tl-era { margin: 0 0 12px; }
+  .tl-title { font-size: clamp(34px, 3.4vw, 56px); line-height: 0.92; margin: 0 0 16px; }
+  .tl-sum { color: var(--c-ink); margin: 0 0 14px; font-size: 16px; }
+  .tl-keys { font-size: 13px; color: var(--c-dim); margin: 0; }
+  @media (min-width: 900px) {
+    .act-comics { min-height: 100svh; }
+    .tl-track { display: flex; width: max-content; gap: 48px; padding-left: var(--gutter); padding-right: 20vw; }
+    .tl-card { width: min(34vw, 460px); flex: 0 0 auto; }
+  }
+  @media (max-width: 899px) {
+    .tl-track { padding-left: calc(var(--gutter) + 18px); }
+    .tl-progress { position: absolute; left: var(--gutter); top: 230px; bottom: 120px; width: 1px; height: auto; margin: 0; }
+    .tl-progress i { transform-origin: top; transform: scaleY(0); }
+  }
+
+  .scr-grid { display: grid; gap: 40px; }
+  .scr-grid > * { min-width: 0; }
+  .scr-side .act-title { font-size: clamp(36px, 4.4vw, 72px); overflow-wrap: anywhere; }
+  @media (min-width: 900px) { .scr-grid { grid-template-columns: 4fr 7fr; } .scr-side { position: sticky; top: calc(var(--header-h) + 30px); align-self: start; } }
+  .scr-sticky { display: flex; align-items: baseline; gap: 16px; margin-top: 24px; }
+  .scr-year { font-family: var(--font-display); font-weight: var(--font-display-weight); font-size: clamp(64px, 9vw, 150px); line-height: 0.8; color: var(--c-accent); font-variant-numeric: tabular-nums; }
+  .scr-cont, .scr-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; border: 1px solid currentColor; padding: 3px 8px; border-radius: 99px; color: var(--c-accent); }
+  .scr-tag[data-cont='FOX'], .scr-cont[data-cont='FOX'] { color: #ffb36b; }
+  .scr-tag[data-cont='OTHER'], .scr-cont[data-cont='OTHER'] { color: var(--c-dim); }
+  .scr-tag.cameo { color: var(--c-dim); }
+  .scr-filters { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+  .scr-filters button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--c-line); padding: 10px 14px; border-radius: 99px; min-height: 44px; }
+  .scr-filters button[aria-pressed='true'] { background: var(--c-accent); color: var(--c-bg); border-color: var(--c-accent); }
+  .scr-key { font-size: 13px; color: var(--c-dim); max-width: 40ch; margin-top: 22px; }
+  .scr-key b { color: var(--c-ink); font-weight: 500; font-family: var(--font-mono); font-size: 11px; }
+  .scr-list { list-style: none; margin: 0; padding: 0; }
+  .scr-item { border-top: 1px solid var(--c-line); padding: 26px 0; opacity: 0.45; transition: opacity 0.5s var(--ease-out); }
+  .scr-item.on { opacity: 1; }
+  :global(html.rm) .scr-item { opacity: 1; }
+  .scr-line { display: flex; gap: 8px; align-items: center; margin: 0 0 10px; }
+  .scr-y { font-family: var(--font-mono); font-size: 12px; color: var(--c-dim); margin-left: auto; }
+  .scr-title { font-size: clamp(28px, 2.8vw, 42px); line-height: 1; margin: 0 0 6px; font-weight: 400; }
+  .scr-actor { font-size: 13px; color: var(--c-dim); margin: 0 0 10px; font-family: var(--font-mono); letter-spacing: 0.04em; }
+  .scr-sum { margin: 0; }
+
+  .act-doom { border-top: 1px solid var(--c-line); }
+  .doom-title { color: var(--c-accent); }
+  .doom-rule { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-dim); }
+  .doom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 36px; }
+  .doom-fact { border: 1px solid var(--c-line); padding: 22px; }
+  .doom-fact p { margin: 8px 0 0; color: var(--c-dim); }
+  .doom-big { font-size: clamp(28px, 2.6vw, 40px) !important; line-height: 1; color: var(--c-ink) !important; margin-top: 12px !important; }
+  .mini-count { font-family: var(--font-mono); font-size: 18px; margin-top: 12px; color: var(--c-accent); font-variant-numeric: tabular-nums; }
+  .doom-timeline { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 0; }
+  .doom-timeline li { display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--c-line); }
+  .doom-date { font-family: var(--font-mono); font-size: 12px; color: var(--c-accent); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 4px; }
+  .doom-what { color: var(--c-dim); }
+  .doom-what b { color: var(--c-ink); font-weight: 500; }
+  @media (max-width: 600px) { .doom-timeline li { grid-template-columns: 1fr; gap: 6px; } }
+
+  .next { position: relative; z-index: 2; background: var(--c-bg); border-top: 1px solid var(--c-line); padding: 80px var(--gutter) 60px; display: grid; gap: 30px; }
+  .next-link { display: grid; gap: 10px; text-decoration: none; justify-self: start; }
+  .next-name { font-family: var(--n-font); font-weight: var(--n-weight); text-transform: var(--n-case); font-size: clamp(48px, 10vw, 170px); line-height: 0.85; transition: color 0.4s, letter-spacing 0.6s var(--ease-out); }
+  .next-link:hover .next-name { color: var(--n-accent); letter-spacing: 0.02em; }
+  .next-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--n-accent); }
+  .next-team { text-decoration: none; }
+</style>
