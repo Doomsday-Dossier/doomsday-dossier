@@ -89,5 +89,64 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
     gsap.fromTo(title, { filter: 'blur(6px)', opacity: 0.6 }, { filter: 'blur(0px)', opacity: 1, duration: 2.2, ease: 'power2.out', delay: 0.5 });
   }
 
+  if (scene === 'elastic' && ctx) {
+    // the name stretches: width axis follows the pointer, weight follows its speed
+    let w = 100, wt = 800;
+    const tick = () => {
+      const tw = 60 + ctx.pointer.x * 90;
+      const speed = Math.min(1, Math.hypot(ctx.pointer.vx, ctx.pointer.vy));
+      w += (tw - w) * 0.08; wt += (500 + (1 - speed) * 400 - wt) * 0.1;
+      title.style.fontVariationSettings = `"wdth" ${w.toFixed(1)}, "wght" ${wt.toFixed(0)}`;
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'ripple' && ctx) {
+    // letters near the pointer turn invisible, like Sue's power
+    let chars: { el: HTMLElement; x: number; y: number }[] = [];
+    const measure = () => {
+      chars = [...title.querySelectorAll<HTMLElement>('.split-char')].map((el) => {
+        const r = el.getBoundingClientRect();
+        return { el, x: r.left + r.width / 2, y: r.top + r.height / 2 + window.scrollY };
+      });
+    };
+    const t0 = setTimeout(measure, 2200);
+    addEventListener('resize', measure);
+    const tick = () => {
+      if (!chars.length) return;
+      const px = ctx.pointer.x * innerWidth, py = (1 - ctx.pointer.y) * innerHeight + window.scrollY;
+      for (const c of chars) {
+        const d = Math.hypot(c.x - px, c.y - py);
+        const o = Math.min(1, Math.max(0.04, (d - 60) / 140));
+        c.el.style.opacity = o.toFixed(2);
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); removeEventListener('resize', measure); });
+  }
+
+  if (scene === 'flame') {
+    // weight and glow flicker like a flame
+    const tick = () => {
+      const t = performance.now() / 1000;
+      const f = 0.5 + 0.3 * Math.sin(t * 7.3) + 0.2 * Math.sin(t * 13.1 + 1.7);
+      title.style.fontVariationSettings = `"wght" ${(620 + f * 180).toFixed(0)}`;
+      title.style.textShadow = `0 0 ${18 + f * 30}px rgba(255,120,40,${0.35 + f * 0.35}), 0 -4px ${30 + f * 40}px rgba(255,190,90,${0.15 + f * 0.2})`;
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'rock' && ctx) {
+    // the name takes the hit when the wall is clobbered
+    const tick = () => {
+      const s = ctx.signal;
+      title.style.transform = s > 0.01 ? `translate(${((Math.random() - 0.5) * 14 * s).toFixed(1)}px, ${((Math.random() - 0.5) * 10 * s).toFixed(1)}px)` : '';
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
   return () => cleanups.forEach((c) => c());
 }

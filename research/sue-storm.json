@@ -1,0 +1,451 @@
+{
+  "slug": "sue-storm",
+  "name": "Susan Storm-Richards",
+  "alias": "Invisible Woman",
+  "origin": {
+    "firstAppearance": {
+      "title": "Fantastic Four",
+      "issue": "#1",
+      "coverDate": "November 1961"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Sue and her younger brother Johnny grew up on Long Island in an ordinary household until their mother Mary died after a car accident; their father, the physician Franklin Storm, could not save her. Franklin sank into drink and gambling and eventually went to prison after shooting a loan shark in self-defence. The children moved in with their aunt, who ran a boarding house, and Sue increasingly found herself raising Johnny on her own.",
+      "As a teenager Sue fell for one of her aunt's lodgers, the young scientist Reed Richards, who soon moved out because she was distracting him from his work. The two kept in touch and became a couple, and she later studied at Columbia University on a scholarship. By the time they were engaged Reed was building the Marvel-1, a starship meant for a distant world, and Sue followed him to Central City, California, bringing Johnny with her.",
+      "When the military threatened to cut the project's funding, Reed resolved to launch the prototype himself, and Sue and Johnny insisted on flying with him and the pilot Ben Grimm. The cabin was not shielded against the unexpectedly intense burst of radiation they flew into, and the ship had to crash-land back on Earth. Each of the four came out changed; Sue found she could turn invisible, and she took the name Invisible Girl as the four became the Fantastic Four."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1 (November 1961)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 4 #4 (April 2013)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_4_4"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1961-1962",
+      "title": "The Invisible Girl",
+      "summary": "Sue joins the team's first fights against the Mole Man and the Skrulls. When Johnny restores the amnesiac Sub-Mariner's memory, Namor is instantly smitten with her and demands she become his bride in exchange for sparing humanity, the start of an attraction that unsettles her relationship with Reed for years. In the next issue Doctor Doom takes her hostage to force the men into a time-travel errand, but she slips free while invisible and releases her teammates from his trap.",
+      "keyIssues": [
+        "Fantastic Four #1 (1961)",
+        "Fantastic Four #4 (1962)",
+        "Fantastic Four #5 (1962)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Growing powers",
+      "years": "1963-1964",
+      "title": "Proving her worth",
+      "summary": "Readers' letters questioning what Sue adds to the team leave her upset until her teammates list the times she has saved them and throw her a surprise birthday party. Soon afterwards Reed's tests reveal she can do far more than vanish: she can project solid invisible force fields and turn other objects invisible. Those new abilities are the main reason the Four survive the Mole Man's next scheme to sink New York and Moscow.",
+      "keyIssues": [
+        "Fantastic Four #11 (1963)",
+        "Fantastic Four #22 (1964)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #11",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #22",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_22"
+        }
+      ]
+    },
+    {
+      "era": "Engagement and wedding",
+      "years": "1965",
+      "title": "Choosing Reed",
+      "summary": "After a long stretch of mixed feelings about Reed and Namor, Sue accepts Reed's proposal after a battle with Diablo and the Dragon Man on Reed's old campus. Their wedding at the Baxter Building draws Spider-Man, the X-Men, the Avengers and Nick Fury's agents as guests, and an army of villains roused by Doctor Doom as gatecrashers. Reed sends the attackers away with a device borrowed from the Watcher, and the couple marry without further trouble.",
+      "keyIssues": [
+        "Fantastic Four #35 (1965)",
+        "Fantastic Four Annual #3 (1965)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #35",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_35"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_3"
+        }
+      ]
+    },
+    {
+      "era": "Motherhood",
+      "years": "1967-1968",
+      "title": "A dangerous birth",
+      "summary": "Reed announces that Sue is pregnant, and she steps back from frontline missions. As her due date nears, doctors find that the cosmic rays in her body are putting both her and the baby at risk. Reed, Ben and Johnny raid the Negative Zone for an element held in Annihilus' Cosmic Control Rod, and Sue gives birth to a healthy boy she later names Franklin, after her father.",
+      "keyIssues": [
+        "Fantastic Four Annual #5 (1967)",
+        "Fantastic Four Annual #6 (1968)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_6"
+        }
+      ]
+    },
+    {
+      "era": "Walking out",
+      "years": "1973-1974",
+      "title": "Leaving Reed",
+      "summary": "When Annihilus triggers Franklin's powers and the boy threatens to wipe out the solar system, Reed shuts down his son's mind. It is the last straw for Sue, who already felt Reed did not treat her as an equal; she leaves him, takes Franklin and quits the team, with Medusa taking her place. She is soon seen at Namor's side as he threatens New York, but she and Reed reconcile, and the family is whole again once Franklin wakes from his coma.",
+      "keyIssues": [
+        "Fantastic Four #141 (1973)",
+        "Fantastic Four #149 (1974)",
+        "Fantastic Four #150 (1974)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #141",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_141"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #149",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_149"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #150",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_150"
+        }
+      ]
+    },
+    {
+      "era": "Loss and Malice",
+      "years": "1984-1985",
+      "title": "From Invisible Girl to Invisible Woman",
+      "summary": "Sue's second pregnancy goes wrong, and despite Reed's efforts the baby is lost. Still fragile, she is manipulated by the Psycho-Man, who amplifies her darkest emotions and turns her into the vicious Malice. Breaking free, she turns his own emotion-control device on him and nearly kills him, then announces that from now on she will be called the Invisible Woman.",
+      "keyIssues": [
+        "Fantastic Four #267 (1984)",
+        "Fantastic Four #280 (1985)",
+        "Fantastic Four #284 (1985)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #267",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_267"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #268",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_268"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #280",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_280"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #284",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_284"
+        }
+      ]
+    },
+    {
+      "era": "In command",
+      "years": "1993-1996",
+      "title": "Leader of the Four",
+      "summary": "When Reed and Doom appear to die together in Latveria, Sue takes charge of the Fantastic Four, recruits Ant-Man to fill Reed's role and grows confident as leader while turning away suitors, Namor above all. Refusing to accept that Reed is gone, she eventually tracks him to the distant past, where he has been stranded and left badly shaken. After his return Namor again declares his love, and she reminds him that she is married.",
+      "keyIssues": [
+        "Fantastic Four #381 (1993)",
+        "Fantastic Four #407 (1995)",
+        "Fantastic Four #412 (1996)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #381",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_381"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #407",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_407"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #412",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_412"
+        }
+      ]
+    },
+    {
+      "era": "A daughter and a nightmare",
+      "years": "2002-2003",
+      "title": "Valeria",
+      "summary": "Franklin reveals that he secretly saved Sue's lost second child, who has grown up in another future and now returns to her womb. The birth is so dangerous that Doctor Doom helps deliver the girl, demanding only the right to name her Valeria. Doom later uses that bond to channel his sorcery, strips the team of its powers, seizes the baby and torments Sue and her family until Reed turns the tables.",
+      "keyIssues": [
+        "Fantastic Four Vol 3 #54 (2002)",
+        "Fantastic Four Vol 3 #70 (2003)",
+        "Fantastic Four #500 (2003)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #54",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_54"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #70",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_70"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #500",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_500"
+        }
+      ]
+    },
+    {
+      "era": "The superhero Civil War",
+      "years": "2006-2007",
+      "title": "Against her husband",
+      "summary": "When the Thor clone built by Reed and Tony Stark kills Goliath, Sue blocks its next lightning strike to save the anti-registration heroes, then leaves Reed and goes underground with Johnny to join Captain America's side. In the final battle Reed takes a bullet meant for her, and she flattens the Taskmaster with a force field. Granted amnesty afterwards, she returns to Reed and the two take time away from the team to mend their marriage.",
+      "keyIssues": [
+        "Civil War #4 (2006)",
+        "Civil War #7 (2007)",
+        "Fantastic Four #543 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #7",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #543",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_543"
+        }
+      ]
+    },
+    {
+      "era": "Death, return and espionage",
+      "years": "2015-2020",
+      "title": "From Secret Wars to secret agent",
+      "summary": "Sue dies with her children when the Future Foundation's life raft is breached during the final Incursion, and Reed restores her after he gains godlike power at the end of Secret Wars. After years rebuilding the multiverse she returns to Earth with her family. In her own series she goes back to her past as a covert operative to rescue a former partner, teams with Black Widow, and discovers he has betrayed her; the mission ends with him dying against her force field.",
+      "keyIssues": [
+        "Secret Wars #1 (2015)",
+        "Secret Wars #9 (2016)",
+        "Invisible Woman #1 (2019)",
+        "Invisible Woman #5 (2020)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #9",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #2",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Invisible Woman Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Invisible_Woman_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Invisible Woman Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Invisible_Woman_Vol_1_5"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Fantastic Four",
+      "year": 2005,
+      "continuity": "FOX",
+      "actor": "Jessica Alba",
+      "cameo": false,
+      "summary": "Sue is a genetics researcher working for Victor von Doom, caught between him and her former boyfriend Reed when the cosmic storm hits Doom's space station. She gains invisibility and force fields, which at first switch on when she is upset, and learns to control them after the bridge rescue. She helps contain Doom's heat in the final fight and accepts Reed's proposal afterwards.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2005 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2005_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four: Rise of the Silver Surfer",
+      "year": 2007,
+      "continuity": "FOX",
+      "actor": "Jessica Alba",
+      "cameo": false,
+      "summary": "Sue's wedding plans are disrupted by the Silver Surfer, and she becomes the one person he confides in, learning about Galactus and the board that summons him. In Shanghai she tries to shield the Surfer from a spear Doom hurls, but it passes through her force field and she dies in Reed's arms. The Surfer revives her before flying at Galactus, and she and Reed marry in Japan.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four: Rise of the Silver Surfer (film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four:_Rise_of_the_Silver_Surfer_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four",
+      "year": 2015,
+      "continuity": "FOX",
+      "actor": "Kate Mara",
+      "cameo": false,
+      "summary": "Sue is Franklin Storm's adopted daughter and a researcher on his teleportation project, designing the travellers' suits. Left behind when Reed, Ben, Johnny and Victor make their unauthorised trip, she brings the shuttle home and is changed by the incident too, gaining invisibility, levitation and force fields. She later helps track down the fugitive Reed, fights Doom on Planet Zero and, with Reed, demands that the team be allowed to act independently.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2015 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2015_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-15866)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-15866)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-15866)"
+        }
+      ]
+    },
+    {
+      "title": "The Fantastic Four: First Steps",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Vanessa Kirby",
+      "cameo": false,
+      "summary": "On Earth-828 Sue is expecting her first child when the Silver Surfer heralds Galactus, who wants the baby and forces her into labour aboard his ship. Back home she faces down a hostile public, and in the final battle she pushes her force fields past their limit to drive Galactus into the teleportation bridge, dying until baby Franklin revives her. In the mid-credits scene, set four years later, she returns to find a cloaked stranger sitting beside her son.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Invisible Woman",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Jack Kirby gave the character the first name of his own daughter, Susan.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Fantastic Four #11 (1963) answered real criticism of the character on the page: Sue reads fan mail doubting her usefulness, and her teammates respond by recounting her rescues and throwing her a birthday party.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #11 (February 1963)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_11"
+        }
+      ]
+    },
+    {
+      "fact": "Before Vanessa Kirby took the role for Marvel Studios, Jessica Alba, Sue in both of Fox's 2000s films, advised her to enjoy playing the part as much as she had.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Invisible Woman",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "The 1994 Fantastic Four film (Rebecca Staab as Sue) is left out because the Marvel Fandom wiki lists it as never released.",
+    "Avengers: Doomsday (listed for 18 December 2026) and Avengers: Secret Wars appear in the MCU Wiki infobox for Sue but are marked unreleased, so they are left out. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-exclusive cast list do not include Sue Storm in any version, so no entry was added.",
+    "Doctor Strange in the Multiverse of Madness (2022) is left out: the MCU Wiki lists the Earth-838 Sue as mentioned only.",
+    "Deadpool & Wolverine (2024) is left out: none of the pages read describe Sue physically appearing; the Fox-continuity Sue page cites the film only for her brother's fate.",
+    "Meet the Fantastic Four (Marvel HQ YouTube web series, 2025) is left out. The MCU Wiki marks it non-canon, gives no confirmed cast and does not establish that it is live-action.",
+    "Future Foundation Public Archives (Instagram promotional campaign, June 2025 to January 2026, crediting Vanessa Kirby) is left out as marketing posts rather than a film or series. The Fantastic Four Power Hour is an in-universe show seen as footage inside First Steps, not a separate production.",
+    "Name: the Marvel Fandom wiki gives her comics name as Susan Storm-Richards, while an editor note on the MCU Wiki says the First Steps character is credited simply as Sue Storm.",
+    "The Kirby naming fact is reported on the Marvel Fandom character page, which cites an outside news article; only the wiki page was read.",
+    "The 2015 film page on the Marvel Fandom wiki has no plot summary, and the Sue page for that film is a stub. Her entry is pieced together from the Reed, Johnny and Sue pages for that film.",
+    "The origin's note that she studied at Columbia comes from a What If? citation on the character page, and the retcon that she earned a doctorate rather than working as a model is cited to Fantastic Four Vol 4 #4, whose issue page has no synopsis. Neither was checked further.",
+    "Second pregnancy: the character page cites Fantastic Four #268 for the stillbirth, but the issue pages put the medical crisis in #267 and the aftermath, described as a miscarriage, in #268. The era follows the issue pages.",
+    "The issue pages for Invisible Woman #1 and #5 and Fantastic Four Vol 6 #2 have no plot synopsis, so the last comics era rests on the character page."
+  ]
+}

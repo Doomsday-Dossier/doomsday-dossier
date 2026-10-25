@@ -1,0 +1,497 @@
+{
+  "slug": "reed-richards",
+  "name": "Reed Richards",
+  "alias": "Mister Fantastic",
+  "origin": {
+    "firstAppearance": {
+      "title": "Fantastic Four",
+      "issue": "#1",
+      "coverDate": "November 1961"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Reed grew up in Central City, California, the sole child of Evelyn Richards and her husband Nathaniel, a rich physicist. The boy was a prodigy in mathematics, physics and mechanics, and after his mother died when he was seven his father raised him alone and encouraged his studies. He started college at fourteen, passing through Caltech, Harvard and MIT and a spell at the University of Vienna, and held several degrees by eighteen. Nathaniel later vanished during a time-travel experiment, leaving his son a fortune of about two billion dollars.",
+      "While working toward yet another degree at State University in New York, Reed was assigned a foreign student named Victor von Doom as a roommate. Victor moved out in disgust and was replaced by Ben Grimm, a former football star who became Reed's closest friend and joked that he would one day pilot the starship Reed was already planning. Around the same time Reed rented a room in a boarding house run by the aunt of Susan Storm and fell for her at once. When Doom built a machine to reach the dead, Reed warned him about a flaw in the maths; Doom ignored him, the device blew up in his face, and he blamed Reed ever after.",
+      "Reed poured his inheritance, plus federal money, into a starship called the Marvel-1. When the government threatened to pull its funding, he decided to launch before it could. Ben agreed to pilot despite fears about the radiation shielding, and Sue and her teenage brother Johnny insisted on coming. The four slipped into the launch site and took off, but a storm of cosmic rays tore through the cabin and forced Ben to bring the ship down. Back on Earth they found themselves transformed, Reed's body now able to stretch and reshape at will, and he talked the others into using their powers together as the Fantastic Four, with himself as leader under the name Mister Fantastic."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1 (November 1961)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #2 (September 1964)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_2"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #5 (July 1962)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_5"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1961-1962",
+      "title": "Leading the first family",
+      "summary": "Reed's first mission takes the new team to Monster Isle to stop the Mole Man's attacks on atomic plants. Next, shape-shifting Skrulls frame the Four for a string of crimes; Reed scares off their invasion fleet with monster pictures clipped from comic books and leaves the captured impostors hypnotised into living as cows. Then his old classmate returns as Doctor Doom, takes Sue hostage and sends Reed, Ben and Johnny back in time to fetch Blackbeard's treasure, which Reed pointedly leaves behind.",
+      "keyIssues": [
+        "Fantastic Four #1 (1961)",
+        "Fantastic Four #2 (1962)",
+        "Fantastic Four #5 (1962)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #2",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Husband and father",
+      "years": "1965-1974",
+      "title": "Marriage, Franklin and a family under strain",
+      "summary": "Reed marries Sue at the Baxter Building while Doom stirs dozens of villains into attacking the ceremony; the Watcher lends Reed a device that sends them all home with no memory of it. When the cosmic rays in Sue's body threaten her and their unborn son, Reed raids the Negative Zone and drains what he needs from Annihilus' Cosmic Control Rod. Years later, with Franklin's runaway powers threatening the solar system, Reed shuts down the boy's mind and Sue walks out on him; the family is only whole again once Franklin wakes.",
+      "keyIssues": [
+        "Fantastic Four Annual #3 (1965)",
+        "Fantastic Four Annual #6 (1968)",
+        "Fantastic Four #141 (1973)",
+        "Fantastic Four #150 (1974)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Annual Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Annual_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #141",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_141"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #150",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_150"
+        }
+      ]
+    },
+    {
+      "era": "The cosmic epic",
+      "years": "1966",
+      "title": "The Galactus Trilogy",
+      "summary": "The Silver Surfer slips past the Watcher's attempt to hide Earth and summons his master Galactus, who sets about preparing the planet to be consumed. Nothing the Four throw at him works, so the Watcher sends Johnny across space to Galactus' ship to retrieve the Ultimate Nullifier. Reed takes the weapon and threatens to use it, and Galactus agrees to leave Earth alone, punishing the rebellious Surfer by trapping him on the planet.",
+      "keyIssues": [
+        "Fantastic Four #48 (1966)",
+        "Fantastic Four #49 (1966)",
+        "Fantastic Four #50 (1966)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #48",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_48"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #49",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_49"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #50",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_50"
+        }
+      ]
+    },
+    {
+      "era": "Trials of the 1980s",
+      "years": "1984",
+      "title": "On trial for mercy",
+      "summary": "Having once saved Galactus from dying of hunger, Reed is put on trial by a galactic tribunal led by the Shi'ar empress Lilandra on behalf of the worlds Galactus has destroyed. The Watcher even fetches writer John Byrne to record the proceedings, and Eternity is summoned to show that Galactus has a place in the cosmos. Months later Reed has to seek help from the institutionalised Doctor Octopus when Sue's second pregnancy turns dangerous, and the delay costs them the baby.",
+      "keyIssues": [
+        "Fantastic Four #262 (1984)",
+        "Fantastic Four #267 (1984)",
+        "Fantastic Four #268 (1984)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #262",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_262"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #267",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_267"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #268",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_268"
+        }
+      ]
+    },
+    {
+      "era": "Magic and grief",
+      "years": "2003-2004",
+      "title": "Unthinkable and its aftermath",
+      "summary": "With Doom now wielding sorcery and holding his family captive, Reed, who has never trusted magic, gets Doctor Strange to coach him through enough spells to turn the fight around. Doom's demonic patrons drag him to hell, but not before he scars Reed's face. Reed then takes over Latveria and secretly builds a prison for Doom, but Doom's escape ends with Reed forced to kill a possessed Ben Grimm at Ben's own request. Reed leads Sue and Johnny to the edge of heaven to bring Ben back, and the Creators allow it, healing Reed's scars as a parting gift.",
+      "keyIssues": [
+        "Fantastic Four #500 (2003)",
+        "Fantastic Four #508 (2004)",
+        "Fantastic Four #511 (2004)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #500",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_500"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #508",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_508"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #511",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_511"
+        }
+      ]
+    },
+    {
+      "era": "The superhero Civil War",
+      "years": "2006-2007",
+      "title": "Registration",
+      "summary": "Reed sides with Iron Man in favour of the Superhuman Registration Act, persuaded by his own predictive equations that rejecting it would lead to billions of deaths. The Thor clone he helped build kills Goliath, and Sue leaves him to join Captain America's resistance. In the final battle Reed takes a bullet from the Taskmaster that was meant for her. Afterwards the couple step away from the team to repair their marriage, asking the Black Panther and Storm to fill in.",
+      "keyIssues": [
+        "Civil War #4 (2006)",
+        "Civil War #7 (2007)",
+        "Fantastic Four #542 (2007)",
+        "Fantastic Four #543 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War Vol 1 #7",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #542",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_542"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #543",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_543"
+        }
+      ]
+    },
+    {
+      "era": "A new name",
+      "years": "2011-2012",
+      "title": "The Future Foundation",
+      "summary": "When Johnny apparently dies holding back an invasion from the Negative Zone, the grieving team retires the Fantastic Four name. Reed rebuilds it as the Future Foundation, a school and think tank for young geniuses, and brings in Spider-Man because Johnny's recorded will asked for him. Months later a living Johnny comes back through the portal leading Annihilus' captured forces, and the original four reunite.",
+      "keyIssues": [
+        "Fantastic Four #587 (2011)",
+        "FF #1 (2011)",
+        "Fantastic Four #600 (2012)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #587",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_587"
+        },
+        {
+          "label": "Marvel Fandom wiki: FF Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/FF_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #600",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_600"
+        }
+      ]
+    },
+    {
+      "era": "End of the multiverse",
+      "years": "2013-2016",
+      "title": "Incursions and Secret Wars",
+      "summary": "Reed returns to the secret Illuminati as whole universes start colliding with Earth, and the group agonises over destroying other worlds to save its own. When the final collision comes he launches a life raft of survivors, but a hull breach kills his family. Freed from stasis on Doom's patchwork Battleworld, he works with his ruthless counterpart the Maker against the God Emperor. The Molecule Man hands Reed the stolen power instead, and he restores Earth, brings his family back, heals Doom's face and sets out to rebuild the multiverse.",
+      "keyIssues": [
+        "New Avengers Vol 3 #1 (2013)",
+        "Secret Wars #1 (2015)",
+        "Secret Wars #9 (2016)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_3_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #9",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_9"
+        }
+      ]
+    },
+    {
+      "era": "The return",
+      "years": "2018-2020",
+      "title": "Back to Earth",
+      "summary": "After years spent building new realities, Franklin's powers run dry and an abstract being called the Griever at the End of All Things starts collapsing the worlds the family made. Reed tricks her into letting him call for backup and summons Ben, Johnny and every hero who ever served on the team. Back home, he builds the Marvel-2 to finish the flight that created the Four and discovers on the planet Spyre that its ruler had deliberately intensified the cosmic storm, freeing him of decades of guilt over Ben's transformation.",
+      "keyIssues": [
+        "Fantastic Four Vol 6 #1 (2018)",
+        "Fantastic Four Vol 6 #2 (2018)",
+        "Fantastic Four Vol 6 #17 (2020)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #1",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #2",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #17",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_17"
+        }
+      ]
+    },
+    {
+      "era": "Doom as emperor",
+      "years": "2025-2026",
+      "title": "One World Under Doom",
+      "summary": "When Doom, now Sorcerer Supreme, declares himself ruler of a united Earth, Reed helps lead the opposition. After Doom admits feeding on his own people's life force, Reed pulls him onto the Astral Plane and fights him as a self-styled Scientist Supreme, using spells reverse-engineered from Doom's own, but is overpowered. Later a dying Doom pays Reed a last visit, asks only whether Valeria is well, and crumbles to ash, leaving behind a will that names Reed its executor.",
+      "keyIssues": [
+        "One World Under Doom #1 (2025)",
+        "One World Under Doom #7 (2025)",
+        "One World Under Doom #9 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: One World Under Doom Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/One_World_Under_Doom_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: One World Under Doom Vol 1 #7",
+          "url": "https://marvel.fandom.com/wiki/One_World_Under_Doom_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: One World Under Doom Vol 1 #9",
+          "url": "https://marvel.fandom.com/wiki/One_World_Under_Doom_Vol_1_9"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Fantastic Four",
+      "year": 2005,
+      "continuity": "FOX",
+      "actor": "Ioan Gruffudd",
+      "cameo": false,
+      "summary": "Here Reed is a brilliant but broke scientist who has to accept Victor von Doom's backing to study a cosmic storm from Doom's space station. When the storm arrives early it leaves him able to stretch, and he spends much of the film trying to reverse the changes, especially Ben's. After the team beats Doom by freezing his metal body solid, Reed finally proposes to Sue.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2005 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2005_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four: Rise of the Silver Surfer",
+      "year": 2007,
+      "continuity": "FOX",
+      "actor": "Ioan Gruffudd",
+      "cameo": false,
+      "summary": "Two years on, Reed's wedding to Sue is interrupted when the government asks him to track the Silver Surfer. He builds a pulse device that separates the Surfer from his board, then is forced to work alongside a revived Doom, who steals the board for himself. After the Surfer brings Sue back to life and turns on Galactus, Reed and Sue finally marry in Japan.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four: Rise of the Silver Surfer (film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four:_Rise_of_the_Silver_Surfer_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four",
+      "year": 2015,
+      "continuity": "FOX",
+      "actor": "Miles Teller",
+      "cameo": false,
+      "summary": "This Reed is a young prodigy whose homemade teleporter wins him a place on Franklin Storm's project at the Baxter Building. After he, Ben, Johnny and Victor take the finished machine to another world without permission, he returns able to stretch, escapes government custody and hides for a year before being brought back. He leads the four against Victor, now calling himself Doom, and gives the team its name afterwards.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2015 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2015_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-15866)"
+        }
+      ]
+    },
+    {
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "year": 2022,
+      "continuity": "MCU",
+      "actor": "John Krasinski",
+      "cameo": true,
+      "summary": "This is the Earth-838 variant of Reed, leader of that world's Fantastic Four and a member of its Illuminati, introduced as the smartest man alive. At the hearing held for the visiting Doctor Strange he explains Incursions and argues that Strange is the bigger danger to the multiverse. When the Scarlet Witch storms the Illuminati headquarters he tries to reason with her by mentioning his own children, and she tears him apart.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Mister Fantastic/Earth-838",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Mister_Fantastic/Earth-838"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Doctor Strange in the Multiverse of Madness",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
+        }
+      ]
+    },
+    {
+      "title": "The Fantastic Four: First Steps",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Pedro Pascal",
+      "cameo": false,
+      "summary": "On the retro-futuristic Earth-828, Reed leads a team that has been famous for four years when the Silver Surfer heralds Galactus, who demands Reed and Sue's newborn son Franklin. Reed tries to move the whole planet with teleportation bridges, and after the Surfer wrecks them he helps lure Galactus into the last one, grabbing Franklin from the giant's hand as he falls through. He is left trying and failing to revive Sue until Franklin's powers do it for him.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Mister Fantastic",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Mister_Fantastic"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The unnamed professor in one of the short stories in Amazing Adult Fantasy #7 (December 1961), who outwits a disguised alien, was later retconned into a young Reed Richards, so the wiki lists that tale as his retroactive first appearance.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Amazing Adult Fantasy Vol 1 #7 (December 1961)",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Adult_Fantasy_Vol_1_7"
+        }
+      ]
+    },
+    {
+      "fact": "In Fantastic Four #262 (1984) writer-artist John Byrne draws himself into the story: the Watcher whisks him away from his desk to act as the official chronicler of Reed's trial for saving Galactus.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #262 (January 1984)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_262"
+        }
+      ]
+    },
+    {
+      "fact": "For all his genius, Reed is said to have failed his driving test four times.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #11 (August 2019)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_11"
+        }
+      ]
+    },
+    {
+      "fact": "In only the team's second adventure Reed ends a Skrull plot by having three captured alien spies turn into cows and then hypnotising them into believing that is all they are.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #2 (January 1962)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "First appearance: the Marvel Fandom wiki lists Amazing Adult Fantasy #7 (December 1961) as a retroactive first appearance and Fantastic Four #1 (November 1961) as his first actual one. This file uses Fantastic Four #1.",
+    "The 1994 Fantastic Four film (Alex Hyde-White as Reed) is left out because the Marvel Fandom wiki lists it as never released.",
+    "Avengers: Doomsday (listed for 18 December 2026) and Avengers: Secret Wars appear in the MCU Wiki infobox for Reed but are marked unreleased, so they are left out. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-exclusive cast list do not include Reed Richards in any version, so no entry was added.",
+    "Deadpool & Wolverine (2024) is left out: the MCU Wiki lists the Fox-continuity Reed it refers to as mentioned only, not seen.",
+    "What If...? is left out: it is animated, and the MCU Wiki lists that Reed variant as mentioned only.",
+    "Meet the Fantastic Four (Marvel HQ YouTube web series, 2025) is left out. The MCU Wiki marks it non-canon, gives no confirmed cast and does not establish that it is live-action.",
+    "Future Foundation Public Archives (Instagram promotional campaign, June 2025 to January 2026, crediting Pedro Pascal) is left out as marketing posts rather than a film or series. The Fantastic Four Power Hour is an in-universe show seen as footage inside First Steps, not a separate production.",
+    "The cameo flag for Doctor Strange in the Multiverse of Madness is a judgement call: Krasinski appears in one sequence of the film, not a post-credits scene.",
+    "Character pages conflict on Reed's student years: the Reed page says he was working on his fifth degree at State University, while the Sue page says he was a boarder doing his third doctorate at Empire State University. The origin keeps to the shared outline.",
+    "The Earth-616 history on the Marvel Fandom wiki is abridged and stops around 2020. The One World Under Doom era is built from the issue pages and the page overview. The issue pages for Fantastic Four Vol 6 #1, #2, #11 and #17 have no plot synopsis, so those details (including the four failed driving tests) rest on the character page plus the issue solicitations and notes.",
+    "Second pregnancy: the character page cites Fantastic Four #268 for the loss of the baby, but the issue pages put the medical crisis in #267 and the aftermath, described as a miscarriage, in #268. The era follows the issue pages."
+  ]
+}

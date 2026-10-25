@@ -5,7 +5,7 @@ import { chromium, devices } from '@playwright/test';
 
 const base = (process.argv[2] || 'http://localhost:4321').replace(/\/$/, '');
 const throttle = Number(process.argv[3] || 1);
-const paths = ['/', ...['victor-von-doom', 'steve-rogers', 'thor', 'sam-wilson', 'bucky-barnes', 'scott-lang', 'shang-chi', 'joaquin-torres'].map((s) => `/c/${s}/`)];
+const paths = ['/', ...(process.argv[4] ? process.argv[4].split(',') : ['victor-von-doom', 'steve-rogers', 'thor', 'sam-wilson', 'bucky-barnes', 'scott-lang', 'shang-chi', 'joaquin-torres', 'reed-richards', 'sue-storm', 'johnny-storm', 'ben-grimm']).map((s) => `/c/${s}/`)];
 const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blocklist', '--enable-gpu-rasterization'] });
 const ctx = await b.newContext({ ...devices['Pixel 7'], viewport: { width: 390, height: 844 } });
 let first = true;

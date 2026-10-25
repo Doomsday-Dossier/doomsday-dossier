@@ -1,0 +1,477 @@
+{
+  "slug": "ben-grimm",
+  "name": "Ben Grimm",
+  "alias": "The Thing",
+  "origin": {
+    "firstAppearance": {
+      "title": "Fantastic Four",
+      "issue": "#1",
+      "coverDate": "November 1961"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Ben grew up poor on Yancy Street in Manhattan's Lower East Side. His father drank and could not keep a job, so most of the family's money came from Ben's older brother Daniel, who led the Yancy Street Gang. Ben idolised him, and Daniel's death in a gang fight left the boy angry at the world. After his parents also died, Ben went to live with his uncle Jake, a doctor who had worked his way out of poverty, and his aunt Alyce. He resisted their kindness at first and even took over the gang for a while, but his uncle pulled him away from that life, and football earned him a college scholarship.",
+      "At university his roommate was the brilliant Reed Richards, who told him he would build a starship one day; Ben joked that he would fly it. He also crossed paths with Reed's rival, Victor von Doom. After graduating, Ben joined the Air Force, became an outstanding fighter and test pilot and went on to train as an astronaut. When Reed's rocket was finally ready, he came to hold Ben to his old promise.",
+      "Ben warned that the ship's shielding would not stop the radiation out there, but when Reed decided to launch before the government could pull the plug, he agreed to fly it, with Sue Storm and her teenage brother Johnny aboard. A storm of cosmic rays flooded the cabin and Ben had to bring the ship back down. He emerged as a hulking, orange-hided brute of tremendous strength and, bitter about how he looked, named himself the Thing as Reed rallied the four into the Fantastic Four."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1 (November 1961)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #11 (February 1963)",
+        "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_11"
+      },
+      {
+        "label": "Marvel Fandom wiki: Thing Vol 1 #1 (July 1983)",
+        "url": "https://marvel.fandom.com/wiki/Thing_Vol_1_1"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1961-1964",
+      "title": "A monster with a heart",
+      "summary": "From the first issue Ben is the team's muscle and its unhappiest member, resentful of Reed for what happened and only ever human for brief, accidental stretches. The Puppet Master's scheme to turn him against his teammates brings in the villain's blind stepdaughter Alicia Masters, a sculptor who likes Ben as he is and becomes the great love of his life. When the Hulk storms into New York looking for the Avengers, Ben spends most of a punishing fight holding him off alone.",
+      "keyIssues": [
+        "Fantastic Four #1 (1961)",
+        "Fantastic Four #8 (1962)",
+        "Fantastic Four #25 (1964)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #8",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #25",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #26",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_26"
+        }
+      ]
+    },
+    {
+      "era": "The Lee-Kirby peak",
+      "years": "1966",
+      "title": "This Man... This Monster!",
+      "summary": "Ben battles Galactus' robot Punisher, then storms off when he decides Alicia has feelings for the Silver Surfer. Alone and gloomy, he is knocked out by a scientist who resents Reed and steals his powers and appearance, leaving Ben human but turned away from the Baxter Building as an impostor. The thief ends up giving his life to rescue Reed from the Negative Zone, and his death turns Ben back into the Thing.",
+      "keyIssues": [
+        "Fantastic Four #50 (1966)",
+        "Fantastic Four #51 (1966)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #50",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_50"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #51",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_51"
+        }
+      ]
+    },
+    {
+      "era": "Bronze Age",
+      "years": "1976",
+      "title": "Human again",
+      "summary": "Long exposure to the Hulk's gamma radiation during a clash with the green giant turns Ben back into a man, apparently for good, and Luke Cage fills in on the team for a short time. Ben soon returns inside an exoskeleton Reed builds to copy his old strength. That arrangement ends when Galactus, as a punishment, makes him the Thing once more during a crisis over Counter-Earth.",
+      "keyIssues": [
+        "Fantastic Four #167 (1976)",
+        "Fantastic Four #168 (1976)",
+        "Fantastic Four #175 (1976)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #167",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_167"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #168",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_168"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #175",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_175"
+        }
+      ]
+    },
+    {
+      "era": "Battleworld",
+      "years": "1984-1985",
+      "title": "The first Secret Wars",
+      "summary": "On the Beyonder's Battleworld, Ben finds he can switch between man and Thing; Reed knows the real cause, a mental block tied to Ben's fear that Alicia only loves the monster, but keeps it from him. Ben is among the heroes Doom kills with the Beyonder's stolen power before they are revived in Battleworld's medical chambers. He stays on the planet for months, and on returning to find Johnny with Alicia, he quits the team and spends a while as a wrestler in the Unlimited Class Wrestling Federation.",
+      "keyIssues": [
+        "Marvel Super Heroes Secret Wars #1 (1984)",
+        "Marvel Super Heroes Secret Wars #11 (1985)",
+        "Marvel Super Heroes Secret Wars #12 (1985)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 #11",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 #12",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_12"
+        }
+      ]
+    },
+    {
+      "era": "Team leader",
+      "years": "1987-1988",
+      "title": "The Thing in charge",
+      "summary": "When Reed and Sue step back to raise their son, they hand the Fantastic Four to Ben, who brings in Crystal and Sharon Ventura, the new Ms. Marvel. Ben and Sharon grow close, and a crash back through cosmic rays mutates them both, giving Sharon a Thing-like body and Ben a stronger, spikier hide. Their romance survives several more changes but falls apart after Sharon accepts Doom's help to become human again.",
+      "keyIssues": [
+        "Fantastic Four #307 (1987)",
+        "Fantastic Four #310 (1988)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #307",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_307"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 #310",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_310"
+        }
+      ]
+    },
+    {
+      "era": "Faith and the afterlife",
+      "years": "2002-2004",
+      "title": "Yancy Street to the gates of Heaven",
+      "summary": "Defending an old pawnbroker he once robbed as a gang initiation, Ben recites the Kaddish when the man appears to be dead and then talks openly about the Jewish faith he usually keeps private. Two years later Ben is killed in the aftermath of a battle with Doom. Reed, Sue and Johnny travel to the edge of Heaven to bring him back, and although Ben says he is at peace there, he is allowed to return to life with them.",
+      "keyIssues": [
+        "Fantastic Four Vol 3 #56 (2002)",
+        "Fantastic Four #509 (2004)",
+        "Fantastic Four #511 (2004)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #56",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_56"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #509",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_509"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #511",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_511"
+        }
+      ]
+    },
+    {
+      "era": "Event era",
+      "years": "2006-2011",
+      "title": "Objector, Avenger, Worthy",
+      "summary": "Sickened when a Yancy Street youngster dies in the crossfire of the superhero Civil War, Ben refuses to fight for either side and moves to France, coming home only to protect civilians in the final battle. He later signs up with Luke Cage's New Avengers and takes a Future Foundation serum that lets him be human for one week each year. In Fear Itself, one of the Serpent's hammers lands on Yancy Street and turns him into Angrir, who flattens Avengers Tower before a blow from Thor and Franklin Richards' powers set him free.",
+      "keyIssues": [
+        "Fantastic Four #539 (2006)",
+        "New Avengers Vol 2 #1 (2010)",
+        "Fear Itself #3 (2011)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #539",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_539"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #584",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_584"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fear Itself Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Fear_Itself_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fear Itself Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fear_Itself_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Framed",
+      "years": "2014-2015",
+      "title": "A locked-room murder",
+      "summary": "After the Watcher's stolen eye reveals that Johnny once unknowingly wrecked a chance to cure him, Ben is found with the apparently murdered Puppet Master in a room almost nobody could enter. Jailed on the Raft, he is attacked by other armoured inmates on the orders of Sharon Ventura, now running the prison. He escapes with help from friends, and the dead man turns out to be a Counter-Earth double planted by the Quiet Man, which clears Ben.",
+      "keyIssues": [
+        "Fantastic Four Vol 5 #7 (2014)",
+        "Fantastic Four Vol 5 #8 (2014)",
+        "Fantastic Four #645 (2015)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 5 #7",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_5_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 5 #8",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_5_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 5 #645",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_5_645"
+        }
+      ]
+    },
+    {
+      "era": "After the multiverse",
+      "years": "2015-2017",
+      "title": "The Shield and the Guardians",
+      "summary": "On Doom's Battleworld a recreated Thing has become part of the Shield, the vast wall that protects the realm, until Thanos tells him Doom has lied to him and he tears himself loose to march on Doomstadt. He surrenders on learning that the boy leading the defence is Sue's son, only for that boy's Galactus to blast most of his upper body away. With the multiverse restored and his memory altered, Ben believes his family is gone and joins the Guardians of the Galaxy for a while.",
+      "keyIssues": [
+        "Secret Wars #6 (2015)",
+        "Secret Wars #8 (2016)",
+        "Guardians of the Galaxy Vol 4 #1 (2015)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #8",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: Guardians of the Galaxy Vol 4 #1",
+          "url": "https://marvel.fandom.com/wiki/Guardians_of_the_Galaxy_Vol_4_1"
+        }
+      ]
+    },
+    {
+      "era": "Family man",
+      "years": "2018-2020",
+      "title": "Married at last",
+      "summary": "Ben takes Johnny across the multiverse searching for their family and, once ready to move on, proposes to Alicia just before Reed and Sue come back. The couple marry in a small ceremony, but the Puppet Master spoils their honeymoon with a mind-controlled Hulk, and the fight costs Ben the yearly week he could have spent human. After learning on Spyre that Reed did not cause the cosmic storm, he makes peace with his friend, and after the Empyre war he and Alicia adopt the alien orphans Jo-Venn and N'Kalla.",
+      "keyIssues": [
+        "Marvel 2-In-One #1 (2018)",
+        "Fantastic Four Vol 6 #5 (2019)",
+        "Empyre: Fallout Fantastic Four #1 (2020)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel 2-In-One Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Marvel_2-In-One_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #5",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 #13",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_13"
+        },
+        {
+          "label": "Marvel Fandom wiki: Empyre: Fallout Fantastic Four Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Empyre:_Fallout_Fantastic_Four_Vol_1_1"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Fantastic Four",
+      "year": 2005,
+      "continuity": "FOX",
+      "actor": "Michael Chiklis",
+      "cameo": false,
+      "summary": "Reed's friend Ben is out on a spacewalk when the cosmic storm hits Victor von Doom's station, and unlike the others he cannot switch his change off, leaving him a rocky orange giant his fiancée cannot bear to look at. Victor uses Reed's machine to make him human again as part of his revenge, but Ben steps back in to become the Thing and rescue his friends. He helps freeze Doom and ends the film at peace with himself thanks to Alicia Masters.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2005 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2005_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four: Rise of the Silver Surfer",
+      "year": 2007,
+      "continuity": "FOX",
+      "actor": "Michael Chiklis",
+      "cameo": false,
+      "summary": "Ben is back with the team through the interrupted wedding of Reed and Sue, the hunt for the Silver Surfer and the forced alliance with Doom. When Doom steals the Surfer's board and the fight moves to Shanghai, Johnny breaks Doom's control and Ben swings a crane into him, knocking him into the harbour.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four: Rise of the Silver Surfer (film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four:_Rise_of_the_Silver_Surfer_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-121698)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-121698)"
+        }
+      ]
+    },
+    {
+      "title": "Fantastic Four",
+      "year": 2015,
+      "continuity": "FOX",
+      "actor": "Jamie Bell",
+      "cameo": false,
+      "summary": "This Ben is Reed's longtime friend and helper, invited along on the unauthorised jump to Planet Zero. He comes home a rock-covered powerhouse whom the government uses as a weapon; the Marvel Fandom wiki says he killed at least 43 people in that service. He helps track down Reed and, in the final battle, knocks Doom into the column of energy that destroys him.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four (2015 film)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_(2015_film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-15866)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-15866)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-15866)"
+        }
+      ]
+    },
+    {
+      "title": "The Fantastic Four: First Steps",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Ebon Moss-Bachrach",
+      "cameo": false,
+      "summary": "On Earth-828, Ben is a Yancy Street kid turned Air Force test pilot who cooks for the team, strikes up a friendship with Rachel Rozman after showing off for a group of schoolchildren, and flies the Excelsior to Galactus' ship. In the battle for New York, Galactus hurls him up past the atmosphere, Johnny drags him back down, and Ben finally yells his catchphrase as he slams into Galactus to make him let go of Reed. He then brings down a building to help Sue push Galactus into range of the teleportation bridge.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thing",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Ben is Jewish, like his co-creator Jack Kirby. Fantastic Four Vol 3 #56 (2002) is the story where he recites the Kaddish and talks about faith he seldom mentions.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #56 (August 2002)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_56"
+        }
+      ]
+    },
+    {
+      "fact": "The Marvel Fandom wiki notes that Kirby named the Thing after his own father, Benjamin Kurtzberg.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "A serum developed by the Future Foundation lets Ben turn back into his human self for one week every year.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 #584 (December 2010)",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_584"
+        }
+      ]
+    },
+    {
+      "fact": "Michael Bailey Smith, Ben in the never-released 1994 Fantastic Four film, plays a power plant worker in The Fantastic Four: First Steps.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thing",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "The 1994 Fantastic Four film (Michael Bailey Smith as Ben, Carl Ciarfalio as the Thing) is left out because it was never released. It was not researched further.",
+    "Avengers: Doomsday and Avengers: Secret Wars appear on the MCU Wiki's Thing page as unreleased. Both are left out and no plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Endgame page lists the Encore-only cast and scenes, and Ben Grimm is not among them, so there is no entry. No other allowed source was checked.",
+    "Ben does not appear in Deadpool & Wolverine according to both wikis' pages read for this file.",
+    "The versions of Ben inside First Steps' in-universe TV show The Fantastic Four Power Hour (footage), the MCU Wiki's non-canon YouTube web series Meet the Fantastic Four (cast unconfirmed; not confirmed as live-action), a theme-park walkaround Thing at Avengers Campus, and a variant mentioned only in a cancelled video game are all left out as they are not live-action films or series.",
+    "The Rise of the Silver Surfer summary is thin because the Marvel Fandom film page and the Earth-121698 character page give little detail about Ben's part beyond the Shanghai fight.",
+    "Ben's solo runs in Marvel Two-in-One (1974-1983) and The Thing (1983-1986) are not given their own era because the Earth-616 page says little about them; his wrestling career is mentioned there without an issue citation.",
+    "Ben's 2004 death: the character page says only that he was killed in a battle with Doom; the Fantastic Four #509 issue page adds that Reed had to use the fatal weapon while Doom controlled Ben. The era summary keeps to the shared outline.",
+    "The Earth-616 page is inconsistent about Ben's college (headed Empire State University, but the education field says State University in Hegeman), so the origin just says university. Early stories that put Ben in World War II are treated as dated by Marvel's sliding timescale, per the page's notes.",
+    "Cover dates come from the Marvel Fandom issue pages; on-sale dates are earlier."
+  ]
+}
