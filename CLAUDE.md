@@ -179,7 +179,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
-- 2026-10-25: Wave 2 (Fantastic Four) built and checked: four new heroes at 60 fps with CPU throttled 4x, no phone overflow, reduced motion and navigation pass. Marvel cast list re-checked, unchanged at 30 names; only the Thing has a Marvel-named role among the four. Engine now has a depth buffer for 3D scenes.
+- 2026-10-25: Wave 2 (Fantastic Four) deployed and verified live (21 pages, no phone overflow, new heroes 60 fps). Built and checked: four new heroes at 60 fps with CPU throttled 4x, no phone overflow, reduced motion and navigation pass. Marvel cast list re-checked, unchanged at 30 names; only the Thing has a Marvel-named role among the four. Engine now has a depth buffer for 3D scenes.
 - 2026-10-25: Wave 1 deployed to https://prejith77.github.io/doomsday-dossier/ (first run succeeded). Live QA passed: all 17 pages return 200, no phone overflow, reduced motion and navigation checks pass, WebGL scenes load from the sub-path.
 - 2026-10-25: Wave 1 built: home, 8 character dossiers, 7 team pages, sources page. QA passed: no phone overflow on any page; all heroes 60 fps at phone size on an Intel UHD 730 with 4x CPU throttle (not yet measured on a real phone); reduced motion leaves all text visible with no pinning or smooth scroll; four-hop navigation clears the wipe each time. Not deployed yet: waiting on the GitHub repo URL.
 - 2026-10-25: Interview complete, all decisions above locked. Official cast verified on marvel.com (30 names on the film page plus Peggy Carter confirmed at D23). Wave 1 research started.
