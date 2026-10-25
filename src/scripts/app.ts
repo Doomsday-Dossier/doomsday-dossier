@@ -27,6 +27,7 @@ function startEngine() {
   if (!glCanvas || !hasWebGL()) return;
   engineReady = import('./gl/engine').then(({ Engine }) => {
     try { engine = new Engine(glCanvas); } catch { engine = null; }
+    if (location.hostname === 'localhost') (window as any).__ddEngine = engine; // local debugging only
   });
 }
 

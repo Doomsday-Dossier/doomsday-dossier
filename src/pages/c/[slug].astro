@@ -12,6 +12,13 @@ import '@fontsource-variable/anybody/wdth.css';
 import '@fontsource/italiana';
 import '@fontsource-variable/bricolage-grotesque';
 import '@fontsource/alfa-slab-one';
+import '@fontsource/gloock';
+import '@fontsource-variable/unbounded';
+import '@fontsource-variable/teko';
+import '@fontsource/rye';
+import '@fontsource/dm-serif-display';
+import '@fontsource-variable/eb-garamond';
+import '@fontsource/abril-fatface';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
 
 export function getStaticPaths() {
@@ -30,7 +37,7 @@ const nextR = getResearch(next.slug)!;
 const styleVars = [
   `--c-bg:${d.bg}`, `--c-ink:${d.ink}`, `--c-dim:${d.dim}`, `--c-accent:${d.accent}`, `--c-accent-2:${d.accent2}`,
   `--c-line:color-mix(in srgb, ${d.ink} 14%, transparent)`,
-  `--hero-scale:${d.heroScale ?? 1}`, `--font-display:${d.font}`, `--font-display-weight:${d.fontWeight}`, `--font-display-case:${d.fontCase}`, `--font-display-tracking:${d.tracking}`,
+  `--hero-scale:${d.heroScale ?? 1}`, `--hero-longest:${Math.max(...heroName(slug).split(/s+/).map((w) => w.length))}`, `--font-display:${d.font}`, `--font-display-weight:${d.fontWeight}`, `--font-display-case:${d.fontCase}`, `--font-display-tracking:${d.tracking}`,
 ].join(';');
 
 // Citations, numbered per act
@@ -62,7 +69,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   <section class={`hero ch-hero scene-${d.scene}`} data-gl-region aria-labelledby="hero-name">
     <div class="wrap ch-hero-inner">
       <p class="label" data-hero-in>{team.name} &middot; Dossier {String(order.indexOf(slug) + 1).padStart(2, '0')}</p>
-      <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' || d.scene === 'rock' ? 'stamp' : d.scene === 'storm' || d.scene === 'flame' ? 'drop' : d.scene === 'slipstream' || d.scene === 'elastic' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
+      <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' || d.scene === 'reaction' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' || d.scene === 'rock' ? 'stamp' : d.scene === 'storm' || d.scene === 'flame' || d.scene === 'optic' ? 'drop' : d.scene === 'slipstream' || d.scene === 'elastic' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
       <p class="ch-alias" data-hero-in>{r.alias}</p>
       <p class="ch-kicker serif" data-hero-in>{d.kicker}</p>
       <dl class="ch-meta" data-hero-in>
@@ -160,7 +167,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
             <div class="scr-body">
               <p class="scr-line"><span class="scr-tag" data-cont={s.continuity}>{s.continuity}</span>{s.cameo && <span class="scr-tag cameo">Cameo</span>}<span class="scr-y">{s.year}</span></p>
               <h3 class="scr-title serif">{s.title}</h3>
-              <p class="scr-actor">Played by {s.actor}</p>
+              <p class="scr-actor">{/^uncredited$/i.test(s.actor) ? 'Performer uncredited' : `Played by ${s.actor}`}</p>
               <p class="scr-sum" set:html={s.summary + sup(s.nums, 'src-screen')} />
             </div>
           </li>
@@ -238,7 +245,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .ch-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, color-mix(in srgb, var(--c-bg) 88%, transparent) 0%, color-mix(in srgb, var(--c-bg) 45%, transparent) 38%, transparent 70%), linear-gradient(to right, color-mix(in srgb, var(--c-bg) 55%, transparent), transparent 55%); }
   .ch-hero-inner { position: relative; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
   .ch-hero-inner > * { min-width: 0; }
-  .hero-name { font-size: calc(clamp(44px, 14vw, 230px) * var(--hero-scale, 1)); line-height: 0.86; overflow-wrap: normal; word-break: keep-all; hyphens: none; position: relative; }
+  .hero-name { font-size: min(calc(clamp(44px, 14vw, 230px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / (var(--hero-longest, 8) * 0.82))); line-height: 0.86; overflow-wrap: normal; word-break: keep-all; hyphens: none; position: relative; }
   .ch-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-accent); margin: 0; }
   .ch-kicker { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; max-width: 30ch; margin: 6px 0 0; }
   .ch-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 28px; margin: 18px 0 0; border-top: 1px solid var(--c-line); padding-top: 16px; max-width: 980px; }

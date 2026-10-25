@@ -1,0 +1,570 @@
+{
+  "slug": "cyclops",
+  "name": "Scott Summers",
+  "alias": "Cyclops",
+  "origin": {
+    "firstAppearance": {
+      "title": "X-Men",
+      "issue": "#1",
+      "coverDate": "September 1963"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Scott was the elder son of Christopher Summers, a US Air Force test pilot training to become an astronaut, and his wife Katherine; a few years after Scott's birth they had a second boy, Alex. When Scott was ten the family took Christopher's vintage de Havilland Mosquito on a holiday flight over Alaska and a Shi'ar scout ship attacked it. With only one parachute aboard, Katherine strapped it to her sons and pushed them out, and the aliens snatched the parents just before the plane exploded. The chute caught fire on the way down and Scott struck his head on landing, an injury that left him with lasting brain damage and confused memories of that day.",
+      "Declared orphans, the brothers were steered into the State Home for Foundlings in Nebraska, which the geneticist Mister Sinister secretly ran so he could study them. Sinister arranged for Alex to be adopted and left Scott isolated, posing as a fellow orphan to befriend and later bully him, quietly holding back his emerging powers and discovering that ruby quartz could block them. In his late teens Scott's optic blasts broke loose, punching through the orphanage wall. He fled, and when a stray blast knocked a load loose from a construction crane he blasted it aside to save the crowd below, only to be chased off by a frightened mob.",
+      "The incident made the news and drew the attention of the FBI, Professor Charles Xavier and the criminal mutant Jack Winters. Winters reached the runaway first and used him to get at a cyclotron that turned his body into living diamond. Xavier followed them, and together he and Scott destroyed the Living Diamond, an outcome that shook the boy badly. Xavier took him back to his Westchester mansion, gave him a costume and a ruby quartz visor, and named him Cyclops, the first of the X-Men. Scott then helped bring in Iceman, Angel, Beast and Marvel Girl, and in the team's first mission he led them against Magneto at the Cape Citadel missile base."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #1 (September 1963)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #39 (December 1967)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_39"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #42 (March 1968)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_42"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1963-1968",
+      "title": "Xavier's first student",
+      "summary": "Scott leads the original five X-Men from their first fight with Magneto at Cape Citadel, and Xavier makes him field leader despite his fear that he cannot control his own power. When the Professor pretends to have lost his telepathy, Scott has to bring the team home from a trap on Magneto's Asteroid M without him, which turns out to have been Xavier's final exam. Backup stories in the late 1960s fill in how he ran from the orphanage, fell in with Jack Winters and became the first X-Man, and for a spell he even works as a radio personality while Jean models.",
+      "keyIssues": [
+        "X-Men #1 (1963)",
+        "X-Men #5 (1964)",
+        "X-Men #42 (1968)",
+        "X-Men #48 (1968)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #42",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_42"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #48",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_48"
+        }
+      ]
+    },
+    {
+      "era": "The all-new team",
+      "years": "1975-1980",
+      "title": "Second Genesis and the Dark Phoenix",
+      "summary": "After the living island Krakoa captures the original team, Scott is the one who escapes, and he guides Xavier's new international recruits back to rescue the others. When his friends leave he stays on as deputy leader of a far less disciplined group of loners and is haunted by Thunderbird's death on their second mission. Jean returns from a shuttle crash as Phoenix, and Scott later discovers his long-lost father leading the Starjammers in space without being told who he is. When Phoenix turns into the Dark Phoenix and wipes out a star system, Scott stands by her through the Shi'ar trial by combat until she ends her own life on the Moon, and he quits the team in grief.",
+      "keyIssues": [
+        "Giant-Size X-Men #1 (1975)",
+        "X-Men #101 (1976)",
+        "X-Men #137 (1980)",
+        "X-Men #138 (1980)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Giant-Size X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Giant-Size_X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #101",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_101"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #137",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_137"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #138",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_138"
+        }
+      ]
+    },
+    {
+      "era": "Husband, father and founder",
+      "years": "1983-1991",
+      "title": "Madelyne, X-Factor and Inferno",
+      "summary": "Scott marries Madelyne Pryor, a pilot who looks exactly like Jean, and retires to Alaska, where their son Nathan is born. When news comes that the real Jean is alive, he walks out on his family to found X-Factor with the other original X-Men, posing as mutant hunters while secretly training young mutants. Madelyne resurfaces as the demonic Goblin Queen and tries to sacrifice Nathan, and her death reveals she was a clone Sinister built from Jean to breed with Scott. Soon afterwards Apocalypse infects Nathan with a techno-organic virus, and Scott lets a woman from the future take the baby forward in time to be cured.",
+      "keyIssues": [
+        "Uncanny X-Men #175 (1983)",
+        "X-Factor #1 (1986)",
+        "X-Factor #38 (1989)",
+        "X-Factor #68 (1991)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #175",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_175"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #38",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_38"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #68",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_68"
+        }
+      ]
+    },
+    {
+      "era": "Back with the X-Men",
+      "years": "1991-1994",
+      "title": "The Blue Team and a wedding",
+      "summary": "With X-Factor disbanded, Scott returns to Xavier's school and leads the newly formed Blue Team while Jean serves on the Gold. He learns that the soldier called Cable is his grown son Nathan, back from the future. Scott and Jean finally marry, and on their honeymoon their minds are pulled two thousand years ahead, where under the names Slym and Redd Dayspring they spend twelve years raising the young Nathan and fighting Apocalypse's empire before being sent home.",
+      "keyIssues": [
+        "X-Men Vol 2 #1 (1991)",
+        "X-Men Vol 2 #30 (1994)",
+        "The Adventures of Cyclops and Phoenix #1 (1994)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #30",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_30"
+        },
+        {
+          "label": "Marvel Fandom wiki: Adventures of Cyclops and Phoenix Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Adventures_of_Cyclops_and_Phoenix_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "Lost and found",
+      "years": "2000",
+      "title": "Merged with Apocalypse",
+      "summary": "Apocalypse gathers a group of mutants known as the Twelve so he can drain their energies and take over the body of Nate Grey. With his own powers gone, Scott shoves Nate clear and is fused with Apocalypse instead, and most of the X-Men believe he has died. Jean and Cable refuse to give up and track him to Egypt, where Jean drives Apocalypse out of his mind and body. Scott comes back noticeably grimmer, and the experience puts real strain on his marriage.",
+      "keyIssues": [
+        "X-Men Vol 2 #97 (2000)",
+        "X-Men: The Search for Cyclops #1 (2000)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #97",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_97"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Search for Cyclops Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Search_for_Cyclops_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "The Emma Frost years",
+      "years": "2003-2004",
+      "title": "A psychic affair and Jean's death",
+      "summary": "Withdrawn from Jean, Scott starts telepathic therapy with Emma Frost, and the sessions turn into a psychic affair that never becomes physical. When Jean finds out he leaves the school for a while, and shortly after he returns she is killed by Xorn. Encouraged by a vision of a future Jean to let himself be happy, he makes his relationship with Emma official, and the two run the school together. He then picks a new team built to show the public that mutants can be superheroes, which earns him a punch-up with Wolverine on the front lawn.",
+      "keyIssues": [
+        "New X-Men #139 (2003)",
+        "New X-Men #150 (2004)",
+        "Astonishing X-Men Vol 3 #1 (2004)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #139",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_139"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #150",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_150"
+        },
+        {
+          "label": "Marvel Fandom wiki: Astonishing X-Men Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Astonishing_X-Men_Vol_3_1"
+        }
+      ]
+    },
+    {
+      "era": "An endangered species",
+      "years": "2007-2010",
+      "title": "Messiah Complex to Second Coming",
+      "summary": "After nearly all mutants lose their powers, the first new mutant baby sparks a war, and Scott secretly revives X-Force under Wolverine to hunt for her. Once Cable escapes into the future with the child, Scott disbands the X-Men, then rebuilds them in San Francisco and later raises the wreck of Asteroid M as the island nation of Utopia, where even Magneto credits him with uniting mutantkind. When Cable returns with a teenage Hope, Scott protects her at any cost; Nightcrawler and Cable both die in the fighting, Scott breaks down while delivering his son's eulogy, and he takes full blame for X-Force before shutting it down.",
+      "keyIssues": [
+        "X-Men: Messiah Complex #1 (2007)",
+        "X-Men Vol 2 #207 (2008)",
+        "Uncanny X-Men #516 (2009)",
+        "X-Men: Second Coming #2 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Messiah Complex Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Messiah_Complex_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #207",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_207"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #516",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_516"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Second Coming Vol 1 #2",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Second_Coming_Vol_1_2"
+        }
+      ]
+    },
+    {
+      "era": "Avengers vs. X-Men",
+      "years": "2012-2013",
+      "title": "Phoenix Five and the mutant revolution",
+      "summary": "Convinced that the returning Phoenix Force will restart the mutant race through Hope, Scott refuses to hand her over to Captain America and goes to war with the Avengers. He becomes one of five X-Men empowered by the Phoenix, and as the others fall he ends up holding all of it, loses control as the Dark Phoenix and kills Charles Xavier. Jailed afterwards, he breaks out and starts a new school in an old Weapon X base, recruiting young mutants while his powers misbehave, and people on the street begin calling him a revolutionary.",
+      "keyIssues": [
+        "Avengers vs. X-Men #11 (2012)",
+        "Avengers vs. X-Men #12 (2012)",
+        "Uncanny X-Men Vol 3 #1 (2013)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers vs. X-Men Vol 1 #11",
+          "url": "https://marvel.fandom.com/wiki/Avengers_vs._X-Men_Vol_1_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers vs. X-Men Vol 1 #12",
+          "url": "https://marvel.fandom.com/wiki/Avengers_vs._X-Men_Vol_1_12"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_3_1"
+        }
+      ]
+    },
+    {
+      "era": "Deaths and returns",
+      "years": "2015-2019",
+      "title": "Secret Wars, Death of X and resurrection",
+      "summary": "Bonded to the Phoenix again during the final collision of universes, Scott confronts Doom on Battleworld and has his neck snapped. Restored with the rest of reality, he is killed soon after by the Terrigen Mists, which have turned poisonous to mutants, and Emma hides his death behind a telepathic illusion of him that makes him look like a terrorist. A teenage Cable eventually brings him back using Phoenix energy stored in a device planted in his corpse, timing it for a moment when most of the X-Men are thought dead.",
+      "keyIssues": [
+        "Secret Wars #4 (2015)",
+        "Death of X #4 (2017)",
+        "Uncanny X-Men Annual Vol 5 #1 (2019)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Death of X Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Death_of_X_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Annual Vol 5 #1",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Annual_Vol_5_1"
+        }
+      ]
+    },
+    {
+      "era": "Krakoa and after",
+      "years": "2019-2026",
+      "title": "A nation, then a factory in Alaska",
+      "summary": "Scott settles on the mutant island nation of Krakoa and dies on the raid that destroys Orchis' Mother Mold, shot by Dr. Gregor, before the Five resurrect him. He later relaunches the X-Men from a park-side Treehouse in New York, briefly hiding his own resurrection behind the Captain Krakoa armour. Captured by Orchis, he survives the massacre at the third Hellfire Gala and is put on trial for mutantkind. Afterwards he forms a new team in a disused Sentinel factory in Alaska to protect newly activated mutants, and in the Age of Revelation story his mind is swapped with that of a future counterpart.",
+      "keyIssues": [
+        "House of X #4 (2019)",
+        "X-Men Vol 6 #1 (2021)",
+        "X-Men Vol 7 #1 (2024)",
+        "X-Men Vol 7 #23 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: House of X Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/House_of_X_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 6 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_6_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #23",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_23"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "X-Men",
+      "year": 2000,
+      "continuity": "FOX",
+      "actor": "James Marsden",
+      "cameo": false,
+      "summary": "Scott is a teacher at Xavier's school and an established X-Man, involved with Jean Grey and constantly bickering with the newcomer Logan. When Mystique sabotages Cerebro and leaves Xavier unconscious, he takes command and plans the strike on Magneto's machine at the Statue of Liberty, knocking Magneto out with an optic blast despite interference from the device.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X2",
+      "year": 2003,
+      "continuity": "FOX",
+      "actor": "James Marsden",
+      "cameo": false,
+      "summary": "While escorting Xavier on a visit to Magneto's plastic prison, Scott is overpowered by Deathstrike and taken to William Stryker's base at Alkali Lake. Stryker brainwashes him and sets him on Jean, and their fight damages the dam above them. Jean breaks his conditioning but then gives her life holding back the flood so the others can fly out, leaving Scott devastated.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: The Last Stand",
+      "year": 2006,
+      "continuity": "FOX",
+      "actor": "James Marsden",
+      "cameo": false,
+      "summary": "Still grieving, Scott has withdrawn so far that Xavier hands team leadership to Storm. He goes back to Alkali Lake, where Jean rises from the water revived by the Phoenix power, and as they kiss she apparently destroys him, leaving only his glasses hanging in the air. A grave is later set beside Jean's and Xavier's at the mansion.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men Origins: Wolverine",
+      "year": 2009,
+      "continuity": "FOX",
+      "actor": "Tim Pocock",
+      "cameo": false,
+      "summary": "A teenage Scott is sent to detention for wearing sunglasses in class and, after his powers tear through the school roof, is grabbed by Victor Creed. He is held at a mutant testing facility on Three Mile Island, where his genes are used in the experiment that creates Weapon XI from Wade Wilson. Freed by Wolverine, he leads the other captives out and hears Xavier's telepathic voice before they are flown to safety.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Origins: Wolverine (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Origins:_Wolverine_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Days of Future Past",
+      "year": 2014,
+      "continuity": "FOX",
+      "actor": "James Marsden",
+      "cameo": true,
+      "summary": "Scott appears only in the closing scenes, set in a 2023 reshaped by Logan's trip to the past. When Logan wakes in a thriving school and reaches out in disbelief to a living Jean, Scott steps in to stop him, a small sign that the dark future has been erased.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Days of Future Past (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Days_of_Future_Past_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-10005)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jean Grey (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Jean_Grey_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Apocalypse",
+      "year": 2016,
+      "continuity": "FOX",
+      "actor": "Tye Sheridan",
+      "cameo": false,
+      "summary": "In 1983 Scott's powers erupt at school and his brother Alex brings him to Xavier, where Hank fits him with ruby quartz glasses and he befriends Jean. After Alex dies in the blast that levels the mansion, Scott, Jean and Kurt stow away on Stryker's helicopter, free Wolverine and the captured adults at Alkali Lake and fly to Cairo. He holds off Storm and joins the final fight against En Sabah Nur, then becomes part of the reformed X-Men.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Apocalypse",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Apocalypse"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "Deadpool 2",
+      "year": 2018,
+      "continuity": "FOX",
+      "actor": "Uncredited",
+      "cameo": true,
+      "summary": "Cyclops is one of several X-Men glimpsed sitting in a room at Xavier's school while Colossus talks to Deadpool out in the hall. When Deadpool wonders aloud where the rest of the team is, Beast quietly shuts the door before he can spot them.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Deadpool 2",
+          "url": "https://marvel.fandom.com/wiki/Deadpool_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-41633)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-41633)"
+        }
+      ]
+    },
+    {
+      "title": "Dark Phoenix",
+      "year": 2019,
+      "continuity": "FOX",
+      "actor": "Tye Sheridan",
+      "cameo": false,
+      "summary": "Scott is a member of the X-Men when a rescue mission in space leaves Jean carrying a mysterious cosmic force that makes her far stronger and far less stable. As her powers spiral, the team splinters and has to pull itself back together against alien D'Bari who want that power for themselves. The wiki's synopsis is brief and does not detail Scott's individual role.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Dark Phoenix (film)",
+          "url": "https://marvel.fandom.com/wiki/Dark_Phoenix_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jean Grey (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Jean_Grey_(Earth-10005)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "In 1968 the X-Men briefly try out ordinary jobs: Jean becomes a fashion model and Scott a radio personality, and he shows her the records he has to play at the station.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #48 (September 1968)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_48"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "After Scott bled out in a New York alley and was resurrected, he spent a period posing as the hero Captain Krakoa in a Forge-built battlesuit that faked flight and plant powers, so the public would not realise mutants could come back from the dead.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 6 #7 (March 2022)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_6_7"
+        }
+      ]
+    },
+    {
+      "fact": "In Death of X, Scott dies of Terrigen poisoning almost as soon as the story begins. The defiant Cyclops seen fighting the Inhumans for the rest of the series is a telepathic projection Emma Frost created to hide his death.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Death of X Vol 1 #4 (January 2017)",
+          "url": "https://marvel.fandom.com/wiki/Death_of_X_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "fact": "During his post-Avengers vs. X-Men revolution, people in the Marvel Universe began wearing shirts and carrying signs saying \"Cyclops was right\", and he adopted a costume with a large X across his face.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 3 #1 (April 2013)",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_3_1"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Avengers: Doomsday (unreleased) appears in the MCU Wiki infobox for Cyclops with James Marsden credited. It is left out and no plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-exclusive cast list do not include Cyclops in any version. Earth-10005, the world of the later Fox films, is only named as a universe facing an Incursion, so no entry was added.",
+    "Deadpool & Wolverine (2024) is left out: the MCU Wiki lists the Cyclops of the Mutant Genocide Universe as mentioned only, and the Marvel Fandom wiki lists that Scott Summers (Earth-TRN1400) as mentioned and deceased. No physical appearance by any Cyclops is recorded.",
+    "Deadpool 2 (2018): the Marvel Fandom wiki tags Cyclops as a cameo but does not name the performer on the film page or the character page, so the actor field says so. The film page notes the X-Men cameo was directed by Simon Kinberg on the Dark Phoenix set and added by green screen.",
+    "Dark Phoenix (2019): the Marvel Fandom plot section is a short trailer-style blurb and neither Scott's Earth-10005 page nor Jean's page describes his role, so the summary sticks to the film's premise.",
+    "Not counted as screen appearances: X-Men '97 and other animation; X-Men: The Official Game (video game); the canceled game The Avengers: The Movie (MCU Wiki lists a Cyclops there as mentioned only); and a She-Hulk: Attorney at Law end-credits drawing of a sneaker in Cyclops' colours.",
+    "X-Men: Days of Future Past also lists the original-timeline Cyclops (Earth-41578) as mentioned in the future scenes. The single physical appearance is the Earth-10005 Scott at the end, marked as a cameo.",
+    "The Marvel Fandom wiki files the Fox films under three realities: Earth-41578 (X-Men to X-Men Origins: Wolverine), Earth-10005 (the revised timeline from Days of Future Past to Dark Phoenix) and Earth-41633 (the Deadpool films). All are tagged FOX here.",
+    "Origin discrepancy: the character page says Scott and Xavier destroyed the Living Diamond by overloading him with the cyclotron, while the X-Men #42 issue page says an ultrasonic vibration device shattered him. The origin keeps to the shared outline.",
+    "Several issue pages have no plot synopsis (X-Men Vol 2 #30 and #97, X-Men: The Search for Cyclops #1, New X-Men #150, X-Men Vol 6 #7, X-Men Vol 7 #1 and #23). Those details rest on the Earth-616 character page.",
+    "The character page's trivia about a 27-hour game of horseshoes is cited to All-New X-Men Vol 2 #14, a series built around the time-displaced teenage Scott. That issue was not checked, so the item was not used.",
+    "The Age of Revelation detail (X-Men Vol 7 #23, cover date March 2026) involves an alternate future version of Scott and is mentioned only briefly.",
+    "Deadpool 2: actor note was \"Uncredited cameo; the performer is not named on the wiki\""
+  ]
+}

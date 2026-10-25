@@ -1,0 +1,673 @@
+{
+  "slug": "professor-x",
+  "name": "Charles Xavier",
+  "alias": "Professor X",
+  "origin": {
+    "firstAppearance": {
+      "title": "X-Men",
+      "issue": "#1",
+      "coverDate": "September 1963"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Charles was the son of geneticist Brian Xavier and his wife Sharon, born while Brian worked on a secret project in Alamogordo, New Mexico that was later revealed to be run by Mister Sinister under a false name. In the womb he shared space with a twin sister who tried to destroy him; he lashed back with his budding mind and she was stillborn, although decades later she resurfaced as Cassandra Nova. When Charles was nine his father died in a lab explosion that colleague Kurt Marko could have prevented. Marko then married the widow and moved into the family's Westchester mansion with his bullying son Cain, and Charles's growing telepathy let him feel his stepfather's cruelty to his mother. His powers cost him his hair by his teens but helped him race through school; he graduated from Harvard at sixteen and went on to collect doctorates at Oxford.",
+      "At Oxford he fell in love with Moira Kinross, later MacTaggert, and they became engaged before he went into the army. In a remote temple he and Cain, who had tried to desert, found the Crimson Gem of Cyttorak; Cain became the Juggernaut and was buried in a cave-in, and a letter from Moira soon ended the engagement. Drifting after his discharge, Charles met his first evil mutant in Cairo, the Shadow King Amahl Farouk, and beat him in a psychic duel, which persuaded him to devote his life to protecting both humans and mutants. In Haifa, Israel, he worked at a clinic for Holocaust survivors, where he befriended a survivor called Magnus and drew a young patient, Gabrielle Haller, out of catatonia. When Hydra kidnapped Gabrielle, the two men rescued her and revealed their powers to each other, and Magnus left with Hydra's Nazi gold, sure that humans and mutants could never share the world. Gabrielle later had Charles's son, David, without telling him.",
+      "Searching the Himalayas for others like him, Charles found a walled city enslaved by the alien Lucifer and led its people in revolt; in revenge Lucifer dropped a huge stone block on him, leaving him unable to walk. While recovering in India with nurse Amelia Voght he began designing Cerebro, then returned home to turn the Westchester mansion into Xavier's School for Gifted Youngsters. A final appeal to Magnus, now calling himself Magneto, at the abandoned Auschwitz camp went nowhere. With quiet help from FBI agent Fred Duncan, Charles recruited Scott Summers as Cyclops, followed by Bobby Drake, Warren Worthington III, Hank McCoy and Jean Grey. Calling himself Professor X, he sent his X-Men on their first mission to drive Magneto out of the Cape Citadel missile base."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #1 (September 1963)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #12 (July 1965)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_12"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #20 (May 1966)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_20"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #117 (January 1979)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_117"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #161 (September 1982)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_161"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #309 (February 1994)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_309"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 2 #-1 (July 1997)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_-1"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1963-1965",
+      "title": "Founding the X-Men",
+      "summary": "Professor X's first issue shows him drilling his four students in his training room, welcoming Jean Grey as Marvel Girl and then guiding the team as it forces Magneto out of the Cape Citadel missile base. When Magneto's Brotherhood seizes the South American nation of Santo Marco, Charles shields his students from a booby-trapped door and lets them believe the blast took his powers, later admitting it was a test of whether they could cope without him. Then his stepbrother Cain returns as the Juggernaut; Charles tells the team about their shared past and, once the Human Torch burns away Cain's protective helmet, beats him with his mind.",
+      "keyIssues": [
+        "X-Men #1 (1963)",
+        "X-Men #4 (1964)",
+        "X-Men #12 (1965)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #12",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_12"
+        }
+      ]
+    },
+    {
+      "era": "A staged death",
+      "years": "1968-1970",
+      "title": "The Changeling deception",
+      "summary": "Preparing for an invasion by the alien Z'Nox, Charles lets the dying villain Changeling take his place, lending him his powers and confiding only in Jean. When the impostor is killed in a battle with the subterranean Grotesk, the X-Men bury the man they think is their mentor while the real Charles works on in a psychically shielded room. He reappears to lead them against the invaders, linking the minds of decent people around the world to drive the Z'Nox away; the strain leaves him in a coma and, without his knowing, opens a mental link to the Shi'ar princess Lilandra.",
+      "keyIssues": [
+        "X-Men #42 (1968)",
+        "X-Men #65 (1970)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #42",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_42"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #65",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_65"
+        }
+      ]
+    },
+    {
+      "era": "Second Genesis",
+      "years": "1975",
+      "title": "An all-new team",
+      "summary": "When his original X-Men vanish on the island of Krakoa, Charles gathers a new international squad: Nightcrawler, Wolverine, Banshee, Storm, Sunfire, Colossus and Thunderbird. They rescue the first team and fling the living island into space. Most of the originals then leave, with only Cyclops staying on to help train the newcomers, and Thunderbird's death after ignoring an order to stand down on an early mission hits Charles hard.",
+      "keyIssues": [
+        "Giant-Size X-Men #1 (1975)",
+        "X-Men #94 (1975)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Giant-Size X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Giant-Size_X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #94",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_94"
+        }
+      ]
+    },
+    {
+      "era": "Cosmic romance and tragedy",
+      "years": "1976-1980",
+      "title": "Lilandra and the Dark Phoenix",
+      "summary": "The link Charles formed during the Z'Nox crisis plagues him with nightmares until Lilandra herself reaches Earth, fleeing her tyrannical brother D'Ken, and the two fall in love. When Jean, as the Dark Phoenix, wipes out an inhabited star system and the Shi'ar demand her execution, Charles first restores her mind in a psychic battle and then invokes a Shi'ar duel of honour to decide her fate. The fight on the Moon ends with Jean choosing to die rather than risk losing control again.",
+      "keyIssues": [
+        "X-Men #97 (1976)",
+        "X-Men #136 (1980)",
+        "X-Men #137 (1980)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #97",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_97"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #136",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_136"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #137",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_137"
+        }
+      ]
+    },
+    {
+      "era": "The early 1980s",
+      "years": "1982-1985",
+      "title": "Bigotry, a new class and a handover",
+      "summary": "Waking from a coma, Charles believes his X-Men lost in space and starts teaching a new group of students, the New Mutants. In the graphic novel God Loves, Man Kills he is kidnapped by the anti-mutant preacher William Stryker and brainwashed into serving a plan to kill mutants, until the X-Men, working with Magneto, wreck the machine. When Magneto later stands trial before the World Court in Paris, an attack by the Fenris twins leaves Charles near death; he asks his old rival to run the school and leaves with Lilandra and the Starjammers to be healed in space.",
+      "keyIssues": [
+        "Uncanny X-Men #161 (1982)",
+        "Marvel Graphic Novel #5 (1983)",
+        "Uncanny X-Men #200 (1985)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #161",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_161"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Graphic Novel Vol 1 #5: X-Men: God Loves, Man Kills (January 1983)",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Graphic_Novel_Vol_1_5:_X-Men:_God_Loves,_Man_Kills"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #200",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_200"
+        }
+      ]
+    },
+    {
+      "era": "The 1990s",
+      "years": "1993-1996",
+      "title": "Fatal Attractions and Onslaught",
+      "summary": "With Magneto again at war and the world's electronics knocked out by his pulse, Charles leads a strike on the orbital base Avalon. When Magneto tears the adamantium from Wolverine's skeleton, Charles abandons his attempt to reason with him and wipes his mind. The damage from that act fuses the darkest parts of both men into Onslaught, which destroys the school, abducts Franklin Richards and attacks New York. Thor finally breaks Charles free, the heroes destroy the entity, and Charles is taken into government custody, blaming himself for the backlash against mutants.",
+      "keyIssues": [
+        "X-Men Vol 2 #25 (1993)",
+        "X-Men Vol 2 #54 (1996)",
+        "Onslaught: X-Men #1 (1996)",
+        "Onslaught: Marvel Universe #1 (1996)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #25",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #54",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_54"
+        },
+        {
+          "label": "Marvel Fandom wiki: Onslaught: X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Onslaught:_X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Onslaught: Marvel Universe Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Onslaught:_Marvel_Universe_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "New X-Men",
+      "years": "2001-2004",
+      "title": "Cassandra Nova and Xorn",
+      "summary": "His long-lost twin Cassandra Nova traps Charles inside her own mind and, wearing his face, outs him as a mutant on television before turning the Shi'ar against the X-Men. Once rescued, he turns that exposure into X-Corporation, a worldwide support network for mutants, and walks again thanks to the healer Xorn. Xorn then unmasks as Magneto, cripples Charles again and attacks New York before being killed, leaving Charles alone in the ruins of Genosha and the school in the hands of Cyclops and Emma Frost.",
+      "keyIssues": [
+        "New X-Men #116 (2001)",
+        "New X-Men #126 (2002)",
+        "New X-Men #150 (2004)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #116",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_116"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #126",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_126"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #150",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_150"
+        }
+      ]
+    },
+    {
+      "era": "Disgrace",
+      "years": "2005-2008",
+      "title": "Buried secrets and a bullet",
+      "summary": "After the Scarlet Witch's spell strips most mutants of their powers, Charles among them, the return of Cyclops's lost brother Vulcan exposes an old secret: before the 1975 team, Charles had sent a group of Moira's students to Krakoa and hidden their deaths. Cyclops throws him out of the school. During the chase for the first mutant baby born since that spell, Bishop fires at Cable and the infant Hope, and the bullet strikes Charles in the head. Exodus and his Acolytes rebuild his shattered brain, with Magneto helping, and Charles sets out to piece his memories back together.",
+      "keyIssues": [
+        "X-Men: Deadly Genesis #5 (2006)",
+        "X-Men: Deadly Genesis #6 (2006)",
+        "X-Men Vol 2 #207 (2008)",
+        "X-Men: Legacy #208 (2008)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Deadly Genesis Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Deadly_Genesis_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Deadly Genesis Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Deadly_Genesis_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #207",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_207"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Legacy Vol 1 #208",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Legacy_Vol_1_208"
+        }
+      ]
+    },
+    {
+      "era": "Death and rebirth",
+      "years": "2012-2018",
+      "title": "Killed by his first student",
+      "summary": "When the Phoenix Force returns, Charles reluctantly sides with the Avengers against Cyclops and the Phoenix Five. He confronts Scott alone on Utopia, and his Phoenix-powered student kills him moments before giving in fully to the Dark Phoenix. The Red Skull later desecrates the grave and grafts the telepathic part of Charles's brain onto his own. Years afterwards the Shadow King is found holding Charles's spirit on the astral plane; with help from Psylocke's team Charles destroys him and takes over Fantomex's body, returning under the name X.",
+      "keyIssues": [
+        "Avengers vs. X-Men #11 (2012)",
+        "Uncanny Avengers #1 (2012)",
+        "Astonishing X-Men Vol 4 #6 (2018)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers vs. X-Men Vol 1 #11",
+          "url": "https://marvel.fandom.com/wiki/Avengers_vs._X-Men_Vol_1_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny Avengers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_Avengers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Astonishing X-Men Vol 4 #6",
+          "url": "https://marvel.fandom.com/wiki/Astonishing_X-Men_Vol_4_6"
+        }
+      ]
+    },
+    {
+      "era": "The Krakoan age and after",
+      "years": "2019-2025",
+      "title": "A mutant nation, its fall and an exile",
+      "summary": "Guided in secret by Moira and partnered with Magneto, Charles turns the living island of Krakoa into a sovereign mutant homeland with its own resurrection system and a ruling Quiet Council. After the anti-mutant group Orchis massacres guests at the 2023 Hellfire Gala, he is blackmailed into forcing mutants off the planet, then appears to join Orchis, though the people he seemed to kill were brainless clones. Still seen as a murderer, he surrenders and is jailed in Graymalkin Prison, built on the ruins of his school, until a call for help from his daughter Xandra brings him out; a revived Lilandra operates on a tumour in his brain, and the two leave Earth together.",
+      "keyIssues": [
+        "House of X #1 (2019)",
+        "X-Men: Hellfire Gala 2023 #1 (2023)",
+        "Rise of the Powers of X #5 (2024)",
+        "X-Manhunt Omega #1 (2025)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: House of X Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/House_of_X_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Hellfire Gala 2023 Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Hellfire_Gala_2023_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Rise of the Powers of X Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Rise_of_the_Powers_of_X_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 6 #35",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_6_35"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Manhunt Omega Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Manhunt_Omega_Vol_1_1"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "X-Men",
+      "year": 2000,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": false,
+      "summary": "Xavier runs his Westchester school as a refuge for young mutants and takes in Wolverine and Rogue. When he searches for the kidnapped Rogue, Cerebro, secretly sabotaged by Mystique, leaves him in a coma, and Jean Grey has to repair it so the X-Men can stop Magneto's machine on Liberty Island. Recovered, he visits Magneto in his plastic prison for a game of chess and a promise that the X-Men will always stand in his way.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X2",
+      "year": 2003,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": false,
+      "summary": "Xavier is captured by William Stryker, whose son Jason traps him in illusions and steers him into using a copy of Cerebro to kill every mutant. Magneto reaches him first and reverses the target to ordinary humans, and only Storm and Nightcrawler shattering Jason's illusion stops the attack. The X-Men carry the weakened professor to safety.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: The Last Stand",
+      "year": 2006,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": false,
+      "summary": "Xavier names Storm as his successor and tries to restore the mental blocks he once placed on a resurrected Jean Grey. Facing Magneto at Jean's family home, he is disintegrated by the Phoenix once Jean learns what he did to her mind. A post-credits scene suggests he survived by moving his consciousness into the body of his brain-dead twin brother.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men Origins: Wolverine",
+      "year": 2009,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": true,
+      "summary": "Xavier appears near the end, uncredited, to meet the mutant children who escape Stryker's facility at Three Mile Island. He offers the group, including young Scott Summers, a place at his school.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Origins: Wolverine (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Origins:_Wolverine_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: First Class",
+      "year": 2011,
+      "continuity": "FOX",
+      "actor": "James McAvoy (Laurence Belcher as young Charles)",
+      "cameo": false,
+      "summary": "A young Oxford genetics graduate, Charles is brought in by CIA agent Moira MacTaggert to stop Sebastian Shaw, meets Erik Lehnsherr and helps recruit and train the first team of young mutants. During the Cuban Missile Crisis a bullet that Erik deflects strikes Charles in the spine and leaves him paralysed. Erik leaves with Raven, and Charles wipes Moira's memory and opens his school.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: First Class (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_First_Class_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "The Wolverine",
+      "year": 2013,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": true,
+      "summary": "In the mid-credits scene, set two years later, a living Xavier turns up with Magneto to meet Logan on his return from Japan. Asked how he survived, Xavier simply says he used his gifts, and the pair warn that a threat to all mutants is coming.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: The Wolverine (film)",
+          "url": "https://marvel.fandom.com/wiki/The_Wolverine_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Days of Future Past",
+      "year": 2014,
+      "continuity": "FOX",
+      "actor": "James McAvoy and Patrick Stewart",
+      "cameo": false,
+      "summary": "In a Sentinel-ruled 2023 the older Xavier (Stewart) backs the plan to send Logan's mind back to 1973, where he finds a younger, bitter Charles (McAvoy) using a serum that lets him walk but blocks his powers. Reaching his future self through Logan's mind, the young Charles finds his hope again, helps free Erik and persuades Mystique not to kill Bolivar Trask. In the rewritten future he is alive and running the school.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Days of Future Past (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Days_of_Future_Past_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-10005)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Apocalypse",
+      "year": 2016,
+      "continuity": "FOX",
+      "actor": "James McAvoy",
+      "cameo": false,
+      "summary": "In 1983 Charles is running a thriving school when the ancient mutant Apocalypse exploits his Cerebro link with Erik to make the world's powers launch their nuclear arsenals into orbit, then kidnaps him in order to take over his body. Charles slips Jean a secret telepathic message, and in the final psychic battle Jean unleashes her full power to destroy Apocalypse. The ordeal leaves Charles bald, and the X-Men re-form under his leadership.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Apocalypse",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Apocalypse"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "Logan",
+      "year": 2017,
+      "continuity": "FOX",
+      "actor": "Patrick Stewart",
+      "cameo": false,
+      "summary": "In 2029 an ailing Charles, now suffering from Alzheimer's disease, hides in Mexico with Logan and Caliban, his telepathic seizures held back with drugs after one of them killed several X-Men. He bonds with the young mutant Laura and comes to remember his part in the Westchester tragedy. While the group shelters with a farming family, Logan's clone X-24 stabs him to death.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Logan (film)",
+          "url": "https://marvel.fandom.com/wiki/Logan_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-17315)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-17315)"
+        }
+      ]
+    },
+    {
+      "title": "Deadpool 2",
+      "year": 2018,
+      "continuity": "FOX",
+      "actor": "James McAvoy",
+      "cameo": true,
+      "summary": "Professor X is seen only in a brief gag, sitting in a room at the X-Mansion with the other X-Men as Deadpool talks to Colossus in the hall, until Beast quietly shuts the door. The wiki notes the shot was filmed on the Dark Phoenix set and added to the film by green screen.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Deadpool 2",
+          "url": "https://marvel.fandom.com/wiki/Deadpool_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-41633)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-41633)"
+        }
+      ]
+    },
+    {
+      "title": "Dark Phoenix",
+      "year": 2019,
+      "continuity": "FOX",
+      "actor": "James McAvoy",
+      "cameo": false,
+      "summary": "In 1992 a space rescue mission leaves Jean Grey carrying a cosmic force she cannot control, and it emerges that Charles once tampered with her memories. After Raven is killed, he tries to stop Erik from taking revenge on Jean, then apologises to Hank and Erik and warns them of the alien Vuk's plan for the Phoenix power. He ends the film retired in Paris, where Erik joins him for chess.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Dark Phoenix (film)",
+          "url": "https://marvel.fandom.com/wiki/Dark_Phoenix_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "Legion (season 3)",
+      "year": 2019,
+      "continuity": "OTHER",
+      "actor": "Harry Lloyd",
+      "cameo": false,
+      "summary": "The FX series shows a young Charles after a war, falling for fellow patient Gabrielle at a psychiatric hospital, freeing her from catatonia and starting a family with their son David. His trip to Morocco to fight the Shadow King leaves Farouk's spirit hiding in the infant David. In the closing episodes the adult David travels back to warn him, and this altered Charles makes peace with Farouk and decides to raise his son himself.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Legion (TV series)",
+          "url": "https://marvel.fandom.com/wiki/Legion_(TV_series)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-17040)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-17040)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-19264)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-19264)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Legion (TV series) Season 3, Episode 3: Chapter 22",
+          "url": "https://marvel.fandom.com/wiki/Legion_(TV_series)_Season_3_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Legion (TV series) Season 3, Episode 7: Chapter 26",
+          "url": "https://marvel.fandom.com/wiki/Legion_(TV_series)_Season_3_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: Legion (TV series) Season 3, Episode 8: Chapter 27",
+          "url": "https://marvel.fandom.com/wiki/Legion_(TV_series)_Season_3_8"
+        }
+      ]
+    },
+    {
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "year": 2022,
+      "continuity": "MCU",
+      "actor": "Patrick Stewart",
+      "cameo": true,
+      "summary": "This is the Earth-838 variant of Charles Xavier, a member of that world's Illuminati, who sits in judgement on the visiting Doctor Strange and comes round to trusting him, even telling him where to find the Book of Vishanti. When the Scarlet Witch attacks the Illuminati headquarters, Xavier enters her mind to free that universe's Wanda, but she tears into his mind and snaps his neck in the real world.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Professor X/Earth-838",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Professor_X/Earth-838"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Doctor Strange in the Multiverse of Madness",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "A 2025 Marvel's Voices story, published for Disability Pride Month, includes a flashback placing Charles at the real-life Capitol Crawl, the protest in which disabled people left their wheelchairs and crawled to the Capitol to press for the Americans with Disabilities Act.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Academy: Marvel's Voices Infinity Comic Vol 1 #52 (July 2025)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Academy:_Marvel's_Voices_Infinity_Comic_Vol_1_52"
+        }
+      ]
+    },
+    {
+      "fact": "The Earth-616 page lists T.H. White's The Once and Future King as Charles's favourite book and notes that the films nod to it: Magneto reads it in his cell in X2, and Charles reads it to students in X-Men: Apocalypse.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "In New X-Men #129 (2002) Fantomex puts Charles's fortune at 3.5 billion dollars.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #129 (September 2002)",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_129"
+        }
+      ]
+    },
+    {
+      "fact": "When the Earth-838 Xavier is introduced in Doctor Strange in the Multiverse of Madness, an orchestral version of the 1990s X-Men cartoon theme plays, and his outfit and yellow hoverchair were modelled on that series.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Professor X/Earth-838",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Professor_X/Earth-838"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "First appearance: X-Men #1 (September 1963), as listed on the Earth-616 page and the issue page.",
+    "Which war Charles served in has changed over the years because of Marvel's sliding timescale (Korean War in X-Men #12, unspecified in X-Men #117, the fictional Siancong War in the current history), so the origin does not name it.",
+    "Avengers: Doomsday (listed for 18 December 2026) is left out: the MCU Wiki's Professor X page, which names Patrick Stewart, marks the film unreleased. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-only cast list do not include Charles Xavier in any version; Earth-10005 is only mentioned by name. No entry was added.",
+    "Deadpool & Wolverine (2024) is left out: the MCU Wiki lists the Fox Professor X and two variants (Mutant Genocide and Cassandra Nova Birthed universes) as mentioned only, with his wheelchair listed as a prop. The Marvels (2023) is left out because the X-Men Ally Binary Professor X is only mentioned in its mid-credits scene.",
+    "Deadpool (2016) and The New Mutants (2020) are left out: the Marvel Fandom wiki film pages list Professor X as mentioned only. Generation X (1996 TV film) was checked and does not feature him.",
+    "Animation is excluded under the brief, including X-Men '97, What If...? and earlier cartoons; the Logan comic-book drawing of Professor X and a wheelchair glimpsed in a Legion season 1 vision were not counted as appearances either.",
+    "Legion is tagged OTHER because it is an FX series made with Marvel Television, not a 20th Century Fox X-Men film; the series page notes conflicting statements on whether it shares the films' universe. Harry Lloyd plays the original-timeline Charles in season 3 episode 3 and an altered-timeline Charles in episodes 7 and 8; they are grouped as one entry.",
+    "The Marvel Fandom wiki splits the Fox films into Earth-41578 (original timeline, Patrick Stewart) and Earth-10005 (revised timeline, James McAvoy), while the MCU Wiki calls the Fox universe Earth-10005. Logan's Xavier is Earth-17315 and the Deadpool 2 cameo is Earth-41633 on Marvel Fandom.",
+    "Dark Phoenix: the Marvel Fandom Earth-10005 Xavier page leaves its Dark Phoenix section blank and the film page has only a short premise, so that summary rests mainly on the Erik Lehnsherr (Earth-10005) page.",
+    "X-Men Origins: Wolverine: the film page says Stewart's appearance is uncredited; the cameo flag reflects that he appears only in the closing scene. The Doctor Strange in the Multiverse of Madness cameo flag is a judgement call, as he appears in one sequence, not a post-credits scene.",
+    "Marvel Graphic Novel #5 (God Loves, Man Kills) carries a January 1983 cover date on the wiki, so the key-issue year is given as 1983.",
+    "The Earth-616 history on the Marvel Fandom wiki runs to Imperial War: Exiles #1 (November 2025). Anything published after that was not checked."
+  ]
+}

@@ -23,7 +23,8 @@ for (const p of paths) {
     const f = (n) => { t.push(n - last); last = n; if (t.length < 240) requestAnimationFrame(f); else { t.shift(); t.sort((a, b) => a - b); res({ avg: 1000 / (t.reduce((a, b) => a + b, 0) / t.length), p95: t[Math.floor(t.length * 0.95)] }); } };
     requestAnimationFrame(f);
   }));
-  console.log(`${p.padEnd(24)} avg ${r.avg.toFixed(0).padStart(3)} fps   p95 frame ${r.p95.toFixed(1)} ms`);
+  const sErr = await page.evaluate(() => { const e = window.__ddEngine; return e ? e.renderer.info.programs.filter((x) => x.diagnostics).length : 0; });
+  console.log(`${p.padEnd(24)}${sErr ? ' SHADER ERRORS ' + sErr : ''} avg ${r.avg.toFixed(0).padStart(3)} fps   p95 frame ${r.p95.toFixed(1)} ms`);
   await page.close();
 }
 await b.close();
