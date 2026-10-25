@@ -46,6 +46,15 @@ function bootOnce() {
   });
   gsap.ticker.lagSmoothing(0);
 
+  // Opening or closing a source list changes page height: re-measure pins and triggers
+  document.addEventListener('toggle', (e) => { if ((e.target as HTMLElement).matches?.('details')) ScrollTrigger.refresh(); }, true);
+
+  // Header scrim once the page has scrolled
+  const scrolled = () => document.documentElement.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', scrolled, { passive: true });
+  document.addEventListener('astro:page-load', scrolled);
+  scrolled();
+
   // Menu
   document.addEventListener('click', (e) => {
     const t = e.target as HTMLElement;

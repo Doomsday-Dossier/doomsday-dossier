@@ -16,7 +16,7 @@ export type Design = {
   sceneName: string;      // human name of the motion idea
   sceneNote: string;      // one line describing the motion idea
   bg: string; ink: string; dim: string; accent: string; accent2: string;
-  font: string; fontWeight: number; fontCase: 'none' | 'uppercase'; tracking: string;
+  font: string; fontWeight: number; fontCase: 'uppercase' | 'uppercase'; tracking: string;
   ease: string;           // GSAP ease for this page's reveals
   pace: number;           // multiplier on reveal durations
   kicker: string;         // short line under the name, our own words
@@ -60,7 +60,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'thor', wave: 1, scene: 'storm', sceneName: 'The Storm',
     sceneNote: 'Clouds roll behind the page and lightning hunts for your cursor.',
     bg: '#05070c', ink: '#e9eef9', dim: '#9aa6bf', accent: '#8fd3ff', accent2: '#ffffff',
-    font: "'Grenze Gotisch Variable', serif", fontWeight: 800, fontCase: 'none', tracking: '0em',
+    font: "'Grenze Gotisch Variable', serif", fontWeight: 800, fontCase: 'uppercase', tracking: '0em',
     ease: 'expo.out', pace: 1.0, kicker: 'Prince of Asgard and god of thunder, who had to prove himself worthy of his own power.',
   },
   'sam-wilson': {
@@ -84,7 +84,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'scott-lang', wave: 1, scene: 'quantum', sceneName: 'Quantum Scale',
     sceneNote: 'An endless zoom through nested worlds. Your cursor is a lens that shrinks and grows what it touches.',
     bg: '#07040d', ink: '#f1ebfb', dim: '#a99bc0', accent: '#ff4fd8', accent2: '#7c6bff',
-    font: "'Fraunces Variable', serif", fontWeight: 700, fontCase: 'none', tracking: '-0.03em',
+    font: "'Fraunces Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.03em',
     ease: 'back.out(1.6)', pace: 0.9, kicker: 'An ex-con electrical engineer who stole a shrinking suit and found out how small, and how big, he could get.',
   },
   'shang-chi': {
@@ -92,7 +92,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'shang-chi', wave: 1, scene: 'ink', sceneName: 'Ink and Rings',
     sceneNote: 'Ink blooms in still water. Your cursor stirs it while ten rings of light keep their orbit.',
     bg: '#040605', ink: '#ece9df', dim: '#9d9a8e', accent: '#e7c46a', accent2: '#4fd1a5',
-    font: "'Bodoni Moda Variable', serif", fontWeight: 700, fontCase: 'none', tracking: '-0.02em',
+    font: "'Bodoni Moda Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.02em',
     ease: 'power2.inOut', pace: 1.25, kicker: 'A martial artist raised to be his father’s weapon, who walked away to choose his own path.',
   },
   'joaquin-torres': {
@@ -172,7 +172,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'mystique', wave: 3, scene: 'reaction', sceneName: 'Shapeshift',
     sceneNote: 'A living reaction-diffusion pattern that never holds one form, from spots to stripes to maze. Your cursor seeds new growth, and the name keeps changing typeface.',
     bg: '#02040c', ink: '#e8eeff', dim: '#93a0c4', accent: '#3d7bff', accent2: '#ffc14d',
-    font: "'DM Serif Display', serif", fontWeight: 400, fontCase: 'none', tracking: '-0.01em',
+    font: "'DM Serif Display', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '-0.01em',
     ease: 'sine.inOut', pace: 1.1, kicker: 'A shapeshifter who can become anyone, loyal above all to her own idea of mutant survival.',
   },
   'beast': {
@@ -180,7 +180,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'beast', wave: 3, scene: 'fur', sceneName: 'Blue Fur',
     sceneNote: 'Real-time 3D fur made of stacked shells. Your cursor brushes through it and the strands bend away.',
     bg: '#03050c', ink: '#e9eeff', dim: '#95a0c2', accent: '#5c8cff', accent2: '#c2d3ff',
-    font: "'EB Garamond Variable', serif", fontWeight: 600, fontCase: 'none', tracking: '-0.01em',
+    font: "'EB Garamond Variable', serif", fontWeight: 600, fontCase: 'uppercase', tracking: '-0.01em',
     ease: 'power3.out', pace: 1.2, kicker: 'A brilliant scientist whose body caught up with his mutation, leaving a genius covered in blue fur.',
   },
   'gambit': {
@@ -221,7 +221,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'ghost', wave: 4, scene: 'phase', sceneName: 'Phase Echo',
     sceneNote: 'Every frame feeds back into the next, so anything that moves leaves fading echoes and the picture keeps slipping out of phase. Letters slip too.',
     bg: '#040506', ink: '#e9eef2', dim: '#95a0a8', accent: '#9fe7ff', accent2: '#ffffff',
-    font: "'Major Mono Display', monospace", fontWeight: 400, fontCase: 'none', tracking: '0em',
+    font: "'Major Mono Display', monospace", fontWeight: 400, fontCase: 'uppercase', tracking: '0em',
     ease: 'steps(8)', pace: 0.9, kicker: 'A woman caught between dimensions by a lab accident, who learned to turn her instability into a weapon.',
   },
   'bob-reynolds': {
@@ -261,7 +261,7 @@ export const DESIGN: Record<string, Design> = {
     slug: 'loki', wave: 5, scene: 'timelines', sceneName: 'Branching Timelines',
     sceneNote: "Timelines grow upward and keep forking, far more often near your cursor. Scrolling prunes the youngest branches first.",
     bg: '#030604', ink: '#eef5e8', dim: '#9fb09a', accent: '#5fd36f', accent2: '#e8c35a',
-    font: "'Playfair Display Variable', serif", fontWeight: 700, fontCase: 'none', tracking: '-0.01em',
+    font: "'Playfair Display Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.01em',
     ease: 'power3.inOut', pace: 1.1, kicker: "The god of mischief, who schemed his way through every realm and found his purpose holding time itself together.",
   },
   'peggy-carter': {
