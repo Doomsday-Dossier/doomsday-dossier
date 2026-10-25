@@ -79,7 +79,7 @@ of every session, then continue from the tracker at the bottom.
 | 1 | Home, Doom, Avengers core | done |
 | 2 | Fantastic Four | done |
 | 3 | X-Men | done |
-| 4 | Thunderbolts* (abstract heroes, no photos yet) | built; perf fix pending |
+| 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
 | 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | todo |
 | 6 | Photos for every character: download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
 | 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
@@ -195,11 +195,11 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 | 3 | X-Men | Mystique | Rebecca Romijn | No | done |
 | 3 | X-Men | Beast | Kelsey Grammer | No | done |
 | 3 | X-Men | Gambit | Channing Tatum | No | done |
-| 4 | Thunderbolts* | Yelena Belova | Florence Pugh | No | built |
-| 4 | Thunderbolts* | Red Guardian | David Harbour | No | built |
-| 4 | Thunderbolts* | John Walker | Wyatt Russell | No | built |
-| 4 | Thunderbolts* | Ghost | Hannah John-Kamen | No | built |
-| 4 | Thunderbolts* | Bob / Sentry | Lewis Pullman | No | built |
+| 4 | Thunderbolts* | Yelena Belova | Florence Pugh | No | done |
+| 4 | Thunderbolts* | Red Guardian | David Harbour | No | done |
+| 4 | Thunderbolts* | John Walker | Wyatt Russell | No | done |
+| 4 | Thunderbolts* | Ghost | Hannah John-Kamen | No | done |
+| 4 | Thunderbolts* | Bob / Sentry | Lewis Pullman | No | done |
 | 5 | Wakanda and Talokan | Shuri | Letitia Wright | Yes (teaser) | todo |
 | 5 | Wakanda and Talokan | M'Baku | Winston Duke | Yes (teaser) | todo |
 | 5 | Wakanda and Talokan | Namor | Tenoch Huerta Mejia | Yes (teaser) | todo |
@@ -249,6 +249,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 4 deployed and verified live (33 pages, no phone overflow, all five new heroes 60 fps at 4x throttle).
 - 2026-10-25: Wave 4 perf fixed (title effects made repaint-free): all five Thunderbolts* heroes 60 fps at 4x CPU throttle. Footer now carries the non-commercial and removal-on-request lines.
 - 2026-10-25: Second interview on the revised brief (photos, interactive features, original ideas). Decisions in "Revised brief" above. Wave order changed to: finish the roster (4, 5), then photos (6), then features (7). Wave 4 committed locally, not deployed: Sun and Void 35 fps and Red Room 49 fps at 4x CPU throttle.
 - 2026-10-25: Wave 3 (X-Men) deployed and verified live (28 pages, no phone overflow, new heroes 59 to 60 fps). Built and checked: seven new heroes, no shader errors, 58 to 60 fps with CPU throttled 4x, no phone overflow on any page, reduced motion and navigation pass. Marvel cast unchanged; Marvel names Professor X, Magneto and Cyclops only. Found and fixed a silent shader compile failure (Magneto) and added shader-error detection to QA.
