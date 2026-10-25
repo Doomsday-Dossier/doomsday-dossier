@@ -1,0 +1,183 @@
+{
+  "group": "c",
+  "checkedOn": "2026-10-25",
+  "items": [
+    {
+      "slug": "john-walker",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/thunderboltsjohn.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/meet-the-thunderbolts-behind-the-scenes",
+      "owner": "Marvel Studios",
+      "shows": "Wyatt Russell as John Walker in Thunderbolts* (2025); film still, solo, per Marvel's caption",
+      "contentType": "image/webp",
+      "bytes": 54930,
+      "note": "Caption on page: 'Wyatt Russell as John Walker in Thunderbolts*'. /2x/ is the largest variant (1x is 16924 bytes). Framing not visually checked (no download)."
+    },
+    {
+      "slug": "john-walker",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/fws_digitalasset_72x48_wyatt_v4_sm_legal_line.webp",
+      "sourcePage": "https://www.marvel.com/articles/tv-shows/falcon-winter-soldier-captain-america-poster-introduces-john-walker",
+      "owner": "Marvel Studios",
+      "shows": "Wyatt Russell as John Walker, official character poster for The Falcon and The Winter Soldier (2021); solo",
+      "contentType": "image/webp",
+      "bytes": 282952,
+      "note": "Older role look (as Captain America, 2021). Filename says 'legal_line', so it likely carries title and billing text that would need cropping. Largest variant /2x/."
+    },
+    {
+      "slug": "ghost",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/thunderboltsghost.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/meet-the-thunderbolts-behind-the-scenes",
+      "owner": "Marvel Studios",
+      "shows": "Hannah John-Kamen as Ghost (Ava Starr) in Thunderbolts* (2025); film still, solo, per Marvel's caption",
+      "contentType": "image/webp",
+      "bytes": 55892,
+      "note": "Caption on page: 'Hannah John-Kamen as Ghost in Thunderbolts*'. /2x/ is the largest variant (1x is 19446 bytes). marvel.com/characters/ghost is the comics (male) Ghost and has no MCU images. The 2018 Ant-Man and The Wasp character-poster article lists a Ghost poster but its gallery image URLs were not exposed in the scrape."
+    },
+    {
+      "slug": "bob-reynolds",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/thunderboltsbob.webp",
+      "sourcePage": "https://www.marvel.com/articles/movies/thunderbolts-lewis-pullman-bob-sentry-the-void",
+      "owner": "Marvel Studios",
+      "shows": "Lewis Pullman as Bob in Thunderbolts* (2025); film still, solo, per Marvel's caption (Bob in civilian form, not the Sentry suit as far as the caption says)",
+      "contentType": "image/webp",
+      "bytes": 129018,
+      "note": "Same image also used on https://www.marvel.com/articles/movies/meet-the-thunderbolts-behind-the-scenes. /2x/ is the largest variant (1x is 14426 bytes). No captioned still of Pullman in the golden Sentry suit was found on marvel.com; marvel.com/characters/sentry-robert-reynolds is comics-only."
+    },
+    {
+      "slug": "shuri",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/shuri_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "Letitia Wright as Shuri, official Black Panther: Wakanda Forever (2022) character poster; solo",
+      "contentType": "image/webp",
+      "bytes": 200300,
+      "note": "Listed in the page's 'Character Posters' gallery, captioned 'MARVEL STUDIOS' BLACK PANTHER: WAKANDA FOREVER | SHURI'. The page serves /1x_masonry/ (11958 bytes); /2x/ is the largest variant found (/3x/ and /4x/ return 404). The poster may carry title text."
+    },
+    {
+      "slug": "shuri",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/107shr_ons_crd_03.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "Shuri on-screen character card from the film page's Characters row; solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 39484,
+      "note": "The 'ons' (on-screen) card is captioned only 'Shuri'. Which film it comes from is not stated. It is small; use it as a fallback."
+    },
+    {
+      "slug": "mbaku",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/mbaku_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "Winston Duke as M'Baku, official Black Panther: Wakanda Forever (2022) character poster; solo",
+      "contentType": "image/webp",
+      "bytes": 301170,
+      "note": "Captioned 'MARVEL STUDIOS' BLACK PANTHER: WAKANDA FOREVER | M'BAKU' in the Character Posters gallery. Page serves /1x_masonry/ (14528 bytes); /2x/ is the largest variant. May carry title text."
+    },
+    {
+      "slug": "mbaku",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/276mbk_ons_crd_01.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "M'Baku on-screen character card from the film page's Characters row; solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 71236,
+      "note": "Captioned only 'M'Baku'. Which film it comes from is not stated. Fallback."
+    },
+    {
+      "slug": "namor",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/namor_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "Tenoch Huerta Mejia as Namor, official Black Panther: Wakanda Forever (2022) character poster; solo",
+      "contentType": "image/webp",
+      "bytes": 195296,
+      "note": "Captioned 'MARVEL STUDIOS' BLACK PANTHER: WAKANDA FOREVER | NAMOR' in the Character Posters gallery. Page serves /1x_masonry/ (16332 bytes); /2x/ is the largest variant. May carry title text."
+    },
+    {
+      "slug": "namor",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/129nam_ons_crd_01.webp",
+      "sourcePage": "https://www.marvel.com/movies/black-panther-wakanda-forever",
+      "owner": "Marvel Studios",
+      "shows": "Namor on-screen character card from the film page's Characters row; solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 42658,
+      "note": "Captioned only 'Namor'. Small; fallback."
+    },
+    {
+      "slug": "loki",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/loki_characterseries_loki_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/tv-shows/loki/2",
+      "owner": "Marvel Studios",
+      "shows": "Tom Hiddleston as Loki, official Loki (Disney+) character-series poster from season 1 (2021); solo",
+      "contentType": "image/webp",
+      "bytes": 465356,
+      "note": "Captioned 'Marvel Studios' Loki | Loki' in the season 1 gallery on the show page (the /loki/2 URL redirects to /tv-shows/loki). Page serves /1x_masonry/; /2x/ is the largest. The season 2 posters (lokis2_lob_crd_02 to 04) and gallery stills on that page are captioned only 'Loki | Season 2', so who appears in them is not stated, and they were not picked."
+    },
+    {
+      "slug": "loki",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/loki_tva_characterseries_27x40_loki_v2_lg.webp",
+      "sourcePage": "https://www.marvel.com/tv-shows/loki/2",
+      "owner": "Marvel Studios",
+      "shows": "Tom Hiddleston as Loki, official Loki TVA 'VARIANT' character poster, season 1 (2021); solo",
+      "contentType": "image/webp",
+      "bytes": 340644,
+      "note": "Captioned 'Marvel Studios' Loki | Time Variance Authority (TVA) | VARIANT | Loki'. Stylised as a TVA file, so it likely has text and graphic overlays."
+    },
+    {
+      "slug": "loki",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/017lok_ons_crd_03.webp",
+      "sourcePage": "https://www.marvel.com/tv-shows/loki/2",
+      "owner": "Marvel Studios",
+      "shows": "Loki on-screen character card from the show page's Characters row; solo portrait card",
+      "contentType": "image/webp",
+      "bytes": 201478,
+      "note": "Captioned only 'Loki'. Which film or series it comes from is not stated."
+    },
+    {
+      "slug": "peggy-carter",
+      "rank": 1,
+      "imageUrl": "https://cdn.marvel.com/content/2x/agentcarters2_lob_crd_03.webp",
+      "sourcePage": "https://www.marvel.com/tv-shows/marvel-s-agent-carter/2",
+      "owner": "Marvel Television / ABC Studios",
+      "shows": "Marvel's Agent Carter season 2 (2016) key-art poster; Hayley Atwell is the only credited cast on the page",
+      "contentType": "image/webp",
+      "bytes": 79356,
+      "note": "Page alt text: 'Marvel's Agent Carter TV Show Season 2 Poster'. Not visually confirmed to be solo, and it is a series poster with title text. This is not a film still: no captioned live-action MCU film still or character poster of Peggy was found on marvel.com. Doctor Strange in the Multiverse of Madness has no Captain Carter image there, and Endgame has no Peggy character poster."
+    },
+    {
+      "slug": "peggy-carter",
+      "rank": 2,
+      "imageUrl": "https://cdn.marvel.com/content/2x/marvelsagentcarter_f010_l178_episode_thumbnail_1920x1080_10055425.webp",
+      "sourcePage": "https://www.marvel.com/articles/tv-shows/agent-carter-must-watch-disney-plus",
+      "owner": "Marvel Television / ABC Studios",
+      "shows": "Marvel's Agent Carter episode still (1920x1080 thumbnail), used in Marvel's article about Peggy; landscape",
+      "contentType": "image/webp",
+      "bytes": 80910,
+      "note": "Captioned only 'Agent Carter'. It sits beside the article's section on Peggy's 1940s costumes, but the page does not say Peggy is in the frame or that it is a solo shot. Verify before use."
+    },
+    {
+      "slug": "peggy-carter",
+      "rank": 3,
+      "imageUrl": "https://cdn.marvel.com/content/2x/marvelsagentcarter_f001_l178_episode_thumbnail_1920x1080_10028091_0.webp",
+      "sourcePage": "https://www.marvel.com/articles/tv-shows/agent-carter-must-watch-disney-plus",
+      "owner": "Marvel Television / ABC Studios",
+      "shows": "Marvel's Agent Carter episode 1 still (1920x1080 thumbnail), used in Marvel's article about Peggy; landscape",
+      "contentType": "image/webp",
+      "bytes": 54990,
+      "note": "Captioned only 'Agent Carter'. The page does not say who is in it or how it is framed. Verify before use."
+    }
+  ],
+  "notFound": []
+}

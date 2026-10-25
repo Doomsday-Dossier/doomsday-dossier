@@ -81,7 +81,7 @@ of every session, then continue from the tracker at the bottom.
 | 3 | X-Men | done |
 | 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
 | 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | done |
-| 6 | Photos for every character: download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
+| 6 | Photos for every character (step 1 done: download list built, awaiting approval): download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
 | 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
 
 ## Feature tracker
@@ -263,6 +263,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 6 step 1: photo download list built from marvel.com, cdn.marvel.com and d23.com only (no downloads; sizes via HEAD). 71 candidates, 62 distinct files, 11.92 MB; first choices 25 files, 7.49 MB. No official photo found for Beast or Gambit; the five other X-Men only have Fox-era group key art; Doom only an article header image. Files: research/photos/manifest.{json,md,html}; rebuild with node scripts/photo-manifest.mjs. Waiting on the user to approve.
 - 2026-10-25: Wave 5 deployed and verified live (38 pages, no phone overflow, five new heroes 60 fps at 4x throttle). All 29 confirmed characters with a named role or a known last role now have dossiers. Next: wave 6 (photos), which starts with a download manifest for the user to approve.
 - 2026-10-25: Wave 5 (Shuri, M'Baku, Namor, Loki, Peggy Carter) built and checked: five new heroes, no shader errors, 60 fps at 4x CPU throttle, no phone overflow, reduced motion and navigation pass. Marvel cast unchanged; Shuri's role recorded as 'Shuri / Black Panther' per Marvel's teaser article. Research agents were resumed after a session restart.
 - 2026-10-25: Wave 4 deployed and verified live (33 pages, no phone overflow, all five new heroes 60 fps at 4x throttle).
