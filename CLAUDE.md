@@ -169,6 +169,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - motionsites.ai reference links from the user (triggers a motion tuning pass).
 - Git has no global identity on this machine. The repo uses a local identity (Prejith, account email); the user may change the name.
 - GitHub CLI is installed per-user via winget at `%LOCALAPPDATA%MicrosoftWinGetPackagesGitHub.cli_*ingh.exe` (not on PATH in old shells) and signed in as prejith77. Use it to watch deploy runs.
+- If a push does not start a deploy run (seen once on 2026-10-25), start one by hand: `gh workflow run deploy.yml -R prejith77/doomsday-dossier --ref main`.
 - Deploy runs show GitHub's Node 20 deprecation warnings for the checkout, setup-node and pages actions. Harmless for now; bump the action versions when newer majors ship.
 
 ## Session log
