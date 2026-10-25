@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SRC, OFFICIAL } from '../data/site';
+import { SRC, OFFICIAL, u } from '../data/site';
 ---
 <Base title="Sources and rules" description="How Doomsday Dossier sources every fact, and what it will never publish." page="about">
   <section class="ab">
@@ -16,7 +16,7 @@ import { SRC, OFFICIAL } from '../data/site';
             <li>Character history comes from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics. Every section lists its sources.</li>
             <li>All writing is our own. Nothing is copied from the wikis.</li>
             <li>No rumours, leaks, set reports or plot predictions. People who asked on stage to join the cast, but whom Marvel has not confirmed, are left out.</li>
-            <li>No faces, likenesses, logos, posters or Marvel artwork. Every visual is made from colour, type and code.</li>
+            <li>Each dossier shows three photos of the character. Images belong to their respective owners, are used here non-commercially, and any image will be removed on request. Every one is listed on the <a href={u('/credits/')}>image credits</a> page. All other visuals are made from colour, type and code.</li>
           </ol>
         </div>
         <div>
@@ -29,7 +29,7 @@ import { SRC, OFFICIAL } from '../data/site';
       </div>
       <div class="ab-legal">
         <h2 class="serif">Unofficial</h2>
-        <p>Doomsday Dossier is an unofficial, non-commercial fan project. It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company. All character names and related marks are the property of their owners.</p>
+        <p>Doomsday Dossier is an unofficial, non-commercial fan project. It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company. All character names, related marks and images are the property of their owners.</p>
         <p>Motion is built with GSAP, ScrollTrigger, Lenis and Three.js. Reduced-motion settings are respected: with them on, every page is still and fully readable.</p>
       </div>
     </div>

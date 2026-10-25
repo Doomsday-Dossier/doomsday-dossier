@@ -30,6 +30,8 @@ import '@fontsource/yeseva-one';
 import '@fontsource-variable/playfair-display';
 import '@fontsource/limelight';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
+import { photosFor, htOf, PHOTO_CREDIT } from '../../data/photos';
+import Photo from '../../components/Photo.astro';
 
 export function getStaticPaths() {
   return publishedOrder().map((slug) => ({ params: { slug } }));
@@ -43,6 +45,8 @@ const team = TEAMS.find((t) => t.id === c.team)!;
 const order = publishedOrder();
 const next = DESIGN[order[(order.indexOf(slug) + 1) % order.length]];
 const nextR = getResearch(next.slug)!;
+const photos = photosFor(slug);
+const nextPhoto = photosFor(next.slug)[0];
 
 const styleVars = [
   `--c-bg:${d.bg}`, `--c-ink:${d.ink}`, `--c-dim:${d.dim}`, `--c-accent:${d.accent}`, `--c-accent-2:${d.accent2}`,
@@ -78,7 +82,12 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 ---
 <Base title={heroName(slug)} description={desc} page="character" scene={d.scene} styleVars={styleVars} ease={d.ease} pace={d.pace}>
   <!-- ACT 1 HERO -->
-  <section class={`hero ch-hero scene-${d.scene}`} data-gl-region aria-labelledby="hero-name">
+  <section class={`hero ch-hero scene-${d.scene}${photos.length ? ' has-portrait' : ''}`} data-gl-region aria-labelledby="hero-name">
+    {photos[0] && (
+      <figure class={`ch-portrait${photos[0].w > photos[0].h * 1.2 ? " wide" : ""}`} data-portrait>
+        <div class="ch-portrait-move"><Photo photo={photos[0]} alt={heroName(slug)} sizes={photos[0].w > photos[0].h * 1.2 ? "(min-width: 900px) 118vw, 225vw" : "(min-width: 900px) 50vw, 100vw"} eager min={736} /></div>
+      </figure>
+    )}
     <div class="wrap ch-hero-inner">
       <p class="label" data-hero-in>{team.name} &middot; Dossier {String(order.indexOf(slug) + 1).padStart(2, '0')}</p>
       <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' || d.scene === 'reaction' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' || d.scene === 'rock' ? 'stamp' : d.scene === 'storm' || d.scene === 'flame' || d.scene === 'optic' ? 'drop' : d.scene === 'slipstream' || d.scene === 'elastic' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
@@ -95,6 +104,32 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
       <div class="hud" aria-hidden="true"><i></i><span>LAT <b data-k="lat">0.000</b></span><span>LON <b data-k="lon">0.000</b></span></div>
     )}
   </section>
+
+  <!-- PORTRAITS -->
+  {photos.length > 0 && (
+    <section class="act act-gallery" data-gallery aria-labelledby="gal-h">
+      <div class="wrap">
+        <header class="gal-head">
+          <p class="label">Portraits &middot; {String(photos.length).padStart(2, '0')}</p>
+          <h2 id="gal-h" class="display act-title" style="--lw:5" data-split="words">In frame</h2>
+          <p class="gal-hint"><span class="hover-only">Move over a print to read it as a comic halftone.</span><span class="touch-only">Press and hold a print to read it as a comic halftone.</span></p>
+        </header>
+        <div class="gal">
+          {photos.map((p, i) => (
+            <figure class="print" data-print data-tilt style={`--ht:url(${htOf(p)});--focus:${p.focus};--focus-m:${p.focusM}`}>
+              <div class="print-frame">
+                <Photo photo={p} alt={`${heroName(slug)}, image ${i + 1} of ${photos.length}`} sizes="(min-width: 900px) 31vw, 80vw" min={736} />
+                <div class="lens" aria-hidden="true"></div>
+                <i class="lens-ring" aria-hidden="true"></i>
+              </div>
+              <figcaption><span>{String(i + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span><span>{heroName(slug)}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+        <p class="gal-credit">{PHOTO_CREDIT} Any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" target="_blank" rel="noopener">open an issue</a>. <a href={u('/credits/')}>All image credits</a></p>
+      </div>
+    </section>
+  )}
 
   <!-- ACT 2 ORIGIN -->
   <section class="act act-origin" aria-labelledby="origin-h">
@@ -243,6 +278,9 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 
   <!-- NEXT -->
   <section class="next" style={`--n-lw:${lw(heroName(next.slug))};--n-accent:${next.accent};--n-font:${next.font};--n-weight:${next.fontWeight};--n-case:${next.fontCase}`}>
+    {nextPhoto && (
+      <figure class="next-photo" aria-hidden="true"><Photo photo={nextPhoto} alt="" sizes="(min-width: 900px) 34vw, 60vw" /></figure>
+    )}
     <a class="next-link" href={u(`/c/${next.slug}/`)} data-accent={next.accent} data-magnet="0.15">
       <span class="label">Next dossier</span>
       <span class="next-name">{heroName(next.slug)}</span>
@@ -255,6 +293,28 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 <style>
   .ch-hero { min-height: 100svh; display: grid; align-items: end; padding: calc(var(--header-h) + 40px) 0 48px; position: relative; }
   .ch-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, color-mix(in srgb, var(--c-bg) 88%, transparent) 0%, color-mix(in srgb, var(--c-bg) 45%, transparent) 38%, transparent 70%), linear-gradient(to right, color-mix(in srgb, var(--c-bg) 55%, transparent), transparent 55%); }
+  /* hero portrait: the lead photo stands to the right of the name on wide screens, above it on phones */
+  .ch-portrait { position: absolute; top: 0; right: 0; bottom: 0; width: min(48vw, 760px); margin: 0; pointer-events: none; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to top, transparent 0%, #000 26%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to top, transparent 0%, #000 26%); mask-composite: intersect; }
+  /* wide (landscape) photos take most of the hero so the subject is not cropped away */
+  .ch-portrait.wide { width: min(78vw, 1280px); -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 42%), linear-gradient(to top, transparent 0%, #000 26%); mask-image: linear-gradient(to right, transparent 0%, #000 42%), linear-gradient(to top, transparent 0%, #000 26%); }
+  .ch-portrait-move { position: absolute; inset: -24px; }
+  .has-portrait .hero-name { text-shadow: 0 2px 30px color-mix(in srgb, var(--c-bg) 70%, transparent); }
+  .ch-portrait :global(.photo) { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (min-width: 900px) { .ch-portrait :global(.photo) { object-position: var(--f); background-position: var(--f); } }
+  .ch-portrait::after { content: ''; position: absolute; inset: 0; background: var(--c-accent); mix-blend-mode: color; opacity: 0; transition: opacity 1s var(--ease-out); }
+  @media (hover: hover) {
+    .ch-portrait :global(.photo) { filter: saturate(0.78) contrast(1.06); transition: filter 1s var(--ease-out); }
+    .ch-portrait::after { opacity: 0.16; }
+    .ch-hero:hover .ch-portrait :global(.photo) { filter: none; }
+    .ch-hero:hover .ch-portrait::after { opacity: 0; }
+  }
+  @media (max-width: 899px) {
+    /* phones: the face sits above the name; the photo fades out before the text begins */
+    .ch-portrait, .ch-portrait.wide { left: 0; width: auto; bottom: auto; height: 58svh;
+      -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.25) 30%, #000 64%); mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.25) 30%, #000 64%); }
+  }
   .ch-hero-inner { position: relative; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
   .ch-hero-inner > * { min-width: 0; }
   /* small hero text sits over bright scenes (Shuri's pins on phones): a static shadow keeps it legible */
@@ -282,6 +342,29 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .hud i::after { top: 50%; left: -8px; right: -8px; height: 1px; }
   @media (hover: none) { .hud { display: none; } }
 
+  /* portraits: three prints that develop on reveal, tilt under the pointer, and show a halftone lens */
+  .act-gallery { padding-bottom: clamp(70px, 10vh, 120px); }
+  .gal-head { display: grid; gap: 4px; margin-bottom: 40px; }
+  .gal-hint { font-size: 13px; color: var(--c-dim); margin: 10px 0 0; }
+  .touch-only { display: none; }
+  @media (hover: none) { .hover-only { display: none; } .touch-only { display: inline; } }
+  .gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 36px); perspective: 1200px; align-items: start; }
+  .print { margin: 0; transform-style: preserve-3d; }
+  .print:nth-child(2) { margin-top: clamp(40px, 8vw, 120px); }
+  .print:nth-child(3) { margin-top: clamp(20px, 4vw, 60px); }
+  .print-frame { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 3px; background: color-mix(in srgb, var(--c-bg) 70%, black); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--c-line); }
+  .print-frame :global(.photo) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease-out); }
+  .print:hover .print-frame :global(.photo) { transform: scale(1.04); }
+  .lens { position: absolute; inset: 0; pointer-events: none; background: var(--ht) var(--focus-m) / cover no-repeat, var(--c-accent); background-blend-mode: multiply; clip-path: circle(var(--r, 0px) at var(--x, 50%) var(--y, 50%)); }
+  .lens-ring { position: absolute; left: 0; top: 0; width: 180px; height: 180px; margin: -90px 0 0 -90px; border: 1px solid var(--c-accent); border-radius: 50%; pointer-events: none; opacity: 0; transform: scale(0.4); }
+  .print figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-dim); }
+  .print figcaption span:first-child { color: var(--c-accent); }
+  .gal-credit { font-size: 12px; color: var(--c-dim); margin: 36px 0 0; max-width: 80ch; }
+  @media (max-width: 899px) {
+    .gal { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 10px; scrollbar-width: none; perspective: none; }
+    .gal::-webkit-scrollbar { display: none; }
+    .print { flex: 0 0 78vw; scroll-snap-align: center; margin-top: 0 !important; }
+  }
   .act { position: relative; overflow-x: clip; padding: clamp(90px, 14vh, 160px) 0 60px; background: var(--c-bg); }
   .act-num { color: var(--c-accent); margin-right: 10px; }
   /* --lw is the heading's longest word; 0.9em per letter covers the widest faces, so no word is ever cut */
@@ -369,7 +452,12 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .doom-what b { color: var(--c-ink); font-weight: 500; }
   @media (max-width: 600px) { .doom-timeline li { grid-template-columns: 1fr; gap: 6px; } }
 
-  .next { position: relative; z-index: 2; background: var(--c-bg); border-top: 1px solid var(--c-line); padding: 80px var(--gutter) 60px; display: grid; gap: 30px; }
+  .next { position: relative; z-index: 2; background: var(--c-bg); border-top: 1px solid var(--c-line); padding: 80px var(--gutter) 60px; display: grid; gap: 30px; overflow: hidden; }
+  .next-photo { position: absolute; top: 0; right: 0; bottom: 0; width: min(40vw, 560px); margin: 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 60%); mask-image: linear-gradient(to right, transparent, #000 60%); }
+  .next-photo :global(.photo) { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.38; filter: grayscale(1) contrast(1.1); transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out), transform 1.2s var(--ease-out); }
+  .next:has(.next-link:hover) .next-photo :global(.photo) { opacity: 0.85; filter: none; transform: scale(1.03); }
+  .next-link, .next-team { position: relative; }
   .next-link { display: grid; gap: 10px; text-decoration: none; justify-self: start; }
   .next-name { font-family: var(--n-font); font-weight: var(--n-weight); text-transform: uppercase; font-size: min(clamp(48px, 10vw, 170px), calc((100vw - 2 * var(--gutter)) / (var(--n-lw, 8) * 0.88))); overflow-wrap: break-word; line-height: 0.85; transition: color 0.4s, letter-spacing 0.6s var(--ease-out); }
   .next-link:hover .next-name { color: var(--n-accent); letter-spacing: 0.02em; }

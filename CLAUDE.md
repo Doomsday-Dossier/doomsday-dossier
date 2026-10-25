@@ -20,14 +20,16 @@ of every session, then continue from the tracker at the bottom.
    Cinematic Universe Wiki or the named film. Every section ends with numbered sources.
 4. **All prose is our own words.** Never paste wiki sentences. Keep quotes from any
    source under 15 words and at most one per page.
-5. **Photos only from official promo material (revised 25 October 2026).** Images may
-   come only from marvel.com (including cdn.marvel.com) and Disney's official press
-   and media pages (for example d23.com, Disney+ press). Never fan art, leaks,
-   screenshots, set photos or third-party sites. Every image has a credit line and a
-   source link on the page that uses it and on the credits page. Each image is
-   compressed to WebP and lazy-loaded. Before any bulk download, show the user a
-   manifest (file, source URL, size) and get a yes. Still no Marvel logos as design
-   elements; identity in the UI comes from colour, type and effects.
+5. **Photos: the user's supplied set (changed 25 October 2026, user decision).** The site
+   uses exactly the 87 photos the user supplied in `DIAMOND DOCS/MARVEL PHOTOS`, three
+   per character, as supplied (no upscaling: the user declined the 2.5-hour Real-ESRGAN
+   run). Many are fan-made or AI images (Gemini and TikTok marks, artist signatures); the
+   user was told and chose **one generic credit**: "Images belong to their respective
+   owners." with the removal-on-request route, on every gallery, the footer and
+   `/credits/`. Do not add or swap photos without the user. Originals live in
+   `photo-originals/user/` (git-ignored); the set and crop centres are in
+   `research/photos/user-set.json`. The earlier marvel.com download (`picks.json`,
+   `manifest.*`) is superseded and unused. Still no Marvel logos as design elements.
 6. **Clearly unofficial and non-commercial.** A persistent "Unofficial fan site"
    marker on every page, plus a footer disclaimer: unofficial, non-commercial, not
    affiliated with or endorsed by Marvel or Disney, all names, characters and images
@@ -61,9 +63,9 @@ of every session, then continue from the tracker at the bottom.
 | Topic | Decision |
 |---|---|
 | Approach | **Extend what's built.** Keep all dossiers, hero scenes and research; add photos, four interactive features, credits page and six original animation ideas. |
-| Photo look | **Graded to each palette.** Photos rest as a live shader duotone in the character's palette with crushed blacks, grain and vignette, and bloom to full colour on hover or at the scroll reveal. |
-| Depth layers | **Processed locally on this PC.** rembg for the cut-out and Depth Anything V2 (small) for a depth map, via Python, downloaded once (about 400 MB). Output per photo: graded base, cut-out and depth map as WebP. Images never leave the machine. |
-| Photo sources | **marvel.com plus Disney press.** marvel.com, cdn.marvel.com, d23.com and Disney's official press and media pages. If a character has no usable official photo, the page keeps its abstract hero and says so. |
+| Photo look (superseded 25 Oct: photos show near full colour, lightly graded at rest on hover devices, full colour on hover) | **Graded to each palette.** Photos rest as a live shader duotone in the character's palette with crushed blacks, grain and vignette, and bloom to full colour on hover or at the scroll reveal. |
+| Depth layers (dropped 25 Oct: user wants speed, no model downloads) | **Processed locally on this PC.** rembg for the cut-out and Depth Anything V2 (small) for a depth map, via Python, downloaded once (about 400 MB). Output per photo: graded base, cut-out and depth map as WebP. Images never leave the machine. |
+| Photo sources (superseded 25 Oct: the user's supplied set, see rule 5) | **marvel.com plus Disney press.** marvel.com, cdn.marvel.com, d23.com and Disney's official press and media pages. If a character has no usable official photo, the page keeps its abstract hero and says so. |
 | Photo coverage | **Every character gets their photo**, not just the leads (user: "I want all the character's faces"). |
 | Character page | **I Hero** (graded photo with depth layers over the existing signature scene, plus the character's own photo shader: ripples, particle dissolve, liquid, fire, static and so on), **II Trailer** (pinned: zoom, colour shift, text beats), **III Origin**, **IV Two lives** (drag a divider between comics eras and on-screen history), **V Doomsday** (confirmed facts only), then photo credits. |
 | Navigation | **Team picker on home**, replacing the roster; the whole grid rearranges with animation. **/timeline/** and **/versus/** are new pages, linked from the header, menu and every character page. Versus is shareable (`/versus/?a=thor&b=magneto`). |
@@ -81,20 +83,20 @@ of every session, then continue from the tracker at the bottom.
 | 3 | X-Men | done |
 | 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
 | 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | done |
-| 6 | Photos for every character (steps 1-2 done: 62 files downloaded, picks in research/photos/picks.json awaiting the user's swaps): local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
+| 6 | Photos for every character from the user's set: photo hero, In frame gallery (three prints), Halftone Lens, developing prints, home and team photo cards, next-dossier photo, credits page (done). Still open: Trailer act, Two lives slider, Photo Hand-off | in progress |
 | 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
 
 ## Feature tracker
 
 | Feature | Wave | Status |
 |---|---|---|
-| Official photos with depth layers and per-character photo shader | 6 | todo |
+| Character photos (hero portrait, gallery, cards, team rows, next link) | 6 | done |
 | Trailer act (pinned zoom, colour shift, text beats) | 6 | todo |
 | Two lives slider (comics vs on screen) | 6 | todo |
-| Credits page (every image, owner, source, page used) | 6 | todo |
-| Halftone Lens | 6 | todo |
+| Credits page (every image by character, generic credit, removal route) | 6 | done |
+| Halftone Lens (gallery prints; long press on touch) | 6 | done |
 | Photo Hand-off | 6 | todo |
-| Developing Credits | 6 | todo |
+| Developing prints (gallery prints develop like darkroom prints on reveal) | 6 | done |
 | Team picker on home | 7 | todo |
 | Magnetic Team Chain | 7 | todo |
 | Timeline page | 7 | todo |
@@ -171,6 +173,7 @@ npm install
 npm run dev        # local dev server
 npm run build      # static build to dist/
 npm run shots      # Playwright screenshots, desktop and phone, to screenshots/
+node scripts/photos-build.mjs            # photos: user-set.json + photo-originals/user -> public/photos + src/data/photos.json
 npx astro preview --port 4322            # serve the production build for QA
 node scripts/shots.mjs http://localhost:4322 screenshots/wave-N   # contact sheets per page
 node scripts/overflow.mjs http://localhost:4322                   # phone-width overflow check
@@ -252,6 +255,9 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - A header scrim fades in once the page scrolls (`html.scrolled .hdr-scrim`), so text never collides with the logo and menu. The header itself keeps `mix-blend-mode: difference`.
 - Shuri's pin table sizes itself to the camera's visible ground (corner raycasts) and rebuilds on resize. Small hero text has a static shadow; the pins scene also deepens the shade under the text on tall screens.
 
+- **Photos.** `scripts/photos-build.mjs` writes 400 px and native-width WebP (plus 800/1280/1920 for the 4K files), a halftone PNG (white dots, 4-colour palette, about 15 KB) and a 16 px placeholder per photo, about 11.7 MB in all; each page loads only its own. `src/components/Photo.astro` renders srcset, real width and height, lazy loading (eager plus fetchpriority high for the hero) and the crop centre. Two crop centres: `focus` for the wide desktop hero panel, `focusM` for every portrait-shaped frame. Landscape photos (wider than 1.2:1) get the `wide` hero panel (78vw) and a `sizes` hint that accounts for cover cropping, or the browser picks too small a file.
+- **Astro scoped CSS does not reach into child components.** Style the Photo component's `<img>` from a page with `:global(.photo)` under a scoped parent; a plain `.photo` selector silently does nothing (the hero photos stretched to natural height until this was fixed).
+- `clip-audit.mjs` also flags words broken across lines in headings and names (it caught nothing new, but a forced fault proved it catches 7 broken team names).
 - `src/scripts/app.ts` runs DOM motion first, then lazy-loads Three.js (`gl/engine`) and the page's scene chunk. Critical JS is about 60 KB gzipped; Three.js is about 130 KB and loads in parallel.
 - One persistent WebGL canvas (`#gl`) for heroes, and a second tiny canvas (`#wipe`) used only for page transitions. Both survive navigation via `transition:persist`.
 - Scenes communicate to the DOM through `ctx.signal` (the storm uses it to flash Thor's name).
@@ -261,8 +267,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 ## Open items
 
 - motionsites.ai reference links from the user (triggers a motion tuning pass).
-- Wave 6 needs the user's yes on a download manifest before any photo is fetched.
-- Wave 6 must also rewrite the rules list on the sources page (`src/pages/about.astro`), which still says no likenesses are used.
+- Real-ESRGAN (realesrgan-ncnn-vulkan v0.2.5.0) was downloaded to the session scratchpad and tested, then dropped at the user's request: about 1 min 43 s per photo on the UHD 730. One upscaled test file sits in `photo-originals/upscaled/` (unused).
 - Git has no global identity on this machine. The repo uses a local identity (Prejith, account email); the user may change the name.
 - GitHub CLI is installed per-user via winget at `%LOCALAPPDATA%MicrosoftWinGetPackagesGitHub.cli_*ingh.exe` (not on PATH in old shells) and signed in as prejith77. Use it to watch deploy runs.
 - If a push does not start a deploy run (seen once on 2026-10-25), start one by hand: `gh workflow run deploy.yml -R prejith77/doomsday-dossier --ref main`.
@@ -270,6 +275,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Photos from the user's own set (87 files, three per character) replace the marvel.com picks. User chose a generic credit after being told many look fan-made or AI-made, and declined upscaling (2.5 hours). Built: photo hero (wide panel for landscape photos), In frame gallery with developing prints, tilt and Halftone Lens, photo cards on home and team pages, next-dossier photo, /credits/ page, footer link, about-page rule rewritten. Team names on phones were breaking mid-word after the photo column was added: now sized by longest word, and the audit checks for broken words.
 - 2026-10-25: Fix pass before photos (user report): names all caps (Shang-Chi, Scott Lang, Mystique, Beast, Thor were mixed case), act and timeline headings sized by longest word, comics cards no longer cut (rail pins only when cards fit, else stacks), opened source lists no longer clipped in the pinned act, Shuri's pin table edge to edge, header scrim on scroll, Shuri hero text legible on phones. New clip audit: 0 issues on all 38 pages at desktop, laptop and phone. 60 fps at 4x throttle, no phone overflow, reduced motion and navigation pass. Deployed. Still waiting on the user's photo swaps (their message listed none).
 - 2026-10-25: Wave 6 step 2: user approved all 62 files; downloaded into photo-originals/ (git-ignored; sizes all matched the list; SHA-256 in downloads.json). Viewed every image. Recommended one pick per character in research/photos/picks.json (with crops). Findings: Sam's listed first choice was a merchandise photo (rejected); the Days of Future Past banner has Patrick Stewart and Ian McKellen, giving Professor X and Magneto; X-Men (2000) gives Romijn's Mystique; X2 gives Cumming's Nightcrawler. No official photo of Marsden (Cyclops), Grammer (Beast) or Tatum (Gambit): those keep abstract heroes. Waiting on the user to confirm the picks.
 - 2026-10-25: Wave 6 step 1: photo download list built from marvel.com, cdn.marvel.com and d23.com only (no downloads; sizes via HEAD). 71 candidates, 62 distinct files, 11.92 MB; first choices 25 files, 7.49 MB. No official photo found for Beast or Gambit; the five other X-Men only have Fox-era group key art; Doom only an article header image. Files: research/photos/manifest.{json,md,html}; rebuild with node scripts/photo-manifest.mjs. Waiting on the user to approve.

@@ -10,7 +10,7 @@ import { TEAMS, CAST, isPublished, displayName, u, DESIGN } from '../data/site';
 interface Props {
   title: string;
   description: string;
-  page: 'home' | 'character' | 'team' | 'about';
+  page: 'home' | 'character' | 'team' | 'about' | 'credits';
   scene?: string;
   styleVars?: string;
   ease?: string;
@@ -91,7 +91,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         All character names, related marks and images belong to their owners. No Marvel logos are used as design elements.
         Film facts come only from Marvel announcements. Character history comes from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics, rewritten in our own words.
       </p>
-      <p style="margin:0">Facts checked 25 October 2026. <a href={u('/about/')}>Sources and rules</a></p>
+      <p style="margin:0">Facts checked 25 October 2026. <a href={u('/about/')}>Sources and rules</a> &middot; <a href={u('/credits/')}>Image credits</a></p>
     </footer>
 
     <script>
