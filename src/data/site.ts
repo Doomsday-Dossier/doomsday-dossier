@@ -102,11 +102,46 @@ export const DESIGN: Record<string, Design> = {
     font: "'Chakra Petch', sans-serif", fontWeight: 700, fontCase: 'uppercase', tracking: '0.01em',
     ease: 'power3.out', pace: 0.9, kicker: 'An Air Force lieutenant who flew support for the Falcon, then earned the wings himself.',
   },
+  'reed-richards': {
+    heroScale: 0.82,
+    slug: 'reed-richards', wave: 2, scene: 'elastic', sceneName: 'Elastic Lattice',
+    sceneNote: 'A blueprint grid behaves like stretched fabric. Drag the cursor through it and the lattice pulls, bulges and snaps back, and the name stretches with you.',
+    bg: '#04070f', ink: '#e8eef8', dim: '#93a3bd', accent: '#4fa8ff', accent2: '#dbeaff',
+    font: "'Anybody Variable', sans-serif", fontWeight: 800, fontCase: 'uppercase', tracking: '-0.01em',
+    ease: 'elastic.out(1, 0.55)', pace: 1.0, kicker: 'A scientist who can stretch his body into any shape and who believes every problem gives way to enough thought.',
+  },
+  'sue-storm': {
+    heroScale: 0.9,
+    slug: 'sue-storm', wave: 2, scene: 'ripple', sceneName: 'Force Field',
+    sceneNote: 'A live wave simulation ripples under the page. Your cursor drops ripples that bend the light, and anything close to it turns invisible, letters included.',
+    bg: '#05060c', ink: '#eef0ff', dim: '#9ea4c4', accent: '#a9b8ff', accent2: '#7df0ff',
+    font: "'Italiana', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.04em',
+    ease: 'sine.out', pace: 1.35, kicker: 'The member who can vanish from sight and raise force fields strong enough to hold back almost anything.',
+  },
+  'johnny-storm': {
+    heroScale: 0.8,
+    slug: 'johnny-storm', wave: 2, scene: 'flame', sceneName: 'Flame On',
+    sceneNote: 'A fire of thousands of particles rises from below, and the path your cursor takes catches alight. The name flickers like a flame.',
+    bg: '#070403', ink: '#fff3e6', dim: '#b9a593', accent: '#ff6a1f', accent2: '#ffd27a',
+    font: "'Bricolage Grotesque Variable', sans-serif", fontWeight: 800, fontCase: 'uppercase', tracking: '-0.03em',
+    ease: 'expo.out', pace: 0.8, kicker: 'The youngest of the four, who bursts into flame, takes to the sky and never passes up a chance to show off.',
+  },
+  'ben-grimm': {
+    heroScale: 0.86,
+    slug: 'ben-grimm', wave: 2, scene: 'rock', sceneName: 'Clobber',
+    sceneNote: 'A wall of real 3D rock leans away from your cursor. Click or tap to throw a punch through it, and scroll to watch it crumble.',
+    bg: '#080605', ink: '#f2e9e0', dim: '#b0a090', accent: '#ff8a3a', accent2: '#c9b39a',
+    font: "'Alfa Slab One', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.01em',
+    ease: 'power4.out', pace: 1.2, kicker: 'A test pilot turned to living rock, with a soft heart under the stone and a battle cry everyone knows.',
+  },
 };
 
 const researchFiles = import.meta.glob('../../research/*.json', { eager: true, import: 'default' }) as Record<string, any>;
+// Local-only placeholders for testing scenes before research lands. Git-ignored; never deployed.
+const previewFiles = import.meta.glob('../../research-preview/*.json', { eager: true, import: 'default' }) as Record<string, any>;
 export function getResearch(slug: string): Research | null {
-  const hit = Object.entries(researchFiles).find(([p]) => p.endsWith(`/${slug}.json`));
+  const hit = Object.entries(researchFiles).find(([p]) => p.endsWith(`/${slug}.json`))
+    || Object.entries(previewFiles).find(([p]) => p.endsWith(`/${slug}.json`));
   return hit ? (hit[1] as Research) : null;
 }
 
@@ -166,5 +201,9 @@ export const HERO_NAMES: Record<string, string> = {
   'scott-lang': 'Scott Lang',
   'shang-chi': 'Shang-Chi',
   'joaquin-torres': 'Joaquín Torres',
+  'reed-richards': 'Reed Richards',
+  'sue-storm': 'Sue Storm',
+  'johnny-storm': 'Johnny Storm',
+  'ben-grimm': 'Ben Grimm',
 };
 export const heroName = (slug: string) => HERO_NAMES[slug] || slug;

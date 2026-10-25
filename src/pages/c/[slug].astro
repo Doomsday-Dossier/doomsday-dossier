@@ -8,6 +8,10 @@ import '@fontsource-variable/tektur';
 import '@fontsource-variable/fraunces/full.css';
 import '@fontsource-variable/bodoni-moda';
 import '@fontsource/chakra-petch/700.css';
+import '@fontsource-variable/anybody/wdth.css';
+import '@fontsource/italiana';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource/alfa-slab-one';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
 
 export function getStaticPaths() {
@@ -58,7 +62,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   <section class={`hero ch-hero scene-${d.scene}`} data-gl-region aria-labelledby="hero-name">
     <div class="wrap ch-hero-inner">
       <p class="label" data-hero-in>{team.name} &middot; Dossier {String(order.indexOf(slug) + 1).padStart(2, '0')}</p>
-      <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' ? 'stamp' : d.scene === 'storm' ? 'drop' : d.scene === 'slipstream' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
+      <h1 id="hero-name" class="display hero-name" data-split={d.scene === 'cryo' || d.scene === 'quantum' ? undefined : 'chars'} data-split-on="load" data-split-style={d.scene === 'forge' || d.scene === 'rock' ? 'stamp' : d.scene === 'storm' || d.scene === 'flame' ? 'drop' : d.scene === 'slipstream' || d.scene === 'elastic' ? 'slide' : d.scene === 'quantum' ? 'scale' : 'rise'} data-delay="0.3">{heroName(slug)}</h1>
       <p class="ch-alias" data-hero-in>{r.alias}</p>
       <p class="ch-kicker serif" data-hero-in>{d.kicker}</p>
       <dl class="ch-meta" data-hero-in>
@@ -294,7 +298,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 
   .scr-grid { display: grid; gap: 40px; }
   .scr-grid > * { min-width: 0; }
-  .scr-side .act-title { font-size: clamp(36px, 4.4vw, 72px); overflow-wrap: anywhere; }
+  .scr-side .act-title { font-size: calc(clamp(32px, 3.8vw, 64px) * var(--hero-scale, 1)); overflow-wrap: break-word; hyphens: auto; }
   @media (min-width: 900px) { .scr-grid { grid-template-columns: 4fr 7fr; } .scr-side { position: sticky; top: calc(var(--header-h) + 30px); align-self: start; } }
   .scr-sticky { display: flex; align-items: baseline; gap: 16px; margin-top: 24px; }
   .scr-year { font-family: var(--font-display); font-weight: var(--font-display-weight); font-size: clamp(64px, 9vw, 150px); line-height: 0.8; color: var(--c-accent); font-variant-numeric: tabular-nums; }

@@ -115,7 +115,7 @@ export class Engine {
   constructor(public canvas: HTMLCanvasElement) {
     const mobile = matchMedia('(pointer: coarse)').matches || innerWidth < 768;
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance', stencil: false, depth: false });
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance', stencil: false, depth: true });
     this.renderer.setClearColor(0x050607, 1);
     this.baseDpr = Math.min(devicePixelRatio || 1, mobile ? 1.25 : 1.5);
     this.ctx = {
@@ -149,7 +149,7 @@ export class Engine {
   async mount(scene: HeroScene) {
     this.unmount();
     this.scene = scene;
-    this.ctx.intro = 0; this.ctx.scroll = 0;
+    this.ctx.intro = 0; this.ctx.scroll = 0; this.ctx.signal = 0;
     this.frames = 0; this.acc = 0; this.sampling = !this.ctx.reduced;
     scene.mount(this.ctx);
     scene.resize?.(this.ctx);

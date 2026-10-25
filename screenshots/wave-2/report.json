@@ -1,0 +1,74 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/ben-grimm/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\c-ben-grimm-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/johnny-storm/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\c-johnny-storm-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/reed-richards/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\c-reed-richards-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/sue-storm/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\c-sue-storm-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/fantastic-four/",
+    "view": "desktop",
+    "file": "screenshots\\wave-2\\teams-fantastic-four-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/ben-grimm/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\c-ben-grimm-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/johnny-storm/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\c-johnny-storm-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/reed-richards/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\c-reed-richards-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/sue-storm/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\c-sue-storm-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/fantastic-four/",
+    "view": "phone",
+    "file": "screenshots\\wave-2\\teams-fantastic-four-phone.jpg",
+    "errors": []
+  }
+]

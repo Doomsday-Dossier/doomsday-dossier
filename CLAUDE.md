@@ -89,6 +89,10 @@ of every session, then continue from the tracker at the bottom.
 | Scott Lang | Quantum Scale | Infinite zoom through nested fractal layers, cursor lens shrinks or enlarges, variable-font optical size scales | quantum violet, magenta | Fraunces (opsz axis) |
 | Shang-Chi | Ink and Rings | Low-res ink-in-water fluid stirred by the cursor, ten light rings orbit | ink black, jade, gold | Bodoni Moda |
 | Joaquin Torres | Drone Sweep | Radar sweep over a point-cloud terrain, cursor is a targeting reticle | dusk orange, teal | Chakra Petch |
+| Reed Richards | Elastic Lattice | CPU spring-mesh blueprint grid dragged by cursor velocity; title width axis follows the pointer | blueprint navy, blue | Anybody (wdth 50-150) |
+| Sue Storm | Force Field | Real-time 2D wave equation refracting a halftone field; letters near the pointer turn invisible | night violet, periwinkle | Italiana |
+| Johnny Storm | Flame On | Vertex-shader particle fire from a flame bed plus the cursor's recent path; title weight flickers | ember black, orange | Bricolage Grotesque |
+| Ben Grimm | Clobber | Lit 3D instanced rock wall; cursor pushes, click or tap sends a shockwave, scroll crumbles it; title shakes on impact | stone brown, orange | Alfa Slab One |
 
 ## How to run
 
@@ -120,10 +124,10 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 | 1 | Avengers | Scott Lang | Paul Rudd | No | done |
 | 1 | Avengers | Shang-Chi | Simu Liu | No | done |
 | 1 | Avengers | Joaquin Torres | Danny Ramirez | No | done |
-| 2 | Fantastic Four | Reed Richards | Pedro Pascal | No | todo |
-| 2 | Fantastic Four | Sue Storm | Vanessa Kirby | No | todo |
-| 2 | Fantastic Four | Johnny Storm | Joseph Quinn | No | todo |
-| 2 | Fantastic Four | Ben Grimm | Ebon Moss-Bachrach | Yes (teaser) | todo |
+| 2 | Fantastic Four | Reed Richards | Pedro Pascal | No | done |
+| 2 | Fantastic Four | Sue Storm | Vanessa Kirby | No | done |
+| 2 | Fantastic Four | Johnny Storm | Joseph Quinn | No | done |
+| 2 | Fantastic Four | Ben Grimm | Ebon Moss-Bachrach | Yes (teaser) | done |
 | 3 | X-Men | Professor X | Patrick Stewart | Yes (teaser) | todo |
 | 3 | X-Men | Magneto | Ian McKellen | Yes (teaser) | todo |
 | 3 | X-Men | Cyclops | James Marsden | Yes (teaser) | todo |
@@ -151,6 +155,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 1. Re-check marvel.com/movies/avengers-doomsday and update `research/official.json` (cast, any newly named roles, new milestones with dates and Marvel URLs).
 2. Research: one agent per two characters writes `research/<slug>.json` in the shape the wave-1 files use. Fandom serves rendered pages behind a bot check, so read pages through the wiki's own MediaWiki API (`api.php?action=parse&prop=wikitext` or `?action=raw`) and cite the normal `/wiki/` URL. Do not bypass bot checks.
 3. Consistency rules for screen lists: archive footage, photos, mentions and animation do not count. Mark short or post-credits scenes as cameos. Leave out anything unreleased.
+3b. To test scenes before research lands, drop placeholder JSON in `research-preview/` (git-ignored, read by `getResearch` only as a fallback). Delete it before the real build.
 4. Add a `DESIGN` entry in `src/data/site.ts` (new hero scene id, palette, display face, ease, pace, kicker, heroScale) and a short name in `HERO_NAMES`. The page publishes automatically once design and research both exist.
 5. Write the hero scene in `src/scripts/gl/scenes/<id>.ts` and register it in `registry.ts`. Pair it with a title effect in `motion/characters.ts`. It must be a different technique from every existing scene.
 6. Install the display face with Fontsource and import it in `src/pages/c/[slug].astro` and `src/pages/teams/[team].astro`.
@@ -174,6 +179,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 2 (Fantastic Four) built and checked: four new heroes at 60 fps with CPU throttled 4x, no phone overflow, reduced motion and navigation pass. Marvel cast list re-checked, unchanged at 30 names; only the Thing has a Marvel-named role among the four. Engine now has a depth buffer for 3D scenes.
 - 2026-10-25: Wave 1 deployed to https://prejith77.github.io/doomsday-dossier/ (first run succeeded). Live QA passed: all 17 pages return 200, no phone overflow, reduced motion and navigation checks pass, WebGL scenes load from the sub-path.
 - 2026-10-25: Wave 1 built: home, 8 character dossiers, 7 team pages, sources page. QA passed: no phone overflow on any page; all heroes 60 fps at phone size on an Intel UHD 730 with 4x CPU throttle (not yet measured on a real phone); reduced motion leaves all text visible with no pinning or smooth scroll; four-hop navigation clears the wipe each time. Not deployed yet: waiting on the GitHub repo URL.
 - 2026-10-25: Interview complete, all decisions above locked. Official cast verified on marvel.com (30 names on the film page plus Peggy Carter confirmed at D23). Wave 1 research started.

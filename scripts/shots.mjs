@@ -19,7 +19,8 @@ function pages(dir = 'dist', rel = '') {
   }
   return res;
 }
-const list = pages().filter((p) => p.includes(filter)).sort();
+const filters = filter.split(',');
+const list = pages().filter((p) => filters.some((f) => (f === 'home' ? p === '/' : p.includes(f)))).sort();
 
 const VIEWS = {
   desktop: { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 },
