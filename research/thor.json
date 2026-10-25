@@ -1,0 +1,318 @@
+{
+  "slug": "thor",
+  "name": "Thor Odinson",
+  "alias": "Thor",
+  "origin": {
+    "firstAppearance": {
+      "title": "Journey Into Mystery",
+      "issue": "#83",
+      "coverDate": "August 1962"
+    },
+    "creators": ["Stan Lee", "Larry Lieber", "Jack Kirby"],
+    "summary": [
+      "Thor is the son of Odin, ruler of Asgard, and the Elder God Gaea, born in a cave in Norway. He grew up in the golden realm beside his adopted brother Loki, a Frost Giant's child whose boyhood envy hardened into a hatred that would last for centuries. As a boy he was promised Mjolnir, the uru hammer forged by the dwarves Brokk and Eitri, which Odin enchanted so that only a truly worthy hand could lift it. Thor spent years chasing that worthiness, and a youthful quest with Balder and Sif taught him that the hammer answered to a pure heart rather than raw strength.",
+      "Power made him proud. When Thor broke a truce and stirred up trouble once too often, Odin took back the hammer, wiped his son's memory and sent him to Earth as Donald Blake, a medical student with a damaged leg. Blake became a gifted New York surgeon and quietly fell for his nurse, Jane Foster. On a holiday in Norway he fled from the alien Kronans, the 'Stone Men from Saturn', into a cave where a plain wooden cane lay waiting. Striking it against a boulder turned him into Thor and the cane into Mjolnir. If he was parted from the hammer for more than sixty seconds, he changed back into Blake.",
+      "Blake only learned the truth behind his double life in Thor #159 (December 1968), when Odin explained the lesson in humility he had arranged. Within a year of his debut Thor stood among the founding Avengers in Avengers #1 (September 1963). The Marvel Fandom wiki also records an earlier, Golden Age appearance of Thor in Venus #11 (November 1950) and adds that issue's artists, Don Rico and Hy Rosen, to his creator credits, but the hero as readers know him begins with Journey Into Mystery #83."
+    ],
+    "sources": [
+      {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+      {"label": "Marvel Fandom: Journey Into Mystery Vol 1 83", "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_1_83"},
+      {"label": "Marvel Fandom: Thor Vol 1 159", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_159"},
+      {"label": "Marvel Fandom: Avengers Vol 1 1", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_1"},
+      {"label": "Marvel Fandom: Venus Vol 1 11", "url": "https://marvel.fandom.com/wiki/Venus_Vol_1_11"}
+    ]
+  },
+  "comics": [
+    {
+      "era": "Silver Age debut",
+      "years": "1962-1963",
+      "title": "Doctor Blake and the Hammer",
+      "summary": "A limping doctor finds a cane in a Norwegian cave and becomes a god. Blake guards his secret while Loki escapes Asgard again and again to torment him, and Odin forbids any romance with Jane Foster. When one of Loki's schemes drags in the Hulk, Thor joins the heroes who stop it and becomes a founding member of the Avengers.",
+      "keyIssues": ["Journey Into Mystery #83 (1962)", "Avengers #1 (1963)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Journey Into Mystery Vol 1 83", "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_1_83"},
+        {"label": "Marvel Fandom: Avengers Vol 1 1", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_1"}
+      ]
+    },
+    {
+      "era": "Lee and Kirby cosmic age",
+      "years": "1966-1968",
+      "title": "Gods, Planets and the Man Beneath",
+      "summary": "Stan Lee and Jack Kirby blow the stage wide open. Thor brawls with Hercules, faces Ego the Living Planet and Galactus, and is stripped of his godhood by Odin, dying at the hands of the Wrecker before Odin judges that he has finally found humility and restores him. The run closes the loop on his origin when Odin reveals that Donald Blake was a guise built to teach his son that lesson.",
+      "keyIssues": ["Thor #126 (1966)", "Thor #159 (1968)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 1 126", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_126"},
+        {"label": "Marvel Fandom: Thor Vol 1 159", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_159"}
+      ]
+    },
+    {
+      "era": "Walter Simonson era",
+      "years": "1983-1984",
+      "title": "The Coming of Beta Ray Bill",
+      "summary": "Writer-artist Walt Simonson introduces Beta Ray Bill, a cybernetic alien who proves worthy of Mjolnir. Odin forges a second hammer, Stormbreaker, for Bill and moves the mortal-form enchantment onto it, which erases Donald Blake from existence. With Nick Fury's help, Thor takes up a new cover as Sigurd Jarlson, a construction worker who is really just the god in glasses.",
+      "keyIssues": ["Thor #337 (1983)", "Thor #341 (1984)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 1 337", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_337"},
+        {"label": "Marvel Fandom: Thor Vol 1 341", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_341"}
+      ]
+    },
+    {
+      "era": "Masterson years",
+      "years": "1989-1995",
+      "title": "Eric Masterson and Thunderstrike",
+      "summary": "Thor is bonded to Eric Masterson, an architect who swaps places with him through Mjolnir, much as Blake once did. After Thor strikes down Loki for threatening the woman who cares for Eric's son, Odin exiles him and Eric carries the thunder god's power alone. Eric later frees Thor from hiding in his own subconscious, earns the enchanted mace Thunderstrike, and dies a hero in his own series.",
+      "keyIssues": ["Thor #408 (1989)", "Thor #432 (1991)", "Thor #459 (1993)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 1 408", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_408"},
+        {"label": "Marvel Fandom: Thor Vol 1 432", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_432"},
+        {"label": "Marvel Fandom: Thor Vol 1 459", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_459"},
+        {"label": "Marvel Fandom: Thunderstrike Vol 1 24", "url": "https://marvel.fandom.com/wiki/Thunderstrike_Vol_1_24"}
+      ]
+    },
+    {
+      "era": "Heroes Return to Ragnarok",
+      "years": "1998-2004",
+      "title": "Jake Olson, King Thor and the Last Ragnarok",
+      "summary": "Back from the Heroes Reborn world, Thor is given the form of a dead paramedic, Jake Olson. When Odin falls to Surtur, Thor claims the throne and the Odinpower, splits from his human half and drifts into a god-king who merges Asgard with Earth; after mortals reduce Asgard to rubble he loses an arm, kills his Jake Olson self and finds himself unworthy, then reigns over a future Earth before travelling back to undo it. The volume ends with Thor learning that Those Who Sit Above in Shadow feed on the endless Ragnarok cycle, destroying them at the cost of his life and Asgard, and lying down to sleep.",
+      "keyIssues": ["Thor Vol. 2 #2 (1998)", "Thor Vol. 2 #67 (2003)", "Thor Vol. 2 #85 (2004)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 2 2", "url": "https://marvel.fandom.com/wiki/Thor_Vol_2_2"},
+        {"label": "Marvel Fandom: Thor Vol 2 44", "url": "https://marvel.fandom.com/wiki/Thor_Vol_2_44"},
+        {"label": "Marvel Fandom: Thor Vol 2 67", "url": "https://marvel.fandom.com/wiki/Thor_Vol_2_67"},
+        {"label": "Marvel Fandom: Thor Vol 2 79", "url": "https://marvel.fandom.com/wiki/Thor_Vol_2_79"},
+        {"label": "Marvel Fandom: Thor Vol 2 85", "url": "https://marvel.fandom.com/wiki/Thor_Vol_2_85"}
+      ]
+    },
+    {
+      "era": "Rebirth and Siege",
+      "years": "2007-2010",
+      "title": "Asgard over Oklahoma",
+      "summary": "Donald Blake, restored to existence, wakes Thor in the void, and Thor returns in a new costume to raise Asgard above the Oklahoma plains and hunt down his scattered people. Loki tricks him into killing his own revived grandfather Bor, and Thor is banished while the Asgardians decamp to Latveria. During Norman Osborn's Siege the Void tears Asgard down and kills Loki, and Thor ends the Sentry with a lightning strike before his exile is lifted and he rejoins the Avengers.",
+      "keyIssues": ["Thor Vol. 3 #1 (2007)", "Thor #600 (2009)", "Siege #4 (2010)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 3 1", "url": "https://marvel.fandom.com/wiki/Thor_Vol_3_1"},
+        {"label": "Marvel Fandom: Thor Vol 3 600", "url": "https://marvel.fandom.com/wiki/Thor_Vol_3_600"},
+        {"label": "Marvel Fandom: Siege Vol 1 4", "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_4"}
+      ]
+    },
+    {
+      "era": "Jason Aaron begins",
+      "years": "2013",
+      "title": "Gorr the God Butcher",
+      "summary": "A trail of murdered gods leads Thor to Gorr, an alien who swore to wipe out every deity. The story jumps between a young Thor in the year 893, the present-day Avenger, and an aged King Thor at the end of time, and the three versions finally join forces to stop Gorr's bomb from killing gods across all of history.",
+      "keyIssues": ["Thor: God of Thunder #1 (2013)", "Thor: God of Thunder #11 (2013)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor: God of Thunder Vol 1 1", "url": "https://marvel.fandom.com/wiki/Thor:_God_of_Thunder_Vol_1_1"},
+        {"label": "Marvel Fandom: Thor: God of Thunder Vol 1 11", "url": "https://marvel.fandom.com/wiki/Thor:_God_of_Thunder_Vol_1_11"}
+      ]
+    },
+    {
+      "era": "Unworthy",
+      "years": "2014-2018",
+      "title": "Odinson and the Mighty Thor",
+      "summary": "During Original Sin, Nick Fury whispers a truth that confirms Thor's buried fear that the gods do not truly deserve worship, and Thor can no longer lift Mjolnir. He loses an arm to Malekith, watches Jane Foster take up the hammer as the new Thor, and gives up his own name to call himself simply Odinson. The era peaks when the cancer-stricken Jane hurls the Mangog and Mjolnir into the sun, dies, is brought back by Odinson and Odin, and urges him to reclaim his name.",
+      "keyIssues": ["Original Sin #7 (2014)", "Thor Vol. 4 #1 (2014)", "Mighty Thor #706 (2018)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Original Sin Vol 1 7", "url": "https://marvel.fandom.com/wiki/Original_Sin_Vol_1_7"},
+        {"label": "Marvel Fandom: Thor Vol 4 1", "url": "https://marvel.fandom.com/wiki/Thor_Vol_4_1"},
+        {"label": "Marvel Fandom: Unworthy Thor Vol 1 5", "url": "https://marvel.fandom.com/wiki/Unworthy_Thor_Vol_1_5"},
+        {"label": "Marvel Fandom: Mighty Thor Vol 2 705", "url": "https://marvel.fandom.com/wiki/Mighty_Thor_Vol_2_705"},
+        {"label": "Marvel Fandom: Mighty Thor Vol 2 706", "url": "https://marvel.fandom.com/wiki/Mighty_Thor_Vol_2_706"}
+      ]
+    },
+    {
+      "era": "All-Father",
+      "years": "2019-2022",
+      "title": "War of the Realms and the Weight of the Crown",
+      "summary": "To beat Malekith, Thor gives up an eye and calls on his younger and older selves; the God Tempest reforges Mjolnir, he lifts it again because the struggle itself made him worthy, and Odin hands him the title of All-Father. As king he becomes a herald of Galactus to fight the Black Winter, survives a rampage by a vengeful Donald Blake, and confronts a sentient Mjolnir calling itself the God of Hammers. Odin dies empowering his son, and Thor burns the old enchantments out of the hammer.",
+      "keyIssues": ["War of the Realms #6 (2019)", "Thor Vol. 6 #1 (2020)", "Thor Vol. 6 #24 (2022)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: War of the Realms Vol 1 6", "url": "https://marvel.fandom.com/wiki/War_of_the_Realms_Vol_1_6"},
+        {"label": "Marvel Fandom: Thor Vol 6 1", "url": "https://marvel.fandom.com/wiki/Thor_Vol_6_1"},
+        {"label": "Marvel Fandom: Thor Vol 6 23", "url": "https://marvel.fandom.com/wiki/Thor_Vol_6_23"},
+        {"label": "Marvel Fandom: Thor Vol 6 24", "url": "https://marvel.fandom.com/wiki/Thor_Vol_6_24"}
+      ]
+    },
+    {
+      "era": "Al Ewing era",
+      "years": "2023-2025",
+      "title": "Immortal Thor",
+      "summary": "Gaea, enraged at what humanity has done to the planet, frees Utgard-Loki and the Elder Gods of Utgard to wipe people out. Thor fights the storm god Toranos, is framed for a Roxxon executive's murder, forges Zeus's stolen power into the weapon Yolgjord, and welcomes back his son Magni from an erased future. Killed by Loki, Thor uses his final act in the afterlife to send Donald Blake's soul back to Earth to be reborn as Sigurd Jarlson, leaving his own body turned to stone.",
+      "keyIssues": ["Immortal Thor #1 (2023)", "Immortal Thor #8 (2024)", "Immortal Thor #25 (2025)"],
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Immortal Thor Vol 1 1", "url": "https://marvel.fandom.com/wiki/Immortal_Thor_Vol_1_1"},
+        {"label": "Marvel Fandom: Immortal Thor Vol 1 8", "url": "https://marvel.fandom.com/wiki/Immortal_Thor_Vol_1_8"},
+        {"label": "Marvel Fandom: Immortal Thor Vol 1 25", "url": "https://marvel.fandom.com/wiki/Immortal_Thor_Vol_1_25"}
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "The Incredible Hulk Returns",
+      "year": 1988,
+      "continuity": "OTHER",
+      "actor": "Eric Allan Kramer",
+      "cameo": false,
+      "summary": "A continuation of the Bill Bixby Hulk series, this film reinvents Thor as a Viking warrior-king rather than an Asgardian god, barred from Valhalla by Odin until he atones for his arrogance. Archaeology team doctor Donald Blake finds his tomb and calls him forth by lifting his war hammer, and the brash warrior ends up alongside David Banner and the Hulk.",
+      "sources": [
+        {"label": "Marvel Fandom: The Incredible Hulk Returns", "url": "https://marvel.fandom.com/wiki/The_Incredible_Hulk_Returns"},
+        {"label": "Marvel Fandom: Thor Odinson (Earth-400005)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-400005)"}
+      ]
+    },
+    {
+      "title": "Thor",
+      "year": 2011,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "On the day of his coronation, Thor's reckless raid on Jotunheim leads Odin to strip his powers and banish him to New Mexico, where he meets astrophysicist Jane Foster. While Loki plots in Asgard, Thor proves himself worthy again by facing the Destroyer, and their final clash leaves the Bifrost broken and Thor cut off from Earth.",
+      "sources": [
+        {"label": "MCU Wiki: Thor (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor_(film)"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "The Avengers",
+      "year": 2012,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "Thor comes back to Earth to stop Loki, trading blows with Iron Man before joining Nick Fury's new team. He fights through the attack on the Helicarrier and the Battle of New York, then takes Loki and the Tesseract home to Asgard.",
+      "sources": [
+        {"label": "MCU Wiki: The Avengers", "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Thor: The Dark World",
+      "year": 2013,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "When Jane Foster absorbs the Aether, Malekith's Dark Elves strike Asgard and kill Thor's mother, Frigga. Thor frees Loki for an uneasy alliance and beats Malekith in the realm-hopping Battle of Greenwich, then turns down Odin's throne.",
+      "sources": [
+        {"label": "MCU Wiki: Thor: The Dark World", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_The_Dark_World"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Avengers: Age of Ultron",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "Shaken by a vision of doom, Thor goes looking for answers at the Water of Sight and comes back knowing that the Mind Stone matters. His lightning brings the Vision to life, and he fights Ultron's army in Sokovia before leaving Earth to chase the Infinity Stones.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Age of Ultron", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Doctor Strange",
+      "year": 2016,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": true,
+      "summary": "In the mid-credits scene, Thor brings Loki to the Sanctum Sanctorum looking for their missing father, Odin. Stephen Strange agrees to help as long as the brothers go straight back to Asgard afterwards.",
+      "sources": [
+        {"label": "MCU Wiki: Doctor Strange (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_(film)"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Thor: Ragnarok",
+      "year": 2017,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "Odin dies, and their sister Hela shatters Mjolnir and takes Asgard while Thor is flung to the garbage planet Sakaar to fight the Hulk as the Grandmaster's gladiator. He builds the Revengers, loses an eye to Hela, and lets Surtur destroy Asgard so its people can escape, accepting that Asgard is its people rather than a place.",
+      "sources": [
+        {"label": "MCU Wiki: Thor: Ragnarok", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Ragnarok"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "After Thanos slaughters Asgardian refugees aboard the Statesman, Thor travels to Nidavellir and takes the full blast of a dying star to forge Stormbreaker. He strikes Thanos in Wakanda but fails to finish him, and watches helplessly as the Snap wipes out half of all life.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Infinity War", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "Thor beheads Thanos on the Garden and then sinks into five years of guilt in New Asgard. The Time Heist reunites him with his mother and his old hammer, and after the Battle of Earth he passes Asgard's leadership to Valkyrie and leaves with the Guardians of the Galaxy.",
+      "sources": [
+        {"label": "MCU Wiki: Avengers: Endgame", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    },
+    {
+      "title": "Thor: Love and Thunder",
+      "year": 2022,
+      "continuity": "MCU",
+      "actor": "Chris Hemsworth",
+      "cameo": false,
+      "summary": "Thor's search for inner peace is cut short by Gorr the God Butcher, and he teams up with Valkyrie, Korg and Jane Foster, who now wields a rebuilt Mjolnir as the Mighty Thor. Jane dies of cancer after the final battle, and Thor adopts Gorr's resurrected daughter, Love.",
+      "sources": [
+        {"label": "MCU Wiki: Thor: Love and Thunder", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Love_and_Thunder"},
+        {"label": "MCU Wiki: Thor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"}
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The Marvel Fandom wiki counts Venus #11 (November 1950) as Thor's first appearance, nearly twelve years before Journey Into Mystery #83 introduced the modern hero.",
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Venus Vol 1 11", "url": "https://marvel.fandom.com/wiki/Venus_Vol_1_11"}
+      ]
+    },
+    {
+      "fact": "Korg, the Kronan who became a fan favourite in Thor: Ragnarok, made his comics debut in the same issue as Thor: Journey Into Mystery #83.",
+      "sources": [
+        {"label": "Marvel Fandom: Journey Into Mystery Vol 1 83", "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_1_83"}
+      ]
+    },
+    {
+      "fact": "Beta Ray Bill, the alien who lifted Mjolnir and won his own hammer, Stormbreaker, first appeared in Thor #337 (November 1983), Walt Simonson's first issue as writer and artist.",
+      "sources": [
+        {"label": "Marvel Fandom: Thor Vol 1 337", "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_337"},
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"}
+      ]
+    },
+    {
+      "fact": "According to Thor Vol. 5 #10 (2019), Odin first called his son 'God of Thunder' as a taunt, because baby Thor was terrified of storms.",
+      "sources": [
+        {"label": "Marvel Fandom: Thor Odinson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"},
+        {"label": "Marvel Fandom: Thor Vol 5 10", "url": "https://marvel.fandom.com/wiki/Thor_Vol_5_10"}
+      ]
+    }
+  ],
+  "unverified": [
+    "How the Journey Into Mystery #83 writing credit splits between Stan Lee and Larry Lieber (plot versus script) is not stated on the wiki issue page, so both are listed as writers, with Jack Kirby as penciler.",
+    "The cameo flag is set only where the MCU Wiki marks an appearance as a credits scene (Doctor Strange, mid-credits).",
+    "Left out on purpose: MCU projects where the MCU Wiki lists Thor only as archive footage, a photo, a memory or a mention, not as a new appearance (for example Deadpool & Wolverine (2024, footage and mentioned) and the Loki series (footage and archive audio)). What If...? is animated, so it falls outside the live-action scope.",
+    "Not checked against the allowed sources, so not included: the Team Thor mockumentary shorts and any other short-form or promotional live-action material.",
+    "Avengers: Doomsday is marked unreleased on the MCU Wiki as of this research date and is left out, as instructed.",
+    "Comics era years show the publication dates of the issues checked. Some events inside an era (for example Balder's regency in Thor #367-368) were described from the character page without opening those issue pages."
+  ]
+}

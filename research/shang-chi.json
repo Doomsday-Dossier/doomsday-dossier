@@ -1,0 +1,416 @@
+{
+  "slug": "shang-chi",
+  "name": "Zheng Shang-Chi",
+  "alias": "Master of Kung Fu",
+  "origin": {
+    "firstAppearance": {
+      "title": "Special Marvel Edition",
+      "issue": "#15",
+      "coverDate": "December 1973"
+    },
+    "creators": [
+      "Steve Englehart",
+      "Jim Starlin"
+    ],
+    "summary": [
+      "Shang-Chi grew up walled off from the outside world, raised by a father who was an immortal sorcerer and the master of a vast criminal empire. From early childhood he was drilled in martial arts and spiritual discipline until his body itself became a weapon, and he was taught that all of it served the cause of justice.",
+      "That belief cracked after his very first mission. Seeing his father clearly at last, the young fighter walked away from his inheritance and turned against the empire that had raised him, finding allies in British intelligence (MI6) and earning a lifetime of assassins sent in his direction. He debuted in Special Marvel Edition #15 (December 1973), created by writer Steve Englehart and artist Jim Starlin.",
+      "His earliest stories leaned on characters borrowed under license from early 20th-century novels. Modern comics rebuilt that background with Marvel-owned names: his father is now Zheng Zu, the family organization is the Five Weapons Society, and Shang-Chi's surname, Zheng, was confirmed in Marvel's Voices: Identity #1 (2022)."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom: Special Marvel Edition Vol 1 15",
+        "url": "https://marvel.fandom.com/wiki/Special_Marvel_Edition_Vol_1_15"
+      },
+      {
+        "label": "Marvel Fandom: Master of Kung Fu Vol 1 18",
+        "url": "https://marvel.fandom.com/wiki/Master_of_Kung_Fu_Vol_1_18"
+      },
+      {
+        "label": "Marvel Fandom: Marvel's Voices: Identity Vol 2 1",
+        "url": "https://marvel.fandom.com/wiki/Marvel's_Voices:_Identity_Vol_2_1"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "Bronze Age",
+      "years": "1973–1983",
+      "title": "Master of Kung Fu",
+      "summary": "Free of his father, Shang-Chi spent the 1970s tearing down the old man's criminal network piece by piece, working beside MI6 operatives such as Black Jack Tarr and Leiko Wu. The series took the title Master of Kung Fu with issue #17 and mixed spycraft with the mystical; along the way he met his long-running rival Shen Kuei, the Cat, and joined Iron Fist, Jack of Hearts and White Tiger against the Corporation. The series ran to issue #125 in 1983, and in time Shang-Chi stepped out of the spy game altogether.",
+      "keyIssues": [
+        "Special Marvel Edition #15, 1973",
+        "Master of Kung Fu #17, 1974",
+        "Master of Kung Fu #38, 1976"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Master of Kung Fu Vol 1 17",
+          "url": "https://marvel.fandom.com/wiki/Master_of_Kung_Fu_Vol_1_17"
+        },
+        {
+          "label": "Marvel Fandom: Master of Kung Fu Vol 1 38",
+          "url": "https://marvel.fandom.com/wiki/Master_of_Kung_Fu_Vol_1_38"
+        },
+        {
+          "label": "Marvel Fandom: Master of Kung Fu Vol 1 125",
+          "url": "https://marvel.fandom.com/wiki/Master_of_Kung_Fu_Vol_1_125"
+        },
+        {
+          "label": "Marvel Fandom: Deadly Hands of Kung Fu Vol 1 31",
+          "url": "https://marvel.fandom.com/wiki/Deadly_Hands_of_Kung_Fu_Vol_1_31"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2000–2003",
+      "title": "Marvel Knights and Hellfire Apocalypse",
+      "summary": "Shang-Chi stepped back into the costumed world as part of Daredevil's Marvel Knights, a task force first pulled together to drag the Punisher into court, and stayed with Black Widow and the group through a run of street-level threats. In 2002 a six-issue Shang-Chi: Master of Kung Fu series by Doug Moench and Paul Gulacy, both veterans of his original run, set him and MI6 against his father's Hellfire Weapon, a device capable of wiping out cities.",
+      "keyIssues": [
+        "Marvel Knights #1, 2000",
+        "Shang-Chi: Master of Kung Fu #1, 2002",
+        "Shang-Chi: Master of Kung Fu #6, 2003"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Marvel Knights Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Knights_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi: Master of Kung Fu Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi:_Master_of_Kung_Fu_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi: Master of Kung Fu Vol 1 6",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi:_Master_of_Kung_Fu_Vol_1_6"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2006–2011",
+      "title": "Heroes for Hire and the Secret Avengers",
+      "summary": "During the superhuman registration crisis he signed on with Misty Knight and Colleen Wing's Heroes for Hire, a stint that ended badly when, amid the Hulk's assault on Manhattan, he killed teammate Humbug after learning Humbug had betrayed Tarantula, then left to recover his inner balance. His father's return in 2010 drew him into Steve Rogers' Secret Avengers, and he stayed on as one of that unit's trusted allies. During Spider-Island he taught a Spider-Man without his spider-sense a new way to fight, caught the spider plague himself, and teamed with Iron Fist to bring down the Bride of Nine Spiders.",
+      "keyIssues": [
+        "Heroes for Hire #1, 2006",
+        "Secret Avengers #6, 2010",
+        "Spider-Island: Deadly Hands of Kung Fu #1, 2011"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Heroes for Hire Vol 2 1",
+          "url": "https://marvel.fandom.com/wiki/Heroes_for_Hire_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom: Heroes for Hire Vol 2 15",
+          "url": "https://marvel.fandom.com/wiki/Heroes_for_Hire_Vol_2_15"
+        },
+        {
+          "label": "Marvel Fandom: Secret Avengers Vol 1 6",
+          "url": "https://marvel.fandom.com/wiki/Secret_Avengers_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom: Spider-Island: Deadly Hands of Kung Fu Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Spider-Island:_Deadly_Hands_of_Kung_Fu_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2013–2015",
+      "title": "Avenger",
+      "summary": "Captain America and Iron Man picked Shang-Chi for their enlarged Avengers roster, with Stark arming him with custom gear, and he fought the Garden on Mars and the Builders and Thanos during Infinity. In Avengers World he faced a dragon woken beneath Madripoor, finally beating it once Pym Particles made him a giant. When one of Ex Nihilo's origin bombs struck Kobe, he gave himself over to the strange matter there instead of resisting it, and came away with a power of replication.",
+      "keyIssues": [
+        "Avengers (Vol. 5) #1, 2013",
+        "Infinity #1, 2013",
+        "Avengers World #14, 2014"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Avengers Vol 5 1",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_5_1"
+        },
+        {
+          "label": "Marvel Fandom: Infinity Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Infinity_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Avengers World Vol 1 14",
+          "url": "https://marvel.fandom.com/wiki/Avengers_World_Vol_1_14"
+        },
+        {
+          "label": "Marvel Fandom: Avengers Vol 5 38",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_5_38"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2017–2021",
+      "title": "The Protectors and the New Agents of Atlas",
+      "summary": "Shang-Chi was out with Amadeus Cho, Silk, Ms. Marvel and Jimmy Woo when an alien prince abducted them from Manhattan; calling themselves the Protectors, they broke free with help from the ordinary people taken alongside them. Woo then folded the group into the Agents of Atlas, and during the War of the Realms Shang-Chi trained the team for its last stand against Sindr and her forces from Muspelheim, later taking the young Sword Master under his wing. After freeing Amadeus from a tech mogul's control in Atlantis Attacks, he walked away from Atlas, angry that Woo had used the team as pawns.",
+      "keyIssues": [
+        "Totally Awesome Hulk #15, 2017",
+        "War of the Realms: New Agents of Atlas #1, 2019",
+        "Atlantis Attacks #5, 2021"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Totally Awesome Hulk Vol 1 15",
+          "url": "https://marvel.fandom.com/wiki/Totally_Awesome_Hulk_Vol_1_15"
+        },
+        {
+          "label": "Marvel Fandom: War of the Realms: New Agents of Atlas Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/War_of_the_Realms:_New_Agents_of_Atlas_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Atlantis Attacks Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Atlantis_Attacks_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2020–2021",
+      "title": "Supreme Commander",
+      "summary": "Gene Luen Yang's 2020 series found Shang-Chi working in a bakery in San Francisco's Chinatown until assassins, and two half-siblings he had never known, Brother Sabre and Sister Dagger, crashed into his quiet life. They told him his late father's spirit had chosen him to lead the Five Weapons Society, then held by his full sister Shi-Hua, Sister Hammer, and her army of jiangshi. Urged by his uncle's ghost to stop running from family, he broke Shi-Hua's grip on him in a battle across London and accepted command of the Society, vowing to turn it toward protecting people.",
+      "keyIssues": [
+        "Shang-Chi (Vol. 1) #1, 2020",
+        "Shang-Chi (Vol. 1) #5, 2021"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2021–2022",
+      "title": "Friends, Family and the Ten Rings",
+      "summary": "The Phoenix Force pulled him into its contest for a new host, where he advanced until he refused to kill and was eliminated. Back home, running a formerly criminal society strained his bonds with Spider-Man, Captain America, Iron Man and the Fantastic Four, even as he rescued his mother, Jiang Li, from the Negative Zone. When his grandfather Xin of Ta Lo began hunting his father's bloodline, Shang-Chi took up the Jade Emperor's Ten Rings, briefly surrendered to them and took on his father's face and temper, and was talked back by his siblings; a month later the Rings found their way back to him on their own.",
+      "keyIssues": [
+        "Avengers (Vol. 8) #41, 2021",
+        "Shang-Chi (Vol. 2) #1, 2021",
+        "Shang-Chi (Vol. 2) #12, 2022"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Avengers Vol 8 41",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_8_41"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi Vol 2 1",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi Vol 2 12",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_2_12"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2022–2023",
+      "title": "Ring-Keeper",
+      "summary": "Everyone who wanted the Rings came for them: criminal outfits raided his vault, and his old MI6 friends stole them, only for their tampering to unleash the Wyrm of Desolation. The gods then summoned him to the Game of Rings, a tournament in which he beat Darkstrider and Zaran, survived a betrayal by Shen Kuei and still chose to save his rival's life, a choice that earned him the Jade Emperor's recognition as the true Ring-Keeper. In Master of the Ten Rings he slipped back to 19th-century China, met a younger, kinder version of his father, and came home to give the old man's remains full funeral rites.",
+      "keyIssues": [
+        "Shang-Chi and the Ten Rings #1, 2022",
+        "Shang-Chi and the Ten Rings #6, 2023",
+        "Shang-Chi: Master of the Ten Rings #1, 2023"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi and the Ten Rings Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_and_the_Ten_Rings_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi and the Ten Rings Vol 1 6",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_and_the_Ten_Rings_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom: Shang-Chi: Master of the Ten Rings Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi:_Master_of_the_Ten_Rings_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2023–2024",
+      "title": "Gang War",
+      "summary": "When New York's underworld broke into open war, Shang-Chi took a seat at the crime lords' table for the Five Weapons Society, his real goal being to keep Chinatown out of the crossfire. He survived a Darkforce ambush and a coup by his lieutenant Captain Feng that left the Ten Rings sealed away, then played rival gangs, and even the heroes who came to confront him, off against each other until he tricked Feng into releasing the Rings. With Chinatown secure, he left to help Spider-Man and the others end the war.",
+      "keyIssues": [
+        "Amazing Spider-Man: Gang War First Strike #1, 2024",
+        "Deadly Hands of Kung Fu: Gang War #1, 2024",
+        "Deadly Hands of Kung Fu: Gang War #2, 2024"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Amazing Spider-Man Gang War: First Strike Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Spider-Man_Gang_War:_First_Strike_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Deadly Hands of Kung Fu: Gang War Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Deadly_Hands_of_Kung_Fu:_Gang_War_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom: Deadly Hands of Kung Fu: Gang War Vol 1 2",
+          "url": "https://marvel.fandom.com/wiki/Deadly_Hands_of_Kung_Fu:_Gang_War_Vol_1_2"
+        }
+      ]
+    },
+    {
+      "era": "Modern Age",
+      "years": "2024–2025",
+      "title": "Thunderbolt, Then Avenger Again",
+      "summary": "Bucky Barnes recruited him into a new Thunderbolts squad built to finish off the Red Skull; working under the codename Gamemaster, Shang-Chi knocked out U.S. Agent in Hong Kong and used the Ten Rings to break open the Skull's bunker in Latveria. Captain America then drafted him into the Avengers Emergency Response Squad, where on his first mission he shrugged off Sin's psychic control and freed his teammates. He later helped expose a Serpent Society plot hidden behind a chain of crises.",
+      "keyIssues": [
+        "Thunderbolts (Vol. 6) #3, 2024",
+        "Avengers Assemble (Vol. 3) #1, 2024",
+        "Avengers Assemble (Vol. 3) #5, 2025"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Thunderbolts Vol 6 3",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_3"
+        },
+        {
+          "label": "Marvel Fandom: Thunderbolts Vol 6 4",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_4"
+        },
+        {
+          "label": "Marvel Fandom: Avengers Assemble Vol 3 1",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Assemble_Vol_3_1"
+        },
+        {
+          "label": "Marvel Fandom: Avengers Assemble Vol 3 5",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Assemble_Vol_3_5"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "year": 2021,
+      "continuity": "MCU",
+      "actor": "Simu Liu (Arnold Sun as a teenager, Jayden Tianyi Zhang as a child)",
+      "cameo": false,
+      "summary": "Trained as a teenage assassin by his father, Xu Wenwu, Shang-Chi has been living quietly in San Francisco as a parking valet named Shaun until his father's Ten Rings organization comes after the pendant his mother left him. Reunited with his sister Xialing, he journeys to the hidden village of Ta Lo, fights Wenwu to stop him from opening the Dark Gate, and ends the film as the new wielder of the Ten Rings. A closing scene has Wong bring him and Katy to a holographic meeting with Carol Danvers and Bruce Banner.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        },
+        {
+          "label": "MCU Wiki: Shang-Chi and the Legend of the Ten Rings",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Steve Englehart coined the name from his study of the I Ching; it is usually translated as the rising and advancing of the spirit.",
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        }
+      ]
+    },
+    {
+      "fact": "His given name appeared in his 1973 debut, but his family name, Zheng, was not confirmed until Marvel's Voices: Identity #1 in 2022.",
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom: Marvel's Voices: Identity Vol 2 1",
+          "url": "https://marvel.fandom.com/wiki/Marvel's_Voices:_Identity_Vol_2_1"
+        }
+      ]
+    },
+    {
+      "fact": "In 1995 Dwayne McDuffie pitched a Shang-Chi series as part of a line Marvel nearly outsourced to Milestone Media; the plan fell apart after changes in Marvel's editorial leadership.",
+      "sources": [
+        {
+          "label": "Marvel Fandom: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Marvel Studios once considered introducing Shang-Chi in The Avengers, alongside the Mandarin, long before his own film.",
+      "sources": [
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Whether Master of Kung Fu #125 (June 1983) was the final issue of the original series: the wiki lists the run as #17 to #125 but the pages read do not state that it ended there, so the summary says only that it ran to #125.",
+    "The exact issue in which Shang-Chi first joined Hickman's Avengers: the character page cites Avengers (Vol. 5) #1 to #3 for the Mars mission, and the #1 issue page was not checked line by line for his role.",
+    "The photo of Shang-Chi in She-Hulk: Attorney at Law episode 9 is listed on the MCU Wiki character page but not on that episode's own page.",
+    "Unreleased projects listed on the MCU Wiki (Avengers: Doomsday, Avengers: Secret Wars, a Shang-Chi sequel) were left out on purpose: none was released before 2026-10-25, and the brief excludes them.",
+    "No live-action appearances outside the MCU (FOX, SONY or OTHER) were found on the pages read.",
+    "She-Hulk: Attorney at Law (2022) uses archive footage only, so it is not counted, matching the rule used for every character."
+  ]
+}

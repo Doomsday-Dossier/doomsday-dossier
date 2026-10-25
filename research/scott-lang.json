@@ -1,0 +1,224 @@
+{
+  "slug": "scott-lang",
+  "name": "Scott Lang",
+  "alias": "Ant-Man",
+  "origin": {
+    "firstAppearance": {
+      "title": "Avengers",
+      "issue": "181",
+      "coverDate": "March 1979"
+    },
+    "creators": ["David Michelinie", "John Byrne"],
+    "summary": [
+      "Scott Lang grew up in Coral Gables, Florida, and trained as an electronics engineer. Repair work could not pay his family's bills, so he turned his skills to burglary. He was caught and sent to prison, and his wife Peggy Rae divorced him while he was inside. Lang kept studying electronics, earned parole for good behavior and landed a job in Stark International's design department. He made his comics debut in exactly that role, as a technician installing equipment at Avengers Mansion in Avengers #181.",
+      "One issue later the real story began. His young daughter Cassie was diagnosed with a serious heart condition, and the one surgeon who could help her, Dr. Erica Sondheim, had disappeared. Desperate, Lang broke into Hank Pym's New Jersey home and stole the original Ant-Man suit and helmet. He had no idea that Pym, then working as Yellowjacket, saw the theft and quietly followed him to see what he would do with it.",
+      "Lang shrank down to raid Cross Technological Enterprises, where industrialist Darren Cross was holding Sondheim captive to keep his own failing heart going. He freed the doctor and beat Cross, and Cassie's operation was a success. Lang was ready to give back the suit and go back to prison. Instead, Pym let him keep the Ant-Man identity, on one condition: that he use it on the right side of the law."
+    ],
+    "sources": [
+      {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"},
+      {"label": "Marvel Database: Avengers Vol 1 181", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_181"},
+      {"label": "Marvel Database: Marvel Premiere Vol 1 47", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_47"},
+      {"label": "Marvel Database: Marvel Premiere Vol 1 48", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"}
+    ]
+  },
+  "comics": [
+    {
+      "era": "Bronze Age debut",
+      "years": "1979",
+      "title": "Stealing a Legacy",
+      "summary": "Scott first appeared as a Stark technician installing hardware at Avengers Mansion, where Wonder Man confronted him until Tony Stark stepped in. The very next month, by cover date, he was starring in Marvel Premiere, stealing the Ant-Man gear to save his daughter and winning Hank Pym's permission to keep it. A thief who became a hero for his kid gave Ant-Man a working-class heart the first version never had.",
+      "keyIssues": ["Avengers #181 (1979)", "Marvel Premiere #47 (1979)", "Marvel Premiere #48 (1979)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers Vol 1 181", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_181"},
+        {"label": "Marvel Database: Marvel Premiere Vol 1 47", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_47"},
+        {"label": "Marvel Database: Marvel Premiere Vol 1 48", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"}
+      ]
+    },
+    {
+      "era": "Stark's specialist",
+      "years": "1980-1987",
+      "title": "Iron Man's Smallest Ally",
+      "summary": "Scott's day job at Stark International made him Tony Stark's go-to man for tiny problems. He helped implant a device meant to keep Bruce Banner from turning into the Hulk, and he shrank into the Iron Man armor to save Tony's life. During the Armor Wars he slipped physically into Justin Hammer's computer systems to trace who had bought stolen Stark technology.",
+      "keyIssues": ["Iron Man #131 (1980)", "Iron Man #133 (1980)", "Iron Man #225 (1987)"],
+      "sources": [
+        {"label": "Marvel Database: Iron Man Vol 1 131", "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_131"},
+        {"label": "Marvel Database: Iron Man Vol 1 133", "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_133"},
+        {"label": "Marvel Database: Iron Man Vol 1 225", "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_225"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Hired help",
+      "years": "1994-1997",
+      "title": "Stand-in Scientist",
+      "summary": "When Stane International bought out Stark's company, Scott quit out of loyalty and started his own electronics business. With Reed Richards missing, Tony recommended him to the Fantastic Four as their resident scientist, and Scott and Cassie moved into Four Freedoms Plaza. Later, with many of Earth's heroes believed dead after the battle with Onslaught, he signed on with a revived Heroes for Hire.",
+      "keyIssues": ["Fantastic Four #384 (1994)", "Heroes for Hire #5 (1997)"],
+      "sources": [
+        {"label": "Marvel Database: Fantastic Four Vol 1 384", "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_384"},
+        {"label": "Marvel Database: Heroes for Hire Vol 1 5", "url": "https://marvel.fandom.com/wiki/Heroes_for_Hire_Vol_1_5"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Avengers",
+      "years": "2003-2004",
+      "title": "Avenger at Last",
+      "summary": "After years of turning down membership offers so he could put Cassie first, Scott finally joined the Avengers after the war against Kang. The cost showed up quickly. His team life helped his ex-wife win custody, and he clashed constantly with the volatile Jack of Hearts. Their feud ended when Jack gave his life rescuing Cassie from a kidnapper.",
+      "keyIssues": ["Avengers Vol. 3 #62 (2003)", "Avengers Vol. 3 #76 (2004)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers Vol 3 62", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_62"},
+        {"label": "Marvel Database: Avengers Vol 3 76", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_76"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Avengers Disassembled",
+      "years": "2004",
+      "title": "The Day the Mansion Fell",
+      "summary": "Jack of Hearts staggered back into Avengers Mansion. When Scott went out to greet his friend, Jack exploded, taking Scott and part of the building with him. The blast turned out to be the opening move of the Scarlet Witch's breakdown, which tore the team apart. With her father gone, Cassie went on to become the hero Stature in the Young Avengers.",
+      "keyIssues": ["Avengers #500 (2004)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers Vol 3 500", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_500"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "The Children's Crusade",
+      "years": "2011-2012",
+      "title": "Rescued From the Blast",
+      "summary": "Traveling through time, the Young Avengers reached the moment before Jack of Hearts detonated and pulled Scott out, so the Avengers of that time believed he had died. The reunion with Cassie did not last: she was killed in battle with Doctor Doom, and Scott, holding his daughter's body, swore revenge on Doom.",
+      "keyIssues": ["Avengers: The Children's Crusade #5 (2011)", "Avengers: The Children's Crusade #7 (2011)", "Avengers: The Children's Crusade #9 (2012)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 5", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_5"},
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 7", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_7"},
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 9", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_9"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "FF",
+      "years": "2013-2014",
+      "title": "Leader of the Future Foundation",
+      "summary": "Reed Richards asked a grieving Scott to lead a stand-in Fantastic Four, alongside She-Hulk, Medusa and Darla Deering, while the real team took a trip that was meant to last four minutes. Things went wrong, as they tend to. The run ended with Scott facing Doctor Doom one on one and beating him, refusing Doom's offer to bring Cassie back to life.",
+      "keyIssues": ["FF Vol. 2 #1 (2013)", "FF Vol. 2 #16 (2014)"],
+      "sources": [
+        {"label": "Marvel Database: FF Vol 2 1", "url": "https://marvel.fandom.com/wiki/FF_Vol_2_1"},
+        {"label": "Marvel Database: FF Vol 2 16", "url": "https://marvel.fandom.com/wiki/FF_Vol_2_16"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Solo series",
+      "years": "2015-2016",
+      "title": "The Second-Chance Man",
+      "summary": "A spell that briefly flipped Doctor Doom's morals led him to bring Cassie back to life. Scott then followed her to Miami and opened Ant-Man Security Solutions, a firm staffed partly by ex-villains. Darren Cross came after Cassie's heart, and a later rescue mission landed Scott in court with She-Hulk as his lawyer. He walked free, and the story ended with father and daughter working together as Ant-Man and Stinger.",
+      "keyIssues": ["Ant-Man #1 (2015)", "Astonishing Ant-Man #1 (2015)", "Astonishing Ant-Man #13 (2016)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers World Vol 1 16", "url": "https://marvel.fandom.com/wiki/Avengers_World_Vol_1_16"},
+        {"label": "Marvel Database: Ant-Man Vol 1 1", "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_1_1"},
+        {"label": "Marvel Database: Astonishing Ant-Man Vol 1 1", "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_1"},
+        {"label": "Marvel Database: Astonishing Ant-Man Vol 1 13", "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_13"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Secret Empire",
+      "years": "2017",
+      "title": "Mole in the Resistance",
+      "summary": "With Hydra running the United States, Scott joined the underground resistance, until Hydra captured Cassie and forced him to spy for them. His tip-off led to an attack on the heroes' hidden base, and he confessed almost at once. He made up for it in the final battle by shrinking the Winter Soldier down into the Cosmic Cube so the real Steve Rogers could be restored. Afterward he stowed away with the Guardians of the Galaxy.",
+      "keyIssues": ["Secret Empire #6 (2017)", "Secret Empire #10 (2017)"],
+      "sources": [
+        {"label": "Marvel Database: Secret Empire Vol 1 6", "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_6"},
+        {"label": "Marvel Database: Secret Empire Vol 1 10", "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_10"},
+        {"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Ant-Man",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Paul Rudd",
+      "cameo": false,
+      "summary": "Fresh out of San Quentin and struggling to stay in his daughter's life, Scott breaks into Hank Pym's house and walks off with the Ant-Man suit. Pym and Hope van Dyne train him for a heist against Darren Cross, who plans to sell his Yellowjacket suit to Hydra. To beat Cross, Scott shrinks into the Quantum Realm and only just makes it back.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"},
+        {"label": "MCU Wiki: Ant-Man (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"}
+      ]
+    },
+    {
+      "title": "Captain America: Civil War",
+      "year": 2016,
+      "continuity": "MCU",
+      "actor": "Paul Rudd",
+      "cameo": false,
+      "summary": "Clint Barton recruits Scott to Steve Rogers's side in the fight over the Sokovia Accords. At Leipzig-Halle Airport he risks a giant-size growth he had only tested once in a lab, to hold off Iron Man's team. He ends up in the Raft prison until Steve breaks the team out.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"},
+        {"label": "MCU Wiki: Captain America: Civil War", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"}
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Paul Rudd",
+      "cameo": false,
+      "summary": "Days from the end of two years of house arrest, Scott is pulled back in by Hope and Hank, who need him to help rescue Janet van Dyne from the Quantum Realm. He dodges FBI agent Jimmy Woo while they contend with Ghost. In the closing scene he is left stranded in the Quantum Realm when Thanos's snap wipes out his team on the surface.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"},
+        {"label": "MCU Wiki: Ant-Man and the Wasp", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"}
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Paul Rudd",
+      "cameo": false,
+      "summary": "A rat stepping on a control panel sets Scott free from the Quantum Realm five years later. He drives to the Avengers Compound with the idea that becomes the Time Heist: use the Quantum Realm to travel back to before Thanos. He goes to 2012 New York to help steal the Tesseract and fights in the final battle against Thanos.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"},
+        {"label": "MCU Wiki: Avengers: Endgame", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"}
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "year": 2023,
+      "continuity": "MCU",
+      "actor": "Paul Rudd",
+      "cameo": false,
+      "summary": "Now a celebrity with a memoir to promote, Scott is dragged into the Quantum Realm with his whole family after a signal from Cassie's new device opens a portal. There they face Kang the Conqueror. Scott pushes Cassie to safety, sabotages Kang's Multiversal Engine Core with Pym Particle discs, and with Hope knocks Kang into the core.",
+      "sources": [
+        {"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"},
+        {"label": "MCU Wiki: Ant-Man and the Wasp: Quantumania", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"}
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "In his second appearance, Scott names his flying ant steeds 'Steed' and 'Emma', a nod to the 1960s British spy series The Avengers rather than the superhero team.",
+      "sources": [{"label": "Marvel Database: Marvel Premiere Vol 1 48", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"}]
+    },
+    {
+      "fact": "Years before Peggy Rae was introduced, David Michelinie and Bob Layton had planned to reveal that Tony Stark's girlfriend Rae LaCoste was Scott's ex-wife, and to turn her into Madame Masque.",
+      "sources": [{"label": "Marvel Database: Scott Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"}]
+    },
+    {
+      "fact": "Adrien Brody, Joseph Gordon-Levitt, Simon Pegg and Ewan McGregor were all in the running for Ant-Man before Paul Rudd got the part.",
+      "sources": [{"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"}]
+    },
+    {
+      "fact": "Early in the development of Captain America: Civil War, Scott was meant to fight on Iron Man's side, as Hank Pym did in the original comic event. The plan changed as the script evolved.",
+      "sources": [{"label": "MCU Wiki: Ant-Man (Scott Lang)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"}]
+    }
+  ],
+  "unverified": [
+    "Avengers: The Children's Crusade #7 is cited on the Earth-616 page for Scott's rescue, but a keyword search of that issue page's synopsis did not turn up Scott's name. The rescue is confirmed on the #5 issue page and Cassie's death on the #9 issue page.",
+    "Post-2017 comics, including the 2022 'Ant-Man and the Wasp' Microverse story, are left out. That section is commented out on the Earth-616 page, and the issue page 'Ant-Man and the Wasp Vol 1 1' does not exist under that name on the wiki.",
+    "Details of Scott's relationship with Jessica Jones (Alias) and his Original Sin role come only from the Earth-616 character page. Individual issue pages were not fetched, so they are not used as key issues.",
+    "Not counted as screen appearances: Spider-Man: Homecoming (video footage), Deadpool & Wolverine and She-Hulk: Attorney at Law (footage only), WandaVision (memory), Loki (flashbacks and archive audio), and mentions in Avengers: Infinity War and other titles. Avengers: Doomsday is set for release on December 18, 2026, after today's date, so it is excluded.",
+    "No non-MCU live-action portrayal of Scott Lang was found on the pages checked. No exhaustive search was done."
+  ]
+}

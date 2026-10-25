@@ -1,0 +1,99 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource-variable/inter-tight';
+import '../styles/global.css';
+import { TEAMS, CAST, isPublished, displayName, u, DESIGN } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  page: 'home' | 'character' | 'team' | 'about';
+  scene?: string;
+  styleVars?: string;
+  ease?: string;
+  pace?: number;
+}
+const { title, description, page, scene, styleVars = '', ease = 'power3.out', pace = 1 } = Astro.props;
+const fullTitle = page === 'home' ? 'Doomsday Dossier: an unofficial fan briefing for Avengers: Doomsday' : `${title} | Doomsday Dossier`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050607" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <ClientRouter fallback="none" />
+  </head>
+  <body data-page={page} data-scene={scene} data-ease={ease} data-pace={pace} data-release="2026-12-18" style={styleVars}>
+    <a class="skip" href="#main">Skip to content</a>
+    <canvas id="gl" aria-hidden="true" transition:persist="gl"></canvas>
+    <canvas id="wipe" aria-hidden="true" transition:persist="wipe"></canvas>
+    <div class="grain" aria-hidden="true" transition:persist="grain"></div>
+
+    <header class="hdr">
+      <a class="brand" href={u('/')} data-accent="#3dff8a"><b></b>Doomsday Dossier</a>
+      <div class="hdr-right">
+        <span class="unofficial" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial fan site</span>
+        <button class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="menu"><span>Index</span><i></i></button>
+      </div>
+    </header>
+
+    <nav class="menu" id="menu" aria-label="Site index">
+      <div class="menu-grid">
+        <div>
+          <h3>Dossier</h3>
+          <ul>
+            <li><a href={u('/')}>The road to Doomsday</a></li>
+            <li><a href={u('/about/')}>Sources and rules</a></li>
+          </ul>
+        </div>
+        {TEAMS.map((t) => (
+          <div>
+            <h3><a href={u(`/teams/${t.id}/`)}>{t.name}</a></h3>
+            <ul>
+              {CAST.filter((c) => c.team === t.id).map((c) =>
+                isPublished(c.slug)
+                  ? <li><a href={u(`/c/${c.slug}/`)} data-accent={DESIGN[c.slug!].accent}>{displayName(c)}</a></li>
+                  : <li><span>{displayName(c)}</span></li>
+              )}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="menu-foot">
+        <span>Avengers: Doomsday is in theaters 18 December 2026.</span>
+        <span>Unofficial. Not affiliated with Marvel or Disney.</span>
+      </div>
+    </nav>
+
+    <main id="main" transition:animate="none">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <span class="label">Unofficial fan site</span>
+      <p style="margin:0;max-width:72ch">
+        <strong>Doomsday Dossier is an unofficial, non-commercial fan project.</strong>
+        It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company.
+        All character names and related marks belong to their owners. No Marvel artwork, logos, posters or likenesses are used.
+        Film facts come only from Marvel announcements. Character history comes from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics, rewritten in our own words.
+      </p>
+      <p style="margin:0">Facts checked 25 October 2026. <a href={u('/about/')}>Sources and rules</a></p>
+    </footer>
+
+    <script>
+      import '../scripts/app';
+    </script>
+  </body>
+</html>
