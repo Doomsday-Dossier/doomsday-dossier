@@ -263,6 +263,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 5 deployed and verified live (38 pages, no phone overflow, five new heroes 60 fps at 4x throttle). All 29 confirmed characters with a named role or a known last role now have dossiers. Next: wave 6 (photos), which starts with a download manifest for the user to approve.
 - 2026-10-25: Wave 5 (Shuri, M'Baku, Namor, Loki, Peggy Carter) built and checked: five new heroes, no shader errors, 60 fps at 4x CPU throttle, no phone overflow, reduced motion and navigation pass. Marvel cast unchanged; Shuri's role recorded as 'Shuri / Black Panther' per Marvel's teaser article. Research agents were resumed after a session restart.
 - 2026-10-25: Wave 4 deployed and verified live (33 pages, no phone overflow, all five new heroes 60 fps at 4x throttle).
 - 2026-10-25: Wave 4 perf fixed (title effects made repaint-free): all five Thunderbolts* heroes 60 fps at 4x CPU throttle. Footer now carries the non-commercial and removal-on-request lines.
