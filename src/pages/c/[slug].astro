@@ -69,6 +69,8 @@ const mentions = OFFICIAL.milestones
 const lastScreen = [...r.screen].filter((s) => s.actor.startsWith(c.actor)).sort((a, b) => b.year - a.year)[0];
 
 const fa = r.origin.firstAppearance;
+// longest word in a heading, used by CSS to cap the size so no word is cut
+const lw = (t: string) => Math.max(...String(t).split(/\s+/).map((w) => w.length));
 const issue = (s: string) => (s.startsWith('#') ? s : `#${s}`);
 const faYear = (fa.coverDate.match(/\d{4}/) || [''])[0];
 const sup = (nums: number[], anchor: string) => nums.map((n) => `<sup class="cite"><a href="#${anchor}">${n}</a></sup>`).join('');
@@ -100,7 +102,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
     <div class="wrap act-grid">
       <header class="act-head">
         <p class="label"><span class="act-num">II</span> Origin</p>
-        <h2 id="origin-h" class="display act-title" data-split="words">Where it began</h2>
+        <h2 id="origin-h" class="display act-title" style="--lw:5" data-split="words">Where it began</h2>
       </header>
       <aside class="fa-card" data-reveal>
         <p class="label">{d.faLabel ?? 'First appearance'}</p>
@@ -132,7 +134,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   <section class="act act-comics" data-timeline aria-labelledby="comics-h">
     <div class="tl-head wrap">
       <p class="label"><span class="act-num">III</span> In the comics</p>
-      <h2 id="comics-h" class="display act-title">{comics[0].years.slice(0, 4)}&ndash;{comics[comics.length - 1].years.slice(-4)}</h2>
+      <h2 id="comics-h" class="display act-title" style="--lw:9">{comics[0].years.slice(0, 4)}&ndash;{comics[comics.length - 1].years.slice(-4)}</h2>
       <div class="tl-progress" aria-hidden="true"><i></i></div>
     </div>
     <ol class="tl-track">
@@ -140,7 +142,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
         <li class="tl-card">
           <p class="tl-in tl-years">{e.years}</p>
           <p class="tl-in tl-era label">{String(i + 1).padStart(2, '0')} &middot; {e.era}</p>
-          <h3 class="tl-in tl-title display">{e.title}</h3>
+          <h3 class="tl-in tl-title display" style={`--lw:${lw(e.title)}`}>{e.title}</h3>
           <p class="tl-in tl-sum" set:html={e.summary + sup(e.nums, 'src-comics')} />
           {e.keyIssues?.length > 0 && <p class="tl-in tl-keys"><span class="label">Key issues</span> {e.keyIssues.join(' · ')}</p>}
         </li>
@@ -158,7 +160,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
     <div class="wrap scr-grid">
       <header class="scr-side">
         <p class="label"><span class="act-num">IV</span> On screen</p>
-        <h2 id="screen-h" class="display act-title" data-split="words">{screen.length} live-action {screen.length === 1 ? 'appearance' : 'appearances'}</h2>
+        <h2 id="screen-h" class="display act-title" style="--lw:11" data-split="words">{screen.length} live-action {screen.length === 1 ? 'appearance' : 'appearances'}</h2>
         <div class="scr-sticky" aria-hidden="true">
           <span class="scr-year">{screen[0]?.year}</span>
           <span class="scr-cont" data-cont={screen[0]?.continuity}>{screen[0]?.continuity}</span>
@@ -195,7 +197,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   <section class="act act-doom" aria-labelledby="doom-h">
     <div class="wrap">
       <p class="label"><span class="act-num">V</span> In Avengers: Doomsday</p>
-      <h2 id="doom-h" class="display act-title doom-title" data-split="chars" data-split-style={d.scene === 'cryo' ? 'glitch' : 'rise'}>Confirmed</h2>
+      <h2 id="doom-h" class="display act-title doom-title" style="--lw:9" data-split="chars" data-split-style={d.scene === 'cryo' ? 'glitch' : 'rise'}>Confirmed</h2>
       <p class="doom-rule">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
       <div class="doom-grid">
         <div class="doom-fact" data-reveal>
@@ -240,7 +242,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   </section>
 
   <!-- NEXT -->
-  <section class="next" style={`--n-accent:${next.accent};--n-font:${next.font};--n-weight:${next.fontWeight};--n-case:${next.fontCase}`}>
+  <section class="next" style={`--n-lw:${lw(heroName(next.slug))};--n-accent:${next.accent};--n-font:${next.font};--n-weight:${next.fontWeight};--n-case:${next.fontCase}`}>
     <a class="next-link" href={u(`/c/${next.slug}/`)} data-accent={next.accent} data-magnet="0.15">
       <span class="label">Next dossier</span>
       <span class="next-name">{heroName(next.slug)}</span>
@@ -255,6 +257,8 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .ch-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, color-mix(in srgb, var(--c-bg) 88%, transparent) 0%, color-mix(in srgb, var(--c-bg) 45%, transparent) 38%, transparent 70%), linear-gradient(to right, color-mix(in srgb, var(--c-bg) 55%, transparent), transparent 55%); }
   .ch-hero-inner { position: relative; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
   .ch-hero-inner > * { min-width: 0; }
+  /* small hero text sits over bright scenes (Shuri's pins on phones): a static shadow keeps it legible */
+  .ch-hero-inner > .label, .ch-alias, .ch-kicker, .ch-meta, .ch-motion { text-shadow: 0 1px 2px var(--c-bg), 0 0 14px var(--c-bg), 0 0 28px var(--c-bg); }
   .hero-name { font-size: min(calc(clamp(44px, 14vw, 230px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / (var(--hero-longest, 8) * 0.82))); line-height: 0.86; overflow-wrap: normal; word-break: keep-all; hyphens: none; position: relative; }
   .ch-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-accent); margin: 0; }
   .ch-kicker { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; max-width: 30ch; margin: 6px 0 0; }
@@ -276,7 +280,8 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 
   .act { position: relative; overflow-x: clip; padding: clamp(90px, 14vh, 160px) 0 60px; background: var(--c-bg); }
   .act-num { color: var(--c-accent); margin-right: 10px; }
-  .act-title { font-size: clamp(44px, 7vw, 112px); margin: 12px 0 0; }
+  /* --lw is the heading's longest word; 0.9em per letter covers the widest faces, so no word is ever cut */
+  .act-title { font-size: min(calc(clamp(44px, 7vw, 112px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / (var(--lw, 8) * 0.9))); margin: 12px 0 0; overflow-wrap: break-word; }
   .act-grid { display: grid; gap: 40px; position: relative; }
   @media (min-width: 900px) { .act-grid { grid-template-columns: 5fr 7fr; } .act-head { grid-column: 1 / -1; } }
   .big-year { position: absolute; top: 40px; right: -2vw; font-family: var(--font-display); font-weight: var(--font-display-weight); font-size: clamp(140px, 28vw, 460px); line-height: 0.8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--c-accent) 35%, transparent); pointer-events: none; white-space: nowrap; }
@@ -291,7 +296,8 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .trivia ul { margin: 10px 0 0; padding-left: 18px; color: var(--c-dim); }
   .trivia li { margin: 8px 0; }
 
-  .act-comics { padding-bottom: 40px; overflow: hidden; }
+  /* clip sideways only: an opened source list must be free to grow downward */
+  .act-comics { padding-bottom: 40px; overflow-x: clip; overflow-y: visible; }
   .tl-head { margin-bottom: 40px; }
   .tl-progress { height: 1px; background: var(--c-line); margin-top: 24px; position: relative; }
   .tl-progress i { position: absolute; inset: 0; background: var(--c-accent); transform-origin: left; transform: scaleX(0); }
@@ -299,13 +305,18 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .tl-card { border-top: 1px solid var(--c-line); padding-top: 20px; }
   .tl-years { font-family: var(--font-mono); font-size: 12px; color: var(--c-accent); letter-spacing: 0.1em; margin: 0 0 6px; }
   .tl-era { margin: 0 0 12px; }
-  .tl-title { font-size: clamp(34px, 3.4vw, 56px); line-height: 0.92; margin: 0 0 16px; }
-  .tl-sum { color: var(--c-ink); margin: 0 0 14px; font-size: 16px; }
+  .tl-card { container-type: inline-size; }
+  .tl-title { font-size: min(calc(clamp(26px, 2.4vw, 40px) * var(--hero-scale, 1)), calc(100cqi / (var(--lw, 8) * 0.88))); line-height: 0.98; margin: 0 0 14px; overflow-wrap: break-word; }
+  .tl-sum { color: var(--c-ink); margin: 0 0 14px; font-size: 15px; line-height: 1.55; }
   .tl-keys { font-size: 13px; color: var(--c-dim); margin: 0; }
+  .tl-head .act-title { font-size: min(calc(clamp(40px, 5vw, 84px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / 8)); }
+  /* sideways rail: only when JS has confirmed every card fits the screen height */
   @media (min-width: 900px) {
-    .act-comics { min-height: 100svh; }
-    .tl-track { display: flex; width: max-content; gap: 48px; padding-left: var(--gutter); padding-right: 20vw; }
-    .tl-card { width: min(34vw, 460px); flex: 0 0 auto; }
+    .act-comics.tl-row { min-height: 100svh; }
+    .act-comics.tl-row .tl-track { display: flex; width: max-content; gap: 48px; padding-left: var(--gutter); padding-right: 20vw; }
+    .act-comics.tl-row .tl-card { width: min(38vw, 520px); flex: 0 0 auto; }
+    .act-comics:not(.tl-row) .tl-track { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); column-gap: 48px; }
+    .act-comics:not(.tl-row) .tl-progress { display: none; }
   }
   @media (max-width: 899px) {
     .tl-track { padding-left: calc(var(--gutter) + 18px); }
@@ -315,7 +326,8 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 
   .scr-grid { display: grid; gap: 40px; }
   .scr-grid > * { min-width: 0; }
-  .scr-side .act-title { font-size: calc(clamp(32px, 3.8vw, 64px) * var(--hero-scale, 1)); overflow-wrap: break-word; hyphens: auto; }
+  .scr-side { container-type: inline-size; }
+  .scr-side .act-title { font-size: min(calc(clamp(32px, 3.8vw, 64px) * var(--hero-scale, 1)), calc(100cqi / (var(--lw, 11) * 0.88))); overflow-wrap: break-word; }
   @media (min-width: 900px) { .scr-grid { grid-template-columns: 4fr 7fr; } .scr-side { position: sticky; top: calc(var(--header-h) + 30px); align-self: start; } }
   .scr-sticky { display: flex; align-items: baseline; gap: 16px; margin-top: 24px; }
   .scr-year { font-family: var(--font-display); font-weight: var(--font-display-weight); font-size: clamp(64px, 9vw, 150px); line-height: 0.8; color: var(--c-accent); font-variant-numeric: tabular-nums; }
@@ -355,7 +367,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
 
   .next { position: relative; z-index: 2; background: var(--c-bg); border-top: 1px solid var(--c-line); padding: 80px var(--gutter) 60px; display: grid; gap: 30px; }
   .next-link { display: grid; gap: 10px; text-decoration: none; justify-self: start; }
-  .next-name { font-family: var(--n-font); font-weight: var(--n-weight); text-transform: var(--n-case); font-size: clamp(48px, 10vw, 170px); line-height: 0.85; transition: color 0.4s, letter-spacing 0.6s var(--ease-out); }
+  .next-name { font-family: var(--n-font); font-weight: var(--n-weight); text-transform: uppercase; font-size: min(clamp(48px, 10vw, 170px), calc((100vw - 2 * var(--gutter)) / (var(--n-lw, 8) * 0.88))); overflow-wrap: break-word; line-height: 0.85; transition: color 0.4s, letter-spacing 0.6s var(--ease-out); }
   .next-link:hover .next-name { color: var(--n-accent); letter-spacing: 0.02em; }
   .next-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--n-accent); }
   .next-team { text-decoration: none; }

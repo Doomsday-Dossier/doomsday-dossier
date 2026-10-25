@@ -75,10 +75,20 @@ export function comicsTimeline(root: ParentNode, o: Opts) {
   const bar = sec.querySelector<HTMLElement>('.tl-progress i');
   const mm = gsap.matchMedia(); mms.push(mm);
   mm.add({ wide: '(min-width: 900px)', reduced: '(prefers-reduced-motion: reduce)' }, (c) => {
+    sec.classList.remove('tl-row');
     const { wide, reduced } = c.conditions as { wide: boolean; reduced: boolean };
     if (reduced || o.reduced) return;
     const cards = gsap.utils.toArray<HTMLElement>('.tl-card', track);
+    let row = false;
     if (wide) {
+      sec.classList.add('tl-row');
+      // every card must fit on screen while pinned, or text would be cut off
+      const tallest = Math.max(...cards.map((c) => c.getBoundingClientRect().height));
+      const top = track.getBoundingClientRect().top - sec.getBoundingClientRect().top;
+      row = top + tallest + 40 <= window.innerHeight;
+      if (!row) sec.classList.remove('tl-row');
+    }
+    if (row) {
       const dist = () => track.scrollWidth - window.innerWidth + parseFloat(getComputedStyle(track).paddingLeft);
       const tw = gsap.to(track, {
         x: () => -dist(), ease: 'none',
@@ -92,7 +102,7 @@ export function comicsTimeline(root: ParentNode, o: Opts) {
         });
       });
     } else {
-      if (bar) gsap.fromTo(bar, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: track, start: 'top 70%', end: 'bottom 70%', scrub: true } });
+      if (bar && !wide) gsap.fromTo(bar, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: track, start: 'top 70%', end: 'bottom 70%', scrub: true } });
       cards.forEach((card) => gsap.from(card, { x: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 85%', once: true } }));
     }
   });

@@ -74,6 +74,9 @@ main { position: relative; z-index: 2; }
 /* Header */
 .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 120; height: var(--header-h); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--gutter); mix-blend-mode: difference; color: #fff; }
 .hdr a { text-decoration: none; }
+/* fades in once the page scrolls, so body text never runs under the header */
+.hdr-scrim { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: calc(var(--header-h) + 36px); pointer-events: none; background: linear-gradient(to bottom, var(--c-bg) 0%, color-mix(in srgb, var(--c-bg) 92%, transparent) 55%, transparent 100%); opacity: 0; transition: opacity 0.4s; }
+html.scrolled .hdr-scrim { opacity: 1; }
 .brand { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
 .brand b { width: 8px; height: 8px; border-radius: 50%; background: #fff; display: inline-block; }
 .hdr-right { display: flex; align-items: center; gap: 18px; }

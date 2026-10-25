@@ -202,8 +202,8 @@ const signals = m.slice(2, m.length - 1);
   .card { --card-accent: var(--iron-2); position: relative; border: 1px solid var(--iron); border-radius: 6px; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), color-mix(in srgb, var(--card-accent) 18%, transparent), transparent 60%), #0a0c0d; transform-style: preserve-3d; transition: border-color 0.4s; }
   .card > a, .card > div { display: grid; gap: 6px; padding: 18px; min-height: 170px; text-decoration: none; align-content: end; }
   .card.live:hover { border-color: var(--card-accent); }
-  .card-name { font-family: var(--card-font, var(--font-serif)); font-weight: var(--card-weight, 400); text-transform: var(--card-case, none); font-size: 26px; line-height: 1; color: var(--bone); }
-  .card.soon .card-name { font-family: var(--font-serif); font-weight: 400; text-transform: none; color: var(--bone-dim); }
+  .card-name { font-family: var(--card-font, var(--font-serif)); font-weight: var(--card-weight, 400); text-transform: uppercase; font-size: 26px; line-height: 1; color: var(--bone); }
+  .card.soon .card-name { font-family: var(--font-serif); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; color: var(--bone-dim); }
   .card-actor { font-size: 14px; color: var(--bone-dim); }
   .card-tag, .card-cta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--iron-2); }
   .card.live .card-tag { color: var(--bone-dim); }

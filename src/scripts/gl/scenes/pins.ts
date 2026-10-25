@@ -30,26 +30,51 @@ export default class Pins implements HeroScene {
       }`);
     this.bg = bg.mat; this.bgScene.add(bg.mesh);
     this.cam = new THREE.PerspectiveCamera(38, ctx.width / ctx.height, 0.1, 80);
+    this.place(ctx);
     this.build(ctx);
-    this.resize(ctx);
+  }
+
+  zNear = 3; zFar = -8; halfW = 8;
+
+  /** Camera placement, then the patch of table it can see (rays from the four screen corners onto y = 0). */
+  private place(ctx: Ctx) {
+    this.cam.aspect = ctx.width / ctx.height; this.cam.updateProjectionMatrix();
+    const portrait = ctx.width < ctx.height;
+    this.cam.position.set(0, portrait ? 9.5 : 6.2, portrait ? 6.5 : 7.2);
+    this.cam.lookAt(0, 0, portrait ? -0.5 : 0.3);
+    this.cam.updateMatrixWorld();
+    const hits: THREE.Vector3[] = [];
+    for (const [x, y] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+      this.ray.setFromCamera(new THREE.Vector2(x, y), this.cam);
+      const h = new THREE.Vector3();
+      if (this.ray.ray.intersectPlane(this.plane, h)) hits.push(h);
+      else { const d = this.ray.ray.direction; hits.push(new THREE.Vector3(d.x * 30, 0, this.cam.position.z + d.z * 30)); }
+    }
+    this.zNear = Math.max(...hits.map((h) => h.z)) + 0.6;
+    this.zFar = Math.max(Math.min(...hits.map((h) => h.z)) - 0.6, -22);
+    this.halfW = Math.min(Math.max(...hits.map((h) => Math.abs(h.x))) + 0.6, 24);
   }
 
   build(ctx: Ctx) {
-    this.cols = Math.round((ctx.mobile ? 34 : 72) * Math.max(ctx.quality, 0.6));
-    this.rows = Math.round((ctx.mobile ? 46 : 40) * Math.max(ctx.quality, 0.6));
+    // cover the visible table; widen the spacing if that would need too many pins
+    const budget = (ctx.mobile ? 3600 : 7600) * Math.max(ctx.quality, 0.6);
     this.spacing = 0.2;
-    const box = new THREE.BoxGeometry(0.17, 1, 0.17); box.translate(0, 0.5, 0);
+    while ((this.halfW * 2 / this.spacing) * ((this.zNear - this.zFar) / this.spacing) > budget) this.spacing *= 1.08;
+    this.cols = Math.ceil(this.halfW * 2 / this.spacing);
+    this.rows = Math.ceil((this.zNear - this.zFar) / this.spacing);
+    const pin = this.spacing * 0.85;
+    const box = new THREE.BoxGeometry(pin, 1, pin); box.translate(0, 0.5, 0);
     const geo = new THREE.InstancedBufferGeometry();
     geo.index = box.index; geo.setAttribute('position', box.getAttribute('position')); geo.setAttribute('normal', box.getAttribute('normal'));
     const grid = new Float32Array(this.cols * this.rows * 2);
     let k = 0;
     for (let j = 0; j < this.rows; j++) for (let i = 0; i < this.cols; i++) {
-      grid[k++] = (i - (this.cols - 1) / 2) * this.spacing; grid[k++] = (j - (this.rows - 1) / 2) * this.spacing;
+      grid[k++] = (i - (this.cols - 1) / 2) * this.spacing; grid[k++] = this.zFar + j * this.spacing;
     }
     geo.setAttribute('aGrid', new THREE.InstancedBufferAttribute(grid, 2));
     geo.instanceCount = this.cols * this.rows;
     this.mat = new THREE.ShaderMaterial({
-      uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector2(99, 99) }, uIntro: { value: 0 }, uScroll: { value: 0 }, uMorph: { value: 0 } },
+      uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector2(99, 99) }, uIntro: { value: 0 }, uScroll: { value: 0 }, uMorph: { value: 0 }, uFar: { value: this.zFar } },
       vertexShader: /* glsl */ `
         attribute vec2 aGrid;
         uniform float uTime; uniform vec2 uMouse; uniform float uIntro; uniform float uScroll; uniform float uMorph;
@@ -72,7 +97,7 @@ export default class Pins implements HeroScene {
           gl_Position = projectionMatrix * viewMatrix * w;
         }`,
       fragmentShader: /* glsl */ `
-        varying vec3 vN; varying float vH; varying float vTop; varying vec3 vW;
+        varying vec3 vN; varying float vH; varying float vTop; varying vec3 vW; uniform float uFar;
         void main(){
           vec3 L = normalize(vec3(-0.5, 1.0, 0.6));
           float diff = max(dot(vN, L), 0.0);
@@ -81,7 +106,7 @@ export default class Pins implements HeroScene {
           float glow = smoothstep(0.85, 1.0, vTop) * smoothstep(0.15, 1.6, vH);
           col += vec3(0.62,0.38,1.0) * glow * 1.2;
           col += vec3(0.95,0.78,0.42) * smoothstep(1.4, 2.0, vH) * smoothstep(0.85, 1.0, vTop) * 0.6;
-          col *= smoothstep(14.0, 4.0, length(vW.xz));
+          col *= smoothstep(uFar, uFar + 4.0, vW.z);                 // fade the far rows into the dark
           gl_FragColor = vec4(col, 1.0);
         }`,
     });
@@ -91,11 +116,10 @@ export default class Pins implements HeroScene {
   }
 
   resize(ctx: Ctx) {
-    if (!this.cam) return;
-    this.cam.aspect = ctx.width / ctx.height; this.cam.updateProjectionMatrix();
-    const portrait = ctx.width < ctx.height;
-    this.cam.position.set(0, portrait ? 9.5 : 6.2, portrait ? 6.5 : 7.2);
-    this.cam.lookAt(0, 0, portrait ? -0.5 : 0.3);
+    if (!this.cam || !this.mesh) return;
+    this.place(ctx);
+    this.scene.remove(this.mesh); this.mesh.geometry.dispose(); this.mat.dispose();
+    this.build(ctx);
   }
   setQuality(ctx: Ctx) { this.scene.remove(this.mesh); this.mesh.geometry.dispose(); this.mat.dispose(); this.build(ctx); }
 
