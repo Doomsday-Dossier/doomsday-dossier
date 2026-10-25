@@ -1,0 +1,50 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\fix-pass\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shuri/",
+    "view": "desktop",
+    "file": "screenshots\\fix-pass\\c-shuri-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/avengers/",
+    "view": "desktop",
+    "file": "screenshots\\fix-pass\\teams-avengers-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "desktop",
+    "file": "screenshots\\fix-pass\\teams-x-men-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\fix-pass\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shuri/",
+    "view": "phone",
+    "file": "screenshots\\fix-pass\\c-shuri-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/avengers/",
+    "view": "phone",
+    "file": "screenshots\\fix-pass\\teams-avengers-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "phone",
+    "file": "screenshots\\fix-pass\\teams-x-men-phone.jpg",
+    "errors": []
+  }
+]

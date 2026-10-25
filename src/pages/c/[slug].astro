@@ -259,6 +259,10 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .ch-hero-inner > * { min-width: 0; }
   /* small hero text sits over bright scenes (Shuri's pins on phones): a static shadow keeps it legible */
   .ch-hero-inner > .label, .ch-alias, .ch-kicker, .ch-meta, .ch-motion { text-shadow: 0 1px 2px var(--c-bg), 0 0 14px var(--c-bg), 0 0 28px var(--c-bg); }
+  /* the pin table rises behind the text on tall screens: deepen the shade under the text block */
+  @media (max-aspect-ratio: 1/1) {
+    .scene-pins::before { background: linear-gradient(to top, color-mix(in srgb, var(--c-bg) 94%, transparent) 0%, color-mix(in srgb, var(--c-bg) 80%, transparent) 55%, transparent 80%); }
+  }
   .hero-name { font-size: min(calc(clamp(44px, 14vw, 230px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / (var(--hero-longest, 8) * 0.82))); line-height: 0.86; overflow-wrap: normal; word-break: keep-all; hyphens: none; position: relative; }
   .ch-alias { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-accent); margin: 0; }
   .ch-kicker { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; max-width: 30ch; margin: 6px 0 0; }

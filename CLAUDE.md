@@ -81,7 +81,7 @@ of every session, then continue from the tracker at the bottom.
 | 3 | X-Men | done |
 | 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
 | 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | done |
-| 6 | Photos for every character (step 1 done: download list built, awaiting approval): download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
+| 6 | Photos for every character (steps 1-2 done: 62 files downloaded, picks in research/photos/picks.json awaiting the user's swaps): local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
 | 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
 
 ## Feature tracker
@@ -176,6 +176,7 @@ node scripts/shots.mjs http://localhost:4322 screenshots/wave-N   # contact shee
 node scripts/overflow.mjs http://localhost:4322                   # phone-width overflow check
 node scripts/fps.mjs http://localhost:4322 4                      # hero frame rates, CPU throttled 4x
 node scripts/behaviour.mjs http://localhost:4322                  # reduced motion + navigation chain
+node scripts/clip-audit.mjs http://localhost:4322 ["c/shuri,teams"] [desktop,laptop,phone]   # clipped or cut-off text
 ```
 
 QA is run against the production preview, not the dev server; the dev server stalls under automated browsing.
@@ -244,6 +245,12 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - Letters that move after the intro (magnet, bamf) unclip their SplitText line masks after 2 s.
 - Screen entries with no named performer use actor "Uncredited"; the page prints "Performer uncredited". Never blanket-replace actor strings; check each one.
 - `node scripts/heroes.mjs <url> <out.jpg> <slug,slug> [phone]` makes one grid of hero views for fast review.
+- **No cut-off text, ever.** Run `scripts/clip-audit.mjs` before every deploy (desktop and phone; add laptop 1280x720 when touching pinned sections). It opens every source list, walks the page, and flags text past the viewport, clipped by an overflow ancestor, or overflowing its own box, plus pinned timeline cards taller than the screen. In Git Bash, pass page filters without a leading slash (MSYS rewrites `/c/...` into a Windows path).
+- All character names are uppercase everywhere (cards, team pages, heroes, next links). `fontCase` in `DESIGN` stays 'uppercase'.
+- Every display heading carries `--lw` (its longest word) and is capped by the space it sits in (`100vw` or `100cqi` in a container), so long words in wide faces never break or clip.
+- The comics timeline pins sideways only when every card fits the viewport height (JS adds `.tl-row` after measuring); otherwise it stacks. A pinned section must never use `overflow: hidden` on the vertical axis: opened source lists were cut off. Use `overflow-x: clip` only; `app.ts` refreshes ScrollTrigger on every `details` toggle.
+- A header scrim fades in once the page scrolls (`html.scrolled .hdr-scrim`), so text never collides with the logo and menu. The header itself keeps `mix-blend-mode: difference`.
+- Shuri's pin table sizes itself to the camera's visible ground (corner raycasts) and rebuilds on resize. Small hero text has a static shadow; the pins scene also deepens the shade under the text on tall screens.
 
 - `src/scripts/app.ts` runs DOM motion first, then lazy-loads Three.js (`gl/engine`) and the page's scene chunk. Critical JS is about 60 KB gzipped; Three.js is about 130 KB and loads in parallel.
 - One persistent WebGL canvas (`#gl`) for heroes, and a second tiny canvas (`#wipe`) used only for page transitions. Both survive navigation via `transition:persist`.
@@ -263,6 +270,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Fix pass before photos (user report): names all caps (Shang-Chi, Scott Lang, Mystique, Beast, Thor were mixed case), act and timeline headings sized by longest word, comics cards no longer cut (rail pins only when cards fit, else stacks), opened source lists no longer clipped in the pinned act, Shuri's pin table edge to edge, header scrim on scroll, Shuri hero text legible on phones. New clip audit: 0 issues on all 38 pages at desktop, laptop and phone. 60 fps at 4x throttle, no phone overflow, reduced motion and navigation pass. Deployed. Still waiting on the user's photo swaps (their message listed none).
 - 2026-10-25: Wave 6 step 2: user approved all 62 files; downloaded into photo-originals/ (git-ignored; sizes all matched the list; SHA-256 in downloads.json). Viewed every image. Recommended one pick per character in research/photos/picks.json (with crops). Findings: Sam's listed first choice was a merchandise photo (rejected); the Days of Future Past banner has Patrick Stewart and Ian McKellen, giving Professor X and Magneto; X-Men (2000) gives Romijn's Mystique; X2 gives Cumming's Nightcrawler. No official photo of Marsden (Cyclops), Grammer (Beast) or Tatum (Gambit): those keep abstract heroes. Waiting on the user to confirm the picks.
 - 2026-10-25: Wave 6 step 1: photo download list built from marvel.com, cdn.marvel.com and d23.com only (no downloads; sizes via HEAD). 71 candidates, 62 distinct files, 11.92 MB; first choices 25 files, 7.49 MB. No official photo found for Beast or Gambit; the five other X-Men only have Fox-era group key art; Doom only an article header image. Files: research/photos/manifest.{json,md,html}; rebuild with node scripts/photo-manifest.mjs. Waiting on the user to approve.
 - 2026-10-25: Wave 5 deployed and verified live (38 pages, no phone overflow, five new heroes 60 fps at 4x throttle). All 29 confirmed characters with a named role or a known last role now have dossiers. Next: wave 6 (photos), which starts with a download manifest for the user to approve.
