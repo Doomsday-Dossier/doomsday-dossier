@@ -3,3 +3,4 @@ dist/
 .astro/
 test-results/
 screenshots/qa/
+screenshots/qa-live/
