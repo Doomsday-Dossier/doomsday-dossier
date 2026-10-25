@@ -317,5 +317,74 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
     cleanups.push(() => gsap.ticker.remove(tick));
   }
 
+  if (scene === 'pins' && ctx) {
+    // letters rise like pins on the sand table as the pointer passes
+    let chars: { el: HTMLElement; x: number; y: number; yTo: gsap.QuickToFunc }[] = [];
+    const t0 = setTimeout(() => { chars = charBox().map((c) => ({ ...c, yTo: gsap.quickTo(c.el, 'y', { duration: 0.5, ease: 'power3.out' }) })); }, 2200);
+    const tick = () => {
+      if (!chars.length) return;
+      const px = ctx.pointer.x * innerWidth;
+      for (const c of chars) c.yTo(-Math.max(0, 1 - Math.abs(c.x - px) / 160) * 26);
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
+  if (scene === 'ridges' && ctx) {
+    // the name thumps on every drumbeat
+    let last = 0;
+    const tick = () => {
+      if (ctx.signal > 0.95 && performance.now() - last > 300) {
+        last = performance.now();
+        gsap.fromTo(title, { scale: 1.035 }, { scale: 1, duration: 0.5, ease: 'power3.out', transformOrigin: '0% 100%' });
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'talokan') {
+    // letters drift on a slow swell, as if underwater
+    let chars: HTMLElement[] = [];
+    const t0 = setTimeout(() => { chars = [...title.querySelectorAll<HTMLElement>('.split-char')]; }, 2200);
+    const tick = () => {
+      const t = performance.now() / 1000;
+      chars.forEach((el, i) => { el.style.transform = 'translateY(' + (Math.sin(t * 0.9 + i * 0.55) * 5).toFixed(1) + 'px)'; });
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
+  if (scene === 'timelines' && ctx) {
+    // a letter branches off for a moment now and then
+    let last = 0;
+    const tick = () => {
+      if (performance.now() - last < 1400) return;
+      last = performance.now();
+      const chars = title.querySelectorAll<HTMLElement>('.split-char');
+      const el = chars[Math.floor(Math.random() * chars.length)];
+      if (el) gsap.fromTo(el, { skewX: gsap.utils.random([-14, 14]), x: gsap.utils.random(-6, 6) }, { skewX: 0, x: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' });
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'dance' && ctx) {
+    // a spotlight sweeps across the name with the ball's spin
+    let chars: ReturnType<typeof charBox> = [];
+    const t0 = setTimeout(() => { chars = charBox(); }, 2200);
+    const tick = () => {
+      if (!chars.length) return;
+      const minX = chars[0].x, maxX = chars[chars.length - 1].x;
+      const sweep = minX + ((Math.sin(ctx.signal * 2.2) + 1) / 2) * (maxX - minX);
+      for (const c of chars) {
+        const o = (0.45 + 0.55 * Math.max(0, 1 - Math.abs(c.x - sweep) / 180)).toFixed(2);
+        if (c.el.style.opacity !== o) c.el.style.opacity = o;
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
   return () => cleanups.forEach((c) => c());
 }

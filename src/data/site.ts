@@ -232,6 +232,46 @@ export const DESIGN: Record<string, Design> = {
     font: "'Cinzel Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '0.02em',
     ease: 'power2.inOut', pace: 1.4, kicker: 'A man with the power of a million exploding suns, and a darkness inside him to match.',
   },
+  'shuri': {
+    heroScale: 1,
+    slug: 'shuri', wave: 5, scene: 'pins', sceneName: 'Sand Table',
+    sceneNote: "A 3D table of thousands of pins sculpts itself into shapes, and your cursor raises the pins beneath it. The letters rise as you pass.",
+    bg: '#06040c', ink: '#f2ecff', dim: '#a59bc0', accent: '#9b5cff', accent2: '#e9c46a',
+    font: "'Sora Variable', sans-serif", fontWeight: 800, fontCase: 'uppercase', tracking: '-0.02em',
+    ease: 'expo.out', pace: 0.85, kicker: "Wakanda’s princess, scientist and inventor, who took up the mantle of the Black Panther.",
+  },
+  'mbaku': {
+    heroScale: 0.85,
+    slug: 'mbaku', wave: 5, scene: 'ridges', sceneName: 'Jabari Ridge',
+    sceneNote: "Mountain ridgelines stack into the distance and pulse on a drumbeat that rolls from front to back. Your cursor sets where the peaks rise; press to hit the drum.",
+    bg: '#070605', ink: '#f1ece4', dim: '#ab9f90', accent: '#e2e8f0', accent2: '#c58a5c',
+    font: "'Bowlby One', sans-serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.01em',
+    ease: 'power4.out', pace: 1.3, kicker: "Leader of the Jabari mountain tribe, once a rival for Wakanda’s throne and now one of its fiercest defenders.",
+  },
+  'namor': {
+    heroScale: 1,
+    slug: 'namor', wave: 5, scene: 'talokan', sceneName: 'Talokan',
+    sceneNote: "Caustic light dances in deep water and shafts fall from the surface. Bubbles rise from your cursor, and scrolling sinks you deeper.",
+    bg: '#01060a', ink: '#e6f6f6', dim: '#8fb0b3', accent: '#2fd6c1', accent2: '#e9c46a',
+    font: "'Yeseva One', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.02em',
+    ease: 'sine.inOut', pace: 1.4, kicker: "Ruler of a kingdom beneath the sea, one of Marvel’s very first characters, who answers to no surface nation.",
+  },
+  'loki': {
+    heroScale: 1,
+    slug: 'loki', wave: 5, scene: 'timelines', sceneName: 'Branching Timelines',
+    sceneNote: "Timelines grow upward and keep forking, far more often near your cursor. Scrolling prunes the youngest branches first.",
+    bg: '#030604', ink: '#eef5e8', dim: '#9fb09a', accent: '#5fd36f', accent2: '#e8c35a',
+    font: "'Playfair Display Variable', serif", fontWeight: 700, fontCase: 'none', tracking: '-0.01em',
+    ease: 'power3.inOut', pace: 1.1, kicker: "The god of mischief, who schemed his way through every realm and found his purpose holding time itself together.",
+  },
+  'peggy-carter': {
+    heroScale: 0.82,
+    slug: 'peggy-carter', wave: 5, scene: 'dance', sceneName: 'The Dance',
+    sceneNote: "A mirror ball scatters light across a warm 1940s room. Your cursor turns the ball, and a spotlight sweeps across her name.",
+    bg: '#0a0605', ink: '#f6ece2', dim: '#b6a597', accent: '#e0b25a', accent2: '#c8463d',
+    font: "'Limelight', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.02em',
+    ease: 'power2.out', pace: 1.3, kicker: "A wartime agent and co-founder of S.H.I.E.L.D., who never needed a serum to be the strongest person in the room.",
+  },
 };
 
 const researchFiles = import.meta.glob('../../research/*.json', { eager: true, import: 'default' }) as Record<string, any>;
@@ -315,5 +355,10 @@ export const HERO_NAMES: Record<string, string> = {
   'john-walker': 'John Walker',
   'ghost': 'Ghost',
   'bob-reynolds': 'Bob Reynolds',
+  'shuri': 'Shuri',
+  'mbaku': "M'Baku",
+  'namor': 'Namor',
+  'loki': 'Loki',
+  'peggy-carter': 'Peggy Carter',
 };
 export const heroName = (slug: string) => HERO_NAMES[slug] || slug;

@@ -1,0 +1,377 @@
+{
+  "slug": "mbaku",
+  "name": "M'Baku",
+  "alias": "Man-Ape (early comics alias)",
+  "origin": {
+    "firstAppearance": {
+      "title": "Avengers",
+      "issue": "#62",
+      "coverDate": "March 1969"
+    },
+    "creators": [
+      "Roy Thomas",
+      "John Buscema"
+    ],
+    "summary": [
+      "M'Baku was born and raised in the Jabari Village in Wakanda and grew into one of the country's greatest warriors, ranked behind only T'Challa himself. Wakanda's warrior tradition meant that the strongest fighter could claim the right to rule, and M'Baku was ambitious. T'Challa had banned the White Gorilla cult, a rival to the dominant Panther cult, but M'Baku defied him and revived it. He tracked and killed one of the rare white gorillas living in the jungles near Wakanda, and by bathing in its blood and eating its flesh he gained, through the cult's magic, a share of its enormous strength.",
+      "His chance came while T'Challa was away serving with the Avengers. In Avengers #62, M'Baku, left in charge as the king's stand-in, armed the Wakandan troops and then drugged a meal served to T'Challa and his teammates. Dressed in the forbidden white gorilla costume, he openly challenged the Black Panther's right to rule, rejecting the technology T'Challa had brought to Wakanda and wanting the nation to return to older ways. He beat T'Challa in a long fight and tied him beneath a giant panther idol, but when he tried to bring it down on his rival, the statue collapsed on M'Baku instead.",
+      "T'Challa left believing his enemy was dead, but the loyal follower N'Gamo revived him, and he went on to trouble the Avengers for decades. The comics called him by the alias Man-Ape, a name with racist connotations: the MCU Wiki records that Black Panther (2018) used only the name M'Baku because of the racial implications of a Black character dressed as an ape, while keeping the Jabari's worship of a gorilla god. This file uses M'Baku throughout. The Marvel Fandom wiki credits Roy Thomas and John Buscema as his creators."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Avengers Vol 1 #62 (March 1969)",
+        "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_62"
+      },
+      {
+        "label": "Marvel Cinematic Universe Wiki: M'Baku",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+      },
+      {
+        "label": "Marvel Fandom wiki: Man-Ape (disambiguation)",
+        "url": "https://marvel.fandom.com/wiki/Man-Ape"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The White Gorilla",
+      "years": "1969",
+      "title": "A coup in the Panther's absence",
+      "summary": "Trusted to stand in for T'Challa while the king serves with the Avengers, M'Baku has Wakandan troops carry guns, claiming Klaw has returned, then drugs a dinner for T'Challa and his teammates. When the Panther wakes, M'Baku appears in the forbidden white gorilla garb and vows to replace worship of the panther god with the white gorilla. He beats T'Challa beside the nation's atomic fire pits and straps him beneath the panther statue, but the idol crumbles onto M'Baku himself as the freed Avengers rescue their teammate.",
+      "keyIssues": [
+        "Avengers #62 (1969)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #62",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_62"
+        }
+      ]
+    },
+    {
+      "era": "The Lethal Legion",
+      "years": "1970",
+      "title": "Revenge in New York",
+      "summary": "Revived by his follower N'Gamo, M'Baku trails T'Challa to New York, ambushes Captain America at Avengers Mansion and kidnaps Monica Lynne, the Panther's girlfriend, to lure him into a one-on-one fight that N'Gamo helps him win. The scheme turns out to belong to the Grim Reaper, who has gathered M'Baku, the Living Laser, Power Man and the Swordsman as the Lethal Legion. The Avengers break free of the Reaper's trap, and Captain America defeats M'Baku.",
+      "keyIssues": [
+        "Avengers #78 (1970)",
+        "Avengers #79 (1970)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #78",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_78"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #79",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_79"
+        }
+      ]
+    },
+    {
+      "era": "Exile",
+      "years": "1985",
+      "title": "Walking out on the Reaper",
+      "summary": "With T'Challa decreeing that he will face execution if he ever comes home, M'Baku drifts through remote parts of the world doing mercenary work. The Grim Reaper recruits him again, and alongside Ultron he breaks into the West Coast Avengers' compound to free Goliath. But when the Reaper openly shows his contempt for Black people, M'Baku quits, and his fellow recruit Black Talon goes with him, both refusing to be treated as the Reaper's servants.",
+      "keyIssues": [
+        "West Coast Avengers #1 (1985)",
+        "West Coast Avengers #2 (1985)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: West Coast Avengers Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/West_Coast_Avengers_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: West Coast Avengers Vol 2 #2",
+          "url": "https://marvel.fandom.com/wiki/West_Coast_Avengers_Vol_2_2"
+        }
+      ]
+    },
+    {
+      "era": "Masters of Evil",
+      "years": "1999",
+      "title": "Out before the fight",
+      "summary": "M'Baku signs on with the seventh Masters of Evil, assembled by Justine Hammer as the Crimson Cowl. His stint is short: when the Thunderbolts infiltrate the Masters' base, they knock him out with a surprise punch, and he takes no part in the battle that follows.",
+      "keyIssues": [
+        "Thunderbolts #24 (1999)",
+        "Thunderbolts #25 (1999)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 1 #24",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_1_24"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 1 #25",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_1_25"
+        }
+      ]
+    },
+    {
+      "era": "Civil War",
+      "years": "2007",
+      "title": "Envoy of the Jabari",
+      "summary": "After the United States passes its Superhuman Registration Act, Wakanda hosts a Pan-African Congress to agree a shared response, and M'Baku attends as the Jabari tribe's representative, standing with T'Challa, Storm and other African figures. The delegates fail to reach any agreement before the congress breaks up.",
+      "keyIssues": [
+        "Civil War: Battle Damage Report #1 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War: Battle Damage Report Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Civil_War:_Battle_Damage_Report_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "Devoured",
+      "years": "2009-2012",
+      "title": "Prey for Morlun",
+      "summary": "Soon after hearing that T'Challa may be dead, M'Baku is killed by Morlun, the Devourer of Totems, who drains his life and feeds on his animal totem; a refugee from his territory carries the warning to Wakanda. He later turns up alive with no explanation given, as one of the Villains for Hire, the crew the Purple Man and Headhunter put together to sell criminal muscle as a rival to the Heroes for Hire.",
+      "keyIssues": [
+        "Black Panther #4 (2009)",
+        "Villains for Hire #3 (2012)",
+        "Villains for Hire #4 (2012)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 5 #4",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_5_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Villains for Hire Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Villains_for_Hire_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Villains for Hire Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Villains_for_Hire_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "Avengers: Standoff!",
+      "years": "2016",
+      "title": "Pleasant Hill",
+      "summary": "S.H.I.E.L.D. locks M'Baku away in Pleasant Hill, a prison disguised as a small town, where the living Cosmic Cube Kobik rewrites inmates' memories and faces to make them model citizens. He is among the villains, led by Baron Zemo, who snap out of the illusion and turn on the town, overwhelming the trapped Avengers until Kobik takes pity on the heroes and restores them.",
+      "keyIssues": [
+        "All-New, All-Different Avengers #8 (2016)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: All-New, All-Different Avengers Vol 1 #8",
+          "url": "https://marvel.fandom.com/wiki/All-New,_All-Different_Avengers_Vol_1_8"
+        }
+      ]
+    },
+    {
+      "era": "Death and return",
+      "years": "2016-2018",
+      "title": "Raised by Baron Macabre",
+      "summary": "M'Baku dies again in circumstances the comics never explain, and his younger brother Mandla takes up the White Gorilla mantle until he too is killed, in a trap set by the Midnight Angels. The shaman Baron Macabre later raises M'Baku through a ritual that also gives him arcane energy blasts, but M'Baku soon discards the shaman for doubting him. Once T'Challa, Kantu and Shuri bring him down, Macabre strips the new powers from him and flees.",
+      "keyIssues": [
+        "Black Panther #4 (2016)",
+        "Black Panther: Long Live the King #3 (2018)",
+        "Black Panther: Long Live the King #4 (2018)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mandla (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Mandla_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 6 #4",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_6_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther: Long Live the King Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther:_Long_Live_The_King_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther: Long Live the King Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther:_Long_Live_The_King_Vol_1_4"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Black Panther",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Winston Duke",
+      "cameo": false,
+      "summary": "M'Baku, leader of the mountain-dwelling Jabari who reject Wakanda's vibranium-driven modern life, interrupts T'Challa's coronation to challenge him, nearly crushes him and yields only when T'Challa spares him for the sake of his people. After Killmonger throws T'Challa from Warrior Falls, Jabari fishermen find the king and M'Baku keeps him alive in the snow to repay the debt, though he at first refuses to commit his warriors to the fight. He then leads the Jabari into the battle at Mount Bashenga at the decisive moment, and the tribe takes a seat on the Tribal Council.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        },
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Infinity War",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Winston Duke",
+      "cameo": false,
+      "summary": "Answering T'Challa's call, M'Baku brings the Jabari to defend Wakanda against Thanos' Outriders, warning Okoye that the invasion could be the end of Wakanda before charging into the battle alongside the Avengers. He survives the Snap and watches in shock as many of the warriors around him turn to dust.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Infinity War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        },
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Winston Duke",
+      "cameo": true,
+      "summary": "Five years after the Snap, M'Baku and the Jabari come through a sorcerer's portal with the rest of Wakanda's forces to join the final battle against the time-displaced Thanos. In a brief moment he is buried under Chitauri soldiers and smashes his way free.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        },
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "title": "Black Panther: Wakanda Forever",
+      "year": 2022,
+      "continuity": "MCU",
+      "actor": "Winston Duke",
+      "cameo": false,
+      "summary": "Mourning T'Challa, M'Baku presses the Tribal Council to hunt Namor down, then pulls survivors from the water and is knocked flying by Namor when Talokan floods the capital, and helps hold Shuri back as Ramonda dies. He offers his land as shelter for displaced Wakandans, tests the new Black Panther with an arm-wrestle, warns her that revenge could mean an endless war and fights beside her aboard the Sea Leopard. At the end he arrives at the coronation Shuri has chosen to skip and announces his own challenge for the throne.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        },
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-199999)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The MCU Wiki records Black Panther producer Nate Moore explaining that the film calls him M'Baku rather than Man-Ape because a Black character dressed as an ape carries racial overtones, while the idea of the Jabari worshipping gorilla gods was kept as a counterpart to the Panther's own divine status.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        }
+      ]
+    },
+    {
+      "fact": "Avengers #62 (March 1969) is also the first appearance of the White Gorilla cult and of W'Kabi, the Wakandan later played by Daniel Kaluuya in Black Panther (2018), where he leads the Border Tribe against M'Baku's Jabari.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #62 (March 1969)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_62"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)"
+        }
+      ]
+    },
+    {
+      "fact": "According to the MCU Wiki, Michael Shaw, Mustafa Shakir and Yahya Abdul-Mateen II all auditioned for M'Baku before Winston Duke was cast.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: M'Baku",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/M%27Baku"
+        }
+      ]
+    },
+    {
+      "fact": "Duke's entrance at the coronation became a 2018 social media craze, the \"M'Baku Challenge\", in which fans re-enacted his challenge scene.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: M'Baku (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-199999)"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Avengers: Doomsday and Black Panther III appear in the MCU Wiki infobox for M'Baku but are marked unreleased, so they are left out. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Endgame page lists only Mobius, Ouroboros, Casey, Ralph and Miss Minutes as Encore-exclusive cast, and the Encore plot extension (Steve and Peggy, Banner, the TVA, Doom) does not include M'Baku. He is in the main film that the Encore repeats, so no separate entry was added.",
+    "Whether M'Baku became king: the MCU Wiki says he went on to reign, but that claim is sourced to a Marvel Studios Instagram interview, not the film. Wakanda Forever's plot summary only has him announce the challenge, so the screen entry stops there.",
+    "No live-action series appearance is listed for M'Baku on the MCU Wiki, and no non-MCU live-action version appears on the Marvel Fandom wiki's disambiguation page. Tie-in comics (Avengers: Endgame Prelude) and the book Black Panther: Wakanda Forever: The Courage to Dream are listed by the MCU Wiki but are not screen appearances. Animation (What If...?, Eyes of Wakanda) is excluded under the brief and was not researched.",
+    "Cameo flag for Avengers: Endgame is a judgement call: Duke is in the main cast list, but M'Baku only appears briefly in the final battle.",
+    "Imperial (2025) features a \"Regent M'Baku\" who is struck down by a Skrull, but the Marvel Fandom wiki treats him as a different man from the Intergalactic Empire of Wakanda (first seen in Black Panther Vol 7 #1). He is not included here.",
+    "Hidden comments in the Earth-616 page's source mention Acts of Vengeance (Fantastic Four #336) and the A.I.M. Weapons Expo (Captain America #411-413); they are not shown on the live page and were left out.",
+    "The Earth-616 page gives no explanation for either of his returns from death (after Morlun, and before Baron Macabre's ritual), and the eras say so. His 2016 death is known only from his brother Mandla's story; Black Panther Vol 6 #4 merely mentions him as deceased.",
+    "Issue pages without a plot synopsis: Thunderbolts #24, Villains for Hire #3 and #4, Black Panther Vol 6 #4 and Black Panther: Long Live the King #3 and #4. Details from them rest on the character pages and solicitations; Thunderbolts #25 has only a short teaser. Both Long Live the King issues carry a March 2018 date on the wiki.",
+    "The Civil War: Battle Damage Report entry is a handbook-style issue rather than a story; the Pan-African Congress details come from the Earth-616 page.",
+    "The racist connotations of \"Man-Ape\" are stated here only as far as the wikis go: the MCU Wiki's behind-the-scenes note quoting producer Nate Moore, and the West Coast Avengers #2 synopsis, where M'Baku leaves the Grim Reaper over the Reaper's bigotry. The Earth-616 page still lists Man-Ape as his current alias. The 1969 issue's dialogue was not quoted."
+  ]
+}

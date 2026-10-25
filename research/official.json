@@ -3,68 +3,348 @@
   "film": {
     "title": "Avengers: Doomsday",
     "releaseDate": "2026-12-18",
-    "directors": ["Joe Russo", "Anthony Russo"],
-    "producers": ["Kevin Feige", "Louis D'Esposito", "Jonathan Schwartz"],
+    "directors": [
+      "Joe Russo",
+      "Anthony Russo"
+    ],
+    "producers": [
+      "Kevin Feige",
+      "Louis D'Esposito",
+      "Jonathan Schwartz"
+    ],
     "logline": "Heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they have encountered.",
-    "next": { "title": "Avengers: Secret Wars", "releaseDate": "2027-12-17", "source": "S_SECRETWARS" },
-    "sources": ["S_FILM", "S_TRAILER"]
+    "next": {
+      "title": "Avengers: Secret Wars",
+      "releaseDate": "2027-12-17",
+      "source": "S_SECRETWARS"
+    },
+    "sources": [
+      "S_FILM",
+      "S_TRAILER"
+    ]
   },
   "sources": {
-    "S_FILM": { "label": "Marvel.com, Avengers: Doomsday film page", "url": "https://www.marvel.com/movies/avengers-doomsday" },
-    "S_SDCC24": { "label": "Marvel.com, SDCC 2024: Robert Downey Jr. to Play Doom (July 2024)", "url": "https://www.marvel.com/articles/live-events/sdcc-2024-robert-downey-jr-doom-avengers-doomsday-marvel-studios-hall-h-panel" },
-    "S_PROD": { "label": "Marvel.com, Avengers: Doomsday Begins Production (26 March 2025)", "url": "https://www.marvel.com/articles/movies/marvel-studios-avengers-doomsday-begins-production" },
-    "S_LIVE": { "label": "Marvel.com, Marvel Fans Break the Internet During Cast Announcement (March 2025)", "url": "https://www.marvel.com/articles/movies/avengers-doomsday-cast-announcement-livestream-marvel-fans-break-the-internet" },
-    "S_TEASERS": { "label": "Marvel.com, Watch the Avengers: Doomsday Teaser Trailers (13 January 2026)", "url": "https://www.marvel.com/articles/movies/avengers-doomsday-teaser-trailer" },
-    "S_TRAILER": { "label": "Marvel.com, Avengers: Doomsday Trailer and Infinity Vision Tickets (20 July 2026)", "url": "https://www.marvel.com/articles/movies/avengers-doomsday-trailer-infinity-vision-tickets" },
-    "S_SDCC26": { "label": "Marvel.com, All the Marvel Studios News from Hall H, SDCC 2026 (25 July 2026)", "url": "https://www.marvel.com/articles/live-events/marvel-studios-san-diego-comic-con-2026-hall-h-recap" },
-    "S_D23": { "label": "Marvel.com, D23 2026: The Stars of Avengers: Doomsday Unveil New Footage (14 August 2026)", "url": "https://www.marvel.com/articles/movies/avengers-doomsday-cast-d23-2026-new-footage-poster-robert-downey-jr-chris-evans-hayley-atwell" },
-    "S_WATCH": { "label": "Marvel.com, Countdown to Avengers: Doomsday watch guide (5 October 2026)", "url": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus" },
-    "S_SECRETWARS": { "label": "Marvel.com, Avengers: Secret Wars film page", "url": "https://www.marvel.com/movies/avengers-secret-wars" }
+    "S_FILM": {
+      "label": "Marvel.com, Avengers: Doomsday film page",
+      "url": "https://www.marvel.com/movies/avengers-doomsday"
+    },
+    "S_SDCC24": {
+      "label": "Marvel.com, SDCC 2024: Robert Downey Jr. to Play Doom (July 2024)",
+      "url": "https://www.marvel.com/articles/live-events/sdcc-2024-robert-downey-jr-doom-avengers-doomsday-marvel-studios-hall-h-panel"
+    },
+    "S_PROD": {
+      "label": "Marvel.com, Avengers: Doomsday Begins Production (26 March 2025)",
+      "url": "https://www.marvel.com/articles/movies/marvel-studios-avengers-doomsday-begins-production"
+    },
+    "S_LIVE": {
+      "label": "Marvel.com, Marvel Fans Break the Internet During Cast Announcement (March 2025)",
+      "url": "https://www.marvel.com/articles/movies/avengers-doomsday-cast-announcement-livestream-marvel-fans-break-the-internet"
+    },
+    "S_TEASERS": {
+      "label": "Marvel.com, Watch the Avengers: Doomsday Teaser Trailers (13 January 2026)",
+      "url": "https://www.marvel.com/articles/movies/avengers-doomsday-teaser-trailer"
+    },
+    "S_TRAILER": {
+      "label": "Marvel.com, Avengers: Doomsday Trailer and Infinity Vision Tickets (20 July 2026)",
+      "url": "https://www.marvel.com/articles/movies/avengers-doomsday-trailer-infinity-vision-tickets"
+    },
+    "S_SDCC26": {
+      "label": "Marvel.com, All the Marvel Studios News from Hall H, SDCC 2026 (25 July 2026)",
+      "url": "https://www.marvel.com/articles/live-events/marvel-studios-san-diego-comic-con-2026-hall-h-recap"
+    },
+    "S_D23": {
+      "label": "Marvel.com, D23 2026: The Stars of Avengers: Doomsday Unveil New Footage (14 August 2026)",
+      "url": "https://www.marvel.com/articles/movies/avengers-doomsday-cast-d23-2026-new-footage-poster-robert-downey-jr-chris-evans-hayley-atwell"
+    },
+    "S_WATCH": {
+      "label": "Marvel.com, Countdown to Avengers: Doomsday watch guide (5 October 2026)",
+      "url": "https://www.marvel.com/articles/movies/avengers-doomsday-what-to-watch-guide-movies-shows-disney-plus"
+    },
+    "S_SECRETWARS": {
+      "label": "Marvel.com, Avengers: Secret Wars film page",
+      "url": "https://www.marvel.com/movies/avengers-secret-wars"
+    }
   },
   "milestones": [
-    { "date": "2024-07", "title": "The reveal", "text": "At Marvel Studios' Hall H panel at San Diego Comic-Con, Kevin Feige announced that the Russo brothers would direct Avengers: Doomsday and Avengers: Secret Wars. Robert Downey Jr. stepped out from a line of green-cloaked figures as Victor von Doom. The film was then dated May 2026.", "source": "S_SDCC24" },
-    { "date": "2025-03-26", "title": "The roll call", "text": "With no warning, Marvel Studios began a livestream that revealed the cast one director's chair at a time for more than five hours. It named 27 cast members and marked the start of production. Marvel called it its biggest livestream ever.", "source": "S_LIVE" },
-    { "date": "2025-12-23", "title": "Steve Rogers will return", "text": "The first teaser revealed Chris Evans returning as Steve Rogers.", "source": "S_TEASERS" },
-    { "date": "2025-12-30", "title": "Thor will return", "text": "The second teaser spotlighted Chris Hemsworth as Thor.", "source": "S_TEASERS" },
-    { "date": "2026-01-06", "title": "The X-Men will return", "text": "The third teaser featured Patrick Stewart as Professor X, Ian McKellen as Magneto and James Marsden as Cyclops.", "source": "S_TEASERS" },
-    { "date": "2026-01-13", "title": "Wakanda and the Fantastic Four", "text": "The fourth teaser featured Letitia Wright as Shuri, Winston Duke as M'Baku, Tenoch Huerta Mejia as Namor and Ebon Moss-Bachrach as the Thing.", "source": "S_TEASERS" },
-    { "date": "2026-07-20", "title": "The official trailer", "text": "Marvel Studios released the official trailer and opened Infinity Vision ticket sales for December 18.", "source": "S_TRAILER" },
-    { "date": "2026-07-25", "title": "Hall H, again", "text": "The cast returned to Hall H at San Diego Comic-Con. The whole hall wore Doom masks and capes and turned green as Downey spoke.", "source": "S_SDCC26" },
-    { "date": "2026-08-14", "title": "A special look", "text": "At D23, Downey, Chris Evans and Hayley Atwell unveiled a special look. Marvel confirmed that Evans and Atwell return as Steve Rogers and Peggy Carter.", "source": "S_D23" },
-    { "date": "2026-12-18", "title": "Doomsday", "text": "Avengers: Doomsday opens in theaters.", "source": "S_FILM" }
+    {
+      "date": "2024-07",
+      "title": "The reveal",
+      "text": "At Marvel Studios' Hall H panel at San Diego Comic-Con, Kevin Feige announced that the Russo brothers would direct Avengers: Doomsday and Avengers: Secret Wars. Robert Downey Jr. stepped out from a line of green-cloaked figures as Victor von Doom. The film was then dated May 2026.",
+      "source": "S_SDCC24"
+    },
+    {
+      "date": "2025-03-26",
+      "title": "The roll call",
+      "text": "With no warning, Marvel Studios began a livestream that revealed the cast one director's chair at a time for more than five hours. It named 27 cast members and marked the start of production. Marvel called it its biggest livestream ever.",
+      "source": "S_LIVE"
+    },
+    {
+      "date": "2025-12-23",
+      "title": "Steve Rogers will return",
+      "text": "The first teaser revealed Chris Evans returning as Steve Rogers.",
+      "source": "S_TEASERS"
+    },
+    {
+      "date": "2025-12-30",
+      "title": "Thor will return",
+      "text": "The second teaser spotlighted Chris Hemsworth as Thor.",
+      "source": "S_TEASERS"
+    },
+    {
+      "date": "2026-01-06",
+      "title": "The X-Men will return",
+      "text": "The third teaser featured Patrick Stewart as Professor X, Ian McKellen as Magneto and James Marsden as Cyclops.",
+      "source": "S_TEASERS"
+    },
+    {
+      "date": "2026-01-13",
+      "title": "Wakanda and the Fantastic Four",
+      "text": "The fourth teaser featured Letitia Wright as Shuri, Winston Duke as M'Baku, Tenoch Huerta Mejia as Namor and Ebon Moss-Bachrach as the Thing.",
+      "source": "S_TEASERS"
+    },
+    {
+      "date": "2026-07-20",
+      "title": "The official trailer",
+      "text": "Marvel Studios released the official trailer and opened Infinity Vision ticket sales for December 18.",
+      "source": "S_TRAILER"
+    },
+    {
+      "date": "2026-07-25",
+      "title": "Hall H, again",
+      "text": "The cast returned to Hall H at San Diego Comic-Con. The whole hall wore Doom masks and capes and turned green as Downey spoke.",
+      "source": "S_SDCC26"
+    },
+    {
+      "date": "2026-08-14",
+      "title": "A special look",
+      "text": "At D23, Downey, Chris Evans and Hayley Atwell unveiled a special look. Marvel confirmed that Evans and Atwell return as Steve Rogers and Peggy Carter.",
+      "source": "S_D23"
+    },
+    {
+      "date": "2026-12-18",
+      "title": "Doomsday",
+      "text": "Avengers: Doomsday opens in theaters.",
+      "source": "S_FILM"
+    }
   ],
   "cast": [
-    { "actor": "Robert Downey Jr.", "character": "Victor von Doom", "roleSource": "S_SDCC24", "slug": "victor-von-doom", "team": "adversary" },
-    { "actor": "Chris Evans", "character": "Steve Rogers", "roleSource": "S_TEASERS", "slug": "steve-rogers", "team": "avengers" },
-    { "actor": "Chris Hemsworth", "character": "Thor", "roleSource": "S_TEASERS", "slug": "thor", "team": "avengers" },
-    { "actor": "Anthony Mackie", "character": null, "lastRole": "Sam Wilson / Captain America", "slug": "sam-wilson", "team": "avengers" },
-    { "actor": "Sebastian Stan", "character": null, "lastRole": "Bucky Barnes", "slug": "bucky-barnes", "team": "avengers" },
-    { "actor": "Paul Rudd", "character": null, "lastRole": "Scott Lang / Ant-Man", "slug": "scott-lang", "team": "avengers" },
-    { "actor": "Simu Liu", "character": null, "lastRole": "Shang-Chi", "slug": "shang-chi", "team": "avengers" },
-    { "actor": "Danny Ramirez", "character": null, "lastRole": "Joaquin Torres / Falcon", "slug": "joaquin-torres", "team": "avengers" },
-    { "actor": "Pedro Pascal", "character": null, "lastRole": "Reed Richards / Mister Fantastic", "slug": "reed-richards", "team": "fantastic-four" },
-    { "actor": "Vanessa Kirby", "character": null, "lastRole": "Sue Storm / Invisible Woman", "slug": "sue-storm", "team": "fantastic-four" },
-    { "actor": "Joseph Quinn", "character": null, "lastRole": "Johnny Storm / Human Torch", "slug": "johnny-storm", "team": "fantastic-four" },
-    { "actor": "Ebon Moss-Bachrach", "character": "The Thing", "roleSource": "S_TEASERS", "slug": "ben-grimm", "team": "fantastic-four" },
-    { "actor": "Patrick Stewart", "character": "Professor X", "roleSource": "S_TEASERS", "slug": "professor-x", "team": "x-men" },
-    { "actor": "Ian McKellen", "character": "Magneto", "roleSource": "S_TEASERS", "slug": "magneto", "team": "x-men" },
-    { "actor": "James Marsden", "character": "Cyclops", "roleSource": "S_TEASERS", "slug": "cyclops", "team": "x-men" },
-    { "actor": "Alan Cumming", "character": null, "lastRole": "Nightcrawler", "slug": "nightcrawler", "team": "x-men" },
-    { "actor": "Rebecca Romijn", "character": null, "lastRole": "Mystique", "slug": "mystique", "team": "x-men" },
-    { "actor": "Kelsey Grammer", "character": null, "lastRole": "Beast", "slug": "beast", "team": "x-men" },
-    { "actor": "Channing Tatum", "character": null, "lastRole": "Gambit", "slug": "gambit", "team": "x-men" },
-    { "actor": "Florence Pugh", "character": null, "lastRole": "Yelena Belova", "slug": "yelena-belova", "team": "thunderbolts" },
-    { "actor": "David Harbour", "character": null, "lastRole": "Alexei Shostakov / Red Guardian", "slug": "red-guardian", "team": "thunderbolts" },
-    { "actor": "Wyatt Russell", "character": null, "lastRole": "John Walker / U.S. Agent", "slug": "john-walker", "team": "thunderbolts" },
-    { "actor": "Hannah John-Kamen", "character": null, "lastRole": "Ava Starr / Ghost", "slug": "ghost", "team": "thunderbolts" },
-    { "actor": "Lewis Pullman", "character": null, "lastRole": "Bob / Sentry", "slug": "bob-reynolds", "team": "thunderbolts" },
-    { "actor": "Letitia Wright", "character": "Shuri", "roleSource": "S_TEASERS", "slug": "shuri", "team": "wakanda-talokan" },
-    { "actor": "Winston Duke", "character": "M'Baku", "roleSource": "S_TEASERS", "slug": "mbaku", "team": "wakanda-talokan" },
-    { "actor": "Tenoch Huerta Mejia", "character": "Namor", "roleSource": "S_TEASERS", "slug": "namor", "team": "wakanda-talokan" },
-    { "actor": "Tom Hiddleston", "character": null, "lastRole": "Loki", "slug": "loki", "team": "more" },
-    { "actor": "Hayley Atwell", "character": "Peggy Carter", "roleSource": "S_D23", "slug": "peggy-carter", "team": "more" },
-    { "actor": "Kathryn Newton", "character": null, "slug": null, "team": "unnamed", "note": "Listed in Marvel's cast. Role not named by Marvel." },
-    { "actor": "Mabel Cadena", "character": null, "slug": null, "team": "unnamed", "note": "Listed in Marvel's cast. Role not named by Marvel." }
+    {
+      "actor": "Robert Downey Jr.",
+      "character": "Victor von Doom",
+      "roleSource": "S_SDCC24",
+      "slug": "victor-von-doom",
+      "team": "adversary"
+    },
+    {
+      "actor": "Chris Evans",
+      "character": "Steve Rogers",
+      "roleSource": "S_TEASERS",
+      "slug": "steve-rogers",
+      "team": "avengers"
+    },
+    {
+      "actor": "Chris Hemsworth",
+      "character": "Thor",
+      "roleSource": "S_TEASERS",
+      "slug": "thor",
+      "team": "avengers"
+    },
+    {
+      "actor": "Anthony Mackie",
+      "character": null,
+      "lastRole": "Sam Wilson / Captain America",
+      "slug": "sam-wilson",
+      "team": "avengers"
+    },
+    {
+      "actor": "Sebastian Stan",
+      "character": null,
+      "lastRole": "Bucky Barnes",
+      "slug": "bucky-barnes",
+      "team": "avengers"
+    },
+    {
+      "actor": "Paul Rudd",
+      "character": null,
+      "lastRole": "Scott Lang / Ant-Man",
+      "slug": "scott-lang",
+      "team": "avengers"
+    },
+    {
+      "actor": "Simu Liu",
+      "character": null,
+      "lastRole": "Shang-Chi",
+      "slug": "shang-chi",
+      "team": "avengers"
+    },
+    {
+      "actor": "Danny Ramirez",
+      "character": null,
+      "lastRole": "Joaquin Torres / Falcon",
+      "slug": "joaquin-torres",
+      "team": "avengers"
+    },
+    {
+      "actor": "Pedro Pascal",
+      "character": null,
+      "lastRole": "Reed Richards / Mister Fantastic",
+      "slug": "reed-richards",
+      "team": "fantastic-four"
+    },
+    {
+      "actor": "Vanessa Kirby",
+      "character": null,
+      "lastRole": "Sue Storm / Invisible Woman",
+      "slug": "sue-storm",
+      "team": "fantastic-four"
+    },
+    {
+      "actor": "Joseph Quinn",
+      "character": null,
+      "lastRole": "Johnny Storm / Human Torch",
+      "slug": "johnny-storm",
+      "team": "fantastic-four"
+    },
+    {
+      "actor": "Ebon Moss-Bachrach",
+      "character": "The Thing",
+      "roleSource": "S_TEASERS",
+      "slug": "ben-grimm",
+      "team": "fantastic-four"
+    },
+    {
+      "actor": "Patrick Stewart",
+      "character": "Professor X",
+      "roleSource": "S_TEASERS",
+      "slug": "professor-x",
+      "team": "x-men"
+    },
+    {
+      "actor": "Ian McKellen",
+      "character": "Magneto",
+      "roleSource": "S_TEASERS",
+      "slug": "magneto",
+      "team": "x-men"
+    },
+    {
+      "actor": "James Marsden",
+      "character": "Cyclops",
+      "roleSource": "S_TEASERS",
+      "slug": "cyclops",
+      "team": "x-men"
+    },
+    {
+      "actor": "Alan Cumming",
+      "character": null,
+      "lastRole": "Nightcrawler",
+      "slug": "nightcrawler",
+      "team": "x-men"
+    },
+    {
+      "actor": "Rebecca Romijn",
+      "character": null,
+      "lastRole": "Mystique",
+      "slug": "mystique",
+      "team": "x-men"
+    },
+    {
+      "actor": "Kelsey Grammer",
+      "character": null,
+      "lastRole": "Beast",
+      "slug": "beast",
+      "team": "x-men"
+    },
+    {
+      "actor": "Channing Tatum",
+      "character": null,
+      "lastRole": "Gambit",
+      "slug": "gambit",
+      "team": "x-men"
+    },
+    {
+      "actor": "Florence Pugh",
+      "character": null,
+      "lastRole": "Yelena Belova",
+      "slug": "yelena-belova",
+      "team": "thunderbolts"
+    },
+    {
+      "actor": "David Harbour",
+      "character": null,
+      "lastRole": "Alexei Shostakov / Red Guardian",
+      "slug": "red-guardian",
+      "team": "thunderbolts"
+    },
+    {
+      "actor": "Wyatt Russell",
+      "character": null,
+      "lastRole": "John Walker / U.S. Agent",
+      "slug": "john-walker",
+      "team": "thunderbolts"
+    },
+    {
+      "actor": "Hannah John-Kamen",
+      "character": null,
+      "lastRole": "Ava Starr / Ghost",
+      "slug": "ghost",
+      "team": "thunderbolts"
+    },
+    {
+      "actor": "Lewis Pullman",
+      "character": null,
+      "lastRole": "Bob / Sentry",
+      "slug": "bob-reynolds",
+      "team": "thunderbolts"
+    },
+    {
+      "actor": "Letitia Wright",
+      "character": "Shuri / Black Panther",
+      "roleSource": "S_TEASERS",
+      "slug": "shuri",
+      "team": "wakanda-talokan"
+    },
+    {
+      "actor": "Winston Duke",
+      "character": "M'Baku",
+      "roleSource": "S_TEASERS",
+      "slug": "mbaku",
+      "team": "wakanda-talokan"
+    },
+    {
+      "actor": "Tenoch Huerta Mejia",
+      "character": "Namor",
+      "roleSource": "S_TEASERS",
+      "slug": "namor",
+      "team": "wakanda-talokan"
+    },
+    {
+      "actor": "Tom Hiddleston",
+      "character": null,
+      "lastRole": "Loki",
+      "slug": "loki",
+      "team": "more"
+    },
+    {
+      "actor": "Hayley Atwell",
+      "character": "Peggy Carter",
+      "roleSource": "S_D23",
+      "slug": "peggy-carter",
+      "team": "more"
+    },
+    {
+      "actor": "Kathryn Newton",
+      "character": null,
+      "slug": null,
+      "team": "unnamed",
+      "note": "Listed in Marvel's cast. Role not named by Marvel."
+    },
+    {
+      "actor": "Mabel Cadena",
+      "character": null,
+      "slug": null,
+      "team": "unnamed",
+      "note": "Listed in Marvel's cast. Role not named by Marvel."
+    }
   ],
   "excluded": [
     "Ryan Reynolds and Hugh Jackman appeared at SDCC 2026 and D23 2026 asking to join the cast. Marvel did not confirm them, so they are excluded."
