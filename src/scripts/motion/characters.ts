@@ -148,5 +148,116 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
     cleanups.push(() => gsap.ticker.remove(tick));
   }
 
+  // Letters that move after the intro must not be clipped by the reveal masks.
+  if (scene === 'magnet' || scene === 'bamf') {
+    const t = setTimeout(() => title.querySelectorAll<HTMLElement>('.split-line').forEach((l) => { l.style.overflow = 'visible'; }), 2000);
+    cleanups.push(() => clearTimeout(t));
+  }
+
+  // Shared helper: cached centres of the split title characters.
+  const charBox = () => [...title.querySelectorAll<HTMLElement>('.split-char')].map((el) => {
+    const r = el.getBoundingClientRect();
+    return { el, x: r.left + r.width / 2, y: r.top + r.height / 2 + window.scrollY };
+  });
+
+  if (scene === 'cerebro') {
+    // a scanning beam passes across the name, lighting each letter as it goes
+    let chars: ReturnType<typeof charBox> = [];
+    const t0 = setTimeout(() => { chars = charBox(); }, 2200);
+    const tick = () => {
+      if (!chars.length) return;
+      const sweep = ((performance.now() / 1000) * 0.35 % 1.6 - 0.3) * innerWidth;
+      for (const c of chars) {
+        const g = Math.max(0, 1 - Math.abs(c.x - sweep) / 120);
+        c.el.style.textShadow = g > 0.01 ? `0 0 ${10 + g * 30}px rgba(140,190,255,${(g * 0.9).toFixed(2)})` : '';
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
+  if (scene === 'magnet' && ctx) {
+    // letters are drawn toward the pointer like iron to a pole
+    let chars: { el: HTMLElement; x: number; y: number; xTo: gsap.QuickToFunc; yTo: gsap.QuickToFunc }[] = [];
+    const t0 = setTimeout(() => {
+      chars = charBox().map((c) => ({ ...c, xTo: gsap.quickTo(c.el, 'x', { duration: 0.7, ease: 'power3.out' }), yTo: gsap.quickTo(c.el, 'y', { duration: 0.7, ease: 'power3.out' }) }));
+    }, 2200);
+    const tick = () => {
+      if (!chars.length) return;
+      const px = ctx.pointer.x * innerWidth, py = (1 - ctx.pointer.y) * innerHeight + window.scrollY;
+      const pol = window.scrollY > innerHeight * 0.35 ? -1 : 1;
+      for (const c of chars) {
+        const dx = px - c.x, dy = py - c.y, d = Math.hypot(dx, dy) + 1;
+        const f = Math.min(18, 4000 / (d * 1.2)) * pol;
+        c.xTo((dx / d) * f); c.yTo((dy / d) * f);
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
+  if (scene === 'optic' && ctx) {
+    // the name flares red when the beam fires
+    const tick = () => {
+      const f = ctx.signal;
+      title.style.textShadow = `0 0 ${12 + f * 50}px rgba(255,40,60,${(0.2 + f * 0.75).toFixed(2)})`;
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'bamf' && ctx) {
+    // on every jump, one letter vanishes in a puff and reappears
+    let last = 0;
+    const tick = () => {
+      if (ctx.signal > 0.9 && performance.now() - last > 500) {
+        last = performance.now();
+        const chars = title.querySelectorAll<HTMLElement>('.split-char');
+        const el = chars[Math.floor(Math.random() * chars.length)];
+        if (el) gsap.timeline()
+          .to(el, { scale: 0, opacity: 0, filter: 'blur(8px)', duration: 0.12, ease: 'power2.in' })
+          .set(el, { y: gsap.utils.random(-30, 30) })
+          .to(el, { scale: 1, opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.5, ease: 'back.out(2)' }, '+=0.25');
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'reaction') {
+    // the name keeps shifting between typefaces
+    const faces = ["'DM Serif Display', serif", "'Unbounded Variable', sans-serif", "'Italiana', serif", "'Teko Variable', sans-serif", "'Gloock', serif", "'Rye', serif"];
+    let i = 0;
+    const id = window.setInterval(() => {
+      i = (i + 1) % faces.length;
+      gsap.timeline()
+        .to(title, { filter: 'blur(10px)', opacity: 0.3, duration: 0.25, ease: 'power2.in' })
+        .add(() => { title.style.fontFamily = faces[i]; })
+        .to(title, { filter: 'blur(0px)', opacity: 1, duration: 0.45, ease: 'power2.out' });
+    }, 2600);
+    cleanups.push(() => clearInterval(id));
+  }
+
+  if (scene === 'fur' && ctx) {
+    // a soft halo that leans away from the pointer, like fur being brushed
+    const tick = () => {
+      const dx = (0.5 - ctx.pointer.x) * 10, dy = (ctx.pointer.y - 0.5) * 10;
+      title.style.textShadow = `${dx.toFixed(1)}px ${dy.toFixed(1)}px 18px rgba(90,130,255,0.45), ${(dx * 2).toFixed(1)}px ${(dy * 2).toFixed(1)}px 36px rgba(40,70,200,0.3)`;
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'cards' && ctx) {
+    // the name kicks with each detonation
+    const tick = () => {
+      const s = ctx.signal;
+      title.style.textShadow = `0 0 ${10 + s * 40}px rgba(255,70,190,${(0.15 + s * 0.8).toFixed(2)})`;
+      title.style.transform = s > 0.05 ? `rotate(${((Math.random() - 0.5) * 2 * s).toFixed(2)}deg)` : '';
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
   return () => cleanups.forEach((c) => c());
 }

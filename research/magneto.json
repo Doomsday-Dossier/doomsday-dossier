@@ -1,0 +1,582 @@
+{
+  "slug": "magneto",
+  "name": "Max Eisenhardt",
+  "alias": "Magneto",
+  "origin": {
+    "firstAppearance": {
+      "title": "X-Men",
+      "issue": "#1",
+      "coverDate": "September 1963"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Max Eisenhardt grew up in a middle-class Jewish family in Nuremberg as the Nazis tightened their grip on Germany. He saw his uncle beaten and publicly shamed by a mob, and after he twice won a school javelin contest he was accused of cheating, expelled and attacked by classmates. His father Jakob, a First World War veteran, at first could not believe his country would turn on him, but after Kristallnacht he moved the family to Warsaw. Trapped in the ghetto, Max smuggled to keep them alive; when deportations began in 1942 the family fled, were caught and were shot, and Max survived only because his father pushed him out of the line of fire.",
+      "Max was later captured and sent, still in his early teens, to Auschwitz, where he was forced into the Sonderkommando, the prisoner detail made to deal with the dead. He was the only member of his family to survive the Holocaust. In the camp he found Magda, a Sinti Romani girl he had admired at school in Nuremberg, and the two escaped together during the Sonderkommando uprising. They married and had a daughter, Anya. His powers, held back by hepatitis caught in the camp, first surfaced in the Soviet city of Vinnytsia, and that same day a fire trapped Anya while police held Max back, and she died. In his grief he lashed out with his power, killing his captors and wrecking much of the city; Magda fled from him, unaware she was pregnant.",
+      "Max had a forger create a new identity, Erik Lehnsherr, a Sinti survivor, so he could search for Magda among her people, never learning that she had died. As Magnus he volunteered at a hospital in Haifa, Israel, for Holocaust survivors, where he befriended Charles Xavier and argued that humanity would always persecute anyone different. After the two men rescued their friend Gabrielle Haller from Hydra and revealed their powers to each other, he left with Hydra's hoard of Nazi gold. For a time he hunted Nazi war criminals, until his CIA handlers murdered his girlfriend Isabelle in front of him; he killed them, lost what trust he had left in humanity and took the name Magneto. Years later, wearing a helmet built to block telepathy, he gathered the Brotherhood of Evil Mutants and opened his war by attacking the Cape Citadel missile base."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #1 (September 1963)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men: Magneto Testament Vol 1 #1 (November 2008)",
+        "url": "https://marvel.fandom.com/wiki/X-Men:_Magneto_Testament_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men: Magneto Testament Vol 1 #4 (February 2009)",
+        "url": "https://marvel.fandom.com/wiki/X-Men:_Magneto_Testament_Vol_1_4"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men: Magneto Testament Vol 1 #5 (March 2009)",
+        "url": "https://marvel.fandom.com/wiki/X-Men:_Magneto_Testament_Vol_1_5"
+      },
+      {
+        "label": "Marvel Fandom wiki: Classic X-Men Vol 1 #12 (August 1987)",
+        "url": "https://marvel.fandom.com/wiki/Classic_X-Men_Vol_1_12"
+      },
+      {
+        "label": "Marvel Fandom wiki: Classic X-Men Vol 1 #19 (March 1988)",
+        "url": "https://marvel.fandom.com/wiki/Classic_X-Men_Vol_1_19"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #161 (September 1982)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_161"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 2 #72 (February 1998)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_72"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 2 #-1 (July 1997)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_-1"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1963-1964",
+      "title": "Master of Magnetism",
+      "summary": "Magneto first appears sabotaging rockets and seizing the Cape Citadel missile base, until Professor X's new X-Men force him out. He then takes over the South American nation of Santo Marco with his Brotherhood of Evil Mutants, a group that includes the twins Wanda and Pietro Maximoff, and rules it until the X-Men free the country. Retreating to his orbiting base Asteroid M with a captured Angel, he loses it when the Scarlet Witch sabotages the device he meant to use against the X-Men.",
+      "keyIssues": [
+        "X-Men #1 (1963)",
+        "X-Men #4 (1964)",
+        "X-Men #5 (1964)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Wilderness years",
+      "years": "1969-1977",
+      "title": "The Creator, an infant and a second youth",
+      "summary": "Hiding in the Savage Land, Magneto turns local people into the Savage Land Mutates, who worship him as their Creator, until the X-Men wreck his base. Later he uses alien technology to engineer Alpha the Ultimate Mutant, who turns on him and reduces him to a baby. Xavier leaves the infant with Moira MacTaggert, who tries to correct the strain his powers put on his mind, but the Shi'ar agent Eric the Red restores him to adulthood, younger than before, and sets him against the X-Men again.",
+      "keyIssues": [
+        "X-Men #62 (1969)",
+        "Defenders #16 (1974)",
+        "X-Men #104 (1977)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #62",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_62"
+        },
+        {
+          "label": "Marvel Fandom wiki: Defenders Vol 1 #16",
+          "url": "https://marvel.fandom.com/wiki/Defenders_Vol_1_16"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #104",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_104"
+        }
+      ]
+    },
+    {
+      "era": "A crisis of conscience",
+      "years": "1981-1983",
+      "title": "Doubt and an uneasy alliance",
+      "summary": "Demanding that the world give up its nuclear weapons, Magneto sinks a Soviet submarine and destroys a town before the X-Men storm his island base. When he believes he has killed the young Kitty Pryde, who like him is Jewish, he is shaken into remembering his past and abandons his plan. A flashback the following year shows his friendship with Xavier in Haifa, and in God Loves, Man Kills he works alongside the X-Men to rescue Xavier from William Stryker's Purifiers.",
+      "keyIssues": [
+        "Uncanny X-Men #150 (1981)",
+        "Uncanny X-Men #161 (1982)",
+        "Marvel Graphic Novel #5 (1983)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #150",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_150"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #161",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_161"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Graphic Novel Vol 1 #5: X-Men: God Loves, Man Kills (January 1983)",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Graphic_Novel_Vol_1_5:_X-Men:_God_Loves,_Man_Kills"
+        }
+      ]
+    },
+    {
+      "era": "Headmaster",
+      "years": "1985-1989",
+      "title": "In Xavier's place",
+      "summary": "Magneto surrenders to stand trial before the World Court in Paris, with his old friend Gabrielle Haller defending him. When an attack by the Fenris twins leaves Xavier close to death, Charles asks Magneto to take over his school and the New Mutants, and he agrees. He spends several years teaching and fighting beside the X-Men before concluding that he cannot follow Xavier's way, and leaves to play the villain again so the world's fear will focus on him.",
+      "keyIssues": [
+        "Uncanny X-Men #199 (1985)",
+        "Uncanny X-Men #200 (1985)",
+        "Uncanny X-Men #253 (1989)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #199",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_199"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #200",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_200"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #253",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_253"
+        }
+      ]
+    },
+    {
+      "era": "The Acolytes",
+      "years": "1991-1993",
+      "title": "Asteroid M and Fatal Attractions",
+      "summary": "Now seeking only a refuge for mutants, Magneto settles on Asteroid M with the worshipful Acolytes, and a clash with the X-Men leaves him badly hurt. Learning that Moira altered his mind while he was a baby, he turns on her and Xavier, and the station is destroyed in an apparent death engineered by the traitor Fabian Cortez. He returns aboard a new base, Avalon, and when the United Nations activates the Magneto Protocols to keep him off Earth he answers with a pulse that knocks out the planet's electronics. Confronted on Avalon, he rips the adamantium from Wolverine's skeleton, and Xavier shuts down his mind.",
+      "keyIssues": [
+        "X-Men Vol 2 #1 (1991)",
+        "X-Men Vol 2 #3 (1991)",
+        "X-Men Vol 2 #25 (1993)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #3",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #25",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_25"
+        }
+      ]
+    },
+    {
+      "era": "Genosha",
+      "years": "1999-2003",
+      "title": "Ruler of a mutant nation",
+      "summary": "By seizing control of the Earth's magnetic poles, Magneto pressures the United Nations into handing him the island of Genosha as a mutant homeland. Once the Legacy Virus is cured he tries to build an army from its mutants, and a stopgap X-Men team stops him only after Wolverine leaves him gravely injured and unable to walk; Polaris later confirms she is his daughter. When giant Sentinels destroy Genosha he is believed dead, and his face and the slogan 'Magneto was right' become symbols for young mutants, while an impostor called Xorn commits atrocities in his name.",
+      "keyIssues": [
+        "X-Men Vol 2 #87 (1999)",
+        "X-Men Vol 2 #113 (2001)",
+        "New X-Men #135 (2003)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #87",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_87"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #113",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_113"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #135",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_135"
+        }
+      ]
+    },
+    {
+      "era": "House of M",
+      "years": "2005-2009",
+      "title": "No more mutants",
+      "summary": "When Wanda's reality-warping powers spiral out of control, Magneto takes her to Genosha and is pushed to consider ending her life, until Pietro talks her into remaking the world into one where mutants rule under Magneto. Once heroes break the illusion, Wanda blames her father for what she and her brother became and strips most of the world's mutants, Magneto included, of their powers. Powerless, he helps Exodus rebuild Xavier's damaged mind, then lets the High Evolutionary put him through a risky procedure that restores his abilities.",
+      "keyIssues": [
+        "House of M #1 (2005)",
+        "House of M #8 (2005)",
+        "Uncanny X-Men #507 (2009)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: House of M Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/House_of_M_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: House of M Vol 1 #8",
+          "url": "https://marvel.fandom.com/wiki/House_of_M_Vol_1_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #507",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_507"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Legacy Vol 1 #208",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Legacy_Vol_1_208"
+        }
+      ]
+    },
+    {
+      "era": "Cyclops's revolution",
+      "years": "2009-2014",
+      "title": "Utopia and beyond",
+      "summary": "Magneto arrives at Utopia, the X-Men's island home built from his old Asteroid M, kneels in front of Cyclops and asks to talk, praising him for uniting mutantkind. He backs Scott through the Schism and the war with the Avengers over the Phoenix, then joins his underground revolution while struggling with damaged powers. Going solo, he hunts down people who kill mutants and confronts the Red Skull's prison camp in the ruins of Genosha.",
+      "keyIssues": [
+        "Uncanny X-Men #515 (2009)",
+        "Uncanny X-Men Vol 3 #1 (2013)",
+        "Magneto Vol 3 #1 (2014)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #515",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_515"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_3_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Magneto Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Magneto_Vol_3_1"
+        }
+      ]
+    },
+    {
+      "era": "The Krakoan age",
+      "years": "2019-2022",
+      "title": "Founding father",
+      "summary": "Reconciled with Xavier, Magneto helps found the mutant nation of Krakoa, welcomes foreign envoys and takes a seat on its Quiet Council. He leads the mutants who terraform a planet as a new home for the island of Arakko, unveiled at the Hellfire Gala, and is briefly suspected of murder when Wanda Maximoff, whom he still calls his daughter, is found dead that night; she is later resurrected. After resigning from the council he moves to Arakko and joins its Great Ring, and in the fight against the Eternal Uranos he holds on long enough to help defeat him before dying in Storm's arms.",
+      "keyIssues": [
+        "House of X #1 (2019)",
+        "X-Men: The Trial of Magneto #1 (2021)",
+        "A.X.E.: Judgment Day #4 (2022)",
+        "X-Men: Red Vol 2 #7 (2022)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: House of X Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/House_of_X_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Trial of Magneto Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Trial_of_Magneto_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Trial of Magneto Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Trial_of_Magneto_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: A.X.E.: Judgment Day Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/A.X.E.:_Judgment_Day_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Red Vol 2 #7",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Red_Vol_2_7"
+        }
+      ]
+    },
+    {
+      "era": "Resurrection",
+      "years": "2024-2025",
+      "title": "Return and decline",
+      "summary": "In the afterlife Magneto is made to relive every life lost through his actions, until Storm reaches him and shows him a second wall listing the people he saved. They escape through the Shadow King's realm and he is reborn, then joins the final assault on Orchis that destroys Nimrod. Afterwards he moves to Alaska with Cyclops's new X-Men, but a sickness linked to repeated resurrection soon costs him control of his powers and the use of his legs.",
+      "keyIssues": [
+        "Resurrection of Magneto #1 (2024)",
+        "Resurrection of Magneto #3 (2024)",
+        "Fall of the House of X #5 (2024)",
+        "X-Men Vol 7 #7 (2025)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Resurrection of Magneto Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Resurrection_of_Magneto_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Resurrection of Magneto Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Resurrection_of_Magneto_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fall of the House of X Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fall_of_the_House_of_X_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #7",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_7"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "X-Men",
+      "year": 2000,
+      "continuity": "FOX",
+      "actor": "Ian McKellen (Brett Morris as young Erik)",
+      "cameo": false,
+      "summary": "The film opens with young Erik bending a camp gate as he is torn from his parents. As an adult he sees Senator Kelly's push for mutant registration as an echo of the Holocaust and plans to use a machine to turn the world leaders at the Ellis Island summit into mutants, kidnapping Rogue to power it in his place because it drains him. The X-Men stop him on Liberty Island and he ends up in a plastic prison, playing chess with Xavier.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X2",
+      "year": 2003,
+      "continuity": "FOX",
+      "actor": "Ian McKellen",
+      "cameo": false,
+      "summary": "Stryker drugs Magneto in prison to learn about Cerebro, but Mystique gets him out by dosing a guard with liquid iron. He works with the X-Men against Stryker, then secretly turns the copy of Cerebro on ordinary humans before the X-Men stop it. On his way out he leaves Stryker chained at the foot of the bursting dam and takes Pyro with him.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: The Last Stand",
+      "year": 2006,
+      "continuity": "FOX",
+      "actor": "Ian McKellen",
+      "cameo": false,
+      "summary": "Magneto raises a mutant army to destroy the company making the mutant 'cure', and his words to Jean about Xavier's mental blocks lead to Charles's death, which visibly horrifies him. He tears loose the Golden Gate Bridge to reach the cure facility on Alcatraz, where Beast injects him with it. In the final scene, alone in a park, he makes a metal chess piece twitch.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: First Class",
+      "year": 2011,
+      "continuity": "FOX",
+      "actor": "Michael Fassbender (Bill Milner as young Erik)",
+      "cameo": false,
+      "summary": "As a boy in a camp, Erik watches Sebastian Shaw kill his mother to force out his powers, and he spends his adult years hunting Shaw until he meets Charles Xavier. He helps Charles gather the first young mutants, kills Shaw during the Cuban Missile Crisis and turns the fleets' missiles back on them, and a bullet he deflects paralyses Charles. He leaves with Raven and Shaw's followers, puts on Shaw's helmet and calls himself Magneto.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: First Class (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_First_Class_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "The Wolverine",
+      "year": 2013,
+      "continuity": "FOX",
+      "actor": "Ian McKellen",
+      "cameo": true,
+      "summary": "In the mid-credits scene, two years on, Magneto appears with a living Xavier to approach Logan after his return from Japan, his powers apparently back. The two former rivals warn Logan of a coming threat to all mutants.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: The Wolverine (film)",
+          "url": "https://marvel.fandom.com/wiki/The_Wolverine_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Days of Future Past",
+      "year": 2014,
+      "continuity": "FOX",
+      "actor": "Michael Fassbender and Ian McKellen",
+      "cameo": false,
+      "summary": "In 1973 the younger Erik (Fassbender), jailed beneath the Pentagon over President Kennedy's death, is broken out to help stop Mystique, but tries to kill her and then seizes the new Sentinels, dropping a stadium around the White House and holding the President hostage until Mystique stops him. In the Sentinel-ruled 2023 his older self (McKellen) defends the X-Men in China, is badly wounded and tells Charles he regrets their years of fighting before history is rewritten.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Days of Future Past (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Days_of_Future_Past_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-10005)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Apocalypse",
+      "year": 2016,
+      "continuity": "FOX",
+      "actor": "Michael Fassbender",
+      "cameo": false,
+      "summary": "Living quietly in Poland as a steelworker with his wife Magda and daughter Nina, Erik is exposed when he saves a co-worker, and police accidentally kill his family. Apocalypse recruits him as a Horseman and amplifies his power until he is tearing metal out of the planet. Appeals from Raven and Charles's allies turn him against Apocalypse, and he helps rebuild the school.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Apocalypse",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Apocalypse"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "Dark Phoenix",
+      "year": 2019,
+      "continuity": "FOX",
+      "actor": "Michael Fassbender",
+      "cameo": false,
+      "summary": "Erik runs Genosha, a refuge for mutants on land the government gave him, and sends away a desperate Jean Grey. After learning she killed Raven he sets out to kill her, is beaten and captured, then fights alongside the X-Men against the alien D'Bari on a prison train. At the end he finds the retired Charles in Paris and the two sit down to play chess.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Dark Phoenix (film)",
+          "url": "https://marvel.fandom.com/wiki/Dark_Phoenix_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-10005)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Magneto's camp tattoo was first shown as 214782 in Uncanny X-Men #161 (1982). A later Excalibur story changed it to 24005 because the first number was too high for the date he would have arrived, but 214782 has since reappeared.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #161 (September 1982)",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_161"
+        }
+      ]
+    },
+    {
+      "fact": "After Magneto was believed killed on Genosha his face became a T-shirt and graffiti image; New X-Men #135 (2003) is the first time Quentin Quire wears his 'Magneto was right' shirt.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #135 (February 2003)",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_135"
+        }
+      ]
+    },
+    {
+      "fact": "In the Brotherhood's first outing in X-Men #4 (1964), its members mostly call him 'the Leader' rather than Magneto.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #4 (March 1964)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_4"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "First appearance: X-Men #1 (September 1963), as listed on the Earth-616 page and the issue page.",
+    "Names: the wiki gives his birth name as Max Eisenhardt (from X-Men: Magneto Testament, 2008) and says 'Erik Lehnsherr' was a forged Sinti identity (X-Men Vol 2 #72). Older stories treated him as Sinti; the wiki notes the confusion until Magneto Testament settled that he is Jewish.",
+    "Retellings differ on how Max came to work in the Sonderkommando: the Earth-616 page (citing Excalibur Vol 3 #7) says he chose it to avoid Mengele's experiments, while the Magneto Testament #4 issue page says a teacher's attempt to get him a safer job went wrong and he was drafted. The origin keeps to the shared fact that he was forced into it.",
+    "The issue pages for Classic X-Men #12 and #19 have no plot synopsis, so details from those flashbacks (Anya's death, Isabelle's murder) rest on the Earth-616 character page.",
+    "The Earth-616 trivia calls Uncanny X-Men #150 the first issue to develop his Auschwitz origin, while the #150 issue page notes it as the second hint. Neither claim is used.",
+    "No MCU entry: the MCU Wiki's main Magneto page (Ian McKellen) lists only Avengers: Doomsday (listed for 18 December 2026), marked unreleased, so it is left out. No plot details were researched.",
+    "Deadpool & Wolverine (2024) is left out: the MCU Wiki's Magneto/Earth-10005 page says the Fox Magneto is mentioned only (killed off-screen in the Void).",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-only cast list do not include Magneto in any version; Earth-10005 is only mentioned by name. No entry was added.",
+    "Animation is excluded under the brief, including X-Men '97 and earlier cartoons. The Gifted (2017-2019) series page lists no Magneto, and Generation X (1996), X-Men Origins: Wolverine, Logan, Deadpool and Deadpool 2 pages list no appearance by him.",
+    "The Marvel Fandom wiki splits the Fox films into Earth-41578 (original timeline, McKellen) and Earth-10005 (revised timeline, Fassbender); the MCU Wiki treats the Fox universe as Earth-10005.",
+    "The Earth-616 page has a section built from the Fortnite video game; it was not used. The page's history runs to the X-Men Vol 7 era (2024-2025); anything later was not checked.",
+    "The wiki says Wanda and Pietro were long presumed to be Magda's children by him; this file avoids stating their parentage."
+  ]
+}

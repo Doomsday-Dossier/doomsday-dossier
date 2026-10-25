@@ -15,6 +15,13 @@ const loaders: Record<string, () => Promise<{ default: new () => HeroScene }>> =
   ripple: () => import('./scenes/ripple'),
   flame: () => import('./scenes/flame'),
   rock: () => import('./scenes/rock'),
+  cerebro: () => import('./scenes/cerebro'),
+  magnet: () => import('./scenes/magnet'),
+  optic: () => import('./scenes/optic'),
+  bamf: () => import('./scenes/bamf'),
+  reaction: () => import('./scenes/reaction'),
+  fur: () => import('./scenes/fur'),
+  cards: () => import('./scenes/cards'),
 };
 
 export async function loadScene(id: string): Promise<HeroScene | null> {

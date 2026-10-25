@@ -1,0 +1,110 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/beast/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-beast-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/cyclops/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-cyclops-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/gambit/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-gambit-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/magneto/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-magneto-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/mystique/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-mystique-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/nightcrawler/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-nightcrawler-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/professor-x/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\c-professor-x-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "desktop",
+    "file": "screenshots\\wave-3\\teams-x-men-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/beast/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-beast-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/cyclops/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-cyclops-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/gambit/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-gambit-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/magneto/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-magneto-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/mystique/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-mystique-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/nightcrawler/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-nightcrawler-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/professor-x/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\c-professor-x-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/x-men/",
+    "view": "phone",
+    "file": "screenshots\\wave-3\\teams-x-men-phone.jpg",
+    "errors": []
+  }
+]

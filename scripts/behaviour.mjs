@@ -8,7 +8,7 @@ let fail = 0;
 // 1. Reduced motion
 {
   const ctx = await b.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 800 } });
-  for (const p of ['/', '/c/victor-von-doom/', '/c/joaquin-torres/', '/c/sue-storm/', '/c/ben-grimm/', '/teams/avengers/']) {
+  for (const p of ['/', '/c/victor-von-doom/', '/c/joaquin-torres/', '/c/sue-storm/', '/c/ben-grimm/', '/c/magneto/', '/c/mystique/', '/c/gambit/', '/teams/avengers/']) {
     const page = await ctx.newPage();
     const errs = []; page.on('pageerror', (e) => errs.push(e.message));
     await page.goto(base + p, { waitUntil: 'load' });

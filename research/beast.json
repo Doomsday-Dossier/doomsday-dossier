@@ -1,0 +1,592 @@
+{
+  "slug": "beast",
+  "name": "Henry McCoy",
+  "alias": "Beast",
+  "origin": {
+    "firstAppearance": {
+      "title": "X-Men",
+      "issue": "#1",
+      "coverDate": "September 1963"
+    },
+    "creators": [
+      "Stan Lee",
+      "Jack Kirby"
+    ],
+    "summary": [
+      "Hank McCoy was born in Dunfee, Illinois, to Norton and Edna McCoy. His father had taken a huge dose of radiation while repairing a fault at the nuclear plant where he worked, and soon left the job to farm; when Hank arrived his mutation was obvious at once from his oversized hands and feet, and even as a baby he was unusually strong and agile. He grew into a fiercely curious, wordy boy who took apart any machine he could reach, to the despair of his school, and once crushed his uncle Bob's hand without knowing his own strength. Teased for his looks, he threw himself into his studies, building a range of interests across the sciences and the arts.",
+      "His size made him a target for bullies, and when a group of them pushed him into traffic only his reflexes saved him. The incident caught the eye of the football coach, and Hank became a star player, with his tutoring partner Jennifer Nyles becoming his girlfriend and his loudest defender. Newspaper stories about the gifted athlete reached both Professor Charles Xavier and a criminal called the Conquistador, who took Hank's parents hostage to force him to steal an experimental reactor. Xavier sent Cyclops, Iceman and the Angel to help, and after the fight Hank freed his parents and agreed to enrol at Xavier's school, while the professor erased the town's memories of him.",
+      "Taking the codename Beast, Hank was one of the founding X-Men, and with Jean Grey's arrival the team was complete in time for its first clash with Magneto at the Cape Citadel missile base. For all his brawn he spoke like a professor and lived with his nose in a book, and he made clear he disliked being called the Beast at all. He was also slow to forgive Xavier for wiping the memories of the people he grew up with, but the professor eventually persuaded him it had been done to protect them and him."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #1 (September 1963)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #3 (January 1964)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_3"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #15 (December 1965)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_15"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #49 (October 1968)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_49"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #52 (January 1969)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_52"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 1 #53 (February 1969)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_53"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1963-1969",
+      "title": "The original X-Men",
+      "summary": "Hank opens the very first X-Men story in Xavier's training machine, trading pranks with Iceman, before the team stops Magneto's takeover of Cape Citadel. Early missions pit him against the Blob, the Vanisher and the Brotherhood of Evil Mutants, and he confesses that he finds his codename hurtful. Later in the decade a run of issues fills in his origin, from the radiation that changed his father to the Conquistador's kidnapping of his parents.",
+      "keyIssues": [
+        "X-Men #1 (1963)",
+        "X-Men #3 (1964)",
+        "X-Men #53 (1969)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #49",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_49"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 #53",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_53"
+        }
+      ]
+    },
+    {
+      "era": "The Bronze Age makeover",
+      "years": "1972-1973",
+      "title": "Becoming the furry Beast",
+      "summary": "Working as a researcher at the Brand Corporation, Hank isolates a chemical that triggers mutation and drinks it so he can stop a theft without being recognised. He misses the one-hour window for the antidote and is left permanently covered in grey fur, stronger, faster and quicker to anger. He hides behind a latex mask and a posture-correcting harness, and after an injury his fur turns blue-black while a recovering Hank accidentally reveals his secret to his neighbour Patsy Walker.",
+      "keyIssues": [
+        "Amazing Adventures #11 (1972)",
+        "Amazing Adventures #15 (1972)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Amazing Adventures Vol 2 #11",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Adventures_Vol_2_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Amazing Adventures Vol 2 #15",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Adventures_Vol_2_15"
+        }
+      ]
+    },
+    {
+      "era": "Earth's Mightiest Heroes",
+      "years": "1975-1981",
+      "title": "An Avenger",
+      "summary": "When the Avengers hold open auditions, Beast turns up having given up his civilian identity and is taken on as a probationary member, unmasking the Toad posing as the Stranger along the way. Made a full member, he becomes close friends with the revived Wonder Man and enjoys life as a celebrity hero, while also helping his old X-Men teammates against Magneto and Dark Phoenix. After choosing to destroy the Resurrection Stone rather than let it fall into the wrong hands, even though his poisoned girlfriend Vera Cantor stays in a coma, he takes leave from the team to focus on science.",
+      "keyIssues": [
+        "Avengers #137 (1975)",
+        "Avengers #151 (1976)",
+        "Avengers #211 (1981)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #137",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_137"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #151",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_151"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #211",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_211"
+        }
+      ]
+    },
+    {
+      "era": "New teams",
+      "years": "1982-1986",
+      "title": "The New Defenders and X-Factor",
+      "summary": "Looking for a way to save Vera, Beast teams up with Doctor Strange and joins the loose band of Defenders, later turning them into a formal team with Iceman, Angel, Valkyrie, Moondragon and Gargoyle. After that group falls apart in a final battle with a possessed Moondragon, he is turned away from university jobs by anti-mutant protests and joins the original X-Men in founding X-Factor. The scientist Carl Maddicks captures him to research a cure for his son, and the experiment leaves Hank looking human again.",
+      "keyIssues": [
+        "Defenders #105 (1982)",
+        "Defenders #125 (1983)",
+        "New Defenders #152 (1986)",
+        "X-Factor #1 (1986)",
+        "X-Factor #3 (1986)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Defenders Vol 1 #105",
+          "url": "https://marvel.fandom.com/wiki/Defenders_Vol_1_105"
+        },
+        {
+          "label": "Marvel Fandom wiki: Defenders Vol 1 #125",
+          "url": "https://marvel.fandom.com/wiki/Defenders_Vol_1_125"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Defenders Vol 1 #152",
+          "url": "https://marvel.fandom.com/wiki/New_Defenders_Vol_1_152"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_3"
+        }
+      ]
+    },
+    {
+      "era": "The 1990s X-Men",
+      "years": "1993-2001",
+      "title": "The Legacy Virus and the Dark Beast",
+      "summary": "Back with the X-Men as their resident scientist, Hank spends years chasing a cure for the Legacy Virus. A cruel counterpart from the Age of Apocalypse reality, the Dark Beast, imprisons him in the ruins of the Brand Corporation and takes over his life until X-Factor rescues the real Hank. Building on Moira MacTaggert's final notes, he finally completes the cure, though it can only spread after a mutant releases it, and Colossus gives his life to do so.",
+      "keyIssues": [
+        "X-Men Unlimited #10 (1996)",
+        "X-Factor #126 (1996)",
+        "Uncanny X-Men #390 (2001)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Unlimited Vol 1 #10",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Unlimited_Vol_1_10"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Factor Vol 1 #126",
+          "url": "https://marvel.fandom.com/wiki/X-Factor_Vol_1_126"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #390",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_390"
+        }
+      ]
+    },
+    {
+      "era": "Secondary mutation",
+      "years": "2001-2002",
+      "title": "New X-Men",
+      "summary": "Hank's mutation pushes him into a heavier, cat-like form with sharper senses but clumsier hands. He helps Xavier build the Cerebra mutant tracker and teaches the flood of new students, but Cassandra Nova, hiding in Xavier's body, torments him about devolving and has a student beat him into a coma. He recovers, gives in to his fiercer instincts to confront Nova and uses his healing technology on Xavier's body instead, helping the X-Men take back the professor.",
+      "keyIssues": [
+        "New X-Men #114 (2001)",
+        "New X-Men #117 (2001)",
+        "New X-Men #126 (2002)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #114",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_114"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #117",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_117"
+        },
+        {
+          "label": "Marvel Fandom wiki: New X-Men Vol 1 #126",
+          "url": "https://marvel.fandom.com/wiki/New_X-Men_Vol_1_126"
+        }
+      ]
+    },
+    {
+      "era": "After M-Day",
+      "years": "2007-2010",
+      "title": "Endangered Species and the X-Club",
+      "summary": "With most of the world's mutants stripped of their powers, Hank searches for a way to reverse the decline, even working with the Dark Beast and seeking out the Scarlet Witch before admitting defeat. He then gathers a team of scientists, the X-Club, to study where modern mutation came from. Tortured in Norman Osborn's custody as part of Cyclops' wider plans, and uneasy with the X-Men's turn toward militancy, he walks out on the team and their island base, Utopia.",
+      "keyIssues": [
+        "X-Men: Endangered Species #1 (2007)",
+        "Uncanny X-Men #507 (2009)",
+        "Uncanny X-Men #519 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Endangered Species Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Endangered_Species_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #507",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_507"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #519",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_519"
+        }
+      ]
+    },
+    {
+      "era": "Time and the multiverse",
+      "years": "2013-2014",
+      "title": "All-New X-Men and the Illuminati",
+      "summary": "Believing a new mutation will kill him, Hank uses a time platform to bring the teenage original X-Men to the present, hoping they can shame the adult Cyclops out of his revolution. He survives in a new, more ape-like form, but the young Jean Grey refuses to go back, leaving both generations stranded together. A message left in Xavier's will also pulls him into the secret Illuminati, where he helps destroy an entire alternate Earth to save his own, a choice his younger self condemns.",
+      "keyIssues": [
+        "All-New X-Men #1 (2013)",
+        "All-New X-Men #5 (2013)",
+        "New Avengers Vol 3 #3 (2013)",
+        "New Avengers Vol 3 #21 (2014)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: All-New X-Men Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/All-New_X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: All-New X-Men Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/All-New_X-Men_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 3 #3",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_3_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 3 #21",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_3_21"
+        }
+      ]
+    },
+    {
+      "era": "The Krakoan age",
+      "years": "2020-2024",
+      "title": "X-Force and the fall",
+      "summary": "On the mutant island of Krakoa, Hank runs the spy agency X-Force and grows steadily more ruthless, secretly lobotomising a foreign president's son in a botched operation that drives Jean Grey off the team. He eventually goes rogue, killing to protect his schemes, cloning himself and breeding Wolverine copies. In his final stand his Black Hole Gun fires with Wonder Man in its path, and Hank throws himself in front of his old friend and is destroyed; one of his clones, given an old backup of his mind, carries on as Beast.",
+      "keyIssues": [
+        "X-Force Vol 6 #3 (2020)",
+        "X-Force Vol 6 #10 (2020)",
+        "Wolverine Vol 7 #31 (2023)",
+        "X-Force Vol 6 #50 (2024)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Krakoan Duplicate) (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Krakoan_Duplicate)_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Force Vol 6 #3",
+          "url": "https://marvel.fandom.com/wiki/X-Force_Vol_6_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Force Vol 6 #10",
+          "url": "https://marvel.fandom.com/wiki/X-Force_Vol_6_10"
+        },
+        {
+          "label": "Marvel Fandom wiki: Wolverine Vol 7 #31",
+          "url": "https://marvel.fandom.com/wiki/Wolverine_Vol_7_31"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Force Vol 6 #50",
+          "url": "https://marvel.fandom.com/wiki/X-Force_Vol_6_50"
+        }
+      ]
+    },
+    {
+      "era": "From the Ashes",
+      "years": "2024-2026",
+      "title": "The Chairman",
+      "summary": "With Krakoa gone, the clone joins Cyclops' new X-Men in Alaska as the team's builder. The original Hank, meanwhile, survived by uploading his mind into a synthetic body and resurfaces as the Chairman of the gene-terrorist group 3K, working alongside Cassandra Nova. After an excursion into the Age of Revelation, he decides to embrace his emotions and grows himself a new organic body covered in white fur.",
+      "keyIssues": [
+        "X-Men Vol 7 #1 (2024)",
+        "X-Men: Age of Revelation Finale #1 (2026)",
+        "X-Men Vol 7 #24 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Krakoan Duplicate) (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Krakoan_Duplicate)_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Age of Revelation Finale Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Age_of_Revelation_Finale_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 7 #24",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_7_24"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "X2",
+      "year": 2003,
+      "continuity": "FOX",
+      "actor": "Steve Bacic",
+      "cameo": true,
+      "summary": "Dr. Hank McCoy appears only on a television screen, in a news interview playing in the bar where Mystique picks up one of Magneto's guards. The broadcast shows him debating a Dr. Shaw. The Marvel Fandom wiki notes the filmmakers had wanted Beast since the first film but could not afford him.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-41578)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: The Last Stand",
+      "year": 2006,
+      "continuity": "FOX",
+      "actor": "Kelsey Grammer",
+      "cameo": false,
+      "summary": "A former Xavier student now serving as the government's Secretary of Mutant Affairs, Hank warns the professor about a new mutant cure and admits he still sometimes longs to look normal. When the cure is turned into a weapon without his knowledge he resigns and rejoins the X-Men for the battle on Alcatraz, where he injects Magneto with the cure. He ends the film as the United States ambassador to the United Nations.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: First Class",
+      "year": 2011,
+      "continuity": "FOX",
+      "actor": "Nicholas Hoult",
+      "cameo": false,
+      "summary": "In 1962 young Hank is a CIA researcher who has built a prototype Cerebro and a supersonic jet while hiding his prehensile feet. He falls for Raven and works on a serum to suppress his physical mutation, but taking it backfires and turns him blue and furry, and Havok names him Beast. He flies the team to Cuba for the showdown with Sebastian Shaw and stays with Charles when Raven leaves.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: First Class (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_First_Class_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Days of Future Past",
+      "year": 2014,
+      "continuity": "FOX",
+      "actor": "Nicholas Hoult (Kelsey Grammer as the older Hank)",
+      "cameo": false,
+      "summary": "By 1973 Hank is alone with Charles at the closed school, using a refined serum that lets him switch between forms and lets Charles walk. He helps a time-travelling Logan break Erik out of the Pentagon and stop Raven in Paris and Washington, using the serum to hide from a Sentinel. In the restored 2023, Grammer's older Beast greets Logan in the school's halls.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Days of Future Past (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Days_of_Future_Past_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "X-Men: Apocalypse",
+      "year": 2016,
+      "continuity": "FOX",
+      "actor": "Nicholas Hoult",
+      "cameo": false,
+      "summary": "Teaching at Xavier's school in 1983, Hank has built Cyclops' ruby quartz glasses. He is captured by Stryker along with Raven, Peter Maximoff and Moira MacTaggert, then escapes and flies the X-Men to Cairo, where he fights Psylocke. Afterwards he and Raven train the new team.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: Apocalypse",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Apocalypse"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "Deadpool 2",
+      "year": 2018,
+      "continuity": "FOX",
+      "actor": "Uncredited",
+      "cameo": true,
+      "summary": "When Deadpool visits Xavier's school and wonders aloud where the other X-Men are, Beast is in a nearby room with several teammates and quietly shuts the door so he will not notice them. The wiki notes the scene was shot on the Dark Phoenix set and added by green screen.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Deadpool 2",
+          "url": "https://marvel.fandom.com/wiki/Deadpool_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-41633)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-41633)"
+        }
+      ]
+    },
+    {
+      "title": "Dark Phoenix",
+      "year": 2019,
+      "continuity": "FOX",
+      "actor": "Nicholas Hoult",
+      "cameo": false,
+      "summary": "In 1992, after Jean Grey absorbs a cosmic force and kills Raven, a heartbroken Hank leaves the X-Men and joins Magneto in trying to kill Jean. He later makes peace with Charles and is left running the school in his absence.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Dark Phoenix (film)",
+          "url": "https://marvel.fandom.com/wiki/Dark_Phoenix_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-10005)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-10005)"
+        }
+      ]
+    },
+    {
+      "title": "The Marvels",
+      "year": 2023,
+      "continuity": "MCU",
+      "actor": "Kelsey Grammer",
+      "cameo": true,
+      "summary": "In the mid-credits scene, Monica Rambeau wakes up at the X-Mansion in a parallel universe after Binary, this world's version of her mother, finds her adrift in space. Beast, working as the X-Men's scientist, suggests she fell through a tear in space-time into a reality parallel to her own, then leaves to update Charles Xavier.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Beast",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Beast"
+        },
+        {
+          "label": "Marvel Fandom wiki: The Marvels (film)",
+          "url": "https://marvel.fandom.com/wiki/The_Marvels_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-TRN1225)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-TRN1225)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "In Avengers #14 (March 1999), Beast and Wonder Man share what the wiki describes as the first on-panel kiss between two male superheroes in mainstream Marvel comics, a decade before Rictor and Shatterstar's in X-Factor.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 3 #14 (March 1999)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "Hank has a weakness for Twinkies: in X-Men #73 (1998) he pins up a communal New Year's resolutions sheet, and his own list includes eating fewer of them alongside curing the Legacy Virus.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #73 (March 1998)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_73"
+        }
+      ]
+    },
+    {
+      "fact": "The switch to a furry Beast was Roy Thomas's idea, with input from Stan Lee, to make the character more eye-catching and to cash in on the success of Werewolf by Night.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "His trademark exclamation, \"Oh, my stars and garters!\", is the quote the wiki uses to headline his page, taken from Avengers #154 (1976).",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #154 (December 1976)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_154"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "First appearance: X-Men #1 (September 1963). The wiki also lists X-Men Vol 7 #1 (cover-dated September 2024) as the first appearance of the Chairman identity, though his identity was only revealed in X-Men: Age of Revelation Finale #1 (cover-dated February 2026).",
+    "Avengers: Doomsday is listed as unreleased on the MCU Wiki's Beast page and Kelsey Grammer's actor page. It was left out and no plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore-exclusive cast list and plot summary do not include Beast in any version, so no entry was added.",
+    "Deadpool & Wolverine (2024) is left out: both wikis list the Beast of that film's Mutant Genocide universe as mentioned only and already dead.",
+    "Animated appearances (including X-Men '97) are excluded under the live-action rule and were not checked in detail.",
+    "X2 is included as a cameo because the X2 film page credits Steve Bacic as Dr. Henry McCoy in footage shot for the film; he is seen only on a television screen inside a scene. Treat as a judgement call.",
+    "Deadpool 2: the Marvel Fandom pages read (the film page and Henry McCoy (Earth-41633)) list Beast as a cameo but name no actor, so none is given.",
+    "The Marvels: the MCU Wiki calls it a mid-credits scene (not post-credits) and treats this Beast as a variant from a separate universe. The Henry McCoy (Earth-41578) page describes Grammer as voicing Beast there, and the Henry McCoy (Earth-10005) page says it is unclear which variant he plays.",
+    "X-Men Origins: Wolverine (2009) is left out: the Marvel Fandom wiki says a Beast-like young prisoner in it is not Hank.",
+    "Dark Phoenix: the Marvel Fandom film page has only a short premise, so the summary rests on the Henry McCoy (Earth-10005) page, which runs its Apocalypse and Dark Phoenix events together.",
+    "The character page says Hank attended Bard College but describes his football years with a junior prom and a state championship, which read like high school. The origin avoids naming the school.",
+    "Avengers #137: the character page sets the auditions at Yankee Stadium, while the issue page says Shea Stadium. The era leaves the venue out.",
+    "Two versions of Hank now exist: the Marvel Fandom wiki's Earth-616 page follows the original (now the Chairman), and the current Beast on Cyclops' team is a clone with a separate page. The final two eras draw on both.",
+    "Several issue pages have no plot synopsis (Wolverine Vol 7 #30 and #31, X-Force Vol 6 #50, X-Men Vol 7 #1 and #24, X-Men: Age of Revelation Finale #1), so those details rest on the character pages and solicitations.",
+    "The Twinkies detail comes from the character page's trivia; the X-Men #73 issue synopsis confirms the resolutions sheet and the Legacy Virus pledge but does not mention Twinkies.",
+    "Deadpool 2: actor note was \"Uncredited (the wiki names no actor)\""
+  ]
+}

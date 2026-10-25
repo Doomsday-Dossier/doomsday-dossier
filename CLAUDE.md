@@ -93,6 +93,13 @@ of every session, then continue from the tracker at the bottom.
 | Sue Storm | Force Field | Real-time 2D wave equation refracting a halftone field; letters near the pointer turn invisible | night violet, periwinkle | Italiana |
 | Johnny Storm | Flame On | Vertex-shader particle fire from a flame bed plus the cursor's recent path; title weight flickers | ember black, orange | Bricolage Grotesque |
 | Ben Grimm | Clobber | Lit 3D instanced rock wall; cursor pushes, click or tap sends a shockwave, scroll crumbles it; title shakes on impact | stone brown, orange | Alfa Slab One |
+| Professor X | Cerebro | Rotating 3D sphere of minds; points near the cursor link into a live network recomputed each frame; scan pulse; title letters lit by a sweeping scan | deep blue, ice white | Gloock |
+| Magneto | Lines of Force | Point-sprite needles drawn in the fragment shader along a two-pole magnetic field; cursor is a pole; scroll flips polarity; title letters pulled toward the pointer | violet black, magenta | Unbounded |
+| Cyclops | Optic Blast | Ruby-filtered square-tunnel shader; beam SDF fires at the cursor on tap and on a timer with shockwave and heat shimmer; title flares | red monochrome | Teko |
+| Nightcrawler | Bamf | Billboard smoke puffs shaded with fbm; an unseen jumper teleports after the cursor; circus spotlights; title letters vanish and reappear | indigo, sulphur | Rye |
+| Mystique | Shapeshift | Gray-Scott reaction-diffusion whose feed and kill rates drift so the pattern keeps changing; title cycles typefaces | night blue, amber | DM Serif Display (cycles) |
+| Beast | Blue Fur | Shell-textured 3D fur brushed by the cursor and a breeze; title halo leans away from the pointer | navy, blue | EB Garamond |
+| Gambit | Charged Deck | Instanced 3D cards with procedural faces swirl; cards near the cursor charge pink and burst into sparks; tap charges one | maroon, pink | Abril Fatface |
 
 ## How to run
 
@@ -128,13 +135,13 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 | 2 | Fantastic Four | Sue Storm | Vanessa Kirby | No | done |
 | 2 | Fantastic Four | Johnny Storm | Joseph Quinn | No | done |
 | 2 | Fantastic Four | Ben Grimm | Ebon Moss-Bachrach | Yes (teaser) | done |
-| 3 | X-Men | Professor X | Patrick Stewart | Yes (teaser) | todo |
-| 3 | X-Men | Magneto | Ian McKellen | Yes (teaser) | todo |
-| 3 | X-Men | Cyclops | James Marsden | Yes (teaser) | todo |
-| 3 | X-Men | Nightcrawler | Alan Cumming | No | todo |
-| 3 | X-Men | Mystique | Rebecca Romijn | No | todo |
-| 3 | X-Men | Beast | Kelsey Grammer | No | todo |
-| 3 | X-Men | Gambit | Channing Tatum | No | todo |
+| 3 | X-Men | Professor X | Patrick Stewart | Yes (teaser) | done |
+| 3 | X-Men | Magneto | Ian McKellen | Yes (teaser) | done |
+| 3 | X-Men | Cyclops | James Marsden | Yes (teaser) | done |
+| 3 | X-Men | Nightcrawler | Alan Cumming | No | done |
+| 3 | X-Men | Mystique | Rebecca Romijn | No | done |
+| 3 | X-Men | Beast | Kelsey Grammer | No | done |
+| 3 | X-Men | Gambit | Channing Tatum | No | done |
 | 4 | Thunderbolts* | Yelena Belova | Florence Pugh | No | todo |
 | 4 | Thunderbolts* | Red Guardian | David Harbour | No | todo |
 | 4 | Thunderbolts* | John Walker | Wyatt Russell | No | todo |
@@ -163,6 +170,12 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Build notes
 
+- Never name a GLSL variable `half` (reserved word). Three.js records shader compile errors in `renderer.info.programs[].diagnostics` without logging them. `shots.mjs` and `fps.mjs` now read those diagnostics on localhost (the engine is exposed as `window.__ddEngine` there only) and print SHADER errors; treat any as a blocker.
+- Hero names are capped by their longest word (`--hero-longest`) so wide faces can never break a word. Use `heroScale` for further tuning.
+- Letters that move after the intro (magnet, bamf) unclip their SplitText line masks after 2 s.
+- Screen entries with no named performer use actor "Uncredited"; the page prints "Performer uncredited". Never blanket-replace actor strings; check each one.
+- `node scripts/heroes.mjs <url> <out.jpg> <slug,slug> [phone]` makes one grid of hero views for fast review.
+
 - `src/scripts/app.ts` runs DOM motion first, then lazy-loads Three.js (`gl/engine`) and the page's scene chunk. Critical JS is about 60 KB gzipped; Three.js is about 130 KB and loads in parallel.
 - One persistent WebGL canvas (`#gl`) for heroes, and a second tiny canvas (`#wipe`) used only for page transitions. Both survive navigation via `transition:persist`.
 - Scenes communicate to the DOM through `ctx.signal` (the storm uses it to flash Thor's name).
@@ -179,6 +192,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 3 (X-Men) built and checked: seven new heroes, no shader errors, 58 to 60 fps with CPU throttled 4x, no phone overflow on any page, reduced motion and navigation pass. Marvel cast unchanged; Marvel names Professor X, Magneto and Cyclops only. Found and fixed a silent shader compile failure (Magneto) and added shader-error detection to QA.
 - 2026-10-25: Wave 2 (Fantastic Four) deployed and verified live (21 pages, no phone overflow, new heroes 60 fps). Built and checked: four new heroes at 60 fps with CPU throttled 4x, no phone overflow, reduced motion and navigation pass. Marvel cast list re-checked, unchanged at 30 names; only the Thing has a Marvel-named role among the four. Engine now has a depth buffer for 3D scenes.
 - 2026-10-25: Wave 1 deployed to https://prejith77.github.io/doomsday-dossier/ (first run succeeded). Live QA passed: all 17 pages return 200, no phone overflow, reduced motion and navigation checks pass, WebGL scenes load from the sub-path.
 - 2026-10-25: Wave 1 built: home, 8 character dossiers, 7 team pages, sources page. QA passed: no phone overflow on any page; all heroes 60 fps at phone size on an Intel UHD 730 with 4x CPU throttle (not yet measured on a real phone); reduced motion leaves all text visible with no pinning or smooth scroll; four-hop navigation clears the wipe each time. Not deployed yet: waiting on the GitHub repo URL.

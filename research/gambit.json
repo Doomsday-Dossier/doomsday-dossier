@@ -1,0 +1,545 @@
+{
+  "slug": "gambit",
+  "name": "Remy LeBeau",
+  "alias": "Gambit",
+  "origin": {
+    "firstAppearance": {
+      "title": "X-Men Annual",
+      "issue": "#14",
+      "coverDate": "July 1990"
+    },
+    "creators": [
+      "Chris Claremont",
+      "Mike Collins",
+      "Jim Lee"
+    ],
+    "summary": [
+      "The baby who became Remy LeBeau was born in New Orleans with eyes that glowed red, abandoned for it, and carried off from the hospital by members of the city's Thieves Guild. They nicknamed him \"le diable blanc\", the white devil, and believed he was the child a prophecy said would unite the city's warring guilds. He grew up among a gang of street thieves who taught him their trade, and at about ten he tried to lift the wallet of Jean-Luc LeBeau, the Guild's patriarch, who took the boy home and adopted him. In those years he also met Bella Donna Boudreaux, daughter of the head of the rival Assassins Guild, and fell for her at first sight.",
+      "To cement a truce between the two guilds, Remy and Bella Donna were promised to each other in an arranged marriage. Her brother Julien refused to accept it and challenged Remy to a duel; Remy killed him in self-defence, and both guilds agreed he had to be thrown out of New Orleans if the peace was to hold. Believing Bella Donna would be miserable in exile, he left her behind. He drifted around the world as a master thief, using his mutant knack for charging objects, playing cards above all, with explosive energy, until the power began to run beyond his control and he went to the geneticist Nathaniel Essex, better known as Mister Sinister, who cut away part of his brain to bring it down to a level he could manage.",
+      "The favour came with a price. Sinister had Remy recruit the mercenary Marauders and lead them into the Morlock tunnels under New York, without telling him the goal was slaughter. When the massacre began Remy tried to stop it, but Sabretooth cut him down and left him for dead, and the only life he could save was a young Morlock girl who would grow up to be the X-Man Marrow. Later he crossed paths with Storm, who had been turned into a child with no memory and was living as a thief; he pulled her out of a trap set by the Shadow King, the two became partners in New Orleans, and once Storm had her memory back and Charles Xavier returned from space, she vouched for Remy and brought him into the X-Men."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Annual Vol 1 #14 (July 1990)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Annual_Vol_1_14"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #266 (Late August 1990)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_266"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #267 (Early September 1990)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_267"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #273 (February 1991)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_273"
+      },
+      {
+        "label": "Marvel Fandom wiki: X-Men Vol 2 #8 (May 1992)",
+        "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_8"
+      },
+      {
+        "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #350 (December 1997)",
+        "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_350"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The debut",
+      "years": "1990-1991",
+      "title": "The thief who rescued Storm",
+      "summary": "Remy enters the story fishing a child-sized, amnesiac Storm out of a pool after a failed art theft lands her in the Shadow King's trap, and the two thieves escape across the rooftops by parachute. Pursued to an aircraft junkyard and then to Mardi Gras in his home town, he is captured by Nanny and the Orphan-Maker, and Storm recovers her memory while rescuing him. He proposes they stay partners, she tells him about the X-Men, and the pair later turn up at the wrecked X-Mansion before Storm sponsors his place on the team.",
+      "keyIssues": [
+        "Uncanny X-Men #266 (1990)",
+        "Uncanny X-Men #267 (1990)",
+        "X-Men Annual #14 (1990)",
+        "Uncanny X-Men #273 (1991)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #266",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_266"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #267",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_267"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Annual Vol 1 #14",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Annual_Vol_1_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #273",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_273"
+        }
+      ]
+    },
+    {
+      "era": "Blue Team years",
+      "years": "1992-1994",
+      "title": "Rogue, Bishop and the guild war",
+      "summary": "On the relaunched X-Men Remy falls for Rogue, though her power means they can never touch, and a date on his motorbike ends with both of them captured by the Hand and Omega Red. The time-travelling Bishop arrives convinced Remy will one day betray the team, and then Bella Donna turns up at the mansion and reveals she is his wife. The X-Men follow him to New Orleans, where the guilds have been infested by the Brood and Bella Donna appears to give her life freeing Ghost Rider. In his first miniseries Remy steals the guilds' Elixir of Life from the immortal Candra to save her, only to be banished by Jean-Luc once more; the last drops revive Bella Donna, but with no memory of loving him.",
+      "keyIssues": [
+        "X-Men #4 (1992)",
+        "X-Men #8 (1992)",
+        "X-Men #9 (1992)",
+        "Gambit #1 (1993)",
+        "Gambit #4 (1994)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #4",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #8",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #9",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "The trial",
+      "years": "1997-1998",
+      "title": "Exposed and left in the ice",
+      "summary": "After Rogue finally kisses him and absorbs his memories, she flees, and Remy is dragged before a mock court in Antarctica run by Magneto in the guise of Erik the Red. The hearing lays bare his work for Sinister and his part in the Morlock massacre, the X-Men disown him and Rogue leaves him stranded in the snow. He survives with help from the psychic ghost of a dead mutant and reaches the Savage Land, where he agrees to run jobs for a mysterious figure called the New Sun in return for a way home. A heist for the Crimson Gem of Cyttorak brings him back into contact with his old team, and he is eventually forgiven and readmitted.",
+      "keyIssues": [
+        "Uncanny X-Men #350 (1997)",
+        "Uncanny X-Men #361 (1998)",
+        "X-Men #81 (1998)",
+        "Gambit Annual '99 (1999)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #350",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_350"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #361",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_361"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #81",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_81"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Annual Vol 1 1999",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Annual_Vol_1_1999"
+        }
+      ]
+    },
+    {
+      "era": "Solo series",
+      "years": "1999-2001",
+      "title": "Errands for the New Sun",
+      "summary": "Remy's second solo book has him juggling X-Men duty with thefts ordered by the New Sun. A trip into the past ends with a Victorian-era Sinister putting back the brain tissue he had once removed, unlocking Remy's full power, and back in the present he briefly runs the Thieves Guild and merges it with the Assassins into a single Unified Guild. The New Sun then puts a bounty on him and is unmasked as an alternate Remy who lost control of his power and burned his own world, now hunting other versions of himself. Remy defeats him by burning out his boosted abilities, which returns his powers to their old level.",
+      "keyIssues": [
+        "Gambit #1 (1999)",
+        "Gambit #14 (2000)",
+        "Gambit #16 (2000)",
+        "Gambit #24 (2001)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #14",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #16",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_16"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #24",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_24"
+        }
+      ]
+    },
+    {
+      "era": "X-Treme X-Men",
+      "years": "2001-2005",
+      "title": "Losing his powers, then his sight",
+      "summary": "Framed by Sebastian Shaw for murdering the crime lord Viceroy, Remy clears his name with the help of Rogue's X-Treme X-Men, only to be captured by alien invaders and run through with a sword by the villain Vargas, which leaves him alive but powerless. He and the equally powerless Rogue try to retire to an ordinary life, but they are pulled back into the fight against Elias Bogan, after which Sage jump-starts his mutation. Back with the main team, one of his own cards explodes in his face during a fight with the Eight Immortals and blinds him, until a second boost from Sage restores his sight.",
+      "keyIssues": [
+        "X-Treme X-Men #18 (2002)",
+        "X-Treme X-Men #46 (2004)",
+        "X-Men #158 (2004)",
+        "X-Men #165 (2005)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Treme X-Men Vol 1 #18",
+          "url": "https://marvel.fandom.com/wiki/X-Treme_X-Men_Vol_1_18"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Treme X-Men Vol 1 #46",
+          "url": "https://marvel.fandom.com/wiki/X-Treme_X-Men_Vol_1_46"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #158",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_158"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #165",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_165"
+        }
+      ]
+    },
+    {
+      "era": "Horseman and Marauder",
+      "years": "2006-2008",
+      "title": "Death, then Sinister again",
+      "summary": "Hoping a reawakened Apocalypse might really mean to rescue a mutant race shrunk by M-Day, Remy volunteers to become his new Horseman of Death and refuses sedation in an attempt to keep his own mind, but ends up enslaved anyway. Breaking away with Sunfire, he joins a raid on the X-Mansion in which he tries to kill Rogue, and Sinister then frees them from Apocalypse's programming and recruits them into his Marauders. Remy hunts Cable on Providence and fights for the first mutant baby born since M-Day, but his real plan, made with Mystique, is to use the child to wake a comatose Rogue; it works, and Rogue leaves asking him not to follow.",
+      "keyIssues": [
+        "X-Men #186 (2006)",
+        "X-Men #187 (2006)",
+        "X-Men #200 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #186",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_186"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #187",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_187"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 #200",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_200"
+        }
+      ]
+    },
+    {
+      "era": "The wanderer",
+      "years": "2008-2013",
+      "title": "From drifter to king of thieves",
+      "summary": "Remy travels with a recovering Charles Xavier, helps stop a scheme to resurrect Sinister, and is with Rogue in Australia when Xavier helps her master her powers. He later follows a troubled X-23 on the road and takes her under his wing, then signs on as a teacher at the Jean Grey School while still pulling heists on the side. One theft leaves an ancient device burrowing into his chest, another puts him in debt to a Croatian crime boss, and his growing fame as a thief prompts Jean-Luc to put him through a contest for leadership of the guild, which ends with Remy secretly installed as guildmaster of thieves worldwide.",
+      "keyIssues": [
+        "X-Men: Legacy #224 (2009)",
+        "X-23 #4 (2011)",
+        "Gambit #1 (2012)",
+        "Gambit #17 (2013)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Legacy Vol 1 #224",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Legacy_Vol_1_224"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-23 Vol 3 #4",
+          "url": "https://marvel.fandom.com/wiki/X-23_Vol_3_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 5 #1",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_5_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 5 #17",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_5_17"
+        }
+      ]
+    },
+    {
+      "era": "Corporate hero to husband",
+      "years": "2014-2019",
+      "title": "X-Factor and the wedding",
+      "summary": "Caught by Wolverine in the middle of a theft and reminded he is supposed to be a teacher, Remy accepts Polaris's offer to join a corporate X-Factor bankrolled by Serval Industries, despite his doubts about its chief executive Harrison Snow. Back with the X-Men, Kitty Pryde sends him and Rogue undercover to a couples' retreat that forces them to relive their past through each other's eyes. When Kitty walks out on her own wedding to Colossus, Remy proposes to Rogue at the reception and they marry on the spot, then spend a chaotic honeymoon in Shi'ar space and the Mojoverse.",
+      "keyIssues": [
+        "All-New X-Factor #1 (2014)",
+        "Rogue & Gambit #1 (2018)",
+        "X-Men: Gold #30 (2018)",
+        "Mr. and Mrs. X #1 (2018)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: All-New X-Factor Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/All-New_X-Factor_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Rogue & Gambit Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Rogue_%26_Gambit_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men: Gold Vol 2 #30",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_Gold_Vol_2_30"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mr. and Mrs. X Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Mr._and_Mrs._X_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "The Krakoan age",
+      "years": "2019-2024",
+      "title": "Excalibur and the Knights of X",
+      "summary": "Living on Krakoa with Rogue, Remy distrusts Apocalypse from the start, and when contact with a magical gateway leaves Rogue cocooned in flowers he defies him to have her woken. He stays with Excalibur even after Rogue is elected to the X-Men, and on the Knights of X quest in Otherworld he hurls a Death tarot card charged with the Starlight Citadel's magic at the wizard Merlyn, who turns it back on him. Because the card stands for change rather than death, he is drawn into the Siege Perilous and returned, opening a road for a Krakoan army led by Rogue. After Orchis wrecks the Hellfire Gala he works with Madelyne Pryor's Dark X-Men in Limbo, then helps Rogue free Manifold for the last stand against Orchis.",
+      "keyIssues": [
+        "Excalibur #1 (2019)",
+        "Excalibur #21 (2021)",
+        "Knights of X #3 (2022)",
+        "Knights of X #5 (2022)",
+        "Dark X-Men #1 (2023)",
+        "Fall of the House of X #5 (2024)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Excalibur Vol 4 #1",
+          "url": "https://marvel.fandom.com/wiki/Excalibur_Vol_4_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Excalibur Vol 4 #21",
+          "url": "https://marvel.fandom.com/wiki/Excalibur_Vol_4_21"
+        },
+        {
+          "label": "Marvel Fandom wiki: Knights of X Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Knights_of_X_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Knights of X Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Knights_of_X_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark X-Men Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/Dark_X-Men_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fall of the House of X Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Fall_of_the_House_of_X_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "From the Ashes",
+      "years": "2024-2026",
+      "title": "Haven House and the Left Eye",
+      "summary": "After Krakoa falls, Remy, Rogue and Wolverine face down a dragon in Mexico, and Remy walks away with its Left Eye of Agamotto on a one-year loan. He brings four hunted teenagers, the Outliers, to Haven House in Louisiana, which becomes the base of Rogue's new X-Men, and uses the Eye to save it from Sarah Gaunt. The artifact gradually corrupts him with a craving for flesh; he bites Rogue and fights his friends before agreeing to accept help, and when the year is up the Eye refuses to leave him. During an alien invasion he turns into a winged, dragon-like creature called Wyvern, and he later secretly swaps places with his counterpart from Earth-295, home of the X-Men of Apocalypse.",
+      "keyIssues": [
+        "Uncanny X-Men #1 (2024)",
+        "Uncanny X-Men #23 (2026)",
+        "Uncanny X-Men #25 (2026)",
+        "Uncanny X-Men #32 (2026)",
+        "X-Men of Apocalypse Omega #1 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 6 #1",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_6_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 6 #23",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_6_23"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 6 #25",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_6_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 6 #32",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_6_32"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men of Apocalypse Omega Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_of_Apocalypse_Omega_Vol_1_1"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "X-Men Origins: Wolverine",
+      "year": 2009,
+      "continuity": "FOX",
+      "actor": "Taylor Kitsch",
+      "cameo": false,
+      "summary": "This Remy is a New Orleans card player who got the name Gambit beating guards at poker during two years locked in Stryker's island prison before escaping. When Logan tracks him down for the prison's location, Gambit takes him for a Weapon X agent and fights him, breaks up his brawl with Victor Creed, and then flies him to the facility on Three Mile Island. He comes back during the climax to save Logan from falling wreckage and help the freed mutants, but finds Logan's memory wiped and leaves after telling him his name.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Origins: Wolverine (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Origins:_Wolverine_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "title": "Deadpool & Wolverine",
+      "year": 2024,
+      "continuity": "MCU",
+      "actor": "Channing Tatum",
+      "cameo": false,
+      "summary": "This variant has been stranded in the Void by the TVA for so long that he cannot remember his past; he is part of X-23's Resistance and greets Deadpool and Wolverine at their hideout by blowing up a bottle of his liquor that Logan has helped himself to. He rides with the group to Cassandra Nova's compound and holds off her army with charged cards and his staff while the two leads go after Nova, then is left behind when they escape through her portal. The MCU Wiki names no home universe for him, while the Marvel Fandom wiki assigns him to Earth-TRN1401, which it describes as the reality of an unmade Gambit film.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Deadpool & Wolverine",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_%26_Wolverine"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Gambit",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Gambit"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Channing Tatum",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Channing_Tatum"
+        },
+        {
+          "label": "Marvel Fandom wiki: Deadpool & Wolverine",
+          "url": "https://marvel.fandom.com/wiki/Deadpool_%26_Wolverine"
+        },
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-TRN1401)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-TRN1401)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Earth-TRN1401",
+          "url": "https://marvel.fandom.com/wiki/Earth-TRN1401"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Gambit's first published appearance came before the story that introduces him: X-Men Annual #14 went on sale on 29 May 1990, three weeks ahead of Uncanny X-Men #266, even though the Annual is set after it. The wiki therefore lists the Annual as his first appearance and #266 as his first full one.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: X-Men Annual Vol 1 #14 (July 1990)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Annual_Vol_1_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 #266 (Late August 1990)",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_266"
+        }
+      ]
+    },
+    {
+      "fact": "The brain surgery that limited his powers is a time loop: Sinister removed the tissue in Remy's past, Remy had it reattached in Victorian England, and the 19th-century Essex who did the work recognised it as his own and realised he would one day perform the original operation.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #14 (March 2000)",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 #16 (May 2000)",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_16"
+        }
+      ]
+    },
+    {
+      "fact": "Remy carries an Avengers identity card he stole from Clint Barton.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: A + X Vol 1 #3 (February 2013)",
+          "url": "https://marvel.fandom.com/wiki/A_%2B_X_Vol_1_3"
+        }
+      ]
+    },
+    {
+      "fact": "He owns three cats, Oliver, Lucifer and Figaro, which were a gift from his future mother-in-law Mystique; the wiki notes that all three share their names with cats from Disney films.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Astonishing X-Men Vol 3 #62 (July 2013)",
+          "url": "https://marvel.fandom.com/wiki/Astonishing_X-Men_Vol_3_62"
+        },
+        {
+          "label": "Marvel Fandom wiki: All-New X-Factor Vol 1 #3 (April 2014)",
+          "url": "https://marvel.fandom.com/wiki/All-New_X-Factor_Vol_1_3"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Creators: the Marvel Fandom character page credits Chris Claremont, Mike Collins and Jim Lee. The issue pages show Collins pencilled Uncanny X-Men #266 and Lee #267, while the Gambit section of X-Men Annual #14 is credited to Arthur Adams. The creator list follows the character page.",
+    "Deadpool & Wolverine universe: the MCU Wiki's Gambit page gives no universe name and the film page simply calls the Resistance members variants banished by the TVA, whereas the Marvel Fandom wiki files him under Earth-TRN1401 (the reality of the unmade solo film). He is tagged MCU here as a Marvel Studios multiverse variant.",
+    "Deadpool & Wolverine end-credits shot of Gambit facing a new portal: the Marvel Fandom wiki says a short version plays on a TVA screen in the post-credits scene, while the MCU Wiki sources the moment only to a Ryan Reynolds post on X from 27 August 2024. It is not counted as a separate appearance or used in the summary.",
+    "The cameo flag for Deadpool & Wolverine is a judgement call: Gambit is only in the Resistance hideout and final battle sequences, but he has a speaking supporting role in both, so it is marked false.",
+    "X2 (2003) is left out: the Marvel Fandom wiki says only that his name shows up on Stryker's computer list, which is a mention rather than an appearance.",
+    "X-Men: The Last Stand (2006) is left out: the Marvel Fandom wiki says Gambit was planned for the film but cut, so he does not appear.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-exclusive cast list do not include Gambit, and Channing Tatum's MCU Wiki page lists no Encore role, so no entry was added.",
+    "Assembled: The Making of Deadpool & Wolverine is left out: Tatum takes part as himself in a documentary, not as the character.",
+    "Animated appearances are left out by rule, including X-Men: The Animated Series and X-Men '97 (voice roles by Chris Potter, Tony Daniels and A. J. LoCascio on the Marvel Fandom wiki). Other animated or game versions were not catalogued.",
+    "The MCU Wiki's 'Drunkenly Destructive Gambit' variant comes from a tie-in TVA comic, not a screen appearance, so it is left out.",
+    "Both wikis list Channing Tatum for Avengers: Doomsday, marked unreleased, so it is left out. No plot details were researched. A long-planned solo Gambit film that the wikis say was cancelled is also left out because it was never made.",
+    "Many issue pages have no plot synopsis, including Gambit Vol 1 #1, Gambit Vol 3 #14, #16 and #24, Uncanny X-Men #361, Gambit Annual '99, X-Men Vol 2 #81, #186 and #187, X-Treme X-Men #46, Gambit Vol 5 #1 and #17, Rogue & Gambit #1, X-Men: Gold #30, Mr. and Mrs. X #1, Excalibur #21, Knights of X #3 and #5, Dark X-Men #1, Fall of the House of X #5, Uncanny X-Men Vol 6 #1, #23, #25 and #32, X-Men of Apocalypse Omega #1, A + X #3 and Astonishing X-Men #62. For those, the details come from the character page, checked against each issue's dates, credits, solicitation and character list. The synopsis for X-Men Vol 2 #165 does not mention his sight being restored, and the one for Uncanny X-Men #273 does not mention him joining the team; both points rest on the character page.",
+    "The swap with his Earth-295 counterpart (X-Men of Apocalypse Omega #1, on sale 5 August 2026) is very recent. Only the character page describes it; the issue page just confirms that both Gambits appear.",
+    "The character page does not say where Remy first met the de-aged Storm, so the origin summary does not name a city."
+  ]
+}

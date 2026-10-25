@@ -40,6 +40,9 @@ for (const [name, opts] of Object.entries(VIEWS)) {
     await page.goto(base + p, { waitUntil: 'load' });
     if (name === 'desktop') await page.mouse.move(opts.viewport.width * 0.62, opts.viewport.height * 0.42, { steps: 8 });
     await page.waitForTimeout(3800);
+    // Three.js records shader compile errors without logging them; surface them here (localhost exposes the engine).
+    const shaderErrs = await page.evaluate(() => { const e = window.__ddEngine; if (!e) return []; return e.renderer.info.programs.filter((p) => p.diagnostics).map((p) => (p.diagnostics.fragmentShader.log + ' ' + p.diagnostics.vertexShader.log).trim().slice(0, 200)); });
+    errors.push(...shaderErrs.map((m) => 'SHADER: ' + m));
     const total = await page.evaluate(() => document.documentElement.scrollHeight - innerHeight);
     const shots = [];
     const n = FRAMES[name];
