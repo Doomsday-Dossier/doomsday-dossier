@@ -27,6 +27,11 @@ const loaders: Record<string, () => Promise<{ default: new () => HeroScene }>> =
   tags: () => import('./scenes/tags'),
   phase: () => import('./scenes/phase'),
   sunvoid: () => import('./scenes/void2'),
+  pins: () => import('./scenes/pins'),
+  ridges: () => import('./scenes/ridges'),
+  talokan: () => import('./scenes/talokan'),
+  timelines: () => import('./scenes/timelines'),
+  dance: () => import('./scenes/dance'),
 };
 
 export async function loadScene(id: string): Promise<HeroScene | null> {

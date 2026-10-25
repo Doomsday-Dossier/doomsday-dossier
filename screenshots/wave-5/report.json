@@ -1,0 +1,98 @@
+[
+  {
+    "page": "/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\home-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/loki/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\c-loki-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/mbaku/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\c-mbaku-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/namor/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\c-namor-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/peggy-carter/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\c-peggy-carter-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shuri/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\c-shuri-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/more/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\teams-more-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/wakanda-talokan/",
+    "view": "desktop",
+    "file": "screenshots\\wave-5\\teams-wakanda-talokan-desktop.jpg",
+    "errors": []
+  },
+  {
+    "page": "/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\home-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/loki/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\c-loki-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/mbaku/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\c-mbaku-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/namor/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\c-namor-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/peggy-carter/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\c-peggy-carter-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/c/shuri/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\c-shuri-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/more/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\teams-more-phone.jpg",
+    "errors": []
+  },
+  {
+    "page": "/teams/wakanda-talokan/",
+    "view": "phone",
+    "file": "screenshots\\wave-5\\teams-wakanda-talokan-phone.jpg",
+    "errors": []
+  }
+]

@@ -80,7 +80,7 @@ of every session, then continue from the tracker at the bottom.
 | 2 | Fantastic Four | done |
 | 3 | X-Men | done |
 | 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
-| 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | todo |
+| 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | done |
 | 6 | Photos for every character: download (after manifest approval), local cut-out and depth, graded photo hero, Trailer act, Two lives slider, credits page, Halftone Lens, Photo Hand-off, Developing Credits | todo |
 | 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
 
@@ -153,6 +153,16 @@ of every session, then continue from the tracker at the bottom.
 | Mystique | Shapeshift | Gray-Scott reaction-diffusion whose feed and kill rates drift so the pattern keeps changing; title cycles typefaces | night blue, amber | DM Serif Display (cycles) |
 | Beast | Blue Fur | Shell-textured 3D fur brushed by the cursor and a breeze; title halo leans away from the pointer | navy, blue | EB Garamond |
 | Gambit | Charged Deck | Instanced 3D cards with procedural faces swirl; cards near the cursor charge pink and burst into sparks; tap charges one | maroon, pink | Abril Fatface |
+| Yelena Belova | Red Room | Single-pass volumetric light shafts through slatted blinds toward a light at the cursor; dust in the beams | red, black | Bebas Neue |
+| Red Guardian | Rack Focus | 3D snowfall with per-flake circle of confusion drawn as bokeh discs; pointer Y pulls focus, X sets wind; title blurs with focus | blue-black, sodium orange | Russo One |
+| John Walker | Dog Tags | PBR metal tags (RoomEnvironment PMREM) on an instanced ball chain, damped pendulums toward the cursor, canvas bump-mapped stamp | olive black, brass | Graduate |
+| Ghost | Phase Echo | Frame-feedback ping-pong buffer with zoom, drift and torn rows; phasing ring at the cursor; letters slip | grey-blue, cyan | Major Mono Display |
+| Bob Reynolds | Sun and Void | Radiant core with noise rays versus SDF metaballs of void (smooth union) that the cursor repels; scroll grows the void and masks the name | gold, black, violet rim | Cinzel |
+| Shuri | Sand Table | Instanced 3D pin-art table; vertex-shader heights morph between shapes; cursor raises pins; letters rise | violet, gold | Sora |
+| M'Baku | Jabari Ridge | Stacked ridgelines with painter's hidden-line removal (double-sided fill strips in the opaque pass); drumbeat rolls front to back; title thumps | snow, earth | Bowlby One |
+| Namor | Talokan | Iterated caustics, surface light shafts, depth gradient; bubbles rise from the cursor; letters swell | teal, deep blue, gold | Yeseva One |
+| Loki | Branching Timelines | CPU-grown branching strands in a ring buffer; branching far likelier near the cursor; scroll prunes young branches; letters skew | green, gold | Playfair Display |
+| Peggy Carter | The Dance | Mirror-ball facet spots computed per pixel in polar space with screen-scaled cells; cursor spins the ball; spotlight sweeps the name | warm sepia, gold, red | Limelight |
 
 ## How to run
 
@@ -200,11 +210,11 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 | 4 | Thunderbolts* | John Walker | Wyatt Russell | No | done |
 | 4 | Thunderbolts* | Ghost | Hannah John-Kamen | No | done |
 | 4 | Thunderbolts* | Bob / Sentry | Lewis Pullman | No | done |
-| 5 | Wakanda and Talokan | Shuri | Letitia Wright | Yes (teaser) | todo |
-| 5 | Wakanda and Talokan | M'Baku | Winston Duke | Yes (teaser) | todo |
-| 5 | Wakanda and Talokan | Namor | Tenoch Huerta Mejia | Yes (teaser) | todo |
-| 5 | More confirmed | Loki | Tom Hiddleston | No | todo |
-| 5 | More confirmed | Peggy Carter | Hayley Atwell | Yes (D23 2026) | todo |
+| 5 | Wakanda and Talokan | Shuri | Letitia Wright | Yes (teaser) | done |
+| 5 | Wakanda and Talokan | M'Baku | Winston Duke | Yes (teaser) | done |
+| 5 | Wakanda and Talokan | Namor | Tenoch Huerta Mejia | Yes (teaser) | done |
+| 5 | More confirmed | Loki | Tom Hiddleston | No | done |
+| 5 | More confirmed | Peggy Carter | Hayley Atwell | Yes (D23 2026) | done |
 | roster only | Unnamed | (role not named) | Kathryn Newton | No | roster only |
 | roster only | Unnamed | (role not named) | Mabel Cadena | No | roster only |
 
@@ -222,6 +232,10 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 7. Run `npm run build`, then `node scripts/shots.mjs <url> screenshots/wave-N` and `node scripts/overflow.mjs <url>`; fix anything clipped or overflowing before deploying.
 
 ## Build notes
+
+- Strip and fill meshes built by hand may wind clockwise; give them `side: THREE.DoubleSide` or they are culled silently (M'Baku's ridges).
+- Lines that must interleave with opaque fills by `renderOrder` must also be opaque materials; transparent ones are drawn after all opaque objects.
+- If a session ends while research agents run, resume them with SendMessage to their agent IDs; their transcripts survive.
 
 - Title effects must not animate `text-shadow`, `filter` or `font-variation-settings` every frame: each one repaints large text and cost Bob 25 fps and Yelena 11 fps at 4x CPU throttle. Animate `opacity` and `transform` only, and write styles only when the value changes. Tech debt: storm, optic, cards, fur, flame and cerebro still animate shadows or weight per frame; they measure 60 fps here, but audit them on a real phone.
 
@@ -249,6 +263,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-25: Wave 5 (Shuri, M'Baku, Namor, Loki, Peggy Carter) built and checked: five new heroes, no shader errors, 60 fps at 4x CPU throttle, no phone overflow, reduced motion and navigation pass. Marvel cast unchanged; Shuri's role recorded as 'Shuri / Black Panther' per Marvel's teaser article. Research agents were resumed after a session restart.
 - 2026-10-25: Wave 4 deployed and verified live (33 pages, no phone overflow, all five new heroes 60 fps at 4x throttle).
 - 2026-10-25: Wave 4 perf fixed (title effects made repaint-free): all five Thunderbolts* heroes 60 fps at 4x CPU throttle. Footer now carries the non-commercial and removal-on-request lines.
 - 2026-10-25: Second interview on the revised brief (photos, interactive features, original ideas). Decisions in "Revised brief" above. Wave order changed to: finish the roster (4, 5), then photos (6), then features (7). Wave 4 committed locally, not deployed: Sun and Void 35 fps and Red Room 49 fps at 4x CPU throttle.
