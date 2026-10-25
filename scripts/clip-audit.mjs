@@ -74,11 +74,12 @@ for (const [name, opts] of Object.entries(VIEWS)) {
         const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
         const words = [];
         let n; while ((n = walker.nextNode())) { const re = /S+/g; let m; while ((m = re.exec(n.data))) words.push([n, m.index, m.index + m[0].length, m[0]]); }
-        // SplitText wraps each char in its own node: rebuild words from consecutive char boxes instead
+        // SplitText wraps each char in its own node (and each word in .split-word): rebuild words from char boxes
         const chars = el.querySelectorAll('.split-char, [class*=char]');
         if (chars.length) {
           let word = [], top = null, broke = false; const flush = () => { if (broke) out.push('word broken across lines: ' + label(el)); word = []; top = null; broke = false; };
-          for (const ch of chars) { const t = ch.textContent; if (!t.trim()) { flush(); continue; } const r = ch.getBoundingClientRect(); if (top !== null && Math.abs(r.top - top) > r.height * 0.5) broke = true; top = r.top; word.push(t); if (ch.nextSibling && /s/.test(ch.nextSibling.textContent || '')) flush(); }
+          let box = null;
+          for (const ch of chars) { const t = ch.textContent; const wb = ch.closest('.split-word'); if (wb !== box) { flush(); box = wb; } if (!t.trim()) { flush(); continue; } const r = ch.getBoundingClientRect(); if (top !== null && Math.abs(r.top - top) > r.height * 0.5) broke = true; top = r.top; word.push(t); if (ch.nextSibling && /s/.test(ch.nextSibling.textContent || '')) flush(); }
           flush();
         } else for (const [node, s0, e0] of words) {
           const range = document.createRange(); range.setStart(node, s0); range.setEnd(node, e0);
