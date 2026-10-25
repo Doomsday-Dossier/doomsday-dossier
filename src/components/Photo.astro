@@ -1,0 +1,25 @@
+---
+// Responsive character photo: WebP srcset, real dimensions (no layout shift),
+// a blurred placeholder underneath, and the crop focus as object-position.
+import { srcsetOf, srcOf, type Photo } from '../data/photos';
+
+interface Props { photo: Photo; alt: string; sizes: string; eager?: boolean; class?: string; min?: number }
+const { photo: p, alt, sizes, eager = false, class: cls = '', min = 400 } = Astro.props;
+---
+<img
+  class={`photo ${cls}`}
+  src={srcOf(p, min)}
+  srcset={srcsetOf(p)}
+  sizes={sizes}
+  width={p.w}
+  height={p.h}
+  alt={alt}
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  fetchpriority={eager ? 'high' : 'auto'}
+  style={`--f:${p.focus};--fm:${p.focusM};background-image:url(${p.lqip})`}
+/>
+<style>
+  /* crop centre for portrait-shaped frames (cards, prints, phones); the wide desktop hero panel overrides it with --f */
+  .photo { object-position: var(--fm); background-size: cover; background-position: var(--fm); }
+</style>

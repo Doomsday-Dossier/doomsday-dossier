@@ -67,6 +67,25 @@ for (const [name, opts] of Object.entries(VIEWS)) {
           a = a.parentElement;
         }
       }
+      // words split across two lines in headings and names (a word must never break)
+      const heads = [...document.querySelectorAll('main h1, main h2, main h3, main .mem-name, main .card-name, main .next-name, main .cr-name')];
+      for (const el of heads) {
+        if (el.closest('.sr-only') || getComputedStyle(el).display === 'none') continue;
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const words = [];
+        let n; while ((n = walker.nextNode())) { const re = /S+/g; let m; while ((m = re.exec(n.data))) words.push([n, m.index, m.index + m[0].length, m[0]]); }
+        // SplitText wraps each char in its own node: rebuild words from consecutive char boxes instead
+        const chars = el.querySelectorAll('.split-char, [class*=char]');
+        if (chars.length) {
+          let word = [], top = null, broke = false; const flush = () => { if (broke) out.push('word broken across lines: ' + label(el)); word = []; top = null; broke = false; };
+          for (const ch of chars) { const t = ch.textContent; if (!t.trim()) { flush(); continue; } const r = ch.getBoundingClientRect(); if (top !== null && Math.abs(r.top - top) > r.height * 0.5) broke = true; top = r.top; word.push(t); if (ch.nextSibling && /s/.test(ch.nextSibling.textContent || '')) flush(); }
+          flush();
+        } else for (const [node, s0, e0] of words) {
+          const range = document.createRange(); range.setStart(node, s0); range.setEnd(node, e0);
+          const tops = new Set([...range.getClientRects()].filter((r) => r.width > 0).map((r) => Math.round(r.top / 4)));
+          if (tops.size > 1) { out.push('word broken across lines: ' + label(el)); break; }
+        }
+      }
       return [...new Set(out)];
     });
     // pinned sideways timeline: every card must fit the screen while pinned

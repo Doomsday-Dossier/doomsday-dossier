@@ -1,0 +1,413 @@
+{
+  "note": "Photo set supplied by the site owner on 25 October 2026 (folder DIAMOND DOCS/MARVEL PHOTOS), used as supplied with a generic credit. Originals live in photo-originals/user/ (git-ignored). The first photo of each character is the hero portrait. focus is the CSS object-position used when a frame crops the photo. focusM (optional, defaults to focus) is the crop centre in portrait-shaped frames: cards, gallery prints, thumbnails and the phone hero. focus is used by the wide desktop hero panel.",
+  "set": {
+    "victor-von-doom": [
+      {
+        "file": "DR. DOOM (3).jpg",
+        "focus": "50% 45%"
+      },
+      {
+        "file": "DR. DOOM (2).jpg",
+        "focus": "45% 40%"
+      },
+      {
+        "file": "DR. DOOM.jpg",
+        "focus": "60% 35%"
+      }
+    ],
+    "steve-rogers": [
+      {
+        "file": "CAPTAIN AMERICA STEVE ROGERS (3).jpg",
+        "focus": "74% 30%",
+        "focusM": "44% 20%"
+      },
+      {
+        "file": "CAPTAIN AMERICA STEVE ROGERS (2).jpg",
+        "focus": "52% 35%",
+        "focusM": "47% 35%"
+      },
+      {
+        "file": "CAPTAIN AMERICA STEVE ROGERS.jpg",
+        "focus": "22% 35%"
+      }
+    ],
+    "thor": [
+      {
+        "file": "THOR (3).jpg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "THOR (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "THOR.jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "sam-wilson": [
+      {
+        "file": "SAM WILSON.jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "SAM WILSON (2).jpeg",
+        "focus": "45% 30%"
+      },
+      {
+        "file": "SAM WILSON (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "bucky-barnes": [
+      {
+        "file": "BUCKY BARNES.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "BUCKY BARNES (2).jpeg",
+        "focus": "50% 60%"
+      },
+      {
+        "file": "BUCKY BARNES (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "scott-lang": [
+      {
+        "file": "SCOTT LANG.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SCOTT LANG (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SCOTT LANG (3).jpeg",
+        "focus": "50% 20%"
+      }
+    ],
+    "shang-chi": [
+      {
+        "file": "SHANG CHI (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "SHANG CHI (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SHANG CHI.jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "joaquin-torres": [
+      {
+        "file": "JOAQUIN TORRES.jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "JOAQUIN TORRES (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "JOAQUIN TORRES (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "reed-richards": [
+      {
+        "file": "REED RICHARDS (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "REED RICHARDS (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "REED RICHARDS.jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "sue-storm": [
+      {
+        "file": "SUE STORM.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SUE STORM (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SUE STORM (2).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "johnny-storm": [
+      {
+        "file": "JOHNNY STORM.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "JOHNNY STORM (3).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "JOHNNY STORM (2).jpeg",
+        "focus": "50% 25%"
+      }
+    ],
+    "ben-grimm": [
+      {
+        "file": "THE THING (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "THE THING (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "THE THING.jpeg",
+        "focus": "50% 35%"
+      }
+    ],
+    "professor-x": [
+      {
+        "file": "PROFESSOR X (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "PROFESSOR X (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "PROFESSOR X.jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "magneto": [
+      {
+        "file": "MAGNETO (3).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "MAGNETO (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "MAGNETO.jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "cyclops": [
+      {
+        "file": "CYCLOPS (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "CYCLOPS (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "CYCLOPS.jpeg",
+        "focus": "50% 35%"
+      }
+    ],
+    "nightcrawler": [
+      {
+        "file": "NIGHTCRAWLER (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "NIGHTCRAWLER.jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "NIGHTCRAWLER (2).jpeg",
+        "focus": "50% 25%"
+      }
+    ],
+    "mystique": [
+      {
+        "file": "MYSTIQUE (3).jpeg",
+        "focus": "40% 30%"
+      },
+      {
+        "file": "MYSTIQUE (2).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "MYSTIQUE.jpeg",
+        "focus": "50% 20%"
+      }
+    ],
+    "beast": [
+      {
+        "file": "BEAST (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "BEAST.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "BEAST (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "gambit": [
+      {
+        "file": "GAMBIT (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "GAMBIT (3).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "GAMBIT.jpeg",
+        "focus": "50% 25%"
+      }
+    ],
+    "yelena-belova": [
+      {
+        "file": "YELENA BELOVA.jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "YELENA BELOVA (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "YELENA BELOVA (2).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "red-guardian": [
+      {
+        "file": "ALEXEI S.jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "ALEXEI S (2).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "ALEXEI S (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "john-walker": [
+      {
+        "file": "JOHN WALKER.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "JOHN WALKER (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "JOHN WALKER (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "ghost": [
+      {
+        "file": "AVA STARR.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "AVA STARR (2).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "AVA STARR (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "bob-reynolds": [
+      {
+        "file": "BOB (2).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "BOB.jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "BOB (3).jpeg",
+        "focus": "50% 20%"
+      }
+    ],
+    "shuri": [
+      {
+        "file": "SHURI (2).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SHURI.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "SHURI (3).jpeg",
+        "focus": "50% 25%"
+      }
+    ],
+    "mbaku": [
+      {
+        "file": "M'BAKU.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "M'BAKU (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "M'BAKU (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "namor": [
+      {
+        "file": "NAMOR.jpeg",
+        "focus": "50% 35%"
+      },
+      {
+        "file": "NAMOR (2).jpeg",
+        "focus": "50% 30%"
+      },
+      {
+        "file": "NAMOR (3).jpeg",
+        "focus": "50% 30%"
+      }
+    ],
+    "loki": [
+      {
+        "file": "LOKI (3).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "LOKI (2).jpeg",
+        "focus": "50% 20%"
+      },
+      {
+        "file": "LOKI.jpeg",
+        "focus": "50% 25%"
+      }
+    ],
+    "peggy-carter": [
+      {
+        "file": "PEGGY CARTER.jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "PEGGY CARTER (3).jpeg",
+        "focus": "50% 25%"
+      },
+      {
+        "file": "PEGGY CARTER (2).jpeg",
+        "focus": "50% 30%"
+      }
+    ]
+  }
+}
