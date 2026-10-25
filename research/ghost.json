@@ -1,0 +1,403 @@
+{
+  "slug": "ghost",
+  "name": "Ava Starr",
+  "alias": "Ghost",
+  "origin": {
+    "firstAppearance": {
+      "title": "Iron Man",
+      "issue": "#219",
+      "coverDate": "June 1987"
+    },
+    "creators": [
+      "David Michelinie",
+      "Bob Layton"
+    ],
+    "summary": [
+      "Read this first: the MCU's Ava Starr has no counterpart in Marvel's main comics universe. The Marvel Fandom wiki has no Earth-616 Ava Starr, and its Ava Starr page points to the film character. The first appearance and creators above belong to the comics villain she was adapted from: the Ghost, an unnamed man who debuted in Iron Man #219 (June 1987). He is a different person from Ava. By his own account, he was once a star data engineer at a large computer company and invented GhostTech, chips that could slip into an intangible state and keep working. The executives got rich on his ideas and kept him productive with perks, including pushing a female colleague into a relationship with him.",
+      "When the project was finished and the woman he loved threatened to reveal how the company had used her, the executives had her killed. Sunk in grief, he fused GhostTech into his own body and wired himself into the company's systems, where he found proof of the murder. Intangibility saved him from an attempt on his life, and he then killed the executives one by one, erased every trace of who he had been and became a full-time saboteur of big corporations. The wiki warns that this story may not be reliable: he told it to the manipulative Moonstone, and years spent in a phased state have damaged his mind. His first known job was for a Roxxon executive who hired him to drive the research firm Accutech out of business, which put him in Tony Stark's path when Stark bought the company.",
+      "The only comics Ava Starr is a separate character from another reality, Earth-52635, created by Steve Foxe and Luca Maresca and introduced (under the Ghost mask) in Superior Avengers #1 (June 2025); the wiki says she was inspired by the film version. In her world Doctor Doom ruled for decades and sent dissidents to labour camps in the Negative Zone. Ava was locked up there at fourteen and spent more than ten years, later with a young son, under a cruel female warden who called herself the Ghost. When Doom was murdered by his own champions and Annihilus overran the prisons, Ava killed the warden and took her suit and her identity, but lost her son to the invaders. Still posing as the Ghost, she joined the circle of Doom's former champions, keeping her real name hidden."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Iron Man Vol 1 #219 (June 1987)",
+        "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_219"
+      },
+      {
+        "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #151 (February 2011)",
+        "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_151"
+      },
+      {
+        "label": "Marvel Fandom wiki: Ava Starr (disambiguation)",
+        "url": "https://marvel.fandom.com/wiki/Ava_Starr"
+      },
+      {
+        "label": "Marvel Fandom wiki: Ava Starr (Earth-52635)",
+        "url": "https://marvel.fandom.com/wiki/Ava_Starr_(Earth-52635)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Superior Avengers Vol 1 #1 (June 2025)",
+        "url": "https://marvel.fandom.com/wiki/Superior_Avengers_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Superior Avengers Vol 1 #4 (September 2025)",
+        "url": "https://marvel.fandom.com/wiki/Superior_Avengers_Vol_1_4"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The comics Ghost (unnamed man, not Ava): debut",
+      "years": "1987",
+      "title": "Haunting Stark Enterprises",
+      "summary": "Hired to sabotage Accutech, the Ghost turns his attention to Tony Stark once Stark buys the firm and drives him off. Accutech then sends the Spymaster to kill the rogue saboteur, and the Ghost murders him by leaving him half phased through a wall. Iron Man finally corners him beside Accutech's beta particle generator, which scrambles his suit; overheating, the Ghost melts through the floor and leaves behind only a scorched costume.",
+      "keyIssues": [
+        "Iron Man #219 (1987)",
+        "Iron Man #220 (1987)",
+        "Iron Man #221 (1987)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #219",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_219"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #220",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_220"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #221",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_221"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Justin Hammer's saboteur",
+      "years": "1989",
+      "title": "Trouble in Rome",
+      "summary": "Back from apparent death, the Ghost turns up at Electronica Fabbrizi, an Italian front company of Justin Hammer's, and runs rings around Hammer's hired guns. Stark and Hammer make an uneasy deal to deal with him together, and the Ghost nearly finishes Iron Man by clamping on a device that leaves his armour permanently intangible. When the Ghost then comes for Hammer, the businessman springs defences built to stop him, but the saboteur blasts his way out and promises to carry on his war.",
+      "keyIssues": [
+        "Iron Man #239 (1989)",
+        "Iron Man #240 (1989)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #239",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_239"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #240",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_240"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: gun for hire",
+      "years": "2001-2006",
+      "title": "Bombs in the machines",
+      "summary": "Working for an A.I.M. front called Advanced Corp, the Ghost wipes out rival companies with explosives hidden inside their computers. In a rematch he tries to reach into Iron Man's chest, but Stark's artificial heart fights back and knocks him out, and he is arrested without ever being unmasked. Later, in an upgraded suit, he takes a contract from a new Spymaster to break the Living Laser out of Stark's custody, destroys what turns out to be an Iron Man decoy and is left behind by his employer.",
+      "keyIssues": [
+        "Iron Man Vol 3 #44 (2001)",
+        "Iron Man: Inevitable #1 (2006)",
+        "Iron Man: Inevitable #4 (2006)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 3 #44",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_3_44"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man: Inevitable Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man:_Inevitable_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man: Inevitable Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man:_Inevitable_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Osborn's Thunderbolts",
+      "years": "2009",
+      "title": "Sabotage from the inside",
+      "summary": "Norman Osborn recruits the Ghost into his covert Thunderbolts, and on one early mission the Ghost slips aboard Air Force One to steal the disc of incriminating security footage from Thunderbolts Mountain. He has his own reasons for signing on: he sees Osborn as the perfect union of military, corporate and political power he despises, and means to undermine him. When the team is ordered to kill Black Widow, posing as Yelena Belova, and Songbird, he joins Headsman and Paladin in letting them go, then wipes the memories of Mister X and Scourge to cover it up.",
+      "keyIssues": [
+        "Thunderbolts #128 (2009)",
+        "Thunderbolts #133 (2009)",
+        "Thunderbolts #134 (2009)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #128",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_128"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #133",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_133"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #134",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_134"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Stark Disassembled",
+      "years": "2010",
+      "title": "Hunting a helpless Tony Stark",
+      "summary": "With Stark lying brain-wiped in a coma, Madame Masque hires the Ghost to finish him off and gives him a Tinkerer-built phone that lets him phase himself anywhere in the world. He tracks Stark to Broxton, Oklahoma, and twice gets close enough to stab and choke him, condemning him as a capitalist. Stark wakes in time and turns the Ghost's own phone against him, dumping him in a facility in Seoul.",
+      "keyIssues": [
+        "Invincible Iron Man Vol 2 #22 (2010)",
+        "Invincible Iron Man Vol 2 #24 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Invincible Iron Man Vol 2 #22",
+          "url": "https://marvel.fandom.com/wiki/Invincible_Iron_Man_Vol_2_22"
+        },
+        {
+          "label": "Marvel Fandom wiki: Invincible Iron Man Vol 2 #24",
+          "url": "https://marvel.fandom.com/wiki/Invincible_Iron_Man_Vol_2_24"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Luke Cage's Thunderbolts",
+      "years": "2010-2011",
+      "title": "A paranoid on parole",
+      "summary": "Now a Raft inmate on Luke Cage's supervised Thunderbolts, the Ghost shrugs off Baron Zemo's breakout offer, which turns out to be a test, and goes on missions against trolls and ninjas. When Iron Man joins one assignment, Stark explains that his company is now a small independent outfit, and the Ghost, who thinks in strict either-or terms, decides Stark is no longer an enemy. Stuck in Thunderbolts Tower with Moonstone afterwards, he finally tells her the story of how he became the Ghost.",
+      "keyIssues": [
+        "Thunderbolts #145 (2010)",
+        "Thunderbolts #150 (2011)",
+        "Thunderbolts #151 (2011)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #145",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_145"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #150",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_150"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #151",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_151"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Zemo and Fisk's Thunderbolts",
+      "years": "2019",
+      "title": "War on the Punisher",
+      "summary": "Baron Zemo and Mayor Wilson Fisk assemble a new Thunderbolts to finish off the Punisher, and the Ghost is presented at a press conference as one of the team's public faces. In the final showdown he pulls Zemo out of the Punisher's grip, but once Zemo is beaten, Fisk turns the Ghost on his former boss and he appears to kill him before phasing away.",
+      "keyIssues": [
+        "The Punisher Vol 12 #13 (2019)",
+        "The Punisher Vol 12 #16 (2019)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Punisher Vol 12 #13",
+          "url": "https://marvel.fandom.com/wiki/Punisher_Vol_12_13"
+        },
+        {
+          "label": "Marvel Fandom wiki: Punisher Vol 12 #16",
+          "url": "https://marvel.fandom.com/wiki/Punisher_Vol_12_16"
+        }
+      ]
+    },
+    {
+      "era": "The comics Ghost: Project Aaru",
+      "years": "2020",
+      "title": "A lost love in a data chip",
+      "summary": "The Ghost learns that Roxxon had secretly uploaded the mind of the woman he loved, and that Moonstone now holds the copy. She uses it to make him help with her project to upload human minds into a digital afterlife, until he discovers she is using hospital patients without consent and has no real plan to make it work. He switches sides, helps the Strikeforce team bring her down and slips away with the chip holding his lover's mind.",
+      "keyIssues": [
+        "Strikeforce #6 (2020)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Strikeforce Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Strikeforce_Vol_1_6"
+        }
+      ]
+    },
+    {
+      "era": "Ava Starr of Earth-52635 (a different character, not the MCU Ava)",
+      "years": "2025",
+      "title": "The Superior Avengers",
+      "summary": "Kristoff Vernard, Doom's adopted son, uses a time platform to pull the champions of a future Doom-ruled world back to the present as his Superior Avengers, unaware they are the ones who killed his father there. Still masquerading as the warden Ghost, Ava teleports her teammates into the Negative Zone so they can secretly build a magical warhead meant for Annihilus. To fool them she builds a robot double of herself from Doctor Octopus's technology, and when the Vision accidentally destroys it in a clash with the real Avengers, her cover is blown; hunted by her own team, she goes to Kristoff and tells him what his Avengers really are.",
+      "keyIssues": [
+        "Superior Avengers #1 (2025)",
+        "Superior Avengers #3 (2025)",
+        "Superior Avengers #4 (2025)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ava Starr (Earth-52635)",
+          "url": "https://marvel.fandom.com/wiki/Ava_Starr_(Earth-52635)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Superior Avengers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Superior_Avengers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Superior Avengers Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Superior_Avengers_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Superior Avengers Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Superior_Avengers_Vol_1_4"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Ant-Man and the Wasp",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Hannah John-Kamen (RaeLynn Bratten as young Ava)",
+      "cameo": false,
+      "summary": "Ava is the daughter of Elihas Starr, a scientist Hank Pym drove out of S.H.I.E.L.D.; one of her father's quantum experiments killed both her parents and left her body in constant, painful flux. Raised by Bill Foster and used by S.H.I.E.L.D. as a phasing operative, she steals Pym's shrinkable lab so she can drain Janet van Dyne's quantum energy for a cure, battling Ant-Man and the Wasp across San Francisco. In the end Janet chooses to share some of her energy, which steadies Ava, and she escapes with Foster.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ghost",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ant-Man and the Wasp",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"
+        },
+        {
+          "label": "Marvel Fandom wiki: Ant-Man and the Wasp (film)",
+          "url": "https://marvel.fandom.com/wiki/Ant-Man_and_the_Wasp_(film)"
+        }
+      ]
+    },
+    {
+      "title": "Thunderbolts*",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Hannah John-Kamen",
+      "cameo": false,
+      "summary": "On the run and unstable again, Ava has been doing assassination and infiltration work for Valentina's O.X.E. in return for a new suit, and she is sent to a Utah vault where she kills Taskmaster before realising Valentina has set her operatives against each other. She escapes with Yelena Belova and John Walker, is thrown aside by the Sentry, and inside the Void uses Taskmaster's sword to free Yelena and Bob. Valentina then unveils the group to the press as the New Avengers.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ghost",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts*",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts*"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Ava's first suit keeps a hood as a nod to the hooded cloak the comics Ghost wore in his debut in Iron Man #219, even though the rest of the design follows his later Thunderbolts look.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ghost",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost"
+        },
+        {
+          "label": "Marvel Fandom wiki: Iron Man Vol 1 #219 (June 1987)",
+          "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_219"
+        }
+      ]
+    },
+    {
+      "fact": "Ghost was once planned for Iron Man 2 (2010) as another villain linked to Justin Hammer, echoing the comics character's stint working for Hammer, but was cut; a different version turned up only in the film's video game tie-in.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ghost",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost"
+        },
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "During development the character's first name was going to be Dawn rather than Ava.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Ghost",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost"
+        }
+      ]
+    },
+    {
+      "fact": "The comics Ghost's long grudge against Tony Stark ends in an odd way: once Stark shows him that his business has shrunk to a small independent company, the Ghost simply stops treating him as a corporate target.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #150 (January 2011)",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_150"
+        },
+        {
+          "label": "Marvel Fandom wiki: Ghost (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "There is no Earth-616 Ava Starr on the Marvel Fandom wiki (that page returns not found). The Ava Starr disambiguation page lists the MCU character (Earth-199999) as the main entry. The only comics Ava Starr is the Earth-52635 character from Superior Avengers (2025), who is not the MCU character. The other Ava Starr pages are video game or animation versions (Marvel Future Fight, Contest of Champions, Avengers Academy, Strike Force, Super War, Puzzle Quest, LEGO Marvel Super Heroes 2, Marvel Zombies animated series).",
+    "The origin's firstAppearance and creators fields describe the comics Ghost (Earth-616), an unnamed man, because the MCU's Ava Starr is adapted from him. They are not Ava's comics debut. The Earth-52635 Ava Starr debuts in Superior Avengers #1 (June 2025), created by Steve Foxe and Luca Maresca, and is first named on panel in #4.",
+    "The comics Ghost's real name has never been given. The wiki lists the aliases Phantasm and Casper but flags both as needing a citation, so they are left out.",
+    "The comics Ghost's origin comes from his own account in Thunderbolts Vol 2 #151, and the wiki warns it may be untrue. That issue page has only a solicitation, no synopsis.",
+    "Thunderbolts Vol 2 #134: the character page cites it for the Ghost freeing Black Widow and Songbird and wiping memories, but the issue synopsis does not mention him by name. #133 (where Black Widow confronts him about his motives) does.",
+    "The character page's overview says the Ghost turned on Osborn and helped the Avengers during his fall, citing Thunderbolts Vol 2 #163 (November 2011), which is long after the Siege. Because the citation and dating do not line up, the claim is left out.",
+    "The Vibranium Vendetta crossover (Kingpin hires the Ghost to steal synthetic vibranium, with Spider-Man and Black Panther) is mentioned on the character page without issue numbers and is left out.",
+    "Iron Man #219-221, Iron Man: Inevitable #1 and #4 and Strikeforce #6 issue pages have no plot synopsis. Those eras rest on the character page and solicitations. The Iron Man Vol 3 #44 synopsis covers the computer bombings and Advanced Corporation (run by MODOK) but does not describe the Ghost's part; he is listed in the issue's appearances, including in his disguise as Johnny Morley, so his role in that story is cited from the character page.",
+    "Superior Avengers #5 and #6 (October and November 2025) list Ava as appearing, but the character page does not describe her role there, so they are not summarised. Her possible link to Egghead (Elihas Starr) is only speculation in the wiki's notes.",
+    "Avengers: Doomsday (listed for 18 December 2026) and Avengers: Secret Wars are named in the MCU Wiki infobox but marked unreleased, so they are excluded. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Endgame page, including its Encore plot section and Encore-exclusive cast list, does not mention Ava Starr, Ghost or Hannah John-Kamen, so no entry was added.",
+    "Secret Invasion (2023) episode 6 is left out: the MCU Wiki lists Ghost as mentioned only. Her DNA is part of the Harvest that gives Skrulls her powers, but she does not appear.",
+    "Look Out for the Little Guy! (novel, mentioned) and Thunderbolts* Dossier (comic tie-in, files only) are not screen appearances.",
+    "The Thunderbolts* post-credits scene is part of the film entry above, not a separate appearance.",
+    "Iron Man 2 (2010) is not a screen appearance: the MCU Wiki says Ghost was planned for the film and dropped. The version in the Iron Man 2 video game is not live-action.",
+    "No non-MCU live-action Ghost was found. The Agents of S.H.I.E.L.D. link on the Marvel Fandom Ghost disambiguation page is for Robbie Reyes (Ghost Rider), a different character."
+  ]
+}

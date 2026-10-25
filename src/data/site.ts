@@ -21,6 +21,7 @@ export type Design = {
   pace: number;           // multiplier on reveal durations
   kicker: string;         // short line under the name, our own words
   heroScale?: number;     // shrink wide display faces so names never break mid-word
+  faLabel?: string;       // overrides 'First appearance' when the debut belongs to a different comics character
 };
 
 export const RELEASE = official.film.releaseDate; // 2026-12-18
@@ -190,6 +191,47 @@ export const DESIGN: Record<string, Design> = {
     font: "'Abril Fatface', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.01em',
     ease: 'back.out(1.4)', pace: 0.9, kicker: 'A charming thief from New Orleans who charges what he touches with explosive energy, playing cards most of all.',
   },
+  'yelena-belova': {
+    heroScale: 1.15,
+    slug: 'yelena-belova', wave: 4, scene: 'shafts', sceneName: 'Red Room',
+    sceneNote: 'Light pours through slatted blinds from wherever your cursor is, throwing red shafts through the dust. The letters nearest the light are lit.',
+    bg: '#070203', ink: '#f5e9ea', dim: '#b29a9c', accent: '#ff4d5e', accent2: '#ffd0d4',
+    font: "'Bebas Neue', sans-serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.02em',
+    ease: 'power3.out', pace: 1, kicker: 'A Widow trained in the Red Room alongside Natasha, who now chooses her own missions and her own family.',
+  },
+  'red-guardian': {
+    heroScale: 0.85,
+    slug: 'red-guardian', wave: 4, scene: 'bokeh', sceneName: 'Rack Focus',
+    sceneNote: 'Snow falls through a shallow depth of field. Move up and down to pull focus through the storm, and left and right to change the wind. The name racks focus too.',
+    bg: '#04060a', ink: '#eef2f8', dim: '#9aa6b6', accent: '#ff3b3b', accent2: '#ffb070',
+    font: "'Russo One', sans-serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.01em',
+    ease: 'power2.out', pace: 1.3, kicker: 'The Soviet answer to Captain America, still certain of his own legend long after the world moved on.',
+  },
+  'john-walker': {
+    heroScale: 0.82,
+    slug: 'john-walker', wave: 4, scene: 'tags', sceneName: 'Dog Tags',
+    sceneNote: 'Two polished steel tags on a ball chain, lit like a product shot, swing toward your cursor and catch the light as they turn.',
+    bg: '#050604', ink: '#eef0e6', dim: '#a3a796', accent: '#c8a64a', accent2: '#e8e8e8',
+    font: "'Graduate', serif", fontWeight: 400, fontCase: 'uppercase', tracking: '0.01em',
+    ease: 'back.out(1.2)', pace: 1, kicker: 'A decorated soldier who was handed the shield and then stripped of it, and who now goes by U.S. Agent.',
+  },
+  'ghost': {
+    heroScale: 0.8,
+    faLabel: 'First comics Ghost',
+    slug: 'ghost', wave: 4, scene: 'phase', sceneName: 'Phase Echo',
+    sceneNote: 'Every frame feeds back into the next, so anything that moves leaves fading echoes and the picture keeps slipping out of phase. Letters slip too.',
+    bg: '#040506', ink: '#e9eef2', dim: '#95a0a8', accent: '#9fe7ff', accent2: '#ffffff',
+    font: "'Major Mono Display', monospace", fontWeight: 400, fontCase: 'none', tracking: '0em',
+    ease: 'steps(8)', pace: 0.9, kicker: 'A woman caught between dimensions by a lab accident, who learned to turn her instability into a weapon.',
+  },
+  'bob-reynolds': {
+    heroScale: 0.85,
+    slug: 'bob-reynolds', wave: 4, scene: 'sunvoid', sceneName: 'Sun and Void',
+    sceneNote: 'A golden core holds back blobs of absolute darkness that merge like ink. Your cursor is light that pushes the dark away; scroll and the void wins, eating the name as it goes.',
+    bg: '#050403', ink: '#fff6e6', dim: '#b8ab93', accent: '#ffc861', accent2: '#8f6bff',
+    font: "'Cinzel Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '0.02em',
+    ease: 'power2.inOut', pace: 1.4, kicker: 'A man with the power of a million exploding suns, and a darkness inside him to match.',
+  },
 };
 
 const researchFiles = import.meta.glob('../../research/*.json', { eager: true, import: 'default' }) as Record<string, any>;
@@ -268,5 +310,10 @@ export const HERO_NAMES: Record<string, string> = {
   'mystique': 'Mystique',
   'beast': 'Beast',
   'gambit': 'Gambit',
+  'yelena-belova': 'Yelena Belova',
+  'red-guardian': 'Red Guardian',
+  'john-walker': 'John Walker',
+  'ghost': 'Ghost',
+  'bob-reynolds': 'Bob Reynolds',
 };
 export const heroName = (slug: string) => HERO_NAMES[slug] || slug;

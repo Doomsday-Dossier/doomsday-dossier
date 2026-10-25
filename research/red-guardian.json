@@ -1,0 +1,376 @@
+{
+  "slug": "red-guardian",
+  "name": "Alexei Shostakov",
+  "alias": "Red Guardian",
+  "origin": {
+    "firstAppearance": {
+      "title": "Avengers",
+      "issue": "#43",
+      "coverDate": "August 1967"
+    },
+    "creators": [
+      "Roy Thomas",
+      "John Buscema"
+    ],
+    "summary": [
+      "Alexei Shostakov, the son of Andrei Shostakov, was born in Nizhny Novgorod and grew up to become one of the Soviet Union's most celebrated test pilots. His skill earned him the most secret and dangerous flights, while the state press trumpeted his other missions and he was named a Hero of the Soviet Union. His private life looked just as charmed: he married Natalia Romanova, known as Natasha, a famous ballerina.",
+      "The KGB decided the couple would make useful special operatives. While Alexei was away on a mission he was told he now belonged to the state and could never again contact his friends or even his wife, and Natasha was informed that he had been killed when an experimental rocket exploded. As the KGB had expected, she asked to do something worthy of his memory and was put straight into training as the spy who became the Black Widow, before eventually defecting to the United States under her maiden name. A much later retelling, Black Widow: Deadly Origin, has the two meet in 1957 while Alexei was a colonel and has Khrushchev fake his death in 1963.",
+      "Meanwhile the KGB remade Alexei as the Red Guardian, a costumed agent meant to be the Soviet answer to Captain America, armed with a round shield and a throwing disc that magnetically returned to his belt. The years of training hardened him into someone far colder and crueller than the husband Natasha remembered. When Communist China built the psychotron, a machine that could cause mass hallucinations, and offered to share it with Moscow in a plot against America, the Soviets sent General Yuri Brushov to judge the weapon and the Red Guardian to guard him, placing him under the command of Colonel Ling at a secret Chinese base."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Avengers Vol 1 #43 (August 1967)",
+        "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_43"
+      },
+      {
+        "label": "Marvel Fandom wiki: Amazing Spider-Man Vol 1 #86 (July 1970)",
+        "url": "https://marvel.fandom.com/wiki/Amazing_Spider-Man_Vol_1_86"
+      },
+      {
+        "label": "Marvel Fandom wiki: Black Widow: Deadly Origin Vol 1 #2 (February 2010)",
+        "url": "https://marvel.fandom.com/wiki/Black_Widow:_Deadly_Origin_Vol_1_2"
+      },
+      {
+        "label": "Marvel Fandom wiki: Winter Guard Vol 1 #2 (November 2021)",
+        "url": "https://marvel.fandom.com/wiki/Winter_Guard_Vol_1_2"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Silver Age debut",
+      "years": "1967",
+      "title": "Color him the Red Guardian",
+      "summary": "When Natasha is captured at Ling's base, Hawkeye and Hercules go after her; the Red Guardian takes Hawkeye prisoner and leaves Hercules trapped in the psychotron, then unmasks, and Natasha realises with horror that he is her husband. He gets his long-awaited duel with Captain America, only for Ling to knock Cap out with an electrified floor, which disgusts him. He takes a shot meant for Natasha as she wrecks the psychotron and, dying, spoils Ling's last attempt to kill the retreating Avengers, setting off the blast that destroys the base with him inside.",
+      "keyIssues": [
+        "Avengers #43 (1967)",
+        "Avengers #44 (1967)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #43",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_43"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #44",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_44"
+        }
+      ]
+    },
+    {
+      "era": "Ghosts and decoys",
+      "years": "1987-1992",
+      "title": "A dead man who would not stay buried",
+      "summary": "With Alexei presumed dead, his image keeps being used against those he left behind. Death and the Grandmaster raise him as one of their pawns in the Legion of the Unliving to fight the Avengers. In The Coldest War, Soviet agents build a Life Model Decoy of him to convince Natasha he is alive and blackmail her into stealing American secrets, until she destroys it with Ivan Petrovich's help. Later still, a deceptive copy of him turns up in a second Legion of the Unliving assembled by the Grim Reaper.",
+      "keyIssues": [
+        "Avengers Annual #16 (1987)",
+        "Marvel Graphic Novel #61: The Black Widow: The Coldest War (1990)",
+        "Avengers #353 (1992)",
+        "Avengers #354 (1992)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Annual Vol 1 #16",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Annual_Vol_1_16"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Graphic Novel Vol 1 #61: The Black Widow: The Coldest War",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Graphic_Novel_Vol_1_61:_The_Black_Widow:_The_Coldest_War"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #353",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_353"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #354",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_354"
+        }
+      ]
+    },
+    {
+      "era": "The Widow",
+      "years": "2004",
+      "title": "Alive after all",
+      "summary": "Natasha is targeted by assassins while the U.S. government quietly tries to hand her to Bulgaria in exchange for Madame Hydra. Working with Daredevil and S.H.I.E.L.D., she traces the plot to the Bulgarian official behind it and finds herself face to face with Alexei, the husband she believed dead, who had arranged the whole thing to strike at her.",
+      "keyIssues": [
+        "Daredevil #64 (2004)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Daredevil Vol 2 #64",
+          "url": "https://marvel.fandom.com/wiki/Daredevil_Vol_2_64"
+        }
+      ]
+    },
+    {
+      "era": "Widowmaker",
+      "years": "2011",
+      "title": "The new Ronin",
+      "summary": "Spies around the world are being exposed and murdered, and the masked killer behind it is a new Ronin, eventually revealed as Alexei leading the Dark Ocean Society. He recruits a young illusion-caster as his new Fantasma and arms his troops with copies of the armour and powers of the Supreme Soviets' Vostok, Perun and Crimson Dynamo. Natasha, Hawkeye and Mockingbird bring him down after Natasha persuades Fantasma to change sides, and he is handed over to S.H.I.E.L.D.",
+      "keyIssues": [
+        "Widowmaker #1 (2011)",
+        "Widowmaker #3 (2011)",
+        "Widowmaker #4 (2011)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Widowmaker Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Widowmaker_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Widowmaker Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Widowmaker_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Widowmaker Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Widowmaker_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "Widowmakers",
+      "years": "2021",
+      "title": "Broken out by Yelena",
+      "summary": "Alexei is held at a S.H.I.E.L.D. outpost in Antarctica, which after S.H.I.E.L.D.'s collapse is sold to Justin Cask and turned into a super-soldier training ground. He refuses to work for his captors and is tortured by the facility's Dr. Durst. Yelena Belova, hired by Cask as a test for his security, frees him instead; he stays behind long enough to get even with Durst and escapes as the building blows up.",
+      "keyIssues": [
+        "Widowmakers: Red Guardian and Yelena Belova #1 (2021)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Widowmakers: Red Guardian and Yelena Belova Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Widowmakers:_Red_Guardian_and_Yelena_Belova_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "The Ties That Bind",
+      "years": "2020-2021",
+      "title": "Taking a bullet for his ex-wife",
+      "summary": "Alexei joins a group of Natasha's enemies who implant false memories that give her a new life in San Francisco as an architect with a husband and young son. He has long since let go of his hatred for her and only joins to look for a way to get her out. When the group's leader, the Weeping Lion, loses patience and sends killers, Natasha's memories return and the cadre turns on her, and Alexei steps in front of a bullet Madame Hydra meant for her.",
+      "keyIssues": [
+        "Black Widow #2 (2020)",
+        "Black Widow #5 (2021)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Widow Vol 8 #2",
+          "url": "https://marvel.fandom.com/wiki/Black_Widow_Vol_8_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Widow Vol 8 #5",
+          "url": "https://marvel.fandom.com/wiki/Black_Widow_Vol_8_5"
+        }
+      ]
+    },
+    {
+      "era": "Winter Guard",
+      "years": "2021-2022",
+      "title": "Operation Snowblind",
+      "summary": "Decades earlier Alexei had been ordered to destroy records tying the USSR to corruption, but he handed over fakes and hid the real hard drives; now he recruits Yelena to recover all four and leak them to the Russian people. Hunted by the Winter Guard, he sabotages Crimson Dynamo's armour and sows distrust by claiming to have a mole on the team. When Dracula, holding the last drive, invites both sides, Alexei talks him into handing it over and abandons Yelena, but Vanguard and Red Widow catch him and destroy the drives, leaving him to head for Madripoor with nothing.",
+      "keyIssues": [
+        "Winter Guard #1 (2021)",
+        "Winter Guard #2 (2021)",
+        "Winter Guard #4 (2022)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Winter Guard Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Winter_Guard_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Winter Guard Vol 1 #2",
+          "url": "https://marvel.fandom.com/wiki/Winter_Guard_Vol_1_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Winter Guard Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Winter_Guard_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "era": "Thunderbolts",
+      "years": "2024",
+      "title": "Hunting the Red Skull",
+      "summary": "Tipped off by Yelena, Alexei crashes Bucky Barnes' Thunderbolts raid on the Red Skull's castle in Argentina mid-mission, carrying a Red Guardian shield he got from who knows where, and is welcomed onto the team after they destroy the castle and kill Aleksander Lukin, the Skull's host body. In Latveria he single-handedly takes out the defences of the Skull's last base before being knocked cold, then wakes in time to grab the robotic Contessa's head and teleport out as Doctor Doom obliterates the base and the Skull with it. Back at Thunderbolts Mountain he recovers by arm-wrestling U.S. Agent.",
+      "keyIssues": [
+        "Thunderbolts #1 (2024)",
+        "Thunderbolts #4 (2024)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 6 #1",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 6 #4",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_4"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Black Widow",
+      "year": 2021,
+      "continuity": "MCU",
+      "actor": "David Harbour",
+      "cameo": false,
+      "summary": "Unlike the comics' unpowered agent and husband of Natasha, this Alexei is the Soviet Union's only super-soldier, given a recreated serum, and from 1992 he poses as the father of young Natasha and Yelena in an Ohio cover family until the mission ends with the girls handed back to the Red Room. Jailed for life after falling out with Dreykov, he is broken out of a Russian prison by his 'daughters' in 2016, points them to Melina and pulls his old Red Guardian suit back on. In the attack on the Red Room he fights Taskmaster, then escapes with Melina and is left helping to free the remaining Widows.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Widow (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Red Guardian",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian"
+        },
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "title": "Thunderbolts*",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "David Harbour",
+      "cameo": false,
+      "summary": "Now running Red Guardian Limo Service in the United States and pining for his glory days, Alexei overhears Valentina plotting to kill Yelena, races to the rescue in his limo and argues over who sponsored the soccer team the group is named after. When Yelena falls apart he reminds her that she was the goalkeeper others could rely on, then follows her into the Void, and ends up unveiled as one of the New Avengers. A mid-credits scene has him pushing New Avengers cereal on a baffled shopper, and in the post-credits scene he proposes renaming the team the \"New Avengerz\" just before an extra-dimensional ship appears.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: List of Post-credits Scenes",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/List_of_Post-credits_Scenes"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Red Guardian",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian"
+        },
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-199999)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "Alexei was the first Red Guardian to appear in print, in Avengers #43 (1967), and the mantle next went to Tania Belinskaya in Defenders #35 (1976). A 1991 story in Namor, the Sub-Mariner Annual #1 then introduced a Second World War hero, Aleksey Lebedev, as the first Red Guardian, so the Marvel Fandom wiki now counts Alexei as the second.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Red Guardian",
+          "url": "https://marvel.fandom.com/wiki/Red_Guardian"
+        },
+        {
+          "label": "Marvel Fandom wiki: Aleksey Lebedev (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Aleksey_Lebedev_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #44 (September 1967)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_44"
+        },
+        {
+          "label": "Marvel Fandom wiki: Namor, the Sub-Mariner Annual Vol 1 #1 (June 1991)",
+          "url": "https://marvel.fandom.com/wiki/Namor,_the_Sub-Mariner_Annual_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Defenders Vol 1 #35 (May 1976)",
+          "url": "https://marvel.fandom.com/wiki/Defenders_Vol_1_35"
+        }
+      ]
+    },
+    {
+      "fact": "The wiki's notes on Avengers #44 single him out as an unusually sympathetic Soviet character for 1960s Marvel: a committed communist who still turns on his own side because he will not see Captain America beaten by a cheap trick.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 1 #44 (September 1967)",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_44"
+        }
+      ]
+    },
+    {
+      "fact": "The biggest screen change is the relationship: the MCU's Alexei is Natasha's adoptive cover-family father rather than her ex-husband, and he has super-soldier powers that his comics counterpart, a highly trained but unpowered fighter, never had.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-199999)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Red Guardian",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian"
+        },
+        {
+          "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "The MCU's Alexei has \"KARL\" and \"MARX\" tattooed across his knuckles, and David Harbour suggested playing the part entirely in Russian with English subtitles, an idea the producers turned down.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Red Guardian",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Original or second Red Guardian: the brief calls Alexei the original Red Guardian. He was the first in print (1967), but both the Marvel Fandom Earth-616 page and the MCU Wiki trivia call him the second, after the later retcon introducing Aleksey Lebedev. The file explains this in trivia rather than calling him the original outright. The Red Guardian disambiguation page also lists Josef Petkus (described on his own page as the fourth), Nikolai Krylenko and Tania Belinskaya; none of their stories were merged into his.",
+    "The MCU Wiki's trivia says the comics Alexei was a pilot rescued by Vasily Karpov in the Second World War. The Marvel Fandom Earth-616 page does not say this, so it is left out.",
+    "Daredevil Vol 2 #64 (2004): the Earth-616 page says Alexei was taken into custody at the end of the arc, while the issue synopsis says Natasha confronted him and that he let Madame Hydra go as a way of punishing her. The era stops at the confrontation. Earlier parts of the arc (Daredevil #61-63) were not read.",
+    "Deadly Origin retcon: Black Widow: Deadly Origin #2 dates the couple's meeting to 1957, with Alexei a colonel, and his faked death to 1963. The origin mentions it but follows the older outline from the Earth-616 page.",
+    "Not merged: the Life Model Decoy in The Coldest War (1990) and the 'deceptive facsimile' in Avengers #353-354 (1992) have their own Marvel Fandom pages and are described only as copies. Defenders #55 (1978), cited in the Earth-616 page's account of his death, concerns a Red Guardian controlled by the Presence and is not used.",
+    "Hawkeye (2021): the MCU Wiki lists Alexei as mentioned only, so it is not counted. What If...? and Marvel Zombies (David Harbour voicing Red Guardian variants, per the Marvel Fandom Earth-199999 notes) are animated and voice-only, so they are left out.",
+    "Avengers: Doomsday and Avengers: Secret Wars appear in the MCU Wiki infobox for Red Guardian but are marked unreleased, so they are left out. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Encore plot summary and Encore-exclusive cast list do not include Alexei, and his MCU Wiki page does not list Spider-Man: Brand New Day, so no entries were added.",
+    "Left out as promotional or non-screen material: the Thunderbolts* Dossier files and the Red Guardian Limo Service commercial cited on the MCU Wiki page.",
+    "Location conflict: the MCU Wiki character page puts Alexei's house outside Baltimore, while the Thunderbolts* plot summary sets Yelena's visit in Washington, D.C. The summary avoids naming a place. The Marvel Fandom Earth-199999 page also dates the Ohio escape to 1996, against 1995 on the MCU Wiki.",
+    "Several issue pages used here (Widowmaker #1, #3 and #4, Widowmakers #1, Winter Guard #1, #2 and #4, Thunderbolts Vol 6 #1 and #4, The Coldest War) have no plot synopsis. Details from them rest on the Earth-616 character page plus solicitations."
+  ]
+}

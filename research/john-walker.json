@@ -1,0 +1,468 @@
+{
+  "slug": "john-walker",
+  "name": "John Walker",
+  "alias": "U.S. Agent",
+  "origin": {
+    "firstAppearance": {
+      "title": "Captain America",
+      "issue": "#323",
+      "coverDate": "November 1986"
+    },
+    "creators": [
+      "Mark Gruenwald",
+      "Paul Neary",
+      "Tom Morgan",
+      "Kieron Dwyer"
+    ],
+    "summary": [
+      "Jonathan F. Walker grew up in the small town of Custer's Grove, Georgia, the middle child of Caleb and Emily Walker. His hero was his older brother Mike, an Army helicopter pilot who had once pulled him out of a burning house and who was later killed in combat while John was still young; his younger sister Kate completed the family. Hoping to live up to Mike's memory, John enlisted and was stationed at Fort Bragg, where he made friends with fellow soldiers Lemar Hoskins, Hector Lennox and Jerome Johnson. To his frustration there was no war on during his tour, and he left the service without ever seeing action.",
+      "After their discharge the four friends were approached by a recruiter for the Power Broker, whose company promised to boost paying clients to superhuman strength. They took the free bus tickets to Los Angeles and the treatment worked, but it left John owing money, and the company's counsellor pointed him toward professional wrestling as a way to pay it off. Before he stepped into a ring, a talent agent named Ethan Thurm offered to manage him. John told Thurm he really wanted to be a costumed hero in the mould of Captain America, so Thurm found backers, and John became the Super-Patriot, with his three friends behind him as the Bold Urban Commandos, or Buckies.",
+      "Thurm's idea of publicity included having the Buckies pose as Captain America fans and stage fights so the Super-Patriot could look good, while John toured the country calling Cap a relic. Steve Rogers saw through the act and warned him to be worthy of the symbol he wanted to be; when they finally came to blows at a benefit concert in Milwaukee, they slugged it out for nearly an hour without a clear winner. John then earned real credit by climbing the Washington Monument to stop the terrorist Warhead and his nuclear bomb. When Rogers resigned rather than take orders from the government's Commission on Superhuman Activities, Valerie Cooper put the Super-Patriot forward, and John was chosen as the new Captain America, trained by Taskmaster and partnered with Lemar as his Bucky."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #323 (November 1986)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_323"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #327 (March 1987)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_327"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #332 (August 1987)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_332"
+      },
+      {
+        "label": "Marvel Fandom wiki: Captain America Vol 1 #333 (September 1987)",
+        "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_333"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The Super-Patriot",
+      "years": "1986-1987",
+      "title": "A rival for Captain America",
+      "summary": "Walker arrives as a slick, media-managed alternative to Steve Rogers, staging rallies that paint Cap as out of date while his manager quietly sends the Buckies out to rough up others in Cap's name. Rogers tells him to his face that he had better be worthy of the flag he waves, and their brawl at a Milwaukee benefit concert ends with neither man able to put the other down. Walker's breakthrough comes in Washington, where he scales the Washington Monument and gets a nuclear device away from the terrorist Warhead.",
+      "keyIssues": [
+        "Captain America #323 (1986)",
+        "Captain America #327 (1987)",
+        "Captain America #332 (1987)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #323",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_323"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #327",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_327"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #332",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_332"
+        }
+      ]
+    },
+    {
+      "era": "The replacement Captain America",
+      "years": "1987-1988",
+      "title": "Wearing the stars and stripes",
+      "summary": "The Commission hands Walker the shield on condition that he cut loose Thurm and two of his old friends, and he trains to fight like Rogers while Lemar Hoskins serves first as Bucky and then as his partner Battlestar. The bitter ex-Buckies, now Left-Winger and Right-Winger, crash his press conference and expose his real name, and soon afterwards the Watchdogs murder his parents in front of him. Walker snaps: he tracks down his former friends and leaves them horribly burned in an oil-tanker explosion, and the Commission keeps him in the role only because of political pressure and hidden manipulation from above.",
+      "keyIssues": [
+        "Captain America #333 (1987)",
+        "Captain America #345 (1988)",
+        "Captain America #347 (1988)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #333",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_333"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #345",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_345"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #347",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_347"
+        }
+      ]
+    },
+    {
+      "era": "Becoming U.S.Agent",
+      "years": "1989",
+      "title": "Handing back the shield",
+      "summary": "The Red Skull, hiding behind the name Mr. Smith, turns out to have steered the Commission and arranged the attacks that wrecked Walker's life. Walker ends up fighting Rogers, then helps defeat the Skull by forcing him to bite down on his own Dust of Death, and afterwards insists that Rogers is the only real Captain America. A staged shooting at the handover press conference lets a Commission general fake Walker's death, and he resurfaces as U.S.Agent in a black version of Rogers' old costume, soon assigned to lead and keep watch over the West Coast Avengers.",
+      "keyIssues": [
+        "Captain America #350 (1989)",
+        "Captain America #354 (1989)",
+        "West Coast Avengers #44 (1989)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #350",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_350"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 #354",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_354"
+        },
+        {
+          "label": "Marvel Fandom wiki: West Coast Avengers Vol 2 #44",
+          "url": "https://marvel.fandom.com/wiki/West_Coast_Avengers_Vol_2_44"
+        }
+      ]
+    },
+    {
+      "era": "Force Works",
+      "years": "1994-1996",
+      "title": "The team's backbone",
+      "summary": "When the West Coast branch of the Avengers is shut down, Walker throws his costume and shield into the Hudson River. The Scarlet Witch talks him into joining Tony Stark's new team, Force Works, where he wears a fresh uniform, carries an energy shield and pushes for military-style discipline against threats such as the Kree and the Mandarin. He argues against breaking the team up after Stark's apparent death but still turns out for its last mission.",
+      "keyIssues": [
+        "Avengers West Coast #102 (1994)",
+        "Force Works #1 (1994)",
+        "Force Works #22 (1996)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers West Coast Vol 1 #102",
+          "url": "https://marvel.fandom.com/wiki/Avengers_West_Coast_Vol_1_102"
+        },
+        {
+          "label": "Marvel Fandom wiki: Force Works Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Force_Works_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Force Works Vol 1 #22",
+          "url": "https://marvel.fandom.com/wiki/Force_Works_Vol_1_22"
+        }
+      ]
+    },
+    {
+      "era": "Corporate and government muscle",
+      "years": "1999-2001",
+      "title": "The Jury and S.T.A.R.S.",
+      "summary": "Walker leads the Jury, Edwin Cord's armoured vigilantes, in a failed attempt to take down the Thunderbolts. A beating from Protocide nearly kills him, and S.H.I.E.L.D. rebuilds him with an enhancing exoskeleton. Back on the government payroll as head of the S.T.A.R.S. squad, he hauls in Piledriver at the Mexican border and, during the Kree crisis, holds off Ronan the Accuser single-handed, then turns down the Avengers' thanks and blames them for drawing the trouble to Earth.",
+      "keyIssues": [
+        "Thunderbolts #23 (1999)",
+        "Captain America Vol 3 #34 (2000)",
+        "Maximum Security #1 (2000)",
+        "Maximum Security #3 (2001)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 1 #23",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_1_23"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 3 #34",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_3_34"
+        },
+        {
+          "label": "Marvel Fandom wiki: Maximum Security Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Maximum_Security_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Maximum Security Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Maximum_Security_Vol_1_3"
+        }
+      ]
+    },
+    {
+      "era": "Invaders, Civil War and Canada",
+      "years": "2004-2007",
+      "title": "Captain America in all but name",
+      "summary": "With the New Invaders, Walker demands to be called Captain America, though veterans who knew Rogers refuse, and the team falls apart after the death of the original Human Torch. In the superhero Civil War he backs registration, but when Tony Stark orders him to Canada as liaison to Omega Flight he refuses and goes after the Purple Man instead, surviving a long fall after the villain seizes his mind. He ends up in Toronto anyway, leads Omega Flight against a demon-powered Wrecking Crew and finally takes his shield back from the Purple Man.",
+      "keyIssues": [
+        "New Invaders #1 (2004)",
+        "New Invaders #9 (2005)",
+        "Civil War: Choosing Sides #1 (2006)",
+        "Omega Flight #1 (2007)",
+        "Omega Flight #5 (2007)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Invaders Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/New_Invaders_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Invaders Vol 1 #9",
+          "url": "https://marvel.fandom.com/wiki/New_Invaders_Vol_1_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Civil War: Choosing Sides Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Civil_War:_Choosing_Sides_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Omega Flight Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Omega_Flight_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Omega Flight Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Omega_Flight_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Siege and its cost",
+      "years": "2009-2013",
+      "title": "Maimed, made warden, restored",
+      "summary": "Walker joins a new Mighty Avengers line-up assembled by someone posing as the Scarlet Witch, who is really Loki. During the battle for Asgard, Nuke, now operating as Scourge for Norman Osborn's Thunderbolts, slices off Walker's left arm and leg. He becomes warden of the Raft with a simple hook for a hand, refusing more advanced cybernetics, until a crash strands him and the Dark Avengers in an altered New York where June Covington bonds him to a mindless Venom symbiote that gives him working limbs again.",
+      "keyIssues": [
+        "Mighty Avengers #21 (2009)",
+        "Thunderbolts #142 (2010)",
+        "Thunderbolts #145 (2010)",
+        "Dark Avengers #184 (2013)",
+        "Dark Avengers #185 (2013)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mighty Avengers Vol 1 #21",
+          "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_21"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #142",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_142"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 2 #145",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_145"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #184",
+          "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_184"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #185",
+          "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_185"
+        }
+      ]
+    },
+    {
+      "era": "Old grudges and freelance work",
+      "years": "2016-2021",
+      "title": "Shield fights and a family crisis",
+      "summary": "Political backers of a campaign against Sam Wilson's Captain America bring Walker home from overseas, and a Steve Rogers who is secretly the Hydra-made duplicate persuades him to take the shield from Sam. Sam beats him by drawing him into a dark tunnel and using owls as his eyes. Later, on a revived Force Works, Walker quietly hands Maria Hill a blank drive so that dangerous Deathlok data is destroyed, and in his own series he works as an unofficial government contractor protecting a struggling mining town, where he has to face his own sister in a deranged Super-Patriot role and a violent replacement U.S.Agent.",
+      "keyIssues": [
+        "Captain America: Sam Wilson #13 (2016)",
+        "2020 Force Works #1 (2020)",
+        "U.S.Agent Vol 2 #1 (2021)",
+        "U.S.Agent Vol 2 #5 (2021)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America: Sam Wilson Vol 1 #13",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_13"
+        },
+        {
+          "label": "Marvel Fandom wiki: 2020 Force Works Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/2020_Force_Works_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: U.S.Agent Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/U.S.Agent_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: U.S.Agent Vol 2 #5",
+          "url": "https://marvel.fandom.com/wiki/U.S.Agent_Vol_2_5"
+        }
+      ]
+    },
+    {
+      "era": "Devil's Reign",
+      "years": "2022-2023",
+      "title": "Leading the Mayor's Thunderbolts",
+      "summary": "When Mayor Wilson Fisk outlaws vigilantes in New York, Walker talks his way into leading Fisk's enforcement squad of Thunderbolts while secretly feeding information to the FBI. Fisk uses the Purple Man's power to keep him in line, and Walker ends up among the mind-controlled crowd sent against the city's heroes until the Purple Man is beaten. He then serves briefly as warden of the Myrmidon prison, where a magically boosted Daredevil defeats him and walks off with his shield.",
+      "keyIssues": [
+        "Devil's Reign: Villains for Hire #1 (2022)",
+        "Devil's Reign #6 (2022)",
+        "Daredevil Vol 7 #5 (2023)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Devil's Reign: Villains for Hire Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Devil's_Reign:_Villains_for_Hire_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Devil's Reign Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Devil's_Reign_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: Daredevil Vol 7 #5",
+          "url": "https://marvel.fandom.com/wiki/Daredevil_Vol_7_5"
+        }
+      ]
+    },
+    {
+      "era": "Revolution and the stars",
+      "years": "2024-2026",
+      "title": "Bucky's Thunderbolts and the Imperial Guardians",
+      "summary": "Bucky Barnes, operating as the Revolution, tries to recruit Walker and his partner Todd Ziller, the American Kaiju, for a black-ops war on the Red Skull; the pitch goes badly wrong in Hong Kong, but Walker ends the issue as a member of the team. Later Maximus the Mad recruits him into a deniable Imperial Guardians unit serving under Death's Head to protect the new Galactic Union. When the squad grows suspicious, Maximus pits it against a second Guardians team led by Gamora on Cinnibar, and the two sides work out that they have been set up.",
+      "keyIssues": [
+        "Thunderbolts Vol 6 #3 (2024)",
+        "Imperial Guardians #4 (2026)",
+        "Imperial Guardians #5 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts Vol 6 #3",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Imperial Guardians Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Imperial_Guardians_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Imperial Guardians Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Imperial_Guardians_Vol_1_5"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "The Falcon and The Winter Soldier",
+      "year": 2021,
+      "continuity": "MCU",
+      "actor": "Wyatt Russell",
+      "cameo": false,
+      "summary": "A decorated Army Ranger, Walker is unveiled as the government's new Captain America and hunts the Flag Smashers with his best friend Lemar Hoskins, clashing with Sam Wilson and Bucky Barnes along the way. Shaken by a defeat, he injects himself with the super-soldier serum, and after Lemar is killed he publicly kills a surrendering Flag Smasher with the shield, which costs him the title, his rank and the shield itself. In the finale he chooses to rescue hostages instead of taking revenge, and Valentina Allegra de Fontaine gives him a black suit and the name U.S. Agent.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: U.S. Agent",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Falcon and The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_The_Winter_Soldier"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "title": "Thunderbolts*",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Wyatt Russell",
+      "cameo": false,
+      "summary": "Divorced and doing covert jobs for Valentina's O.X.E., Walker is sent into a desert vault to kill Yelena Belova, only to find that Valentina has lured several of her operatives there to wipe each other out. He escapes with Yelena, Ava Starr and the mysterious Bob, is flattened by Bob's new Sentry persona, and later walks into the Void, where he relives the argument that ended his marriage. After the team frees Bob and saves New York, Valentina presents them to the press as the New Avengers.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: U.S. Agent",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts*",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts*"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The comics Walker is said to keep a photograph of his murdered parents taped inside his shield.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "fact": "The MCU version is described as the first person in American history to be awarded three Medals of Honor, decorations he privately links to the worst days of his service in Afghanistan.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: U.S. Agent",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+        }
+      ]
+    },
+    {
+      "fact": "Wyatt Russell had earlier auditioned for Steve Rogers in Captain America: The First Avenger before landing the role of Rogers' replacement a decade later.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: U.S. Agent",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+        }
+      ]
+    },
+    {
+      "fact": "According to the MCU Wiki, early drafts of Thunderbolts* had Walker as the final villain the team faced; the writer swapped in the Sentry because he wanted a threat the heroes could not simply punch.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: U.S. Agent",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "Black Widow (2021) is not listed as a screen appearance. The MCU Wiki's Black Widow page puts only Valentina Allegra de Fontaine (Julia Louis-Dreyfus) and Yelena in the post-credits scene, Wyatt Russell is not in its cast list, and Walker's own appearance list on the MCU Wiki does not include the film. The Marvel Fandom film page also does not list him.",
+    "Ms. Marvel (2022) episode 1 is left out: the MCU Wiki lists Walker there as a photo only.",
+    "Thunderbolts* Dossier is left out: the MCU Wiki lists it as a comic tie-in where Walker appears only in files.",
+    "Avengers: Doomsday (listed for 18 December 2026) and Avengers: Secret Wars are named in the MCU Wiki infobox but marked unreleased, so they are excluded. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Endgame page, including its Encore plot section and Encore-exclusive cast list, does not mention Walker or Wyatt Russell, so no entry was added.",
+    "The Thunderbolts* post-credits scene is part of the film entry above, not a separate appearance.",
+    "No non-MCU live-action version was found. The Marvel Fandom U.S.Agent disambiguation page lists only comics, What If...? comic and video game variants.",
+    "MCU first name: the MCU Wiki marks 'Jonathan' as conjecture (only 'John F. Walker' is confirmed on screen); the Marvel Fandom wiki assumes 'Jonathan' by naming convention.",
+    "Creators: the Marvel Fandom wiki credits Mark Gruenwald, Paul Neary, Tom Morgan and Kieron Dwyer. Gruenwald and Neary made Captain America #323; Morgan and Dwyer appear to be credited for later stages (Morgan pencilled #332-333, Dwyer #345-354), but the wiki does not say which contribution each made.",
+    "Many issue pages have no plot synopsis, only solicitation text or nothing: West Coast Avengers Vol 2 #44, Force Works #1 and #22, Captain America Vol 3 #33-34, New Invaders #1 and #9, Omega Flight #1 and #5, Captain America: Sam Wilson #13, U.S.Agent Vol 2 #1 and #5, Devil's Reign: Villains for Hire #1, Devil's Reign #6, Daredevil Vol 7 #5, Thunderbolts Vol 6 #3 and Imperial Guardians #4-5. Story details for those issues rest on the Earth-616 character page and the solicitations.",
+    "The Earth-616 character page does not narrate the U.S.Agent Vol 2 series (2020-2021) or Bucky's Thunderbolts (2024). Those beats come from the issue solicitations and the issue page tag showing Walker joining the team in Thunderbolts Vol 6 #3; whether he stays through #4 (the last issue page found) is not described.",
+    "Walker's limbs are lost in Thunderbolts Vol 2 #142, which the issue synopsis confirms (left arm and leg). The symbiote bonding is cited by the character page to Dark Avengers #184-185; the #185 synopsis confirms his body being restored with the Venom symbiote.",
+    "The 1993 U.S.Agent limited series, the Avengers West Coast years in detail, and the Operation: Galactic Storm period are covered only in passing on the character page and were not researched further.",
+    "The character page refers to the wrestling league as both the Unlimited Class and Universal Class Wrestling Federation; the origin avoids naming it.",
+    "Imperial Guardians #4 and #5 carry cover dates of August and September 2026 on the Marvel Fandom wiki; both predate this file. Their solicitations describe Gamora's team, and Walker appears in their appearance lists as part of Death's Head's squad."
+  ]
+}

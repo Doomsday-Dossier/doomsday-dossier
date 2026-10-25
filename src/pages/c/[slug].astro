@@ -19,6 +19,11 @@ import '@fontsource/rye';
 import '@fontsource/dm-serif-display';
 import '@fontsource-variable/eb-garamond';
 import '@fontsource/abril-fatface';
+import '@fontsource/bebas-neue';
+import '@fontsource/russo-one';
+import '@fontsource/graduate';
+import '@fontsource/major-mono-display';
+import '@fontsource-variable/cinzel';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
 
 export function getStaticPaths() {
@@ -56,7 +61,7 @@ const wordRe = new RegExp(`\\b${surname}\\b`);
 const mentions = OFFICIAL.milestones
   .filter((m) => m.text.includes(c.actor) || (c.character && m.text.includes(c.character)) || wordRe.test(m.text))
   .map((m) => ({ ...m, num: cDoom.cite([SRC[m.source]])[0] }));
-const lastScreen = [...r.screen].filter((s) => s.actor === c.actor).sort((a, b) => b.year - a.year)[0];
+const lastScreen = [...r.screen].filter((s) => s.actor.startsWith(c.actor)).sort((a, b) => b.year - a.year)[0];
 
 const fa = r.origin.firstAppearance;
 const issue = (s: string) => (s.startsWith('#') ? s : `#${s}`);
@@ -75,7 +80,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
       <dl class="ch-meta" data-hero-in>
         <div><dt>In Doomsday</dt><dd>{c.actor}</dd></div>
         <div><dt>Role</dt><dd>{c.character ? `Named by Marvel: ${c.character}` : 'Not yet named by Marvel'}</dd></div>
-        <div><dt>First appearance</dt><dd>{fa.title} {issue(fa.issue)}, {fa.coverDate}</dd></div>
+        <div><dt>{d.faLabel ?? 'First appearance'}</dt><dd>{fa.title} {issue(fa.issue)}, {fa.coverDate}</dd></div>
       </dl>
       <p class="ch-motion" data-hero-in><span class="label">Motion</span> <b>{d.sceneName}.</b> {d.sceneNote}</p>
     </div>
@@ -93,7 +98,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
         <h2 id="origin-h" class="display act-title" data-split="words">Where it began</h2>
       </header>
       <aside class="fa-card" data-reveal>
-        <p class="label">First appearance</p>
+        <p class="label">{d.faLabel ?? 'First appearance'}</p>
         <p class="fa-title serif">{fa.title} <span class="accent">{issue(fa.issue)}</span></p>
         <p class="fa-date">Cover date {fa.coverDate}</p>
         <p class="label" style="margin-top:18px">Created by</p>
