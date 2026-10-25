@@ -46,7 +46,7 @@ of every session, then continue from the tracker at the bottom.
 | Motion rules | **Signature hero, shared grammar.** Each character has a unique WebGL hero (own shader, particles, cursor reaction, display face). Acts 2 to 5 share one motion vocabulary (pinned timeline, split-text reveals, scrubbed film strip) tinted and paced per character. |
 | Leads (wave 1) | **Doom plus the Avengers core:** Victor von Doom, Steve Rogers, Sam Wilson, Bucky Barnes, Thor, Scott Lang, Shang-Chi, Joaquin Torres. |
 | Team groups | **Six groups, Doom apart.** The Adversary (Doom), Avengers, Fantastic Four, X-Men, Thunderbolts*, Wakanda and Talokan, plus "More confirmed" (Loki, Peggy Carter, future names). Bucky lives in Avengers and is cross-linked from Thunderbolts*. |
-| Hosting | **GitHub Pages.** User creates an empty public repo and sends its URL. A GitHub Action builds and deploys on push to `main`. Astro `base` is set from the repo name. |
+| Hosting | **GitHub Pages.** Repo https://github.com/prejith77/doomsday-dossier (public). Live at **https://prejith77.github.io/doomsday-dossier/**. `.github/workflows/deploy.yml` builds and deploys on every push to `main`; Astro `base` comes from the repo name. |
 | References | User will send motionsites.ai links later. Treat them as the minimum motion bar, never copy. A tuning pass follows when they arrive. |
 
 ## Stack and why
@@ -112,14 +112,14 @@ Status key: `done` = researched, built, deployed and screenshotted. `built` = bu
 
 | Wave | Team | Character | Actor | Role named by Marvel? | Status |
 |---|---|---|---|---|---|
-| 1 | The Adversary | Victor von Doom | Robert Downey Jr. | Yes (SDCC 2024) | built |
-| 1 | Avengers | Steve Rogers | Chris Evans | Yes (teaser, D23) | built |
-| 1 | Avengers | Thor | Chris Hemsworth | Yes (teaser) | built |
-| 1 | Avengers | Sam Wilson | Anthony Mackie | No | built |
-| 1 | Avengers | Bucky Barnes | Sebastian Stan | No | built |
-| 1 | Avengers | Scott Lang | Paul Rudd | No | built |
-| 1 | Avengers | Shang-Chi | Simu Liu | No | built |
-| 1 | Avengers | Joaquin Torres | Danny Ramirez | No | built |
+| 1 | The Adversary | Victor von Doom | Robert Downey Jr. | Yes (SDCC 2024) | done |
+| 1 | Avengers | Steve Rogers | Chris Evans | Yes (teaser, D23) | done |
+| 1 | Avengers | Thor | Chris Hemsworth | Yes (teaser) | done |
+| 1 | Avengers | Sam Wilson | Anthony Mackie | No | done |
+| 1 | Avengers | Bucky Barnes | Sebastian Stan | No | done |
+| 1 | Avengers | Scott Lang | Paul Rudd | No | done |
+| 1 | Avengers | Shang-Chi | Simu Liu | No | done |
+| 1 | Avengers | Joaquin Torres | Danny Ramirez | No | done |
 | 2 | Fantastic Four | Reed Richards | Pedro Pascal | No | todo |
 | 2 | Fantastic Four | Sue Storm | Vanessa Kirby | No | todo |
 | 2 | Fantastic Four | Johnny Storm | Joseph Quinn | No | todo |
@@ -166,11 +166,13 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Open items
 
-- GitHub repo URL from the user (blocks first deploy).
 - motionsites.ai reference links from the user (triggers a motion tuning pass).
-- Git has no global name or email set on this machine. Commits use a repo-local identity.
+- Git has no global identity on this machine. The repo uses a local identity (Prejith, account email); the user may change the name.
+- GitHub CLI is installed per-user via winget at `%LOCALAPPDATA%MicrosoftWinGetPackagesGitHub.cli_*ingh.exe` (not on PATH in old shells) and signed in as prejith77. Use it to watch deploy runs.
+- Deploy runs show GitHub's Node 20 deprecation warnings for the checkout, setup-node and pages actions. Harmless for now; bump the action versions when newer majors ship.
 
 ## Session log
 
+- 2026-10-25: Wave 1 deployed to https://prejith77.github.io/doomsday-dossier/ (first run succeeded). Live QA passed: all 17 pages return 200, no phone overflow, reduced motion and navigation checks pass, WebGL scenes load from the sub-path.
 - 2026-10-25: Wave 1 built: home, 8 character dossiers, 7 team pages, sources page. QA passed: no phone overflow on any page; all heroes 60 fps at phone size on an Intel UHD 730 with 4x CPU throttle (not yet measured on a real phone); reduced motion leaves all text visible with no pinning or smooth scroll; four-hop navigation clears the wipe each time. Not deployed yet: waiting on the GitHub repo URL.
 - 2026-10-25: Interview complete, all decisions above locked. Official cast verified on marvel.com (30 names on the film page plus Peggy Carter confirmed at D23). Wave 1 research started.
