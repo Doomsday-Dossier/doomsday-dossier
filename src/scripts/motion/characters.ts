@@ -259,5 +259,61 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
     cleanups.push(() => gsap.ticker.remove(tick));
   }
 
+  if (scene === 'shafts' && ctx) {
+    // letters nearest the light are lit; the rest sit in shadow
+    let chars: ReturnType<typeof charBox> = [];
+    const t0 = setTimeout(() => { chars = charBox(); }, 2200);
+    const tick = () => {
+      if (!chars.length) return;
+      const lx = ctx.pointer.x * innerWidth;
+      for (const c of chars) {
+        const g = Math.max(0, 1 - Math.abs(c.x - lx) / (innerWidth * 0.35));
+        c.el.style.opacity = (0.35 + 0.65 * g).toFixed(2);
+        c.el.style.textShadow = g > 0.4 ? `0 0 ${(g * 28).toFixed(0)}px rgba(255,70,80,${(g * 0.6).toFixed(2)})` : '';
+      }
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => { gsap.ticker.remove(tick); clearTimeout(t0); });
+  }
+
+  if (scene === 'bokeh' && ctx) {
+    // the name racks focus with the snow
+    const tick = () => { title.style.filter = `blur(${Math.min(6, ctx.signal * 30).toFixed(1)}px)`; };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'tags' && ctx) {
+    // the name swings with the tags
+    title.style.transformOrigin = '50% -40%';
+    const tick = () => { title.style.transform = `perspective(900px) rotateZ(${(-ctx.signal * 4).toFixed(2)}deg) rotateY(${((ctx.pointer.x - 0.5) * 14).toFixed(1)}deg)`; };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'phase' && ctx) {
+    // letters slip out of phase for a frame at a time
+    const tick = () => {
+      if (ctx.signal < 1) return;
+      const chars = title.querySelectorAll<HTMLElement>('.split-char');
+      const el = chars[Math.floor(Math.random() * chars.length)];
+      if (!el) return;
+      gsap.timeline().set(el, { x: gsap.utils.random(-14, 14), opacity: 0.35, color: 'var(--c-accent)' }).set(el, { x: 0, opacity: 1, color: '' }, 0.09);
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
+  if (scene === 'sunvoid' && ctx) {
+    // a golden name that the void eats from the right as you scroll
+    const tick = () => {
+      const edge = 110 - ctx.signal * 130;
+      title.style.webkitMaskImage = title.style.maskImage = `linear-gradient(90deg, #000 ${edge - 20}%, transparent ${edge}%)`;
+      title.style.textShadow = `0 0 ${24 + 10 * Math.sin(performance.now() / 600)}px rgba(255,200,90,0.45)`;
+    };
+    gsap.ticker.add(tick);
+    cleanups.push(() => gsap.ticker.remove(tick));
+  }
+
   return () => cleanups.forEach((c) => c());
 }

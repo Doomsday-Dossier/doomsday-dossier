@@ -1,0 +1,463 @@
+{
+  "slug": "bob-reynolds",
+  "name": "Robert \"Bob\" Reynolds",
+  "alias": "Sentry",
+  "origin": {
+    "firstAppearance": {
+      "title": "Sentry",
+      "issue": "#1",
+      "coverDate": "September 2000"
+    },
+    "creators": [
+      "Paul Jenkins",
+      "Jae Lee"
+    ],
+    "summary": [
+      "The Sentry was launched in 2000 through Marvel's Marvel Knights line by writer Paul Jenkins and artist Jae Lee, but he was sold to readers as a lost hero from the early 1960s. The wiki describes the promotional story that went with him: Wizard magazine reported that the widow of an artist named Artie Rosen had sent Marvel a forgotten box holding an old comic starring the Sentry and character sketches from 1961 signed by Stan Lee and Rosen. That story was later revealed to be an elaborate marketing hoax. The comic itself plays the same game. Sentry #1 cuts between pages told like a Silver Age comic, in which a boy called Robby Reynolds drinks a professor's secret formula and becomes a golden-suited hero, and the present, in which Bob Reynolds is an ordinary middle-aged New Yorker who is not sure whether he really was the Sentry or only read about him.",
+      "Inside the story, the Sentry was a celebrated hero in the years just before the Fantastic Four appeared. He was an equal to Reed Richards, a mentor figure to a young Spider-Man, an ally of the X-Men and a rare friend to the Hulk, and he had a wife, Lindy Lee, a young sidekick called Scout, a robotic aide called C.L.O.C. and a Watchtower base. How he got his powers has been retold several times. The first version made Robby the professor's teenage assistant, but later stories, which the wiki treats as the real account, say Bob was a young methamphetamine addict who broke into the professor's lab looking for drugs and drank the Golden Sentry Serum without knowing what it was, and the blast that followed killed his partner and two guards. The serum was traced back to Project Sentry, a 1947 effort by the United States and Canada to make the Super-Soldier Serum vastly more powerful.",
+      "His downfall came with the Void, a shadowy monster that played on people's fears and killed a huge number of people in Manhattan. When Bob discovered that the Void was the dark side of his own power, he, Reed Richards and Doctor Strange built a system that made everyone on Earth forget the Sentry ever existed, Bob included, and the Void disappeared with him. In the 2000 miniseries his memories return, the Void comes back with them, and he and Reed turn the system back on, erasing him a second time. A 2005 New Avengers story then explained the comics framing from inside the story: the mutant Mastermind had planted a mental virus in Bob on behalf of a villain called the General, and Bob, reaching out for help without knowing it, put his memories into the head of writer Paul Jenkins, who turned them into the comics readers had been holding."
+    ],
+    "sources": [
+      {
+        "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+      },
+      {
+        "label": "Marvel Fandom wiki: Sentry Vol 1 #1 (September 2000)",
+        "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Sentry Vol 1 #4 (December 2000)",
+        "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_4"
+      },
+      {
+        "label": "Marvel Fandom wiki: Sentry/The Void Vol 1 #1 (February 2001)",
+        "url": "https://marvel.fandom.com/wiki/Sentry/The_Void_Vol_1_1"
+      },
+      {
+        "label": "Marvel Fandom wiki: Sentry Vol 2 #8 (June 2006)",
+        "url": "https://marvel.fandom.com/wiki/Sentry_Vol_2_8"
+      },
+      {
+        "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #13 (March 2010)",
+        "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_13"
+      },
+      {
+        "label": "Marvel Fandom wiki: New Avengers Vol 1 #10 (October 2005)",
+        "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_10"
+      }
+    ]
+  },
+  "comics": [
+    {
+      "era": "The forgotten hero",
+      "years": "2000-2001",
+      "title": "Remembering the Sentry",
+      "summary": "Bob Reynolds, living a quiet life with Lindy, senses the Void returning and starts to remember being the Sentry, while Lindy, upset to learn he lied about having quit, goes to stay with a friend. When he goes looking for the heroes he once knew, Professor X, Reed Richards and the rest have no idea who he is, and only the Hulk remembers him. Once he grasps that the Void is part of himself, he and Reed switch the Watchtower's system back on so the world forgets the Sentry again, and Reed buries the hero's reputation so the erasure will hold.",
+      "keyIssues": [
+        "Sentry #1 (2000)",
+        "Sentry #4 (2000)",
+        "Sentry/The Void #1 (2001)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry/The Void Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry/The_Void_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "New Avengers",
+      "years": "2005",
+      "title": "Breakout from the Raft",
+      "summary": "Bob resurfaces as a prisoner on the Raft who says he killed his wife, and when Electro breaks the inmates out he hauls Carnage into orbit and tears the symbiote in two. The heroes then find Lindy alive and learn that the only record of the Sentry is a run of comic books, and when the Void attacks again Reed plays a message in which Bob had asked to be stopped by any means necessary. Emma Frost helps him see that Mastermind's tampering, not his own choice, wiped the world's memory, and he gets his memories and powers back and joins the New Avengers, with the Watchtower reappearing on top of Stark Tower.",
+      "keyIssues": [
+        "New Avengers #1 (2005)",
+        "New Avengers #7 (2005)",
+        "New Avengers #10 (2005)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 1 #7",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 1 #10",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_10"
+        }
+      ]
+    },
+    {
+      "era": "Solo series",
+      "years": "2005-2006",
+      "title": "The truth about the serum",
+      "summary": "Back in public life as the 'Golden Guardian', the Sentry saves lives every day while seeing a psychiatrist, Cornelius Worth, and insists the Void is locked in a vault in his Watchtower; Worth finds only a chair and a mirror inside. Bob admits he first took the serum as a teenager to get high, and in Antarctica the Void tells him the formula was a massively boosted Super-Soldier Serum from a secret 1947 program called Project Sentry. Furious, the Sentry hurls the Void into the Sun and tells it he no longer needs it.",
+      "keyIssues": [
+        "Sentry Vol 2 #1 (2005)",
+        "Sentry Vol 2 #5 (2006)",
+        "Sentry Vol 2 #8 (2006)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 2 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_2_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 2 #5",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_2_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 2 #8",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_2_8"
+        }
+      ]
+    },
+    {
+      "era": "Mighty Avengers",
+      "years": "2007-2008",
+      "title": "Registration and World War Hulk",
+      "summary": "After agonising over the Superhuman Registration Act, the Sentry sides with Iron Man and joins the Mighty Avengers, where Tony Stark and Ms. Marvel offer to help with his mental health. When Ultron appears to kill Lindy he almost tears the machine apart in revenge, then finds her alive, but he later overhears her asking Stark to find a way to shut him down or kill him if it comes to that. Persuaded at last to face the returning Hulk, he cuts loose further than he ever had before, and the fight ends only when both of them burn out and revert to Bob Reynolds and Bruce Banner.",
+      "keyIssues": [
+        "Mighty Avengers #1 (2007)",
+        "Mighty Avengers #6 (2008)",
+        "World War Hulk #5 (2008)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mighty Avengers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mighty Avengers Vol 1 #6",
+          "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: World War Hulk Vol 1 #5",
+          "url": "https://marvel.fandom.com/wiki/World_War_Hulk_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "era": "Dark Avengers",
+      "years": "2008-2010",
+      "title": "Osborn's secret weapon",
+      "summary": "During the Skrull invasion a Skrull posing as the Vision takes the Void's shape to unsettle him, and he flees to the rings of Saturn before returning as the Void to protect Lindy. Norman Osborn then recruits him to his Dark Avengers by insisting the Void is not real and handing him a new dose of the serum, which brings the Void fully back. Lindy, now afraid of him, shoots him and records the story of his drug-addicted past, but he comes back to life, and worn down by the Void's taunting, Bob hands it control.",
+      "keyIssues": [
+        "Mighty Avengers #14 (2008)",
+        "Dark Avengers #1 (2009)",
+        "Dark Avengers #13 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mighty Avengers Vol 1 #14",
+          "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #13",
+          "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_13"
+        }
+      ]
+    },
+    {
+      "era": "Siege",
+      "years": "2010",
+      "title": "The fall of the Golden Guardian",
+      "summary": "Bullseye, posing as Hawkeye, murders Lindy on Osborn's orders and tells the Sentry she took her own life. In the attack on Asgard the Sentry kills Ares by tearing him in half, then levels the city on Osborn's order, and as the Void he kills Loki. After Iron Man drops a Helicarrier on him, Bob asks the heroes to kill him; when the Void rises again Thor destroys him with lightning and carries his remains into the Sun, and the heroes later share their memories of him at a funeral for Bob and Lindy.",
+      "keyIssues": [
+        "Dark Avengers #15 (2010)",
+        "Siege #2 (2010)",
+        "Siege #4 (2010)",
+        "Sentry: Fallen Sun #1 (2010)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Dark Avengers Vol 1 #15",
+          "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_15"
+        },
+        {
+          "label": "Marvel Fandom wiki: Siege Vol 1 #2",
+          "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Siege Vol 1 #3",
+          "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Siege Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry: Fallen Sun Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry:_Fallen_Sun_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "Horseman of Death",
+      "years": "2013-2018",
+      "title": "Raised by the Apocalypse Twins",
+      "summary": "The Apocalypse Twins bring him back as one of their Horsemen of Death, and his madness grows until he sees himself as Apocalypse's heir. Thor convinces him to help stop the Celestial Exitar, after which he drags its body far from Earth and drifts through space, at one point asking Doctor Strange to end his life. Strange instead seals him safely inside his own mind, which frees him from Apocalypse's hold, and later calls him back to help fight Loki; when Strange lets the Void loose to win that fight, Bob tells him never to contact him again.",
+      "keyIssues": [
+        "Uncanny Avengers #9 (2013)",
+        "Uncanny Avengers #22 (2014)",
+        "Doctor Strange Vol 4 #385 (2018)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny Avengers Vol 1 #9",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_Avengers_Vol_1_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny Avengers Vol 1 #22",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_Avengers_Vol_1_22"
+        },
+        {
+          "label": "Marvel Fandom wiki: Doctor Strange Vol 4 #385",
+          "url": "https://marvel.fandom.com/wiki/Doctor_Strange_Vol_4_385"
+        }
+      ]
+    },
+    {
+      "era": "Sentry World",
+      "years": "2018-2020",
+      "title": "One with the Void",
+      "summary": "With a device called the Confluctor, Bob lives a dull daytime life and spends his nights as the Sentry inside a pocket world in his own mind, where his powers cannot release the Void on the real one. When the real Billy Turner, his former sidekick Scout, breaks into that world to take his place, Bob snaps, fuses with the Void into a dark version of the Sentry and kills him. Reed Richards later sends him into the Negative Zone to try to separate the two halves, and after the fight against the Cancerverse invasion the reunited Sentry chooses to stay behind and guard the universe he almost destroyed.",
+      "keyIssues": [
+        "Sentry Vol 3 #1 (2018)",
+        "Sentry Vol 3 #2 (2018)",
+        "Annihilation - Scourge Omega #1 (2020)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 3 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_3_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 3 #2",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_3_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Annihilation - Scourge Omega Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/Annihilation_-_Scourge_Omega_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "era": "King in Black",
+      "years": "2021-2024",
+      "title": "Death and a scattered legacy",
+      "summary": "Called home to fight Knull, the god of the symbiotes, the Sentry tries to tear him in half the way he once did Carnage, but Knull rips him apart and absorbs the Void. His ghost is swallowed by a corrupted Headless Celestial until Jane Foster and the Valkyries free it to move on, while Wilson Fisk's new Thunderbolts recover his body, which the Blasphemy Cartel later fills with ghosts as its 'Revenant Prime' until Clea and Doctor Strange destroy it. Fragments of his power then pass to several ordinary people, and Mallory Gibbs is the one who ends up using hers as a hero.",
+      "keyIssues": [
+        "King in Black #1 (2021)",
+        "King in Black: Thunderbolts #1 (2021)",
+        "King in Black: Return of the Valkyries #4 (2021)",
+        "Strange Vol 3 #10 (2023)",
+        "Sentry Vol 4 #1 (2024)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: King in Black Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/King_in_Black_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: King in Black: Thunderbolts Vol 1 #1",
+          "url": "https://marvel.fandom.com/wiki/King_in_Black:_Thunderbolts_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: King in Black: Return of the Valkyries Vol 1 #4",
+          "url": "https://marvel.fandom.com/wiki/King_in_Black:_Return_of_the_Valkyries_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Strange Vol 3 #10",
+          "url": "https://marvel.fandom.com/wiki/Strange_Vol_3_10"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 4 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_4_1"
+        }
+      ]
+    },
+    {
+      "era": "Return",
+      "years": "2026",
+      "title": "The Sentry is back",
+      "summary": "Alive once more, the Sentry turns up among the Avengers on the anniversary of the team's founding. The wiki says the returned Void now holds him to a bleak bargain: he lets it devastate alien worlds far away so that he can help people on Earth without interference, a trade that leaves him heavy with guilt. Back with Lindy, he announces his return to the world, helps the Fantastic Four stop a crystalline plague that has even infected the Hulk, and after his dog Watchdog dies he travels into the past to rescue Laika, the Soviet space dog whose death had stayed with him since he was seven, and makes her the new Watchdog.",
+      "keyIssues": [
+        "Avengers Vol 9 #34 (2026)",
+        "Sentry Vol 5 #1 (2026)",
+        "Sentry Vol 5 #4 (2026)"
+      ],
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 9 #34",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_9_34"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 5 #1",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_5_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 5 #4",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_5_4"
+        }
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Thunderbolts*",
+      "year": 2025,
+      "continuity": "MCU",
+      "actor": "Lewis Pullman (Clayton Cooper as young Bob)",
+      "cameo": false,
+      "summary": "Bob, a former addict and the only survivor of O.X.E.'s Project Sentry serum trials, wakes with gaps in his memory inside a vault in Utah, escapes with Yelena Belova's group and finds he can fly and shrug off bullets. Valentina Allegra de Fontaine dresses him up as the Sentry and he easily beats the team, but he turns on her, and after her assistant Mel sets off a kill switch his dark side, the Void, takes over and pulls Manhattan's people into shadow worlds built from their worst memories until Yelena and the others reach him inside and help him take back control. He stays with the group Valentina brands the New Avengers, and in the post-credits scene, set fourteen months later, he says he is keeping away from his powers in case the Void returns as the team spots an incoming ship marked with a '4'.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Sentry",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thunderbolts*",
+          "url": "https://marvel.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-199999)"
+        }
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The 2000 launch was built around a hoax: Wizard magazine ran a story about a 'lost' 1961 Sentry created by Stan Lee and an artist named Artie Rosen, which turned out to be a marketing stunt. Sentry #1 even had an 'Artie Rosen' variant cover.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Sentry Vol 1 #1 (September 2000)",
+          "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "fact": "Writer Paul Jenkins appears as himself in New Avengers #7 (2005), and by #10 the story explains that Bob had unknowingly planted his memories in Jenkins's mind, which is why the Sentry's past existed only as comic books.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 1 #7 (July 2005)",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: New Avengers Vol 1 #10 (October 2005)",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Vol_1_10"
+        }
+      ]
+    },
+    {
+      "fact": "Steven Yeun was first cast as the Sentry in Thunderbolts* before dropping out, and Lewis Pullman took over. Pullman asked for the character's name to be changed because he had just played a 'Bob' in Top Gun: Maverick, but was told the name came from the comics.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Sentry",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry"
+        },
+        {
+          "label": "Marvel Fandom wiki: Robert Reynolds (Earth-199999)",
+          "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-199999)"
+        }
+      ]
+    },
+    {
+      "fact": "According to the MCU Wiki, the Thunderbolts* writers first planned to keep the comics idea of the world being made to forget Bob, but dropped it because it was too close to the ending of Spider-Man: No Way Home.",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Sentry",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry"
+        }
+      ]
+    }
+  ],
+  "unverified": [
+    "First appearance: Sentry Vol 1 #1 (cover date September 2000, on sale July 19, 2000), as given on the Earth-616 page and the issue page. The 'Startling Stories' Sentry comic from the 1960s was part of the marketing hoax and is not a real earlier appearance. The character page's notes name the fake comic as both 'Startling Stories #17' and 'Startling Stories #1'; neither is used.",
+    "Creators: the Sentry Vol 1 #1 issue page credits Paul Jenkins (writer) and Jae Lee (pencils and inks), and the character page's notes say Jenkins and Lee created him. The character page infobox also lists Rick Veitch, who is not credited on the Sentry Vol 1 #1 to #5 or Sentry/The Void issue pages that were read, so he is left out of the creators list.",
+    "Origin versions conflict: Sentry Vol 1 (2000) makes Robby the professor's teenage lab assistant, Sentry Vol 2 #5 (2006) has Bob say he drank the serum at a fairground as a teenager, and Dark Avengers #13 (2010) has him break into the lab as a meth addict. The wiki treats the addict version as correct; the origin follows it and notes the earlier version.",
+    "Lindy Reynolds: Dark Avengers #15 (2010) shows her killed and Sentry: Fallen Sun #1 (2010) is a funeral for both Bob and Lindy, but Sentry Vol 5 #1 (2026) lists her as returning. Neither wiki page read explains how she came back, so the 'Return' era only says he is back with her.",
+    "Issue numbering for Siege: the Earth-616 page cites Siege #1 for the death of Ares and the fall of Asgard, but the issue pages put Ares's death in Siege #2 and the levelling of Asgard in Siege #3. The era follows the issue pages.",
+    "Several issue pages have no plot synopsis (Uncanny Avengers #9, Doctor Strange Vol 4 #385, Sentry Vol 3 #1 and #2, Annihilation - Scourge Omega #1, Strange Vol 3 #10, Sentry Vol 4 #1, Avengers Vol 9 #34, Sentry Vol 5 #1 to #4). Details for those eras rest on the Earth-616 character page plus each issue's solicitation and appearance list. Sentry Vol 5 is a four-issue series; #4 (cover date August 2026) went on sale June 10, 2026, before today.",
+    "The Earth-616 page notes that his normal (not merged) look in King in Black #1 was a continuity error, since the creators did not know he had fused with the Void. The era does not depend on it.",
+    "MCU details differ slightly between the wikis: the MCU Wiki gives his hometown as Sarasota Springs, Florida, while the Marvel Fandom page says Sarasota; the Marvel Fandom page says Mel's kill switch killed him before he came back as the Void, while the MCU Wiki says it only seemed to. The screen summary avoids both points.",
+    "Thunderbolts* post-credits scene: Bob appears in it, and it is covered inside the Thunderbolts* entry rather than as a separate item. The film entry is not a cameo.",
+    "Avengers: Doomsday is listed in the MCU Wiki infobox and in the Marvel Fandom notes but is unreleased, so it is left out. No plot details were researched.",
+    "Avengers: Endgame Encore re-release (25 September 2026): the MCU Wiki's Avengers: Endgame page has an Encore plot section and an Encore-exclusive cast list, and neither includes Bob Reynolds, the Sentry or the Void. No entry was added.",
+    "Not counted as screen appearances: the MCU Wiki's 'Sentry/Manhattan Avengers Compound' variant redirects to the LEGO Marvel's Avengers video game character list, and the Marvel Fandom disambiguation lists a Marvel Super Hero Squad Online game version. Both are games, not live-action. No other live-action film or series with the character was found on either wiki.",
+    "Comics history after the Sentry Vol 5 series (mid-2026) was not checked beyond what the Earth-616 page covers. Side stories on the character page (Marvel Knights 20th, the Annihilation - Scourge tie-ins, Black Panther and the Agents of Wakanda) were read only as summarised there and are not separate eras."
+  ]
+}
