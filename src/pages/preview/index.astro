@@ -4,14 +4,14 @@
 // in front of it (Lena Varga). The countdown sits on its own solid panel so it reads over any colour.
 import Dossier from '../../layouts/Dossier.astro';
 import { castFor, publishedOrder, TEAMS, heroName, u } from '../../data/site';
-import { accentOf, cloudFor } from '../../data/v2';
+import { accentOf, ringFor } from '../../data/v2';
 
 const order = publishedOrder();
 const files = order.map((slug, i) => {
   const team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
   return {
     slug, no: i + 1, total: order.length, name: heroName(slug).toUpperCase(), team: team.name, accent: accentOf(slug),
-    href: u(`/preview/c/${slug}/`), cloud: cloudFor(slug),
+    href: u(`/preview/c/${slug}/`), ring: ringFor(slug),
   };
 });
 const title = ['DOOMSDAY', 'DOSSIER'];

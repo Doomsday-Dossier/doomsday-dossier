@@ -7,7 +7,7 @@ import { u } from './site';
 
 export type P2 = {
   n: number; w: number; h: number; hd: boolean; focus: string; focusM: string;
-  full: { w: number; src: string }[]; cut: { w: number; src: string }[]; depth: { w: number; src: string }[]; cdepth?: string;
+  full: { w: number; src: string }[]; cut: { w: number; src: string }[]; depth: { w: number; src: string }[]; cdepth?: string; ring?: { cut: string; depth: string };
   bbox: [number, number, number, number] | null; head: [number, number] | null;
   figure: { crop: [number, number, number, number]; focus: [number, number] } | null;
   lqip: string; color: string;
@@ -48,6 +48,13 @@ export function cloudFor(slug: string) {
     cut: pick2(p.cut, 640), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 512),
     crop: p.figure.crop, focus: p.figure.focus, aspect: p.w / p.h,
   };
+}
+
+/** A character's figure for the home ring: small cut-out and subject depth, with the outline that sizes it. */
+export function ringFor(slug: string) {
+  const p = photos2For(slug)[0];
+  if (!p?.ring || !p.bbox) return null;
+  return { cut: u('/' + p.ring.cut), depth: u('/' + p.ring.depth), aspect: p.w / p.h, bbox: p.bbox, head: p.head ?? [0.5, 0.2] };
 }
 
 /** Four callout anchors on the subject (photo coordinates): head, chest, and both sides. */

@@ -124,6 +124,18 @@ for (const [slug, list] of Object.entries(set)) {
         await sharp(outD, { raw: { width: ww, height: hh, channels: 1 } }).blur(1).webp({ quality: 92 }).toFile(out);
         bytes += fs.statSync(out).size; files++;
         entry.cdepth = `photos2/${slug}/${n}-cdepth-1024.webp`;
+        // small pair for the home ring, where all 29 figures are on the GPU at once: a 400 px cut-out and a
+        // 256 px subject depth keep the whole ring near 45 MB of texture memory, light enough for phones
+        const rw = Math.min(400, W), rh = Math.round((H / W) * rw), dw = Math.min(256, ww), dh = Math.round((H / W) * dw);
+        const ringCut = path.join(OUT, slug, `${n}-ring-400.webp`), ringDepth = path.join(OUT, slug, `${n}-ring-depth-256.webp`);
+        const rgbS = await sharp(src).resize(rw, rh).removeAlpha().raw().toBuffer();
+        const aS = await sharp(maskFile).greyscale().resize(rw, rh).raw().toBuffer();
+        const rgbaS = Buffer.alloc(rw * rh * 4);
+        for (let k = 0; k < rw * rh; k++) { rgbaS[k * 4] = rgbS[k * 3]; rgbaS[k * 4 + 1] = rgbS[k * 3 + 1]; rgbaS[k * 4 + 2] = rgbS[k * 3 + 2]; rgbaS[k * 4 + 3] = aS[k]; }
+        await sharp(rgbaS, { raw: { width: rw, height: rh, channels: 4 } }).webp({ quality: 82, alphaQuality: 90, effort: 5 }).toFile(ringCut);
+        await sharp(outD, { raw: { width: ww, height: hh, channels: 1 } }).resize(dw, dh).blur(0.8).webp({ quality: 92 }).toFile(ringDepth);
+        bytes += fs.statSync(ringCut).size + fs.statSync(ringDepth).size; files += 2;
+        entry.ring = { cut: `photos2/${slug}/${n}-ring-400.webp`, depth: `photos2/${slug}/${n}-ring-depth-256.webp` };
       }
     }
     const tiny = await sharp(orig).resize(16).webp({ quality: 40 }).toBuffer();

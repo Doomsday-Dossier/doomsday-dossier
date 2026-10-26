@@ -16,13 +16,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { Ctx, HeroScene } from '../gl/engine';
 import { fitText } from '../motion/grammar';
 import { C, EASE, INTRO_KEY, timeLeft } from './tokens';
-import type { Cloud } from './cloud';
-import { Swarm, cloudLoader } from './swarm';
+import { Ring, type RingFig } from './ring';
 import type Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type FileInfo = { slug: string; no: number; total: number; name: string; team: string; accent: string; href: string; cloud: Cloud | null };
+type FileInfo = { slug: string; no: number; total: number; name: string; team: string; accent: string; href: string; ring: RingFig | null };
 
 type Env = { engine: { ctx: Ctx; mount(s: HeroScene): Promise<void>; renderer: THREE.WebGLRenderer } | null; lenis: Lenis | null; reduced: boolean; phone: boolean };
 
@@ -52,16 +51,15 @@ export async function archive(env: Env) {
 
   if (!env.engine) { gsap.set([...chars, ...after], { opacity: 1 }); return; }
 
-  const N = env.phone ? 20000 : 42000;
-  const sc = new Swarm(N);
-  sc.n0 = files.length;
-  const ensure = cloudLoader(sc, N, files.map((f) => f.cloud));
-  await ensure(0);
-  ensure(1); ensure(2);
+  const sc = new Ring(files.length, env.phone);
+  const add = (i: number) => (files[i].ring ? sc.addFigure(i, files[i].ring!, files[i].accent).catch(() => {}) : Promise.resolve());
+  await add(0);
+  // the rest of the ring loads in roster order, four at a time, while the intro plays
+  (async () => { for (let i = 1; i < files.length; i += 4) await Promise.all([i, i + 1, i + 2, i + 3].filter((j) => j < files.length).map(add)); })();
 
   const seen = (() => { try { return localStorage.getItem(INTRO_KEY) === '1'; } catch { return false; } })();
   if (env.reduced) {
-    sc.gather = 1; sc.glow = 1; sc.setPair(0, 0);
+    sc.gather = 1; sc.glow = 1;
     await env.engine.mount(sc);
     gsap.set([...chars, ...after], { opacity: 1 });
     return;
@@ -146,8 +144,6 @@ export async function archive(env: Env) {
         showName(Math.min(files.length - 1, k + (f > 0.55 ? 1 : 0)));
         gsap.set(bar, { scaleX: p / (files.length - 1) });
       }
-      const near = Math.round(p);
-      ensure(near + 1); ensure(near + 2); ensure(near - 1);
     },
   });
 }
