@@ -7,6 +7,8 @@
  */
 import { gsap } from './grammar';
 import { arenaVote } from './arena';
+import { mostWanted } from './board';
+import { glideTo } from './scroller';
 
 type Opts = { ease: string; pace: number; reduced: boolean };
 type Src = { label: string; url: string };
@@ -210,5 +212,13 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
     } catch { /* share cancelled */ }
   });
   render(['a', 'b']);
+  // most-wanted fights: clicking a row loads that matchup and glides back up to the stage
+  offs.push(mostWanted(page, all, (a, b) => {
+    if (!by.has(a) || !by.has(b)) return;
+    const changed = (['a', 'b'] as const).filter((s) => state[s] !== (s === 'a' ? a : b));
+    state.a = a; state.b = b;
+    glideTo(stage.getBoundingClientRect().top + scrollY - 90, 0.9);
+    window.setTimeout(() => render(changed.length ? [...changed] : ['a', 'b']), o.reduced ? 0 : 500);
+  }, o));
   return () => offs.forEach((f) => f());
 }

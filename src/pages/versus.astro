@@ -65,6 +65,18 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
       <p class="vote-note">One vote per fight per day. Bots are kept out by Cloudflare Turnstile; this site stores no account, name or IP address. <button type="button" class="vote-peek" data-peek>See the fan split without voting</button></p>
     </section>
 
+    <section class="wrap lb" data-board id="most-wanted" aria-labelledby="lb-h">
+      <header class="lb-head">
+        <div>
+          <p class="label">Most-wanted fights &middot; fan votes, live</p>
+          <h2 id="lb-h" class="lb-title">The fights fans want</h2>
+        </div>
+        <p class="lb-note">Ranked by total fan votes and updated as people vote. Fan opinion, not fact. <span data-board-stamp></span></p>
+      </header>
+      <ol class="lb-list" data-board-list aria-live="polite"></ol>
+      <p class="lb-empty" data-board-empty hidden>No fights have been voted on yet. Pick two above and cast the first vote.</p>
+    </section>
+
     <div class="wrap vs-pick">
       <div class="vs-pick-head">
         <p class="label">Choose a character for</p>
@@ -161,6 +173,32 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
   .radar .glow2 { fill: none !important; stroke-width: 4.5; stroke-opacity: 0.25; stroke-linejoin: round; }
   .radar-note { font-size: 11px; color: var(--bone-dim); text-align: center; max-width: 34ch; margin: 0; }
 
+  /* most-wanted fights */
+  .lb { margin-top: 56px; }
+  .lb-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 10px 30px; margin-bottom: 18px; }
+  .lb-title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 3.6vw, 54px); margin: 6px 0 0; }
+  .lb-note { margin: 0; font-size: 13px; color: var(--bone-dim); max-width: 46ch; }
+  .lb-note span { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .lb-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 0 32px; }
+  .lb-list :global(.lb-row) { border-top: 1px solid var(--iron); }
+  .lb-list :global(.lb-open) { width: 100%; display: grid; grid-template-columns: 34px auto minmax(0, 1fr) auto; grid-template-areas: 'rank faces names total' 'rank faces split pct'; align-items: center; gap: 6px 14px; padding: 14px 4px; text-align: left; border-radius: 4px; transition: background 0.3s; }
+  .lb-list :global(.lb-open:hover) { background: rgba(232, 230, 225, 0.04); }
+  .lb-list :global(.lb-rank) { grid-area: rank; font-family: var(--font-mono); font-size: 13px; color: var(--doom); }
+  .lb-list :global(.lb-faces) { grid-area: faces; display: flex; }
+  .lb-list :global(.lb-faces img), .lb-list :global(.lb-faces span) { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--void); }
+  .lb-list :global(.lb-faces > :nth-child(1)) { box-shadow: 0 0 0 2px var(--ca); }
+  .lb-list :global(.lb-faces > :nth-child(2)) { margin-left: -10px; box-shadow: 0 0 0 2px var(--cb); }
+  .lb-list :global(.lb-names) { grid-area: names; min-width: 0; font-size: 15px; overflow-wrap: anywhere; }
+  .lb-list :global(.lb-names b) { font-weight: 500; white-space: nowrap; }
+  .lb-list :global(.lb-names i) { font-style: normal; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim); margin: 0 4px; }
+  .lb-list :global(.lb-split) { grid-area: split; position: relative; height: 6px; border-radius: 99px; overflow: hidden; background: rgba(232, 230, 225, 0.06); }
+  .lb-list :global(.lb-split i) { position: absolute; top: 0; bottom: 0; width: 100%; }
+  .lb-list :global(.lb-split .sa) { left: 0; background: var(--ca); transform-origin: left; }
+  .lb-list :global(.lb-split .sb) { right: 0; background: var(--cb); transform-origin: right; opacity: 0.85; }
+  .lb-list :global(.lb-pct) { grid-area: pct; font-family: var(--font-mono); font-size: 11px; color: var(--bone-dim); white-space: nowrap; }
+  .lb-list :global(.lb-total) { grid-area: total; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bone-dim); white-space: nowrap; }
+  .lb-list :global(.lb-total b) { font-size: 15px; color: var(--bone); font-weight: 500; }
+  .lb-empty { color: var(--bone-dim); margin: 0; padding: 16px 0; border-top: 1px solid var(--iron); }
   .vs-pick { margin-top: 40px; }
   .vs-pick-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 14px; }
   .vs-pick-head .label { margin: 0; }
