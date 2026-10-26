@@ -49,7 +49,7 @@ async function bitmapTex(src: string) {
 /** A graded print: the photo on a plane, lit, faded at its edges into the dark, dimmed until it is the one in front. */
 function printMaterial() {
   return new THREE.ShaderMaterial({
-    uniforms: { uMap: { value: null }, uLit: { value: 0 }, uAlpha: { value: 0 }, uKeep: { value: 0.14 } },
+    uniforms: { uMap: { value: null }, uLit: { value: 0 }, uAlpha: { value: 0 }, uKeep: { value: 0.75 } }, // the prints arrive graded (scripts/grade.mjs); the hall only deepens them
     transparent: true, depthWrite: false,
     vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
     fragmentShader: `${GRADE}
@@ -82,7 +82,7 @@ export function homeExtension(opts: HomeOpts) {
       fragmentShader: `${GRADE}
         uniform sampler2D uMap, uDepth; uniform float uVis, uGlow; uniform vec2 uTexel, uEye; varying vec2 vUv;
         void main(){
-          vec3 c = grade(texture2D(uMap, vUv).rgb, 0.35);
+          vec3 c = grade(texture2D(uMap, vUv).rgb, 0.8);
           float dx = texture2D(uDepth, vUv + vec2(uTexel.x, 0.0)).r - texture2D(uDepth, vUv - vec2(uTexel.x, 0.0)).r;
           float dy = texture2D(uDepth, vUv + vec2(0.0, uTexel.y)).r - texture2D(uDepth, vUv - vec2(0.0, uTexel.y)).r;
           vec3 n = normalize(vec3(-dx * 14.0, -dy * 14.0, 1.0));

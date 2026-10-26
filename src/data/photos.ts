@@ -1,6 +1,7 @@
-// Character photos, built by scripts/photos-build.mjs from research/photos/user-set.json.
-// Three per character; the first is the hero portrait.
-import data from './photos.json';
+// Character photos for the pages that use the original photo interface (timeline, catch-up, credits). Since
+// design system v3 they come from the graded set (src/data/photos2.json, iron and green, scripts/grade.mjs),
+// so every photo on the site is graded the same way. The first is the hero portrait.
+import data2 from './photos2.json';
 import { u } from './site';
 
 export interface Photo {
@@ -9,7 +10,10 @@ export interface Photo {
   ht: string; lqip: string; color: string;
 }
 
-const PHOTOS = data as Record<string, Photo[]>;
+type P2 = { n: number; w: number; h: number; focus: string; focusM: string; full: { w: number; src: string }[]; lqip: string; color: string };
+const PHOTOS = Object.fromEntries(Object.entries(data2 as unknown as Record<string, P2[]>).map(([slug, list]) => [slug, list.map((p) => ({
+  n: p.n, w: p.w, h: p.h, focus: p.focus, focusM: p.focusM, srcset: p.full, ht: p.full[0]?.src ?? '', lqip: p.lqip, color: p.color,
+}))])) as Record<string, Photo[]>;
 
 export function photosFor(slug: string | undefined | null): Photo[] {
   return (slug && PHOTOS[slug]) || [];

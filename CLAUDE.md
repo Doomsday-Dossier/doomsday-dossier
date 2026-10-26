@@ -232,7 +232,7 @@ once); write such edits with the Edit tool.
 | Nightcrawler | His file | The BAMF: a sharp teleport pop with a sulphur hiss | Giant-Size X-Men #1 (1975) | Original |
 | Mystique | Her file | A rippling, scaly shimmer as she shapeshifts | Ms. Marvel #16 (1978) | Original |
 | Beast | His file | A deep, low growl | X-Men #1 | Original |
-| Gambit | His file | A card riffle, then a kinetic charge that fizzes and pops | Uncanny X-Men #266 (1990) | Original |
+| Gambit | His file | A card riffle, then a kinetic charge that fizzes and pops | X-Men Annual #14 (1990), his first appearance; first full story in Uncanny X-Men #266 (1990) | Original |
 | Yelena Belova | Her file | The electric crack of a Widow's Bite | Inhumans #5 (1999); Black Widow (2021) | Original |
 | Red Guardian | His file | A heavy round shield landing with a dull, deep clang | Avengers #43 (1967) | Original |
 | John Walker | His file | Dog tags jingling over heavy boots | Captain America #323 (1986) | Original |
@@ -240,12 +240,12 @@ once); write such edits with the Edit tool.
 | Bob Reynolds / Sentry | His file | A golden radiant swell collapsing into a dark void rumble | The Sentry #1 (2000) | Original |
 | Shuri | Her file | The purple kinetic pulse of her suit releasing stored energy | Black Panther: Wakanda Forever (2022) | Original |
 | M'Baku | His file | A wooden war staff striking stone, mountain wind behind it | The Jabari, Black Panther (2018) | Original |
-| Namor | His file | A deep ocean swell, bubbles and the flutter of his ankle wings | Marvel Comics #1 (1939) | Original |
+| Namor | His file | A deep ocean swell, bubbles and the flutter of his ankle wings | Motion Picture Funnies Weekly #1 (1939), reprinted in Marvel Comics #1 (1939) | Original |
 | Loki | His file | A shimmering illusion chime over a slowly turning clock | Journey into Mystery #85 (1962); Loki season 2 (2023) | Original |
 | Peggy Carter | Her file | Crackling 1940s radio static and teletype keys | The SSR; Tales of Suspense #75 (1966) | Original |
 
-Comic issue numbers in this table are to be checked against each character's research file before the
-character pages are built; any that differ are corrected here first.
+Comic issue numbers in this table were checked against each character's research file (26 October 2026):
+Gambit's and Namor's rows were corrected to their first appearances; the rest matched.
 
 ## Design system v2: the Latverian dossier (fourth interview, 26 October 2026)
 

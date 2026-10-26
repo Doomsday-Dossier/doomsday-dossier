@@ -1,14 +1,19 @@
 ---
-// A classified file, design system v2: one template for all 29 characters (Doom's file was the approved
-// showcase). Chapters: hero (the subject in front of their name), the file opening, the subject (particle
-// figure with callouts), exhibits, origin, the comics record, sightings on screen, what Marvel confirmed,
-// and the next file.
+// A classified file, design system v3: one template for all 29 characters, in clearance levels (CLAUDE.md,
+// fifth interview). The hero (the subject in front of their name, with their signature sound), then Level 1,
+// the 30-second briefing, on the sheet inside the folder as its redaction bars tear away: who they are, what
+// they can do, why they matter in Doomsday (Marvel's word only) and where you last saw them. "Request
+// clearance" tears open Level 2 (on screen: the subject, every live-action appearance, the prints, what Marvel
+// confirmed) and Level 3 (the comics: origin, the record by era, abilities, the power grid, file notes).
 import Dossier from '../../layouts/Dossier.astro';
 import '../../styles/faces';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../data/site';
 import { PHOTO_CREDIT } from '../../data/photos';
-import { accentOf, photos2For, pick2, srcset2, figureFor, anchorsFor, dioFor } from '../../data/v2';
+import { accentOf, photos2For, pick2, srcset2, anchorsFor, dioFor } from '../../data/v2';
 
+type Brief = { who: string; powers: string; doomsday: string; lastSeen: { title: string; year: number; role: string; note: string } | null; sources: { label: string; url: string }[] };
+const BRIEF_FILE = import.meta.glob('../../../research/briefs.json', { eager: true, import: 'default' }) as Record<string, Record<string, Brief>>;
+const BRIEFS = Object.values(BRIEF_FILE)[0] ?? {};
 const VS = import.meta.glob('../../../research/versus/*.json', { eager: true, import: 'default' }) as Record<string, any>;
 
 export function getStaticPaths() {
@@ -40,9 +45,7 @@ const nRole = cFile.cite([SRC[named ? c.roleSource! : 'S_LIVE']])[0];
 const roleLine = named ? `${c.actor}, named by Marvel as ${c.character}` : `Marvel lists ${c.actor} in the cast; the role is not yet named`;
 const faNum = fa.issue.replace('#', '');
 const faSrc = r.origin.sources.find((x) => x.label.includes(fa.title.split(':')[0]) && new RegExp(`(\\b|#)${faNum}\\b`).test(x.label)) ?? r.origin.sources[0];
-const nFa = cFile.cite([faSrc])[0];
 const nFilm = cFile.cite([SRC.S_FILM])[0];
-const nAbil = vs.abilities[0] ? cFile.cite(vs.abilities[0].sources)[0] : null;
 const aliasLine = isDoom ? `${r.alias} · Monarch of Latveria` : r.alias && r.alias.toUpperCase() !== name ? `${r.alias} · ${team.name}` : team.name;
 const stampBig = isDoom ? 'Adversary' : named ? 'Named' : 'In the cast';
 const stampSmall = named ? `Role named by Marvel · ${EVENT[c.roleSource!] ?? 'Marvel'}` : 'Marvel cast list · March 2025';
@@ -67,11 +70,25 @@ const grid = vs.powerGrid?.values as Record<string, number> | null;
 const gridLabels: Record<string, string> = { intelligence: 'Intelligence', strength: 'Strength', speed: 'Speed', durability: 'Durability', energyProjection: 'Energy projection', fightingSkills: 'Fighting skills' };
 const nGrid = grid && vs.powerGrid.source ? cSub.cite([vs.powerGrid.source])[0] : null;
 const abilities = ab.map((a) => ({ ...a, n: cSub.cite(a.sources) }));
+// Level 1: the 30-second briefing (research/briefs.json, sourced from the research files and official.json)
+const brief = BRIEFS[slug] ?? null;
+const nBrief = cFile.cite(brief?.sources.length ? brief.sources : [faSrc]);
+const lastSeenLine = brief?.lastSeen
+  ? `${brief.lastSeen.title} (${brief.lastSeen.year}), as ${brief.lastSeen.role}: ${brief.lastSeen.note}`
+  : `Avengers: Doomsday is ${c.actor}'s first live-action appearance in the role.`;
+const level1 = [
+  { k: 'Who', v: brief?.who ?? `${r.name}, known as ${r.alias}.`, n: nBrief.slice(0, 1) },
+  { k: 'What they can do', v: brief?.powers ?? ab.slice(0, 3).map((a) => a.name).join(' · '), n: brief ? nBrief.slice(0, 1) : ab[0] ? cFile.cite(ab[0].sources) : [] },
+  { k: 'In Doomsday', v: brief?.doomsday ?? roleLine, n: [nRole, nFilm] },
+  { k: 'Last seen', v: lastSeenLine, n: brief?.lastSeen ? nBrief.slice(-1) : [] },
+];
 
 // III to V: origin, the comics record, sightings on screen
 const cOrigin = new Citer(); const originNums = cOrigin.cite(r.origin.sources);
 const cComics = new Citer(); const comics = r.comics.map((e) => ({ ...e, nums: cComics.cite(e.sources) }));
 const cScreen = new Citer(); const screen = [...r.screen].sort((a, b) => a.year - b.year).map((s) => ({ ...s, nums: cScreen.cite(s.sources) }));
+const cNotes = new Citer(); const notes = (r.trivia ?? []).map((x) => ({ ...x, nums: cNotes.cite(x.sources) }));
+const mcuCount = screen.filter((x) => x.continuity === 'MCU').length;
 const keyRows = isDoom
   ? [{ k: 'Real name', v: r.name }, { k: 'Alias', v: r.alias }, { k: 'Rules', v: 'Latveria, from Doomstadt', n: originNums.slice(0, 1) }]
   : [{ k: 'Real name', v: r.name }, { k: 'Alias', v: r.alias }, { k: 'Team', v: team.name }, { k: 'In Doomsday', v: c.actor }];
@@ -87,37 +104,17 @@ const lastScreen = [...r.screen].filter((x) => x.actor.startsWith(c.actor)).sort
 
 // photos (HD and cut-outs) and the figure
 const lead = ph[0], p2 = ph[1], p3 = ph[2];
-const figure = figureFor(slug);
-const lensSrc = lead ? pick2(lead.full, 1920) : '';
 const heroCut = lead && lead.cut.length ? lead.cut : null;
 // the name on the hero: two balanced lines when it has several words, sized by the longer line
 const heroLines = (() => { const w = name.split(' '); let best = [name]; for (let i = 1; i < w.length; i++) { const l = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (best.length === 1 || Math.max(...l.map((x) => x.length)) < Math.max(...best.map((x) => x.length))) best = l; } return best; })();
 const longest = Math.max(...heroLines.map((l) => l.length));
 const nextPh = photos2For(next)[0];
-// the record's stops: one line from each chapter (the full text stays in the chapter, opened in the drawer)
-// the first sentence; a long one ends at a whole word with an ellipsis, never mid-word
-const firstLine = (html: string) => {
-  const t = html.replace(/<[^>]+>/g, '').trim();
-  const m = t.match(/^.{20,220}?[.!?](\s|$)/);
-  if (m) return m[0].trim();
-  const cut = t.slice(0, 200);
-  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:]$/, '') + '…';
-};
-const faYear = (fa.coverDate.match(/\d{4}/) || [''])[0];
-const stopImg = (i: number) => { const p = ph[i % Math.max(1, ph.length)]; return p ? { src: pick2(p.full, 1280), focus: p.focusM } : null; };
-const stops = [
-  { kind: 'origin', drawer: 'ch-origin', at: null, kicker: 'III · Origin', big: faYear, title: `${fa.title} ${fa.issue}`, sub: `Cover date ${fa.coverDate} · created by ${r.origin.creators.join(' and ')}`, line: firstLine(r.origin.summary[0]), cta: 'Read the origin', img: stopImg(2) },
-  ...comics.map((e, i) => ({ kind: 'comics', drawer: 'ch-comics', at: `rep-${i}`, kicker: `IV · Report ${pad(i + 1)} · ${e.era}`, big: e.years, title: e.title, sub: `Key issues: ${e.keyIssues.slice(0, 2).join(' · ')}`, line: firstLine(e.summary), cta: 'Read the report', img: i % 3 === 1 ? stopImg(i) : null })),
-  ...screen.map((x, i) => ({ kind: 'screen', drawer: 'ch-screen', at: `sig-${i}`, kicker: `V · Sighting ${pad(i + 1)} · ${x.continuity}${x.cameo ? ' · cameo' : ''}`, big: String(x.year), title: x.title, sub: `Performer: ${x.actor}`, line: firstLine(x.summary), cta: 'Read the sighting', img: null })),
-  { kind: 'doom', drawer: 'ch-doom', at: null, kicker: 'VI · In Avengers: Doomsday', big: '2026', title: named ? `${c.character}` : 'In the cast', sub: `${c.actor} · ${named ? 'role named by Marvel' : 'role not yet named by Marvel'}`, line: `Avengers: Doomsday opens in theaters on ${fmtDate(OFFICIAL.film.releaseDate)}.`, cta: 'What Marvel has confirmed', img: stopImg(0) },
-];
-const chapterOf = { origin: 'Origin', comics: 'Comics', screen: 'On screen', doom: 'Doomsday' } as Record<string, string>;
 const files = order.map((x, i) => ({ slug: x, no: i + 1, name: heroName(x).toUpperCase(), accent: accentOf(x) }));
 const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '#5c5f58' : accent};--longest:${longest}`;
 ---
 <Dossier title={`${name}: classified file`} description={`The classified file on ${heroName(slug)}, opened.`} page="file" accent={accent} styleVars={styleVars}>
   <div class="tint" data-tint aria-hidden="true"></div>
-  <article class="file" data-file data-slug={slug} data-scene={d.scene} data-fig={JSON.stringify(figure)} data-lens={lensSrc}>
+  <article class="file" data-file data-slug={slug} data-scene={d.scene}>
 
     <!-- 0. THE SUBJECT, IN FRONT OF THEIR NAME (Obsidian, Lena Varga) -->
     <section class="hero" data-hero data-dio={JSON.stringify(dioFor(slug, heroLines, d.font, d.fontWeight))} aria-label={`${name}, file ${pad(no)}`}>
@@ -136,28 +133,26 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
           : <img class="hero-cut hero-soft" data-hero-cut src={pick2(lead.full, 1280)} srcset={srcset2(lead.full)} sizes="100vw" width={lead.w} height={lead.h} alt="" fetchpriority="high" decoding="async" style={`object-position:${lead.focusM}`} />}</div>}
         <div class="hero-foot">
           <p class="t-label t-ash" data-hin>{aliasLine}</p>
-          <p class="t-label hero-cue" data-hin>Scroll to open the file</p>
+          <p class="t-label hero-cue" data-hin>Scroll for the 30-second briefing</p>
         </div>
       </div>
     </section>
 
-    <!-- I. THE FILE OPENS -->
+    <!-- LEVEL 1. THE 30-SECOND BRIEFING: the folder opens, the redaction bars tear off the facts -->
     <section class="open" data-open aria-labelledby="f-name">
       <div class="open-stage">
         <div class="folder" data-folder>
           <div class="sheet" data-sheet>
             <div class="sheet-head t-micro">
-              <span>Latverian state archive</span><span>File {pad(no)} / {order.length}</span><span class="t-accent">Clearance: Omega</span>
+              <span>Latverian state archive</span><span>File {pad(no)} / {order.length}</span><span class="t-accent">Clearance level 1 &middot; the briefing</span>
             </div>
             <p class="t-label t-ash sheet-k">Subject</p>
             <h1 id="f-name" class="sig-name" data-fit>{name}</h1>
             <p class="t-label t-accent sheet-alias">{aliasLine}</p>
             <ul class="traits sheet-rows">
-              <li><span class="k">In Doomsday</span><span class="v"><span class="redact">{roleLine}<Fragment set:html={sup([nRole], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
-              <li><span class="k">First appearance</span><span class="v"><span class="redact">{fa.title} {fa.issue}, cover date {fa.coverDate}<Fragment set:html={sup([nFa], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
-              <li><span class="k">Created by</span><span class="v"><span class="redact">{r.origin.creators.join(' and ')}<Fragment set:html={sup([nFa], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
-              <li><span class="k">Abilities</span><span class="v"><span class="redact">{ab.slice(0, 3).map((a) => a.name).join(' · ')}{nAbil && <Fragment set:html={sup([nAbil], 'src-file')} />}<span class="bar" data-bar></span></span></span></li>
-              <li><span class="k">Status</span><span class="v"><span class="redact">Confirmed for Avengers: Doomsday, in theaters {fmtDate(OFFICIAL.film.releaseDate)}<Fragment set:html={sup([nFilm], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+              {level1.map((row) => (
+                <li><span class="k">{row.k}</span><span class="v"><span class="redact">{row.v}{row.n.length > 0 && <Fragment set:html={sup(row.n, 'src-file')} />}<span class="bar" data-bar></span></span></span></li>
+              ))}
             </ul>
           </div>
           {[p2, p3].filter(Boolean).map((p, i) => <figure class={`print fp${i + 1}`} data-print><img src={pick2(p!.full, 640)} srcset={srcset2(p!.full)} sizes="(min-width: 900px) 20vw, 34vw" alt={`${heroName(slug)}, exhibit ${pad(no)}-${i ? 'C' : 'B'}`} width={p!.w} height={p!.h} loading="lazy" style={`object-position:${p!.focusM}`} /><figcaption>Exhibit {pad(no)}-{i ? 'C' : 'B'}</figcaption></figure>)}
@@ -168,7 +163,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
               <div class="cover-top t-micro"><span>Property of the Latverian state</span><span>Do not remove from the archive</span></div>
               <p class="cover-name" data-fit>{name}</p>
               <div class="cover-bottom">
-                <span class="t-label t-accent">Top secret &middot; Omega</span>
+                <span class="t-label t-accent">Top secret &middot; three clearance levels</span>
                 <span class="t-micro t-ash">{team.name} &middot; {r.alias}</span>
               </div>
               <i class="rivet r1"></i><i class="rivet r2"></i><i class="rivet r3"></i><i class="rivet r4"></i>
@@ -176,200 +171,217 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
             <div class="cover-back"></div>
           </div>
         </div>
-        <p class="open-hint t-label t-ash" data-hint>Scroll to open the file</p>
+        <p class="open-hint t-label t-ash" data-hint>Scroll for the 30-second briefing</p>
       </div>
-      <details class="sources wrap file-src" id="src-file"><summary>File sources ({cFile.list.length})</summary>
+      <details class="sources wrap file-src" id="src-file"><summary>Briefing sources ({cFile.list.length})</summary>
         <ol>{cFile.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
       </details>
     </section>
 
-    <!-- II. THE SUBJECT -->
-    <section class="subject" data-subject aria-labelledby="sub-h">
-      <div class="sub-pin" data-sub-pin><div class="sub-stage">
-        <div class="fig-space" data-fig-space aria-hidden="true"></div>
-        <header class="sub-head">
-          <p class="t-label t-accent">II &middot; The subject</p>
-          <h2 id="sub-h" class="t-title chap" data-fit data-rise>Under the hood</h2>
-        </header>
-        <ol class="callouts" data-callouts>
-          {callouts.map((k, i) => (
-            <li class="callout" data-callout data-u={k.u} data-v={k.v}>
-              <i class="lead" data-lead aria-hidden="true"></i>
-              <span class="t-micro t-accent">0{i + 1} &middot; {k.k}</span>
-              <span class="cal-t"><Fragment set:html={k.t + sup(k.n, 'src-sub')} /></span>
-            </li>
-          ))}
-        </ol>
-        <aside class="key" data-key aria-label="Key traits">
-          <p class="t-label t-ash">Key traits</p>
-          <ul class="traits">
-            {keyRows.map((k) => <li><span class="k">{k.k}</span><span class="v">{k.v}{k.n && <Fragment set:html={sup(k.n, 'src-origin')} />}</span></li>)}
-          </ul>
-          {grid ? (
-            <>
-              <p class="t-label t-ash key-k">Power grid, 1 to 7{nGrid && <Fragment set:html={sup([nGrid], 'src-sub')} />}</p>
-              <ul class="grid-bars">
-                {Object.entries(grid).map(([k, v]) => (
-                  <li><span class="t-micro">{gridLabels[k] ?? k}</span><span class="gb" aria-label={`${v} of 7`}><i data-bar-w style={`--v:${v / 7}`}></i></span><b class="t-type">{v}</b></li>
+    <!-- LEVEL 2. ON SCREEN -->
+    <div class="level" data-level="2" id="level-2" aria-labelledby="lv2-h">
+      <header class="level-head wrap">
+        <p class="t-label t-accent">Clearance level 2</p>
+        <h2 id="lv2-h" class="t-title level-t" data-fit>On screen</h2>
+        <p class="level-sub">The live-action story: the subject under the hood, {screen.length} appearances{mcuCount ? ` (${mcuCount} in the MCU)` : ''}, the prints on file and every word Marvel has said about Doomsday.</p>
+      </header>
+      <div class="level-body" data-level-body>
+
+        <!-- the subject: one big graded print, the callouts pinned to it -->
+        <section class="subject wrap" data-subject aria-labelledby="sub-h">
+          <p class="t-label t-accent">The subject</p>
+          <h3 id="sub-h" class="t-title chap" data-rise>Under the hood</h3>
+          {lead && (
+            <div class="sub-grid">
+              <figure class="sub-photo" data-sub-photo style={`aspect-ratio:${lead.w} / ${lead.h};--ar:${(lead.w / lead.h).toFixed(4)}`}>
+                <img src={pick2(lead.full, 1920)} srcset={srcset2(lead.full)} sizes="(min-width: 1100px) 62vw, 100vw" width={lead.w} height={lead.h} alt={`${heroName(slug)}, exhibit ${pad(no)}-A`} loading="lazy" decoding="async" data-sub-img />
+                {callouts.map((k, i) => <span class="pin" data-pin style={`left:${k.u * 100}%;top:${k.v * 100}%`} aria-hidden="true"><i></i><b>{pad(i + 1)}</b></span>)}
+              </figure>
+              <ol class="callouts">
+                {callouts.map((k, i) => (
+                  <li class="callout" data-callout data-i={i}>
+                    <span class="t-micro t-accent">{pad(i + 1)} &middot; {k.k}</span>
+                    <span class="cal-t"><Fragment set:html={k.t + sup(k.n, 'src-sub')} /></span>
+                  </li>
                 ))}
-              </ul>
-              <p class="t-micro t-ash grid-note">Comics stats, as published on Marvel.com&rsquo;s Marvel Universe wiki.</p>
-            </>
-          ) : (
-            <p class="t-label t-ash key-k">Not rated in the Handbook</p>
-          )}
-        </aside>
-        <div class="lens" data-lens-el aria-hidden="true"><i></i></div>
-      </div></div>
-      <div class="wrap sub-more">
-        <h3 class="t-label t-accent">Abilities on file</h3>
-        <ul class="abil">
-          {abilities.map((a) => <li data-reveal><b class="t-title">{a.name}</b><span><Fragment set:html={a.detail + sup(a.n, 'src-sub')} /></span></li>)}
-        </ul>
-        <details class="sources" id="src-sub"><summary>Subject sources ({cSub.list.length})</summary>
-          <ol>{cSub.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
-        </details>
-      </div>
-    </section>
-
-    <!-- EXHIBITS (Oyla): the prints come toward you as you scroll -->
-    {ph.length > 0 && (
-      <section class="exhibits wrap" data-exhibits aria-labelledby="ex-h">
-        <p class="t-label t-accent">Exhibits</p>
-        <h2 id="ex-h" class="t-title chap" data-fit data-rise>{ph.length} prints on file</h2>
-        <div class="ex-grid">
-          {ph.map((p, i) => (
-            <figure class={`ex ex${i + 1}`} data-ex>
-              <div class="ex-frame"><img src={pick2(p.full, 1280)} srcset={srcset2(p.full)} sizes="(min-width: 900px) 46vw, 92vw" width={p.w} height={p.h} alt={`${heroName(slug)}, exhibit ${pad(no)}-${'ABC'[i]}`} loading="lazy" decoding="async" style={`object-position:${p.focusM}`} /></div>
-              <figcaption class="t-micro"><span class="t-accent">Exhibit {pad(no)}-{'ABC'[i]}</span><span class="t-ash">{p.hd ? 'Enhanced print' : 'Original print'} &middot; {p.w} &times; {p.h}</span></figcaption>
-            </figure>
-          ))}
-        </div>
-        <p class="t-micro t-ash ex-credit">{PHOTO_CREDIT}</p>
-      </section>
-    )}
-
-    <!-- THE RECORD (Loops, Space Voyage): one pinned horizontal journey; each stop opens its chapter in the drawer -->
-    <section class="record" data-record style={`--n:${stops.length}`} aria-label="The record">
-      <div class="rec-stage">
-        <div class="rec-track" data-rec-track>
-          <article class="stop stop-intro">
-            <p class="t-label t-accent">The record</p>
-            <p class="stop-big t-title" aria-hidden="true">{faYear}&ndash;2026</p>
-            <h2 class="stop-title t-title" data-fit>Everything on file</h2>
-            <p class="stop-line">One origin, {comics.length} comics reports and {screen.length} sightings on screen, ending in Avengers: Doomsday. Scroll to travel through them; open any stop for the full sourced record.</p>
-          </article>
-          {stops.map((st, i) => (
-            <article class={`stop stop-${st.kind}${st.img ? ' has-img' : ''}`} data-stop data-chapter={st.kind}>
-              {st.img && <img class="stop-img" src={st.img.src} alt="" loading="lazy" decoding="async" style={`object-position:${st.img.focus}`} />}
-              <p class="stop-big t-title" data-stop-big aria-hidden="true">{st.big}</p>
-              <div class="stop-body" data-stop-body>
-                <p class="t-label t-accent">{st.kicker}</p>
-                <h3 class="stop-title t-title" data-fit>{st.title}</h3>
-                <p class="t-micro t-ash stop-sub">{st.sub}</p>
-                <p class="stop-line">{st.line}</p>
-                <button type="button" class="stop-read t-label" data-read={st.drawer} data-at={st.at ?? ''} data-cursor="Read">{st.cta} &rarr;</button>
-              </div>
-            </article>
-          ))}
-        </div>
-        <ol class="rec-progress t-micro" aria-hidden="true">
-          {['origin', 'comics', 'screen', 'doom'].map((k) => <li data-prog={k}><span>{chapterOf[k]}</span><i></i></li>)}
-        </ol>
-      </div>
-    </section>
-    <aside class="drawer" data-drawer aria-hidden="true" aria-label="The full record">
-      <button type="button" class="drawer-close t-label" data-drawer-close>Close &times;</button>
-      <div class="drawer-body" data-drawer-body data-lenis-prevent></div>
-    </aside>
-
-    <div class="rec-chapters" data-rec-chapters>
-    <!-- III. ORIGIN -->
-    <section class="chapter-sec wrap" id="ch-origin" aria-labelledby="or-h">
-      <p class="t-label t-accent">III &middot; Origin</p>
-      <h2 id="or-h" class="t-title chap" data-fit data-rise>Where it began</h2>
-      <div class="or-grid">
-        <aside class="fa" data-reveal>
-          <p class="t-micro t-ash">First appearance</p>
-          <p class="fa-t t-title">{fa.title} {fa.issue}</p>
-          <p class="t-label">Cover date {fa.coverDate}</p>
-          <p class="t-micro t-ash" style="margin-top:18px">Created by</p>
-          <p class="t-label">{r.origin.creators.join(', ')}</p>
-        </aside>
-        <div class="prose">
-          {r.origin.summary.map((p, i) => <p data-reveal set:html={p + (i === r.origin.summary.length - 1 ? sup(originNums, 'src-origin') : '')} />)}
-        </div>
-      </div>
-      <details class="sources" id="src-origin"><summary>Origin sources ({cOrigin.list.length})</summary>
-        <ol>{cOrigin.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
-      </details>
-    </section>
-
-    <!-- IV. THE COMICS RECORD -->
-    <section class="chapter-sec wrap" id="ch-comics" aria-labelledby="rec-h">
-      <p class="t-label t-accent">IV &middot; The comics record</p>
-      <h2 id="rec-h" class="t-title chap" data-fit data-rise>{comics.length} reports, {comics[0].years.slice(0, 4)} to {comics[comics.length - 1].years.slice(-4)}</h2>
-      <ol class="reports">
-        {comics.map((e, i) => (
-          <li class="report" data-report id={`rep-${i}`}>
-            <div class="rep-years t-title">{e.years}</div>
-            <div class="rep-body">
-              <p class="t-micro t-accent">Report {pad(i + 1)} &middot; {e.era}</p>
-              <h3 class="rep-t">{e.title}</h3>
-              <p set:html={e.summary + sup(e.nums, 'src-comics')} />
-              <p class="t-micro t-ash rep-k">Key issues: {e.keyIssues.join(' · ')}</p>
+              </ol>
             </div>
-          </li>
-        ))}
-      </ol>
-      <details class="sources" id="src-comics"><summary>Comics sources ({cComics.list.length})</summary>
-        <ol>{cComics.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
-      </details>
-    </section>
+          )}
+          <details class="sources" id="src-sub"><summary>Subject sources ({cSub.list.length})</summary>
+            <ol>{cSub.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+          </details>
+        </section>
 
-    <!-- V. SIGHTINGS ON SCREEN -->
-    <section class="chapter-sec wrap" id="ch-screen" aria-labelledby="sig-h">
-      <p class="t-label t-accent">V &middot; Sightings on screen</p>
-      <h2 id="sig-h" class="t-title chap" data-fit data-rise>{screen.length} live-action sightings</h2>
-      <ol class="log">
-        {screen.map((s, i) => (
-          <li data-reveal id={`sig-${i}`}>
-            <span class="log-y t-title">{s.year}</span>
-            <span class="log-main">
-              <span class="log-tags t-micro"><span class="tag">{s.continuity}</span>{s.cameo && <span class="tag">Cameo</span>}</span>
-              <b class="log-t">{s.title}</b>
-              <span class="t-micro t-ash">Performer: {s.actor}</span>
-              <span class="log-s" set:html={s.summary + sup(s.nums, 'src-screen')} />
-            </span>
-          </li>
-        ))}
-      </ol>
-      <details class="sources" id="src-screen"><summary>Screen sources ({cScreen.list.length})</summary>
-        <ol>{cScreen.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
-      </details>
-    </section>
+        <!-- every live-action appearance, by year -->
+        <section class="chapter-sec wrap" id="ch-screen" aria-labelledby="sig-h">
+          <p class="t-label t-accent">Sightings on screen</p>
+          <h3 id="sig-h" class="t-title chap" data-rise>{screen.length} live-action appearances</h3>
+          <ol class="log">
+            {screen.map((x, i) => (
+              <li data-reveal id={`sig-${i}`} class={x.continuity === 'MCU' ? 'mcu' : ''}>
+                <span class="log-y t-title">{x.year}</span>
+                <span class="log-main">
+                  <span class="log-tags t-micro"><span class="tag">{x.continuity}</span>{x.cameo && <span class="tag">Cameo</span>}</span>
+                  <b class="log-t">{x.title}</b>
+                  <span class="t-micro t-ash">Performer: {x.actor}</span>
+                  <span class="log-s" set:html={x.summary + sup(x.nums, 'src-screen')} />
+                </span>
+              </li>
+            ))}
+          </ol>
+          <details class="sources" id="src-screen"><summary>Screen sources ({cScreen.list.length})</summary>
+            <ol>{cScreen.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+          </details>
+        </section>
 
-    <!-- VI. CONFIRMED FOR DOOMSDAY -->
-    <section class="chapter-sec wrap doom-sec" id="ch-doom" aria-labelledby="dd-h">
-      <p class="t-label t-accent">VI &middot; In Avengers: Doomsday</p>
-      <h2 id="dd-h" class="t-title chap" data-fit data-rise>What Marvel has confirmed</h2>
-      <p class="t-ash">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
-      <div class="dd-grid">
-        <div data-reveal><p class="t-micro t-ash">Cast</p><p class="dd-big t-title">{c.actor}</p><p set:html={`Marvel lists ${c.actor} in the cast.${sup([dFilm], 'src-doom')}`} /></div>
-        {named ? (
-          <div data-reveal><p class="t-micro t-ash">Role</p><p class="dd-big t-title">{c.character}</p><p set:html={`Named by Marvel in ${EVENT[c.roleSource!] ?? 'an announcement'}.${sup([dRole!], 'src-doom')}`} /></div>
-        ) : (
-          <div data-reveal><p class="t-micro t-ash">Role</p><p class="dd-big t-title">Not yet named</p><p>Marvel has not said which character {c.actor} plays.{lastScreen && c.lastRole && <> For context only: the most recent released role for {c.actor} was {c.lastRole} in {lastScreen.title} ({lastScreen.year}).</>}</p></div>
+        <!-- the prints on file: each comes toward you as it passes (Oyla) -->
+        {ph.length > 0 && (
+          <section class="exhibits wrap" data-exhibits aria-labelledby="ex-h">
+            <p class="t-label t-accent">Exhibits</p>
+            <h3 id="ex-h" class="t-title chap" data-rise>{ph.length} {ph.length === 1 ? 'print' : 'prints'} on file</h3>
+            <div class="ex-grid">
+              {ph.map((p, i) => (
+                <figure class={`ex ex${i + 1}`} data-ex>
+                  <div class="ex-frame"><img src={pick2(p.full, 1280)} srcset={srcset2(p.full)} sizes="(min-width: 900px) 46vw, 92vw" width={p.w} height={p.h} alt={`${heroName(slug)}, exhibit ${pad(no)}-${'ABC'[i]}`} loading="lazy" decoding="async" style={`object-position:${p.focusM}`} /></div>
+                  <figcaption class="t-micro"><span class="t-accent">Exhibit {pad(no)}-{'ABC'[i]}</span><span class="t-ash">{p.hd ? 'Enhanced print' : 'Original print'} &middot; graded to the archive &middot; {p.w} &times; {p.h}</span></figcaption>
+                </figure>
+              ))}
+            </div>
+            <p class="t-micro t-ash ex-credit">{PHOTO_CREDIT}</p>
+          </section>
         )}
-        <div data-reveal><p class="t-micro t-ash">Release</p><p class="dd-big t-title">{fmtDate(OFFICIAL.film.releaseDate)}</p><p class="t-type dd-count" data-mini-count>00d 00h 00m 00s</p></div>
+
+        <!-- only what Marvel confirmed -->
+        <section class="chapter-sec wrap doom-sec" id="ch-doom" aria-labelledby="dd-h">
+          <p class="t-label t-accent">In Avengers: Doomsday</p>
+          <h3 id="dd-h" class="t-title chap" data-rise>What Marvel has confirmed</h3>
+          <p class="t-ash">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
+          <div class="dd-grid">
+            <div data-reveal><p class="t-micro t-ash">Cast</p><p class="dd-big t-title">{c.actor}</p><p set:html={`Marvel lists ${c.actor} in the cast.${sup([dFilm], 'src-doom')}`} /></div>
+            {named ? (
+              <div data-reveal><p class="t-micro t-ash">Role</p><p class="dd-big t-title">{c.character}</p><p set:html={`Named by Marvel in ${EVENT[c.roleSource!] ?? 'an announcement'}.${sup([dRole!], 'src-doom')}`} /></div>
+            ) : (
+              <div data-reveal><p class="t-micro t-ash">Role</p><p class="dd-big t-title">Not yet named</p><p>Marvel has not said which character {c.actor} plays.{lastScreen && c.lastRole && <> For context only: the most recent released role for {c.actor} was {c.lastRole} in {lastScreen.title} ({lastScreen.year}).</>}</p></div>
+            )}
+            <div data-reveal><p class="t-micro t-ash">Release</p><p class="dd-big t-title">{fmtDate(OFFICIAL.film.releaseDate)}</p><p class="t-type dd-count" data-mini-count>00d 00h 00m 00s</p></div>
+          </div>
+          <ol class="dd-line">
+            {mentions.map((m) => <li data-reveal><span class="t-micro t-accent">{fmtDate(m.date)}</span><span><b>{m.title}.</b> <Fragment set:html={m.text + sup([m.num], 'src-doom')} /></span></li>)}
+          </ol>
+          <details class="sources" id="src-doom"><summary>Marvel sources ({cDoom.list.length})</summary>
+            <ol>{cDoom.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+          </details>
+        </section>
       </div>
-      <ol class="dd-line">
-        {mentions.map((m) => <li data-reveal><span class="t-micro t-accent">{fmtDate(m.date)}</span><span><b>{m.title}.</b> <Fragment set:html={m.text + sup([m.num], 'src-doom')} /></span></li>)}
-      </ol>
-      <details class="sources" id="src-doom"><summary>Marvel sources ({cDoom.list.length})</summary>
-        <ol>{cDoom.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
-      </details>
-    </section>
+      <div class="level-lock" data-level-lock hidden>
+        <div class="lock-bars" aria-hidden="true">{[86, 64, 92, 48, 78, 70, 90, 56].map((w) => <i data-lock-bar style={`width:${w}%`}></i>)}</div>
+        <div class="lock-ask">
+          <p class="t-micro t-ash">Restricted &middot; clearance level 2</p>
+          <button type="button" class="lock-btn t-label" data-request="2" data-cursor="Request">Request level 2 clearance <span aria-hidden="true">&rarr;</span></button>
+          <p class="t-micro t-ash">The full story on screen, the prints and Marvel's word on Doomsday.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEVEL 3. THE COMICS -->
+    <div class="level" data-level="3" id="level-3" aria-labelledby="lv3-h">
+      <header class="level-head wrap">
+        <p class="t-label t-accent">Clearance level 3</p>
+        <h2 id="lv3-h" class="t-title level-t" data-fit>The comics</h2>
+        <p class="level-sub">Deep history for readers: where it began in {fa.coverDate.match(/\d{4}/)?.[0]}, {comics.length} eras of the record, abilities, the power grid{notes.length ? ' and notes from the archive' : ''}.</p>
+      </header>
+      <div class="level-body" data-level-body>
+        <section class="chapter-sec wrap" id="ch-origin" aria-labelledby="or-h">
+          <p class="t-label t-accent">Origin</p>
+          <h3 id="or-h" class="t-title chap" data-rise>Where it began</h3>
+          <div class="or-grid">
+            <aside class="fa" data-reveal>
+              <p class="t-micro t-ash">First appearance</p>
+              <p class="fa-t t-title">{fa.title} {fa.issue}</p>
+              <p class="t-label">Cover date {fa.coverDate}</p>
+              <p class="t-micro t-ash" style="margin-top:18px">Created by</p>
+              <p class="t-label">{r.origin.creators.join(', ')}</p>
+            </aside>
+            <div class="prose">
+              {r.origin.summary.map((p, i) => <p data-reveal set:html={p + (i === r.origin.summary.length - 1 ? sup(originNums, 'src-origin') : '')} />)}
+            </div>
+          </div>
+          <details class="sources" id="src-origin"><summary>Origin sources ({cOrigin.list.length})</summary>
+            <ol>{cOrigin.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+          </details>
+        </section>
+
+        <section class="chapter-sec wrap" id="ch-comics" aria-labelledby="rec-h">
+          <p class="t-label t-accent">The comics record</p>
+          <h3 id="rec-h" class="t-title chap" data-rise>{comics.length} reports, {comics[0].years.slice(0, 4)} to {comics[comics.length - 1].years.slice(-4)}</h3>
+          <ol class="reports">
+            {comics.map((e, i) => (
+              <li class="report" data-report id={`rep-${i}`}>
+                <div class="rep-years t-title">{e.years}</div>
+                <div class="rep-body">
+                  <p class="t-micro t-accent">Report {pad(i + 1)} &middot; {e.era}</p>
+                  <h4 class="rep-t">{e.title}</h4>
+                  <p set:html={e.summary + sup(e.nums, 'src-comics')} />
+                  <p class="t-micro t-ash rep-k">Key issues: {e.keyIssues.join(' · ')}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <details class="sources" id="src-comics"><summary>Comics sources ({cComics.list.length})</summary>
+            <ol>{cComics.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+          </details>
+        </section>
+
+        <section class="chapter-sec wrap" id="ch-abilities" aria-labelledby="ab-h">
+          <p class="t-label t-accent">Abilities on file</p>
+          <h3 id="ab-h" class="t-title chap" data-rise>What the record says they can do</h3>
+          <div class="ab-grid">
+            <ul class="abil">
+              {abilities.map((a) => <li data-reveal><b class="t-title">{a.name}</b><span><Fragment set:html={a.detail + sup(a.n, 'src-sub')} /></span></li>)}
+            </ul>
+            <aside class="key" data-key aria-label="Key traits">
+              <p class="t-label t-ash">Key traits</p>
+              <ul class="traits">
+                {keyRows.map((k) => <li><span class="k">{k.k}</span><span class="v">{k.v}{k.n && <Fragment set:html={sup(k.n, 'src-origin')} />}</span></li>)}
+              </ul>
+              {grid ? (
+                <>
+                  <p class="t-label t-ash key-k">Power grid, 1 to 7{nGrid && <Fragment set:html={sup([nGrid], 'src-sub')} />}</p>
+                  <ul class="grid-bars">
+                    {Object.entries(grid).map(([k, v]) => (
+                      <li><span class="t-micro">{gridLabels[k] ?? k}</span><span class="gb" aria-label={`${v} of 7`}><i data-bar-w style={`--v:${v / 7}`}></i></span><b class="t-type">{v}</b></li>
+                    ))}
+                  </ul>
+                  <p class="t-micro t-ash grid-note">Comics stats, as published on Marvel.com&rsquo;s Marvel Universe wiki.</p>
+                </>
+              ) : (
+                <p class="t-label t-ash key-k">Not rated in the Handbook</p>
+              )}
+            </aside>
+          </div>
+        </section>
+
+        {notes.length > 0 && (
+          <section class="chapter-sec wrap" id="ch-notes" aria-labelledby="nt-h">
+            <p class="t-label t-accent">Notes from the archive</p>
+            <h3 id="nt-h" class="t-title chap" data-rise>For the record</h3>
+            <ol class="notes">
+              {notes.map((x, i) => <li data-reveal><span class="t-micro t-accent">Note {pad(i + 1)}</span><p set:html={x.fact + sup(x.nums, 'src-notes')} /></li>)}
+            </ol>
+            <details class="sources" id="src-notes"><summary>Note sources ({cNotes.list.length})</summary>
+              <ol>{cNotes.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+            </details>
+          </section>
+        )}
+      </div>
+      <div class="level-lock" data-level-lock hidden>
+        <div class="lock-bars" aria-hidden="true">{[72, 90, 58, 84, 66, 92, 50, 80].map((w) => <i data-lock-bar style={`width:${w}%`}></i>)}</div>
+        <div class="lock-ask">
+          <p class="t-micro t-ash">Restricted &middot; clearance level 3</p>
+          <button type="button" class="lock-btn t-label" data-request="3" data-cursor="Request">Request level 3 clearance <span aria-hidden="true">&rarr;</span></button>
+          <p class="t-micro t-ash">The comics: the origin, every era of the record, the power grid.</p>
+        </div>
+      </div>
     </div>
 
     <nav class="voyage" data-voyage aria-label="Other files" style={`--na:${accentOf(next)}`}>
@@ -401,51 +413,8 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .hero-back img { width: 100%; height: 100%; object-fit: cover; filter: blur(14px) saturate(0.7); transform: scale(1.08); }
   .hero-glow { position: absolute; left: 50%; top: 58%; width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin; z-index: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent) 0%, transparent 68%); opacity: 0.75; will-change: transform; pointer-events: none; }
 
-  /* the record: a pinned horizontal journey */
-  .record { position: relative; z-index: 2; height: calc(var(--n) * 70vh + 120vh); background: var(--gunmetal); }
-  .rec-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-  .rec-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; gap: 3vw; padding: calc(var(--header-h) + 3svh) var(--margin) 9svh; will-change: transform; }
-  .stop { position: relative; flex: none; width: min(64vw, 980px); height: 100%; border: 1px solid var(--iron); border-radius: 6px; overflow: hidden; display: grid; align-items: end; padding: clamp(22px, 3.2vw, 52px); background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--tone, var(--accent)) 26%, #0d1012), #101417 70%); }
-  .stop-intro { width: min(52vw, 760px); align-content: end; gap: 14px; display: grid; background: none; border-color: transparent; padding-left: 0; }
-  .stop-comics { --tone: color-mix(in srgb, var(--accent) 55%, #6d8cd8); }
-  .stop-screen { --tone: color-mix(in srgb, var(--accent) 55%, #ffb36b); }
-  .stop-doom { --tone: #1fd47a; }
-  .stop-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
-  .stop.has-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #0d1012 15%, transparent 75%); }
-  .stop-big { position: absolute; left: 0; right: 0; top: 6%; margin: 0; padding: 0 0.04em; font-size: min(22vw, 360px); font-weight: 900; line-height: 0.8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--tone, var(--accent)) 60%, transparent); white-space: nowrap; will-change: transform; z-index: 1; }
-  .stop-intro .stop-big { position: static; font-size: min(12vw, 200px); -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 60%, transparent); }
-  .stop-body { position: relative; z-index: 2; display: grid; gap: 10px; max-width: 46ch; }
-  .stop-body p { margin: 0; }
-  .stop-title { font-size: clamp(34px, 4.6vw, 76px); font-weight: 900; margin: 0; }
-  .stop-intro .stop-title { font-size: var(--t-1); }
-  .stop-line { font-size: clamp(15px, 1.25vw, 19px); color: var(--bone); max-width: 52ch; }
-  .stop-read { justify-self: start; margin-top: 8px; color: var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 3px; }
-  .stop-read:hover { color: var(--bone); }
-  .rec-progress { position: absolute; left: var(--margin); right: var(--margin); bottom: 3svh; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 3fr 2fr 1fr; gap: 10px; }
-  .rec-progress li { display: grid; gap: 6px; color: var(--ash); }
-  .rec-progress i { display: block; height: 2px; background: var(--iron); position: relative; overflow: hidden; }
-  .rec-progress i::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
-  .rec-progress li.on { color: var(--bone); }
-  @media (max-width: 760px) {
-    .rec-track { gap: 16vw; }
-    .stop { width: 84vw; padding: 20px; }
-    .stop-intro { width: 80vw; }
-    .stop-big { font-size: 34vw; top: 4%; }
-    .rec-progress { grid-template-columns: repeat(4, 1fr); }
-  }
-  html.rm .record { display: none; }
-
-  /* the drawer: the full sourced chapter, sliding in from the right */
-  .drawer { position: fixed; z-index: 70; top: 0; right: 0; bottom: 0; width: min(720px, 100vw); background: #0f1316; border-left: 1px solid var(--iron-2); transform: translateX(102%); transition: transform 0.6s var(--e-file); display: grid; grid-template-rows: auto 1fr; box-shadow: -30px 0 60px rgba(0, 0, 0, 0.5); }
-  .drawer.is-open { transform: translateX(0); }
-  .drawer-close { justify-self: end; margin: calc(var(--header-h) + 4px) var(--margin) 0; padding: 10px 16px; border: 1px solid var(--iron-2); border-radius: 99px; color: var(--bone); }
-  .drawer-body { overflow-y: auto; padding: 0 0 var(--s-8); overscroll-behavior: contain; }
-  .drawer-body .chapter-sec { padding: var(--s-5) var(--margin) var(--s-7); width: auto; background: none; }
-  .drawer-body .or-grid, .drawer-body .report, .drawer-body .log li { grid-template-columns: minmax(0, 1fr); }
-  html.rec-on .rec-chapters { display: none; }
-
   /* 0. hero: the subject in front of their name */
-  .hero { position: relative; height: 190vh; }
+  .hero { position: relative; height: 160vh; }
   .hero-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
   .hero-flood { position: absolute; left: 50%; top: 55%; width: 160vmax; height: 160vmax; margin: -80vmax 0 0 -80vmax; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 46%, #0d1012) 0%, color-mix(in srgb, var(--accent) 22%, #0d1012) 38%, #0d1012 70%); transform: scale(1); }
   .hero-top { position: absolute; left: var(--margin); right: var(--margin); top: calc(var(--header-h) + 8px); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; z-index: 3; }
@@ -512,7 +481,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .sig-name { font-family: var(--sig); font-weight: var(--sig-w); text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.92; margin: 0; font-size: clamp(40px, 6.4vw, 104px); }
 
   /* I. the folder */
-  .open { position: relative; height: 340vh; }
+  .open { position: relative; height: 250vh; }
   .open-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; perspective: 1800px; padding-top: calc(var(--header-h) - 10px); overflow-x: clip; }
   .folder { position: relative; width: min(1080px, 90vw); height: min(80svh, 680px); transform-style: preserve-3d; }
   @media (min-width: 761px) and (max-height: 860px) {
@@ -567,41 +536,6 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
     .stamp { font-size: 11px; }
   }
 
-  /* II. the subject */
-  .subject { position: relative; overflow-x: clip; }
-  .sub-pin { position: relative; height: 230vh; }
-  .sub-stage { position: sticky; top: 0; height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: var(--s-5); padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-6); }
-  .sub-head { grid-column: 1 / -1; }
-  .fig-space { display: none; }
-  .chap { font-size: var(--t-2); margin: 6px 0 0; }
-  .callouts { list-style: none; margin: 0; padding: 0; grid-column: 1; align-self: center; display: grid; gap: var(--s-5); position: relative; z-index: 2; }
-  .callout { position: relative; display: grid; gap: 4px; max-width: 34ch; }
-  .cal-t { font-size: 15px; line-height: 1.45; }
-  .lead { position: absolute; left: 0; top: 0; height: 1px; width: 100px; background: var(--accent); transform-origin: 0 0; pointer-events: none; opacity: 0.8; }
-  .key { grid-column: 3; align-self: center; background: rgba(13, 16, 18, 0.72); border: 1px solid var(--iron); padding: var(--s-5); position: relative; z-index: 2; }
-  .key-k { margin: var(--s-5) 0 var(--s-2); }
-  .grid-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  .grid-bars li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 1.2em; gap: 10px; align-items: center; }
-  .gb { height: 4px; background: var(--iron); position: relative; overflow: hidden; }
-  .gb i { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--v)); }
-  .grid-note { margin: var(--s-3) 0 0; }
-  @media (pointer: coarse) { .lens { display: none !important; } }
-  .lens { position: absolute; width: 170px; height: 170px; border-radius: 50%; border: 1px solid var(--accent); overflow: hidden; pointer-events: none; left: 0; top: 0; opacity: 0; z-index: 3; box-shadow: 0 0 0 6px rgba(13, 16, 18, 0.6); }
-  .lens i { position: absolute; left: 0; top: 0; width: 1px; height: 1px; background-repeat: no-repeat; }
-  .sub-more { position: relative; z-index: 2; padding: var(--s-7) 0 var(--s-9); background: var(--gunmetal); }
-  .abil { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--s-6); }
-  .abil li { display: grid; gap: 8px; border-top: 1px solid var(--accent-soft); padding-top: var(--s-4); }
-  .abil b { font-size: var(--t-3); font-weight: 800; }
-  @media (max-width: 900px) {
-    .sub-pin { height: auto; }
-    .sub-stage { position: relative; height: auto; display: block; padding-top: calc(var(--header-h) + var(--s-6)); }
-    .fig-space { display: block; height: 62svh; }
-    .callouts { margin-top: var(--s-6); }
-    .lead { display: none; }
-    .key { margin-top: var(--s-6); }
-    .lens { width: 120px; height: 120px; }
-  }
-
   /* III to VI */
   .chapter-sec { position: relative; z-index: 2; padding: var(--s-10) 0 var(--s-8); background: var(--gunmetal); }
   .chapter-sec + .chapter-sec { border-top: 1px solid var(--iron); }
@@ -641,5 +575,60 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .credit { grid-column: 1 / -1; margin: 0; }
   [data-reveal], [data-report] { opacity: 1; }
   html.rm .cover { display: none; }
+  .chap { font-size: var(--t-2); margin: 6px 0 0; }
+
+  /* clearance levels: a level opens with its heading; locked, its body shows a few redacted lines and the request */
+  .level { position: relative; z-index: 2; background: var(--gunmetal); border-top: 1px solid var(--iron); }
+  .level-head { padding: var(--s-10) 0 var(--s-5); display: grid; gap: var(--s-3); }
+  .level-head p { margin: 0; }
+  .level-t { font-size: var(--t-1); font-weight: 900; }
+  .level-sub { max-width: 60ch; color: var(--ash); font-size: clamp(16px, 1.3vw, 19px); }
+  .level-body { position: relative; }
+  .level.is-locked .level-body { height: 58svh; overflow: hidden; pointer-events: none; filter: blur(5px) brightness(0.45); }
+  .level-lock { position: absolute; left: 0; right: 0; bottom: 0; height: 58svh; z-index: 3; display: grid; place-items: center; overflow: hidden; }
+  .level-lock[hidden] { display: none; }
+  .lock-bars { position: absolute; inset: 0; display: grid; align-content: space-evenly; padding: 4svh var(--margin); pointer-events: none; }
+  .lock-bars i { display: block; height: clamp(18px, 3.2svh, 34px); background: var(--redact); transform-origin: right center; box-shadow: 0 0 0 1px rgba(231, 228, 220, 0.04); }
+  .lock-ask { position: relative; display: grid; justify-items: center; gap: var(--s-3); text-align: center; padding: var(--s-6) var(--s-6); background: rgba(13, 16, 18, 0.9); border: 1px solid var(--iron-2); border-top: 2px solid var(--accent); max-width: min(560px, 88vw); }
+  .lock-ask p { margin: 0; }
+  .lock-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border: 1px solid var(--accent); border-radius: 99px; color: var(--bone); background: color-mix(in srgb, var(--accent) 14%, transparent); transition: background var(--d-s) var(--e-reveal); }
+  .lock-btn:hover, .lock-btn:focus-visible { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+
+  /* the subject: one big graded print with numbered pins, the callouts beside it */
+  .subject { padding: var(--s-7) 0 var(--s-8); }
+  .sub-grid { display: grid; gap: var(--s-6); margin-top: var(--s-6); align-items: start; }
+  /* the print never taller than the screen; on wide screens it stays while the callouts pass beside it */
+  .sub-photo { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--iron); background: var(--gunmetal-2); width: min(100%, calc(78svh * var(--ar))); justify-self: center; }
+  @media (min-width: 1100px) {
+    .sub-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+    .sub-photo { position: sticky; top: calc(var(--header-h) + 3svh); width: min(100%, calc(84svh * var(--ar))); }
+  }
+  .sub-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; will-change: transform; }
+  .pin { position: absolute; z-index: 2; width: 0; height: 0; }
+  .pin i { position: absolute; left: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--accent); background: rgba(13, 16, 18, 0.5); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .pin b { position: absolute; left: 16px; top: -26px; font-family: var(--f-type); font-size: 12px; color: var(--bone); text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9); }
+  .pin.on i { background: var(--accent); }
+  .callouts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-5); }
+  .callout { display: grid; gap: 6px; padding-left: var(--s-4); border-left: 2px solid var(--iron-2); transition: border-color var(--d-s); }
+  .callout.on { border-left-color: var(--accent); }
+  .cal-t { font-size: 15.5px; line-height: 1.5; }
+  @media (min-width: 1100px) { .callouts { padding: 22svh 0 34svh; gap: 26svh; } }
+  .ab-grid { display: grid; gap: var(--s-7); margin-top: var(--s-6); align-items: start; }
+  @media (min-width: 1000px) { .ab-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+  .abil { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--s-6); }
+  .abil li { display: grid; gap: 8px; border-top: 1px solid var(--accent-soft); padding-top: var(--s-4); }
+  .abil b { font-size: var(--t-3); font-weight: 800; }
+  .key { background: rgba(13, 16, 18, 0.72); border: 1px solid var(--iron); padding: var(--s-5); }
+  .key-k { margin: var(--s-5) 0 var(--s-2); }
+  .grid-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .grid-bars li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 1.2em; gap: 10px; align-items: center; }
+  .gb { height: 4px; background: var(--iron); position: relative; overflow: hidden; }
+  .gb i { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--v)); }
+  .grid-note { margin: var(--s-3) 0 0; }
+  .notes { list-style: none; margin: var(--s-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: var(--s-5); }
+  .notes li { display: grid; gap: 8px; padding: var(--s-5); background: var(--gunmetal-2); border: 1px solid var(--iron); }
+  .notes p { margin: 0; }
+  .log li.mcu .log-y { color: var(--accent); }
+  .log li:not(.mcu) .log-y { color: var(--ash); }
   html.rm [data-bar] { display: none; }
 </style>

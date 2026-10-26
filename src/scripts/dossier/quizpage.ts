@@ -1,63 +1,58 @@
 /**
- * The quiz, after Particle Self: the v1 quiz (ten questions, shareable result, Dossier-file cards) with the
- * archive's cloud of points. While the visitor answers, an anonymous cloud swirls beside the title; when the
- * result arrives the cloud moves into the result frame and gathers into the match, built in 3D from their
- * photo, with the name beside it, never behind it. Taking it again sends the cloud back to the nebula.
- * Reduced motion and no WebGL keep the cut-out photo in the frame.
+ * The quiz: the v1 quiz (ten questions, shareable result, Dossier-file cards) in the archive's dress. When the
+ * result arrives the match is revealed as a file being opened: redaction bars tear off the graded print, which
+ * then settles with a slow push, the stamp lands, and the character's signature sound plays (design system v3:
+ * photos are never assembled from particles). Reduced motion shows the print at once.
  */
-import * as THREE from 'three';
 import { gsap } from 'gsap';
 import type Lenis from 'lenis';
-import type { Ctx, HeroScene } from '../gl/engine';
 import { quizPage } from '../motion/quiz';
 import { reveals } from './reveal';
-import type { Cloud } from './cloud';
-import { Swarm, cloudLoader } from './swarm';
-import { C } from './tokens';
+import { Sound } from '../sound/engine';
+import { tear, stamp } from '../sound/actions';
+import { playSignature } from '../sound/signatures';
 
-type Env = { engine: { ctx: Ctx; mount(s: HeroScene): Promise<void>; renderer: THREE.WebGLRenderer } | null; lenis: Lenis | null; reduced: boolean; phone: boolean };
-type Entry = { slug: string; href: string; accent: string; cloud: Cloud | null };
+type Env = { lenis: Lenis | null; reduced: boolean; phone: boolean };
+type Entry = { slug: string; href: string };
 
 export async function quizPageV2(env: Env) {
   reveals(document, env.reduced);
   quizPage(document, { ease: 'power3.out', pace: 1, reduced: env.reduced });
   const result = document.querySelector<HTMLElement>('[data-result]');
   const link = document.querySelector<HTMLAnchorElement>('[data-r-link]');
-  const heroSlot = document.querySelector<HTMLElement>('[data-swarm-hero]');
   const frame = document.querySelector<HTMLElement>('[data-swarm-result]');
   const raw = document.getElementById('qz-data');
-  if (!result || !link || !heroSlot || !frame || !raw || !env.engine || env.reduced) return;
+  if (!result || !link || !frame || !raw) return;
   const roster = (JSON.parse(raw.textContent || '{}').roster ?? []) as Entry[];
+  const img = frame.querySelector('img')!;
+  const sound = Sound.get();
 
-  const N = env.phone ? 14000 : 30000;
-  const sc = new Swarm(N);
-  const ensure = cloudLoader(sc, N, roster.map((r) => r.cloud), 0.42, true);
-  sc.anchor = heroSlot; sc.target = -1; sc.glow = 0.35; sc.accent.set(C.emerald);
-  document.documentElement.classList.add('swarm-on');
-  await env.engine.mount(sc);
-  env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
-  gsap.fromTo(sc, { glow: 0 }, { glow: 0.35, duration: 1.4, ease: 'sine.inOut' });
+  // the bars that cover the print until the result is opened
+  const bars = [0.18, 0.36, 0.54, 0.72].map((top, i) => {
+    const b = document.createElement('i');
+    b.className = 'qz-bar'; b.setAttribute('aria-hidden', 'true');
+    b.style.top = `${top * 100}%`; b.style.width = `${[92, 76, 88, 64][i]}%`;
+    frame.append(b);
+    return b;
+  });
 
-  // the result: move the cloud into the frame and gather it into the match
   let shownFor = '';
-  const sync = async () => {
-    if (result.hidden) {
-      if (!shownFor) return;
-      shownFor = '';
-      sc.anchor = heroSlot; sc.target = -1; sc.accent.set(C.emerald);
-      gsap.to(sc, { gather: 0, duration: 0.6, ease: 'power2.in', overwrite: true });
-      return;
-    }
+  const open = () => {
+    if (result.hidden) { shownFor = ''; return; }
     const i = roster.findIndex((r) => link.href.endsWith(r.href) || link.getAttribute('href') === r.href);
     if (i < 0 || roster[i].slug === shownFor) return;
     shownFor = roster[i].slug;
-    sc.gather = 0; sc.anchor = frame; sc.target = -1; sc.accent.set(roster[i].accent);
-    await ensure(i);
-    if (shownFor !== roster[i].slug) return;
-    sc.target = i;
-    gsap.fromTo(sc, { gather: 0 }, { gather: 1, duration: 2.6, ease: 'power3.inOut', delay: 0.2, overwrite: true });
+    if (env.reduced) { gsap.set(bars, { scaleX: 0 }); playSignature(sound, shownFor); return; }
+    const slug = shownFor;
+    gsap.timeline()
+      .set(bars, { scaleX: 1 })
+      .set(img, { scale: 1.14, filter: 'brightness(0.35)' })
+      .to(bars, { scaleX: 0, duration: 0.3, ease: 'power3.in', stagger: { each: 0.12, onStart: () => tear(sound, undefined, 0.18) } }, 0.35)
+      .to(img, { filter: 'brightness(1)', duration: 0.8, ease: 'power2.out' }, 0.6)
+      .to(img, { scale: 1, duration: 2.6, ease: 'power3.out' }, 0.6)
+      .call(() => { stamp(sound); playSignature(sound, slug); }, [], 1.05);
   };
-  new MutationObserver(() => { sync(); }).observe(result, { attributes: true, attributeFilter: ['hidden'] });
-  new MutationObserver(() => { sync(); }).observe(link, { attributes: true, attributeFilter: ['href'] });
-  sync();
+  new MutationObserver(open).observe(result, { attributes: true, attributeFilter: ['hidden'] });
+  new MutationObserver(open).observe(link, { attributes: true, attributeFilter: ['href'] });
+  open();
 }

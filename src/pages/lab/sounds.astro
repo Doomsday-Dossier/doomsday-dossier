@@ -1,0 +1,46 @@
+---
+// Every sound on the site, to audition and to measure (CLAUDE.md, sound map). Not linked from the site.
+// window.__playAll(gap) plays each in turn and resolves with the recorded mix, for scripts/sounds-record.mjs.
+import '@fontsource/courier-prime/400.css';
+import { publishedOrder, heroName } from '../../data/site';
+const chars = publishedOrder().map((slug) => ({ slug, name: heroName(slug) }));
+const actions = [['tear', 'Redaction tears'], ['stamp', 'Stamp lands'], ['clash', 'Arena clash'], ['fileArrive', 'File arrives'], ['floodRise', 'Green flood']];
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" /><title>Sound lab | Doomsday Dossier</title></head>
+  <body>
+    <h1>Sound lab</h1>
+    <p>Every sound is synthesised in the browser: original work, no samples.</p>
+    <h2>Actions</h2>
+    <div class="grid">{actions.map(([k, l]) => <button type="button" data-action={k}>{l}</button>)}</div>
+    <h2>Signatures</h2>
+    <div class="grid">{chars.map((c) => <button type="button" data-sig={c.slug}>{c.name}</button>)}</div>
+    <script>
+      import { Sound } from '../../scripts/sound/engine';
+      import { SIGNATURES, playSignatureAt } from '../../scripts/sound/signatures';
+      import { tear, stamp, clash } from '../../scripts/sound/actions';
+      import { fileArrive, floodRise } from '../../scripts/sound/home';
+      const s = Sound.get();
+      const ACT: Record<string, () => void> = { tear: () => tear(s), stamp: () => stamp(s), clash: () => clash(s), fileArrive: () => fileArrive(s), floodRise: () => floodRise(s, 1.6) };
+      document.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((b) => b.addEventListener('click', async () => { await s.unlock(); ACT[b.dataset.action!](); }));
+      document.querySelectorAll<HTMLButtonElement>('[data-sig]').forEach((b) => b.addEventListener('click', async () => { await s.unlock(); playSignatureAt(s, b.dataset.sig!, s.ctx.currentTime + 0.02); }));
+      (window as any).__playAll = async (gap = 3) => {
+        await s.unlock();
+        const type = ['audio/webm;codecs=opus', 'audio/webm'].find((m) => MediaRecorder.isTypeSupported(m))!;
+        const rec = new MediaRecorder(new MediaStream(s.record().getAudioTracks()), { mimeType: type, audioBitsPerSecond: 192_000 });
+        const parts: Blob[] = []; rec.ondataavailable = (e) => { if (e.data.size) parts.push(e.data); };
+        rec.start(250);
+        const order = [...Object.keys(ACT).map((k) => ['a', k]), ...Object.keys(SIGNATURES).map((k) => ['s', k])];
+        for (const [kind, k] of order) { if (kind === 'a') ACT[k](); else playSignatureAt(s, k, s.ctx.currentTime + 0.02); await new Promise((r) => setTimeout(r, gap * 1000)); }
+        return new Promise<{ data: string; order: string[] }>((res) => { rec.onstop = () => { const r = new FileReader(); r.onload = () => res({ data: String(r.result), order: order.map((o) => o[1]) }); r.readAsDataURL(new Blob(parts, { type })); }; rec.stop(); });
+      };
+    </script>
+  </body>
+</html>
+<style>
+  body { margin: 0; padding: 32px; background: #0d1012; color: #e7e4dc; font: 15px/1.5 'Courier Prime', monospace; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+  button { padding: 14px; background: #161b1e; color: inherit; border: 1px solid #2c3337; border-radius: 6px; font: inherit; cursor: pointer; text-align: left; }
+  button:hover { border-color: #1fd47a; }
+</style>

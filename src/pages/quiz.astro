@@ -4,7 +4,7 @@ import '../styles/faces';
 import quiz from '../../research/quiz.json';
 import { DESIGN, castFor, publishedOrder, TEAMS, heroName, u } from '../data/site';
 import { PHOTO_CREDIT } from '../data/photos';
-import { accentOf, photos2For, pick2, cloudFor } from '../data/v2';
+import { accentOf, photos2For, pick2 } from '../data/v2';
 
 // every published character is a possible result; roster order breaks the last ties
 const roster = publishedOrder().map((slug) => {
@@ -13,7 +13,6 @@ const roster = publishedOrder().map((slug) => {
   return {
     slug, name, team: team.name, accent: accentOf(slug), font: d.font, weight: d.fontWeight, kicker: d.kicker, href: u(`/c/${slug}/`),
     photo: ph ? { src: pick2(ph.cut.length ? ph.cut : ph.full, 1280), card: pick2(ph.full, 1280), focus: ph.cut.length ? '50% 100%' : ph.focusM, cut: ph.cut.length > 0 } : null,
-    cloud: cloudFor(slug),
   };
 });
 const site = 'prejith77.github.io' + u('/quiz/');
@@ -22,7 +21,6 @@ const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_C
 <Dossier title="Which Doomsday hero are you?" page="quiz" description="Ten quick questions match you with one of the 29 Avengers: Doomsday characters, then save your result as a Dossier-file card. A fan quiz, just for fun." >
   <section class="qz" data-quiz>
     <div class="wrap qz-head">
-      <div class="qz-swarm" data-swarm-hero aria-hidden="true"></div>
       <p class="label" data-hero-in>Fan quiz &middot; just for fun, not facts</p>
       <h1 class="display qz-title" data-split="words" data-split-on="load">Who are you?</h1>
       <p class="qz-copy" data-hero-in>Ten quick questions match you with one of the {roster.length} characters in Avengers: Doomsday. There are no right answers. Your result links to that character&rsquo;s dossier, where every fact is sourced, and you can save it as a card to share.</p>
@@ -89,6 +87,9 @@ const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_C
   /* the hero cloud: beside the title on wide screens, above it on phones */
   .qz-head { position: relative; }
   .qz-swarm { display: none; }
+  /* redaction bars over the result print, torn off as the match is revealed (scripts/dossier/quizpage.ts) */
+  .qz-r-frame { position: relative; overflow: hidden; }
+  .qz-r-frame :global(.qz-bar) { position: absolute; left: 4%; height: 11%; background: var(--redact); transform-origin: right center; z-index: 2; }
   :global(html.swarm-on) .qz-swarm { display: block; height: 40svh; }
   @media (min-width: 900px) {
     :global(html.swarm-on) .qz-swarm { position: absolute; right: 0; top: -40px; width: 38%; height: min(64svh, 560px); }

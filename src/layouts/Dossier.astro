@@ -9,6 +9,7 @@ import '../styles/system.css';
 import { TEAMS, CAST, isPublished, displayName, u } from '../data/site';
 import { PHOTO_CREDIT } from '../data/photos';
 import { accentOf } from '../data/v2';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -39,6 +40,8 @@ const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'F
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <!-- pages change without a reload, so the score and the renderer carry on (scripts/dossier/main.ts) -->
+    <ClientRouter fallback="swap" />
     <script is:inline>
       // A cached page asking for files a deploy removed (CSS and JS are renamed on every deploy) reloads once.
       (function () {
@@ -59,12 +62,12 @@ const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'F
       })();
     </script>
   </head>
-  <body data-page={page} data-gl={gl ? 'on' : 'off'} style={vars}>
+  <body data-page={page} data-gl={gl ? 'on' : 'off'} style={vars} transition:animate="none">
     <a class="skip" href="#main">Skip to content</a>
-    <div class="pt" data-pt aria-hidden="true"><span class="pt-mark"><i></i>Doomsday Dossier</span><span class="pt-name t-label" data-pt-name></span></div>
-    {gl && <canvas id="dx-gl" aria-hidden="true"></canvas>}
-    <div class="grain" aria-hidden="true"></div>
-    <header class="dx-hdr">
+    <div class="pt" data-pt aria-hidden="true" transition:persist="pt"><span class="pt-mark"><i></i>Doomsday Dossier</span><span class="pt-name t-label" data-pt-name></span></div>
+    <canvas id="dx-gl" aria-hidden="true" transition:persist="gl"></canvas>
+    <div class="grain" aria-hidden="true" transition:persist="grain"></div>
+    <header class="dx-hdr" transition:persist="hdr">
       <a class="dx-mark" href={u('/')}><i></i><span>Doomsday Dossier</span></a>
       <div class="dx-hdr-right">
         <nav class="dx-nav" aria-label="Features">{NAV.map(([h, l]) => <a href={u(h)}>{l}</a>)}</nav>
@@ -75,7 +78,7 @@ const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'F
     </header>
 
     <!-- the index: every page, team and file, sliding down over the page -->
-    <nav class="dx-menu" id="dx-menu" data-menu aria-label="Site index" hidden>
+    <nav class="dx-menu" id="dx-menu" data-menu aria-label="Site index" hidden transition:persist="menu">
       <div class="dx-menu-in wrap">
         <div class="dx-menu-pages">
           <p class="t-label t-accent">Dossier</p>

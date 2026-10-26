@@ -1,6 +1,6 @@
 // Design system v2 data: approved accents (research/accents.json), HD photos and cut-outs
-// (src/data/photos2.json, built by scripts/photos2-build.mjs) and the particle-figure framing derived
-// from each subject's measured cut-out.
+// (src/data/photos2.json, built by scripts/photos2-build.mjs, graded into iron and green) and the callout
+// anchors measured from each subject's cut-out.
 import accents from '../../research/accents.json';
 import photos2 from './photos2.json';
 import { u } from './site';
@@ -21,13 +21,6 @@ export const photos2For = (slug: string) => P[slug] ?? [];
 export const srcset2 = (list: { w: number; src: string }[]) => list.map((s) => `${u('/' + s.src)} ${s.w}w`).join(', ');
 export const pick2 = (list: { w: number; src: string }[], min: number) => u('/' + (list.find((s) => s.w >= min) ?? list[list.length - 1]).src);
 
-/** Figure settings for a character's lead photo: sampled from its cut-out, framed on the subject. */
-export function figureFor(slug: string) {
-  const p = photos2For(slug)[0];
-  if (!p) return null;
-  const f = p.figure ?? { crop: [0.2, 0, 0.8, 1] as [number, number, number, number], focus: [0.5, 0.45] as [number, number] };
-  return { src: p.cut.length ? pick2(p.cut, 640) : pick2(p.full, 640), alphaCut: p.cut.length > 0, photoAspect: p.w / p.h, crop: f.crop, focus: f.focus, height: 3.5, depth: 0.45, cut: p.cut.length ? 0.02 : 0.1 };
-}
 
 /** The 3D depth diorama for a character's hero: the lead cut-out and its depth, the second photo as backdrop. */
 export function dioFor(slug: string, lines: string[], font: string, weight: number) {
@@ -40,22 +33,7 @@ export function dioFor(slug: string, lines: string[], font: string, weight: numb
   };
 }
 
-/** The home roll call's point cloud for a character: cut-out, subject depth and the bust window to sample. */
-export function cloudFor(slug: string) {
-  const p = photos2For(slug)[0];
-  if (!p?.cut.length || !p.figure) return null;
-  return {
-    cut: pick2(p.cut, 640), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 512),
-    crop: p.figure.crop, focus: p.figure.focus, aspect: p.w / p.h,
-  };
-}
 
-/** A character's figure for the home ring: small cut-out and subject depth, with the outline that sizes it. */
-export function ringFor(slug: string) {
-  const p = photos2For(slug)[0];
-  if (!p?.ring || !p.bbox) return null;
-  return { cut: u('/' + p.ring.cut), depth: u('/' + p.ring.depth), aspect: p.w / p.h, bbox: p.bbox, head: p.head ?? [0.5, 0.2] };
-}
 
 /** Four callout anchors on the subject (photo coordinates): head, chest, and both sides. */
 export function anchorsFor(slug: string): [number, number][] {

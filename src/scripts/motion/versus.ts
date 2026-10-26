@@ -5,6 +5,8 @@
  * sourced feats and connections. The pair lives in the URL (?a=thor&b=magneto) so any
  * matchup can be shared. Stats are the comics'; the page never declares a winner.
  */
+import { Sound } from '../sound/engine';
+import { clash } from '../sound/actions';
 import { gsap } from './grammar';
 import { arenaVote } from './arena';
 import { mostWanted } from './board';
@@ -93,6 +95,7 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
       .fromTo(movers, { x: (_i: number, el: Element) => dir(el) * innerWidth * 0.55, rotation: (_i: number, el: Element) => dir(el) * 9, opacity: 0 },
         { x: (_i: number, el: Element) => -dir(el) * Math.min(40, innerWidth * 0.03), rotation: 0, opacity: 1, duration: 0.42, ease: 'power4.in' })
       .addLabel('hit')
+      .call(() => clash(Sound.get()), [], 'hit')
       .fromTo(shock, { scale: 0.2, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 0.75, ease: 'power2.out' }, 'hit')
       .fromTo(flash, { opacity: 0.5 }, { opacity: 0, duration: 0.6, ease: 'power2.out' }, 'hit')
       .to(stage, { keyframes: { x: [-12, 10, -7, 4, -2, 0] }, duration: 0.42, ease: 'none' }, 'hit')

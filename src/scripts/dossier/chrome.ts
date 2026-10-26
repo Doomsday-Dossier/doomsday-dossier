@@ -64,30 +64,37 @@ export function menu(reduced: boolean, lenis: { stop(): void; start(): void } | 
 }
 
 const KEY = 'dd-pt';
-/** Page changes: the drawer closes over this page, the next page opens from under it. */
+/**
+ * Page changes (seamless, through Astro's client router): the drawer closes over this page while the next one
+ * loads, the new page swaps in under it, and the drawer lifts. The cover persists across swaps; its tweens
+ * carry `data: 'keep'` so the page teardown in main.ts leaves them running.
+ */
 export function transitions(reduced: boolean) {
   const pt = document.querySelector<HTMLElement>('[data-pt]');
   if (!pt) return;
+  const html = document.documentElement;
   // GSAP owns the cover's transform from here (it would otherwise read the CSS offset as extra pixels)
-  gsap.set(pt, { y: 0, yPercent: document.documentElement.classList.contains('pt-in') ? 0 : 101 });
-  // arriving: the cover was put up by the inline script; lift it
-  if (document.documentElement.classList.contains('pt-in')) {
-    gsap.fromTo(pt, { yPercent: 0 }, { yPercent: -101, duration: reduced ? 0 : 0.75, ease: EASE.file, delay: 0.05, onComplete: () => { document.documentElement.classList.remove('pt-in'); gsap.set(pt, { yPercent: 101 }); } });
-  }
+  gsap.set(pt, { y: 0, yPercent: html.classList.contains('pt-in') ? 0 : 101 });
+  let up = html.classList.contains('pt-in');
+  const lift = () => {
+    if (!up) return;
+    up = false;
+    gsap.fromTo(pt, { yPercent: 0 }, { yPercent: -101, duration: reduced ? 0 : 0.75, ease: EASE.file, delay: 0.08, data: 'keep', onComplete: () => { html.classList.remove('pt-in'); gsap.set(pt, { yPercent: 101 }); } });
+  };
+  lift(); // arriving from a full page load that put the cover up
   try { sessionStorage.removeItem(KEY); } catch { /* private mode */ }
+  document.addEventListener('astro:after-swap', lift);
   if (reduced) return;
-  document.addEventListener('click', (e) => {
-    const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href]');
-    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (a.target === '_blank' || a.hasAttribute('download') || a.dataset.noPt !== undefined) return;
-    const url = new URL(a.href, location.href);
-    if (url.origin !== location.origin || (url.pathname === location.pathname && url.hash)) return;
-    e.preventDefault();
+  document.addEventListener('astro:before-preparation', (ev) => {
+    const e = ev as Event & { sourceElement?: Element; loader: () => Promise<void> };
+    const a = e.sourceElement?.closest?.('a');
     const name = pt.querySelector<HTMLElement>('[data-pt-name]');
-    if (name) name.textContent = (a.dataset.ptLabel || a.querySelector('b')?.textContent || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40);
-    try { sessionStorage.setItem(KEY, '1'); } catch { /* private mode */ }
-    gsap.fromTo(pt, { yPercent: 101 }, { yPercent: 0, duration: 0.6, ease: EASE.file, onComplete: () => { location.href = url.href; } });
+    if (name) name.textContent = a ? ((a as HTMLElement).dataset.ptLabel || a.querySelector('b')?.textContent || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) : '';
+    const load = e.loader;
+    e.loader = async () => {
+      up = true;
+      const cover = new Promise<void>((res) => { gsap.fromTo(pt, { yPercent: 101 }, { yPercent: 0, duration: 0.6, ease: EASE.file, data: 'keep', onComplete: res }); });
+      await Promise.all([cover, load()]);
+    };
   });
-  // coming back through the browser's history restores the page as it was: make sure the cover is gone
-  addEventListener('pageshow', (e) => { if ((e as PageTransitionEvent).persisted) { gsap.set(pt, { yPercent: 101 }); document.documentElement.classList.remove('pt-in'); } });
 }

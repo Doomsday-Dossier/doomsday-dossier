@@ -1,4 +1,5 @@
 // Design system v2 photos. For every photo in research/photos/user-set.json, writes to public/photos2/<slug>/:
+//   (all graded into iron and green by scripts/grade.mjs, design system v3)
 //   <n>-<w>.webp       the photo at 640/1280/1920/2560 px wide (from the Real-ESRGAN upscale when it exists,
 //                      otherwise the original; never wider than the source)
 //   <n>-cut-<w>.webp   the subject cut out (alpha), same framing, at 640/1280/1920 px, when a mask exists
@@ -9,6 +10,7 @@
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
+import { graded, gradePixels } from './grade.mjs';
 
 const SRC = 'photo-originals/user', UP = 'photo-originals/upscaled', MASKS = 'photo-originals/masks', DEPTH = 'photo-originals/depth', OUT = 'public/photos2';
 const FULL = [640, 1280, 1920], CUT = [640, 1280, 1920]; // 2560 dropped: 100 MB to push on every update for very large monitors only
@@ -66,7 +68,7 @@ for (const [slug, list] of Object.entries(set)) {
       const out = path.join(OUT, slug, `${n}-${w}.webp`);
       // full photos only change when their source does: reuse them unless FORCE=1
       if (process.env.FORCE || !fs.existsSync(out) || fs.statSync(out).mtimeMs < fs.statSync(src).mtimeMs)
-        await sharp(src).resize({ width: Math.min(w, W) }).webp({ quality: 78, effort: 5 }).toFile(out);
+        await (await graded(sharp(src).resize({ width: Math.min(w, W) }))).webp({ quality: 78, effort: 5 }).toFile(out); // every photo leaves here graded into iron and green
       bytes += fs.statSync(out).size; files++;
       entry.full.push({ w: Math.min(w, W), src: `photos2/${slug}/${n}-${w}.webp` });
     }
@@ -80,7 +82,7 @@ for (const [slug, list] of Object.entries(set)) {
         for (const w of CUT.filter((w) => w <= W || w === CUT[0])) {
           const ww = Math.min(w, W), hh = Math.round((H / W) * ww);
           // joined as raw pixels: joinChannel on encoded buffers came out with black colour
-          const rgb = await sharp(src).resize(ww, hh).removeAlpha().raw().toBuffer();
+          const rgb = gradePixels(await sharp(src).resize(ww, hh).removeAlpha().raw().toBuffer(), 3);
           const alpha = await sharp(maskFile).greyscale().resize(ww, hh).raw().toBuffer();
           const rgba = Buffer.alloc(ww * hh * 4);
           for (let k = 0; k < ww * hh; k++) { rgba[k * 4] = rgb[k * 3]; rgba[k * 4 + 1] = rgb[k * 3 + 1]; rgba[k * 4 + 2] = rgb[k * 3 + 2]; rgba[k * 4 + 3] = alpha[k]; }
@@ -128,7 +130,7 @@ for (const [slug, list] of Object.entries(set)) {
         // 256 px subject depth keep the whole ring near 45 MB of texture memory, light enough for phones
         const rw = Math.min(400, W), rh = Math.round((H / W) * rw), dw = Math.min(256, ww), dh = Math.round((H / W) * dw);
         const ringCut = path.join(OUT, slug, `${n}-ring-400.webp`), ringDepth = path.join(OUT, slug, `${n}-ring-depth-256.webp`);
-        const rgbS = await sharp(src).resize(rw, rh).removeAlpha().raw().toBuffer();
+        const rgbS = gradePixels(await sharp(src).resize(rw, rh).removeAlpha().raw().toBuffer(), 3);
         const aS = await sharp(maskFile).greyscale().resize(rw, rh).raw().toBuffer();
         const rgbaS = Buffer.alloc(rw * rh * 4);
         for (let k = 0; k < rw * rh; k++) { rgbaS[k * 4] = rgbS[k * 3]; rgbaS[k * 4 + 1] = rgbS[k * 3 + 1]; rgbaS[k * 4 + 2] = rgbS[k * 3 + 2]; rgbaS[k * 4 + 3] = aS[k]; }
