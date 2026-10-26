@@ -41,6 +41,135 @@ of every session, then continue from the tracker at the bottom.
    roster as "Role not yet named by Marvel" and get no character page until Marvel
    names the role.
 
+## Design system v2: the Latverian dossier (fourth interview, 26 October 2026)
+
+Every page uses this system; nothing is styled one page at a time. Tokens live in
+`src/styles/system.css` (CSS) and `src/scripts/dossier/tokens.ts` (JS, the same values for
+GSAP and WebGL). A page that needs a value the system lacks adds it here first.
+
+**Concept.** A leaked Latverian intelligence dossier. Every character is a classified file
+being opened. Doom's emerald is the glow of the whole archive; when a file opens, that
+character's own accent takes over the page.
+
+**Showcase status (26 October 2026): built and live at /preview/ (archive) and /preview/c/victor-von-doom/ (Doom's file), awaiting the user's approval.** Code: `src/layouts/Dossier.astro`, `src/styles/system.css`, `src/scripts/dossier/` (`main.ts` entry, `archive.ts` intro and fly-through, `file.ts` file opening and subject, `figure.ts` particle figure, `filecover.ts` cover textures, `tokens.ts`). The v1 Engine and the Forge scene are reused. Lessons: sample a portrait window of a wide photo for a particle figure (a 16:9 scene makes the face a thin third), stretch brightness to the photo's own range, and fade distant WebGL cards by opacity, not toward the fog colour, when the backdrop glows.
+
+**Showcase first.** The intro, the home fly-through and Doom's file are built at `/preview/`
+and approved by the user before any other page is rebuilt. Then every page is rebuilt to the
+same standard ("every page with amazing animations"). Until approval the live site is untouched.
+
+### Colour tokens
+
+| Token | Value | Use |
+|---|---|---|
+| `--gunmetal` | `#0d1012` | page base (gunmetal black) |
+| `--gunmetal-2` | `#14181b` | raised panels, file interiors |
+| `--iron` | `#23292d` | rules, borders, file covers |
+| `--iron-2` | `#3a4247` | hover borders, inactive marks |
+| `--iron-aged` | `#5c5f58` | aged iron: rivets, worn edges, cover texture tint (2.94:1, never for text) |
+| `--ash` | `#8d918c` | secondary text (contrast 5.97:1 on gunmetal) |
+| `--bone` | `#e7e4dc` | primary text (contrast 15.03:1) |
+| `--emerald` | `#1fd47a` | Doom's emerald: the archive glow, links, stamps (9.78:1) |
+| `--emerald-hot` | `#5dffa8` | the glow's hot core in WebGL and on focus |
+| `--emerald-deep` | `#0b5e37` | emerald in shadow: cloak folds, glow falloff |
+| `--redact` | `#050607` | redaction bars |
+| `--stamp-ink` | accent at 85% with a 6% paper grain | stamps |
+| `--accent` | per file, from the table below | takes over a page when its file opens |
+
+Accents must reach 4.5:1 on `--gunmetal` (they colour labels and small text) and stay at
+least ΔE 12 apart from each other. Each comes from the character's established look,
+preferring the film costume Marvel cast for Doomsday, and cites where that look is described.
+
+| Character | Accent | From | Source | Status |
+|---|---|---|---|---|
+| VICTOR VON DOOM | `--emerald` `#1fd47a` on forged iron `#5c5f58` | cloak green over iron armour | Comic-Con 2024 reveal (research/official.json), Fantastic Four #5 (1962) on the Marvel Fandom wiki | approved (iron and emerald: the page goes from gunmetal to forged iron and the glow deepens, rather than changing hue) |
+| The other 28 | see `research/accents.md` | costume element per character | cited per row | awaiting the user's approval |
+
+### Type
+
+| Role | Face | Notes |
+|---|---|---|
+| Titles | **Big Shoulders Display** (variable 100 to 900) | tall, sharp, condensed; uppercase; tracking -0.01em; line height 0.86 |
+| Labels, file numbers, dates, clearance, stamps | **Courier Prime** (400, 700) | typewriter mono; uppercase for labels with tracking 0.14em; never below 11px |
+| Body | **Inter Tight** (variable) | 16 to 19px, line height 1.55, max 66ch |
+| A character's name on its own file | that character's signature face (`DESIGN[slug].font`) | the only place the 29 faces appear; everywhere else names use Big Shoulders |
+
+Fluid type scale (rem at a 16px root; `clamp(min, preferred, max)`):
+
+| Step | Size | Use |
+|---|---|---|
+| `--t-mega` | `clamp(4.5rem, 16vw, 15rem)` | intro title, file name on the cover |
+| `--t-1` | `clamp(3rem, 8vw, 7.5rem)` | page titles |
+| `--t-2` | `clamp(2.25rem, 5vw, 4.5rem)` | chapter titles |
+| `--t-3` | `clamp(1.5rem, 2.6vw, 2.5rem)` | section heads, card names |
+| `--t-body` | `clamp(1rem, 0.95rem + 0.25vw, 1.1875rem)` | body |
+| `--t-label` | `0.75rem` (12px) | labels; `--t-micro` 0.6875rem (11px) is the floor |
+
+Every display element is measured by `fitText` so no word ever runs past its box.
+
+### Spacing, grid, shape
+
+- Spacing steps (px): 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192 (`--s-1` to `--s-11`). Sections
+  are separated by `--s-10` on desktop and `--s-8` on phones.
+- Grid: 12 columns, gutter `clamp(16px, 2vw, 28px)`, page margin `clamp(16px, 4vw, 64px)`,
+  max content width 1440px. Phones: 4 columns.
+- Shape: files and panels are sharp (radius 2px). Only stamps and pills are round. Borders are
+  1px `--iron`; an opened file's border is 1px of its accent at 40%.
+- Texture: a fine film grain over everything (static on phones), paper fibre on file interiors,
+  rivet and scratch detail on iron covers. Textures never animate per frame on phones.
+
+### Easing and duration
+
+| Name | GSAP | CSS | Use |
+|---|---|---|---|
+| `file` | `power4.inOut` | `cubic-bezier(0.77, 0, 0.18, 1)` | heavy things: covers lifting, folders sliding, camera moves between files |
+| `reveal` | `expo.out` | `cubic-bezier(0.16, 1, 0.3, 1)` | text and redaction reveals, photos settling |
+| `stamp` | `power4.in` then `back.out(3)` settle | `cubic-bezier(0.5, 0, 0.75, 0)` | stamps slamming down (short in, tiny overshoot) |
+| `glow` | `sine.inOut` | `cubic-bezier(0.37, 0, 0.63, 1)` | emerald glow building and breathing |
+| `scrub` | `none` | `linear` | anything tied to scroll position |
+
+Durations: `xs` 0.15s (hover), `s` 0.3s, `m` 0.6s, `l` 1.0s, `xl` 1.6s (covers, camera). Stagger
+0.04s for letters, 0.08s for lines and cards. A file's whole opening sequence takes 2.4s or less.
+
+### Motion rules
+
+1. **Every animation reveals something.** Movement uncovers content, explains a relationship or
+   answers an input. Nothing loops just to fill the screen (ambient WebGL may breathe, never
+   distract from text).
+2. **60 fps on a mid-range phone.** Animate only `transform` and `opacity` in the DOM (plus
+   WebGL). Never animate `filter`, blur, `box-shadow`, `text-shadow`, `clip-path` on large areas
+   every frame, `mix-blend-mode` or layout. One WebGL renderer for the session; DPR capped 1.5
+   desktop, 1.25 phone; particle budgets 60k desktop, 18k phone; the quality governor steps down
+   when frames slip.
+3. **Reduced motion.** No intro (straight to the title and countdown, still), no camera moves
+   (the fly-through becomes a still grid of files), files open already open, no pins, no smooth
+   scroll, no split text. All content readable with WebGL off.
+4. **The intro** lasts at most five seconds, can be skipped (any key, click, tap or scroll), and
+   plays in full only on a first visit (`localStorage` `dd-intro-seen`); later visits get a
+   0.8s glow-in of the title and countdown.
+5. **Scroll.** Lenis smooth scroll; pinned chapters only for the timeline, the interactive
+   features and the file opening; never ScrollTrigger `snap` (glide through Lenis instead).
+6. **Hover** effects only on fine pointers; touch gets the same information without hover.
+7. **Sound** (if added later): off by default, original, never autoplay.
+
+### Components
+
+- **File cover**: an aged-iron folder face with tab, file number (`FILE 01 / 29`), clearance
+  (`CLEARANCE: OMEGA`), team, a redacted subject line and the character's name; lifts open on a
+  top hinge (rotateX in perspective) with `file` easing.
+- **Redaction bar**: `--redact` bars over text that peel away left to right (scaleX from the
+  right edge) in `reveal` easing, staggered 0.08s.
+- **Print**: a photo with a thin border and typed caption; slides out of the folder edge.
+- **Stamp**: round or boxed, Courier Prime 700, accent ink with grain; slams from scale 1.6 and
+  settles with a 2px shake.
+- **Callout**: Feathers Atlas style annotation: a thin leader line from a point on the subject to
+  a typed note; draws on as the subject settles.
+- **Key traits panel**: label and value rows (first appearance, creators, powers, status in
+  Doomsday), each with its source number.
+- **Detail lens**: a round magnified view of part of the subject, following the pointer on fine
+  pointers, fixed on phones.
+- **Countdown**: Courier Prime digits with an emerald glow, days/hours/minutes/seconds to
+  18 December 2026, same maths everywhere (whole days rounded down).
+
 ## Locked decisions (from the interview, 25 October 2026)
 
 | Topic | Decision |
@@ -223,6 +352,9 @@ node scripts/behaviour.mjs http://localhost:4322                  # reduced moti
 node scripts/clip-audit.mjs http://localhost:4322 ["c/shuri,teams"] [desktop,laptop,phone]   # clipped or cut-off text, broken words
 node scripts/interaction-fps.mjs http://localhost:4322 4               # frame rates during wave 7 interactions
 node scripts/quiz-test.mjs http://localhost:4322 screenshots/quiz       # quiz playthrough, shared link, both cards, header fit
+node scripts/showcase-shots.mjs http://localhost:4322 <dir> [desktop,phone] [archive,file]   # v2 showcase: timed intro, fly depths, file opening, fps
+node scripts/showcase-record.mjs http://localhost:4322 <dir> [desktop|phone]   # one-take screen recording of the showcase (localhost only: needs __ddLenis)
+node scripts/sheet.mjs <dir> <prefix> <out.jpg> [cols] [cell]                  # contact sheet of frames for reviewing motion
 node scripts/power-grid.mjs "Thor_(Thor_Odinson)"                      # official grid from the archived Marvel Universe wiki
 ```
 

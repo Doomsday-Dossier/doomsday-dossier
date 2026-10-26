@@ -1,0 +1,373 @@
+---
+// Showcase file (design system v2). Written for one slug so it can become /c/[slug]/ once approved.
+import Dossier from '../../../layouts/Dossier.astro';
+import '@fontsource-variable/cormorant-garamond';
+import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../../data/site';
+import { photosFor, srcOf, srcsetOf, PHOTO_CREDIT } from '../../../data/photos';
+import vs from '../../../../research/versus/victor-von-doom.json';
+
+const slug = 'victor-von-doom';
+const d = DESIGN[slug];
+const r = getResearch(slug)!;
+const c = castFor(slug)!;
+const team = TEAMS.find((t) => t.id === c.team)!;
+const order = publishedOrder();
+const no = order.indexOf(slug) + 1;
+const next = order[no % order.length];
+const photos = photosFor(slug);
+const fa = r.origin.firstAppearance;
+const name = heroName(slug).toUpperCase();
+const pad = (n: number) => String(n).padStart(2, '0');
+const sup = (nums: number[], anchor: string) => nums.map((n) => `<sup class="cite"><a href="#${anchor}">${n}</a></sup>`).join('');
+
+// I. the file sheet: Marvel's confirmation and the first appearance
+const cFile = new Citer();
+const nRole = cFile.cite([SRC[c.roleSource!]])[0];
+const nFa = cFile.cite([r.origin.sources[1]])[0];
+const nFilm = cFile.cite([SRC.S_FILM])[0];
+const nAbil = cFile.cite(vs.abilities[0].sources)[0];
+
+// II. the subject: callouts pinned to points on the photo (u, v from its top-left), and key traits
+const cSub = new Citer();
+const sdcc26 = OFFICIAL.milestones.find((m) => m.source === 'S_SDCC26');
+const callouts = [
+  { u: 0.5, v: 0.5, k: 'The mask', t: 'Forged by the monks who trained him, and pressed to his face before it had cooled.', n: cSub.cite([r.origin.sources[0], r.origin.sources[3]]) },
+  { u: 0.53, v: 0.62, k: 'Beneath it', t: 'A scar from his own exploding machine at State University, which his pride turned into ruin.', n: cSub.cite([r.origin.sources[0]]) },
+  { u: 0.36, v: 0.42, k: 'The green', t: sdcc26 ? 'His cloak colour: at Comic-Con 2026 Marvel turned all of Hall H green, in Doom masks and capes.' : 'His cloak colour since the comics began.', n: sdcc26 ? cSub.cite([SRC.S_SDCC26]) : cSub.cite([r.origin.sources[1]]) },
+  { u: 0.71, v: 0.88, k: 'The armour', t: vs.abilities[2].detail, n: cSub.cite(vs.abilities[2].sources) },
+];
+const grid = vs.powerGrid.values as Record<string, number>;
+const gridLabels: Record<string, string> = { intelligence: 'Intelligence', strength: 'Strength', speed: 'Speed', durability: 'Durability', energyProjection: 'Energy projection', fightingSkills: 'Fighting skills' };
+const nGrid = cSub.cite([vs.powerGrid.source])[0];
+const abilities = vs.abilities.map((a) => ({ ...a, n: cSub.cite(a.sources) }));
+
+// III to V: origin, the comics record, sightings on screen
+const cOrigin = new Citer(); const originNums = cOrigin.cite(r.origin.sources);
+const cComics = new Citer(); const comics = r.comics.map((e) => ({ ...e, nums: cComics.cite(e.sources) }));
+const cScreen = new Citer(); const screen = [...r.screen].sort((a, b) => a.year - b.year).map((s) => ({ ...s, nums: cScreen.cite(s.sources) }));
+
+// VI: only what Marvel confirmed
+const cDoom = new Citer();
+const dFilm = cDoom.cite([SRC.S_FILM])[0];
+const dRole = cDoom.cite([SRC[c.roleSource!]])[0];
+const mentions = OFFICIAL.milestones.filter((m) => m.text.includes(c.actor) || m.text.includes('Doom')).map((m) => ({ ...m, num: cDoom.cite([SRC[m.source]])[0] }));
+
+const fig = photos[0], p2 = photos[1], p3 = photos[2];
+const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:#5c5f58`;
+---
+<Dossier title={`${name}: classified file (design preview)`} description={`Design preview: the classified file on ${heroName(slug)}, opened.`} page="file" accent="#1fd47a" styleVars={styleVars}>
+  <div class="tint" data-tint aria-hidden="true"></div>
+  <article class="file" data-file data-figure={srcOf(fig, 800)} data-lens={srcOf(fig, 1920)} data-focus={fig.focusM}>
+
+    <!-- I. THE FILE OPENS -->
+    <section class="open" data-open aria-labelledby="f-name">
+      <div class="open-stage">
+        <div class="folder" data-folder>
+          <div class="sheet" data-sheet>
+            <div class="sheet-head t-micro">
+              <span>Latverian state archive</span><span>File {pad(no)} / {order.length}</span><span class="t-accent">Clearance: Omega</span>
+            </div>
+            <p class="t-label t-ash sheet-k">Subject</p>
+            <h1 id="f-name" class="sig-name" data-fit>{name}</h1>
+            <p class="t-label t-accent sheet-alias">{r.alias} &middot; Monarch of Latveria</p>
+            <ul class="traits sheet-rows">
+              <li><span class="k">In Doomsday</span><span class="v"><span class="redact">{c.actor}, named by Marvel as {c.character}<Fragment set:html={sup([nRole], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+              <li><span class="k">First appearance</span><span class="v"><span class="redact">{fa.title} {fa.issue}, cover date {fa.coverDate}<Fragment set:html={sup([nFa], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+              <li><span class="k">Created by</span><span class="v"><span class="redact">{r.origin.creators.join(' and ')}<Fragment set:html={sup([nFa], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+              <li><span class="k">Abilities</span><span class="v"><span class="redact">{vs.abilities.slice(0, 3).map((a) => a.name).join(' · ')}<Fragment set:html={sup([nAbil], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+              <li><span class="k">Status</span><span class="v"><span class="redact">Confirmed for Avengers: Doomsday, in theaters {fmtDate(OFFICIAL.film.releaseDate)}<Fragment set:html={sup([nFilm], 'src-file')} /><span class="bar" data-bar></span></span></span></li>
+            </ul>
+          </div>
+          {p2 && <figure class="print fp1" data-print><img src={srcOf(p2, 800)} srcset={srcsetOf(p2)} sizes="(min-width: 900px) 24vw, 46vw" alt={`${heroName(slug)}, exhibit ${pad(no)}-B`} width={p2.w} height={p2.h} loading="eager" style={`object-position:${p2.focusM}`} /><figcaption>Exhibit {pad(no)}-B</figcaption></figure>}
+          {p3 && <figure class="print fp2" data-print><img src={srcOf(p3, 800)} srcset={srcsetOf(p3)} sizes="(min-width: 900px) 24vw, 46vw" alt={`${heroName(slug)}, exhibit ${pad(no)}-C`} width={p3.w} height={p3.h} loading="eager" style={`object-position:${p3.focusM}`} /><figcaption>Exhibit {pad(no)}-C</figcaption></figure>}
+          <div class="stamp-at"><span class="stamp" data-stamp><b>{team.id === 'adversary' ? 'Adversary' : 'Confirmed'}</b><small>Confirmed by Marvel &middot; SDCC 2024</small></span></div>
+          <div class="cover" data-cover aria-hidden="true">
+            <div class="cover-face">
+              <span class="cover-tab t-label">File {pad(no)}</span>
+              <div class="cover-top t-micro"><span>Property of the Latverian state</span><span>Do not remove from the archive</span></div>
+              <p class="cover-name">{name}</p>
+              <div class="cover-bottom">
+                <span class="t-label t-accent">Top secret &middot; Omega</span>
+                <span class="t-micro t-ash">{team.name} &middot; {r.alias}</span>
+              </div>
+              <i class="rivet r1"></i><i class="rivet r2"></i><i class="rivet r3"></i><i class="rivet r4"></i>
+            </div>
+            <div class="cover-back"></div>
+          </div>
+        </div>
+        <p class="open-hint t-label t-ash" data-hint>Scroll to open the file</p>
+      </div>
+      <details class="sources wrap file-src" id="src-file"><summary>File sources ({cFile.list.length})</summary>
+        <ol>{cFile.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </section>
+
+    <!-- II. THE SUBJECT -->
+    <section class="subject" data-subject aria-labelledby="sub-h">
+      <div class="sub-pin" data-sub-pin><div class="sub-stage">
+        <div class="fig-space" data-fig-space aria-hidden="true"></div>
+        <header class="sub-head">
+          <p class="t-label t-accent">II &middot; The subject</p>
+          <h2 id="sub-h" class="t-title chap" data-fit data-rise>Under the hood</h2>
+        </header>
+        <ol class="callouts" data-callouts>
+          {callouts.map((k, i) => (
+            <li class="callout" data-callout data-u={k.u} data-v={k.v}>
+              <i class="lead" data-lead aria-hidden="true"></i>
+              <span class="t-micro t-accent">0{i + 1} &middot; {k.k}</span>
+              <span class="cal-t"><Fragment set:html={k.t + sup(k.n, 'src-sub')} /></span>
+            </li>
+          ))}
+        </ol>
+        <aside class="key" data-key aria-label="Key traits">
+          <p class="t-label t-ash">Key traits</p>
+          <ul class="traits">
+            <li><span class="k">Real name</span><span class="v">{r.name}</span></li>
+            <li><span class="k">Alias</span><span class="v">{r.alias}</span></li>
+            <li><span class="k">Rules</span><span class="v">Latveria, from Doomstadt<Fragment set:html={sup(originNums.slice(0, 1), 'src-origin')} /></span></li>
+          </ul>
+          <p class="t-label t-ash key-k">Power grid, 1 to 7<Fragment set:html={sup([nGrid], 'src-sub')} /></p>
+          <ul class="grid-bars">
+            {Object.entries(grid).map(([k, v]) => (
+              <li><span class="t-micro">{gridLabels[k] ?? k}</span><span class="gb" aria-label={`${v} of 7`}><i data-bar-w style={`--v:${v / 7}`}></i></span><b class="t-type">{v}</b></li>
+            ))}
+          </ul>
+          <p class="t-micro t-ash grid-note">Comics stats, as published on Marvel.com&rsquo;s Marvel Universe wiki.</p>
+        </aside>
+        <div class="lens" data-lens-el aria-hidden="true"><i></i></div>
+      </div></div>
+      <div class="wrap sub-more">
+        <h3 class="t-label t-accent">Abilities on file</h3>
+        <ul class="abil">
+          {abilities.map((a) => <li data-reveal><b class="t-title">{a.name}</b><span><Fragment set:html={a.detail + sup(a.n, 'src-sub')} /></span></li>)}
+        </ul>
+        <details class="sources" id="src-sub"><summary>Subject sources ({cSub.list.length})</summary>
+          <ol>{cSub.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+        </details>
+      </div>
+    </section>
+
+    <!-- III. ORIGIN -->
+    <section class="chapter-sec wrap" aria-labelledby="or-h">
+      <p class="t-label t-accent">III &middot; Origin</p>
+      <h2 id="or-h" class="t-title chap" data-fit data-rise>Where it began</h2>
+      <div class="or-grid">
+        <aside class="fa" data-reveal>
+          <p class="t-micro t-ash">First appearance</p>
+          <p class="fa-t t-title">{fa.title} {fa.issue}</p>
+          <p class="t-label">Cover date {fa.coverDate}</p>
+          <p class="t-micro t-ash" style="margin-top:18px">Created by</p>
+          <p class="t-label">{r.origin.creators.join(', ')}</p>
+        </aside>
+        <div class="prose">
+          {r.origin.summary.map((p, i) => <p data-reveal set:html={p + (i === r.origin.summary.length - 1 ? sup(originNums, 'src-origin') : '')} />)}
+        </div>
+      </div>
+      <details class="sources" id="src-origin"><summary>Origin sources ({cOrigin.list.length})</summary>
+        <ol>{cOrigin.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </section>
+
+    <!-- IV. THE COMICS RECORD -->
+    <section class="chapter-sec wrap" aria-labelledby="rec-h">
+      <p class="t-label t-accent">IV &middot; The comics record</p>
+      <h2 id="rec-h" class="t-title chap" data-fit data-rise>{comics.length} reports, {comics[0].years.slice(0, 4)} to {comics[comics.length - 1].years.slice(-4)}</h2>
+      <ol class="reports">
+        {comics.map((e, i) => (
+          <li class="report" data-report>
+            <div class="rep-years t-title">{e.years}</div>
+            <div class="rep-body">
+              <p class="t-micro t-accent">Report {pad(i + 1)} &middot; {e.era}</p>
+              <h3 class="rep-t">{e.title}</h3>
+              <p set:html={e.summary + sup(e.nums, 'src-comics')} />
+              <p class="t-micro t-ash rep-k">Key issues: {e.keyIssues.join(' · ')}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <details class="sources" id="src-comics"><summary>Comics sources ({cComics.list.length})</summary>
+        <ol>{cComics.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </section>
+
+    <!-- V. SIGHTINGS ON SCREEN -->
+    <section class="chapter-sec wrap" aria-labelledby="sig-h">
+      <p class="t-label t-accent">V &middot; Sightings on screen</p>
+      <h2 id="sig-h" class="t-title chap" data-fit data-rise>{screen.length} live-action sightings</h2>
+      <ol class="log">
+        {screen.map((s) => (
+          <li data-reveal>
+            <span class="log-y t-title">{s.year}</span>
+            <span class="log-main">
+              <span class="log-tags t-micro"><span class="tag">{s.continuity}</span>{s.cameo && <span class="tag">Cameo</span>}</span>
+              <b class="log-t">{s.title}</b>
+              <span class="t-micro t-ash">Performer: {s.actor}</span>
+              <span class="log-s" set:html={s.summary + sup(s.nums, 'src-screen')} />
+            </span>
+          </li>
+        ))}
+      </ol>
+      <details class="sources" id="src-screen"><summary>Screen sources ({cScreen.list.length})</summary>
+        <ol>{cScreen.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </section>
+
+    <!-- VI. CONFIRMED FOR DOOMSDAY -->
+    <section class="chapter-sec wrap doom-sec" aria-labelledby="dd-h">
+      <p class="t-label t-accent">VI &middot; In Avengers: Doomsday</p>
+      <h2 id="dd-h" class="t-title chap" data-fit data-rise>What Marvel has confirmed</h2>
+      <p class="t-ash">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
+      <div class="dd-grid">
+        <div data-reveal><p class="t-micro t-ash">Cast</p><p class="dd-big t-title">{c.actor}</p><p set:html={`Marvel lists ${c.actor} in the cast.${sup([dFilm], 'src-doom')}`} /></div>
+        <div data-reveal><p class="t-micro t-ash">Role</p><p class="dd-big t-title">{c.character}</p><p set:html={`Named by Marvel at Comic-Con 2024.${sup([dRole], 'src-doom')}`} /></div>
+        <div data-reveal><p class="t-micro t-ash">Release</p><p class="dd-big t-title">{fmtDate(OFFICIAL.film.releaseDate)}</p><p class="t-type dd-count" data-mini-count>00d 00h 00m 00s</p></div>
+      </div>
+      <ol class="dd-line">
+        {mentions.map((m) => <li data-reveal><span class="t-micro t-accent">{fmtDate(m.date)}</span><span><b>{m.title}.</b> <Fragment set:html={m.text + sup([m.num], 'src-doom')} /></span></li>)}
+      </ol>
+      <details class="sources" id="src-doom"><summary>Marvel sources ({cDoom.list.length})</summary>
+        <ol>{cDoom.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
+      </details>
+    </section>
+
+    <nav class="next-file wrap" aria-label="More files">
+      <a class="nf" href={u(`/c/${next}/`)}><span class="t-micro t-ash">Next file &middot; current site</span><b class="t-title">{heroName(next).toUpperCase()} &rarr;</b></a>
+      <a class="nf back" href={u('/preview/')}><span class="t-micro t-ash">Back to</span><b class="t-title">The archive</b></a>
+      <p class="t-micro t-ash credit">{PHOTO_CREDIT}</p>
+    </nav>
+  </article>
+</Dossier>
+
+<style>
+  .tint { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 40%, color-mix(in srgb, var(--forged) 70%, #0d1012), #0d1012 75%); opacity: 0; }
+  .file { position: relative; }
+  .sig-name { font-family: var(--sig); font-weight: var(--sig-w); text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.92; margin: 0; font-size: clamp(40px, 6.4vw, 104px); }
+
+  /* I. the folder */
+  .open { position: relative; height: 340vh; }
+  .open-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; perspective: 1800px; padding-top: calc(var(--header-h) - 10px); }
+  .folder { position: relative; width: min(1080px, 90vw); height: min(80svh, 680px); transform-style: preserve-3d; }
+  @media (min-width: 761px) and (max-height: 860px) {
+    /* short laptop screens: a tighter sheet so every fact fits */
+    .sig-name { font-size: clamp(36px, 4.6vw, 76px); }
+    .sheet { gap: 6px; padding-top: 22px; }
+    .sheet-head { padding-bottom: 8px; margin-bottom: 4px; }
+    .sheet-rows li { padding: 7px 0; }
+  }
+  .sheet { position: absolute; inset: 0; background: linear-gradient(160deg, #1a1f22, #121618 70%); border: 1px solid var(--iron-2); border-radius: var(--r); padding: clamp(18px, 3vw, 40px); padding-right: clamp(18px, 37%, 400px); display: grid; align-content: start; gap: 10px; overflow: hidden; }
+  .sheet::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(transparent 0 31px, rgba(231, 228, 220, 0.035) 31px 32px); }
+  .sheet-head { display: flex; flex-wrap: wrap; gap: 6px 22px; color: var(--ash); padding-bottom: 12px; border-bottom: 1px solid var(--iron-2); margin-bottom: 10px; }
+  .sheet-k { margin: 6px 0 0; }
+  .sheet-alias { margin: 0 0 8px; }
+  .sheet-rows .v { font-size: clamp(14px, 1.2vw, 17px); }
+  .sheet-rows .redact { display: block; }
+  .print { position: absolute; width: clamp(130px, 20vw, 250px); aspect-ratio: 4 / 3; }
+  .print img { aspect-ratio: 4 / 3; height: auto; }
+  .fp1 { right: 3%; top: 7%; }
+  .fp2 { right: 9%; top: 44%; }
+  .stamp-at { position: absolute; right: 6%; bottom: 7%; }
+  .stamp { font-size: clamp(14px, 1.6vw, 22px); }
+  .stamp b { font-size: 1.5em; letter-spacing: 0.12em; }
+  .stamp small { font-size: 0.5em; letter-spacing: 0.14em; }
+  .cover { position: absolute; inset: -6px; transform-origin: 50% 0%; transform-style: preserve-3d; }
+  .cover-face, .cover-back { position: absolute; inset: 0; border-radius: 4px; backface-visibility: hidden; }
+  .cover-face { background: radial-gradient(ellipse at 30% 20%, #3a4144, #22282b 55%, #171b1d); border: 1px solid #4a5256; box-shadow: inset 0 0 0 10px rgba(0, 0, 0, 0.18), inset 0 0 80px rgba(0, 0, 0, 0.55); display: grid; grid-template-rows: auto 1fr auto; padding: clamp(22px, 4vw, 54px); }
+  .cover-back { transform: rotateX(180deg); background: linear-gradient(#1b2023, #101315); border: 1px solid #2c3337; }
+  .cover-tab { position: absolute; left: 32px; top: -30px; background: #2c3336; border: 1px solid #4a5256; border-bottom: 0; padding: 6px 18px 8px; border-radius: 4px 4px 0 0; }
+  .cover-top { display: flex; justify-content: space-between; gap: 12px; color: var(--ash); flex-wrap: wrap; }
+  .cover-name { align-self: center; margin: 0; font-family: var(--sig); font-weight: var(--sig-w); text-transform: uppercase; letter-spacing: 0.03em; line-height: 0.9; font-size: clamp(44px, 9vw, 150px); color: var(--bone); text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6); }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+  .rivet { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #9aa1a4, #3a4144 70%); }
+  .r1 { left: 14px; top: 14px; } .r2 { right: 14px; top: 14px; } .r3 { left: 14px; bottom: 14px; } .r4 { right: 14px; bottom: 14px; }
+  .open-hint { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); margin: 0; white-space: nowrap; }
+  .file-src { position: absolute; bottom: 8px; left: 0; right: 0; z-index: 3; }
+  @media (max-width: 760px) {
+    /* phones: the facts fill the top of the folder, the prints sit in a band kept free at the bottom */
+    .folder { height: min(84svh, 760px); }
+    .sheet { padding: 18px 18px 0; gap: 6px; }
+    .sheet-head { gap: 4px 14px; padding-bottom: 8px; margin-bottom: 4px; }
+    .sheet-rows li { grid-template-columns: 1fr; gap: 0; padding: 6px 0; }
+    .sheet-rows .v { font-size: 13.5px; }
+    .print { width: 34vw; padding: 5px 5px 20px; }
+    .print figcaption { font-size: 8px; bottom: 5px; }
+    .fp1 { right: 5%; top: auto; bottom: 4%; }
+    .fp2 { right: auto; left: 8%; top: auto; bottom: 5%; }
+    .stamp-at { right: 24%; bottom: 19%; }
+    .stamp { font-size: 11px; }
+  }
+
+  /* II. the subject */
+  .subject { position: relative; }
+  .sub-pin { position: relative; height: 230vh; }
+  .sub-stage { position: sticky; top: 0; height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: var(--s-5); padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-6); }
+  .sub-head { grid-column: 1 / -1; }
+  .fig-space { display: none; }
+  .chap { font-size: var(--t-2); margin: 6px 0 0; }
+  .callouts { list-style: none; margin: 0; padding: 0; grid-column: 1; align-self: center; display: grid; gap: var(--s-5); position: relative; z-index: 2; }
+  .callout { position: relative; display: grid; gap: 4px; max-width: 34ch; }
+  .cal-t { font-size: 15px; line-height: 1.45; }
+  .lead { position: absolute; left: 0; top: 0; height: 1px; width: 100px; background: var(--accent); transform-origin: 0 0; pointer-events: none; opacity: 0.8; }
+  .key { grid-column: 3; align-self: center; background: rgba(13, 16, 18, 0.72); border: 1px solid var(--iron); padding: var(--s-5); position: relative; z-index: 2; }
+  .key-k { margin: var(--s-5) 0 var(--s-2); }
+  .grid-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .grid-bars li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 1.2em; gap: 10px; align-items: center; }
+  .gb { height: 4px; background: var(--iron); position: relative; overflow: hidden; }
+  .gb i { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--v)); }
+  .grid-note { margin: var(--s-3) 0 0; }
+  .lens { position: absolute; width: 170px; height: 170px; border-radius: 50%; border: 1px solid var(--accent); overflow: hidden; pointer-events: none; left: 0; top: 0; opacity: 0; z-index: 3; box-shadow: 0 0 0 6px rgba(13, 16, 18, 0.6); }
+  .lens i { position: absolute; left: 0; top: 0; width: 1px; height: 1px; background-repeat: no-repeat; }
+  .sub-more { position: relative; z-index: 2; padding: var(--s-7) 0 var(--s-9); background: var(--gunmetal); }
+  .abil { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--s-6); }
+  .abil li { display: grid; gap: 8px; border-top: 1px solid var(--accent-soft); padding-top: var(--s-4); }
+  .abil b { font-size: var(--t-3); font-weight: 800; }
+  @media (max-width: 900px) {
+    .sub-pin { height: auto; }
+    .sub-stage { position: relative; height: auto; display: block; padding-top: calc(var(--header-h) + var(--s-6)); }
+    .fig-space { display: block; height: 62svh; }
+    .callouts { margin-top: var(--s-6); }
+    .lead { display: none; }
+    .key { margin-top: var(--s-6); }
+    .lens { width: 120px; height: 120px; }
+  }
+
+  /* III to VI */
+  .chapter-sec { position: relative; z-index: 2; padding: var(--s-10) 0 var(--s-8); background: var(--gunmetal); }
+  .chapter-sec + .chapter-sec { border-top: 1px solid var(--iron); }
+  .or-grid { display: grid; gap: var(--s-7); margin-top: var(--s-7); }
+  @media (min-width: 900px) { .or-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); } }
+  .fa { border-left: 3px solid var(--accent); padding-left: var(--s-5); align-self: start; }
+  .fa p { margin: 0; }
+  .fa-t { font-size: var(--t-3); font-weight: 800; margin: 6px 0 !important; }
+  .prose p { margin: 0 0 1.2em; max-width: 66ch; }
+  .reports { list-style: none; margin: var(--s-7) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+  .report { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 2fr); gap: var(--s-6); padding: var(--s-6); background: var(--gunmetal-2); border: 1px solid var(--iron); border-left: 3px solid var(--accent-soft); }
+  .rep-years { font-size: var(--t-3); font-weight: 800; color: var(--accent); }
+  .rep-t { font-family: var(--f-title); font-weight: 700; text-transform: uppercase; font-size: 26px; margin: 6px 0 10px; line-height: 1; }
+  .rep-body p { margin: 0 0 10px; max-width: 70ch; }
+  .rep-k { margin-top: 12px !important; }
+  @media (max-width: 700px) { .report { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); padding: var(--s-5); } .rep-k { overflow-wrap: anywhere; } }
+  .log { list-style: none; margin: var(--s-7) 0 0; padding: 0; }
+  .log li { display: grid; grid-template-columns: minmax(0, 0.5fr) minmax(0, 2fr); gap: var(--s-6); padding: var(--s-5) 0; border-top: 1px solid var(--iron); }
+  .log-y { font-size: var(--t-3); font-weight: 800; color: var(--accent); }
+  .log-main { display: grid; gap: 6px; }
+  .log-t { font-family: var(--f-title); font-weight: 700; text-transform: uppercase; font-size: 28px; line-height: 1; }
+  .log-tags { display: flex; gap: 6px; }
+  .tag { border: 1px solid var(--accent-soft); color: var(--accent); padding: 2px 8px; border-radius: 99px; }
+  .log-s { color: var(--ash); max-width: 70ch; font-size: 15px; }
+  .dd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--s-6); margin: var(--s-7) 0; }
+  .dd-grid > div { border-top: 1px solid var(--accent); padding-top: var(--s-4); }
+  .dd-grid p { margin: 0 0 6px; }
+  .dd-big { font-size: var(--t-3); font-weight: 800; }
+  .dd-count { color: var(--accent); font-size: 20px; }
+  .dd-line { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-4); }
+  .dd-line li { display: grid; grid-template-columns: 10em minmax(0, 1fr); gap: var(--s-4); }
+  @media (max-width: 600px) { .dd-line li, .log li { grid-template-columns: 1fr; gap: 4px; } }
+  .next-file { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: var(--s-5); padding: var(--s-9) 0 var(--s-8); background: var(--gunmetal); }
+  .nf { display: grid; gap: 8px; padding: var(--s-6); border: 1px solid var(--iron); text-decoration: none; transition: border-color var(--d-s); }
+  .nf:hover { border-color: var(--accent); }
+  .nf b { font-size: var(--t-2); font-weight: 800; }
+  .credit { grid-column: 1 / -1; margin: 0; }
+  [data-reveal], [data-report] { opacity: 1; }
+  html.rm .cover { display: none; }
+  html.rm [data-bar] { display: none; }
+</style>
