@@ -2,6 +2,7 @@
 import Dossier from '../../layouts/Dossier.astro';
 import { DESIGN, castFor, publishedOrder, TEAMS, heroName, u } from '../../data/site';
 import { photosFor, srcOf } from '../../data/photos';
+import { figureFor } from '../../data/v2';
 
 // the 29 files, in roster order (team by team); only Doom's file is rebuilt in the showcase so far
 const order = publishedOrder();
@@ -18,7 +19,7 @@ const doom = photosFor('victor-von-doom')[0];
 const title = ['DOOMSDAY', 'DOSSIER'];
 ---
 <Dossier title="Doomsday Dossier: the archive (design preview)" description="Design preview of the Latverian dossier: the archive intro and fly-through." page="archive">
-  <div class="archive" data-archive data-figure={srcOf(doom, 800)}>
+  <div class="archive" data-archive data-figure={srcOf(doom, 800)} data-fig={JSON.stringify(figureFor('victor-von-doom'))}>
     <section class="intro" data-intro aria-labelledby="dx-title">
       <div class="intro-top">
         <p class="t-label t-accent" data-after>Latverian state archive &middot; leaked</p>

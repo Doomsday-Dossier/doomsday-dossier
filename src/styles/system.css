@@ -136,3 +136,18 @@ html.rm [data-dx-hide] { opacity: 1 !important; transform: none !important; }
 /* callout anchor dots, added by the file script (so they live here, not in a page's scoped CSS) */
 .cdot { position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--accent); background: var(--gunmetal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); pointer-events: none; z-index: 3; transform: scale(0); }
 @media (max-width: 899px) { .cdot { display: none; } }
+
+/* v1 names mapped onto v2 tokens, so ported page bodies (arena, planner, predictions, quiz, timeline)
+   take the new colours and type without restyling every rule */
+:root {
+  --void: var(--gunmetal);
+  --doom: var(--emerald);
+  --bone-dim: var(--ash);
+  --font-mono: var(--f-type);
+  --font-sans: var(--f-body);
+  --font-serif: var(--f-title);
+  --ease-out: var(--e-reveal);
+}
+.label { font-family: var(--f-type); font-size: var(--t-label); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ash); }
+.display { font-family: var(--f-title); font-weight: 900; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.86; margin: 0; }
+.serif { font-family: var(--f-title); }

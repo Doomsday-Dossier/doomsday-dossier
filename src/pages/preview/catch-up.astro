@@ -1,0 +1,114 @@
+---
+import Dossier from '../../layouts/Dossier.astro';
+import OylaBand from '../../components/OylaBand.astro';
+import '../../styles/faces';
+import catchup from '../../../research/catchup.json';
+import { DESIGN, castFor, publishedOrder, TEAMS, OFFICIAL, heroName, u, fmtDate } from '../../data/site';
+import { photosFor, srcOf } from '../../data/photos';
+
+const roster = publishedOrder().map((slug) => {
+  const ph = photosFor(slug)[0];
+  return { slug, name: heroName(slug), team: castFor(slug)!.team, accent: DESIGN[slug].accent, photo: ph ? { src: srcOf(ph, 400), focus: ph.focusM } : null, ...catchup.characters[slug as keyof typeof catchup.characters] };
+});
+const teams = TEAMS.filter((t) => roster.some((c) => c.team === t.id));
+const data = JSON.stringify({ roster, titles: catchup.titles, release: OFFICIAL.film.releaseDate });
+---
+<Dossier title="Catch-up planner (design preview)" page="catchup" description="Tick the Avengers: Doomsday characters you care about and get the shortest watch list to be ready, with total hours and how much a day to finish by 18 December. Every runtime sourced." >
+  <section class="cu" data-catchup>
+    <div class="wrap cu-head">
+      <p class="label" data-hero-in>Catch-up planner &middot; {fmtDate(OFFICIAL.film.releaseDate)}</p>
+      <h1 class="display cu-title" data-split="words" data-split-on="load">Ready by Doomsday.</h1>
+      <p class="cu-copy" data-hero-in>Tick the characters you care about. For each one you get their first and their most recent screen appearance with the actor Marvel cast in Doomsday, so you see where they began and where they left off. Titles shared by several characters count once; for series, only the episodes they are in. Re-releases are left out.</p>
+    </div>
+    <OylaBand slugs={['steve-rogers', 'thor', 'peggy-carter']} caption="Where they left off, and where they began." />
+
+    <div class="wrap cu-grid">
+      <div class="cu-pick">
+        <div class="cu-quick" role="group" aria-label="Quick picks">
+          <button type="button" data-all>Everyone</button>
+          {teams.map((t) => <button type="button" data-team={t.id}>{t.short}</button>)}
+          <button type="button" data-clear>Clear</button>
+        </div>
+        <ul class="cu-faces">
+          {roster.map((c) => (
+            <li><button type="button" class="cu-face" data-pick={c.slug} aria-pressed="false" style={`--a:${c.accent}`}>
+              {c.photo ? <img src={c.photo.src} alt="" width="64" height="64" loading="lazy" decoding="async" style={`object-position:${c.photo.focus}`} /> : <span>{c.name.slice(0, 1)}</span>}
+              <b>{c.name}</b>
+            </button></li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="cu-plan" aria-live="polite">
+        <div class="cu-sum">
+          <div class="cu-big"><b data-hours>0</b><span>hours to watch</span></div>
+          <div class="cu-big"><b data-titles>0</b><span>titles</span></div>
+          <div class="cu-big cu-pace"><b data-per-day>0</b><span>hours a day to finish by {fmtDate(OFFICIAL.film.releaseDate)}</span></div>
+        </div>
+        <div class="cu-bar" aria-hidden="true"><i data-progress></i></div>
+        <p class="cu-meta" data-meta>Pick at least one character.</p>
+        <ol class="cu-list" data-list></ol>
+        <div class="cu-actions">
+          <button type="button" data-copy>Copy my list</button>
+          <button type="button" data-share>Copy link to these picks</button>
+        </div>
+        <p class="cu-note">Release order. Runtimes from each title&rsquo;s page on the Marvel Cinematic Universe Wiki or the Marvel Fandom wiki (Wikipedia where neither lists one), linked on every line. Ticks are kept only on this device.</p>
+      </aside>
+    </div>
+  </section>
+  <script type="application/json" id="cu-data" set:html={data} />
+</Dossier>
+
+<style>
+  :global(h1.display) { font-weight: 900; }
+  .cu { padding: calc(var(--header-h) + 60px) 0 90px; }
+  .cu-head { display: grid; gap: 16px; }
+  .cu-title { font-size: min(clamp(60px, 11vw, 180px), calc((100vw - 2 * var(--gutter)) / 5.6)); margin-bottom: 0.14em; }
+  .cu-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
+  .cu-grid { display: grid; gap: 40px; margin-top: 46px; align-items: start; }
+  @media (min-width: 1000px) { .cu-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } .cu-plan { position: sticky; top: calc(var(--header-h) + 20px); max-height: calc(100svh - var(--header-h) - 40px); overflow: auto; } }
+
+  .cu-quick { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .cu-quick button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--iron-2); padding: 10px 14px; border-radius: 99px; min-height: 44px; color: var(--bone-dim); }
+  .cu-quick button:hover { border-color: var(--bone-dim); color: var(--bone); }
+  .cu-faces { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; }
+  .cu-face { width: 100%; display: grid; justify-items: center; gap: 6px; padding: 10px 4px; border-radius: 6px; border: 1px solid transparent; min-height: 44px; transition: border-color 0.3s, background 0.3s; }
+  .cu-face img, .cu-face span { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px var(--iron); filter: grayscale(1) brightness(0.7); transition: filter 0.4s, box-shadow 0.4s, transform 0.4s var(--ease-out); }
+  .cu-face b { font-weight: 400; font-size: 11px; line-height: 1.2; color: var(--bone-dim); text-align: center; text-transform: uppercase; letter-spacing: 0.04em; }
+  .cu-face:hover img { filter: grayscale(0.4) brightness(0.9); }
+  .cu-face[aria-pressed='true'] { border-color: var(--a); background: color-mix(in srgb, var(--a) 12%, transparent); }
+  .cu-face[aria-pressed='true'] img { filter: none; box-shadow: 0 0 0 2px var(--a); transform: scale(1.04); }
+  .cu-face[aria-pressed='true'] b { color: var(--bone); }
+
+  .cu-plan { border: 1px solid var(--iron); border-radius: 6px; padding: clamp(18px, 2.4vw, 28px); background: color-mix(in srgb, var(--void) 85%, black); scrollbar-width: thin; }
+  .cu-sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .cu-big { display: grid; gap: 4px; }
+  .cu-big b { font-family: var(--font-mono); font-weight: 400; font-size: clamp(30px, 3.6vw, 52px); line-height: 1; color: var(--bone); font-variant-numeric: tabular-nums; }
+  .cu-pace b { color: var(--doom); text-shadow: 0 0 24px rgba(61, 255, 138, 0.35); }
+  .cu-big span { font-size: 12px; color: var(--bone-dim); line-height: 1.3; }
+  .cu-bar { height: 4px; border-radius: 99px; background: rgba(232, 230, 225, 0.08); margin: 18px 0 8px; overflow: hidden; }
+  .cu-bar i { display: block; height: 100%; background: var(--doom); transform-origin: left; transform: scaleX(0); transition: transform 0.6s var(--ease-out); }
+  .cu-meta { margin: 0 0 12px; font-size: 13px; color: var(--bone-dim); }
+  .cu-list { list-style: none; margin: 0; padding: 0; }
+  .cu-list > :global(li) { border-top: 1px solid var(--iron); padding: 12px 0; display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 4px 12px; align-items: start; }
+  .cu-list > :global(li.done) { opacity: 0.45; }
+  .cu-list > :global(li.done .cu-t) { text-decoration: line-through; text-decoration-color: var(--doom); }
+  .cu-list :global(input[type='checkbox']) { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--doom); cursor: pointer; }
+  .cu-list :global(.cu-t) { font-family: var(--font-serif); font-size: 22px; line-height: 1.1; }
+  .cu-list :global(.cu-y) { font-family: var(--font-mono); font-size: 11px; color: var(--bone-dim); margin-left: 6px; }
+  .cu-list :global(.cu-tag) { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; border: 1px solid currentColor; border-radius: 99px; padding: 1px 6px; margin-left: 6px; color: var(--doom); vertical-align: 2px; }
+  .cu-list :global(.cu-tag[data-cont='FOX']) { color: #ffb36b; }
+  .cu-list :global(.cu-min) { font-family: var(--font-mono); font-size: 12px; color: var(--bone); white-space: nowrap; }
+  .cu-list :global(.cu-why) { grid-column: 2 / -1; margin: 2px 0 0; font-size: 13px; color: var(--bone-dim); }
+  .cu-list :global(.cu-why b) { color: var(--a); font-weight: 500; }
+  .cu-list :global(.cu-eps) { grid-column: 2 / -1; margin: 4px 0 0; padding-left: 18px; font-size: 13px; color: var(--bone-dim); display: grid; gap: 3px; }
+  .cu-list :global(.cu-eps li) { display: list-item; border: 0; padding: 0; }
+  .cu-list :global(.cu-eps a) { color: var(--bone-dim); font-size: 11px; margin-left: 4px; }
+  .cu-list :global(.cu-src) { grid-column: 2 / -1; font-size: 11px; color: var(--bone-dim); }
+  .cu-list :global(.cu-src a) { color: var(--bone-dim); }
+  .cu-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .cu-actions button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--iron-2); padding: 10px 14px; border-radius: 99px; min-height: 44px; color: var(--bone); }
+  .cu-actions button:hover { border-color: var(--doom); }
+  .cu-note { font-size: 11px; color: var(--bone-dim); margin: 14px 0 0; }
+  @media (max-width: 520px) { .cu-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cu-pace { grid-column: 1 / -1; } }
+</style>

@@ -136,6 +136,8 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
     }
     if (!o.reduced && changed.length) slam(changed);
     arena.update({ slug: A.slug, name: A.name, accent: A.accent }, { slug: B.slug, name: B.name, accent: B.accent });
+    // the v2 cloth posters follow the pair
+    document.dispatchEvent(new CustomEvent('dd:pair', { detail: { a: A.slug, b: B.slug, changed } }));
     cycleFeats();
 
     // the comparison below the fold is rebuilt once the slam has played and the browser is idle,
@@ -220,5 +222,9 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
     glideTo(stage.getBoundingClientRect().top + scrollY - 90, 0.9);
     window.setTimeout(() => render(changed.length ? [...changed] : ['a', 'b']), o.reduced ? 0 : 500);
   }, o));
+  // a cloth poster flung into the other one (v2 arena) slams the cards too
+  const onFling = () => { if (!o.reduced) slam(['a', 'b']); };
+  document.addEventListener('dd:fling', onFling);
+  offs.push(() => document.removeEventListener('dd:fling', onFling));
   return () => offs.forEach((f) => f());
 }

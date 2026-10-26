@@ -53,6 +53,40 @@ character's own accent takes over the page.
 
 **Showcase status (26 October 2026): built and live at /preview/ (archive) and /preview/c/victor-von-doom/ (Doom's file), awaiting the user's approval.** Code: `src/layouts/Dossier.astro`, `src/styles/system.css`, `src/scripts/dossier/` (`main.ts` entry, `archive.ts` intro and fly-through, `file.ts` file opening and subject, `figure.ts` particle figure, `filecover.ts` cover textures, `tokens.ts`). The v1 Engine and the Forge scene are reused. Lessons: sample a portrait window of a wide photo for a particle figure (a 16:9 scene makes the face a thin third), stretch brightness to the photo's own range, and fade distant WebGL cards by opacity, not toward the fog colour, when the backdrop glows.
 
+**Rollout (approved 26 October 2026, "it's brilliant").** Every page is rebuilt on v2 under `/preview/`
+and the whole site switches in one deploy after the user reviews it (swap all at once; at the swap,
+`/preview/` pages move to the root and their `/preview/` links are rewritten). Six more motionsites
+references were approved and mapped:
+
+| Page | Reference | What it does |
+|---|---|---|
+| Character files (29, `/preview/c/[slug]/`) | Obsidian, Lena Varga, Oyla, Space Voyage | hero: the cut-out subject in front of their giant name as their colour floods in, camera pushes in on scroll; then the approved file opening and subject; exhibits zoom toward you; the next file is a window into the next world with every file listed like planets |
+| Team pages (7) | Lena Varga, Space Voyage | pinned carousel: members burst in one by one over their name, the page takes each one's colour, a side list marks who is on stage |
+| Timeline | Space Voyage | pinned decade hero: a window on a character who debuted that decade, over the giant decade, with its numbers; the side list jumps the film strip |
+| Arena | Peculiar Atelier | the fighters are verlet-cloth posters (`dossier/cloth.ts`); grab and drag, fling one at the other to tear it from its clips and hit, which fires the arena's slam (`dd:fling`) |
+| Predictions | Anchor AI | particle tree (`dossier/tree.ts`): a branch per question grows when answered (`dd:picks`), lock-in sends a pulse up the tree and rings across the ground (`dd:locked`) |
+| Quiz | Lena Varga | the result is the cut-out match over their giant name on a flood of their colour |
+| Planner, sources, credits | Oyla | editorial band of three prints that grow toward the reader (`components/OylaBand.astro`) |
+
+v1 logic is reused, not rewritten: the arena, timeline strip, planner, predictions and quiz scripts
+run unchanged inside the v2 pages (v1 token names are aliased to v2 tokens in `system.css`; the v1
+scripts announce `dd:pair`, `dd:picks`, `dd:locked` and listen for `dd:fling` for the v2 effects).
+
+**HD photos and cut-outs (user decision, 26 October 2026).** The user's 87 photos are upscaled 4x
+locally with Real-ESRGAN (`scripts/upscale-photos.mjs`, only photos with a short side under 1200 px,
+about 2.5 min each on the UHD 730) and every subject is cut out locally with briaai/RMBG-1.4 through
+transformers.js (`scripts/cutout-photos.mjs`; non-commercial licence, which this site is; model files
+in `photo-originals/models`, fetched once with Windows curl because this PC's network re-signs TLS for
+Node). `scripts/photos2-build.mjs` writes `public/photos2/` (sizes up to 2560 px plus alpha cut-outs)
+and `src/data/photos2.json` with each subject's measured bounding box and head point, which frame the
+particle figures, centre the heroes and anchor the callouts (`src/data/v2.ts`). Approved accents come
+from `research/accents.json`.
+
+**Lessons from the rollout.** String.replace treats `$$` in the replacement as a single `$`: write code
+edits with split/join or the Edit tool. A wide photo in a narrow box must be centred with flex (or the
+measured head), not `margin: auto`, or it pins to the left. A WebGL page's frame rate cannot be judged
+while the upscaler is using the same GPU.
+
 **Showcase first.** The intro, the home fly-through and Doom's file are built at `/preview/`
 and approved by the user before any other page is rebuilt. Then every page is rebuilt to the
 same standard ("every page with amazing animations"). Until approval the live site is untouched.

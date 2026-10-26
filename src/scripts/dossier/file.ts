@@ -4,6 +4,9 @@
  * down while the page warms to the file's own colour. The subject chapter is a specimen (Feathers
  * Atlas): the subject as a turning point cloud (Particle Self) with callouts pinned to points on the
  * figure, key traits and a close-up lens. The character's signature WebGL scene stays live behind.
+ * Before the file, the hero (Obsidian, Lena Varga): the subject cut out in front of their name while
+ * their colour floods the page; scrolling pushes the camera in. After the subject, the exhibits zoom
+ * toward you (Oyla), and the next file opens as a window into the next world (Space Voyage).
  */
 import * as THREE from 'three';
 import { gsap } from 'gsap';
@@ -13,12 +16,16 @@ import type { Ctx, HeroScene } from '../gl/engine';
 import { fitText } from '../motion/grammar';
 import { Figure } from './figure';
 import { C, EASE, FIGURES, timeLeft } from './tokens';
+
+type Fig = { src: string; alphaCut: boolean; photoAspect: number; crop: [number, number, number, number]; focus: [number, number]; height: number; depth: number; cut: number };
 import type Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const FIG = FIGURES['victor-von-doom'];
-const [CX0, CY0, CX1, CY1] = FIG.crop;
+// the page's figure framing (data-fig, from src/data/v2.ts figureFor); Doom's showcase values until it is read
+let FIG: Fig = { src: '', alphaCut: false, photoAspect: 16 / 9, ...FIGURES['victor-von-doom'] };
+let [CX0, CY0, CX1, CY1] = FIG.crop;
+const setFig = (f: Fig) => { FIG = f; [CX0, CY0, CX1, CY1] = f.crop; };
 /** photo coordinates (u, v of the whole photo) to the sampled window */
 const toCrop = (u: number, v: number): [number, number] => [(u - CX0) / (CX1 - CX0), (v - CY0) / (CY1 - CY0)];
 const X_AXIS = new THREE.Vector3(1, 0, 0), Y_AXIS = new THREE.Vector3(0, 1, 0);
@@ -82,11 +89,30 @@ export async function filePage(env: Env) {
   const $ = <T extends HTMLElement = HTMLElement>(s: string, r: ParentNode = file) => r.querySelector<T>(s)!;
   const $$ = <T extends HTMLElement = HTMLElement>(s: string, r: ParentNode = file) => [...r.querySelectorAll<T>(s)];
   const R = env.reduced;
+  const figData = JSON.parse(file.dataset.fig || 'null') as Fig | null;
+  if (figData) setFig(figData);
 
   // display text measured to its box, then split for reveals
   fitText(document);
   document.fonts.ready.then(() => { if (fitText(document)) ScrollTrigger.refresh(); }).catch(() => {});
   addEventListener('resize', () => { if (fitText(document)) ScrollTrigger.refresh(); });
+
+  // 0. the hero: colour floods in, the name rises behind, the subject bursts through; scroll pushes in
+  const hero = file.querySelector<HTMLElement>('[data-hero]');
+  if (hero && !R) {
+    const flood = $('[data-flood]', hero), nameEl = $('[data-hero-name]', hero), cut = hero.querySelector<HTMLElement>('[data-hero-cut]'), hin = $$('[data-hin]', hero);
+    gsap.set(nameEl, { y: 0, yPercent: -58 });
+    const intro = gsap.timeline({ delay: 0.1 })
+      .fromTo(flood, { scale: 0 }, { scale: 1, duration: 1.3, ease: EASE.file })
+      .fromTo(nameEl.querySelectorAll('.hw'), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.08, ease: EASE.reveal }, 0.25)
+      .fromTo(hin, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: EASE.reveal }, 0.9);
+    if (cut) intro.fromTo(cut, { yPercent: 14, scale: 0.86, opacity: 0 }, { yPercent: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'back.out(1.4)' }, 0.45);
+    const push = gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.5 } });
+    if (cut) push.to(cut, { scale: 1.55, yPercent: 10, ease: 'none' }, 0);
+    push.to(nameEl, { scale: 1.08, opacity: 0, ease: 'none' }, 0)
+      .to(flood, { scale: 1.6, opacity: 0.25, ease: 'none' }, 0)
+      .to(hin, { opacity: 0, ease: 'none', duration: 0.3 }, 0);
+  }
 
   // mini countdown
   const mini = $('[data-mini-count]');
@@ -97,12 +123,12 @@ export async function filePage(env: Env) {
   let sc: FileScene | null = null;
   if (env.engine) {
     const { loadScene } = await import('../gl/registry');
-    const back = await loadScene('forge');
+    const back = await loadScene(file.dataset.scene || 'forge');
     if (back) {
       sc = new FileScene(back);
       await env.engine.mount(sc);
       env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
-      sc.load(env.engine.ctx, file.dataset.figure!);
+      if (FIG.src) sc.load(env.engine.ctx, FIG.src);
     }
   }
 
@@ -148,7 +174,7 @@ export async function filePage(env: Env) {
   const stage = $('.sub-stage', subject);
   const dots = callouts.map(() => { const d = document.createElement('i'); d.className = 'cdot'; d.setAttribute('aria-hidden', 'true'); stage.append(d); return d; });
   // the sampled window's shape: the photo is 16:9, the window a portrait slice of it
-  const aspect = (16 / 9) * ((CX1 - CX0) / (CY1 - CY0));
+  const aspect = FIG.photoAspect * ((CX1 - CX0) / (CY1 - CY0));
   let subQ = 0;
   const reveal = callouts.map(() => ({ v: R ? 1 : 0 }));
   ScrollTrigger.create({
@@ -237,6 +263,19 @@ export async function filePage(env: Env) {
 
   // III to VI: titles rise, blocks settle, reports are filed in
   if (!R) {
+    // exhibits: each print comes toward you as it passes, the photo settling inside its frame (Oyla)
+    $$('[data-ex]').forEach((ex) => {
+      const frame = ex.querySelector('.ex-frame'), img = ex.querySelector('img');
+      gsap.fromTo(frame, { scale: 0.86, opacity: 0.4 }, { scale: 1, opacity: 1, ease: 'none', scrollTrigger: { trigger: ex, start: 'top bottom', end: 'center center', scrub: 0.4 } });
+      gsap.fromTo(img, { scale: 1.28 }, { scale: 1.04, ease: 'none', scrollTrigger: { trigger: ex, start: 'top bottom', end: 'bottom top', scrub: 0.4 } });
+    });
+    // the next file: the world behind drifts, the window rises toward you
+    const voy = file.querySelector<HTMLElement>('[data-voyage]');
+    if (voy) {
+      const bg = voy.querySelector('[data-voy-bg]'), win = voy.querySelector('[data-voy-window]');
+      if (bg) gsap.fromTo(bg, { yPercent: -6, scale: 1.14 }, { yPercent: 6, scale: 1.04, ease: 'none', scrollTrigger: { trigger: voy, start: 'top bottom', end: 'bottom top', scrub: true } });
+      if (win) gsap.fromTo(win, { scale: 0.82, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: voy, start: 'top bottom', end: 'top 25%', scrub: 0.5 } });
+    }
     $$('[data-rise]', document).forEach((el) => {
       SplitText.create(el, { type: 'lines,words', mask: 'lines', linesClass: 'split-line', autoSplit: true, onSplit: (s) => gsap.from(s.words, { yPercent: 110, duration: 0.9, stagger: 0.05, ease: EASE.reveal, scrollTrigger: { trigger: el, start: 'top 85%', once: true } }) });
     });

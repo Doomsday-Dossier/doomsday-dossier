@@ -29,7 +29,7 @@ for (const [name, opts] of Object.entries(VIEWS)) {
   const ctx = await b.newContext(opts);
   for (const p of list) {
     const page = await ctx.newPage();
-    await page.goto(base + p, { waitUntil: 'load' });
+    await page.goto(base + p, { waitUntil: 'load', timeout: 90000 }); // generous: pages may load slowly while the PC upscales photos
     await page.waitForTimeout(2600);
     // walk the page so every scroll-triggered reveal has played
     const h = await page.evaluate(() => document.documentElement.scrollHeight);

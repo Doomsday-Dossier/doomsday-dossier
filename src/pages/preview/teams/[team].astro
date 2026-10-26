@@ -1,0 +1,152 @@
+---
+// A team, design system v2 (Lena Varga, Space Voyage): members burst in one at a time over their giant
+// name as the page takes each one's colour; a list down the side shows who is on stage.
+import Dossier from '../../../layouts/Dossier.astro';
+import '../../../styles/faces';
+import { TEAMS, CAST, DESIGN, isPublished, displayName, getResearch, u, heroName } from '../../../data/site';
+import { PHOTO_CREDIT } from '../../../data/photos';
+import { accentOf, photos2For, pick2, srcset2 } from '../../../data/v2';
+
+export function getStaticPaths() {
+  return TEAMS.map((t) => ({ params: { team: t.id } }));
+}
+const { team } = Astro.params as { team: string };
+const t = TEAMS.find((x) => x.id === team)!;
+const idx = TEAMS.findIndex((x) => x.id === team);
+const nextTeam = TEAMS[(idx + 1) % TEAMS.length];
+const pad = (n: number) => String(n).padStart(2, '0');
+const all = CAST.filter((c) => c.team === team);
+const members = all.filter((c) => isPublished(c.slug)).map((c) => {
+  const slug = c.slug!, d = DESIGN[slug], r = getResearch(slug)!, p = photos2For(slug)[0];
+  const name = heroName(slug).toUpperCase();
+  const w = name.split(' ');
+  let lines = [name];
+  for (let i = 1; i < w.length; i++) { const l = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (lines.length === 1 || Math.max(...l.map((x) => x.length)) < Math.max(...lines.map((x) => x.length))) lines = l; }
+  return {
+    slug, name, lines, longest: Math.max(...lines.map((l) => l.length)), accent: accentOf(slug), font: d.font, weight: d.fontWeight,
+    actor: c.actor, named: !!c.character, alias: r.alias, fa: r.origin.firstAppearance,
+    cut: p?.cut.length ? p.cut : null, full: p?.full ?? [], w: p?.w ?? 1, h: p?.h ?? 1, head: p?.head?.[0] ?? 0.5, focus: p?.focusM ?? '50% 50%',
+  };
+});
+const others = all.filter((c) => !isPublished(c.slug));
+---
+<Dossier title={`${t.name}: team file (design preview)`} description={`${t.name}: every confirmed member in Avengers: Doomsday. Design preview.`} page="team" accent={members[0]?.accent ?? '#1fd47a'}>
+  <article class="team" data-team>
+    <header class="tm-head wrap">
+      <p class="t-label t-accent">Team {pad(idx + 1)} / {pad(TEAMS.length)} &middot; {members.length} {members.length === 1 ? 'file' : 'files'}</p>
+      <h1 class="t-title tm-title" data-fit data-rise>{t.name}</h1>
+      <p class="tm-blurb">{t.blurb}</p>
+    </header>
+
+    {members.length > 0 && (
+      <section class="tm-carousel" data-carousel style={`--n:${members.length}`} aria-label={`${t.name} members`}>
+        <div class="tm-stage">
+          {members.map((m, i) => <div class="tm-bg" data-bg style={`--a:${m.accent}`} aria-hidden="true"></div>)}
+          <ol class="tm-list t-micro" aria-hidden="true">
+            {members.map((m, i) => <li data-dot style={`--a:${m.accent}`}><i></i>{m.name}</li>)}
+          </ol>
+          {members.map((m, i) => (
+            <div class="tm-slide" data-slide style={`--a:${m.accent};--f:${m.font};--fw:${m.weight};--longest:${m.longest}`} aria-hidden={i > 0 ? 'true' : undefined}>
+              <p class="tm-name" data-name data-fit>{m.lines.map((l) => <><span class="ln">{l}</span>{' '}</>)}</p>
+              <div class="tm-subj">
+                {m.cut
+                  ? <img data-cut src={pick2(m.cut, 1280)} srcset={srcset2(m.cut)} sizes="(min-width: 900px) 55vw, 100vw" width={m.w} height={m.h} alt="" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" style={`translate:${Math.round((0.5 - m.head) * 1000) / 10}% 0`} />
+                  : <img data-cut class="soft" src={pick2(m.full, 1280)} srcset={srcset2(m.full)} sizes="100vw" width={m.w} height={m.h} alt="" loading="lazy" decoding="async" style={`object-position:${m.focus}`} />}
+              </div>
+              <div class="tm-info" data-info>
+                <p class="t-micro t-accent">Member {pad(i + 1)} / {pad(members.length)}</p>
+                <p class="tm-alias">{m.alias}</p>
+                <p class="t-micro t-ash">{m.named ? 'Role named by Marvel' : 'Marvel lists ' + m.actor + ' in the cast'} &middot; first appeared {m.fa.coverDate}</p>
+                <a class="tm-open t-label" href={u(`/preview/c/${m.slug}/`)}>Open the file &rarr;</a>
+              </div>
+            </div>
+          ))}
+          <p class="tm-cue t-micro t-ash" data-cue>Scroll for the next member</p>
+        </div>
+      </section>
+    )}
+
+    <section class="tm-index wrap" aria-labelledby="idx-h">
+      <h2 id="idx-h" class="t-label t-accent">Every member on file</h2>
+      <ol class="tm-grid">
+        {members.map((m, i) => (
+          <li style={`--a:${m.accent}`}>
+            <a href={u(`/preview/c/${m.slug}/`)}>
+              <span class="tg-photo">{(m.cut || m.full.length > 0) && <img src={pick2(m.cut ?? m.full, 640)} alt="" loading="lazy" decoding="async" class={m.cut ? 'cut' : ''} style={m.cut ? `translate:${Math.round((0.5 - m.head) * 1000) / 10}% 0` : `object-position:${m.focus}`} />}</span>
+              <span class="t-micro t-accent">File {pad(i + 1)}</span>
+              <b>{m.name}</b>
+              <span class="t-micro t-ash">{m.actor}</span>
+            </a>
+          </li>
+        ))}
+        {others.map((c) => (
+          <li class="unnamed">
+            <span class="tg-inner">
+              <span class="t-micro t-ash">No file yet</span>
+              <b>{displayName(c)}</b>
+              <span class="t-micro t-ash">{c.team === 'unnamed' ? 'Role not yet named by Marvel' : 'Role not named by Marvel'}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      <nav class="tm-next">
+        <a href={u(`/preview/teams/${nextTeam.id}/`)}><span class="t-micro t-ash">Next team</span><b class="t-title">{nextTeam.name} &rarr;</b></a>
+        <a href={u('/preview/')}><span class="t-micro t-ash">Back to</span><b class="t-title">The archive</b></a>
+      </nav>
+      <p class="t-micro t-ash">{PHOTO_CREDIT}</p>
+    </section>
+  </article>
+</Dossier>
+
+<style>
+  .tm-head { padding: calc(var(--header-h) + var(--s-8)) 0 var(--s-7); display: grid; gap: var(--s-4); position: relative; z-index: 2; }
+  .tm-title { font-size: var(--t-mega); font-weight: 900; }
+  .tm-blurb { max-width: 60ch; color: var(--ash); margin: 0; }
+
+  .tm-carousel { position: relative; height: calc(var(--n) * 85vh + 100vh); }
+  .tm-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .tm-bg { position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at 55% 60%, color-mix(in srgb, var(--a) 50%, #0d1012) 0%, color-mix(in srgb, var(--a) 20%, #0d1012) 45%, #0d1012 85%); }
+  .tm-bg:first-child { opacity: 1; }
+  .tm-slide { position: absolute; inset: 0; visibility: hidden; }
+  .tm-slide:first-of-type { visibility: visible; }
+  .tm-name { position: absolute; left: 0; right: 0; top: 46%; transform: translateY(-50%); margin: 0; text-align: center; font-family: var(--f); font-weight: var(--fw); text-transform: uppercase; line-height: 0.86; color: color-mix(in srgb, var(--bone) 90%, var(--a)); font-size: min(26vw, calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.72))); z-index: 1; }
+  .tm-name .ln { display: block; }
+  .tm-subj { position: absolute; inset: 0; z-index: 2; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+  .tm-subj img { flex: none; height: min(88svh, 120vw); width: auto; max-width: none; transform-origin: 50% 100%; }
+  .tm-subj img.soft { width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: radial-gradient(ellipse at 50% 45%, #000 35%, transparent 72%); mask-image: radial-gradient(ellipse at 50% 45%, #000 35%, transparent 72%); }
+  .tm-info { position: absolute; z-index: 3; right: var(--margin); bottom: var(--s-7); display: grid; gap: 6px; max-width: 34ch; text-align: right; justify-items: end; }
+  .tm-info p { margin: 0; text-shadow: 0 1px 14px rgba(0, 0, 0, 0.85); }
+  .tm-alias { font-family: var(--f-title); font-weight: 800; text-transform: uppercase; font-size: var(--t-3); line-height: 1; }
+  .tm-open { color: var(--a); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; pointer-events: auto; margin-top: 4px; }
+  .tm-list { position: absolute; z-index: 3; left: var(--margin); top: 50%; transform: translateY(-50%); list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .tm-list li { display: flex; align-items: center; gap: 10px; color: var(--ash); transition: color 0.3s; }
+  .tm-list i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--a); transition: background 0.3s, transform 0.3s; }
+  .tm-list li.on { color: var(--bone); }
+  .tm-list li.on i { background: var(--a); transform: scale(1.4); }
+  .tm-cue { position: absolute; z-index: 3; left: 50%; bottom: 14px; transform: translateX(-50%); margin: 0; }
+  @media (max-width: 760px) {
+    .tm-list { top: calc(var(--header-h) + 12px); transform: none; grid-auto-flow: column; gap: 4px; }
+    .tm-list li { font-size: 0; gap: 0; }
+    .tm-name { top: 30%; }
+    .tm-subj img { height: 74svh; }
+    .tm-info { left: var(--margin); text-align: left; justify-items: start; bottom: var(--s-6); }
+    .tm-stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 34svh; z-index: 2; background: linear-gradient(transparent, rgba(13, 16, 18, 0.92) 70%); pointer-events: none; }
+    .tm-cue { display: none; }
+  }
+  html.rm .tm-carousel { display: none; }
+
+  .tm-index { position: relative; z-index: 2; padding: var(--s-9) 0 var(--s-8); background: var(--gunmetal); }
+  .tm-grid { list-style: none; margin: var(--s-5) 0 var(--s-8); padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
+  .tm-grid a, .tm-grid .tg-inner { display: grid; gap: 6px; padding: var(--s-4); background: var(--gunmetal); text-decoration: none; height: 100%; align-content: start; }
+  .tm-grid a:hover { background: var(--gunmetal-2); }
+  .tg-photo { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; margin-bottom: 8px; background: radial-gradient(circle at 50% 75%, color-mix(in srgb, var(--a) 40%, #0d1012), #0d1012 75%); }
+  .tg-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--e-reveal); }
+  .tg-photo img.cut { object-fit: cover; object-position: 50% 0; }
+  .tm-grid a:hover .tg-photo img { transform: scale(1.06); }
+  .tm-grid b { font-family: var(--f-title); font-weight: 800; font-size: 26px; text-transform: uppercase; line-height: 0.95; }
+  .unnamed .tg-inner { min-height: 120px; }
+  .tm-next { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--s-5); margin-bottom: var(--s-5); }
+  .tm-next a { display: grid; gap: 6px; padding: var(--s-6); border: 1px solid var(--iron); text-decoration: none; }
+  .tm-next a:hover { border-color: var(--accent); }
+  .tm-next b { font-size: var(--t-2); font-weight: 800; }
+</style>
