@@ -4,6 +4,8 @@
  *   POST /vote    { a, b, pick, token }  one fan vote; returns the matchup's new tally
  *   GET  /result?a=&b=                   the fan split for one matchup
  *   GET  /top?limit=10                   most-wanted fights: matchups with the most votes
+ *   POST /predict { pid?, picks, token } a full set of fan predictions (until the seal)
+ *   GET  /predict/split                  how fans have answered each prediction
  *
  * Spam: every vote needs a valid Turnstile token, and each visitor gets one vote per
  * matchup per day. "Visitor" is an HMAC of IP and user agent keyed by a secret and the
@@ -11,6 +13,8 @@
  * Votes are fan opinion: the site labels them that way.
  */
 import ROSTER from './roster.json';
+// the approved prediction questions, shared with the site so the two can never disagree
+import PRED from '../../../research/predictions.json';
 
 export interface Env {
   DB: D1Database;
@@ -20,6 +24,9 @@ export interface Env {
 }
 
 const SLUGS = new Set<string>(ROSTER);
+const SEAL = Date.parse(PRED.seal);
+const QUESTIONS = new Map<string, Set<string>>(PRED.questions.map((q) => [q.id, new Set(q.options.map((o) => o.id))]));
+const NEW_PER_DAY = 5; // new prediction sets one browser can start in a day
 const enc = new TextEncoder();
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -69,6 +76,17 @@ async function tally(env: Env, a: string, b: string) {
   return a === x ? { a, b, votesA: va, votesB: vb, total: va + vb } : { a, b, votesA: vb, votesB: va, total: va + vb };
 }
 
+/** How fans have answered each prediction so far. */
+async function split(env: Env) {
+  const [people, rows] = await Promise.all([
+    env.DB.prepare('SELECT COUNT(*) AS n FROM pred_people').first<{ n: number }>(),
+    env.DB.prepare('SELECT q, opt, COUNT(*) AS n FROM pred_picks GROUP BY q, opt').all<{ q: string; opt: string; n: number }>(),
+  ]);
+  const q: Record<string, Record<string, number>> = {};
+  for (const r of rows.results) (q[r.q] ??= {})[r.opt] = r.n;
+  return { total: people?.n ?? 0, q, seal: PRED.seal };
+}
+
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const h = cors(env, req);
@@ -108,6 +126,43 @@ export default {
         env.DB.prepare('DELETE FROM seen WHERE day < ?').bind(new Date(Date.now() - 86400000).toISOString().slice(0, 10)),
       ]);
       return json({ ...(await tally(env, a, b)), already: false }, h);
+    }
+
+    if (req.method === 'GET' && url.pathname === '/predict/split') {
+      return json(await split(env), h, 200, 'public, max-age=20');
+    }
+
+    if (req.method === 'POST' && url.pathname === '/predict') {
+      if (Date.now() >= SEAL) return json({ error: 'sealed' }, h, 403);
+      let body: any;
+      try { body = await req.json(); } catch { return json({ error: 'bad request' }, h, 400); }
+      const { pid, picks, token } = body || {};
+      // a full set of answers, every one a real option
+      if (!picks || typeof picks !== 'object' || Object.keys(picks).length !== QUESTIONS.size) return json({ error: 'answer every question' }, h, 400);
+      for (const [q, opts] of QUESTIONS) if (!opts.has(picks[q])) return json({ error: 'unknown answer' }, h, 400);
+      if (!(await human(env, req, token))) return json({ error: 'bot check failed' }, h, 403);
+      const now = Date.now();
+      let id = typeof pid === 'string' && /^[0-9a-f-]{36}$/.test(pid) ? pid : '';
+      const known = id ? await env.DB.prepare('SELECT pid FROM pred_people WHERE pid = ?').bind(id).first() : null;
+      if (!known) {
+        // starting a new set: capped per browser per day so the board cannot be stuffed
+        const k = await visitor(env, req, 'predict');
+        const row = await env.DB.prepare('SELECT n FROM pred_new WHERE k = ?').bind(k).first<{ n: number }>();
+        if ((row?.n ?? 0) >= NEW_PER_DAY) return json({ error: 'too many new prediction sets today' }, h, 429);
+        id = crypto.randomUUID();
+        await env.DB.batch([
+          env.DB.prepare('INSERT INTO pred_new (k, day, n) VALUES (?, ?, 1) ON CONFLICT(k) DO UPDATE SET n = n + 1').bind(k, today()),
+          env.DB.prepare('DELETE FROM pred_new WHERE day < ?').bind(today()),
+          env.DB.prepare('INSERT INTO pred_people (pid, created, updated) VALUES (?, ?, ?)').bind(id, now, now),
+        ]);
+      } else {
+        await env.DB.prepare('UPDATE pred_people SET updated = ? WHERE pid = ?').bind(now, id).run();
+      }
+      await env.DB.batch([
+        env.DB.prepare('DELETE FROM pred_picks WHERE pid = ?').bind(id),
+        ...[...QUESTIONS.keys()].map((q) => env.DB.prepare('INSERT INTO pred_picks (pid, q, opt) VALUES (?, ?, ?)').bind(id, q, picks[q])),
+      ]);
+      return json({ pid: id, ...(await split(env)) }, h);
     }
 
     return json({ error: 'not found' }, h, 404);

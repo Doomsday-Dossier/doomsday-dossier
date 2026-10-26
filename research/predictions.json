@@ -1,0 +1,27 @@
+{
+  "note": "Fan prediction board. Questions drafted by Claude from confirmed facts only and approved by the user on 26 October 2026. Picks seal at the first moment 18 December begins anywhere on Earth (UTC+14), which is 10:00 UTC on 17 December 2026; move earlier if Marvel confirms an earlier opening anywhere. Results are settled from the Marvel Cinematic Universe Wiki's Avengers: Doomsday page, each with a citation, and published only after the user approves them. A question the source cannot settle cleanly is voided.",
+  "seal": "2026-12-17T10:00:00Z",
+  "questions": [
+    { "id": "q1", "text": "Where does the story begin?", "options": [
+      { "id": "a", "label": "The main MCU universe" }, { "id": "b", "label": "The Fantastic Four's universe" }, { "id": "c", "label": "The X-Men's universe" }, { "id": "d", "label": "Somewhere else" } ] },
+    { "id": "q2", "text": "Which group comes face to face with Doom first?", "options": [
+      { "id": "a", "label": "Avengers" }, { "id": "b", "label": "Fantastic Four" }, { "id": "c", "label": "X-Men" }, { "id": "d", "label": "Thunderbolts*" }, { "id": "e", "label": "Wakanda and Talokan" } ] },
+    { "id": "q3", "text": "Who carries the shield as Captain America?", "options": [
+      { "id": "a", "label": "Sam Wilson" }, { "id": "b", "label": "Steve Rogers" }, { "id": "c", "label": "Both, at different points" }, { "id": "d", "label": "Neither" } ] },
+    { "id": "q4", "text": "Do the Fantastic Four and the X-Men share a scene?", "options": [
+      { "id": "a", "label": "Yes" }, { "id": "b", "label": "No" } ] },
+    { "id": "q5", "text": "What does Thor fight with?", "options": [
+      { "id": "a", "label": "Mjolnir" }, { "id": "b", "label": "Stormbreaker" }, { "id": "c", "label": "Both" }, { "id": "d", "label": "Neither" } ] },
+    { "id": "q6", "text": "Does Doom take off his mask on screen?", "options": [
+      { "id": "a", "label": "Yes" }, { "id": "b", "label": "No" } ] },
+    { "id": "q7", "text": "Do Steve Rogers and Peggy Carter share a scene?", "options": [
+      { "id": "a", "label": "Yes" }, { "id": "b", "label": "No" } ] },
+    { "id": "q8", "text": "Does at least one confirmed hero die by the end of the film?", "hint": "Any character on Marvel's cast list except Doom.", "options": [
+      { "id": "a", "label": "Yes" }, { "id": "b", "label": "No" } ] },
+    { "id": "q9", "text": "Is Doom still a threat when the credits roll?", "options": [
+      { "id": "a", "label": "Yes" }, { "id": "b", "label": "No" } ] },
+    { "id": "q10", "text": "How many post-credits scenes are there?", "options": [
+      { "id": "a", "label": "None" }, { "id": "b", "label": "One" }, { "id": "c", "label": "Two" }, { "id": "d", "label": "Three or more" } ] }
+  ],
+  "results": null
+}
