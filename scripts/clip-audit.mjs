@@ -49,7 +49,8 @@ for (const [name, opts] of Object.entries(VIEWS)) {
       const srOnly = (el) => { for (let a = el; a; a = a.parentElement) { const c = getComputedStyle(a); if (c.clip === 'rect(0px, 0px, 0px, 0px)' || c.clipPath === 'inset(50%)') return true; } return false; };
       const els = [...document.querySelectorAll('main h1, main h2, main h3, main p, main li, main dt, main dd, main a, main small, main b, footer p')];
       for (const el of els) {
-        if (!el.textContent.trim() || el.closest('.sr-only') || srOnly(el)) continue;
+        // locked clearance levels are inert and cut off on purpose until the reader requests clearance
+        if (!el.textContent.trim() || el.closest('.sr-only') || el.closest('[inert]') || srOnly(el)) continue;
         const rail = inRail(el);
         const cs = getComputedStyle(el);
         if (cs.display === 'none' || cs.visibility === 'hidden' || el.closest('[hidden]')) continue;
