@@ -142,6 +142,24 @@ first visit; reduced motion shows the finished title and countdown, still):
 A, **Slow burn**: a slow top-down push over the mould, long holds, the pour and cooling given room (about 6.8 s).
 B, **The strike**: a low three-quarter angle with the camera rising as the mould splits, tighter beats and a
 harder crack (about 4.8 s).
+**The user chose A.**
+
+### The home page: through the mask (prototypes)
+
+Forge A, then one continuous camera (`src/scripts/home/home.ts`, an extension of `runForge`). As the title
+settles, Doom's hooded mask (photo 1, graded into iron and green and given relief from its depth map) rises
+out of the dark behind it with his eyes lit: Doom watching. Scrolling pulls back to show him looming over the
+title, then pushes into his left eye slit until green floods the screen (`floodRise`). Out of the green comes
+the archive. Two versions for the user to choose between (`/lab/home-1/`, `/lab/home-2/`, recordings made by
+`scripts/home-record.mjs`):
+1, **The hall**: the files hang as graded prints down a long dark hall, alternating sides; the camera walks
+   on and turns toward the print you reach, which swings to face you; Doom's eyes glow at the far end.
+   0.75 screen heights of scroll per file.
+2, **The drawer**: one file at a time, full screen, each print pulled up from below like a print from a
+   drawer, the last one sinking away, and a slow push-in while it is in front. 0.48 screen heights per file.
+Each file's number, name (typed in letter by letter), team and "Open the file" sit bottom-left. Photos load
+within three files of the one in front and are let go beyond six. Measured 60 fps scrolling the mask and the
+archive on desktop and phone emulation; the sound sits at about -40 dBFS against the forge's -16.
 
 ### Sound system
 
@@ -184,7 +202,8 @@ once); write such edits with the Edit tool.
 | Heavy clock tick | Forge, beat 7; countdown on the home page | A low wooden-metal tick (band-passed click plus a 180 Hz body) every second, in a large reverb | Doomsday as a deadline: the countdown to 18 December 2026 | Original |
 | Gate ember | The gate (first and return visits) | A barely audible crackle loop after the click is ready | The forge's last ember | Original |
 | Score: sorcery and science | Under every page | A low string-like drone (filtered saws, slow detune), bell harmonics drifting above (sine partials with long reverb), a faint machine pulse at 52 bpm (sub thump) | Doom as scientist and sorcerer: FF #5; Books of Doom; Triumph and Torment | Original |
-| File slides open | Opening a file, the archive | Low-passed noise swish with a soft wooden thud | The dossier conceit | Original |
+| File slides open | Opening a file, the archive (`fileArrive`, each file arriving on the home page) | Pink-noise band-pass swish rising 420 to 1400 Hz with a soft 92 Hz thud | The dossier conceit | Original |
+| Green flood | Home page, passing through the mask's eye slit (`floodRise`) | The green hum's chord (saws on 55, 82, 110, 131, 165 Hz) swelling through a low-pass opening 220 to 2600 Hz, with a rush of air rising into the eye | Doom's green sorcery seen through his mask (FF Annual #2; Triumph and Torment) | Original |
 | Redaction tears | Clearance levels, redaction reveals | A short ripping noise burst with a rising band-pass | Same | Original |
 | Stamp lands | Stamps (clearance, file states) | A dull thud (sine 90 Hz) plus a paper slap transient | Same | Original |
 | Arena clash | Fight arena poster hit | A metallic impact (inharmonic partials) with a sub thump and a short reverb | The arena slam | Original |

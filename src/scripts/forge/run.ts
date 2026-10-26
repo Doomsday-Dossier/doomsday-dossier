@@ -19,7 +19,19 @@ import { timeLeft } from '../dossier/tokens';
 
 const SEEN = 'dd-forge-seen';
 
-export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; record?: boolean; first?: boolean }) {
+/** What a page built on the forge (the home page) gets: the scene and camera to add to and take over each frame. */
+export type ForgeKit = { forge: Forge; renderer: THREE.WebGLRenderer; sound: Sound; timing: typeof SLOW; phone: boolean; reduced: boolean };
+export type ForgeExtension = { update(t: number, dt: number): void; resize?(w: number, h: number): void };
+
+export async function runForge(root: HTMLElement, opts: {
+  version: 'a' | 'b'; record?: boolean; first?: boolean;
+  /** record only the sound mix (the page's own video is captured by the browser), for pages with real text */
+  recordAudio?: boolean;
+  /** builds on the forge: called once, then its update runs after the forge's every frame */
+  extend?: (kit: ForgeKit) => Promise<ForgeExtension> | ForgeExtension;
+  /** called once the title has settled (or straight away for reduced motion) */
+  onSettled?: () => void;
+}) {
   const canvas = root.querySelector<HTMLCanvasElement>('canvas')!;
   const gate = root.querySelector<HTMLButtonElement>('[data-gate]')!;
   const muteBtn = root.querySelector<HTMLButtonElement>('[data-mute]')!;
@@ -42,6 +54,8 @@ export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; re
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
   forge.prepare(renderer);
+  const sound = Sound.get();
+  const ext = opts.extend ? await opts.extend({ forge, renderer, sound, timing, phone, reduced }) : null;
 
   // the gate's words, drawn into the scene so they are part of the picture (and of a recording)
   const ui = new THREE.Scene(), uiCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -60,6 +74,7 @@ export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; re
     renderer.setSize(w, h, false); composer.setSize(w, h);
     bloom.resolution.set(w / 2, h / 2);
     forge.resize(w, h);
+    ext?.resize?.(w, h);
     setPointScale(forge, renderer.domElement.height / (2 * Math.tan((forge.cam.fov * Math.PI) / 360)));
     // the label is about 620 px wide (less on narrow screens), centred a little below the middle
     const px = Math.min(780, w * 0.9);
@@ -72,7 +87,6 @@ export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; re
   const tick = () => { const t = timeLeft(); forge.setCountdown([String(t.d).padStart(2, '0'), String(t.h).padStart(2, '0'), String(t.m).padStart(2, '0'), String(t.s).padStart(2, '0')]); };
   tick(); setInterval(tick, 1000);
 
-  const sound = Sound.get();
   const setMuteUi = (m: boolean) => { muteBtn.setAttribute('aria-pressed', String(m)); muteBtn.querySelector('span')!.textContent = m ? 'Sound off' : 'Sound on'; };
   setMuteUi(sound.muted);
   muteBtn.addEventListener('click', (e) => { e.stopPropagation(); sound.unlock(); sound.setMuted(!sound.muted); });
@@ -92,7 +106,21 @@ export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; re
     });
   }
 
+  // sound only: the page's own video is captured by the browser and joined to this afterwards
+  if (opts.recordAudio) {
+    const type = ['audio/webm;codecs=opus', 'audio/webm'].find((m) => MediaRecorder.isTypeSupported(m))!;
+    const rec = new MediaRecorder(new MediaStream(sound.record().getAudioTracks()), { mimeType: type, audioBitsPerSecond: 192_000 });
+    const parts: Blob[] = []; rec.ondataavailable = (e) => { if (e.data.size) parts.push(e.data); };
+    const startedAtMs = performance.now();
+    rec.start(250);
+    (window as any).__stopAudio = () => new Promise<{ data: string; at: number }>((res) => {
+      rec.onstop = () => { const r = new FileReader(); r.onload = () => res({ data: String(r.result), at: startedAtMs }); r.readAsDataURL(new Blob(parts, { type })); };
+      rec.stop();
+    });
+  }
+
   // started is separate from startAt: skipping early in a page's life puts startAt before zero
+  let settled = false;
   let started = false, startAt = 0, last = performance.now(), forgeSound: { stop(): void } | null = null, scoreStarted = false;
   const startScoreOnce = (fade: number) => { if (!scoreStarted) { scoreStarted = true; startScore(sound, fade); } };
   const begin = async () => {
@@ -130,6 +158,8 @@ export async function runForge(root: HTMLElement, opts: { version: 'a' | 'b'; re
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     const t = started ? (now - startAt) / 1000 : -1;
     forge.update(t, dt);
+    if (!settled && (t >= timing.total || reduced)) { settled = true; opts.onSettled?.(); }
+    ext?.update(t, dt);
     labelMat.opacity = t < 0 ? 0.55 + 0.25 * Math.sin(now * 0.002) : Math.max(0, 0.8 - t * 2);
     renderer.autoClear = true;
     composer.render();
