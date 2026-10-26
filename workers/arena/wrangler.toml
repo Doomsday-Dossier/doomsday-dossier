@@ -5,11 +5,11 @@ compatibility_date = "2026-10-01"
 [vars]
 ALLOWED_ORIGINS = "https://prejith77.github.io,http://localhost:4322,http://localhost:4321"
 
-# database_id is filled in after `wrangler d1 create doomsday-arena`
+# created with `wrangler d1 create doomsday-arena` (26 October 2026)
 [[d1_databases]]
 binding = "DB"
 database_name = "doomsday-arena"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "f645a0eb-1ae7-4421-ba60-47ab0f150150"
 
 # Secrets (never in this file):
 #   wrangler secret put TURNSTILE_SECRET   (from the Turnstile widget)
