@@ -1,0 +1,609 @@
+{
+  "note": "Which Doomsday hero are you? Questions drafted by Claude and approved by the user on 26 October 2026. Opinion questions, so no sources; each result links to the character's sourced dossier. Every answer gives one point to each character listed. Highest total wins; a tie goes to whoever scored on the later question, then to roster order. Check balance with a script before changing anything: every character must be able to win.",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Doom's army is at the door. Your first move?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Rally everyone and lead from the front",
+          "to": [
+            "steve-rogers",
+            "sam-wilson",
+            "cyclops",
+            "peggy-carter"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Find his weak spot with science",
+          "to": [
+            "reed-richards",
+            "shuri",
+            "beast",
+            "joaquin-torres"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "Charge straight in",
+          "to": [
+            "thor",
+            "john-walker",
+            "mbaku",
+            "red-guardian",
+            "namor"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Slip behind his lines unseen",
+          "to": [
+            "yelena-belova",
+            "ghost",
+            "nightcrawler",
+            "shang-chi"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "Make a deal and use it later",
+          "to": [
+            "loki",
+            "gambit",
+            "mystique",
+            "victor-von-doom"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Pick one power for a day.",
+      "options": [
+        {
+          "id": "a",
+          "label": "Flight",
+          "to": [
+            "sam-wilson",
+            "joaquin-torres",
+            "johnny-storm",
+            "bob-reynolds",
+            "namor"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Teleporting, or walking through walls",
+          "to": [
+            "nightcrawler",
+            "ghost",
+            "loki"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "Changing your shape or size",
+          "to": [
+            "mystique",
+            "scott-lang",
+            "reed-richards"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Lifting anything",
+          "to": [
+            "ben-grimm",
+            "thor",
+            "red-guardian",
+            "bob-reynolds"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "Moving things with your mind",
+          "to": [
+            "magneto",
+            "professor-x",
+            "sue-storm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Your friends would call you...",
+      "options": [
+        {
+          "id": "a",
+          "label": "The loyal one",
+          "to": [
+            "bucky-barnes",
+            "ben-grimm",
+            "joaquin-torres",
+            "steve-rogers"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "The genius",
+          "to": [
+            "reed-richards",
+            "shuri",
+            "beast",
+            "victor-von-doom"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "The charmer",
+          "to": [
+            "gambit",
+            "johnny-storm",
+            "loki",
+            "thor"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "The steady one",
+          "to": [
+            "sue-storm",
+            "peggy-carter",
+            "cyclops",
+            "shang-chi",
+            "professor-x"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "The wildcard",
+          "to": [
+            "red-guardian",
+            "john-walker",
+            "yelena-belova",
+            "scott-lang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Pick your gear.",
+      "options": [
+        {
+          "id": "a",
+          "label": "A shield",
+          "to": [
+            "steve-rogers",
+            "sam-wilson",
+            "john-walker",
+            "sue-storm"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Thunder, fire or a beam of light",
+          "to": [
+            "thor",
+            "johnny-storm",
+            "cyclops",
+            "bob-reynolds"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "Bare fists and years of training",
+          "to": [
+            "shang-chi",
+            "mbaku",
+            "ben-grimm",
+            "bucky-barnes"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Gadgets you built yourself",
+          "to": [
+            "shuri",
+            "reed-richards",
+            "scott-lang",
+            "joaquin-torres",
+            "victor-von-doom"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "Something they never see coming",
+          "to": [
+            "gambit",
+            "loki",
+            "ghost",
+            "yelena-belova",
+            "mystique"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "What do you fight for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "My people",
+          "to": [
+            "namor",
+            "mbaku",
+            "shuri",
+            "magneto",
+            "victor-von-doom"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "My family",
+          "to": [
+            "shang-chi",
+            "scott-lang",
+            "sue-storm",
+            "red-guardian",
+            "yelena-belova"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "A better world for everyone",
+          "to": [
+            "professor-x",
+            "steve-rogers",
+            "nightcrawler",
+            "sam-wilson",
+            "peggy-carter"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "A second chance",
+          "to": [
+            "bucky-barnes",
+            "loki",
+            "bob-reynolds",
+            "ghost",
+            "john-walker"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "The thrill of it",
+          "to": [
+            "johnny-storm",
+            "thor",
+            "nightcrawler"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Your perfect Saturday night?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A feast and a loud story",
+          "to": [
+            "thor",
+            "red-guardian",
+            "mbaku",
+            "ben-grimm"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "In the lab until 3 a.m.",
+          "to": [
+            "reed-richards",
+            "shuri",
+            "beast"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "A good book and a long talk",
+          "to": [
+            "professor-x",
+            "beast",
+            "nightcrawler",
+            "magneto"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Out dancing",
+          "to": [
+            "peggy-carter",
+            "gambit",
+            "johnny-storm"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "At home with family",
+          "to": [
+            "scott-lang",
+            "sue-storm",
+            "shang-chi",
+            "sam-wilson"
+          ]
+        },
+        {
+          "id": "f",
+          "label": "Somewhere nobody can find me",
+          "to": [
+            "ghost",
+            "bucky-barnes",
+            "mystique",
+            "bob-reynolds"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "Someone says you can't do it. You...",
+      "options": [
+        {
+          "id": "a",
+          "label": "Prove them wrong, loudly",
+          "to": [
+            "john-walker",
+            "johnny-storm",
+            "red-guardian",
+            "scott-lang"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Prove them wrong, quietly",
+          "to": [
+            "peggy-carter",
+            "sam-wilson",
+            "shuri",
+            "cyclops"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "Already have plans B, C and D",
+          "to": [
+            "reed-richards",
+            "victor-von-doom",
+            "loki",
+            "mystique"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Get back up and keep going",
+          "to": [
+            "steve-rogers",
+            "joaquin-torres",
+            "ben-grimm",
+            "bucky-barnes"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "Don't care what they think",
+          "to": [
+            "namor",
+            "magneto",
+            "yelena-belova"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "Your biggest flaw?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Pride",
+          "to": [
+            "victor-von-doom",
+            "namor",
+            "magneto",
+            "thor",
+            "mbaku"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Carrying the past around",
+          "to": [
+            "bucky-barnes",
+            "ghost",
+            "shang-chi",
+            "yelena-belova"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "Needing to be the hero",
+          "to": [
+            "john-walker",
+            "johnny-storm",
+            "red-guardian",
+            "cyclops"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Overthinking everything",
+          "to": [
+            "reed-richards",
+            "bob-reynolds",
+            "beast",
+            "professor-x"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "Can't resist a little mischief",
+          "to": [
+            "loki",
+            "gambit",
+            "scott-lang",
+            "mystique"
+          ]
+        },
+        {
+          "id": "f",
+          "label": "Stubborn to the bone",
+          "to": [
+            "steve-rogers",
+            "peggy-carter",
+            "sue-storm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Pick a home base.",
+      "options": [
+        {
+          "id": "a",
+          "label": "A fortress in the mountains",
+          "to": [
+            "victor-von-doom",
+            "mbaku",
+            "magneto"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "A hidden kingdom",
+          "to": [
+            "namor",
+            "shuri"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "A tower in the middle of the city",
+          "to": [
+            "reed-richards",
+            "sue-storm",
+            "johnny-storm",
+            "ben-grimm",
+            "bob-reynolds"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "A school full of misfits",
+          "to": [
+            "professor-x",
+            "beast",
+            "cyclops",
+            "nightcrawler"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "A safe house off the map",
+          "to": [
+            "bucky-barnes",
+            "yelena-belova",
+            "ghost",
+            "mystique",
+            "peggy-carter"
+          ]
+        },
+        {
+          "id": "f",
+          "label": "Wherever the road goes next",
+          "to": [
+            "gambit",
+            "joaquin-torres",
+            "john-walker"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "How should your story end?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Everyone makes it home",
+          "to": [
+            "scott-lang",
+            "sue-storm",
+            "nightcrawler",
+            "joaquin-torres",
+            "sam-wilson"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "The enemy becomes a friend",
+          "to": [
+            "professor-x",
+            "steve-rogers",
+            "bob-reynolds",
+            "red-guardian"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "I get the last word",
+          "to": [
+            "loki",
+            "gambit",
+            "yelena-belova",
+            "shuri"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "I hold the line so others can run",
+          "to": [
+            "ben-grimm",
+            "thor",
+            "cyclops",
+            "peggy-carter",
+            "john-walker"
+          ]
+        },
+        {
+          "id": "e",
+          "label": "I end up in charge",
+          "to": [
+            "victor-von-doom",
+            "namor",
+            "magneto",
+            "mbaku",
+            "mystique"
+          ]
+        },
+        {
+          "id": "f",
+          "label": "I finally find peace",
+          "to": [
+            "bucky-barnes",
+            "ghost",
+            "shang-chi",
+            "beast"
+          ]
+        }
+      ]
+    }
+  ]
+}

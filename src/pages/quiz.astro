@@ -1,0 +1,132 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/faces';
+import quiz from '../../research/quiz.json';
+import { DESIGN, castFor, publishedOrder, TEAMS, heroName, u } from '../data/site';
+import { photosFor, srcOf, PHOTO_CREDIT } from '../data/photos';
+
+// every published character is a possible result; roster order breaks the last ties
+const roster = publishedOrder().map((slug) => {
+  const d = DESIGN[slug], ph = photosFor(slug)[0], team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
+  const name = heroName(slug).toUpperCase();
+  return {
+    slug, name, team: team.name, accent: d.accent, font: d.font, weight: d.fontWeight, kicker: d.kicker, href: u(`/c/${slug}/`),
+    photo: ph ? { src: srcOf(ph, 800), card: srcOf(ph, 1280), focus: ph.focusM } : null,
+  };
+});
+const site = 'prejith77.github.io' + u('/quiz/');
+const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_CREDIT, site });
+---
+<Base title="Which Doomsday hero are you?" description="Ten quick questions match you with one of the 29 Avengers: Doomsday characters, then save your result as a Dossier-file card. A fan quiz, just for fun." page="quiz">
+  <section class="qz" data-quiz>
+    <div class="wrap qz-head">
+      <p class="label" data-hero-in>Fan quiz &middot; just for fun, not facts</p>
+      <h1 class="display qz-title" data-split="words" data-split-on="load">Who are you?</h1>
+      <p class="qz-copy" data-hero-in>Ten quick questions match you with one of the {roster.length} characters in Avengers: Doomsday. There are no right answers. Your result links to that character&rsquo;s dossier, where every fact is sourced, and you can save it as a card to share.</p>
+    </div>
+
+    <div class="wrap">
+      <div class="qz-stage" data-stage>
+        <div class="qz-top">
+          <p class="qz-count"><b data-count>01</b> / {quiz.questions.length}</p>
+          <div class="qz-bar" aria-hidden="true"><i data-bar></i></div>
+          <button type="button" class="qz-back" data-back disabled>Back</button>
+        </div>
+        <div class="qz-deck">
+          {quiz.questions.map((q, i) => (
+            <fieldset class="qz-q" data-q={q.id} data-i={i}>
+              <legend class="qz-text">{q.text}</legend>
+              <div class="qz-opts">
+                {q.options.map((o, k) => (
+                  <button type="button" data-opt={o.id}><span class="qz-key" aria-hidden="true">{k + 1}</span><span>{o.label}</span></button>
+                ))}
+              </div>
+            </fieldset>
+          ))}
+        </div>
+        <p class="qz-hint">Tip: number keys pick an answer.</p>
+      </div>
+
+      <article class="qz-result" data-result hidden aria-live="polite">
+        <div class="qz-r-photo"><div class="qz-r-frame"><img data-r-img alt="" width="800" height="1000" /></div></div>
+        <div class="qz-r-text">
+          <p class="label qz-r-kicker">You are</p>
+          <h2 class="qz-r-name" data-r-name></h2>
+          <p class="qz-r-team" data-r-team></p>
+          <p class="qz-r-blurb" data-r-blurb></p>
+          <div class="qz-why">
+            <p class="label">Why you got this</p>
+            <ul data-r-why></ul>
+          </div>
+          <p class="qz-close" data-r-close></p>
+          <div class="qz-actions">
+            <a class="qz-primary" data-r-link href="#">Read the dossier</a>
+            <button type="button" data-card="portrait">Save card</button>
+            <button type="button" data-card="wide">Save wide card</button>
+            <button type="button" data-r-copy>Copy link</button>
+            <button type="button" data-r-again>Take it again</button>
+          </div>
+          <p class="qz-fine">A fan quiz, just for fun: the answers are opinions, not facts. {PHOTO_CREDIT}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <script type="application/json" id="qz-data" set:html={data} />
+</Base>
+
+<style>
+  .qz { padding: calc(var(--header-h) + 60px) 0 100px; }
+  .qz-head { display: grid; gap: 16px; }
+  .qz-title { font-size: min(clamp(70px, 13vw, 210px), calc((100vw - 2 * var(--gutter)) / 4.4)); }
+  .qz-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
+
+  .qz-stage { margin-top: 56px; border-top: 1px solid var(--iron); padding-top: 26px; scroll-margin-top: calc(var(--header-h) + 16px); }
+  .qz-top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px; }
+  .qz-count { margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; color: var(--bone-dim); }
+  .qz-count b { color: var(--doom); font-weight: 400; }
+  .qz-bar { height: 2px; background: var(--iron); overflow: hidden; }
+  .qz-bar i { display: block; height: 100%; background: var(--doom); transform-origin: left; transform: scaleX(0); }
+  .qz-back { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-dim); border: 1px solid var(--iron-2); border-radius: 99px; padding: 10px 16px; min-height: 44px; }
+  .qz-back:disabled { opacity: 0.3; cursor: default; }
+  .qz-back:not(:disabled):hover { color: var(--bone); border-color: var(--bone-dim); }
+
+  .qz-deck { position: relative; margin-top: 34px; }
+  .qz-q { border: 0; margin: 0 0 48px; padding: 0; min-width: 0; }
+  .qz.live .qz-q:not(.on) { display: none; }
+  .qz-text { font-family: var(--font-serif); font-weight: 400; font-size: clamp(36px, 5vw, 74px); line-height: 1.02; padding: 0; margin: 0 0 30px; max-width: 18ch; }
+  .qz-text :global(.w) { display: inline-block; }
+  .qz-opts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; max-width: 980px; }
+  .qz-opts button { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 14px; min-height: 64px; padding: 14px 20px; text-align: left; border: 1px solid var(--iron-2); border-radius: 8px; color: var(--bone); font-size: 17px; line-height: 1.25; transition: border-color 0.3s, background 0.3s, transform 0.3s var(--ease-out); }
+  .qz-opts button:hover { border-color: var(--bone-dim); transform: translateY(-2px); }
+  .qz-opts button.picked { border-color: var(--doom); background: rgba(61, 255, 138, 0.12); }
+  .qz-key { font-family: var(--font-mono); font-size: 11px; color: var(--doom); border: 1px solid var(--iron-2); border-radius: 4px; width: 24px; height: 24px; display: grid; place-items: center; }
+  .qz-hint { margin: 6px 0 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-dim); }
+  @media (hover: none) { .qz-hint, .qz-key { display: none; } .qz-opts button { grid-template-columns: 1fr; } }
+
+  .qz-result { --a: var(--doom); margin-top: 56px; display: grid; gap: clamp(28px, 4vw, 64px); align-items: center; scroll-margin-top: calc(var(--header-h) + 16px); }
+  .qz-result[hidden] { display: none; }
+  @media (min-width: 900px) { .qz-result { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
+  .qz-r-frame { position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 4 / 5; background: var(--iron); box-shadow: 0 0 0 1px var(--iron-2); }
+  .qz-r-frame::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 2px var(--a); border-radius: inherit; opacity: 0.7; pointer-events: none; }
+  .qz-r-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 899px) { .qz-r-frame { aspect-ratio: 4 / 3; } }
+  .qz-r-text { display: grid; gap: 14px; min-width: 0; container-type: inline-size; }
+  .qz-r-kicker { color: var(--a); }
+  .qz-r-name { font-family: var(--f); font-weight: var(--wt); text-transform: uppercase; line-height: 0.9; margin: 0; overflow-wrap: normal; font-size: min(140px, calc(100cqi / (var(--lw, 8) * 0.9))); }
+  .qz-r-name :global(.ln) { display: block; overflow: hidden; padding-bottom: 0.06em; }
+  .qz-r-name :global(.ln > span) { display: inline-block; }
+  .qz-r-team { margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--a); }
+  .qz-r-blurb { margin: 0; color: var(--bone-dim); max-width: 52ch; }
+  .qz-why { border-top: 1px solid var(--iron); padding-top: 14px; }
+  .qz-why ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+  .qz-why :global(li) { display: grid; gap: 2px; }
+  .qz-why :global(li small) { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); }
+  .qz-why :global(li span) { font-size: 17px; }
+  .qz-close { margin: 0; font-size: 14px; color: var(--bone-dim); }
+  .qz-close :global(a) { color: var(--bone); text-underline-offset: 3px; }
+  .qz-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .qz-actions > * { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 20px; border-radius: 99px; border: 1px solid var(--iron-2); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone); text-decoration: none; transition: border-color 0.3s, transform 0.3s var(--ease-out); }
+  .qz-actions > *:hover { border-color: var(--bone-dim); transform: translateY(-2px); }
+  .qz-actions .qz-primary { background: var(--a); border-color: var(--a); color: var(--void); }
+  .qz-fine { margin: 4px 0 0; font-size: 11px; color: var(--bone-dim); }
+</style>
