@@ -69,6 +69,6 @@ export class Wipe {
       requestAnimationFrame(step);
     });
   }
-  cover() { return this.run(0, 1, 750, 0); }
-  async reveal() { await this.run(1, 0, 900, 1); this.canvas.style.opacity = '0'; }
+  cover() { return this.run(0, 1, 480, 0); }
+  async reveal() { await this.run(1, 0, 620, 1); this.canvas.style.opacity = '0'; }
 }

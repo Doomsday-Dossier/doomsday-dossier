@@ -60,7 +60,7 @@ const data = JSON.stringify({ roster, titles: catchup.titles, release: OFFICIAL.
 <style>
   .cu { padding: calc(var(--header-h) + 60px) 0 90px; }
   .cu-head { display: grid; gap: 16px; }
-  .cu-title { font-size: min(clamp(60px, 11vw, 180px), calc((100vw - 2 * var(--gutter)) / 5.6)); }
+  .cu-title { font-size: min(clamp(60px, 11vw, 180px), calc((100vw - 2 * var(--gutter)) / 5.6)); margin-bottom: 0.14em; }
   .cu-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
   .cu-grid { display: grid; gap: 40px; margin-top: 46px; align-items: start; }
   @media (min-width: 1000px) { .cu-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } .cu-plan { position: sticky; top: calc(var(--header-h) + 20px); max-height: calc(100svh - var(--header-h) - 40px); overflow: auto; } }

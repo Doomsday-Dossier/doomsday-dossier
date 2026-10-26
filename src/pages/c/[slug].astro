@@ -51,7 +51,7 @@ const nextPhoto = photosFor(next.slug)[0];
 const styleVars = [
   `--c-bg:${d.bg}`, `--c-ink:${d.ink}`, `--c-dim:${d.dim}`, `--c-accent:${d.accent}`, `--c-accent-2:${d.accent2}`,
   `--c-line:color-mix(in srgb, ${d.ink} 14%, transparent)`,
-  `--hero-scale:${d.heroScale ?? 1}`, `--hero-longest:${Math.max(...heroName(slug).split(/s+/).map((w) => w.length))}`, `--font-display:${d.font}`, `--font-display-weight:${d.fontWeight}`, `--font-display-case:${d.fontCase}`, `--font-display-tracking:${d.tracking}`,
+  `--hero-scale:${d.heroScale ?? 1}`, `--hero-longest:${Math.max(...heroName(slug).split(/\s+/).map((w) => w.length))}`, `--font-display:${d.font}`, `--font-display-weight:${d.fontWeight}`, `--font-display-case:${d.fontCase}`, `--font-display-tracking:${d.tracking}`,
 ].join(';');
 
 // Citations, numbered per act
@@ -197,7 +197,7 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
         <p class="label"><span class="act-num">IV</span> On screen</p>
         <h2 id="screen-h" class="display act-title" style="--lw:11" data-split="words">{screen.length} live-action {screen.length === 1 ? 'appearance' : 'appearances'}</h2>
         <div class="scr-sticky" aria-hidden="true">
-          <span class="scr-year">{screen[0]?.year}</span>
+          <span class="scr-year" data-fit>{screen[0]?.year}</span>
           <span class="scr-cont" data-cont={screen[0]?.continuity}>{screen[0]?.continuity}</span>
         </div>
         {conts.length > 1 && (

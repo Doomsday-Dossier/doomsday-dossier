@@ -38,10 +38,9 @@ export function catchUp(root: ParentNode, o: Opts): () => void {
   const watched = new Set(read('dd-catchup-watched'));
   const shown = { hours: 0, titles: 0, pace: 0 };
 
-  const daysLeft = () => {
-    const [y, m, d] = release.split('-').map(Number);
-    return Math.ceil((new Date(y, m - 1, d).getTime() - Date.now()) / 86400000);
-  };
+  // whole days left, counted like the countdown (floor), and the exact time left for the pace
+  const msLeft = () => { const [y, m, d] = release.split('-').map(Number); return new Date(y, m - 1, d).getTime() - Date.now(); };
+  const daysLeft = () => Math.floor(msLeft() / 86400000);
 
   const plan = () => {
     const rows = new Map<string, { t: Title; why: { slug: string; role: 'first' | 'latest' }[]; eps: Set<number> }>();
@@ -77,10 +76,10 @@ export function catchUp(root: ParentNode, o: Opts): () => void {
     const days = daysLeft();
     tick('hours', el('hours'), total / 60, (v) => v.toFixed(1));
     tick('titles', el('titles'), rows.length, (v) => String(Math.round(v)));
-    tick('pace', el('per-day'), days > 0 ? left / 60 / days : 0, (v) => v.toFixed(1));
+    tick('pace', el('per-day'), msLeft() > 0 ? left / 60 / Math.max(1, msLeft() / 86400000) : 0, (v) => v.toFixed(1));
     el('progress').style.transform = `scaleX(${total ? (total - left) / total : 0})`;
     el('meta').textContent = !rows.length ? 'Pick at least one character.'
-      : days > 0 ? `${hm(left)} still to watch across ${days} ${days === 1 ? 'day' : 'days'} until release. ${hm(total - left)} watched.`
+      : msLeft() > 0 ? `${hm(left)} still to watch, with ${days} ${days === 1 ? 'day' : 'days'} left until release. ${hm(total - left)} watched.`
       : 'Avengers: Doomsday is out. Watch these to catch up on the characters.';
 
     const state = o.reduced ? null : Flip.getState(list.querySelectorAll('li'));

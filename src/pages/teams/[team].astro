@@ -62,7 +62,7 @@ const nextTeam = TEAMS[(idx + 1) % TEAMS.length];
             <span class="mem-n">{String(i + 1).padStart(2, '0')}</span>
             {live && photosFor(c.slug)[0] && <a class="mem-photo" href={u(`/c/${c.slug}/`)} tabindex="-1" aria-hidden="true"><Photo photo={photosFor(c.slug)[0]} alt="" sizes="160px" /></a>}
             {live ? (
-              <a class="mem-name" style={`--lw:${Math.max(...heroName(c.slug!).split(/s+/).map((w) => w.length))}`} href={u(`/c/${c.slug}/`)} data-accent={d!.accent}>{heroName(c.slug!)}</a>
+              <a class="mem-name" style={`--lw:${Math.max(...heroName(c.slug!).split(/\s+/).map((w) => w.length))}`} href={u(`/c/${c.slug}/`)} data-accent={d!.accent}>{heroName(c.slug!)}</a>
             ) : (
               <span class="mem-name">{displayName(c)}</span>
             )}

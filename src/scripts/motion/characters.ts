@@ -150,7 +150,7 @@ export function characterExtras(scene: string, ctx: Ctx | null, reduced: boolean
 
   // Letters that move after the intro must not be clipped by the reveal masks.
   if (scene === 'magnet' || scene === 'bamf') {
-    const t = setTimeout(() => title.querySelectorAll<HTMLElement>('.split-line').forEach((l) => { l.style.overflow = 'visible'; }), 2000);
+    const t = setTimeout(() => title.querySelectorAll<HTMLElement>('.split-line, .split-line-mask').forEach((l) => { l.style.overflow = 'visible'; }), 2000);
     cleanups.push(() => clearTimeout(t));
   }
 

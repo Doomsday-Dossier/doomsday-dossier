@@ -10,6 +10,45 @@ type Opts = { ease: string; pace: number; reduced: boolean };
 const splits: SplitText[] = [];
 const mms: gsap.MatchMedia[] = [];
 
+/**
+ * Display text that must never run past its box. The CSS sizes headings from a letter count,
+ * which wide faces (Syne, Unbounded, Bowlby) beat, so each word is measured in its real face
+ * and the element shrinks just enough for its widest word. Run before splitting, after fonts
+ * land and on resize. Items in a flex row (the screen act's year) fit beside their siblings.
+ */
+const FIT = '.display, [data-fit]';
+export function fitText(root: ParentNode) {
+  const probe = document.createElement('span');
+  probe.setAttribute('aria-hidden', 'true');
+  probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;left:0;top:0;font:inherit;letter-spacing:inherit;text-transform:inherit;font-variation-settings:inherit;font-feature-settings:inherit';
+  let changed = false;
+  root.querySelectorAll<HTMLElement>(FIT).forEach((el) => {
+    if (el.style.fontSize && el.dataset.fitted !== '1') return; // someone else sizes this one inline
+    const was = el.dataset.fitted === '1';
+    el.style.fontSize = ''; delete el.dataset.fitted;
+    if (was) changed = true;
+    if (!el.offsetWidth) return;
+    const words = (el.textContent || '').split(/\s+/).filter(Boolean);
+    if (!words.length) return;
+    el.append(probe);
+    const widest = Math.max(...words.map((w) => { probe.textContent = w; return probe.getBoundingClientRect().width; }));
+    probe.remove();
+    const cs = getComputedStyle(el);
+    let room = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const parent = el.parentElement;
+    const p = parent && getComputedStyle(parent);
+    if (parent && p && p.display === 'flex' && p.flexDirection.startsWith('row') && parent.children.length > 1) {
+      const sibs = [...parent.children].filter((c) => c !== el) as HTMLElement[];
+      room = parent.clientWidth - parseFloat(p.paddingLeft) - parseFloat(p.paddingRight) - sibs.reduce((a, s) => a + s.offsetWidth, 0) - (parseFloat(p.columnGap) || 0) * sibs.length;
+    }
+    if (room > 0 && widest > room) {
+      el.style.fontSize = `${Math.floor(parseFloat(cs.fontSize) * (room / widest) * 0.97 * 10) / 10}px`;
+      el.dataset.fitted = '1'; changed = true;
+    }
+  });
+  return changed;
+}
+
 /** Split-text reveals. data-split="chars|words|lines", data-split-on="load|scroll". */
 export function splitReveals(root: ParentNode, o: Opts) {
   root.querySelectorAll<HTMLElement>('[data-split]').forEach((el) => {
