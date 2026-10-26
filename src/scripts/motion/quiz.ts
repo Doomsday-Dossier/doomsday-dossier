@@ -131,6 +131,9 @@ export function quizPage(root: ParentNode, o: Opts): () => void {
     if (c.photo) { img.src = c.photo.src; img.style.objectPosition = c.photo.focus; img.alt = c.name; img.hidden = false; } else img.hidden = true;
 
     stage.hidden = true; result.hidden = false; busy = false;
+    // measure again once the result is on screen: while hidden every width reads 0, and a face that is already
+    // cached resolves its load before the result shows, so neither earlier call could shrink a wide name
+    requestAnimationFrame(fitName);
     if (fresh) glideTo(scrollY + result.getBoundingClientRect().top - 90, dur(0.7) || 0.01);
     if (!o.reduced) {
       const tl = gsap.timeline();

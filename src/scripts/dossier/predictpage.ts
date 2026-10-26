@@ -22,8 +22,8 @@ export async function predictPage(env: Env) {
     tree = new TreeScene();
     await env.engine.mount(tree);
     env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
-    // phones: the tree stands behind the title only, then gives way to the questions
-    const fade = () => { if (tree) tree.alpha = innerWidth >= 900 ? 1 : 0.35 * Math.max(0, 1 - scrollY / (innerHeight * 0.8)); };
+    // phones: the tree stands at full strength at the top of the page and scrolls away with it
+    const fade = () => { if (!tree) return; const narrow = innerWidth < 900; tree.scrollPx = narrow ? scrollY : 0; tree.alpha = narrow ? Math.max(0, 1 - scrollY / (innerHeight * 0.9)) : 1; };
     addEventListener('scroll', fade, { passive: true }); fade();
   }
   document.addEventListener('dd:picks', (e) => {

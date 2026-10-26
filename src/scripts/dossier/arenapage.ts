@@ -58,7 +58,7 @@ export async function arenaPage(env: Env) {
     const up = () => sc!.up();
     hero.addEventListener('pointerup', up); hero.addEventListener('pointercancel', up);
     // only draw while the hero is on screen
-    ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom top', onLeave: () => env.engine!.setActive(false), onEnterBack: () => env.engine!.setActive(true) });
+    ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom top', onUpdate: (st) => { sc!.scrollPx = st.progress * hero.offsetHeight; }, onLeave: () => env.engine!.setActive(false), onEnterBack: () => env.engine!.setActive(true) });
   }
 
   versusPage(document, { ease: 'power3.out', pace: 1, reduced: env.reduced });

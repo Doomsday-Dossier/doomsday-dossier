@@ -1,8 +1,11 @@
 // Frame rate while scrolling through v2 pages, CPU throttled (default 4x) to stand in for a mid-range phone.
-// Usage: node scripts/preview-fps.mjs <base> [throttle] [desktop|phone]
+// Usage: node scripts/preview-fps.mjs <base> [throttle] [desktop|phone] [page,page]
 import { chromium, devices } from '@playwright/test';
 const [base, rate = '4', mode = 'phone'] = process.argv.slice(2);
-const pages = ['/preview/', '/preview/c/thor/', '/preview/c/victor-von-doom/', '/preview/teams/avengers/', '/preview/versus/', '/preview/predictions/', '/preview/timeline/'];
+const all = ['/preview/', '/preview/c/thor/', '/preview/c/victor-von-doom/', '/preview/teams/avengers/', '/preview/versus/', '/preview/predictions/', '/preview/timeline/', '/preview/quiz/'];
+// optional 4th argument: a comma list of page names to measure, e.g. quiz,timeline
+const only = process.argv[5]?.split(',');
+const pages = only ? all.filter((p) => only.some((o) => p.includes(o))) : all;
 const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blocklist'] });
 for (const path of pages) {
   const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } : { viewport: { width: 1440, height: 900 } });

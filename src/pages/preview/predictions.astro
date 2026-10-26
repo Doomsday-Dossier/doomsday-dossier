@@ -68,6 +68,8 @@ const data = JSON.stringify({ seal: pred.seal, questions: pred.questions, result
   .pr-tree-note { margin: var(--s-4) 0 0; }
   .pr { padding: calc(var(--header-h) + 60px) 0 90px; }
   .pr-head { display: grid; gap: 16px; }
+  /* phones: the top of the page is the tree's (it is drawn on the canvas behind) */
+  @media (max-width: 899px) { :global(html:not(.no-gl):not(.rm)) .pr-head { padding-top: 44svh; } }
   .pr-title { font-size: min(clamp(70px, 13vw, 210px), calc((100vw - 2 * var(--gutter)) / 3.6)); }
   .pr-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
   .pr-seal { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 8px; }

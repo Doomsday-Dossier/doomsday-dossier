@@ -20,6 +20,9 @@ export class TreeScene implements HeroScene {
   lit = new Float32Array(NB);
   ripple = 99;
   alpha = 1;
+  // phones: the tree has the top of the page to itself and leaves with it (the camera follows the scroll)
+  scrollPx = 0;
+  private narrow = false; private visH = 1;
   offsetX = 0;
 
   mount(ctx: Ctx) {
@@ -133,8 +136,10 @@ export class TreeScene implements HeroScene {
     const wide = ctx.width >= 900;
     this.cam.fov = wide ? 40 : 54;
     this.offsetX = wide ? 1.25 : 0;
-    this.cam.position.set(-this.offsetX, wide ? 0.1 : 0.5, wide ? 6.6 : 5.6);
-    this.cam.lookAt(-this.offsetX, wide ? -0.05 : 0.1, 0);
+    this.narrow = !wide;
+    this.visH = 2 * 5.6 * Math.tan((this.cam.fov * Math.PI) / 360);
+    this.cam.position.set(-this.offsetX, wide ? 0.1 : -0.9, wide ? 6.6 : 5.6);
+    this.cam.lookAt(-this.offsetX, wide ? -0.05 : -0.9, 0);
     this.cam.updateProjectionMatrix();
   }
   /** answered questions: their branches grow to full and light up */
@@ -147,6 +152,7 @@ export class TreeScene implements HeroScene {
     }
     this.ripple += dt;
     this.points.rotation.y += dt * 0.06;
+    if (this.narrow) { const y = -0.9 - this.scrollPx * (this.visH / ctx.height); this.cam.position.y = y; this.cam.lookAt(0, y, 0); }
     const u = this.mat.uniforms, g = this.ground.uniforms;
     u.uTime.value = g.uTime.value = ctx.time;
     u.uPx.value = g.uPx.value = ctx.bufW / ctx.width;
