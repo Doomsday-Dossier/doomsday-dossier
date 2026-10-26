@@ -149,22 +149,25 @@ All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (os
 generated impulse-response reverb); there are no audio files. Licence for every sound: **original work made for
 this site, no third-party audio** (synthesis recipes are this site's own code). Mix, measured in the forge
 recordings (RMS per half second): the pour about -17 dBFS, the crack the loudest moment at about -13, the clock
-ticks about -36, the score settling about -43 (some 26 dB under the forge). Bus levels in : forge
-0.42, actions 0.22, score 0.02. Every reverb send goes through its own bus's send at the bus level (); a send straight to the hall bypassed the bus and kept the score loud however low its bus was.
+ticks about -36, the score settling about -43 (some 26 dB under the forge). Bus levels in `sound/engine.ts`:
+forge 0.42, actions 0.22, score 0.02. Every reverb send goes through its own bus's send at the bus level
+(`wet(node, amount, bus)`); a send straight to the hall bypassed the bus and kept the score loud however low its
+bus was. A master gain sits behind one mute button; the choice is stored in `localStorage` `dd-sound` (on, off).
 
-**Forge build** (:  the beats,  the title's distance field, 
-shared noise, blackbody and lighting,  the scene,  the page; sound in ).
-Lab pages  and  ( captures canvas and sound together,  replays the
-full forge). Tools:  (frames at set moments),  (the recording
-with sound, then decodes it and prints loudness per half second). Measured on this PC's integrated GPU: 55 to 58
-fps desktop at 1.5x, 60 fps at phone size. Lessons: a negative start time must not mean "not started" (skipping
-in the first seconds of a page sent the visitor back to the gate; use a flag); start the picture on the click and
-align the sound to it, never wait for audio to start; three.js declares  only in vertex shaders;
-compile every material before the click (hitches the first time the pour or the bar appeared); stacked layers
-that fake thickness must run a cheap shader; precomputed noise in a texture instead of per-pixel fbm took the
-forge from 43 to 55+ fps; dark metal needs something to reflect (a soft environment gradient with Fresnel) or it
-reads as an outline; rough iron should barely mirror. A master gain behind one mute button; the choice
-is stored in `localStorage` `dd-sound` (on, off).
+**Forge build** (`src/scripts/forge/`: `timing.ts` the beats, `sdf.ts` the title's distance field, `glsl.ts`
+shared noise, blackbody and lighting, `scene.ts` the scene, `run.ts` the page; sound in `src/scripts/sound/`).
+Lab pages `/lab/forge-a/` and `/lab/forge-b/` (`?record` captures canvas and sound together, `?first` replays
+the full forge). Tools: `scripts/forge-frames.mjs` (frames at set moments), `scripts/forge-record.mjs` (the
+recording with sound, then decodes it and prints loudness per half second). Measured on this PC's integrated
+GPU: 55 to 58 fps desktop at 1.5x, 60 fps at phone size. Lessons: a negative start time must not mean "not
+started" (skipping in the first seconds of a page sent the visitor back to the gate; use a flag); start the
+picture on the click and align the sound to it, never wait for audio to start; three.js declares `modelMatrix`
+only in vertex shaders; compile every material before the click (hitches the first time the pour or the bar
+appeared); stacked layers that fake thickness must run a cheap shader; precomputed noise in a texture instead of
+per-pixel fbm took the forge from 43 to 55+ fps; dark metal needs something to reflect (a soft environment
+gradient with Fresnel) or it reads as an outline; rough iron should barely mirror. Never pass text containing
+backticks through a double-quoted shell command: bash runs them (it blanked every file name in this paragraph
+once); write such edits with the Edit tool.
 
 ### Sound map
 
