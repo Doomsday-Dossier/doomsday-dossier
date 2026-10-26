@@ -246,7 +246,9 @@ const waveOf = (team: string) => TEAMS.find((t) => t.id === team)?.wave;
   .card.has-photo > a::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, #050607 6%, rgba(5, 6, 7, 0.82) 34%, rgba(5, 6, 7, 0) 66%); pointer-events: none; }
   .card.has-photo:hover :global(.card-photo), .card.has-photo:focus-within :global(.card-photo) { transform: scale(1.07); }
   @media (hover: none) { .card.has-photo > a::before { opacity: 0; } }
-  .card-name { font-family: var(--card-font, var(--font-serif)); font-weight: var(--card-weight, 400); text-transform: uppercase; font-size: 26px; line-height: 1; color: var(--bone); }
+  /* cards switch to their character faces (about 900 KB in all) only once the roster is near: app.ts adds .faces */
+  .card-name { font-family: var(--font-serif); font-weight: var(--card-weight, 400); text-transform: uppercase; font-size: 26px; line-height: 1; color: var(--bone); }
+  .asm.faces .card-name { font-family: var(--card-font, var(--font-serif)); }
   .card.soon .card-name { font-family: var(--font-serif); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; color: var(--bone-dim); }
   .card-actor { font-size: 14px; color: var(--bone-dim); }
   .card-tag, .card-cta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--iron-2); }

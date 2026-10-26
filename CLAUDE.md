@@ -315,6 +315,13 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - Never put a paraphrase in quotation marks. The logline on the home page is our paraphrase and is labelled as such.
 - Endgame Encore (re-release, 25 September 2026): Marvel's article confirms the re-release and the extended Steve and Peggy ending. Its Doom post-credits scenes are cited to the MCU Wiki only.
 
+- **Display text is measured, not guessed.** `fitText` (motion/grammar.ts) runs before splitting, after fonts land and on resize: every `.display` and `[data-fit]` element shrinks just enough for its widest word in its real face (wide faces like Syne beat the letter-count CSS: Sam's "APPEARANCES" and "2018" ran under the next column, which the clip audit cannot see because nothing clips them). Flex-row items (the screen act's year) fit beside their siblings.
+- **Never write regexes through a shell heredoc or `node -e`.** `/\s+/` lost its backslash twice and became `/s+/` (split on the letter s), which sized hero and team names by the wrong word for weeks. Use the Edit tool or String.raw in a script file.
+- **SplitText masks are `.split-line-mask` wrappers**, not `.split-line`. Effects that move letters after the intro must unclip both (Magneto and Nightcrawler were clipped until this was fixed). Line masks carry 0.22em of room below for descenders.
+- **Stale pages after a deploy.** Each deploy renames CSS and JS; GitHub Pages lets browsers keep HTML for 10 minutes, so a cached page can ask for deleted files and render unstyled ("Skip to content" over a bare canvas). Base.astro has an inline guard: a failed /_astro/ stylesheet or script, or a failed dynamic import, reloads the page once (at most once a minute).
+- **Astro links the CSS of anything a page script might import, even dynamically**, so lazy-importing CSS does not defer it. The home roster defers its 29 faces instead by using the plain serif until app.ts adds `.asm.faces` (roster within 1500 px): 4 fonts on the first screen instead of 33.
+- Page wipe 480 ms cover and 620 ms reveal (was 750 and 900); hero text fades in after 0.25 s (was 0.6 s) over 0.9 x pace.
+
 ## Open items
 
 - motionsites.ai reference links from the user (triggers a motion tuning pass).
@@ -326,6 +333,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-26: Fix pass from user report before posting on Reddit: unstyled pages after deploys (reload guard), cut descender in "Ready by Doomsday." (deeper masks, room under titles), planner said 53 days against the countdown's 52 (both floor now; pace uses exact time), Sam's screen act year and heading ran under the next column (fitText), hero/team name sizing regex bug, Magneto/Nightcrawler letters clipped, home loaded 33 fonts up front (now 4), faster page wipe and intro. Security check: no secrets in the repo, worker queries bound, but every commit shows the user's Gmail address.
 - 2026-10-26: Quiz live at /quiz/ ("Which Doomsday hero are you?"), questions approved by the user. Header now has five links (Quiz added) and hides them below 860 px (the menu has them all). Lessons: scoped Astro CSS does not style elements a script creates (use `:global`); estimating a name size from character count fails for wide faces like Syne, so measure after the font loads.
 - 2026-10-26: Prediction board live at /predictions/: user approved the 10 questions; seal countdown, lock-in with Turnstile, fan split bars, copy-my-picks, read-only after the seal; compact sticky bar on phones (95 px). Remote D1 tables applied (first `d1 execute --remote` printed only the permissions list; rerun succeeded, so check for "success": true). Next: the quiz (rank 6), questions drafted for the user to approve.
 - 2026-10-26: Fight arena built on /versus/ (renamed Arena in the nav): card slam with shockwave, flash and shake; one documented feat per card cycling with its source (wide screens; the full list sits below); fan vote panel with Turnstile, results after voting or on request, remembered for the day. Arena worker written and tested locally (votes, daily dedupe, shared tallies for both orders, bad slugs and missing tokens rejected, CORS locked to the site). Waiting on the user to create the free Cloudflare account, then: wrangler login, D1 create, schema, secrets, deploy, repository variables.

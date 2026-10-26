@@ -2,7 +2,7 @@ import Lenis from 'lenis';
 import type { Engine } from './gl/engine';
 import { Wipe } from './gl/wipe';
 import {
-  gsap, ScrollTrigger, splitReveals, blockReveals, driftType, comicsTimeline, screenStrip,
+  gsap, ScrollTrigger, fitText, splitReveals, blockReveals, driftType, comicsTimeline, screenStrip,
   countdowns, magnets, tiltCards, killAll,
 } from './motion/grammar';
 import { homeMotion } from './motion/home';
@@ -106,6 +106,20 @@ function teardownPage() {
   engine?.unmount();
 }
 
+/** Home only: roster cards take their character faces (about 900 KB) once the roster is within a few screens. */
+function lazyFaces() {
+  const roster = document.querySelector('.asm');
+  if (!roster) return () => {};
+  const io = new IntersectionObserver((es) => {
+    if (!es.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    roster.classList.add('faces');
+    document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
+  }, { rootMargin: '1500px 0px' });
+  io.observe(roster);
+  return () => io.disconnect();
+}
+
 async function initPage() {
   const body = document.body;
   const ease = body.dataset.ease || 'power3.out';
@@ -118,6 +132,7 @@ async function initPage() {
   const revealing = wipe && wipe.canvas.style.opacity === '1' ? wipe.reveal() : Promise.resolve();
   // DOM motion next. Wait briefly for fonts; SplitText re-splits if a face lands later.
   await Promise.race([document.fonts.ready.catch(() => {}), new Promise((r) => setTimeout(r, 500))]);
+  fitText(document);
   splitReveals(document, opts);
   blockReveals(document, opts);
   driftType(document, opts);
@@ -127,10 +142,14 @@ async function initPage() {
   tiltCards(document, opts);
   pageCleanups.push(heroPortrait(document, opts), gallery(document, opts), teamPicker(document, opts), filmStrip(document, opts), versusPage(document, opts), catchUp(document, opts), predictionBoard(document, opts), quizPage(document, opts));
   pageCleanups.push(countdowns(document, body.dataset.release || '2026-12-18'));
-  if (body.dataset.page === 'home') homeMotion(reduced);
-  if (!reduced) gsap.from('[data-hero-in]', { opacity: 0, y: 20, duration: 1.2 * pace, stagger: 0.1, ease, delay: 0.6 });
+  if (body.dataset.page === 'home') { homeMotion(reduced); pageCleanups.push(lazyFaces()); }
+  if (!reduced) gsap.from('[data-hero-in]', { opacity: 0, y: 20, duration: 0.9 * pace, stagger: 0.08, ease, delay: 0.25 });
   requestAnimationFrame(() => ScrollTrigger.refresh());
-  document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
+  document.fonts.ready.then(() => { fitText(document); ScrollTrigger.refresh(); }).catch(() => {});
+  let fitT = 0;
+  const refit = () => { clearTimeout(fitT); fitT = window.setTimeout(() => { if (fitText(document)) ScrollTrigger.refresh(); }, 150); };
+  window.addEventListener('resize', refit);
+  pageCleanups.push(() => { window.removeEventListener('resize', refit); clearTimeout(fitT); });
 
   // Hero scene: mount when the engine arrives, drive scroll progress, pause out of view.
   await engineReady;

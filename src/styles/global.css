@@ -112,7 +112,7 @@ html.menu-open .menu { visibility: visible; clip-path: inset(0 0 0 0); transitio
 .accent { color: var(--c-accent); }
 
 /* Split-text helpers */
-.split-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.split-line { display: block; overflow: hidden; padding-bottom: 0.22em; margin-bottom: -0.22em; }
 .split-char, .split-word { display: inline-block; will-change: transform; }
 
 /* Sources */

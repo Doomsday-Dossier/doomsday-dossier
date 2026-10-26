@@ -33,6 +33,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline>
+      // Each deploy renames the CSS and JS files. A page the browser cached before a deploy can ask for
+      // files that are gone, and would show unstyled. If a stylesheet or script fails to load, reload once
+      // (a reload revalidates the page itself); at most once a minute so it can never loop.
+      (function () {
+        var KEY = 'dd-asset-reload';
+        function again() {
+          try { var t = +sessionStorage.getItem(KEY) || 0; if (Date.now() - t < 60000) return; sessionStorage.setItem(KEY, String(Date.now())); } catch (e) { return; }
+          location.reload();
+        }
+        addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && ((t.tagName === 'LINK' && /stylesheet|modulepreload/.test(t.rel)) || t.tagName === 'SCRIPT') && (t.href || t.src || '').indexOf('/_astro/') !== -1) again();
+        }, true);
+        addEventListener('unhandledrejection', function (e) {
+          if (/dynamically imported module|Importing a module script failed|error loading dynamically imported/i.test(String(e.reason && e.reason.message))) again();
+        });
+      })();
+    </script>
     <ClientRouter fallback="none" />
   </head>
   <body data-page={page} data-scene={scene} data-ease={ease} data-pace={pace} data-release="2026-12-18" style={styleVars}>
