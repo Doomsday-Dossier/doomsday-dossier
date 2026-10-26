@@ -1,0 +1,17 @@
+name = "doomsday-arena"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://prejith77.github.io,http://localhost:4322,http://localhost:4321"
+
+# database_id is filled in after `wrangler d1 create doomsday-arena`
+[[d1_databases]]
+binding = "DB"
+database_name = "doomsday-arena"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# Secrets (never in this file):
+#   wrangler secret put TURNSTILE_SECRET   (from the Turnstile widget)
+#   wrangler secret put HASH_SECRET        (any long random string)
+# For local testing, .dev.vars holds Cloudflare's published Turnstile test secret.
