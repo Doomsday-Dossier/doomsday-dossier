@@ -26,7 +26,3 @@ export function timeLeft(iso = RELEASE) {
   return { ms, d: Math.floor(ms / 864e5), h: Math.floor(ms / 36e5) % 24, m: Math.floor(ms / 6e4) % 60, s: Math.floor(ms / 1e3) % 60 };
 }
 
-/** The particle figure for a photo: the portrait window sampled and where the subject sits in it. */
-export const FIGURES: Record<string, { crop: [number, number, number, number]; focus: [number, number]; height: number; depth: number; cut: number }> = {
-  'victor-von-doom': { crop: [0.25, 0.02, 0.75, 1], focus: [0.5, 0.55], height: 3.5, depth: 0.45, cut: 0.1 },
-};

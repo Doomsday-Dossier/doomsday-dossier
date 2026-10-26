@@ -26,7 +26,7 @@ export function floodRise(s: Sound, seconds = 1.8, t = s.ctx.currentTime + 0.01)
   const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 5; lp.frequency.value = 220;
   lp.connect(g).connect(out); s.wet(g, 0.7, out);
   const oscs = [55, 82.41, 110, 130.81, 164.81].flatMap((f) => [-7, 7].map((cents) => { const o = c.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = cents; o.connect(lp); return o; }));
-  g.gain.exponentialRampToValueAtTime(0.5, t + seconds);
+  g.gain.exponentialRampToValueAtTime(0.16, t + seconds); // peaks near -14 dBFS, under the forge's crack
   g.gain.exponentialRampToValueAtTime(0.0001, t + seconds + 2.2);
   lp.frequency.setValueAtTime(220, t);
   lp.frequency.exponentialRampToValueAtTime(2600, t + seconds);
@@ -35,7 +35,7 @@ export function floodRise(s: Sound, seconds = 1.8, t = s.ctx.currentTime + 0.01)
   air.f.frequency.setValueAtTime(500, t);
   air.f.frequency.exponentialRampToValueAtTime(5200, t + seconds);
   air.g.gain.setValueAtTime(0.0001, t);
-  air.g.gain.exponentialRampToValueAtTime(0.28, t + seconds * 0.95);
+  air.g.gain.exponentialRampToValueAtTime(0.1, t + seconds * 0.95);
   air.g.gain.exponentialRampToValueAtTime(0.0001, t + seconds + 0.8);
   air.src.start(t, 0, seconds + 1);
 }

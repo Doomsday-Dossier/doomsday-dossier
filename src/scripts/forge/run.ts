@@ -16,6 +16,7 @@ import { Sound } from '../sound/engine';
 import { playForge, clockTick } from '../sound/forge';
 import { startScore } from '../sound/score';
 import { timeLeft } from '../dossier/tokens';
+import { pageEpoch, alive, onLeave } from '../page-scope';
 
 const SEEN = 'dd-forge-seen';
 
@@ -151,13 +152,19 @@ export async function runForge(root: HTMLElement, opts: {
     }, 400);
   };
   gate.addEventListener('click', begin);
+  // arriving from another page with sound already playing: no gate is needed, the forge just plays
+  if (sound.ctx.state === 'running' && !opts.record && !reduced) setTimeout(begin, 120);
   (window as any).__forgeBegin = begin;
   // for frame-by-frame review: jump the clock to t seconds after the click
   (window as any).__forgeSeek = (t: number) => { started = true; startAt = performance.now() - t * 1000; };
 
   if (reduced) { started = true; startAt = performance.now() - (timing.total + 20) * 1000; gate.hidden = true; }
 
+  // the loop belongs to this page: it stops when the page is left, and the GPU memory goes with it
+  const epoch = pageEpoch();
+  onLeave(() => { forgeSound?.stop(); composer.dispose(); renderer.dispose(); renderer.forceContextLoss(); });
   const loop = (now: number) => {
+    if (!alive(epoch)) return;
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     const t = started ? (now - startAt) / 1000 : -1;
     forge.update(t, dt);
