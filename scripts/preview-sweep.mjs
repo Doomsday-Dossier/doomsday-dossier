@@ -1,10 +1,10 @@
-// Loads every /preview/ page, reports page errors and takes a first-screen and a mid-page shot.
+// Loads every / page, reports page errors and takes a first-screen and a mid-page shot.
 // Usage: node scripts/preview-sweep.mjs <base> <out dir> [desktop|phone] [filter]
 import { chromium, devices } from '@playwright/test';
 import fs from 'node:fs';
 const [base, out, mode = 'desktop', filter = ''] = process.argv.slice(2);
 fs.mkdirSync(out, { recursive: true });
-const html = fs.readdirSync('dist/preview', { recursive: true }).filter((f) => String(f).endsWith('index.html')).map((f) => '/preview/' + String(f).replace(/\\/g, '/').replace(/index\.html$/, ''));
+const html = fs.readdirSync('dist/preview', { recursive: true }).filter((f) => String(f).endsWith('index.html')).map((f) => '/' + String(f).replace(/\\/g, '/').replace(/index\.html$/, ''));
 const pages = html.filter((p) => p.includes(filter)).sort();
 const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blocklist'] });
 const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } : { viewport: { width: 1440, height: 900 } });

@@ -8,7 +8,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { reducedMotion, isPhone } from './tokens';
 import { setScroller } from '../motion/scroller';
-import { cursor, transitions } from './chrome';
+import { cursor, transitions, menu } from './chrome';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,6 +44,7 @@ async function boot() {
   const env = { engine, lenis, reduced, phone };
   cursor(reduced);
   transitions(reduced);
+  menu(reduced, lenis);
   const page = document.body.dataset.page;
   if (page === 'archive') (await import('./archive')).archive(env);
   if (page === 'file') (await import('./file')).filePage(env);

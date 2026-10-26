@@ -1,12 +1,14 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
+import OylaBand from '../components/OylaBand.astro';
 import { SRC, OFFICIAL, u } from '../data/site';
 ---
-<Base title="Sources and rules" description="How Doomsday Dossier sources every fact, and what it will never publish." page="about">
+<Dossier title="Sources and rules" page="about" description="How Doomsday Dossier sources every fact, and what it will never publish." >
   <section class="ab">
     <div class="wrap ab-inner">
       <p class="label" data-hero-in>Sources and rules</p>
       <h1 class="display ab-title" data-split="words" data-split-on="load">Nothing here is a guess.</h1>
+      <OylaBand slugs={['victor-von-doom', 'reed-richards', 'shuri']} caption="Every fact on every file is sourced." />
       <div class="ab-cols">
         <div>
           <h2 class="serif">The rules</h2>
@@ -35,8 +37,9 @@ import { SRC, OFFICIAL, u } from '../data/site';
       </div>
     </div>
   </section>
-</Base>
+</Dossier>
 <style>
+  :global(h1.display) { font-weight: 900; }
   .ab { padding: calc(var(--header-h) + 80px) 0 100px; }
   .ab-inner { display: grid; gap: 40px; }
   .ab-title { font-size: clamp(54px, 10vw, 160px); }

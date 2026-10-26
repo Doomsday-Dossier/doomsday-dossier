@@ -9,7 +9,7 @@ const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewp
 for (const slug of list.split(',')) {
   const p = await ctx.newPage();
   const errs = []; p.on('pageerror', (e) => errs.push(e.message));
-  await p.goto(`${base}/preview/c/${slug}/`); await p.waitForTimeout(2600);
+  await p.goto(`${base}/c/${slug}/`); await p.waitForTimeout(2600);
   const go = async (y) => { await p.evaluate((y) => window.__ddLenis.scrollTo(y, { immediate: true }), y); await p.waitForTimeout(1100); };
   const at = (sel, f = 0) => p.evaluate(([s, f]) => { const e = document.querySelector(s); return e ? e.getBoundingClientRect().top + scrollY + e.offsetHeight * f : 0; }, [sel, f]);
   await p.screenshot({ path: `${out}/${slug}-${mode}-1-hero.jpg`, quality: 70, type: 'jpeg' });

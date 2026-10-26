@@ -10,7 +10,7 @@ const prints = slugs.map((slug) => ({ slug, p: photos2For(slug)[0], name: heroNa
   <div class="oy-row">
     {prints.map((x, i) => (
       <figure class={`oy oy${i + 1}`} data-oy style={`--a:${x.accent}`}>
-        <a class="oy-frame" href={u(`/preview/c/${x.slug}/`)} tabindex="-1" aria-hidden="true"><img src={pick2(x.p.full, 1280)} srcset={srcset2(x.p.full)} sizes="(min-width: 900px) 30vw, 80vw" width={x.p.w} height={x.p.h} alt="" loading="lazy" decoding="async" style={`object-position:${x.p.focusM}`} /></a>
+        <a class="oy-frame" href={u(`/c/${x.slug}/`)} tabindex="-1" aria-hidden="true"><img src={pick2(x.p.full, 1280)} srcset={srcset2(x.p.full)} sizes="(min-width: 900px) 30vw, 80vw" width={x.p.w} height={x.p.h} alt="" loading="lazy" decoding="async" style={`object-position:${x.p.focusM}`} /></a>
         <figcaption class="t-micro"><span class="t-accent">{x.name}</span></figcaption>
       </figure>
     ))}

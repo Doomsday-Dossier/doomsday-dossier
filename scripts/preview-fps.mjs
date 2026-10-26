@@ -2,7 +2,7 @@
 // Usage: node scripts/preview-fps.mjs <base> [throttle] [desktop|phone] [page,page]
 import { chromium, devices } from '@playwright/test';
 const [base, rate = '4', mode = 'phone'] = process.argv.slice(2);
-const all = ['/preview/', '/preview/c/thor/', '/preview/c/victor-von-doom/', '/preview/teams/avengers/', '/preview/versus/', '/preview/predictions/', '/preview/timeline/', '/preview/quiz/'];
+const all = ['/', '/c/thor/', '/c/victor-von-doom/', '/teams/avengers/', '/versus/', '/predictions/', '/timeline/', '/quiz/'];
 // optional 4th argument: a comma list of page names to measure, e.g. quiz,timeline
 const only = process.argv[5]?.split(',');
 const pages = only ? all.filter((p) => only.some((o) => p.includes(o))) : all;

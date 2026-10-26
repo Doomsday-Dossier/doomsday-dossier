@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
+import OylaBand from '../components/OylaBand.astro';
 import Photo from '../components/Photo.astro';
 import { DESIGN, publishedOrder, heroName, u } from '../data/site';
 import { photosFor, PHOTO_CREDIT } from '../data/photos';
@@ -7,11 +8,12 @@ import { photosFor, PHOTO_CREDIT } from '../data/photos';
 const rows = publishedOrder().map((slug) => ({ slug, d: DESIGN[slug], photos: photosFor(slug) })).filter((r) => r.photos.length);
 const total = rows.reduce((n, r) => n + r.photos.length, 0);
 ---
-<Base title="Image credits" description="Every image used on Doomsday Dossier, by character. Images belong to their respective owners and any image will be removed on request." page="credits">
+<Dossier title="Image credits" page="credits" description="Every image used on Doomsday Dossier, by character. Images belong to their respective owners and any image will be removed on request." >
   <section class="cr">
     <div class="wrap cr-inner">
       <p class="label" data-hero-in>Image credits</p>
       <h1 class="display cr-title" data-split="words" data-split-on="load">Every frame, listed.</h1>
+      <OylaBand slugs={['loki', 'yelena-belova', 'professor-x']} />
       <div class="cr-note" data-hero-in>
         <p>{PHOTO_CREDIT} Doomsday Dossier is an unofficial, non-commercial fan project and claims no rights in any image shown here.</p>
         <p>Any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" target="_blank" rel="noopener">open an issue</a> naming the image number below, and it comes down.</p>
@@ -34,8 +36,9 @@ const total = rows.reduce((n, r) => n + r.photos.length, 0);
       </ol>
     </div>
   </section>
-</Base>
+</Dossier>
 <style>
+  :global(h1.display) { font-weight: 900; }
   .cr { padding: calc(var(--header-h) + 80px) 0 100px; }
   .cr-inner { display: grid; gap: 36px; }
   .cr-title { font-size: min(clamp(54px, 10vw, 160px), calc((100vw - 2 * var(--gutter)) / 6.4)); }

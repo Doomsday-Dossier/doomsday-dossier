@@ -11,11 +11,11 @@ let bad = 0;
 for (const [mode, opts] of Object.entries(SIZES)) {
   const ctx = await b.newContext(opts);
   const p = await ctx.newPage();
-  await p.goto(`${base}/preview/quiz/`); await p.waitForTimeout(1500);
+  await p.goto(`${base}/quiz/`); await p.waitForTimeout(1500);
   const seen = new Set();
   for (let t = 0; t < 250 && seen.size < 29; t++) {
     const code = await p.evaluate(() => { const qs = JSON.parse(document.getElementById('qz-data').textContent).questions; return qs.map((q) => q.options[Math.floor(Math.random() * q.options.length)].id).join(''); });
-    await p.goto(`${base}/preview/quiz/?a=${code}`); await p.waitForTimeout(900);
+    await p.goto(`${base}/quiz/?a=${code}`); await p.waitForTimeout(900);
     const r = await p.evaluate(() => {
       const nm = document.querySelector('[data-r-name]'), box = nm.getBoundingClientRect();
       const words = [...nm.querySelectorAll('.ln > span')];
