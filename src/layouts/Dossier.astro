@@ -1,0 +1,76 @@
+---
+// Design system v2 layout (the Latverian dossier). Showcase pages under /preview/ use it until
+// the user approves the showcase; then every page moves to it.
+import '@fontsource-variable/big-shoulders-display';
+import '@fontsource/courier-prime/400.css';
+import '@fontsource/courier-prime/700.css';
+import '@fontsource-variable/inter-tight';
+import '../styles/system.css';
+import { u } from '../data/site';
+import { PHOTO_CREDIT } from '../data/photos';
+
+interface Props {
+  title: string;
+  description: string;
+  page: 'archive' | 'file';
+  accent?: string;
+  styleVars?: string;
+}
+const { title, description, page, accent, styleVars = '' } = Astro.props;
+const vars = [accent ? `--accent:${accent}` : '', styleVars].filter(Boolean).join(';');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0d1012" />
+    <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline>
+      // Same stale-file guard as the live site: a cached page asking for files a deploy removed reloads once.
+      (function () {
+        var KEY = 'dd-asset-reload';
+        function again() {
+          try { var t = +sessionStorage.getItem(KEY) || 0; if (Date.now() - t < 60000) return; sessionStorage.setItem(KEY, String(Date.now())); } catch (e) { return; }
+          location.reload();
+        }
+        addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && ((t.tagName === 'LINK' && /stylesheet|modulepreload/.test(t.rel)) || t.tagName === 'SCRIPT') && (t.href || t.src || '').indexOf('/_astro/') !== -1) again();
+        }, true);
+        addEventListener('unhandledrejection', function (e) {
+          if (/dynamically imported module|Importing a module script failed|error loading dynamically imported/i.test(String(e.reason && e.reason.message))) again();
+        });
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
+      })();
+    </script>
+  </head>
+  <body data-page={page} style={vars}>
+    <a class="skip" href="#main">Skip to content</a>
+    <canvas id="dx-gl" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="dx-hdr">
+      <a class="dx-mark" href={u('/preview/')}><i></i><span>Doomsday Dossier</span></a>
+      <div class="dx-hdr-right">
+        <a class="dx-back" href={u('/')}>Current site</a>
+        <span class="dx-unofficial" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial fan site</span>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="dx-foot">
+      <div class="wrap">
+        <p class="t-label t-accent" style="margin-bottom: 14px">Design preview &middot; awaiting approval</p>
+        <p>An unofficial, non-commercial fan site. Not affiliated with or endorsed by Marvel Studios, Marvel Entertainment or Disney. All names and characters belong to their owners. {PHOTO_CREDIT} Any image will be removed on request: open an issue at <a href="https://github.com/prejith77/doomsday-dossier/issues">github.com/prejith77/doomsday-dossier</a>.</p>
+        <p>Avengers: Doomsday is in theaters 18 December 2026.</p>
+      </div>
+    </footer>
+    <script>
+      import '../scripts/dossier/main';
+    </script>
+  </body>
+</html>

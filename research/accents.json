@@ -1,0 +1,634 @@
+{
+  "note": "One accent per character, taken from the character's established look. Film looks come first (the most recent released appearance, or the version Marvel named for Doomsday); comics are used where the film look would clash or is not described. Each source is a Marvel Cinematic Universe Wiki or Marvel Fandom wiki page read through the wiki's MediaWiki API (action=parse) and cited by its normal /wiki/ URL. No source gives hex codes: every hex is our own judgement, matched by eye to the colour the page describes (or, where flagged, to a colour the page only shows). Contrast is the WCAG 2 ratio against the background #0d1012, from the relative luminance formula with sRGB linearisation; every accent clears 4.5:1, and dark costume colours were lightened just enough to clear it. Distinctness is CIE76 Delta E in CIELAB (D65 white), with a target of at least 12 between any two characters; the closest pair is sam-wilson and ghost at 13.2. Where several heroes share a costume colour (Captain America blue, the X-Men blues, the reds), one keeps it and the others take their second most characteristic element; hexNote says which and why. Doom's cloak green is fixed and doubles as the site's base glow. 'current' is DESIGN[slug].accent in src/data/site.ts on 26 October 2026, for comparison. Nothing here is applied to the site yet.",
+  "background": "#0d1012",
+  "minDeltaE": {
+    "value": 13.2,
+    "between": [
+      "sam-wilson",
+      "ghost"
+    ]
+  },
+  "generated": "2026-10-26",
+  "characters": [
+    {
+      "slug": "victor-von-doom",
+      "name": "VICTOR VON DOOM",
+      "hex": "#1fd47a",
+      "colorName": "Latverian cloak emerald",
+      "basis": "comics",
+      "title": "Doom's green cloak and robes over his iron armour (Fantastic Four Vol 1 5, 1962, onward)",
+      "fromWhat": "the green cloak and robes worn over the armour",
+      "source": {
+        "label": "Marvel Fandom wiki, Doctor Doom's Armor",
+        "url": "https://marvel.fandom.com/wiki/Doctor_Doom%27s_Armor"
+      },
+      "hexNote": "matched by eye to the described costume colour (the page mentions his green cloak and robes). This is also the site's base glow: cloak green that deepens toward iron on the gunmetal ground. Fixed by the brief.",
+      "contrast": 9.78,
+      "current": "#3dff8a",
+      "nearest": {
+        "slug": "joaquin-torres",
+        "deltaE": 27.2
+      },
+      "roleNote": "Marvel names the role (Victor von Doom)."
+    },
+    {
+      "slug": "steve-rogers",
+      "name": "STEVE ROGERS",
+      "hex": "#6d8cd8",
+      "colorName": "Star-spangled navy, lifted",
+      "basis": "film",
+      "title": "Captain America uniform, Avengers: Endgame (2019)",
+      "fromWhat": "the navy blue of his Captain America uniform",
+      "source": {
+        "label": "MCU Wiki, Captain America's Uniform",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America%27s_Uniform"
+      },
+      "hexNote": "matched by eye to the described costume colour (the page calls his stealth suit navy and his later suits red, white and blue). Lightened for legibility: true navy is far below 4.5:1 on this ground. Kept muted so it reads apart from Mystique's saturated cobalt.",
+      "contrast": 5.81,
+      "current": "#9fd8ff",
+      "nearest": {
+        "slug": "beast",
+        "deltaE": 16.7
+      },
+      "roleNote": "Marvel names the role (Steve Rogers)."
+    },
+    {
+      "slug": "thor",
+      "name": "THOR",
+      "hex": "#8fdcff",
+      "colorName": "Asgardian lightning blue",
+      "basis": "film",
+      "title": "Thor's lightning, Thor: Love and Thunder (2022)",
+      "fromWhat": "the blue lightning he calls down",
+      "source": {
+        "label": "MCU Wiki, Thor",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
+      },
+      "hexNote": "matched by eye to the described effect colour (the page calls his usual lightning blue). His bright red cape was the alternative, but the red range is already held by Red Guardian, Cyclops, Peggy Carter and Scott Lang.",
+      "contrast": 12.59,
+      "current": "#8fd3ff",
+      "nearest": {
+        "slug": "reed-richards",
+        "deltaE": 19.5
+      },
+      "roleNote": "Marvel names the role (Thor)."
+    },
+    {
+      "slug": "sam-wilson",
+      "name": "SAM WILSON",
+      "hex": "#f4f6f9",
+      "colorName": "Vibranium suit white",
+      "basis": "film",
+      "title": "Wakandan-made Captain America uniform, The Falcon and the Winter Soldier (2021) and Captain America: Brave New World (2025)",
+      "fromWhat": "the white that replaced blue as the main colour of his Captain America suit",
+      "source": {
+        "label": "MCU Wiki, Captain America's Uniform",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America%27s_Uniform"
+      },
+      "hexNote": "matched by eye to the described costume colour (the page says white became the primary suit colour). Chosen over blue so Sam and Steve read as two different Captains. Runner-up: the purple glow his vibranium wings give off as they store energy (same page), set aside because Shuri already holds that glow.",
+      "contrast": 17.63,
+      "current": "#ff5a4e",
+      "nearest": {
+        "slug": "ghost",
+        "deltaE": 13.2
+      },
+      "roleNote": "Marvel lists Anthony Mackie in the cast without naming the role; this uses the most recent released look (Sam Wilson / Captain America)."
+    },
+    {
+      "slug": "bucky-barnes",
+      "name": "BUCKY BARNES",
+      "hex": "#9fb4c8",
+      "colorName": "Winter Soldier arm steel",
+      "basis": "film",
+      "title": "metal arm, Captain America: The Winter Soldier (2014)",
+      "fromWhat": "the bare metal of his prosthetic arm",
+      "source": {
+        "label": "MCU Wiki, Winter Soldier",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+      },
+      "hexNote": "the page describes a titanium (later vibranium) metal arm with a Soviet red star but names no colour for the metal; the hex is our judgement of brushed steel with a cool blue cast. His later Wakandan arm is black and gold, which would crowd the gold group.",
+      "contrast": 8.94,
+      "current": "#c7d3da",
+      "nearest": {
+        "slug": "ghost",
+        "deltaE": 14.4
+      },
+      "roleNote": "Marvel lists Sebastian Stan in the cast without naming the role; this uses the most recent released look (Bucky Barnes)."
+    },
+    {
+      "slug": "scott-lang",
+      "name": "SCOTT LANG",
+      "hex": "#d9625a",
+      "colorName": "Ant-Man suit brick red",
+      "basis": "film",
+      "title": "Ant-Man suit, Ant-Man and the Wasp: Quantumania (2023)",
+      "fromWhat": "the red of his suit, which matches the red shrinking particles",
+      "source": {
+        "label": "MCU Wiki, Ant-Man Suit",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_Suit"
+      },
+      "hexNote": "the page names red and blue particle variants and shows the red suit, but does not name the suit colour in its text; the hex is our judgement, muted to a brick red so it stays apart from Red Guardian's pure red and Peggy Carter's coral.",
+      "contrast": 5.31,
+      "current": "#ff4fd8",
+      "nearest": {
+        "slug": "peggy-carter",
+        "deltaE": 15.9
+      },
+      "roleNote": "Marvel lists Paul Rudd in the cast without naming the role; this uses the most recent released look (Scott Lang / Ant-Man)."
+    },
+    {
+      "slug": "shang-chi",
+      "name": "SHANG-CHI",
+      "hex": "#ffb833",
+      "colorName": "Ten Rings gold",
+      "basis": "film",
+      "title": "the Ten Rings, Shang-Chi and the Legend of the Ten Rings (2021)",
+      "fromWhat": "the orange-gold energy that runs through the rings (and his veins) when he wields them",
+      "source": {
+        "label": "MCU Wiki, Shang-Chi",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+      },
+      "hexNote": "matched by eye to the described effect colour (orange and golden currents). The rings glow blue and purple only in his father's hands, so gold is his.",
+      "contrast": 11.05,
+      "current": "#e7c46a",
+      "nearest": {
+        "slug": "bob-reynolds",
+        "deltaE": 17.5
+      },
+      "roleNote": "Marvel lists Simu Liu in the cast without naming the role; this uses the most recent released look (Shang-Chi)."
+    },
+    {
+      "slug": "joaquin-torres",
+      "name": "JOAQUIN TORRES",
+      "hex": "#8fe0a0",
+      "colorName": "Falcon flight-suit green",
+      "basis": "film",
+      "title": "Falcon suit, Captain America: Brave New World (2025)",
+      "fromWhat": "the green of his own Falcon flight suit, which drops the flag colours Sam wore",
+      "source": {
+        "label": "MCU Wiki, Falcon",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Falcon"
+      },
+      "hexNote": "thin source: the page shows the suit and says he repainted the wings and made his own costume, but its text names no colour. The hex is our judgement of the suit's green, lightened for legibility and pushed toward mint so it stays clear of Doom's emerald.",
+      "contrast": 12.13,
+      "current": "#ff8a3d",
+      "nearest": {
+        "slug": "victor-von-doom",
+        "deltaE": 27.2
+      },
+      "roleNote": "Marvel lists Danny Ramirez in the cast without naming the role; this uses the most recent released look (Joaquin Torres / Falcon).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "reed-richards",
+      "name": "REED RICHARDS",
+      "hex": "#1fb4e6",
+      "colorName": "First Steps uniform blue",
+      "basis": "film",
+      "title": "Fantastic Four uniform, The Fantastic Four: First Steps (2025)",
+      "fromWhat": "the team's blue uniform, which stretches with him",
+      "source": {
+        "label": "MCU Wiki, Fantastic Four Uniform",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Fantastic_Four_Uniform"
+      },
+      "hexNote": "the page shows the uniform but its text names no colour; the hex is our judgement of the film's bright retro blue, leaning cerulean so it stays apart from Steve's navy and Mystique's cobalt. The team blue goes to Reed alone; his three teammates take their power colours.",
+      "contrast": 7.94,
+      "current": "#4fa8ff",
+      "nearest": {
+        "slug": "thor",
+        "deltaE": 19.5
+      },
+      "roleNote": "Marvel lists Pedro Pascal in the cast without naming the role; this uses the most recent released look (Reed Richards / Mister Fantastic)."
+    },
+    {
+      "slug": "sue-storm",
+      "name": "SUE STORM",
+      "hex": "#c9c0ff",
+      "colorName": "Force-field lilac",
+      "basis": "film",
+      "title": "Invisible Woman's force fields, The Fantastic Four: First Steps (2025)",
+      "fromWhat": "the faint shimmer at the edge of her invisible force fields",
+      "source": {
+        "label": "MCU Wiki, Invisible Woman",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+      },
+      "hexNote": "hard choice: her powers are close to colourless by design, and neither wiki names a colour for them. With the team blue given to Reed, this pale lilac is our stand-in for a force field's shimmer, not a described colour.",
+      "contrast": 11.33,
+      "current": "#a9b8ff",
+      "nearest": {
+        "slug": "beast",
+        "deltaE": 16.1
+      },
+      "roleNote": "Marvel lists Vanessa Kirby in the cast without naming the role; this uses the most recent released look (Sue Storm / Invisible Woman).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "johnny-storm",
+      "name": "JOHNNY STORM",
+      "hex": "#ff6a1f",
+      "colorName": "Flame-on orange",
+      "basis": "film",
+      "title": "Human Torch flame, The Fantastic Four: First Steps (2025)",
+      "fromWhat": "the fire that covers his body when he flames on",
+      "source": {
+        "label": "MCU Wiki, Human Torch",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Human_Torch"
+      },
+      "hexNote": "the page describes his body catching fire but names no flame colour; the hex is our judgement of a flame's orange, tilted toward red so it stays apart from Ben's rock and Shang-Chi's gold.",
+      "contrast": 6.67,
+      "current": "#ff6a1f",
+      "nearest": {
+        "slug": "red-guardian",
+        "deltaE": 26.4
+      },
+      "roleNote": "Marvel lists Joseph Quinn in the cast without naming the role; this uses the most recent released look (Johnny Storm / Human Torch)."
+    },
+    {
+      "slug": "ben-grimm",
+      "name": "BEN GRIMM",
+      "hex": "#f0a060",
+      "colorName": "Rock-hide orange",
+      "basis": "film",
+      "title": "the Thing, The Fantastic Four: First Steps (2025)",
+      "fromWhat": "his orange, rock-like hide",
+      "source": {
+        "label": "MCU Wiki, Thing",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+      },
+      "alsoSee": {
+        "label": "Marvel Fandom wiki, Benjamin Grimm (Earth-616), which names the hide orange",
+        "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+      },
+      "hexNote": "matched by eye to the described skin colour (the Marvel Fandom comics page names it orange; the MCU page describes the rock-like hide). Softened toward sandstone to sit apart from Johnny's flame.",
+      "contrast": 9.0,
+      "current": "#ff8a3a",
+      "nearest": {
+        "slug": "john-walker",
+        "deltaE": 19.0
+      },
+      "roleNote": "Marvel names the role (The Thing)."
+    },
+    {
+      "slug": "professor-x",
+      "name": "PROFESSOR X",
+      "hex": "#fff06a",
+      "colorName": "Hover-chair yellow",
+      "basis": "film",
+      "title": "Professor X of Earth-838, Doctor Strange in the Multiverse of Madness (2022)",
+      "fromWhat": "his yellow hover-chair, styled after the 1990s cartoon",
+      "source": {
+        "label": "MCU Wiki, Professor X (Earth-838)",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Professor_X/Earth-838"
+      },
+      "hexNote": "matched by eye to the described colour (the page names the yellow hover-chair). Brighter and greener than Sentry's gold.",
+      "contrast": 16.3,
+      "current": "#8cbcff",
+      "nearest": {
+        "slug": "bob-reynolds",
+        "deltaE": 13.5
+      },
+      "roleNote": "Marvel names the role (Professor X)."
+    },
+    {
+      "slug": "magneto",
+      "name": "MAGNETO",
+      "hex": "#e05cff",
+      "colorName": "Master of Magnetism purple",
+      "basis": "comics",
+      "title": "red and purple costume, Earth-616 comics",
+      "fromWhat": "the purple of his classic costume and cape",
+      "source": {
+        "label": "Marvel Fandom wiki, Max Eisenhardt (Earth-616)",
+        "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+      },
+      "hexNote": "matched by eye to the described costume colour (the page mentions his red and purple suit). Purple taken over red: the red half sits on top of Cyclops's ruby, and Ian McKellen's film helmet and cape are a dark maroon (our reading; the Earth-10005 page names no colour) that would need heavy lightening.",
+      "contrast": 6.5,
+      "current": "#ff3d8b",
+      "nearest": {
+        "slug": "shuri",
+        "deltaE": 20.4
+      },
+      "roleNote": "Marvel names the role (Magneto).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "cyclops",
+      "name": "CYCLOPS",
+      "hex": "#ff2d6a",
+      "colorName": "Ruby-quartz red",
+      "basis": "film",
+      "title": "visor and optic blasts, X-Men (2000) onward",
+      "fromWhat": "the ruby glow of his eyes and visor",
+      "source": {
+        "label": "Marvel Fandom wiki, Scott Summers (Earth-10005)",
+        "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-10005)"
+      },
+      "hexNote": "matched by eye to the described colour (the page lists glowing red eyes); tilted toward ruby pink to stay clear of Red Guardian's suit red.",
+      "contrast": 5.31,
+      "current": "#ff2e43",
+      "nearest": {
+        "slug": "red-guardian",
+        "deltaE": 28.3
+      },
+      "roleNote": "Marvel names the role (Cyclops)."
+    },
+    {
+      "slug": "nightcrawler",
+      "name": "NIGHTCRAWLER",
+      "hex": "#a493ff",
+      "colorName": "Indigo skin, lifted",
+      "basis": "film",
+      "title": "X2 (2003)",
+      "fromWhat": "his blue skin, read on its indigo side",
+      "source": {
+        "label": "Marvel Fandom wiki, Kurt Wagner (Earth-10005)",
+        "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-10005)"
+      },
+      "hexNote": "matched by eye to the described skin colour (blue), lightened for legibility and pushed toward indigo, because Mystique, Beast, Steve and Reed all hold nearby blues.",
+      "contrast": 7.45,
+      "current": "#8c6bff",
+      "nearest": {
+        "slug": "steve-rogers",
+        "deltaE": 23.8
+      },
+      "roleNote": "Marvel lists Alan Cumming in the cast without naming the role; this uses the most recent released look (Nightcrawler).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "mystique",
+      "name": "MYSTIQUE",
+      "hex": "#2a7bff",
+      "colorName": "Cobalt scales",
+      "basis": "film",
+      "title": "X-Men (2000) through X-Men: The Last Stand (2006)",
+      "fromWhat": "her blue, scaled skin",
+      "source": {
+        "label": "Marvel Fandom wiki, Raven Darkhölme (Earth-10005)",
+        "url": "https://marvel.fandom.com/wiki/Raven_Darkh%C3%B6lme_(Earth-10005)"
+      },
+      "hexNote": "matched by eye to the described skin colour (blue). The most saturated blue on the site, sitting just above the 4.5 floor. Runner-up: her red hair (same page).",
+      "contrast": 4.89,
+      "current": "#3d7bff",
+      "nearest": {
+        "slug": "nightcrawler",
+        "deltaE": 25.1
+      },
+      "roleNote": "Marvel lists Rebecca Romijn in the cast without naming the role; this uses the most recent released look (Mystique)."
+    },
+    {
+      "slug": "beast",
+      "name": "BEAST",
+      "hex": "#8fb8ff",
+      "colorName": "Blue fur, lifted",
+      "basis": "film",
+      "title": "X-Men: The Last Stand (2006)",
+      "fromWhat": "his blue fur",
+      "source": {
+        "label": "Marvel Fandom wiki, Henry McCoy (Earth-10005)",
+        "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-10005)"
+      },
+      "hexNote": "matched by eye to the described fur colour (blue), lightened for legibility; kept paler and softer than Mystique and Steve so the three blues separate.",
+      "contrast": 9.52,
+      "current": "#5c8cff",
+      "nearest": {
+        "slug": "sue-storm",
+        "deltaE": 16.1
+      },
+      "roleNote": "Marvel lists Kelsey Grammer in the cast without naming the role; this uses the most recent released look (Beast)."
+    },
+    {
+      "slug": "gambit",
+      "name": "GAMBIT",
+      "hex": "#ff4fc0",
+      "colorName": "Kinetic charge magenta",
+      "basis": "film",
+      "title": "Deadpool & Wolverine (2024)",
+      "fromWhat": "the charge that glows on the cards and staff he throws",
+      "source": {
+        "label": "MCU Wiki, Gambit",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Gambit"
+      },
+      "hexNote": "the page calls the glow purple; we take the pink-magenta end of that purple, which keeps it apart from Shuri's violet and Magneto's purple. A judgement call, not a described shade.",
+      "contrast": 6.48,
+      "current": "#ff46b4",
+      "nearest": {
+        "slug": "magneto",
+        "deltaE": 35.7
+      },
+      "roleNote": "Marvel lists Channing Tatum in the cast without naming the role; this uses the most recent released look (Gambit).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "yelena-belova",
+      "name": "YELENA BELOVA",
+      "hex": "#c4c27c",
+      "colorName": "Field-suit olive",
+      "basis": "film",
+      "title": "army green tactical suit, Thunderbolts* (2025)",
+      "fromWhat": "her army green tactical suit",
+      "source": {
+        "label": "MCU Wiki, Black Widow (Yelena Belova)",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
+      },
+      "hexNote": "matched by eye to the described costume colour (army green), lightened for legibility, which turns it toward khaki olive. Runner-up: the white suit she wears in Black Widow (2021), set aside because the pale range is already full.",
+      "contrast": 10.32,
+      "current": "#ff4d5e",
+      "nearest": {
+        "slug": "mbaku",
+        "deltaE": 24.0
+      },
+      "roleNote": "Marvel lists Florence Pugh in the cast without naming the role; this uses the most recent released look (Yelena Belova)."
+    },
+    {
+      "slug": "red-guardian",
+      "name": "RED GUARDIAN",
+      "hex": "#ff3b3b",
+      "colorName": "Soviet suit red",
+      "basis": "film",
+      "title": "Red Guardian suit, Black Widow (2021) and Thunderbolts* (2025)",
+      "fromWhat": "his red combat suit",
+      "source": {
+        "label": "MCU Wiki, Red Guardian",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian"
+      },
+      "hexNote": "matched by eye to the described costume colour (red). He gets the purest red on the site.",
+      "contrast": 5.4,
+      "current": "#ff3b3b",
+      "nearest": {
+        "slug": "peggy-carter",
+        "deltaE": 20.0
+      },
+      "roleNote": "Marvel lists David Harbour in the cast without naming the role; this uses the most recent released look (Alexei Shostakov / Red Guardian)."
+    },
+    {
+      "slug": "john-walker",
+      "name": "JOHN WALKER",
+      "hex": "#c49465",
+      "colorName": "U.S. Agent shield bronze",
+      "basis": "film",
+      "title": "U.S. Agent shield, Thunderbolts* (2025)",
+      "fromWhat": "the orange-bronze line on his grey shield",
+      "source": {
+        "label": "MCU Wiki, U.S. Agent",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent"
+      },
+      "hexNote": "matched by eye to the described costume colour (orange-bronze), lightened for legibility. His suit's red stripes were the obvious pick, but four characters already hold reds.",
+      "contrast": 7.06,
+      "current": "#c8a64a",
+      "nearest": {
+        "slug": "ben-grimm",
+        "deltaE": 19.0
+      },
+      "roleNote": "Marvel lists Wyatt Russell in the cast without naming the role; this uses the most recent released look (John Walker / U.S. Agent)."
+    },
+    {
+      "slug": "ghost",
+      "name": "GHOST",
+      "hex": "#d0d6e6",
+      "colorName": "Phase grey",
+      "basis": "film",
+      "title": "Ghost suit, Ant-Man and the Wasp (2018) and Thunderbolts* (2025)",
+      "fromWhat": "the pale grey of her suit and the afterimages it leaves as she phases",
+      "source": {
+        "label": "MCU Wiki, Ghost Suit",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost_Suit"
+      },
+      "hexNote": "thin source: the suit page shows the costume but its text names no colour. The hex is our judgement of a pale, cool grey.",
+      "contrast": 13.13,
+      "current": "#9fe7ff",
+      "nearest": {
+        "slug": "sam-wilson",
+        "deltaE": 13.2
+      },
+      "roleNote": "Marvel lists Hannah John-Kamen in the cast without naming the role; this uses the most recent released look (Ava Starr / Ghost).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "bob-reynolds",
+      "name": "BOB / SENTRY",
+      "hex": "#ffd84a",
+      "colorName": "Golden Guardian gold",
+      "basis": "film",
+      "title": "Sentry suit, Thunderbolts* (2025)",
+      "fromWhat": "the golden yellow of his Sentry suit and the gold shimmer in his eyes",
+      "source": {
+        "label": "MCU Wiki, Sentry",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry"
+      },
+      "hexNote": "matched by eye to the described costume colour (blue and golden-yellow suit; gold gleam in his eyes).",
+      "contrast": 13.79,
+      "current": "#ffc861",
+      "nearest": {
+        "slug": "professor-x",
+        "deltaE": 13.5
+      },
+      "roleNote": "Marvel lists Lewis Pullman in the cast without naming the role; this uses the most recent released look (Bob / Sentry)."
+    },
+    {
+      "slug": "shuri",
+      "name": "SHURI",
+      "hex": "#a055ff",
+      "colorName": "Panther Habit violet",
+      "basis": "film",
+      "title": "Black Panther habit, Black Panther: Wakanda Forever (2022)",
+      "fromWhat": "the purple glow the habit gives off as it stores kinetic energy",
+      "source": {
+        "label": "MCU Wiki, Panther Habit",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Panther_Habit"
+      },
+      "hexNote": "matched by eye to the described effect colour (purple glow).",
+      "contrast": 4.76,
+      "current": "#9b5cff",
+      "nearest": {
+        "slug": "magneto",
+        "deltaE": 20.4
+      },
+      "roleNote": "Marvel names the role (Shuri / Black Panther)."
+    },
+    {
+      "slug": "mbaku",
+      "name": "M'BAKU",
+      "hex": "#efe0c0",
+      "colorName": "Jabari ivory",
+      "basis": "film",
+      "title": "Jabari dress, Black Panther (2018) and Black Panther: Wakanda Forever (2022)",
+      "fromWhat": "the white of the Jabari colours, worn in honour of the White Ape",
+      "source": {
+        "label": "MCU Wiki, Jabari Tribe",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Jabari_Tribe"
+      },
+      "hexNote": "matched by eye to the described costume colour (the page gives the tribe's colours as brown and white). Warmed to ivory so it sits apart from Sam's white; brown would crowd Ben and John Walker.",
+      "contrast": 14.63,
+      "current": "#e2e8f0",
+      "nearest": {
+        "slug": "sam-wilson",
+        "deltaE": 20.5
+      },
+      "roleNote": "Marvel names the role (M'Baku)."
+    },
+    {
+      "slug": "namor",
+      "name": "NAMOR",
+      "hex": "#2ed3c0",
+      "colorName": "Talokan sea teal",
+      "basis": "film",
+      "title": "Black Panther: Wakanda Forever (2022)",
+      "fromWhat": "the blue skin of the Talokanil, the people he rules",
+      "source": {
+        "label": "MCU Wiki, Talokan",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Talokan"
+      },
+      "hexNote": "matched by eye to the described skin colour (blue), nudged toward teal so it sits between Thor's sky blue and Doom's emerald. Namor himself kept a human skin tone, so this is his people's colour rather than his own.",
+      "contrast": 10.18,
+      "current": "#2fd6c1",
+      "nearest": {
+        "slug": "joaquin-torres",
+        "deltaE": 27.6
+      },
+      "roleNote": "Marvel names the role (Namor).",
+      "flag": "hard choice or thin source"
+    },
+    {
+      "slug": "loki",
+      "name": "LOKI",
+      "hex": "#a8d64b",
+      "colorName": "Green meets gold",
+      "basis": "film",
+      "title": "Asgardian armour and horned helmet, Thor (2011) and The Avengers (2012)",
+      "fromWhat": "his green tunic and golden armour, taken at the point where they meet",
+      "source": {
+        "label": "MCU Wiki, Loki",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Loki"
+      },
+      "hexNote": "matched by eye to the described costume colours (green tunic, golden metal, golden horned helmet). A pure green would sit on Doom's emerald, so this is a yellow-green.",
+      "contrast": 11.26,
+      "current": "#5fd36f",
+      "nearest": {
+        "slug": "professor-x",
+        "deltaE": 28.1
+      },
+      "roleNote": "Marvel lists Tom Hiddleston in the cast without naming the role; this uses the most recent released look (Loki)."
+    },
+    {
+      "slug": "peggy-carter",
+      "name": "PEGGY CARTER",
+      "hex": "#ff6b5a",
+      "colorName": "Pub-scene red",
+      "basis": "film",
+      "title": "red dress, Captain America: The First Avenger (2011)",
+      "fromWhat": "the red dress she wears into the pub",
+      "source": {
+        "label": "MCU Wiki, Peggy Carter",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Peggy_Carter"
+      },
+      "hexNote": "matched by eye to the described costume colour (red), nudged toward coral to stay apart from Red Guardian. Runner-up: her Captain Carter suit (navy with a silver Union Jack, MCU Wiki \"Captain Carter's Uniform\"), set aside because the blues are full.",
+      "contrast": 6.82,
+      "current": "#e0b25a",
+      "nearest": {
+        "slug": "scott-lang",
+        "deltaE": 15.9
+      },
+      "roleNote": "Marvel names the role (Peggy Carter)."
+    }
+  ]
+}
