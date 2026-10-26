@@ -33,7 +33,7 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
   <section class="cl-hero" data-cursor="Drag" data-cloth aria-label="Fight arena: grab a poster and throw it at the other">
     <div class="cl-stage">
       <p class="t-label t-accent cl-k">Fight arena &middot; fan vote, not fact</p>
-      <p class="t-title cl-title" aria-hidden="true">Grab them. Fling them.</p>
+      <p class="t-title cl-title" aria-hidden="true">Grab them.<br />Fling them.</p>
       <div class="cl-static" aria-hidden="true"><img data-static="a" alt="" /><img data-static="b" alt="" /></div>
       <p class="cl-hint t-label t-ash">Drag a poster &middot; throw it at the other &middot; or scroll for the stats</p>
       <i class="cl-flash" data-cloth-flash aria-hidden="true"></i>
@@ -119,8 +119,10 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
   .cl-hero:active { cursor: grabbing; }
   .cl-stage { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
   .cl-k { position: absolute; left: var(--margin); top: calc(var(--header-h) + 12px); margin: 0; }
-  .cl-title { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; font-size: min(17vw, 260px); font-weight: 900; color: rgba(231, 228, 220, 0.06); margin: 0; line-height: 0.82; z-index: -1; }
-  .cl-hint { position: absolute; bottom: var(--s-6); left: 0; right: 0; text-align: center; margin: 0; }
+  /* the title in clear space below the posters, in front (Peculiar Atelier: "Grab me / I dare you") */
+  .cl-title { position: absolute; left: var(--margin); right: var(--margin); bottom: calc(var(--s-6) + 34px); margin: 0; font-size: min(9vw, 13svh); font-weight: 900; line-height: 0.86; color: var(--bone); z-index: 2; }
+  .cl-hint { position: absolute; bottom: var(--s-6); left: var(--margin); right: var(--margin); margin: 0; z-index: 2; }
+  @media (max-width: 760px) { .cl-title { font-size: 15vw; } }
   .cl-flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(231, 228, 220, 0.85), rgba(31, 212, 122, 0.3) 30%, transparent 65%); opacity: 0; }
   .cl-static { display: none; gap: 4vw; }
   .cl-static img { width: min(36vw, 340px); aspect-ratio: 3 / 4; object-fit: cover; border: 6px solid #d9d5ca; transform: rotate(-3deg); }

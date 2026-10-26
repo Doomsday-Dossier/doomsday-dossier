@@ -117,6 +117,9 @@ export class ClothScene implements HeroScene {
   flying: { p: number; t: number; hit: boolean } | null = null;
   acc = 0;
   onHit: () => void = () => {};
+  // how far the page has scrolled past the hero, in CSS px: the camera follows, so the posters leave with the page
+  scrollPx = 0;
+  private visH = 1;
   constructor(private accents: [string, string]) {}
   mount(ctx: Ctx) {
     this.cam.position.set(0, 0, 7);
@@ -128,7 +131,11 @@ export class ClothScene implements HeroScene {
     this.cam.aspect = ctx.width / ctx.height; this.cam.updateProjectionMatrix();
     // size the posters to what the camera sees at z = 0, so they always fit side by side
     const visH = 2 * this.cam.position.z * Math.tan((this.cam.fov * Math.PI) / 360), visW = visH * this.cam.aspect;
-    const w = Math.min(2, visW * 0.4, visH * 0.42), h = w * 1.31, x = w * 0.72, y = ctx.width < 760 ? -0.15 : 0.05;
+    this.visH = visH;
+    // the posters are the whole stage (Peculiar Atelier); the title sits below them, in clear space
+    const phone = ctx.width < 760;
+    // the posters end above the title on every screen: about the top 60% of a desktop, the top half of a phone
+    const w = Math.min(2.5, visW * (phone ? 0.45 : 0.27), visH * (phone ? 0.48 : 0.39)), h = w * 1.31, x = w * (phone ? 0.56 : 0.66), y = visH * (phone ? 0.12 : 0.13);
     this.posters.forEach((p, i) => p.layout(i ? x : -x, y, w, h));
   }
   setTexture(i: number, tex: THREE.Texture, accent: string) {
@@ -168,6 +175,7 @@ export class ClothScene implements HeroScene {
     }
   }
   update(ctx: Ctx, dt: number) {
+    this.cam.position.y = -this.scrollPx * (this.visH / ctx.height);
     if (this.grab) {
       const g = this.grab, k = 1 / Math.max(dt, 1 / 120);
       g.vx += ((g.x - g.lx) * k - g.vx) * 0.35; g.vy += ((g.y - g.ly) * k - g.vy) * 0.35; g.lx = g.x; g.ly = g.y;

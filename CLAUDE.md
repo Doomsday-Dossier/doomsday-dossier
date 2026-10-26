@@ -79,6 +79,11 @@ order rather than scatter; few things move at once. Applied so far:
 | Home (`dossier/archive.ts`, `cloud.ts`, `cloud.worker.ts`) | One point cloud (42k desktop, 20k phone) built in 3D from each character's cut-out and subject depth, sampled in a worker. Intro: a loading count while a nebula gathers into Doom; the countdown sits on its own dark panel in bone white. Scroll morphs the cloud through all 29 characters (points swirl out, half a turn, the glow takes their colour), name bottom-left in front; points part for a real cursor or finger only. Two figure buffers so each step uploads one figure. |
 | Team pages | Lena Varga slides: a full-screen field in the member's colour wipes up, the subject (sized by its measured outline, head never cropped) arrives from close to the camera and floats, the name types in bottom-left in front in their own face. |
 | Character files | The hero name moved in front, bottom-left; the 3D subject stands right of centre on wide screens; the lens is mouse-only; on phones the record shows one card at a time. |
+| Timeline (`dossier/timeline.ts`) | Space Voyage worlds: each decade is a full-screen world (its lead's full photo); the next waits in a rounded window that grows to fill the screen as you scroll, the photo inside counter-scaled so it holds still; decade numerals and facts bottom-left; decade buttons along the top jump the strip. |
+| Quiz (`dossier/quizpage.ts`) | The swarm (`dossier/swarm.ts`, shared with the home) anchored to page elements: a turning orb beside the title while you answer, then it moves into the result frame and gathers into your match in 3D; the name beside it, never behind. Photo kept for reduced motion and no WebGL. |
+| Arena | The cloth posters are the hero's whole stage and leave with the page (the camera follows the scroll; before, they stayed fixed and the text below ran over them); "Grab them. Fling them." bottom-left in front. |
+| Predictions | Phones: the particle tree has the top of the page at full strength and scrolls away with it (was 35% behind the title). |
+| Catch-up, about, credits | Unchanged Oyla editorial bands (they already follow the rules). |
 
 Checks for this: `scripts/names-check.mjs` (every team name at three sizes), `scripts/walk.mjs` (a frame every half
 screen, for overlaps the clip audit cannot see), `scripts/record.mjs` + `scripts/video-sheet.mjs` (scroll recordings).
@@ -129,6 +134,12 @@ overflows); a grid column must be `minmax(0, 1fr)` or a wide word widens it and 
 into letters lose kerning, so leave 5% headroom and split into words and letters, never letters alone (they wrap
 mid-word); Astro's scoped attributes make `.a + .a` outrank `html.flag .a`, so set such states from script; the
 engine's idle pointer drift must not drive effects meant for a real pointer (it left a wandering hole in the cloud).
+Check a name against the screen edge, not only its own box: every grid level between the name and the page must be
+`minmax(0, 1fr)`, or one level grows to the widest word and the name's box is wider than the screen (the quiz showed
+SAM WILSO with two nested grids; `scripts/quiz-names.mjs` checks all 29 results at three sizes). Measure text after
+it is shown: a hidden element measures 0, and a cached face resolves its load before the element appears. A WebGL
+layer drawn on the fixed canvas does not scroll with the page: move the camera with the scroll (arena posters,
+phone prediction tree) or the text below runs over it.
 
 **Showcase first.** The intro, the home fly-through and Doom's file are built at `/preview/`
 and approved by the user before any other page is rebuilt. Then every page is rebuilt to the
