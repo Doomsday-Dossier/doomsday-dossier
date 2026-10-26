@@ -91,6 +91,8 @@ export function arenaVote(panel: HTMLElement | null, o: Opts) {
       if (!r.ok) throw new Error(String(r.status));
       const res = (await r.json()) as Tally;
       remember(pairKey(A.slug, B.slug), pick);
+      // the most-wanted board listens for this and refreshes
+      document.dispatchEvent(new CustomEvent('dd:voted', { detail: { a: A.slug, b: B.slug } }));
       if (g === gen) { panel.classList.add('voted'); say(res.already ? 'You already voted on this fight today. Here is the fan split.' : 'Vote counted. Here is the fan split.'); show(res, pick); }
     } catch (e) {
       if (g === gen) say((e as Error).message === 'bot check' ? 'The bot check did not pass. Please try again.' : 'Voting is unavailable right now. Please try again later.');
