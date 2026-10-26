@@ -112,7 +112,7 @@ const decadeInfo = decades.map((d) => {
 
     <div class="reel" data-reel>
       <p class="reel-year" aria-hidden="true"><span data-year-out>{years[0]}</span></p>
-      <div class="strip" data-strip tabindex="0" aria-label="Timeline film strip. Use the arrow keys to move one frame." data-lenis-prevent>
+      <div class="strip" data-cursor="Drag" data-strip tabindex="0" aria-label="Timeline film strip. Use the arrow keys to move one frame." data-lenis-prevent>
         <ol class="frames">
           {frames.map((f) => (
             <li class={`frame k-${f.kind}`} data-frame data-id={f.id} data-kind={f.kind === 'release' ? 'news' : f.kind} data-year={f.year} data-who={f.who.map((w) => w.slug).join(' ')} data-era-of={f.eraOf} hidden={f.kind === 'era'}>

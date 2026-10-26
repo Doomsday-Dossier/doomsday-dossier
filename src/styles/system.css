@@ -151,3 +151,26 @@ html.rm [data-dx-hide] { opacity: 1 !important; transform: none !important; }
 .label { font-family: var(--f-type); font-size: var(--t-label); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ash); }
 .display { font-family: var(--f-title); font-weight: 900; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.86; margin: 0; }
 .serif { font-family: var(--f-title); }
+
+/* page change: a gunmetal drawer closes over the page and lifts off the next one */
+.pt { position: fixed; inset: 0; z-index: 95; background: var(--gunmetal); display: grid; place-items: center; align-content: center; gap: 14px; transform: translateY(101%); pointer-events: none; border-top: 1px solid var(--accent); }
+html.pt-in .pt { transform: translateY(0); }
+.pt-mark { display: flex; align-items: center; gap: 12px; font-family: var(--f-title); font-weight: 800; font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; }
+.pt-mark i { width: 10px; height: 10px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 14px var(--emerald); }
+.pt-name { color: var(--accent); min-height: 1em; }
+
+/* the cursor: a dot and a ring that names what you can do */
+html.has-cur, html.has-cur body, html.has-cur a, html.has-cur button { cursor: none; }
+html.has-cur input, html.has-cur textarea, html.has-cur select { cursor: auto; }
+.cur { position: fixed; left: 0; top: 0; z-index: 99; pointer-events: none; }
+.cur.out { opacity: 0; }
+.cur-dot { position: fixed; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--bone); }
+.cur-ring { position: fixed; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--bone) 55%, transparent); display: grid; place-items: center; transition: width 0.35s var(--e-reveal), height 0.35s var(--e-reveal), left 0.35s var(--e-reveal), top 0.35s var(--e-reveal), background 0.3s, border-color 0.3s; }
+.cur.on .cur-ring { width: 56px; height: 56px; left: -28px; top: -28px; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.cur.lbl .cur-ring { width: 76px; height: 76px; left: -38px; top: -38px; background: var(--accent); border-color: var(--accent); }
+.cur-lbl { font-family: var(--f-type); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gunmetal); opacity: 0; transition: opacity 0.2s; }
+.cur.lbl .cur-lbl { opacity: 1; }
+.cur.lbl .cur-dot { opacity: 0; }
+/* safety net: if a page's script never runs, the cover still lifts */
+html.pt-in .pt { animation: pt-lift 0.6s 2.5s forwards; }
+@keyframes pt-lift { to { transform: translateY(-101%); } }

@@ -10,8 +10,8 @@ import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SRC = 'photo-originals/user', UP = 'photo-originals/upscaled', MASKS = 'photo-originals/masks', OUT = 'public/photos2';
-const FULL = [640, 1280, 1920, 2560], CUT = [640, 1280, 1920];
+const SRC = 'photo-originals/user', UP = 'photo-originals/upscaled', MASKS = 'photo-originals/masks', DEPTH = 'photo-originals/depth', OUT = 'public/photos2';
+const FULL = [640, 1280, 1920], CUT = [640, 1280, 1920]; // 2560 dropped: 100 MB to push on every update for very large monitors only
 const set = JSON.parse(fs.readFileSync('research/photos/user-set.json', 'utf8')).set;
 const base = (f) => f.replace(/\.[^.]+$/, '');
 
@@ -61,10 +61,12 @@ for (const [slug, list] of Object.entries(set)) {
     const om = await sharp(orig).metadata();
     const meta = await sharp(src).metadata();
     const W = meta.width, H = meta.height;
-    const entry = { n, w: W, h: H, hd: useUp, focus: p.focus, focusM: p.focusM ?? p.focus, full: [], cut: [], bbox: null, head: null, figure: null, lqip: '', color: '' };
+    const entry = { n, w: W, h: H, hd: useUp, focus: p.focus, focusM: p.focusM ?? p.focus, full: [], cut: [], depth: [], bbox: null, head: null, figure: null, lqip: '', color: '' };
     for (const w of FULL.filter((w) => w <= W || w === FULL[0])) {
       const out = path.join(OUT, slug, `${n}-${w}.webp`);
-      await sharp(src).resize({ width: Math.min(w, W) }).webp({ quality: 82, effort: 5 }).toFile(out);
+      // full photos only change when their source does: reuse them unless FORCE=1
+      if (process.env.FORCE || !fs.existsSync(out) || fs.statSync(out).mtimeMs < fs.statSync(src).mtimeMs)
+        await sharp(src).resize({ width: Math.min(w, W) }).webp({ quality: 78, effort: 5 }).toFile(out);
       bytes += fs.statSync(out).size; files++;
       entry.full.push({ w: Math.min(w, W), src: `photos2/${slug}/${n}-${w}.webp` });
     }
@@ -77,14 +79,51 @@ for (const [slug, list] of Object.entries(set)) {
         entry.figure = figureCrop(m);
         for (const w of CUT.filter((w) => w <= W || w === CUT[0])) {
           const ww = Math.min(w, W), hh = Math.round((H / W) * ww);
-          const rgb = await sharp(src).resize(ww, hh).removeAlpha().toBuffer();
-          const alpha = await sharp(maskFile).greyscale().resize(ww, hh).toBuffer();
+          // joined as raw pixels: joinChannel on encoded buffers came out with black colour
+          const rgb = await sharp(src).resize(ww, hh).removeAlpha().raw().toBuffer();
+          const alpha = await sharp(maskFile).greyscale().resize(ww, hh).raw().toBuffer();
+          const rgba = Buffer.alloc(ww * hh * 4);
+          for (let k = 0; k < ww * hh; k++) { rgba[k * 4] = rgb[k * 3]; rgba[k * 4 + 1] = rgb[k * 3 + 1]; rgba[k * 4 + 2] = rgb[k * 3 + 2]; rgba[k * 4 + 3] = alpha[k]; }
           const out = path.join(OUT, slug, `${n}-cut-${w}.webp`);
-          await sharp(rgb).joinChannel(alpha).webp({ quality: 84, alphaQuality: 90, effort: 5 }).toFile(out);
+          await sharp(rgba, { raw: { width: ww, height: hh, channels: 4 } }).webp({ quality: 84, alphaQuality: 90, effort: 5 }).toFile(out);
           bytes += fs.statSync(out).size; files++;
           entry.cut.push({ w: ww, src: `photos2/${slug}/${n}-cut-${w}.webp` });
         }
         cut++;
+      }
+    }
+    // depth (near = white) for the 3D diorama: smooth greyscale, so a high quality setting avoids banding
+    const depthFile = path.join(DEPTH, base(p.file) + '.png');
+    if (fs.existsSync(depthFile)) {
+      for (const w of [512, 1024]) {
+        const ww = Math.min(w, W), hh = Math.round((H / W) * ww);
+        const out = path.join(OUT, slug, `${n}-depth-${w}.webp`);
+        await sharp(depthFile).greyscale().resize(ww, hh).blur(0.8).webp({ quality: 92 }).toFile(out);
+        bytes += fs.statSync(out).size; files++;
+        entry.depth.push({ w: ww, src: `photos2/${slug}/${n}-depth-${w}.webp` });
+      }
+      // subject depth for the cut-out relief: outside the mask the depth is filled in from the subject's own
+      // edge (normalised blur), so the mesh has no cliff at the outline and the silhouette stays clean
+      if (fs.existsSync(maskFile)) {
+        const ww = Math.min(1024, W), hh = Math.round((H / W) * ww);
+        const raw1 = (s) => sharp(s).greyscale().resize(ww, hh).raw().toBuffer();
+        const d = await raw1(depthFile), m = await raw1(maskFile);
+        const dm = Buffer.alloc(ww * hh);
+        let sum = 0, cnt = 0;
+        for (let k = 0; k < ww * hh; k++) { dm[k] = Math.round((d[k] * m[k]) / 255); if (m[k] > 128) { sum += d[k]; cnt++; } }
+        const mean = cnt ? sum / cnt : 128;
+        const blur = (b, s) => sharp(b, { raw: { width: ww, height: hh, channels: 1 } }).blur(s).raw().toBuffer();
+        const [a1, m1, a2, m2] = await Promise.all([blur(dm, 12), blur(m, 12), blur(dm, 60), blur(m, 60)]);
+        const outD = Buffer.alloc(ww * hh);
+        for (let k = 0; k < ww * hh; k++) {
+          const near = m1[k] > 6 ? (a1[k] * 255) / m1[k] : m2[k] > 2 ? (a2[k] * 255) / m2[k] : mean;
+          const t = m[k] / 255;
+          outD[k] = Math.round(Math.min(255, d[k] * t + Math.min(255, near) * (1 - t)));
+        }
+        const out = path.join(OUT, slug, `${n}-cdepth-1024.webp`);
+        await sharp(outD, { raw: { width: ww, height: hh, channels: 1 } }).blur(1).webp({ quality: 92 }).toFile(out);
+        bytes += fs.statSync(out).size; files++;
+        entry.cdepth = `photos2/${slug}/${n}-cdepth-1024.webp`;
       }
     }
     const tiny = await sharp(orig).resize(16).webp({ quality: 40 }).toBuffer();

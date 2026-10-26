@@ -22,9 +22,20 @@ for (const f of files) {
   const tmp = path.join(out, '_in.png');
   await sharp(path.join(src, f)).png().toFile(tmp);
   const t0 = Date.now();
-  const r = spawnSync(exe, ['-i', tmp, '-o', dest, '-n', 'realesrgan-x4plus', '-s', '4', '-t', '200', '-f', 'png'], { cwd: path.dirname(exe), stdio: 'pipe' });
+  // a starved GPU writes an all-black image without reporting an error (19 files on 26 October, while
+  // browser tests shared the GPU): check every output and retry with smaller tiles before giving up
+  let ok = false, r;
+  for (const tile of ['200', '100', '64']) {
+    r = spawnSync(exe, ['-i', tmp, '-o', dest, '-n', 'realesrgan-x4plus', '-s', '4', '-t', tile, '-f', 'png'], { cwd: path.dirname(exe), stdio: 'pipe' });
+    if (r.status === 0 && fs.existsSync(dest)) {
+      const st = await sharp(dest).stats();
+      if (st.channels.slice(0, 3).reduce((a, c) => a + c.mean, 0) / 3 > 10) { ok = true; break; }
+      console.log('black output, retrying with smaller tiles', f, tile);
+    }
+    fs.rmSync(dest, { force: true });
+  }
   fs.rmSync(tmp, { force: true });
-  if (r.status !== 0 || !fs.existsSync(dest)) { console.log('FAILED', f, String(r.stderr).slice(-300)); continue; }
+  if (!ok) { console.log('FAILED', f, String(r.stderr).slice(-300)); continue; }
   done++;
   console.log(`${done}/${files.length - skipped}`, f, `${meta.width}x${meta.height} -> ${meta.width * 4}x${meta.height * 4}`, `${Math.round((Date.now() - t0) / 1000)}s`);
 }

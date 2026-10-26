@@ -45,11 +45,13 @@ const vars = [accent ? `--accent:${accent}` : '', styleVars].filter(Boolean).joi
           if (/dynamically imported module|Importing a module script failed|error loading dynamically imported/i.test(String(e.reason && e.reason.message))) again();
         });
         if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
+        try { if (sessionStorage.getItem('dd-pt') === '1') document.documentElement.classList.add('pt-in'); } catch (e) {}
       })();
     </script>
   </head>
   <body data-page={page} style={vars}>
     <a class="skip" href="#main">Skip to content</a>
+    <div class="pt" data-pt aria-hidden="true"><span class="pt-mark"><i></i>Doomsday Dossier</span><span class="pt-name t-label" data-pt-name></span></div>
     <canvas id="dx-gl" aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
     <header class="dx-hdr">

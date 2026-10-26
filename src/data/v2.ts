@@ -7,7 +7,7 @@ import { u } from './site';
 
 export type P2 = {
   n: number; w: number; h: number; hd: boolean; focus: string; focusM: string;
-  full: { w: number; src: string }[]; cut: { w: number; src: string }[];
+  full: { w: number; src: string }[]; cut: { w: number; src: string }[]; depth: { w: number; src: string }[]; cdepth?: string;
   bbox: [number, number, number, number] | null; head: [number, number] | null;
   figure: { crop: [number, number, number, number]; focus: [number, number] } | null;
   lqip: string; color: string;
@@ -27,6 +27,17 @@ export function figureFor(slug: string) {
   if (!p) return null;
   const f = p.figure ?? { crop: [0.2, 0, 0.8, 1] as [number, number, number, number], focus: [0.5, 0.45] as [number, number] };
   return { src: p.cut.length ? pick2(p.cut, 640) : pick2(p.full, 640), alphaCut: p.cut.length > 0, photoAspect: p.w / p.h, crop: f.crop, focus: f.focus, height: 3.5, depth: 0.45, cut: p.cut.length ? 0.02 : 0.1 };
+}
+
+/** The 3D depth diorama for a character's hero: the lead cut-out and its depth, the second photo as backdrop. */
+export function dioFor(slug: string, lines: string[], font: string, weight: number) {
+  const [lead, second] = photos2For(slug);
+  if (!lead?.cut.length || !lead.depth?.length) return null;
+  const b = second?.depth?.length ? second : null;
+  return {
+    cut: pick2(lead.cut, 1280), depth: lead.cdepth ? u('/' + lead.cdepth) : pick2(lead.depth, 1024), back: b ? pick2(b.full, 1280) : null, backDepth: b ? pick2(b.depth, 512) : null,
+    lines, font, weight, accent: accentOf(slug), head: lead.head ?? [0.5, 0.2], bbox: lead.bbox ?? [0, 0, 1, 1], aspect: lead.w / lead.h,
+  };
 }
 
 /** Four callout anchors on the subject (photo coordinates): head, chest, and both sides. */

@@ -15,6 +15,7 @@ import { SplitText } from 'gsap/SplitText';
 import type { Ctx, HeroScene } from '../gl/engine';
 import { fitText } from '../motion/grammar';
 import { Figure } from './figure';
+import { Diorama, type DioOpts } from './depth';
 import { C, EASE, FIGURES, timeLeft } from './tokens';
 
 type Fig = { src: string; alphaCut: boolean; photoAspect: number; crop: [number, number, number, number]; focus: [number, number]; height: number; depth: number; cut: number };
@@ -42,14 +43,16 @@ class FileScene implements HeroScene {
   constructor(back: HeroScene) { this.back = back; }
   mount(ctx: Ctx) { this.back.mount(ctx); this.resize(ctx); }
   async load(ctx: Ctx, src: string) {
-    await this.figure.build({ src, cols: ctx.mobile ? 140 : 230, ...FIG });
+    await this.figure.build({ ...FIG, src, cols: ctx.mobile ? 140 : 230 });
     this.figure.mat.uniforms.uAssemble.value = 1;
     this.figure.mat.uniforms.uSize.value = ctx.mobile ? 2.6 : 2.1;
     this.figScene.add(this.figure.points);
     this.ready = true;
   }
+  dio: Diorama | null = null;
   resize(ctx: Ctx) {
     this.back.resize?.(ctx);
+    this.dio?.resize(ctx);
     this.cam.aspect = ctx.width / ctx.height;
     this.cam.fov = ctx.width < 900 ? 52 : 40;
     // phones: the figure sits in the top of the screen, above the callouts that scroll up under it
@@ -59,6 +62,7 @@ class FileScene implements HeroScene {
   setQuality(ctx: Ctx) { this.back.setQuality?.(ctx); }
   update(ctx: Ctx, dt: number) {
     this.back.update(ctx, dt);
+    this.dio?.render(ctx, dt);
     if (!this.ready || this.alpha <= 0.002) return;
     const u = this.figure.mat.uniforms;
     u.uTime.value = ctx.time; u.uYaw.value = this.yaw; u.uPitch.value = this.pitch; u.uAlpha.value = this.alpha;
@@ -66,7 +70,7 @@ class FileScene implements HeroScene {
     const r = ctx.renderer;
     r.autoClear = false; r.clearDepth(); r.render(this.figScene, this.cam); r.autoClear = true;
   }
-  dispose() { this.back.dispose(); this.figure.dispose?.(); }
+  dispose() { this.back.dispose(); this.figure.dispose?.(); this.dio?.dispose(); }
 
   /** Screen position of a point on the photo (u, v from its top-left), after the figure turns. */
   project(u: number, v: number, aspect: number, out: THREE.Vector3, w: number, h: number) {
@@ -112,6 +116,86 @@ export async function filePage(env: Env) {
     push.to(nameEl, { scale: 1.08, opacity: 0, ease: 'none' }, 0)
       .to(flood, { scale: 1.6, opacity: 0.25, ease: 'none' }, 0)
       .to(hin, { opacity: 0, ease: 'none', duration: 0.3 }, 0);
+    // depth: the backdrop drifts and the glow swells as the camera pushes in
+    const back = hero.querySelector('.hero-back'), glow = hero.querySelector('.hero-glow');
+    if (back) push.to(back, { yPercent: -6, scale: 1.12, ease: 'none' }, 0);
+    if (glow) push.to(glow, { scale: 1.5, opacity: 0.35, ease: 'none' }, 0);
+    // the layers follow a fine pointer at different depths, so the hero reads as space, not a picture
+    if (matchMedia('(pointer: fine)').matches) {
+      const layers = [...hero.querySelectorAll<HTMLElement>('[data-depth]')].map((el) => ({ d: +el.dataset.depth!, x: gsap.quickTo(el, 'x', { duration: 0.9, ease: 'power3.out' }), y: gsap.quickTo(el, 'y', { duration: 0.9, ease: 'power3.out' }) }));
+      hero.addEventListener('pointermove', (e) => {
+        const dx = e.clientX / innerWidth - 0.5, dy = e.clientY / innerHeight - 0.5;
+        layers.forEach((l) => { l.x(-dx * l.d * 46); l.y(-dy * l.d * 26); });
+      }, { passive: true });
+    }
+  }
+
+  // THE RECORD: origin, comics eras, sightings and Doomsday as one pinned horizontal journey
+  const rec = file.querySelector<HTMLElement>('[data-record]');
+  if (rec && !R) {
+    document.documentElement.classList.add('rec-on');
+    // the chapters now live in the drawer: their own scroll reveals would never fire there
+    file.querySelectorAll('[data-rec-chapters] [data-reveal], [data-rec-chapters] [data-report], [data-rec-chapters] [data-rise]').forEach((el) => { el.removeAttribute('data-reveal'); el.removeAttribute('data-report'); el.removeAttribute('data-rise'); });
+    const track = $('[data-rec-track]', rec);
+    const stops = $$('[data-stop]', rec);
+    const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+    const progs = $$('[data-prog]', rec);
+    const chapters = ['origin', 'comics', 'screen', 'doom'];
+    const ranges = chapters.map((k) => { const idx = stops.map((st, i) => (st.dataset.chapter === k ? i : -1)).filter((i) => i >= 0); return [idx[0] ?? 0, idx[idx.length - 1] ?? 0]; });
+    const slide = gsap.to(track, {
+      x: () => -dist(), ease: 'none',
+      scrollTrigger: {
+        trigger: rec, start: 'top top', end: 'bottom bottom', scrub: 0.7, invalidateOnRefresh: true,
+        onUpdate: (st) => {
+          const pos = st.progress * Math.max(1, stops.length - 1);
+          progs.forEach((li, k) => {
+            const [a, b] = ranges[k];
+            const p = gsap.utils.clamp(0, 1, (pos - a + 0.5) / (b - a + 1));
+            li.style.setProperty('--p', String(p));
+            li.classList.toggle('on', pos >= a - 0.5 && pos <= b + 0.5);
+          });
+        },
+      },
+    });
+    stops.forEach((st) => {
+      const big = st.querySelector('[data-stop-big]'), body = st.querySelector('[data-stop-body]');
+      // each stop swells into focus as it reaches the middle and recedes as it leaves
+      gsap.timeline({ scrollTrigger: { trigger: st, containerAnimation: slide, start: 'left right', end: 'right left', scrub: true } })
+        .fromTo(st, { scale: 0.88, opacity: 0.45 }, { scale: 1, opacity: 1, ease: 'power1.out', duration: 1 })
+        .to(st, { scale: 0.9, opacity: 0.5, ease: 'power1.in', duration: 1 });
+      // the giant year drifts the other way behind the words
+      if (big) gsap.fromTo(big, { xPercent: 16 }, { xPercent: -16, ease: 'none', scrollTrigger: { trigger: st, containerAnimation: slide, start: 'left right', end: 'right left', scrub: true } });
+      if (body) gsap.from(body.children, { y: 34, opacity: 0, duration: 0.7, stagger: 0.06, ease: EASE.reveal, scrollTrigger: { trigger: st, containerAnimation: slide, start: 'left 72%', toggleActions: 'play none none reverse' } });
+    });
+
+    // the drawer: a stop opens its whole chapter, scrolled to that report or sighting
+    const drawer = $('[data-drawer]'), dbody = $('[data-drawer-body]', drawer), closeBtn = $('[data-drawer-close]', drawer);
+    let open: { sec: HTMLElement; mark: Comment } | null = null;
+    const close = () => {
+      if (!open) return;
+      drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden', 'true');
+      const o = open; open = null;
+      setTimeout(() => { o.mark.replaceWith(o.sec); }, 600);
+      env.lenis?.start();
+    };
+    rec.querySelectorAll<HTMLButtonElement>('[data-read]').forEach((b) => b.addEventListener('click', () => {
+      const sec = document.getElementById(b.dataset.read!);
+      if (!sec) return;
+      if (open) { open.mark.replaceWith(open.sec); open = null; }
+      const mark = document.createComment('chapter');
+      sec.replaceWith(mark);
+      dbody.replaceChildren(sec);
+      open = { sec, mark };
+      drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden', 'false');
+      env.lenis?.stop();
+      closeBtn.focus({ preventScroll: true });
+      const at = b.dataset.at ? document.getElementById(b.dataset.at) : null;
+      dbody.scrollTop = at ? at.offsetTop - 24 : 0;
+      if (at) gsap.fromTo(at, { backgroundColor: 'rgba(31, 212, 122, 0.14)' }, { backgroundColor: 'rgba(31, 212, 122, 0)', duration: 1.6, delay: 0.5 });
+    }));
+    closeBtn.addEventListener('click', close);
+    addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    document.addEventListener('pointerdown', (e) => { if (open && !drawer.contains(e.target as Node) && !(e.target as HTMLElement).closest('[data-read]')) close(); });
   }
 
   // mini countdown
@@ -129,6 +213,20 @@ export async function filePage(env: Env) {
       await env.engine.mount(sc);
       env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
       if (FIG.src) sc.load(env.engine.ctx, FIG.src);
+      // the hero in 3D: the photo becomes a depth diorama; the flat layers step aside once it is drawn
+      const heroEl = file.querySelector<HTMLElement>('[data-hero]');
+      const dioOpts = heroEl && !R ? (JSON.parse(heroEl.dataset.dio || 'null') as DioOpts | null) : null;
+      if (heroEl && dioOpts) {
+        const dio = new Diorama();
+        const scn = sc;
+        dio.load(dioOpts, env.engine.ctx).then(() => {
+          scn.dio = dio;
+          document.documentElement.classList.add('dio-on');
+          gsap.fromTo(dio, { intro: 0 }, { intro: 1, duration: 1.8, ease: EASE.file });
+          heroEl.addEventListener('pointermove', (e) => dio.pointer.set(e.clientX / innerWidth - 0.5, -(e.clientY / innerHeight - 0.5)), { passive: true });
+          ScrollTrigger.create({ trigger: heroEl, start: 'top top', end: 'bottom top', onUpdate: (st) => { dio.scroll = st.progress; dio.alpha = 1 - gsap.utils.clamp(0, 1, (st.progress - 0.72) / 0.28); } });
+        }).catch(() => { /* the flat hero stays */ });
+      }
     }
   }
 
