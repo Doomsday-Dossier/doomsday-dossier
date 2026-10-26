@@ -1,5 +1,5 @@
 // Frames of a home version at points down the scroll (in screen heights), after the forge has settled.
-// Usage: node scripts/home-frames.mjs <base> <out> <1|2> [desktop|phone] [y,y,y]
+// Usage: node scripts/home-frames.mjs <base> <out> <1|2|site> [desktop|phone] [y,y,y] (site: the real home page)
 import { chromium, devices } from '@playwright/test';
 import fs from 'node:fs';
 const [base, out, v = '1', mode = 'desktop', list] = process.argv.slice(2);
@@ -9,7 +9,7 @@ const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blockli
 const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } : { viewport: { width: 1280, height: 720 } });
 const p = await ctx.newPage();
 const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
-await p.goto(`${base}/lab/home-${v}/?first`);
+await p.goto(v === "site" ? `${base}/` : `${base}/lab/home-${v}/?first`);
 await p.waitForFunction(() => window.__forgeReady, null, { timeout: 30000 });
 await p.evaluate(() => window.__forgeBegin());
 await p.evaluate(() => window.__forgeSeek(7.4));

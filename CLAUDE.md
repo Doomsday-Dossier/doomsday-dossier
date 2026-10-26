@@ -157,6 +157,13 @@ the archive. Two versions for the user to choose between (`/lab/home-1/`, `/lab/
    0.75 screen heights of scroll per file.
 2, **The drawer**: one file at a time, full screen, each print pulled up from below like a print from a
    drawer, the last one sinking away, and a slow push-in while it is in front. 0.48 screen heights per file.
+**The user chose 1, the hall, for desktop and phone (26 October 2026).** It is now the real home page
+(`src/pages/index.astro`, `src/scripts/home/page.ts`) on branch `redesign`: the site header waits out the
+forge (only the sound switch stays), the page holds still until the title stands, the hall ends on Doom's
+eyes, and the archive index and footer follow; the canvas stops drawing once they cover it. Reduced motion:
+no forge, no flight into the mask (the green fades up over the title), and the hall stands still in front of
+one print at a time. Without WebGL the page is the title, the countdown and the index. The header's sound
+switch (`[data-sound]`, wired in `scripts/dossier/main.ts`) is on every page.
 Each file's number, name (typed in letter by letter), team and "Open the file" sit bottom-left. Photos load
 within three files of the one in front and are let go beyond six. Measured 60 fps scrolling the mask and the
 archive on desktop and phone emulation; the sound sits at about -40 dBFS against the forge's -16.

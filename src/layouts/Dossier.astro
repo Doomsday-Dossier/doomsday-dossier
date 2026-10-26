@@ -16,8 +16,10 @@ interface Props {
   page: 'archive' | 'file' | 'team' | 'timeline' | 'arena' | 'catchup' | 'predictions' | 'quiz' | 'about' | 'credits';
   accent?: string;
   styleVars?: string;
+  /** false for a page that brings its own renderer (the home page's forge) */
+  gl?: boolean;
 }
-const { title, description, page, accent, styleVars = '' } = Astro.props;
+const { title, description, page, accent, styleVars = '', gl = true } = Astro.props;
 const vars = [accent ? `--accent:${accent}` : '', styleVars].filter(Boolean).join(';');
 const fullTitle = page === 'archive' ? 'Doomsday Dossier: an unofficial fan briefing for Avengers: Doomsday' : `${title} | Doomsday Dossier`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -57,16 +59,17 @@ const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'F
       })();
     </script>
   </head>
-  <body data-page={page} style={vars}>
+  <body data-page={page} data-gl={gl ? 'on' : 'off'} style={vars}>
     <a class="skip" href="#main">Skip to content</a>
     <div class="pt" data-pt aria-hidden="true"><span class="pt-mark"><i></i>Doomsday Dossier</span><span class="pt-name t-label" data-pt-name></span></div>
-    <canvas id="dx-gl" aria-hidden="true"></canvas>
+    {gl && <canvas id="dx-gl" aria-hidden="true"></canvas>}
     <div class="grain" aria-hidden="true"></div>
     <header class="dx-hdr">
       <a class="dx-mark" href={u('/')}><i></i><span>Doomsday Dossier</span></a>
       <div class="dx-hdr-right">
         <nav class="dx-nav" aria-label="Features">{NAV.map(([h, l]) => <a href={u(h)}>{l}</a>)}</nav>
         <span class="dx-unofficial" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial<span class="dx-more"> fan site</span></span>
+        <button type="button" class="dx-sound" data-sound aria-pressed="false"><i aria-hidden="true"></i><span>Sound on</span></button>
         <button type="button" class="dx-menu-btn" data-menu-toggle aria-expanded="false" aria-controls="dx-menu"><span>Index</span><i aria-hidden="true"></i></button>
       </div>
     </header>

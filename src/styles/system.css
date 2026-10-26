@@ -84,6 +84,13 @@ html.scrolled .dx-hdr::before { opacity: 0.92; }
 .dx-mark i { width: 10px; height: 10px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 12px var(--emerald); }
 .dx-hdr-right { display: flex; align-items: center; gap: var(--s-4); }
 .dx-unofficial { font-family: var(--f-type); font-size: var(--t-micro); letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--bone); border-radius: 99px; padding: 6px 12px; white-space: nowrap; }
+/* one switch for every sound on the site, remembered (Sound in scripts/sound/engine.ts) */
+.dx-sound { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 4px; color: var(--bone); font-family: var(--f-type); font-size: var(--t-micro); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
+.dx-sound i { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 10px var(--emerald); transition: background var(--d-s), box-shadow var(--d-s); }
+.dx-sound[aria-pressed='true'] i { background: var(--ash); box-shadow: none; }
+/* the forge plays without the header; only the sound switch stays */
+html.forging .dx-mark, html.forging .dx-nav, html.forging .dx-unofficial, html.forging .dx-menu-btn { opacity: 0; pointer-events: none; }
+.dx-mark, .dx-nav, .dx-unofficial, .dx-menu-btn { transition: opacity 1.2s var(--e-reveal, cubic-bezier(0.22, 1, 0.36, 1)); }
 /* feature links on wide screens; everything is also in the index */
 .dx-nav { display: flex; gap: var(--s-5); }
 .dx-nav a { font-family: var(--f-type); font-size: var(--t-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone); text-decoration: none; opacity: 0.75; transition: opacity var(--d-xs); }
@@ -100,8 +107,11 @@ html.scrolled .dx-hdr::before { opacity: 0.92; }
   .dx-hdr-right { gap: var(--s-3); }
   .dx-unofficial { padding: 5px 8px; }
   .dx-menu-btn span { display: none; }
+  .dx-sound span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .dx-sound { padding: 0 10px; }
 }
-@media (max-width: 380px) { .dx-more { display: none; } }
+@media (max-width: 460px) { .dx-more { display: none; } } /* room for the sound switch and the index button */
+@media (max-width: 350px) { .dx-mark { font-size: 13px; } .dx-hdr-right { gap: 8px; } .dx-sound { padding: 0 6px; } }
 /* the index: slides down over the page; the header stays on top so its button closes it */
 .dx-menu { position: fixed; inset: 0; z-index: 59; background: var(--gunmetal); overflow-y: auto; overscroll-behavior: contain; padding: calc(var(--header-h) + var(--s-6)) 0 var(--s-8); }
 .dx-menu[hidden] { display: none; }

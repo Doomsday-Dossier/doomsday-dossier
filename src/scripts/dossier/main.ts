@@ -9,6 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { reducedMotion, isPhone } from './tokens';
 import { setScroller } from '../motion/scroller';
 import { cursor, transitions, menu } from './chrome';
+import { Sound } from '../sound/engine';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,6 +28,15 @@ if (!reduced) {
 const onScroll = () => document.documentElement.classList.toggle('scrolled', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+// the sound switch in the header: one click mutes everything, and the choice is remembered
+const soundBtn = document.querySelector<HTMLButtonElement>('[data-sound]');
+if (soundBtn) {
+  const sound = Sound.get();
+  const show = (m: boolean) => { soundBtn.setAttribute('aria-pressed', String(m)); soundBtn.querySelector('span')!.textContent = m ? 'Sound off' : 'Sound on'; };
+  show(sound.muted); sound.onMute(show);
+  soundBtn.addEventListener('click', (e) => { e.stopPropagation(); sound.unlock(); sound.setMuted(!sound.muted); });
+}
+
 async function boot() {
   const canvas = document.getElementById('dx-gl') as HTMLCanvasElement | null;
   let engine: any = null;
@@ -39,14 +49,14 @@ async function boot() {
       requestAnimationFrame(loop);
     }
   } catch { engine = null; }
-  if (!engine) document.documentElement.classList.add('no-gl');
+  if (!engine && document.body.dataset.gl === 'on') document.documentElement.classList.add('no-gl');
 
   const env = { engine, lenis, reduced, phone };
   cursor(reduced);
   transitions(reduced);
   menu(reduced, lenis);
   const page = document.body.dataset.page;
-  if (page === 'archive') (await import('./archive')).archive(env);
+  if (page === 'archive') (await import('../home/page')).forgeHome(env);
   if (page === 'file') (await import('./file')).filePage(env);
   if (page === 'team') (await import('./team')).teamPage(env);
   if (page === 'arena') (await import('./arenapage')).arenaPage(env);

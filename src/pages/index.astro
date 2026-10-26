@@ -1,132 +1,100 @@
 ---
-// The archive (v2 home): Doom forms out of a cloud of points (Particle Self), then, as the visitor scrolls,
-// the one cloud morphs from character to character through all 29 files (Anchor), each named bottom-left
-// in front of it (Lena Varga). The countdown sits on its own solid panel so it reads over any colour.
+// The home page (CLAUDE.md, "The home page: through the mask"; the user chose 1, the hall). The forge from
+// Fantastic Four Annual #2 casts the title; Doom's mask rises behind it; scrolling passes through his eye
+// slit into a dark hall where the 29 files hang under his gaze. The canvas and its script are in
+// scripts/home/; below the hall, the archive index lists every file for anyone who wants it as a list.
 import Dossier from '../layouts/Dossier.astro';
 import { castFor, publishedOrder, TEAMS, heroName, u } from '../data/site';
-import { accentOf, ringFor } from '../data/v2';
+import { accentOf, photos2For, pick2 } from '../data/v2';
+import { LENGTHS } from '../scripts/home/home';
 
-const order = publishedOrder();
-const files = order.map((slug, i) => {
-  const team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
+const files = publishedOrder().map((slug, i) => {
+  const p = photos2For(slug)[0];
   return {
-    slug, no: i + 1, total: order.length, name: heroName(slug).toUpperCase(), team: team.name, accent: accentOf(slug),
-    href: u(`/c/${slug}/`), ring: ringFor(slug),
+    slug, no: i + 1, name: heroName(slug).toUpperCase(), team: TEAMS.find((t) => t.id === castFor(slug)!.team)!.name, accent: accentOf(slug),
+    href: u(`/c/${slug}/`), photo: pick2(p.full, 1920), photoS: pick2(p.full, 1280), aspect: p.w / p.h,
   };
 });
-const title = ['DOOMSDAY', 'DOSSIER'];
+const mask = { photo: u('/photos2/victor-von-doom/1-1920.webp'), photoS: u('/photos2/victor-von-doom/1-1280.webp'), depth: u('/photos2/victor-von-doom/1-depth-1024.webp'), eye: [0.47, 0.49] };
+const track = LENGTHS.mask + files.length * LENGTHS.perFile[1] + 1;
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
-<Dossier title="Doomsday Dossier: the archive" description="Every officially confirmed Avengers: Doomsday character, in a leaked Latverian dossier: who they are, where they began, and everything Marvel has confirmed." page="archive">
-  <div class="archive" data-archive>
-    <section class="roll" data-roll style={`--n:${files.length}`} aria-label="The archive: 29 files">
-      <div class="stage">
-        <div class="intro" data-intro>
-          <div class="intro-top">
-            <p class="t-label t-accent" data-after>Latverian state archive &middot; leaked</p>
-            <p class="t-label t-ash" data-after>{files.length} files &middot; 1 threat</p>
-          </div>
-          <div class="intro-foot">
-            <h1 id="dx-title" class="t-title intro-title" data-title aria-label="Doomsday Dossier">
-              {title.map((w) => <span class="w" aria-hidden="true">{[...w].map((ch) => <span class="ch">{ch}</span>)}</span>)}
-            </h1>
-            <div class="count-panel" data-after>
-              <div class="count" data-count aria-label="Time until Avengers: Doomsday opens on 18 December 2026">
-                <span><b data-k="d">00</b><i>days</i></span>
-                <span><b data-k="h">00</b><i>hrs</i></span>
-                <span><b data-k="m">00</b><i>min</i></span>
-                <span><b data-k="s">00</b><i>sec</i></span>
-              </div>
-              <p class="t-micro count-note">Avengers: Doomsday &middot; in theaters 18 December 2026</p>
-            </div>
-            <p class="t-label cue" data-after><span class="cue-line" aria-hidden="true"></span>Scroll to open the archive</p>
-          </div>
-          <p class="loader t-micro" data-loader aria-hidden="true"><b data-pct>000</b> %</p>
-          <button type="button" class="skip-intro t-label" data-skip hidden>Skip intro</button>
-        </div>
-
-        <div class="call" data-call aria-live="polite">
-          <div class="call-top t-micro" aria-hidden="true"><span data-c-team>{files[0].team}</span><span><b data-c-no>01</b> / {pad(files.length)}</span></div>
-          <div class="call-copy">
-            <p class="t-micro call-kicker" data-c-in>File <span data-c-file>01</span> &middot; <span data-c-team2>{files[0].team}</span></p>
-            <a class="call-name t-title" data-c-name href={files[0].href}>{files[0].name}</a>
-            <a class="call-open t-label" data-c-in data-c-open href={files[0].href} data-cursor="Open">Open the file &rarr;</a>
-          </div>
-          <div class="call-bar" aria-hidden="true"><i data-c-bar></i></div>
-        </div>
+<Dossier title="Doomsday Dossier: the archive" description="Every officially confirmed Avengers: Doomsday character, in a leaked Latverian dossier: who they are, where they began, and everything Marvel has confirmed." page="archive" gl={false}>
+  <div class="forge" data-forge data-files={JSON.stringify(files)} data-mask={JSON.stringify(mask)}>
+    <canvas aria-hidden="true"></canvas>
+    <div class="flood" data-flood aria-hidden="true"></div>
+    <div class="fb">
+      <h1 class="fb-title t-title">Doomsday Dossier</h1>
+      <div class="fb-count" data-count aria-label="Time until Avengers: Doomsday opens on 18 December 2026">
+        <span><b data-k="d">00</b><i>days</i></span><span><b data-k="h">00</b><i>hrs</i></span><span><b data-k="m">00</b><i>min</i></span><span><b data-k="s">00</b><i>sec</i></span>
       </div>
-    </section>
-
-    <section class="index wrap" aria-labelledby="idx-h">
-      <p class="t-label t-accent">Archive index</p>
-      <h2 id="idx-h" class="t-title index-title" data-fit>Every file, in one drawer.</h2>
-      <ol class="index-list">
-        {files.map((f) => (
-          <li style={`--a:${f.accent}`}>
-            <a href={f.href}>
-              <span class="t-micro">File {pad(f.no)}</span>
-              <b>{f.name}</b>
-              <span class="t-micro t-ash">{f.team}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
+      <p class="t-micro fb-note">Avengers: Doomsday &middot; in theaters 18 December 2026 &middot; {files.length} files</p>
+    </div>
+    <p class="cue t-micro" data-cue aria-hidden="true"><i></i>Scroll into the mask</p>
+    <div class="file" data-file aria-live="polite">
+      <p class="no t-micro" data-no></p>
+      <a class="name" data-name href={files[0].href}></a>
+      <p class="team t-micro" data-team></p>
+      <a class="open t-label" data-open href={files[0].href} data-cursor="Open">Open the file <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <button type="button" class="gate" data-gate><span class="sr">Enter the forge</span></button>
   </div>
-  <script type="application/json" id="dx-files" set:html={JSON.stringify(files)} />
+  <div class="track" style={`height:${track * 100}svh`} aria-hidden="true"></div>
+
+  <section class="index" aria-labelledby="idx-h"><div class="wrap">
+    <p class="t-label t-accent">Archive index</p>
+    <h2 id="idx-h" class="t-title index-title">Every file, in one drawer.</h2>
+    <ol class="index-list">
+      {files.map((f) => (
+        <li style={`--a:${f.accent}`}>
+          <a href={f.href}>
+            <span class="t-micro">File {pad(f.no)}</span>
+            <b>{f.name}</b>
+            <span class="t-micro t-ash">{f.team}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div></section>
 </Dossier>
 
 <style>
-  /* one pinned stage for the intro and the roll call; the canvas behind draws the cloud */
-  .roll { position: relative; height: calc((var(--n) + 1) * 42svh + 100svh); }
-  .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-  html.rm .roll, html.no-gl .roll { height: auto; }
-  html.rm .stage, html.no-gl .stage { position: relative; }
+  .forge canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .gate { position: fixed; z-index: 3; inset: 0; width: 100%; height: 100%; background: none; border: 0; cursor: pointer; }
+  .gate:focus-visible { outline: 1px solid var(--emerald); outline-offset: -12px; }
+  .track { pointer-events: none; }
 
-  .intro { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-7); }
-  html.rm .intro, html.no-gl .intro { position: relative; min-height: 100svh; }
-  .intro-top { display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
-  .intro-top p { margin: 0; }
-  .intro-foot { align-self: end; display: grid; gap: var(--s-5); justify-items: start; }
-  .intro-title { font-weight: 900; font-size: min(var(--t-mega), calc((100vw - 2 * var(--margin)) / 5.2)); line-height: 0.8; color: var(--bone); }
-  .intro-title .w { display: block; white-space: nowrap; }
-  .intro-title .ch { display: inline-block; opacity: 0; }
-  html.rm .intro-title .ch, html.no-gl .intro-title .ch { opacity: 1; }
-  /* the countdown on its own dark panel: bone digits, readable over any colour behind */
-  .count-panel { display: grid; gap: var(--s-2); padding: var(--s-4) var(--s-5); background: rgba(8, 10, 11, 0.86); border: 1px solid var(--iron-2); border-left: 2px solid var(--emerald); }
-  .count { display: flex; gap: clamp(16px, 3vw, 40px); font-family: var(--f-type); }
-  .count span { display: grid; }
-  .count b { font-weight: 700; font-size: clamp(30px, 4.2vw, 56px); line-height: 1; color: var(--bone); font-variant-numeric: tabular-nums; }
-  .count i { font-style: normal; font-size: var(--t-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); margin-top: 6px; }
-  .count-note { margin: 0; color: var(--ash); }
-  .cue { margin: 0; display: flex; align-items: center; gap: 12px; color: var(--bone); }
-  .cue-line { width: 40px; height: 1px; background: var(--bone); transform-origin: left; animation: cue 2.4s var(--e-file) infinite; }
-  @keyframes cue { 0% { transform: scaleX(0); } 50% { transform: scaleX(1); transform-origin: left; } 51% { transform-origin: right; } 100% { transform: scaleX(0); transform-origin: right; } }
-  [data-after] { opacity: 0; }
-  html.rm [data-after], html.no-gl [data-after] { opacity: 1; }
-  .loader { position: absolute; right: var(--margin); bottom: var(--s-7); margin: 0; color: var(--ash); opacity: 0; }
-  .loader b { font-family: var(--f-type); font-size: clamp(28px, 3.4vw, 46px); color: var(--bone); font-weight: 400; font-variant-numeric: tabular-nums; }
-  .skip-intro { position: absolute; right: var(--margin); top: calc(var(--header-h) + 52px); border: 1px solid var(--iron-2); border-radius: 99px; padding: 10px 16px; min-height: 44px; color: var(--ash); background: rgba(8, 10, 11, 0.6); }
+  /* the green through the eye: brightest where the slit was */
+  .flood { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 50%, #d8ffe9 0%, #2bff95 18%, #0c9a52 55%, #02170c 100%); }
 
-  /* the roll call: the name bottom-left, in front of the cloud */
-  .call { position: absolute; inset: 0; z-index: 2; pointer-events: none; visibility: hidden; }
-  html.rm .call, html.no-gl .call { display: none; }
-  .call-top { position: absolute; top: calc(var(--header-h) + 4px); left: var(--margin); right: var(--margin); display: flex; justify-content: space-between; color: var(--bone); }
-  .call-top b { font-weight: 700; }
-  .call-copy { position: absolute; left: var(--margin); right: var(--margin); bottom: var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); justify-items: start; max-width: 52vw; }
-  .call-kicker { margin: 0; color: var(--a, var(--emerald)); letter-spacing: 0.18em; }
-  .call-name { pointer-events: auto; text-decoration: none; color: var(--bone); font-weight: 900; font-size: min(var(--t-mega), 17svh); line-height: 0.84; padding-right: 5%; }
-  .call-open { pointer-events: auto; color: var(--bone); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
-  .call-bar { position: absolute; left: var(--margin); right: var(--margin); bottom: var(--s-6); height: 1px; background: color-mix(in srgb, var(--bone) 18%, transparent); }
-  .call-bar i { position: absolute; inset: 0; background: var(--bone); transform-origin: left; transform: scaleX(0); }
-  @media (max-width: 760px) {
-    .intro-title { font-size: calc((100vw - 2 * var(--margin)) / 4.6); }
-    .count-panel { padding: var(--s-3) var(--s-4); }
-    .call-copy { max-width: none; bottom: var(--s-7); }
-    .call-name { font-size: calc((100vw - 2 * var(--margin)) / 5.4); }
-    /* the cloud stands in the upper part; a scrim keeps the words clear */
-    .stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46svh; z-index: 1; pointer-events: none; background: linear-gradient(transparent, rgba(13, 16, 18, 0.9) 60%); }
-  }
+  /* the title and countdown live in the canvas; this copy is for screen readers, and is the page without WebGL */
+  .fb { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  :global(html.no-gl) .fb { position: relative; width: auto; height: auto; clip: auto; overflow: visible; z-index: 2; min-height: 82svh; display: grid; align-content: end; gap: var(--s-5); padding: calc(var(--header-h) + var(--s-6)) var(--margin) var(--s-8); }
+  :global(html.no-gl) .forge canvas, :global(html.no-gl) .gate, :global(html.no-gl) .track, :global(html.no-gl) .cue, :global(html.no-gl) .file { display: none; }
+  .fb-title { font-weight: 900; font-size: min(var(--t-mega), calc((100vw - 2 * var(--margin)) / 5.2)); line-height: 0.8; color: var(--bone); }
+  .fb-count { display: flex; gap: clamp(16px, 3vw, 40px); font-family: var(--f-type); }
+  .fb-count span { display: grid; }
+  .fb-count b { font-weight: 700; font-size: clamp(30px, 4.2vw, 56px); line-height: 1; color: var(--bone); font-variant-numeric: tabular-nums; }
+  .fb-count i { font-style: normal; font-size: var(--t-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); margin-top: 6px; }
+  .fb-note { margin: 0; color: var(--ash); }
+
+  .cue { position: fixed; z-index: 2; left: 50%; bottom: max(28px, env(safe-area-inset-bottom)); transform: translateX(-50%); margin: 0; display: flex; align-items: center; gap: 12px; color: rgba(231, 228, 220, 0.62); letter-spacing: 0.22em; opacity: 0; transition: opacity 0.8s var(--e-reveal, cubic-bezier(0.22, 1, 0.36, 1)); white-space: nowrap; pointer-events: none; }
+  .cue i { width: 1px; height: 28px; background: linear-gradient(var(--emerald), transparent); animation: cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite; transform-origin: top; }
+  @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+  :global(html.rm) .cue i { animation: none; }
+
+  /* the file in front: number, name, team and the way in, bottom-left */
+  .file { --a: var(--emerald); position: fixed; z-index: 2; left: var(--margin); right: var(--margin); bottom: clamp(28px, 7vh, 72px); visibility: hidden; opacity: 0; pointer-events: none; }
+  .file a { pointer-events: auto; }
+  .file .no, .file .team { margin: 0; letter-spacing: 0.2em; }
+  .file .no { color: var(--a); margin-bottom: 14px; }
+  .file .team { color: var(--ash); margin-top: 12px; }
+  .file .name { display: block; color: var(--bone); text-decoration: none; font: 900 clamp(46px, 9vw, 132px)/0.86 var(--f-title); text-transform: uppercase; letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6); }
+  .file .name :global(.w) { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.04em; }
+  .file .name :global(.c) { display: inline-block; }
+  .file .open { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 18px; color: var(--bone); text-decoration: none; padding: 0 18px; border: 1px solid color-mix(in srgb, var(--a) 70%, transparent); border-radius: 99px; transition: background var(--d-s) var(--e-reveal, ease); }
+  .file .open:hover, .file .open:focus-visible { background: color-mix(in srgb, var(--a) 22%, transparent); }
 
   .index { position: relative; z-index: 2; padding: var(--s-10) 0 var(--s-9); background: var(--gunmetal); }
   .index-title { font-size: var(--t-1); margin: var(--s-3) 0 var(--s-7); }

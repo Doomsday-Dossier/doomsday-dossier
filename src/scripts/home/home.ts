@@ -33,8 +33,8 @@ const span = (t: number, a: number, b: number) => clamp01((t - a) / Math.max(0.0
 const GRADE = /* glsl */ `
   vec3 grade(vec3 c, float keep){
     float l = dot(c, vec3(0.2126, 0.7152, 0.0722));
-    vec3 lo = vec3(0.03, 0.04, 0.045), mid = vec3(0.17, 0.25, 0.21), hi = vec3(0.92, 0.9, 0.84);
-    vec3 g = mix(mix(lo, mid, smoothstep(0.0, 0.5, l)), hi, smoothstep(0.42, 1.0, l));
+    vec3 lo = vec3(0.03, 0.04, 0.045), mid = vec3(0.15, 0.24, 0.2), hi = vec3(0.84, 0.9, 0.86);
+    vec3 g = mix(mix(lo, mid, smoothstep(0.0, 0.5, l)), hi, smoothstep(0.5, 1.05, l));
     return pow(mix(g, c, keep), vec3(2.2));
   }`;
 
@@ -49,7 +49,7 @@ async function bitmapTex(src: string) {
 /** A graded print: the photo on a plane, lit, faded at its edges into the dark, dimmed until it is the one in front. */
 function printMaterial() {
   return new THREE.ShaderMaterial({
-    uniforms: { uMap: { value: null }, uLit: { value: 0 }, uAlpha: { value: 0 }, uKeep: { value: 0.2 } },
+    uniforms: { uMap: { value: null }, uLit: { value: 0 }, uAlpha: { value: 0 }, uKeep: { value: 0.14 } },
     transparent: true, depthWrite: false,
     vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
     fragmentShader: `${GRADE}
@@ -172,6 +172,7 @@ export function homeExtension(opts: HomeOpts) {
       ui.name.href = f.href; ui.open.href = f.href;
       ui.name.innerHTML = f.name.split(' ').map((w) => `<span class="w">${[...w].map((ch) => `<span class="c">${ch}</span>`).join('')}</span>`).join(' ');
       gsap.to(ui.file, { autoAlpha: 1, duration: 0.3, overwrite: true });
+      if (kit.reduced) { keep(i); return; } // the words simply appear
       gsap.fromTo(ui.name.querySelectorAll('.c'), { yPercent: 100 * dir, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.028, ease: 'expo.out', overwrite: true });
       gsap.fromTo([ui.no, ui.team, ui.open], { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.06, ease: 'expo.out', delay: 0.12, overwrite: true });
       if (sound.ctx.state === 'running') fileArrive(sound);
@@ -196,13 +197,18 @@ export function homeExtension(opts: HomeOpts) {
     const look = new THREE.Vector3(), tmp = new THREE.Vector3();
     const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]);
 
+    const R = kit.reduced;
+    let idle = false;
     return {
       resize() { /* the forge resizes the camera */ },
+      idle: () => idle,
       update(t, dt) {
         const vh = opts.vh(), y = opts.scrollY();
+        // past the hall the page's index covers the canvas: stop drawing until it shows again
+        idle = y >= (LENGTHS.mask + N * LENGTHS.perFile[opts.version] + 1) * vh;
         const m = clamp01(y / (LENGTHS.mask * vh));
         const per = LENGTHS.perFile[opts.version] * vh;
-        const a = Math.max(0, (y - LENGTHS.mask * vh) / per); // files passed in the archive
+        let a = Math.max(0, (y - LENGTHS.mask * vh) / per); // files passed in the archive
         // Doom watching: the mask emerges behind the settling title
         const watch = smooth(span(t, timing.total - 0.6, timing.total + 2.2));
         maskMat.uniforms.uVis.value = 0.42 * watch + 0.58 * smooth(span(m, 0.05, 0.45));
@@ -211,6 +217,12 @@ export function homeExtension(opts: HomeOpts) {
 
         if (y <= 1) { restPos = null; showFile(-1); flood(0); flooded = false; mask.visible = maskMat.uniforms.uVis.value > 0.002; if (cam.fov !== 32) { cam.fov = 32; cam.updateProjectionMatrix(); } return; }
         if (!restPos) { restPos = cam.position.clone(); restLook = cam.getWorldDirection(tmp).multiplyScalar(10).add(cam.position.clone()); }
+        if (a <= 0 && R) {
+          // reduced motion: no flight into the mask; the green simply fades up over the title
+          flood(smooth(span(m, 0.3, 1.0)));
+          showFile(-1);
+          return;
+        }
         if (a <= 0) {
           // the passage: pull back to show the mask over the title, then into the left eye slit
           curve.points[0].copy(restPos);
@@ -238,20 +250,25 @@ export function homeExtension(opts: HomeOpts) {
         cam.fov = 34; cam.updateProjectionMatrix();
         const k = Math.min(N - 1, Math.floor(a)), f = a - k;
         const at = Math.min(N - 1, Math.round(a));
-        showFile(at);
+        // after the last file the words step aside and the hall ends on Doom's eyes
+        const end = a > N - 0.4;
+        showFile(end ? -1 : at);
         if (opts.version === 1) {
-          // the hall: walk on, the camera turning toward the print you are reaching; it turns to face you
+          // the hall: walk on, the camera turning toward the print you are reaching; it turns to face you.
+          // Reduced motion stands still in front of one print at a time
+          if (R) a = Math.min(N, Math.round(a));
           const z = -a * hallStep + 6;
           // turn toward the side of the print you are reaching, eased so the head never snaps
-          lookSide += (prints[at].side - lookSide) * (1 - Math.exp(-dt * 2.5));
-          cam.position.set(X0 + Math.sin(t * 0.3) * 0.05, 1.75 + Math.sin(t * 0.4) * 0.03, z);
+          const side = end ? 0 : prints[at].side;
+          lookSide = R ? side : lookSide + (side - lookSide) * (1 - Math.exp(-dt * 2.5));
+          cam.position.set(X0 + (R ? 0 : Math.sin(t * 0.3) * 0.05), 1.75 + (R ? 0 : Math.sin(t * 0.4) * 0.03), z);
           look.set(X0 + lookSide * 1.1, 1.75, z - 5);
           cam.lookAt(look);
           prints.forEach((p, i) => {
             const d = Math.abs(i - a);
             p.mesh.visible = d < 4.5;
             const lit = smooth(clamp01(1 - d * 1.1));
-            p.mat.uniforms.uLit.value += (lit - p.mat.uniforms.uLit.value) * (1 - Math.exp(-dt * 6));
+            p.mat.uniforms.uLit.value += (lit - p.mat.uniforms.uLit.value) * (R ? 1 : 1 - Math.exp(-dt * 6));
             p.mat.uniforms.uAlpha.value = smooth(clamp01(1.2 - d * 0.25));
             p.mesh.rotation.y = -p.side * 0.55 * (1 - lit * 0.75);
             p.mesh.position.x = p.base.x - p.side * lit * 0.5;
