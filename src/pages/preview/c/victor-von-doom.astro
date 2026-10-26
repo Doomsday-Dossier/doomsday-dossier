@@ -245,7 +245,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:#5c5f58`;
 
   /* I. the folder */
   .open { position: relative; height: 340vh; }
-  .open-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; perspective: 1800px; padding-top: calc(var(--header-h) - 10px); }
+  .open-stage { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; perspective: 1800px; padding-top: calc(var(--header-h) - 10px); overflow-x: clip; }
   .folder { position: relative; width: min(1080px, 90vw); height: min(80svh, 680px); transform-style: preserve-3d; }
   @media (min-width: 761px) and (max-height: 860px) {
     /* short laptop screens: a tighter sheet so every fact fits */
@@ -297,7 +297,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:#5c5f58`;
   }
 
   /* II. the subject */
-  .subject { position: relative; }
+  .subject { position: relative; overflow-x: clip; }
   .sub-pin { position: relative; height: 230vh; }
   .sub-stage { position: sticky; top: 0; height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: var(--s-5); padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-6); }
   .sub-head { grid-column: 1 / -1; }
