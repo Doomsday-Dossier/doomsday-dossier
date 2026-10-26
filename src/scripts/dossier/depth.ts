@@ -13,7 +13,7 @@ export type DioOpts = {
   lines: string[]; font: string; weight: number; accent: string; head: [number, number]; bbox: [number, number, number, number]; aspect: number;
 };
 
-const loadTex = (src: string) => new Promise<THREE.Texture>((res, rej) => new THREE.TextureLoader().load(src, (t) => { t.colorSpace = THREE.NoColorSpace; t.minFilter = THREE.LinearFilter; t.generateMipmaps = false; res(t); }, undefined, rej));
+export const loadTex = (src: string) => new Promise<THREE.Texture>((res, rej) => new THREE.TextureLoader().load(src, (t) => { t.colorSpace = THREE.NoColorSpace; t.minFilter = THREE.LinearFilter; t.generateMipmaps = false; res(t); }, undefined, rej));
 
 const VERT = /* glsl */ `
   uniform sampler2D uDepth; uniform float uAmp, uTime, uIntro;
@@ -47,7 +47,7 @@ const FRAG = /* glsl */ `
     gl_FragColor = vec4(col, c.a * uAlpha);
   }`;
 
-function reliefMaterial(map: THREE.Texture, depth: THREE.Texture, accent: THREE.Color, o: { amp: number; dim: number; rim: number; spec: number; tintK: number; tint: THREE.Color; edge?: number }) {
+export function reliefMaterial(map: THREE.Texture, depth: THREE.Texture, accent: THREE.Color, o: { amp: number; dim: number; rim: number; spec: number; tintK: number; tint: THREE.Color; edge?: number }) {
   const img = depth.image as { width: number; height: number };
   return new THREE.ShaderMaterial({
     transparent: true, depthWrite: true, vertexShader: VERT, fragmentShader: FRAG,
