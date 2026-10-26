@@ -99,7 +99,7 @@ const others = all.filter((c) => !isPublished(c.slug));
 </Dossier>
 
 <style>
-  .tm-head { padding: calc(var(--header-h) + var(--s-8)) 0 var(--s-7); display: grid; gap: var(--s-4); position: relative; z-index: 2; }
+  .tm-head { padding: calc(var(--header-h) + var(--s-8)) 0 var(--s-7); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-4); position: relative; z-index: 2; }
   .tm-title { font-size: var(--t-mega); font-weight: 900; }
   .tm-blurb { max-width: 60ch; color: var(--ash); margin: 0; }
 

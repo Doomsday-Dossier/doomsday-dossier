@@ -146,7 +146,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
             <div class="cover-face">
               <span class="cover-tab t-label">File {pad(no)}</span>
               <div class="cover-top t-micro"><span>Property of the Latverian state</span><span>Do not remove from the archive</span></div>
-              <p class="cover-name">{name}</p>
+              <p class="cover-name" data-fit>{name}</p>
               <div class="cover-bottom">
                 <span class="t-label t-accent">Top secret &middot; Omega</span>
                 <span class="t-micro t-ash">{team.name} &middot; {r.alias}</span>
@@ -323,7 +323,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
           {files.map((f) => <li class={f.slug === slug ? 'here' : f.slug === next ? 'next' : ''} style={`--fa:${f.accent}`}><a href={u(`/preview/c/${f.slug}/`)} aria-current={f.slug === slug ? 'page' : undefined}><i></i>{f.name}</a></li>)}
         </ol>
         <a class="voy-window" href={u(`/preview/c/${next}/`)} data-voy-window>
-          {nextPh && <img src={pick2(nextPh.cut.length ? nextPh.cut : nextPh.full, 1280)} alt="" loading="lazy" decoding="async" style={`object-position:${nextPh.focusM}`} class={nextPh.cut.length ? 'cut' : ''} />}
+          {nextPh && <span class="voy-img"><img src={pick2(nextPh.cut.length ? nextPh.cut : nextPh.full, 1280)} alt="" loading="lazy" decoding="async" style={`object-position:${nextPh.focusM}`} class={nextPh.cut.length ? 'cut' : ''} /></span>}
           <span class="voy-cap t-micro">Next file &middot; {pad((no % order.length) + 1)}</span>
         </a>
         <div class="voy-name">
@@ -378,6 +378,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .voy-list .here a { color: var(--accent); }
   .voy-list .here a i, .voy-list .next a i { background: var(--fa); }
   .voy-window { position: relative; z-index: 2; width: min(34vw, 420px); aspect-ratio: 4 / 5; border-radius: 40px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--na) 60%, transparent); box-shadow: 0 0 0 10px rgba(13, 16, 18, 0.5); background: radial-gradient(circle at 50% 70%, color-mix(in srgb, var(--na) 45%, #0d1012), #0d1012 75%); display: block; }
+  .voy-img { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
   .voy-window img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 0.9s var(--e-reveal); }
   .voy-window img.cut { object-fit: contain; object-position: 50% 100% !important; inset: auto 0 0 0; height: 92%; }
   .voy-window:hover img { transform: scale(1.2); }
@@ -438,11 +439,14 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .file-src { position: absolute; bottom: 8px; left: 0; right: 0; z-index: 3; }
   @media (max-width: 760px) {
     /* phones: the facts fill the top of the folder, the prints sit in a band kept free at the bottom */
-    .folder { height: min(84svh, 760px); }
+    .folder { height: min(88svh, 800px); }
+    .sig-name { font-size: clamp(28px, 8.4vw, 40px); }
+    .cover-name { font-size: clamp(28px, 8vw, 40px); }
     .sheet { padding: 18px 18px 0; gap: 6px; }
     .sheet-head { gap: 4px 14px; padding-bottom: 8px; margin-bottom: 4px; }
     .sheet-rows li { grid-template-columns: 1fr; gap: 0; padding: 6px 0; }
-    .sheet-rows .v { font-size: 13.5px; }
+    .sheet-rows .v { font-size: 12.5px; line-height: 1.35; }
+    .sheet-rows .k { font-size: 10px; }
     .print { width: 34vw; padding: 5px 5px 20px; }
     .print figcaption { font-size: 8px; bottom: 5px; }
     .fp1 { right: 5%; top: auto; bottom: 4%; }

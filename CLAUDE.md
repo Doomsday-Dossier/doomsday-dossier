@@ -82,6 +82,12 @@ and `src/data/photos2.json` with each subject's measured bounding box and head p
 particle figures, centre the heroes and anchor the callouts (`src/data/v2.ts`). Approved accents come
 from `research/accents.json`.
 
+**3D images (requested 26 October 2026).** The user will generate new images per character (hero,
+portrait, scene, plate, optional loop) into `DIAMOND DOCS/MARVEL PHOTOS/3D/<CHARACTER>/`, following
+`research/photos/3d-brief.md` (a copy sits in that folder; all 29 folders exist, Bob's is `BOB - SENTRY`).
+When they land: check each file against the brief, cut out hero and portrait, build depth layers from
+scene and plate, rebuild and show the user before anything goes live.
+
 **Lessons from the rollout.** String.replace treats `$$` in the replacement as a single `$`: write code
 edits with split/join or the Edit tool. A wide photo in a narrow box must be centred with flex (or the
 measured head), not `margin: auto`, or it pins to the left. A WebGL page's frame rate cannot be judged
