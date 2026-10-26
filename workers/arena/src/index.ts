@@ -1,0 +1,115 @@
+/**
+ * Doomsday Dossier arena API (Cloudflare Worker + D1).
+ *
+ *   POST /vote    { a, b, pick, token }  one fan vote; returns the matchup's new tally
+ *   GET  /result?a=&b=                   the fan split for one matchup
+ *   GET  /top?limit=10                   most-wanted fights: matchups with the most votes
+ *
+ * Spam: every vote needs a valid Turnstile token, and each visitor gets one vote per
+ * matchup per day. "Visitor" is an HMAC of IP and user agent keyed by a secret and the
+ * date, so the key rotates daily and cannot be reversed; no IP, account or cookie is kept.
+ * Votes are fan opinion: the site labels them that way.
+ */
+import ROSTER from './roster.json';
+
+export interface Env {
+  DB: D1Database;
+  TURNSTILE_SECRET: string;
+  HASH_SECRET: string;
+  ALLOWED_ORIGINS: string; // comma separated
+}
+
+const SLUGS = new Set<string>(ROSTER);
+const enc = new TextEncoder();
+
+const today = () => new Date().toISOString().slice(0, 10);
+/** One row per unordered pair, stored alphabetically so A-vs-B and B-vs-A share a tally. */
+const pairOf = (a: string, b: string) => (a < b ? [a, b] : [b, a]) as [string, string];
+
+async function visitor(env: Env, req: Request, pair: string) {
+  const key = await crypto.subtle.importKey('raw', enc.encode(`${env.HASH_SECRET}:${today()}`), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const ip = req.headers.get('CF-Connecting-IP') || '';
+  const ua = req.headers.get('User-Agent') || '';
+  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(`${ip}|${ua}|${pair}`));
+  return [...new Uint8Array(sig)].map((x) => x.toString(16).padStart(2, '0')).join('');
+}
+
+async function human(env: Env, req: Request, token: unknown) {
+  if (typeof token !== 'string' || !token || token.length > 2048) return false;
+  const body = new FormData();
+  body.append('secret', env.TURNSTILE_SECRET);
+  body.append('response', token);
+  const ip = req.headers.get('CF-Connecting-IP');
+  if (ip) body.append('remoteip', ip);
+  const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body });
+  const j = (await r.json()) as { success: boolean };
+  return j.success === true;
+}
+
+function cors(env: Env, req: Request) {
+  const origin = req.headers.get('Origin') || '';
+  const allowed = env.ALLOWED_ORIGINS.split(',').map((s) => s.trim());
+  return {
+    'Access-Control-Allow-Origin': allowed.includes(origin) ? origin : allowed[0],
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin',
+  };
+}
+
+const json = (data: unknown, headers: Record<string, string>, status = 200, cache = 'no-store') =>
+  new Response(JSON.stringify(data), { status, headers: { ...headers, 'Content-Type': 'application/json', 'Cache-Control': cache } });
+
+async function tally(env: Env, a: string, b: string) {
+  const [x, y] = pairOf(a, b);
+  const row = await env.DB.prepare('SELECT va, vb, total FROM tallies WHERE pair = ?').bind(`${x}|${y}`).first<{ va: number; vb: number; total: number }>();
+  const va = row?.va ?? 0, vb = row?.vb ?? 0;
+  // report in the caller's order
+  return a === x ? { a, b, votesA: va, votesB: vb, total: va + vb } : { a, b, votesA: vb, votesB: va, total: va + vb };
+}
+
+export default {
+  async fetch(req: Request, env: Env): Promise<Response> {
+    const h = cors(env, req);
+    if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: h });
+    const url = new URL(req.url);
+
+    if (req.method === 'GET' && url.pathname === '/result') {
+      const a = url.searchParams.get('a') || '', b = url.searchParams.get('b') || '';
+      if (!SLUGS.has(a) || !SLUGS.has(b) || a === b) return json({ error: 'unknown matchup' }, h, 400);
+      return json(await tally(env, a, b), h, 200, 'public, max-age=5');
+    }
+
+    if (req.method === 'GET' && url.pathname === '/top') {
+      const limit = Math.min(25, Math.max(1, Number(url.searchParams.get('limit')) || 10));
+      const { results } = await env.DB.prepare('SELECT a, b, va, vb, total FROM tallies ORDER BY total DESC, updated DESC LIMIT ?').bind(limit).all();
+      return json({ fights: results.map((r: any) => ({ a: r.a, b: r.b, votesA: r.va, votesB: r.vb, total: r.total })) }, h, 200, 'public, max-age=15');
+    }
+
+    if (req.method === 'POST' && url.pathname === '/vote') {
+      let body: any;
+      try { body = await req.json(); } catch { return json({ error: 'bad request' }, h, 400); }
+      const { a, b, pick, token } = body || {};
+      if (!SLUGS.has(a) || !SLUGS.has(b) || a === b || (pick !== a && pick !== b)) return json({ error: 'unknown matchup' }, h, 400);
+      if (!(await human(env, req, token))) return json({ error: 'bot check failed' }, h, 403);
+      const [x, y] = pairOf(a, b);
+      const pair = `${x}|${y}`;
+      const seen = await visitor(env, req, pair);
+      const day = today();
+      // one vote per visitor per matchup per day; INSERT OR IGNORE makes the check atomic
+      const first = await env.DB.prepare('INSERT OR IGNORE INTO seen (k, day) VALUES (?, ?)').bind(seen, day).run();
+      if (!first.meta.changes) return json({ ...(await tally(env, a, b)), already: true }, h);
+      const col = pick === x ? 'va' : 'vb';
+      await env.DB.batch([
+        env.DB.prepare(`INSERT INTO tallies (pair, a, b, va, vb, total, updated) VALUES (?, ?, ?, 0, 0, 0, ?) ON CONFLICT(pair) DO NOTHING`).bind(pair, x, y, Date.now()),
+        env.DB.prepare(`UPDATE tallies SET ${col} = ${col} + 1, total = total + 1, updated = ? WHERE pair = ?`).bind(Date.now(), pair),
+        // keep only today's and yesterday's markers
+        env.DB.prepare('DELETE FROM seen WHERE day < ?').bind(new Date(Date.now() - 86400000).toISOString().slice(0, 10)),
+      ]);
+      return json({ ...(await tally(env, a, b)), already: false }, h);
+    }
+
+    return json({ error: 'not found' }, h, 404);
+  },
+};

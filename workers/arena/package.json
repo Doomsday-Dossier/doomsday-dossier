@@ -1,0 +1,15 @@
+{
+  "name": "doomsday-arena",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 execute doomsday-arena --local --file=schema.sql",
+    "db:remote": "wrangler d1 execute doomsday-arena --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "4.45.0",
+    "@cloudflare/workers-types": "4.20251231.0"
+  }
+}

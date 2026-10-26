@@ -24,18 +24,23 @@ const roster = publishedOrder().map((slug) => {
   };
 });
 const data = JSON.stringify(roster);
+// the arena worker and Turnstile site key come from the build environment; without them voting shows as opening soon
+const arenaApi = import.meta.env.PUBLIC_ARENA_API ?? '';
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
 ---
-<Base title="Versus" description="Pick any two Avengers: Doomsday characters and compare their official Marvel Handbook power grids, abilities, documented feats and shared films. Every stat sourced." page="versus">
+<Base title="Arena" description="The Doomsday Dossier fight arena: pick any two Avengers: Doomsday characters, see their documented feats and official Marvel Handbook power grids side by side, and cast a fan vote. Every stat sourced." page="versus">
   <section class="vs" data-versus>
     <div class="wrap vs-head">
-      <p class="label" data-hero-in>Versus</p>
+      <p class="label" data-hero-in>Fight arena</p>
       <h1 class="display vs-title" data-split="words" data-split-on="load">Pick two.</h1>
-      <p class="vs-copy" data-hero-in>Official Marvel Handbook power grids, abilities and documented feats, side by side. No verdict: the stats are the comics&rsquo;, and the films don&rsquo;t always match them.</p>
+      <p class="vs-copy" data-hero-in>Documented feats and official Marvel Handbook power grids, side by side, with every source shown. The site never declares a winner: the fan vote is just that, fans&rsquo; opinion. The stats are the comics&rsquo;, and the films don&rsquo;t always match them.</p>
     </div>
 
     <div class="vs-stage wrap" aria-live="polite">
+      <i class="vs-flash" aria-hidden="true"></i>
       <article class="vs-side" data-side="a"></article>
       <div class="vs-mid">
+        <i class="vs-shock" aria-hidden="true"></i>
         <span class="vs-badge" aria-hidden="true">VS</span>
         <svg class="radar" viewBox="-162 -132 324 264" role="img" aria-labelledby="radar-t" data-radar>
           <title id="radar-t">Power grid radar</title>
@@ -49,6 +54,16 @@ const data = JSON.stringify(roster);
       </div>
       <article class="vs-side" data-side="b"></article>
     </div>
+
+    <section class="wrap vs-vote" data-vote data-api={arenaApi} data-sitekey={turnstileKey} aria-labelledby="vote-h">
+      <p class="label">Fan vote &middot; opinion, not fact</p>
+      <h2 id="vote-h" class="vote-q">Who wins this fight?</h2>
+      <div class="vote-btns"><button type="button" data-v="a">Left</button><span aria-hidden="true">or</span><button type="button" data-v="b">Right</button></div>
+      <p class="vote-status" data-status role="status"></p>
+      <div class="vote-result" data-result hidden></div>
+      <div class="vote-ts" data-ts></div>
+      <p class="vote-note">One vote per fight per day. Bots are kept out by Cloudflare Turnstile; this site stores no account, name or IP address. <button type="button" class="vote-peek" data-peek>See the fan split without voting</button></p>
+    </section>
 
     <div class="wrap vs-pick">
       <div class="vs-pick-head">
@@ -83,7 +98,7 @@ const data = JSON.stringify(roster);
   .vs-copy { max-width: 64ch; color: var(--bone-dim); margin: 0; }
 
   .vs-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(12px, 2vw, 32px); align-items: center; margin-top: 46px; }
-  .vs-side { position: relative; aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden; background: var(--void-2); box-shadow: 0 0 0 1px var(--iron); isolation: isolate; }
+  .vs-side { contain: paint; position: relative; aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden; background: var(--void-2); box-shadow: 0 0 0 1px var(--iron); isolation: isolate; }
   .vs-side :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .vs-side::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, #050607 4%, rgba(5, 6, 7, 0.75) 36%, transparent 66%); }
   .vs-side :global(.vs-info) { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(12px, 2vw, 24px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; text-shadow: 0 1px 2px #050607, 0 0 16px rgba(5, 6, 7, 0.9); }
@@ -97,8 +112,45 @@ const data = JSON.stringify(roster);
   .vs-side[data-side='b'] :global(.vs-type) { justify-self: end; }
 
   .vs-mid { position: relative; display: grid; justify-items: center; gap: 10px; }
-  .vs-badge { font-family: var(--font-display, var(--font-serif)); font-size: clamp(30px, 4vw, 54px); letter-spacing: 0.06em; color: var(--doom); text-shadow: 0 0 30px rgba(61, 255, 138, 0.5); }
-  .radar { width: 100%; max-width: 380px; overflow: visible; }
+  /* slam effects: a shockwave ring from the badge and a flash over the stage (opacity and transform only) */
+  .vs-stage { position: relative; }
+  .vs-flash { position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.85), rgba(61, 255, 138, 0.25) 60%, transparent); }
+  .vs-shock { position: absolute; left: 50%; top: 48px; width: 160px; height: 160px; margin: -80px 0 0 -80px; border-radius: 50%; border: 3px solid var(--doom); box-shadow: 0 0 0 10px rgba(61, 255, 138, 0.15); opacity: 0; pointer-events: none; z-index: 4; }
+
+  /* documented feats on each card, one at a time */
+  /* only on wide cards: on smaller ones the feats would run into the name, and they are listed just below */
+  .vs-side :global(.vs-feat) { display: none; }
+  @media (min-width: 1100px) { .vs-side :global(.vs-feat) { display: block; } }
+  .vs-side :global(.vs-feat) { position: absolute; left: 0; right: 0; top: 0; z-index: 2; padding: clamp(12px, 1.6vw, 18px); background: linear-gradient(to bottom, rgba(5, 6, 7, 0.88) 55%, transparent); min-height: 110px; }
+  .vs-side :global(.feat) { position: absolute; left: clamp(12px, 1.6vw, 18px); right: clamp(12px, 1.6vw, 18px); top: clamp(12px, 1.6vw, 18px); margin: 0; font-size: 13px; line-height: 1.45; color: var(--bone); opacity: 0; transform: translateY(8px); transition: opacity 0.6s, transform 0.6s var(--ease-out); }
+  .vs-side :global(.feat.on) { opacity: 1; transform: none; }
+  .vs-side :global(.feat .where) { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--a); margin-bottom: 4px; }
+  .vs-side :global(.feat a) { color: var(--bone-dim); font-size: 11px; text-underline-offset: 2px; }
+
+  /* fan vote */
+  .vs-vote { margin-top: 40px; display: grid; justify-items: center; text-align: center; gap: 12px; border-top: 1px solid var(--iron); border-bottom: 1px solid var(--iron); padding: 34px var(--gutter); }
+  .vote-q { font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 3.6vw, 52px); margin: 0; }
+  .vote-btns { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .vote-btns span { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bone-dim); }
+  .vote-btns button { min-height: 52px; min-width: 150px; padding: 12px 22px; border-radius: 99px; border: 1px solid var(--a, var(--iron-2)); color: var(--bone); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; transition: background 0.3s, color 0.3s, transform 0.3s var(--ease-out); }
+  .vote-btns button:hover { background: var(--a); color: var(--void); transform: translateY(-2px); }
+  .vs-vote.voting .vote-btns button { opacity: 0.5; pointer-events: none; }
+  .vs-vote.voted .vote-btns, .vs-vote.vote-off .vote-btns, .vs-vote.vote-off .vote-peek, .vs-vote.voted .vote-peek { display: none; }
+  .vote-status { margin: 0; min-height: 1.4em; color: var(--bone-dim); font-size: 14px; }
+  .vote-result { width: min(720px, 100%); display: grid; gap: 10px; }
+  .vote-result :global(.split) { position: relative; height: 18px; border-radius: 99px; overflow: hidden; background: rgba(232, 230, 225, 0.06); }
+  .vote-result :global(.split i) { position: absolute; top: 0; bottom: 0; width: 100%; }
+  .vote-result :global(.sa) { left: 0; background: var(--ca); transform-origin: left; }
+  .vote-result :global(.sb) { right: 0; background: var(--cb); transform-origin: right; opacity: 0.85; }
+  .vote-result :global(.split-nums) { display: flex; justify-content: space-between; gap: 12px; margin: 0; font-size: 15px; }
+  .vote-result :global(.split-nums b) { font-weight: 500; }
+  .vote-result :global(.split-total) { margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); }
+  .vote-ts:empty { display: none; }
+  .vote-note { margin: 0; font-size: 12px; color: var(--bone-dim); max-width: 70ch; }
+  .vote-peek { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--doom); font-size: 12px; }
+  .vs-badge { will-change: transform; font-family: var(--font-display, var(--font-serif)); font-size: clamp(30px, 4vw, 54px); letter-spacing: 0.06em; color: var(--doom); text-shadow: 0 0 30px rgba(61, 255, 138, 0.5); }
+  /* the radar repaints while it morphs: keep it on its own layer so the shaking stage is not repainted with it */
+  .radar { width: 100%; max-width: 380px; overflow: visible; will-change: transform; }
   .radar :global(.rings polygon) { fill: none; stroke: rgba(232, 230, 225, 0.12); stroke-width: 1; }
   .radar :global(.axes line) { stroke: rgba(232, 230, 225, 0.14); stroke-width: 1; }
   .radar :global(.labels text) { fill: var(--bone-dim); font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -124,7 +176,8 @@ const data = JSON.stringify(roster);
   .vs-roster button.is-a, .vs-roster button.is-b { border-color: var(--a); background: color-mix(in srgb, var(--a) 12%, transparent); }
   .vs-roster button.is-a b, .vs-roster button.is-b b { color: var(--bone); }
 
-  .vs-body { margin-top: 60px; display: grid; gap: 56px; }
+  .vs-body { margin-top: 60px; display: grid; gap: 56px; transition: opacity 0.4s; }
+  .vs-body.stale { opacity: 0.35; }
   .vs-body :global(h2) { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 3.6vw, 54px); margin: 0 0 18px; }
   .vs-body :global(.stats) { display: grid; gap: 10px; }
   .vs-body :global(.stat) { display: grid; grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr); align-items: center; gap: 12px; }

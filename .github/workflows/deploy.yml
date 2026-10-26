@@ -28,6 +28,9 @@ jobs:
         env:
           SITE_URL: https://${{ github.repository_owner }}.github.io
           BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
+          # arena voting: set as repository variables once the Cloudflare worker exists (empty = voting opens soon)
+          PUBLIC_ARENA_API: ${{ vars.ARENA_API }}
+          PUBLIC_TURNSTILE_SITEKEY: ${{ vars.TURNSTILE_SITEKEY }}
         run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
