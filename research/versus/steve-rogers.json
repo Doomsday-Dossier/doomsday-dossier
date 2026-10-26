@@ -1,0 +1,205 @@
+{
+  "slug": "steve-rogers",
+  "powerGrid": {
+    "values": {
+      "intelligence": 4,
+      "strength": 3,
+      "speed": 3,
+      "durability": 3,
+      "energyProjection": 1,
+      "fightingSkills": 6
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Captain America (Steve Rogers) (archived 10 July 2018)",
+      "url": "https://web.archive.org/web/20180710182250/http://marvel.com/universe/Captain_America_(Steve_Rogers)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "serum",
+      "detail": "The Super-Soldier Serum permanently raised every bodily function to the peak of human potential and let him survive decades frozen in ice.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Elite wartime training and decades of combat made him a master martial artist and one of the finest tacticians alive.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "His near-indestructible shield, a one-off vibranium and proto-adamantium alloy, is his main weapon.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Captain America's Shield",
+          "url": "https://marvel.fandom.com/wiki/Captain_America's_Shield"
+        }
+      ]
+    }
+  ],
+  "powerType": "serum",
+  "abilities": [
+    {
+      "name": "Super-Soldier physiology",
+      "detail": "Strength, speed, stamina, agility and reflexes at the highest human level and slightly beyond, kept that way by the serum.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master tactician",
+      "detail": "Widely seen as one of the greatest battlefield strategists on Earth, able to rework a plan as a fight changes.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master martial artist",
+      "detail": "Blends boxing, judo, jujutsu, karate and other styles with gymnastics into his own acrobatic fighting style.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Shield mastery",
+      "detail": "Throws the shield with near-perfect aim, ricochets it off several targets in one throw and judges its rebound almost to the millimetre.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Pressure-point strikes",
+      "detail": "Precise nerve strikes can knock out or immobilise opponents, including superhumanly strong ones.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Worthy of Mjolnir",
+      "detail": "Has been judged worthy to lift and wield Thor's enchanted hammer on several occasions.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Fighting beside Thor against demons, he lifted Mjolnir and sent it back to Thor, proving himself worthy of the hammer.",
+      "where": "Thor Vol 1 #390 (April 1988)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Vol 1 390",
+          "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_390"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Disguised as Crossbones in an A.I.M. arena, he beat General Wo and Razor Fist in turn, then took on a horde of villains.",
+      "where": "Captain America Vol 1 #412 (February 1993)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 1 412",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_412"
+        },
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "With the Galactic Council ready to surrender, he planned a counterstrike that freed the captured Avengers and smashed much of the Builders' force.",
+      "where": "Infinity Vol 1 #3 (November 2013)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Infinity Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/Infinity_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Steven Rogers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Steven_Rogers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Infiltrated a Hydra fortress alone, slipped past the guards and freed the captured Allied soldiers, Bucky Barnes among them.",
+      "where": "Captain America: The First Avenger (2011)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The First Avenger",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Beat an elevator full of STRIKE agents, broke a magnetic cuff, dropped several floors onto his shield and downed a Quinjet.",
+      "where": "Captain America: The Winter Soldier (2014)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Proved worthy of Mjolnir, then used it with his shield and called down lightning to drive back Thanos.",
+      "where": "Avengers: Endgame (2019)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Steve Rogers",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Steve_Rogers"
+        }
+      ]
+    }
+  ]
+}

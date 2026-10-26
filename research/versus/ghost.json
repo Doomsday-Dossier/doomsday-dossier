@@ -1,0 +1,29 @@
+{
+  "slug": "ghost",
+  "powerGrid": {
+    "values": null,
+    "source": { "label": "Marvel.com Marvel Universe wiki: Ghost (archived 20 June 2018)", "url": "https://web.archive.org/web/20180620005151/http://marvel.com:80/universe/Ghost" },
+    "note": "Marvel's page is the Iron Man foe (first seen Iron Man #219), but every readable archived copy (2013 to 2018) shows only the blank default grid, all bars at minimum. Older copies used a Flash grid. Not estimated."
+  },
+  "powerOrigins": [
+    { "key": "tech", "detail": "A former data engineer who infused his body with his own GhostTech phasing technology; his suit and mask control the intangibility and invisibility.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }, { "label": "Marvel Fandom wiki: Thunderbolts Vol 2 151", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_151" }] }
+  ],
+  "powerType": "tech",
+  "abilities": [
+    { "name": "Intangibility", "detail": "Harnesses polarised eternons to make himself, and whatever he touches, pass through solid matter; he turns partly see-through while phased.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] },
+    { "name": "Invisibility", "detail": "Turns himself and what he touches invisible to eyes and most sensors; smoke or mist can still reveal his outline.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] },
+    { "name": "Electronics override", "detail": "His suit can disrupt machines by touch, and once took control of MACH-V's armour by phasing into it.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }, { "label": "Marvel Fandom wiki: Thunderbolts Vol 2 146", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_146" }] },
+    { "name": "Master hacker", "detail": "A former data engineer who brushes past firewalls and breaks into most computer systems with ease.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] },
+    { "name": "Inventor", "detail": "Designed nearly all of his own arsenal, and later upgraded his suit to mask sounds, even his heartbeat.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] },
+    { "name": "Weapons and explosives", "detail": "Carries high-powered firearms and explosives, and his suit can deliver electric shocks strong enough to drop a man.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] },
+    { "name": "Scanners and levitation", "detail": "His mask detects heartbeats and can read lips from afar; the suit lets him float and fly slowly.", "sources": [{ "label": "Marvel Fandom wiki: Ghost (Earth-616)", "url": "https://marvel.fandom.com/wiki/Ghost_(Earth-616)" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "Used modified intangibility circuits to leave the assassin Spymaster half-phased into a wall, killing him.", "where": "Iron Man Vol 1 #220 (July 1987)", "sources": [{ "label": "Marvel Fandom wiki: Iron Man Vol 1 220", "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_1_220" }] },
+    { "medium": "comics", "text": "Working for A.I.M., nearly defeated Iron Man in one clash and escaped unharmed.", "where": "Iron Man Vol 3 #44 (September 2001)", "sources": [{ "label": "Marvel Fandom wiki: Iron Man Vol 3 44", "url": "https://marvel.fandom.com/wiki/Iron_Man_Vol_3_44" }] },
+    { "medium": "comics", "text": "Phased into teammate MACH-V's armour and took over control of the suit from the inside.", "where": "Thunderbolts Vol 2 #146 (September 2010)", "sources": [{ "label": "Marvel Fandom wiki: Thunderbolts Vol 2 146", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_146" }] },
+    { "medium": "screen", "text": "Kicked a full-size Ant-Man through several walls, then phased through Hank Pym's van to kick the Wasp into the street.", "where": "Ant-Man and the Wasp (2018)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Ant-Man and the Wasp", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp" }, { "label": "Marvel Cinematic Universe Wiki: Ghost", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost" }] },
+    { "medium": "screen", "text": "Forced Hank Pym to hand over his lab by threatening to solidify her phased hand inside his neck.", "where": "Ant-Man and the Wasp (2018)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Ant-Man and the Wasp", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp" }, { "label": "Marvel Cinematic Universe Wiki: Ghost", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost" }] },
+    { "medium": "screen", "text": "Held her own against Yelena Belova, John Walker and Taskmaster in the O.X.E. vault brawl.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: Ghost", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ghost" }] }
+  ]
+}

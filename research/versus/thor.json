@@ -1,0 +1,213 @@
+{
+  "slug": "thor",
+  "powerGrid": {
+    "values": {
+      "intelligence": 2,
+      "strength": 7,
+      "speed": 6,
+      "durability": 7,
+      "energyProjection": 7,
+      "fightingSkills": 6
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Thor (Thor Odinson) (archived 25 June 2018)",
+      "url": "https://web.archive.org/web/20180625185548/http://marvel.com/universe/Thor_(Thor_Odinson)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "asgardian",
+      "detail": "Son of Odin and the Elder Goddess Gaea, so stronger and tougher than almost every other Asgardian.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "mystic",
+      "detail": "Mjolnir, an Uru hammer carrying Odin's enchantments, channels his storms, blasts, flight and portals; the Odin-Force has amplified him further.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mjolnir",
+          "url": "https://marvel.fandom.com/wiki/Mjolnir"
+        }
+      ]
+    }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    {
+      "name": "Godly strength",
+      "detail": "The strongest of the Asgardian gods, rated well above 100 tons, who has battled the Hulk, Hercules and the Midgard Serpent.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Near invulnerability",
+      "detail": "Has withstood attacks from the Destroyer, blasts from Odin and even energy blasts from Celestials.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Weather control",
+      "detail": "As God of Thunder he summons rain, wind, thunder and lightning, with or without Mjolnir.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Mjolnir",
+      "detail": "His enchanted hammer returns to his hand, lets him fly, fires the God-Blast and opens portals across dimensions.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mjolnir",
+          "url": "https://marvel.fandom.com/wiki/Mjolnir"
+        }
+      ]
+    },
+    {
+      "name": "Speed and reflexes",
+      "detail": "Flies at tremendous speeds and can track objects moving faster than light.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Odin-Force",
+      "detail": "At times he has inherited his father's power, greatly boosting his strength and adding teleportation and force fields.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master warrior",
+      "detail": "Millennia of war make him a master combatant and an expert with hammer, axe, sword, bow and shield.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Fought his way inside the Celestial Exitar and broke into its brain casing, shattering Mjolnir with the force he channelled.",
+      "where": "Thor Vol 1 #388 (February 1988)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Vol 1 388",
+          "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_388"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "When the Midgard Serpent encircled the Earth and began crushing it, Thor fought and defeated the monster.",
+      "where": "Thor Vol 1 #327 (January 1983)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Vol 1 327",
+          "url": "https://marvel.fandom.com/wiki/Thor_Vol_1_327"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Drained the power of an amplified Galactus and unleashed it as a bomb to destroy the Black Winter.",
+      "where": "Thor Vol 6 #6 (October 2020)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Thor Vol 6 6",
+          "url": "https://marvel.fandom.com/wiki/Thor_Vol_6_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: Thor Odinson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Thor_Odinson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Reclaimed Mjolnir, lifted the Destroyer skyward inside a whirlwind and turned its own energy beam back to wreck it.",
+      "where": "Thor (2011)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thor (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thor",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Without his hammer, he called down a massive lightning bolt to blast Hela back, then cut through her Berserker army.",
+      "where": "Thor: Ragnarok (2017)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thor: Ragnarok",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Ragnarok"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thor",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Held open Nidavellir's iris and took the full force of a star so Stormbreaker could be forged.",
+      "where": "Avengers: Infinity War (2018)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Infinity War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thor",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
+        }
+      ]
+    }
+  ]
+}

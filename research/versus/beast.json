@@ -1,0 +1,192 @@
+{
+  "slug": "beast",
+  "powerGrid": {
+    "values": {
+      "intelligence": 6,
+      "strength": 4,
+      "speed": 3,
+      "durability": 4,
+      "energyProjection": 1,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Beast (Henry McCoy) (archived 29 June 2018)",
+      "url": "https://web.archive.org/web/20180629102404/http://marvel.com/universe/Beast_(Henry_McCoy)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant with an enhanced physique, outsized hands and feet, and great strength and agility.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "serum",
+      "detail": "At the Brand Corporation he took a hormonal extract he had isolated, which gave him a furry, bestial form that became permanent.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Amazing Adventures Vol 2 11",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Adventures_Vol_2_11"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Genius intellect",
+      "detail": "Holds six doctorates and is counted among the smartest people on Earth, expert in genetics, biochemistry and electronics.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman strength",
+      "detail": "Can lift about 10 tons in his blue form, enough to smash a brick wall with a punch or knot an iron barbell.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman agility",
+      "detail": "Combines the agility of a great ape with Olympic gymnastic skill, leaping 32 feet high and walking tightropes with ease.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Speed, stamina and durability",
+      "detail": "Runs up to about 40 mph on all fours, works at peak for hours, and shrugs off blows from Colossus or the Hulk.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Healing and resistances",
+      "detail": "Heals mild to moderate injuries within hours and resists cold, poisons, tranquilizers and some telepathic control.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman senses",
+      "detail": "Sees and hears beyond human range, tracks by scent, has cat-like night vision and can feel electronic signals through walls.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Claws, fangs and dexterity",
+      "detail": "Three-inch retractable claws and sharp fangs, and such dexterity he can write with both hands at once or tie knots with his toes.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Hand-to-hand combat",
+      "detail": "Trained by Xavier and Captain America, he fights in a bouncing freestyle that makes full use of his strength and agility.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Drank his own mutation serum to stop a lab theft, gaining fur, strength, agility and healing; missing the antidote window made the change permanent.",
+      "where": "Amazing Adventures Vol 2 #11 (March 1972)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Amazing Adventures Vol 2 11",
+          "url": "https://marvel.fandom.com/wiki/Amazing_Adventures_Vol_2_11"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Combined Moira MacTaggert's notes with his own research to finish a cure for the Legacy Virus, released when Colossus gave his life.",
+      "where": "Uncanny X-Men Vol 1 #390 (March 2001)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 390",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_390"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Used the Time Platform to bring the original five teenage X-Men from the past into the present, hoping they could change Cyclops' course.",
+      "where": "All-New X-Men Vol 1 #1 (January 2013)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: All-New X-Men Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/All-New_X-Men_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Back in his old uniform, he fought Magneto's army on Alcatraz in a savage, roaring style and injected Magneto with the cure, stripping his powers.",
+      "where": "X-Men: The Last Stand (2006)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Henry McCoy (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Henry_McCoy_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Examined Monica Rambeau after Binary found her adrift and worked out that she had fallen through a tear in space-time from a parallel reality.",
+      "where": "The Marvels (2023), mid-credits scene",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Marvels",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Marvels"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Beast",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Beast"
+        }
+      ]
+    }
+  ]
+}

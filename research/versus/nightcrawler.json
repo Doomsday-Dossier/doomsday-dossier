@@ -1,0 +1,183 @@
+{
+  "slug": "nightcrawler",
+  "powerGrid": {
+    "values": {
+      "intelligence": 5,
+      "strength": 4,
+      "speed": 7,
+      "durability": 5,
+      "energyProjection": 7,
+      "fightingSkills": 7
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Nightcrawler (archived 29 June 2018)",
+      "url": "https://web.archive.org/web/20180629155103/http://marvel.com/universe/Nightcrawler"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant with blue fur, a prehensile tail and the power to teleport by passing through the Brimstone Dimension.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Teleportation",
+      "detail": "Jumps through the Brimstone Dimension and back in an instant, leaving smoke and a bamf sound; about two to three miles under normal conditions.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Multiple ports",
+      "detail": "Grabs a foe and teleports in rapid repeated jumps, draining anyone without superhuman stamina while he keeps fighting.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Spatial awareness",
+      "detail": "A limited subconscious sense stops him arriving inside the ground, though he still avoids teleporting into places he cannot see or has not seen.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Shadow camouflage",
+      "detail": "His indigo fur and link to the dimension he crosses let him fade into shadows, at first close to outright invisibility.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Wall-crawling and prehensile tail",
+      "detail": "Clings to surfaces with hands and feet, and his tail can hold his weight, lift a grown man or swing a blade.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman agility and reflexes",
+      "detail": "Agility, balance, coordination and reaction time beyond human limits, built on an unusually flexible spine.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Acrobat and swordsman",
+      "detail": "An Olympic-class acrobat from his circus years and a master fencer, able to fight with a sword held in his tail.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Pushed himself to his physical limit to make a vertical teleport of about one mile, against both gravity and the magnetic field.",
+      "where": "Uncanny X-Men Vol 1 #147 (July 1981)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 147",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_147"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "While weakened and close to death, teleported himself and Hope Summers roughly 585 miles from Las Vegas to San Francisco.",
+      "where": "X-Force Vol 3 #26 (June 2010)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Force Vol 3 26",
+          "url": "https://marvel.fandom.com/wiki/X-Force_Vol_3_26"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "After his return from death, made a single jump of about 7,853 miles from Dubai to the Savage Land.",
+      "where": "Civil War II: X-Men Vol 1 #1 (August 2016)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Civil War II: X-Men Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Civil_War_II:_X-Men_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Teleported through the White House, beating a corridor of Secret Service agents and reaching the President before a gunshot wound broke his trance.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "When a missile ruptured the X-Jet and Rogue was pulled out, he teleported outside in mid-air, caught her and brought her back aboard.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Teleported himself and Storm into the Cerebro chamber at Alkali Lake, where she froze Jason Stryker and broke his hold on Xavier.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Kurt Wagner (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Kurt_Wagner_(Earth-41578)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "slug": "magneto",
+  "powerGrid": {
+    "values": {
+      "intelligence": 6,
+      "strength": 2,
+      "speed": 4,
+      "durability": 6,
+      "energyProjection": 6,
+      "fightingSkills": 3
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Magneto (Max Eisenhardt) (archived 29 June 2018)",
+      "url": "https://web.archive.org/web/20180629102413/http://marvel.com/universe/Magneto_(Max_Eisenhardt)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant, now confirmed Omega-level, with near-limitless command of magnetism.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Magnetism control",
+      "detail": "Commands magnetism and metal on a vast scale: he has moved mountains, raised islands, changed the course of rivers and assembled complex machines in seconds.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Force fields",
+      "detail": "Keeps near-constant magnetic shields that have held against Thor's hammer, Cyclops's optic blasts and nuclear detonations.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Flight and space travel",
+      "detail": "Flies long distances on magnetic field lines, and crosses space inside a bubble of air held by his force field.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Electromagnetic spectrum",
+      "detail": "Generates and redirects electricity, light and other electromagnetic energy, and can bend light around himself to turn invisible.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Organic iron control",
+      "detail": "Moves the trace iron in living things, enough to tug at blood flow to the brain; he once pulled adamantium straight out of Wolverine.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Telepathic resistance",
+      "detail": "Trained himself to resist telepaths even while unconscious, an edge his helmet strengthens further.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Scientific genius",
+      "detail": "An expert geneticist and engineer who built magnetic spacecraft, space stations, robots and machines that cancel mutant powers.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Seasoned fighter",
+      "detail": "Decades of combat; boosting his body with his powers, he can hold his own against Iron Man.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Fought Thor by magnetically keeping him from his hammer long enough that the thunder god turned back into Donald Blake.",
+      "where": "Journey Into Mystery Vol 1 #109 (October 1964)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Journey Into Mystery Vol 1 109",
+          "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_1_109"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Ripped the adamantium out of Wolverine's skeleton with magnetism during the X-Men's raid on his orbital base, Avalon.",
+      "where": "X-Men Vol 2 #25 (October 1993)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 25",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Dragged the giant bullet holding Kitty Pryde back from deep space to Earth; the strain left him in a coma.",
+      "where": "Uncanny X-Men Vol 1 #521 to #522 (April to May 2010)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 521",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_521"
+        },
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 522",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_522"
+        },
+        {
+          "label": "Marvel Fandom wiki: Max Eisenhardt (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Max_Eisenhardt_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Atop the Statue of Liberty, he stopped Wolverine's claws in mid-strike to protect his mutation machine.",
+      "where": "X-Men (2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Pulled liquid iron out of a guard's blood, shaped it into metal balls and smashed his way out of his plastic prison.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Tore the Golden Gate Bridge loose and used it to link the mainland with Alcatraz Island.",
+      "where": "X-Men: The Last Stand (2006)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+          "url": "https://marvel.fandom.com/wiki/X-Men:_The_Last_Stand"
+        },
+        {
+          "label": "Marvel Fandom wiki: Erik Lehnsherr (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Erik_Lehnsherr_(Earth-41578)"
+        }
+      ]
+    }
+  ]
+}

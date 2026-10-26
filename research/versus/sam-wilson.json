@@ -1,0 +1,209 @@
+{
+  "slug": "sam-wilson",
+  "powerGrid": {
+    "values": {
+      "intelligence": 3,
+      "strength": 3,
+      "speed": 4,
+      "durability": 3,
+      "energyProjection": 3,
+      "fightingSkills": 5
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Falcon (Sam Wilson) (archived 8 March 2018)",
+      "url": "https://web.archive.org/web/20180308183946/http://marvel.com/universe/Falcon_(Sam_Wilson)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "tech",
+      "detail": "Wakandan vibranium wings, designed by Black Panther and upgraded over the years, let him fly at up to 250 mph.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Falcon's Wings",
+          "url": "https://marvel.fandom.com/wiki/Falcon's_Wings"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Intensive training from Steve Rogers made him a master acrobat, martial artist and aerial fighter.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "other",
+      "detail": "The reality-altering Cosmic Cube bonded his mind to his falcon Redwing, a link that later grew to cover all birds.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "tech",
+  "abilities": [
+    {
+      "name": "Avian telepathy",
+      "detail": "Links mentally with any bird, commanding flocks in a fight and seeing through their eyes for surveillance.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Winged flight",
+      "detail": "His vibranium wings absorb impacts, reconfigure for different flight modes and respond through a cybernetic link.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Aerial combat",
+      "detail": "Counted among the best aerial fighters in the world, rivalling Iron Man and Captain Marvel in the air.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Martial arts and acrobatics",
+      "detail": "Trained in several fighting styles and gymnastics by Steve Rogers; acrobatics were his main tool before he could fly.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Shield fighting",
+      "detail": "As Captain America he throws the shield to hit several targets from the air with pinpoint accuracy.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Leadership",
+      "detail": "Has led S.H.I.E.L.D. Super-Agents and the Avengers, helped by his people skills as a social worker.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Strapped to a tank by Sin's men, he broke free of his bonds and went on to stop her Hydra attack.",
+      "where": "All-New Captain America Vol 1 #3 (March 2015)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: All-New Captain America Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/All-New_Captain_America_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Stabbed through the chest by Zemo's sword, he kept fighting and summoned a flock of birds to turn the battle.",
+      "where": "All-New Captain America Vol 1 #5 (May 2015)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: All-New Captain America Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/All-New_Captain_America_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Sent Redwing and a flock of falcons at the Red Skull, giving Black Panther the opening to defeat him.",
+      "where": "Avengers Vol 3 #70 (October 2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers Vol 3 70",
+          "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_70"
+        },
+        {
+          "label": "Marvel Fandom wiki: Samuel Wilson (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Samuel_Wilson_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Flew straight into a launching Helicarrier's gunfire, dodging its guns and a pursuing Quinjet while fighting Hydra on deck.",
+      "where": "Captain America: The Winter Soldier (2014)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America (Sam Wilson)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "In his new suit, he saved two officers from a damaged helicopter, then pulled a Flag Smasher out of a hostage-filled chopper.",
+      "where": "The Falcon and the Winter Soldier, episode \"One World, One People\" (2021)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: One World, One People",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/One_World,_One_People"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America (Sam Wilson)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Sliced through a rogue fighter jet with his vibranium wings and pulled its pilot out before it hit the Japanese fleet.",
+      "where": "Captain America: Brave New World (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: Brave New World",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America (Sam Wilson)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America"
+        }
+      ]
+    }
+  ]
+}

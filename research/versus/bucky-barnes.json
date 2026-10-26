@@ -1,0 +1,219 @@
+{
+  "slug": "bucky-barnes",
+  "powerGrid": {
+    "values": {
+      "intelligence": 3,
+      "strength": 3,
+      "speed": 2,
+      "durability": 3,
+      "energyProjection": 1,
+      "fightingSkills": 7
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Captain America (James Barnes) (archived 8 March 2018)",
+      "url": "https://web.archive.org/web/20180308121741/http://marvel.com/universe/Captain_America_(James_Barnes)"
+    },
+    "note": "Marvel filed Bucky under his Captain America name; the archived Winter_Soldier page points to this page and shows the same ratings."
+  },
+  "powerOrigins": [
+    {
+      "key": "tech",
+      "detail": "A cybernetic arm gives him superhuman strength, sensors, electric blasts, an EMP and resistance to blades and gunfire.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Winter Soldier's Bionic Arm",
+          "url": "https://marvel.fandom.com/wiki/Winter_Soldier's_Bionic_Arm"
+        }
+      ]
+    },
+    {
+      "key": "serum",
+      "detail": "Nick Fury's perfected Infinity Formula saved his life and raised him to peak human condition, with faster healing and halted ageing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Trained by wartime combat instructors and later by the Soviets as an assassin, giving him elite fighting, marksmanship and spycraft.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "tech",
+  "abilities": [
+    {
+      "name": "Bionic arm",
+      "detail": "Strikes beyond human limits, maps his surroundings, fires electrical bolts and an EMP, and shrugs off knives and bullets.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Peak human conditioning",
+      "detail": "The Infinity Formula gives him peak strength, speed, agility and stamina, plus fast healing and no ageing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master martial artist",
+      "detail": "A formidable armed and unarmed fighter who has beaten Crossbones, Wolverine and Black Widow.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master marksman",
+      "detail": "An expert sniper and knife thrower; as a teenager he was the best sniper in his division.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Shield fighting",
+      "detail": "As Captain America he throws the shield to hit several targets in one throw and make it ricochet back.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Spycraft and stealth",
+      "detail": "Skilled in espionage, stealth, demolitions and survival, and can move from place to place undetected.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Languages",
+      "detail": "Fluent in English, Russian, German, Japanese and Chinese, with some French.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Freed from his conditioning, he seized the reality-warping Cosmic Cube and shattered it with his bionic arm.",
+      "where": "Captain America Vol 5 #14 (April 2006)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 14",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Ambushed the S.H.I.E.L.D. car moving Captain America's shield, beat Black Widow in a fight and escaped with the shield.",
+      "where": "Captain America Vol 5 #27 (August 2007)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 27",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_27"
+        },
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Took up the role of Captain America, using his arm's sensors to throw the shield accurately and make it ricochet back.",
+      "where": "Captain America Vol 5 #34 (March 2008)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America Vol 5 34",
+          "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_5_34"
+        },
+        {
+          "label": "Marvel Fandom wiki: James Buchanan Barnes (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/James_Buchanan_Barnes_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Flipped Nick Fury's SUV with a disc grenade, then caught Captain America's thrown shield with his metal arm and hurled it back.",
+      "where": "Captain America: The Winter Soldier (2014)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: The Winter Soldier",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Winter Soldier (Bucky Barnes)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Overpowered Steve Rogers, Sam Wilson, Sharon Carter and Natasha Romanoff and withstood Iron Man gauntlet blasts while escaping the JCTC.",
+      "where": "Captain America: Civil War (2016)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Captain America: Civil War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Winter Soldier (Bucky Barnes)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Alone on a motorcycle, he wrecked an O.X.E. convoy and flipped the limousine carrying the Thunderbolts with a disc grenade.",
+      "where": "Thunderbolts* (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Winter Soldier (Bucky Barnes)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Winter_Soldier"
+        }
+      ]
+    }
+  ]
+}

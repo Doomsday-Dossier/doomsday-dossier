@@ -1,0 +1,183 @@
+{
+  "slug": "yelena-belova",
+  "powerGrid": {
+    "values": {
+      "intelligence": 3,
+      "strength": 2,
+      "speed": 3,
+      "durability": 2,
+      "energyProjection": 1,
+      "fightingSkills": 6
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Black Widow (Yelena Belova) (archived 9 December 2015)",
+      "url": "https://web.archive.org/web/20151209202621/http://marvel.com:80/universe/Black_Widow_(Yelena_Belova)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "training",
+      "detail": "No natural powers: the Red Room trained her as a spy and fighter, and her physical test scores beat Natasha Romanova's.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "Fights with Widow's Bite gauntlets, a bulletproof suit, firearms and spy gadgets, and once flew on bought copies of the Falcon's wings.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "none",
+  "abilities": [
+    {
+      "name": "Red Room training",
+      "detail": "The academy's top cadet, trained almost entirely in physical skills, with scores that surpassed Natasha Romanova's.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master martial artist",
+      "detail": "Trained in armed and unarmed combat, at peak human condition and an Olympic-level gymnast.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Espionage",
+      "detail": "Extensively trained in spycraft, using tools such as smoke pellets, sleeping gas and lockpicks.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Tactician",
+      "detail": "A highly intelligent tactician, though the wiki notes she lacks the psychological training most spies receive.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Widow's Bite gauntlets",
+      "detail": "Wrist gauntlets that fire a stunning energy charge, worn with a bulletproof Black Widow uniform.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Adaptoid mimicry (former)",
+      "detail": "When A.I.M. remade her as a Super-Adaptoid, she could copy the powers, looks and gear of super beings with one touch.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Yelena Belova (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Yelena_Belova_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Rebuilt by A.I.M. as a Super-Adaptoid, she attacked the New Avengers in their tower and copied their powers, including the Sentry's.",
+      "where": "New Avengers Annual Vol 1 #1 (June 2006)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: New Avengers Annual Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/New_Avengers_Annual_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Using her Adaptoid powers, she overpowered Daisy Johnson and Nick Fury Jr. at an arms fair so A.I.M. could seize the Iron Patriot armor.",
+      "where": "Secret Avengers Vol 2 #3 (June 2013)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Secret Avengers Vol 2 3",
+          "url": "https://marvel.fandom.com/wiki/Secret_Avengers_Vol_2_3"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Turned the self-destruct systems of Armament Industries' killing machines against them and took down Renata Best, the company's hidden owner.",
+      "where": "White Widow Vol 1 #4 (April 2024)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: White Widow Vol 1 4",
+          "url": "https://marvel.fandom.com/wiki/White_Widow_Vol_1_4"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Freed the Black Widows from mind control with a grenade of Red Dust, then wrecked Dreykov's escape helicopter by jamming her baton into its rotor.",
+      "where": "Black Widow (2021)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Widow (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Widow (Yelena Belova)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Ambushed Clint Barton on a rooftop and held off Barton, Kate Bishop and Maya Lopez together with her Widow's Bite and a grapple.",
+      "where": "Hawkeye (2021), episode 4",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Partners, Am I Right?",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Partners,_Am_I_Right%3F"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Widow (Yelena Belova)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Planned the escape from the O.X.E. vault and, tied to Bob by a fire hose to protect him, defeated a wave of armed agents.",
+      "where": "Thunderbolts* (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Widow (Yelena Belova)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "slug": "gambit",
+  "powerGrid": {
+    "values": {
+      "intelligence": 3,
+      "strength": 3,
+      "speed": 3,
+      "durability": 3,
+      "energyProjection": 5,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Gambit (archived 12 January 2018)",
+      "url": "https://web.archive.org/web/20180112172427/http://marvel.com/universe/Gambit"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant who converts the potential energy stored in objects into explosive kinetic energy.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Kinetic charging",
+      "detail": "Charges objects by touch so they explode; a charged playing card bursts with the force of a grenade, and larger objects take longer.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Enhanced conditioning",
+      "detail": "His constant inner charge sharpens speed, strength, reflexes and agility, letting him dodge bullets and lasers.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Hypnotic charm",
+      "detail": "A subtle psionic pull in his voice makes people inclined to believe and agree with him, though strong or wary minds resist.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Telepathic static",
+      "detail": "The charge in his body creates static that shields his mind from telepaths, stronger with a charged object near his head.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Thrown-weapon mastery",
+      "detail": "Throws cards, knives, bolas and balls with great accuracy, his cards serving as long-range explosive projectiles.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Staff fighting and martial arts",
+      "detail": "A master of the bo staff who also uses savate, street fighting and acrobatics.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master thief and strategist",
+      "detail": "A trained thief and lockpick, and a natural strategist the wiki rates among the best of the X-Men.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Remy LeBeau (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Remy_LeBeau_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Caught a bullet in flight and threw it back.",
+      "where": "X-Men Vol 2 #1 (October 1991)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_1"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "At the height of his power, triggered the charging process in objects from a distance with nothing but eye contact.",
+      "where": "Gambit Vol 3 #18 (July 2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Gambit Vol 3 18",
+          "url": "https://marvel.fandom.com/wiki/Gambit_Vol_3_18"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Spotted a magical bullet heading for his eye and knocked it out of the air moments before it struck.",
+      "where": "Excalibur Vol 4 #22 (September 2021)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Excalibur Vol 4 22",
+          "url": "https://marvel.fandom.com/wiki/Excalibur_Vol_4_22"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Threw a single charged card across the Resistance hideout and shattered the liquor bottle in Wolverine's hand.",
+      "where": "Deadpool & Wolverine (2024)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Deadpool & Wolverine",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_%26_Wolverine"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Gambit",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Gambit"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "In the assault on Cassandra Nova's lair, stuck charged cards on several henchmen and detonated them all at once.",
+      "where": "Deadpool & Wolverine (2024)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Deadpool & Wolverine",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_%26_Wolverine"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Gambit",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Gambit"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "After a hammer blow sent him flying, he got up, charged his bo staff and drove it into his attacker, who exploded.",
+      "where": "Deadpool & Wolverine (2024)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Deadpool & Wolverine",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_%26_Wolverine"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Gambit",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Gambit"
+        }
+      ]
+    }
+  ]
+}

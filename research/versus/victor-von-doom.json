@@ -1,0 +1,196 @@
+{
+  "slug": "victor-von-doom",
+  "powerGrid": {
+    "values": {
+      "intelligence": 6,
+      "strength": 6,
+      "speed": 5,
+      "durability": 6,
+      "energyProjection": 6,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Doctor Doom (Victor von Doom) (archived 30 June 2018)",
+      "url": "https://web.archive.org/web/20180630025041/http://marvel.com/universe/Doctor_Doom_(Victor_von_Doom)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mystic",
+      "detail": "Sorcery learned from his Roma mother's artifacts, Tibetan monks and Morgan le Fay; he ranks among Earth's strongest spellcasters.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "A self-built, magically forged titanium battle suit gives him tons of lifting strength, heavy protection, force fields, blasters and flight.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Unpowered, he is a super-genius scientist and a skilled fighter and swordsman, trained by Tibetan monks and master duellists.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "tech",
+  "abilities": [
+    {
+      "name": "Sorcery",
+      "detail": "Casts spells to teleport, heal, project force bolts and shields, summon creatures and bind foes with mystic bands.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Super-genius intellect",
+      "detail": "One of the top minds on the planet, expert in physics, robotics, genetics and time travel; he built a working time platform.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Battle armour",
+      "detail": "His armour lifts several tons, survived a point-blank Infinity Gauntlet blast, and carries electric shocks, force fields and short-range teleportation.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Doctor Doom's Armor",
+          "url": "https://marvel.fandom.com/wiki/Doctor_Doom's_Armor"
+        }
+      ]
+    },
+    {
+      "name": "Doombots",
+      "detail": "Builds robot doubles of himself with advanced AI, which stand in for him and often explain his apparent deaths.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Mind transference",
+      "detail": "A technique learned from the alien Ovoids lets him swap minds with a person he makes eye contact with.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Combat and swordsmanship",
+      "detail": "A trained martial artist and master swordsman who has beaten Black Panther and Taskmaster without his armour's help.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Indomitable will",
+      "detail": "His willpower is described as the strongest on Earth, letting him resist mental control.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Armed with the Silver Surfer's stolen Power Cosmic, he overpowered the Thing and swept aside the whole Fantastic Four.",
+      "where": "Fantastic Four Vol 1 #58 (January 1967)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 58",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_58"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Siphoned Galactus's energy, took the Beyonder's near-limitless power, rebuilt his own ruined body and declared the Secret Wars over.",
+      "where": "Marvel Super Heroes Secret Wars Vol 1 #10 (February 1985)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 10",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_10"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "As God Emperor, he held Battleworld, a planet built from the wreckage of dead realities, together by his will alone.",
+      "where": "Secret Wars Vol 1 #3 (August 2015)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Victor von Doom (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Victor_von_Doom_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Teleported into Bruce Banner's sealed lab two miles underground, forced him into Hulk form and vanished with him, leaving green runes.",
+      "where": "Avengers: Endgame (Encore re-release, 2026)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Doctor Doom",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Doom"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Slipped unseen into the Baxter Building on Earth-828 and knelt before young Franklin Richards as Sue Storm readied her powers.",
+      "where": "The Fantastic Four: First Steps (2025), mid-credits scene",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Doctor Doom",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Doom"
+        }
+      ]
+    }
+  ]
+}

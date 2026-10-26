@@ -1,0 +1,182 @@
+{
+  "slug": "cyclops",
+  "powerGrid": {
+    "values": {
+      "intelligence": 5,
+      "strength": 4,
+      "speed": 4,
+      "durability": 4,
+      "energyProjection": 7,
+      "fightingSkills": 5
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Cyclops (Scott Summers) (archived 29 June 2018)",
+      "url": "https://web.archive.org/web/20180629155006/http://marvel.com/universe/Cyclops_(Scott_Summers)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant; his eyes channel concussive force from another dimension, and a childhood head injury left him unable to shut it off.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Optic blasts",
+      "detail": "Fires an unheated, ruby-coloured beam of concussive force from his eyes, held back only by his eyelids or ruby quartz lenses.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Beam control",
+      "detail": "Tunes width and force from a pencil-thin jet to a 90-foot sweep; at full power it can puncture an inch of carbon steel at close range.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Spatial awareness",
+      "detail": "An instinct for angles lets him bank his blasts off a dozen or more surfaces and still hit his target.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Energy immunity",
+      "detail": "His own beams cannot hurt him, and he and his brother Havok are immune to each other's powers.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Tactician and leader",
+      "detail": "Long-time leader of the X-Men who reads a fight as it unfolds; on Krakoa he wrote defence plans for every scenario he could imagine.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Martial artist",
+      "detail": "Holds black belts in judo and aikido, can beat six ordinary men with his eyes shut, and has held his own against Wolverine.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Expert pilot",
+      "detail": "Flies fixed-wing aircraft at an expert level, a skill he shares with his father.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Telepathic resistance",
+      "detail": "Years close to telepaths taught him to resist intrusion and keep secrets from powerful mind readers.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "On the X-Men's first mission he blasted a hole in Magneto's magnetic force field, helping drive Magneto out of the captured Cape Citadel base.",
+      "where": "X-Men Vol 1 #1 (September 1963)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Forced to fire at full power while under another mutant's control, he overloaded the energy-absorbing Bishop in seconds; Iron Man measured over two gigawatts.",
+      "where": "Civil War: X-Men Vol 1 #4 (December 2006)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Civil War: X-Men Vol 1 4",
+          "url": "https://marvel.fandom.com/wiki/Civil_War:_X-Men_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Hit the Hulk with his optic blast at full force, peeling away some of his skin before the Hulk waded through and grabbed him.",
+      "where": "World War Hulk: X-Men Vol 1 #2 (September 2007)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: World War Hulk: X-Men Vol 1 2",
+          "url": "https://marvel.fandom.com/wiki/World_War_Hulk:_X-Men_Vol_1_2"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Summers (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Summers_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "With Jean steadying him, he blasted Sabretooth out of the Statue of Liberty.",
+      "where": "X-Men (2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Found a clean shot that wounded Magneto, freeing Wolverine to wreck the mutation machine atop the statue.",
+      "where": "X-Men (2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        }
+      ]
+    }
+  ]
+}

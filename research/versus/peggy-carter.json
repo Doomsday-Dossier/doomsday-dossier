@@ -1,0 +1,37 @@
+{
+  "slug": "peggy-carter",
+  "powerGrid": {
+    "values": null,
+    "source": null,
+    "note": "No archived Marvel Universe wiki page for Peggy Carter. Wayback CDX prefix searches for Peggy_Carter, Carter,_Peggy, Margaret_Carter, Carter,_Margaret, Peggy, Captain_Carter and Agent_Carter returned nothing; only Sharon Carter's page exists."
+  },
+  "powerOrigins": [
+    { "key": "training", "detail": "No superpowers: trained as an agent by the Daughters of Liberty, she fought with the French Resistance, served in S.H.I.E.L.D. and qualified as a doctor.", "sources": [
+      { "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Captain America Vol 10 19", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_10_19" }
+    ] }
+  ],
+  "powerType": "none",
+  "abilities": [
+    { "name": "Marksman", "detail": "An expert shot with a range of high-powered firearms.", "sources": [{ "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" }] },
+    { "name": "Combat training", "detail": "Highly skilled in close-quarters fighting and military tactics.", "sources": [{ "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" }] },
+    { "name": "Communications officer", "detail": "Years with S.H.I.E.L.D. and other agencies made her a trained communications officer, the role she later filled for the Avengers.", "sources": [{ "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" }] },
+    { "name": "Toxicology", "detail": "A trained medical doctor who could analyse a custom poison and craft its antidote within an hour.", "sources": [
+      { "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Marvel Super-Heroes Vol 2 4", "url": "https://marvel.fandom.com/wiki/Marvel_Super-Heroes_Vol_2_4" }
+    ] },
+    { "name": "Multilingual", "detail": "Fluent in several languages, including English and French.", "sources": [{ "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" }] },
+    { "name": "Dryad armour", "detail": "As Dryad she wore body armour that shielded her from a missile strike and insulated her while it burned.", "sources": [
+      { "label": "Marvel Fandom wiki: Margaret Carter (Earth-616)", "url": "https://marvel.fandom.com/wiki/Margaret_Carter_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Captain America Vol 10 11", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_10_11" }
+    ] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "As Resistance agent Agent 13 she took out a roomful of Nazi soldiers on her own, then helped Cap steal a German plane.", "where": "Captain America and the First Thirteen Vol 1 #1 (May 2011)", "sources": [{ "label": "Marvel Fandom wiki: Captain America and the First Thirteen Vol 1 1", "url": "https://marvel.fandom.com/wiki/Captain_America_and_the_First_Thirteen_Vol_1_1" }] },
+    { "medium": "comics", "text": "Waking from years of catatonia, she fought Faustus's henchmen beside Cap, threw a candlestick to free him and easily beat Dr. Wolfgang.", "where": "Captain America Vol 1 #162 (June 1973)", "sources": [{ "label": "Marvel Fandom wiki: Captain America Vol 1 162", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_162" }] },
+    { "medium": "comics", "text": "Made an antidote to Mindstorm's poison faster than her own 20 to 30 minute estimate, saving Spider-Man's life.", "where": "Marvel Super-Heroes Vol 2 #4 (December 1990)", "sources": [{ "label": "Marvel Fandom wiki: Marvel Super-Heroes Vol 2 4", "url": "https://marvel.fandom.com/wiki/Marvel_Super-Heroes_Vol_2_4" }] },
+    { "medium": "screen", "text": "After Erskine's murder she shot the fleeing assassin in the arm, then chased his car into Brooklyn and shot the driver.", "where": "Captain America: The First Avenger (2011)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Captain America: The First Avenger", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger" }] },
+    { "medium": "screen", "text": "Went alone after the Zodiac formula, beating a string of guards and stabbing a masked attacker who was strangling her in a gas-filled room.", "where": "Marvel One-Shot: Agent Carter (2013)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Marvel One-Shot: Agent Carter", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Marvel_One-Shot:_Agent_Carter" }] },
+    { "medium": "screen", "text": "Sprang an SSR ambush on Dottie Underwood's bank robbery and, after a fierce fight, knocked her out with a bag of money.", "where": "Agent Carter, season 2, episode 1: The Lady in the Lake (2016)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: The Lady in the Lake", "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Lady_in_the_Lake" }] }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "namor",
+  "powerGrid": {
+    "values": { "intelligence": 4, "strength": 6, "speed": 5, "durability": 6, "energyProjection": 1, "fightingSkills": 4 },
+    "source": { "label": "Marvel.com Marvel Universe wiki: Sub-Mariner (archived 23 June 2017)", "url": "https://web.archive.org/web/20170623001809/http://marvel.com/universe/Sub-Mariner" },
+    "note": null
+  },
+  "powerOrigins": [
+    { "key": "atlantean", "detail": "Half Atlantean (Homo mermanus): his strength, toughness and water breathing come from that heritage, at levels beyond any other Atlantean.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "key": "mutant-gene", "detail": "Also a mutant, often called Marvel's first; his ankle wings and flight cannot be explained by either his human or Atlantean side.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    { "name": "Superhuman strength", "detail": "Stronger than any other Atlantean: rated Class 100 when wet and about Class 85 on land, fading the longer he stays dry.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "name": "Flight", "detail": "Small wings on his ankles let him fly faster than military aircraft while carrying heavy loads.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "name": "Amphibious body", "detail": "Breathes underwater through gills and on land without aid, sees through murky depths and shrugs off freezing cold.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "name": "Superhuman durability", "detail": "Withstands high-calibre bullets, deep-sea pressure, temperature extremes and powerful energy blasts.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "name": "Swimming speed", "detail": "Has swum at over 300 knots, about 345 mph, far beyond the 60 mph of ordinary Atlanteans.", "sources": [
+      { "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Sub-Mariner Vol 3 2", "url": "https://marvel.fandom.com/wiki/Sub-Mariner_Vol_3_2" }
+    ] },
+    { "name": "Aquatic telepathy", "detail": "Mentally talks to most sea life and can persuade it to obey; he can also give mental orders to Atlanteans.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] },
+    { "name": "Warrior king", "detail": "Long life and many wars made him an expert fighter, swordsman and marksman, as well as a capable ruler and tactician.", "sources": [{ "label": "Marvel Fandom wiki: Namor McKenzie (Earth-616)", "url": "https://marvel.fandom.com/wiki/Namor_McKenzie_(Earth-616)" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "Dragged Luke Cage into a river and beat him there, knocked out She-Hulk, then went toe to toe with the Thing.", "where": "Uncanny X-Men Vol 2 #12 (July 2012)", "sources": [{ "label": "Marvel Fandom wiki: Uncanny X-Men Vol 2 12", "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_2_12" }] },
+    { "medium": "comics", "text": "Fought the Silver Surfer, took a point-blank blast and knocked him down, then won him over to stop a weather-control machine.", "where": "Sub-Mariner Vol 2 #34 (February 1971)", "sources": [{ "label": "Marvel Fandom wiki: Sub-Mariner Vol 2 34", "url": "https://marvel.fandom.com/wiki/Sub-Mariner_Vol_2_34" }] },
+    { "medium": "comics", "text": "Diving in from flight, he knocked out the colossal Deviant mutate Gigantus with a single punch.", "where": "Journey Into Mystery Vol 4 #649 (April 2013)", "sources": [{ "label": "Marvel Fandom wiki: Journey Into Mystery Vol 4 649", "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_4_649" }] },
+    { "medium": "screen", "text": "Flew after an escaping helicopter, grabbed its tail, spun it round and slammed it into the sea.", "where": "Black Panther: Wakanda Forever (2022)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever" }] },
+    { "medium": "screen", "text": "Leading the flood on Birnin Zana, he blocked M'Baku's club bare-handed, broke it, punched him away, then cut down Wakandan aircraft in flight.", "where": "Black Panther: Wakanda Forever (2022)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever" }] },
+    { "medium": "screen", "text": "Took a full-power Ironheart blast to the chest without visible harm.", "where": "Black Panther: Wakanda Forever (2022)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Namor", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Namor" }] }
+  ]
+}

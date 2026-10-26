@@ -1,0 +1,195 @@
+{
+  "slug": "reed-richards",
+  "powerGrid": {
+    "values": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 2,
+      "durability": 6,
+      "energyProjection": 1,
+      "fightingSkills": 2
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Mister Fantastic (archived 30 June 2018)",
+      "url": "https://web.archive.org/web/20180630080826/http://marvel.com/universe/Mister_Fantastic"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "cosmic-rays",
+      "detail": "Cosmic rays bombarded his body on the Fantastic Four's space flight, making his whole body stretchable.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    {
+      "name": "Plasticity",
+      "detail": "Can make his whole body malleable and reshape it in seconds; the change is reflexive, so even surprise machine-gun fire is absorbed.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Elongation",
+      "detail": "Stretches his limbs, neck or torso to about 1,500 feet, and moves quickly by stretching to where he wants to go.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Shape changing",
+      "detail": "Takes almost any shape he can picture: parachute, glider, trampoline, hammer fists, keys for locks, or flat as a sheet of paper.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Dense, elastic flesh",
+      "detail": "Soaks up bullets and contains explosions by deforming, and can pack his mass into one spot, once putting 70 percent of it in a fist to hit Namor.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Super-genius intellect",
+      "detail": "Called the smartest man on Earth, with a photographic memory and mastery of physics, engineering, chemistry, biology and travel to other dimensions.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Martial arts",
+      "detail": "One of Earth's best judo experts and a master of body-striking techniques.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Sorcery",
+      "detail": "Recently learned magic, reaching the Astral Plane and copying the abilities Doom used against Dormammu after studying that battle.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Though weakened, he shielded the other heroes from a 150-billion-ton mountain dropped on them until the Hulk caught it; the strain knocked him out.",
+      "where": "Marvel Super Heroes Secret Wars Vol 1 #4 (August 1984)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Marvel Super Heroes Secret Wars Vol 1 4",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Super_Heroes_Secret_Wars_Vol_1_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Bulked his body up to the Thing's size and strength and hit the psychic entity Onslaught hard enough to stagger him.",
+      "where": "Onslaught: Marvel Universe Vol 1 #1 (October 1996)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Onslaught: Marvel Universe Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Onslaught:_Marvel_Universe_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Given the Beyonders' power by the Molecule Man, he worked with him and Franklin Richards to rebuild the destroyed Multiverse.",
+      "where": "Secret Wars Vol 1 #9 (March 2016)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Secret Wars Vol 1 9",
+          "url": "https://marvel.fandom.com/wiki/Secret_Wars_Vol_1_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Reed Richards (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Reed_Richards_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Steered the Excelsior to a neutron star so its gravity would trap the pursuing Silver Surfer, escaping as the star destroyed their FTL engine.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Mister Fantastic",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Mister_Fantastic"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Climbed onto Galactus above New York and pried open a socket on his back with a pole, leaking lava, until Galactus grabbed and stretched him.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Mister Fantastic",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Mister_Fantastic"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "As Galactus fell through the teleportation bridge, he leapt from a building onto the giant's hand, grabbed baby Franklin and jumped clear.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Mister Fantastic",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Mister_Fantastic"
+        }
+      ]
+    }
+  ]
+}

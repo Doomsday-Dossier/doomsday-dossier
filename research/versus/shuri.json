@@ -1,0 +1,229 @@
+{
+  "slug": "shuri",
+  "powerGrid": {
+    "values": null,
+    "source": null,
+    "note": "No archived Marvel.com Marvel Universe wiki page for Shuri was found in the Wayback CDX index (prefix searches for Shuri and Black_Panther). Not rated; not estimated."
+  },
+  "powerOrigins": [
+    {
+      "key": "heart-shaped-herb",
+      "detail": "Like T'Challa, she was enhanced by the Heart-Shaped Herb, which gave her super-soldier-level strength, speed, stamina, senses and healing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "mystic",
+      "detail": "Returned from the Djalia, Wakanda's plane of collective memory, with new powers taught by a griot, such as turning to stone or a flock of birds.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 6 11",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_6_11"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Trained in hand-to-hand combat by T'Challa and the Dora Milaje, and in acrobatics from a young age.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 4 20",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_4_20"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "A genius inventor who wore her own Panther Habit, with vibranium-cored, adamantium-tipped claws, plus Wakandan gadgets.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mystic",
+  "abilities": [
+    {
+      "name": "Herb-enhanced body",
+      "detail": "Peak superhuman strength, speed, stamina, durability, agility, reflexes and healing; she can tear heavy machinery apart barehanded.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Heightened senses",
+      "detail": "Sees into ultraviolet and infrared, hears distant sounds and can track people by scent alone.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Genius inventor",
+      "detail": "A genius on par with her brother; she builds spy gear, flight equipment and vehicles that fold into a record sleeve.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Martial arts and acrobatics",
+      "detail": "A gifted hand-to-hand fighter tutored by T'Challa and the Dora Milaje, and a trained acrobat.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Bird form",
+      "detail": "Can turn her body into a flock of black birds or one giant bird.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Stone form",
+      "detail": "Turns her body and clothes into flexible stone that gunfire barely dents.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Djalia powers",
+      "detail": "Enters Wakanda's plane of memory at will, can bring others along, and has raised an army of dead Wakandan warriors.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Tactician",
+      "detail": "A skilled strategist and leader, taught to think two steps ahead of enemies.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "During Klaw's invasion of Wakanda, picked up the Ebony Blade and killed the Radioactive Man before he could set off a nuclear blast.",
+      "where": "Black Panther Vol 4 #6 (September 2005)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 4 6",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_4_6"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "As the Black Panther, dodged heavy weapons fire even at point-blank range.",
+      "where": "Black Panther Vol 5 #9 (December 2009)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 5 9",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_5_9"
+        },
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Back from the Djalia, turned to stone that gunfire barely dented, became a giant bird and recovered fast from energy blasts.",
+      "where": "Black Panther Vol 6 #11 (April 2017)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Black Panther Vol 6 11",
+          "url": "https://marvel.fandom.com/wiki/Black_Panther_Vol_6_11"
+        },
+        {
+          "label": "Marvel Fandom wiki: Shuri (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Shuri_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Her self-built vibranium gauntlets fired sonic blasts strong enough to briefly stop Killmonger in his Panther Habit.",
+      "where": "Black Panther (2018)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Shuri (Black Panther)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "As the new Black Panther, ran along the Sea Leopard's hull with claws and gauntlets, knocking boarding Talokanil warriors into the sea.",
+      "where": "Black Panther: Wakanda Forever (2022)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Shuri (Black Panther)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Survived a jet explosion and a spear wound to beat Namor in a duel, throwing him one-handed and cutting an ankle wing.",
+      "where": "Black Panther: Wakanda Forever (2022)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Shuri (Black Panther)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther"
+        }
+      ]
+    }
+  ]
+}

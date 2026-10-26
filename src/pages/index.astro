@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { OFFICIAL, SRC, TEAMS, CAST, DESIGN, isPublished, displayName, u, fmtDate } from '../data/site';
 import { photosFor } from '../data/photos';
 import Photo from '../components/Photo.astro';
+import '../styles/faces';
 
 // Order of names exactly as Marvel listed the 27 livestream reveals (S_LIVE).
 const ROLL = ['Chris Hemsworth','Vanessa Kirby','Anthony Mackie','Sebastian Stan','Letitia Wright','Paul Rudd','Wyatt Russell','Tenoch Huerta Mejía','Ebon Moss-Bachrach','Simu Liu','Florence Pugh','Kelsey Grammer','Lewis Pullman','Danny Ramirez','Joseph Quinn','David Harbour','Winston Duke','Hannah John-Kamen','Tom Hiddleston','Patrick Stewart','Ian McKellen','Alan Cumming','Rebecca Romijn','James Marsden','Channing Tatum','Pedro Pascal','Robert Downey Jr.'];
@@ -12,6 +13,10 @@ const n = (k: string) => sourceOrder.indexOf(k) + 1;
 const m = OFFICIAL.milestones;
 const reveal = m[0], roll = m[1];
 const signals = m.slice(2, m.length - 1);
+
+// Team picker: every name on the cast list in one grid, in team order, unnamed roles last
+const roster = [...TEAMS.flatMap((t) => CAST.filter((c) => c.team === t.id)), ...CAST.filter((c) => c.team === 'unnamed')];
+const waveOf = (team: string) => TEAMS.find((t) => t.id === team)?.wave;
 ---
 <Base title="The road to Doomsday" description="An unofficial, animated fan briefing for Avengers: Doomsday. Every confirmed character's origin, comics history and screen history, with every fact sourced." page="home" scene="void" ease="power4.out" pace={1.2}>
   <!-- 01 VOID -->
@@ -91,42 +96,44 @@ const signals = m.slice(2, m.length - 1);
       <p class="label">04 &mdash; Assemble</p>
       <h2 id="asm-h" class="display asm-title" data-split="chars" data-split-style="drop">The roster</h2>
       <p class="asm-copy">Every name on Marvel&rsquo;s cast list for Avengers: Doomsday, plus Hayley Atwell, confirmed at D23.<sup class="cite"><a href="#home-sources">{n('S_FILM')}</a></sup><sup class="cite"><a href="#home-sources">{n('S_D23')}</a></sup> Where Marvel has not named an actor&rsquo;s role, we show their most recent screen role and say so.</p>
-      {TEAMS.map((t) => (
-        <div class="team-block">
-          <div class="team-head">
-            <h3><a href={u(`/teams/${t.id}/`)}>{t.name}</a></h3>
-            <span class="label">{CAST.filter((c) => c.team === t.id).length} confirmed</span>
-          </div>
-          <ul class="cards">
-            {CAST.filter((c) => c.team === t.id).map((c) => {
-              const live = isPublished(c.slug);
-              const d = c.slug ? DESIGN[c.slug] : null;
-              const style = d ? `--card-accent:${d.accent};--card-font:${d.font};--card-weight:${d.fontWeight};--card-case:${d.fontCase}` : '';
-              const ph = live ? photosFor(c.slug)[0] : undefined;
-              return (
-                <li class={`card ${live ? 'live' : 'soon'}${ph ? ' has-photo' : ''}`} style={style} data-tilt={live ? '' : undefined}>
-                  {live ? (
-                    <a href={u(`/c/${c.slug}/`)} data-accent={d!.accent}>
-                      {ph && <Photo photo={ph} alt="" class="card-photo" sizes="(min-width: 900px) 260px, 50vw" />}
-                      <span class="card-name">{displayName(c)}</span>
-                      <span class="card-actor">{c.actor}</span>
-                      <span class="card-tag">{c.character ? 'Role named by Marvel' : 'Role not named by Marvel'}</span>
-                      <span class="card-cta">Open dossier &rarr;</span>
-                    </a>
-                  ) : (
-                    <div>
-                      <span class="card-name">{displayName(c)}</span>
-                      <span class="card-actor">{c.actor}</span>
-                      <span class="card-tag">{c.team === 'unnamed' ? 'Role not yet named by Marvel' : (c.character ? 'Role named by Marvel' : 'Role not named by Marvel')}</span>
-                      <span class="card-cta">{c.team === 'unnamed' ? 'No page until Marvel names the role' : `Dossier coming in wave ${t.wave}`}</span>
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+      <div class="picker" data-picker>
+        <div class="pk-chips" role="group" aria-label="Show one team">
+          <button type="button" data-team="all" aria-pressed="true">All <span>{roster.length}</span></button>
+          {TEAMS.map((t) => <button type="button" data-team={t.id} aria-pressed="false">{t.short} <span>{CAST.filter((c) => c.team === t.id).length}</span></button>)}
         </div>
-      ))}
+        <div class="pk-info" aria-live="polite">
+          <p class="pk-blurb" data-for="all">All {roster.length} names. <span class="hover-only">Drag any card and its team follows it.</span></p>
+          {TEAMS.map((t) => <p class="pk-blurb" data-for={t.id} hidden>{t.blurb} <a href={u(`/teams/${t.id}/`)}>Open the {t.name} page &rarr;</a></p>)}
+        </div>
+        <ul class="cards pk-grid">
+          {roster.map((c) => {
+            const live = isPublished(c.slug);
+            const d = c.slug ? DESIGN[c.slug] : null;
+            const style = d ? `--card-accent:${d.accent};--card-font:${d.font};--card-weight:${d.fontWeight};--card-case:${d.fontCase}` : '';
+            const ph = live ? photosFor(c.slug)[0] : undefined;
+            return (
+              <li class={`card ${live ? 'live' : 'soon'}${ph ? ' has-photo' : ''}`} style={style} data-team={c.team} data-tilt={live ? '' : undefined}>
+                {live ? (
+                  <a href={u(`/c/${c.slug}/`)} data-accent={d!.accent} draggable="false">
+                    {ph && <Photo photo={ph} alt="" class="card-photo" sizes="(min-width: 900px) 260px, 50vw" />}
+                    <span class="card-name">{displayName(c)}</span>
+                    <span class="card-actor">{c.actor}</span>
+                    <span class="card-tag">{c.character ? 'Role named by Marvel' : 'Role not named by Marvel'}</span>
+                    <span class="card-cta">Open dossier &rarr;</span>
+                  </a>
+                ) : (
+                  <div>
+                    <span class="card-name">{displayName(c)}</span>
+                    <span class="card-actor">{c.actor}</span>
+                    <span class="card-tag">{c.team === 'unnamed' ? 'Role not yet named by Marvel' : (c.character ? 'Role named by Marvel' : 'Role not named by Marvel')}</span>
+                    <span class="card-cta">{c.team === 'unnamed' ? 'No page until Marvel names the role' : `Dossier coming in wave ${waveOf(c.team)}`}</span>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
       <div class="said">
         <p class="label">What Marvel has said</p>
@@ -197,6 +204,28 @@ const signals = m.slice(2, m.length - 1);
   .asm { padding: 120px 0 80px; }
   .asm-title { font-size: clamp(64px, 12vw, 200px); }
   .asm-copy { max-width: 64ch; color: var(--bone-dim); }
+  /* team picker: chips filter the grid (cards fly to their new places), drag a card and its team follows */
+  .asm { content-visibility: auto; contain-intrinsic-size: auto 3200px; }
+  .picker { margin-top: 56px; overflow-anchor: none; contain: layout style; } /* flying cards must not become the browser's scroll anchor */
+  .pk-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pk-chips button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--iron-2); padding: 10px 14px; border-radius: 99px; min-height: 44px; color: var(--bone-dim); transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  .pk-chips button span { color: var(--doom); margin-left: 4px; }
+  .pk-chips button:hover { border-color: var(--bone-dim); color: var(--bone); }
+  .pk-chips button[aria-pressed='true'] { background: var(--bone); color: var(--void); border-color: var(--bone); }
+  .pk-chips button[aria-pressed='true'] span { color: var(--void); }
+  @media (max-width: 700px) { .pk-chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter) 6px; scrollbar-width: none; } .pk-chips button { flex: 0 0 auto; } }
+  .pk-info { min-height: 3.2em; margin: 18px 0 22px; }
+  .pk-blurb { margin: 0; color: var(--bone-dim); max-width: 70ch; }
+  .pk-blurb a { color: var(--bone); text-underline-offset: 3px; text-decoration-color: var(--doom); }
+  .hover-only { display: none; }
+  @media (hover: hover) and (pointer: fine) { .hover-only { display: inline; } }
+  .pk-grid { user-select: none; -webkit-user-select: none; align-content: start; }
+  .pk-grid .card { touch-action: pan-y; }
+  :global(.pk-dragging) .card { transition: opacity 0.4s, border-color 0.4s; }
+  :global(.pk-dragging) .card:not(.pk-team) { opacity: 0.28; }
+  .card.pk-team { position: relative; }
+  .card.pk-lead { cursor: grabbing; }
+  .pk-out { display: none !important; }
   .team-block { margin-top: 64px; }
   .team-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--iron-2); padding-bottom: 10px; margin-bottom: 16px; gap: 12px; }
   .team-head h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(30px, 3.4vw, 48px); margin: 0; }
@@ -210,10 +239,13 @@ const signals = m.slice(2, m.length - 1);
   .card.has-photo { overflow: hidden; }
   .card.has-photo > a { position: relative; min-height: clamp(280px, 30vw, 360px); isolation: isolate; }
   .card.has-photo .card-name, .card.has-photo .card-actor, .card.has-photo .card-tag, .card.has-photo .card-cta { position: relative; z-index: 2; }
-  :global(.card-photo) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: saturate(0.7) brightness(0.82); transition: filter 0.7s var(--ease-out), transform 1s var(--ease-out); }
+  :global(.card-photo) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 1s var(--ease-out); }
+  /* rest dim as an overlay, not a filter: filters repaint every frame while cards fly */
+  .card.has-photo > a::before { content: ''; position: absolute; inset: 0; z-index: 1; background: rgba(5, 6, 7, 0.22); pointer-events: none; transition: opacity 0.7s var(--ease-out); }
+  .card.has-photo:hover > a::before, .card.has-photo:focus-within > a::before { opacity: 0; }
   .card.has-photo > a::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, #050607 6%, rgba(5, 6, 7, 0.82) 34%, rgba(5, 6, 7, 0) 66%); pointer-events: none; }
-  .card.has-photo:hover :global(.card-photo), .card.has-photo:focus-within :global(.card-photo) { filter: none; transform: scale(1.07); }
-  @media (hover: none) { :global(.card-photo) { filter: none; } }
+  .card.has-photo:hover :global(.card-photo), .card.has-photo:focus-within :global(.card-photo) { transform: scale(1.07); }
+  @media (hover: none) { .card.has-photo > a::before { opacity: 0; } }
   .card-name { font-family: var(--card-font, var(--font-serif)); font-weight: var(--card-weight, 400); text-transform: uppercase; font-size: 26px; line-height: 1; color: var(--bone); }
   .card.soon .card-name { font-family: var(--font-serif); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; color: var(--bone-dim); }
   .card-actor { font-size: 14px; color: var(--bone-dim); }

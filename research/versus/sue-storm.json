@@ -1,0 +1,195 @@
+{
+  "slug": "sue-storm",
+  "powerGrid": {
+    "values": {
+      "intelligence": 5,
+      "strength": 4,
+      "speed": 5,
+      "durability": 6,
+      "energyProjection": 7,
+      "fightingSkills": 5
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Invisible Woman (archived 25 June 2018)",
+      "url": "https://web.archive.org/web/20180625021624/http://marvel.com/universe/Invisible_Woman"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "cosmic-rays",
+      "detail": "Cosmic rays bombarded her on the Fantastic Four's space flight; Reed believes her power is energy drawn from the higher dimension of Hyperspace.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    {
+      "name": "Invisibility",
+      "detail": "Bends visible, infrared and ultraviolet light around herself or others, hiding up to about 40,000 cubic feet at once while still seeing normally.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Psionic force fields",
+      "detail": "Projects invisible force fields from 1 mm up to domes miles wide, tough enough to briefly withstand blasts from Galactus and the Mad Celestials.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Force blasts",
+      "detail": "Fires her fields as concussive shockwaves that push crowds back, wreck rooms of machinery and once blew a hole through Hydro-Man's chest.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Flight and telekinesis",
+      "detail": "Rides force-field platforms through the air and uses precise fields to lift heavy equipment, take machines apart or set bones.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Internal force fields",
+      "detail": "Can form fields inside a target or object, knocking people out, blocking arteries or blowing Doombots apart from within.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Psychic shielding",
+      "detail": "Her fields shut out psychic powers, once stopping Jean Grey's telekinesis and keeping Psi-Lord from reading her mind.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Combat and spycraft",
+      "detail": "Trained in judo by Reed and in staff fighting by Iron Fist, and secretly trained as a S.H.I.E.L.D. covert agent.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Her force fields, helped by the Cosmic Control Rod, carried the Fantastic Four, Doctor Doom and Annihilus safely through a black hole.",
+      "where": "Fantastic Four Unlimited Vol 1 #3 (September 1993)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Unlimited Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Unlimited_Vol_1_3"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Wrapped herself, then Jean Grey, in force fields that shut out Jean's telekinesis and ended her attack on the people around them.",
+      "where": "Fantastic Four Vol 1 #286 (January 1986)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 286",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_286"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Kept an entire Negative Zone planet invisible for an extended time.",
+      "where": "Annihilation - Scourge: Omega Vol 1 #1 (February 2020)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Annihilation - Scourge Omega Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/Annihilation_-_Scourge_Omega_Vol_1_1"
+        },
+        {
+          "label": "Marvel Fandom wiki: Susan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Susan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Shielded civilians from rubble, then wrapped a force field around the giant Giganto's head until he passed out and fell.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Invisible Woman",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "While in labour she seized the Silver Surfer in a force field, slammed her against walls and hurled her into lava.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Invisible Woman",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Held Galactus in place with her force fields and pushed him toward the teleportation bridge to save her son, collapsing from the strain.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "MCU Wiki: Invisible Woman",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Invisible_Woman"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+// Every character's display face, for pages that show many characters at once (home roster, team pages).
+// Fontsource only downloads a face when text using it is laid out.
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/big-shoulders-stencil-display';
+import '@fontsource-variable/grenze-gotisch';
+import '@fontsource-variable/syne';
+import '@fontsource-variable/tektur';
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/bodoni-moda';
+import '@fontsource/chakra-petch/700.css';
+import '@fontsource-variable/anybody/wdth.css';
+import '@fontsource/italiana';
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource/alfa-slab-one';
+import '@fontsource/gloock';
+import '@fontsource-variable/unbounded';
+import '@fontsource-variable/teko';
+import '@fontsource/rye';
+import '@fontsource/dm-serif-display';
+import '@fontsource-variable/eb-garamond';
+import '@fontsource/abril-fatface';
+import '@fontsource/bebas-neue';
+import '@fontsource/russo-one';
+import '@fontsource/graduate';
+import '@fontsource/major-mono-display';
+import '@fontsource-variable/cinzel';
+import '@fontsource-variable/sora';
+import '@fontsource/bowlby-one';
+import '@fontsource/yeseva-one';
+import '@fontsource-variable/playfair-display';
+import '@fontsource/limelight';
