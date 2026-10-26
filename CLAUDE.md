@@ -41,6 +41,183 @@ of every session, then continue from the tracker at the bottom.
    roster as "Role not yet named by Marvel" and get no character page until Marvel
    names the role.
 
+## Design system v3: Doom's world, with sound (fifth interview, 26 October 2026)
+
+**The brief.** A Marvel fan, a comics reader and someone at Marvel should all open the site and ask how one
+person made it; anyone heading to Avengers: Doomsday should leave knowing exactly who everyone is and why it
+matters. The v2 ring opening is scrapped (user: it looked cheap, the photo looked bad, it did not feel like
+Doom). v3 adds sound across the whole site, a forge opening, seamless page changes, and two-level character
+files. It keeps the v2 tokens below unless this section overrides them.
+
+**Rules (user, non-negotiable).**
+1. Every visual and sound idea comes from something true to Doom or the character in the comics or the MCU,
+   with the source named here. If it could belong to any villain, it is out.
+2. No Marvel music, film audio or sound effects. Every sound is original or royalty-free, with its licence in
+   the sound map below. (All v3 sounds are synthesised in the browser by this site's own code: no samples.)
+3. Craft, not quantity: real lighting and materials in WebGL for molten metal and iron, proper easing on
+   every movement, fluid scroll physics, generous spacing.
+4. **Photos are never assembled from particles.** They are shown high resolution, colour graded into the iron
+   and green palette, and moved with slow camera pushes. (The v2 particle figure, the quiz swarm and the home
+   point cloud go.)
+5. Sound is mixed to be felt rather than noticed, never louder than the forge. One click mutes everything,
+   and the choice is remembered (`localStorage` `dd-sound`).
+6. 60 fps on a mid-range phone; reduced-motion settings still apply (no forge animation: the finished title,
+   no camera moves; sound still available, off until chosen).
+
+**Process.** The forge is built in two versions with different pacing and recorded with sound; the user picks
+one before anything else is built. Then the home page, same process. The site switch (v2 pages to the root)
+waits on branch `redesign` until then; main stays live as it is.
+
+### Interview decisions (fifth interview)
+
+| Topic | Decision |
+|---|---|
+| References | Obsidian, Anchor AI, Lena Varga, Roadster 3D, Greentech (the drop-through) and Scroll Landing. What the user wants from them: real materials and light, cinematic colour-graded photos, one continuous camera, and a glowing form that changes. |
+| Ambient score | **Sorcery and science**: a dark low string-like drone with slowly shimmering bell harmonics above and a faint machine pulse like a heartbeat in armour. Doom is both master scientist and sorcerer (Fantastic Four #5, 1962; Books of Doom #1 to #6, 2006; Doctor Strange and Doctor Doom: Triumph and Torment, 1989). |
+| Signature sounds | One per character, all 29 approved as drafted (sound map below). |
+| Forge to dossier | **Through the mask**: after the title, scrolling pushes the camera into the cooled mask until its eye slits fill the screen; green light floods through and you come out in Doom's archive, the 29 files waiting under his gaze. |
+| Character pages | **Clearance levels**. Level 1, the 30-second briefing: who they are in one sentence, their powers in one line, why they matter in Doomsday (confirmed facts only), where you last saw them. "Request higher clearance": redaction bars tear away into Level 2 (the full MCU story) and Level 3 (deep comics history). |
+| Page changes | **Seamless**: in-page navigation (the next page swaps in without a reload) so the score and the WebGL canvas never stop and transitions can be camera moves. |
+| Return visits | **Short gate**: the ember and a small "Enter" still greet returning visitors (sound needs a click); one click plays a two-second forge flash (last spark, green seep, title) with sound. |
+| Site switch | Held on branch `redesign` until the forge and home page are approved. |
+
+### Ten lessons from the motionsites showcase
+
+Studied frame by frame from their preview videos (Lena Varga Hero, Space Voyage, Obsidian, Oyla, Peculiar
+Atelier, Anchor AI, Particle Self, Loops Virtual Store, Roadster 3D, Greentech, Scroll Landing). What makes
+them feel fluid and expensive, and what it means in Doom's world:
+
+1. **One light source tells the story.** Roadster's car sits in a black studio under a single soft key with a
+   polished floor reflecting it; Obsidian's statue is lit from one side. *Doom:* the forge's molten glow is the
+   key light for everything in the opening; the green seep is the only other light. No flat ambient light.
+2. **Materials you can almost touch.** Gloss, roughness and reflections on one hero object (Roadster's paint,
+   Obsidian's marble, Peculiar Atelier's glossy poster). *Doom:* cast iron with real roughness and micro-pits,
+   molten iron that glows by temperature (white, yellow, orange, red, dark) and cools with a sheen, the mask
+   as polished worn metal.
+3. **The camera never cuts.** Greentech falls through a floating rock into a garden and down through a ring;
+   Space Voyage flies through a window into the next world. *Doom:* forge, mask, archive and every file are one
+   journey: the camera pushes through the mask's eye slits into the dossier.
+4. **Slow in, slower out.** Nothing snaps: moves start gently and settle long (expo and power4 outs, 1 to 2.5 s
+   for camera moves). *Doom:* heavy things move like heavy things; only impacts are fast (the crack, a stamp).
+5. **One idea per screen, lots of empty space.** Every frame of Oyla, Lena Varga and Obsidian has one subject
+   and one line of type, with half the screen empty. *Doom:* darkness is the space; let the forge, the mask or
+   one portrait own the screen.
+6. **Type is a big, quiet object.** One large headline bottom-left (Scroll Landing, Lena Varga) or behind the
+   subject (Roadster's ROADSTER, Obsidian's title), set once, never fighting the image. *Doom:* the title is cast
+   in iron in the scene itself; elsewhere one big line, bottom-left, in front of the image.
+7. **Graded, cinematic photography.** Scroll Landing's film-still photo and Lena Varga's colour fields are
+   graded to one palette with deep blacks. *Doom:* every photo is graded into iron and green (lifted shadows to
+   gunmetal, highlights to bone, a green cast in the mids), shown big and sharp, moved by slow camera pushes.
+8. **A form that transforms holds the page together.** Anchor AI's one glowing form becomes sphere, tree,
+   ring and cube. *Doom:* green light is the thread: it seeps through the cracks of the mould, burns in the
+   mask's eyes, and becomes the glow of the archive and of each file's accent.
+9. **Depth through layers and focus.** Greentech and Roadster use depth of field, haze and parallax layers so
+   the screen reads as space. *Doom:* forge smoke, sparks in front of the lens, heat shimmer above the pour,
+   soft focus on what is behind.
+10. **Scroll is physics, not pages.** Smooth, weighted scrolling (Lenis) drives scrubbed camera moves; small
+    UI (numbers, labels) sits at the edges like instruments. *Doom:* scroll has weight (Lenis lerp around 0.08),
+    the camera is scrubbed by scroll with a soft lag, and the instruments are the dossier's file numbers,
+    clearance stamps and the countdown.
+
+### The forge (opening), from Fantastic Four Annual #2
+
+**Source.** Fantastic Four Annual Vol 1 #2 (September 1964), "The Fantastic Origin of Doctor Doom!": in a
+hidden Himalayan monastery the monks forge Doom a suit of armour and he presses the mask to his face before it
+has cooled (retold in Books of Doom #2 and #3, 2006). Doom's green comes from his cloak and tunic since
+Fantastic Four #5 (1962) and from his sorcery (green mystic energy, Doctor Strange and Doctor Doom: Triumph and
+Torment). The engraved mould and the iron title are this site's own invention built on that origin.
+
+**Beats** (under seven seconds from the click, skippable with any key, click or tap, full length only on a
+first visit; reduced motion shows the finished title and countdown, still):
+1. A dark screen, one faint ember, the words "Enter the forge". The click starts sound and picture together.
+2. A low furnace rumble builds; embers crackle; sparks drift up.
+3. Molten iron pours into an engraved mould with a thick, heavy hiss.
+4. It sizzles and ticks as it cools from orange to dark iron.
+5. Green light seeps through cracks in the mould with a rising, resonant hum.
+6. The mould splits with a deep metallic crack and a low boom.
+7. DOOMSDAY DOSSIER stands in iron, glowing green at the edges; the countdown to 18 December etches in with
+   the slow tick of a heavy clock.
+
+**Two versions for the user to choose between** (`/lab/forge-a/`, `/lab/forge-b/` on branch `redesign`):
+A, **Slow burn**: a slow top-down push over the mould, long holds, the pour and cooling given room (about 6.8 s).
+B, **The strike**: a low three-quarter angle with the camera rising as the mould splits, tighter beats and a
+harder crack (about 4.8 s).
+
+### Sound system
+
+All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (oscillators, filtered noise,
+generated impulse-response reverb); there are no audio files. Licence for every sound: **original work made for
+this site, no third-party audio** (synthesis recipes are this site's own code). Mix, measured in the forge
+recordings (RMS per half second): the pour about -17 dBFS, the crack the loudest moment at about -13, the clock
+ticks about -36, the score settling about -43 (some 26 dB under the forge). Bus levels in : forge
+0.42, actions 0.22, score 0.02. Every reverb send goes through its own bus's send at the bus level (); a send straight to the hall bypassed the bus and kept the score loud however low its bus was.
+
+**Forge build** (:  the beats,  the title's distance field, 
+shared noise, blackbody and lighting,  the scene,  the page; sound in ).
+Lab pages  and  ( captures canvas and sound together,  replays the
+full forge). Tools:  (frames at set moments),  (the recording
+with sound, then decodes it and prints loudness per half second). Measured on this PC's integrated GPU: 55 to 58
+fps desktop at 1.5x, 60 fps at phone size. Lessons: a negative start time must not mean "not started" (skipping
+in the first seconds of a page sent the visitor back to the gate; use a flag); start the picture on the click and
+align the sound to it, never wait for audio to start; three.js declares  only in vertex shaders;
+compile every material before the click (hitches the first time the pour or the bar appeared); stacked layers
+that fake thickness must run a cheap shader; precomputed noise in a texture instead of per-pixel fbm took the
+forge from 43 to 55+ fps; dark metal needs something to reflect (a soft environment gradient with Fresnel) or it
+reads as an outline; rough iron should barely mirror. A master gain behind one mute button; the choice
+is stored in `localStorage` `dd-sound` (on, off).
+
+### Sound map
+
+| Sound | Where it plays | How it is made (original synthesis) | Drawn from | Licence |
+|---|---|---|---|---|
+| Furnace rumble | Forge, beat 2 | Brown noise through a resonant low-pass (60 to 140 Hz) with a slow swell, plus a 38 Hz sine | The monastery forge, FF Annual #2 | Original |
+| Ember crackle | Forge beats 2 to 4; quietly under the gate | Random short noise impulses through a band-pass, Poisson-timed | Same | Original |
+| Pour hiss | Forge, beat 3 | Pink noise, low-passed to 900 Hz, with a slow 7 Hz bubbling modulation and a heavy body at 110 Hz | Molten iron poured for the armour | Original |
+| Cooling sizzle | Forge, beat 4 | High-passed noise bursts that thin out over time | Hot metal meeting air | Original |
+| Cooling ticks | Forge, beat 4 | Short inharmonic sine partials (metal contraction pings), randomly timed, slowing down | Cast iron contracting as it cools | Original |
+| Green hum | Forge, beat 5; mask eyes on the home page | Detuned saw and sine stack on a minor chord rising in a low-pass sweep, with a slow tremolo | Doom's green sorcery (Triumph and Torment) | Original |
+| Mould crack | Forge, beat 6 | A sharp noise transient plus inharmonic metallic partials (bell-like ratios) with fast decay | The cast breaking open | Original |
+| Low boom | Forge, beat 6 | A sine sweeping 70 to 30 Hz with a long tail through reverb | Same | Original |
+| Heavy clock tick | Forge, beat 7; countdown on the home page | A low wooden-metal tick (band-passed click plus a 180 Hz body) every second, in a large reverb | Doomsday as a deadline: the countdown to 18 December 2026 | Original |
+| Gate ember | The gate (first and return visits) | A barely audible crackle loop after the click is ready | The forge's last ember | Original |
+| Score: sorcery and science | Under every page | A low string-like drone (filtered saws, slow detune), bell harmonics drifting above (sine partials with long reverb), a faint machine pulse at 52 bpm (sub thump) | Doom as scientist and sorcerer: FF #5; Books of Doom; Triumph and Torment | Original |
+| File slides open | Opening a file, the archive | Low-passed noise swish with a soft wooden thud | The dossier conceit | Original |
+| Redaction tears | Clearance levels, redaction reveals | A short ripping noise burst with a rising band-pass | Same | Original |
+| Stamp lands | Stamps (clearance, file states) | A dull thud (sine 90 Hz) plus a paper slap transient | Same | Original |
+| Arena clash | Fight arena poster hit | A metallic impact (inharmonic partials) with a sub thump and a short reverb | The arena slam | Original |
+| Victor von Doom | His file | Armoured gauntlet servos (filtered saw glides) and a crackling green mystic bolt | Scientist-sorcerer: FF #5; Triumph and Torment | Original |
+| Steve Rogers | His file | A vibranium shield ricochet ring (high inharmonic partials, long ring) | The shield, Captain America Comics #1 (1941) | Original |
+| Thor | His file | Rolling thunder (low noise rumble) with Mjolnir's charged hum | Journey into Mystery #83 (1962) | Original |
+| Sam Wilson | His file | A wing-beat whoosh and Redwing's chirp | Captain America #117 (1969) | Original |
+| Bucky Barnes | His file | The metal arm's servo whirr and plates locking | The Winter Soldier, Captain America (2005) | Original |
+| Scott Lang | His file | A pitch-dive to a tiny pip as he shrinks, ants chittering | Pym particles | Original |
+| Shang-Chi | His file | The Ten Rings spinning up with a resonant chime | Shang-Chi and the Legend of the Ten Rings (2021) | Original |
+| Joaquin Torres | His file | Lighter, faster wing flutter and a drone ping | Captain America: Sam Wilson #1 (2015); the MCU Falcon | Original |
+| Reed Richards | His file | A rubbery elastic stretch and snap | Fantastic Four #1 (1961) | Original |
+| Sue Storm | Her file | A glassy force-field hum that fades to nothing as she turns invisible | Fantastic Four #1 and #22 | Original |
+| Johnny Storm | His file | A flame-on ignition whoosh into a steady roar | Fantastic Four #1 | Original |
+| Ben Grimm | His file | Grinding rock and a heavy, ground-shaking punch thud | Fantastic Four #1 | Original |
+| Professor X | His file | A swelling telepathic chord, Cerebro reaching out | X-Men #1 and #7 (1963, 1964) | Original |
+| Magneto | His file | Steel groaning as it bends, under a deep magnetic hum | X-Men #1 | Original |
+| Cyclops | His file | An optic blast charging with a rising ruby whine | X-Men #1 | Original |
+| Nightcrawler | His file | The BAMF: a sharp teleport pop with a sulphur hiss | Giant-Size X-Men #1 (1975) | Original |
+| Mystique | Her file | A rippling, scaly shimmer as she shapeshifts | Ms. Marvel #16 (1978) | Original |
+| Beast | His file | A deep, low growl | X-Men #1 | Original |
+| Gambit | His file | A card riffle, then a kinetic charge that fizzes and pops | Uncanny X-Men #266 (1990) | Original |
+| Yelena Belova | Her file | The electric crack of a Widow's Bite | Inhumans #5 (1999); Black Widow (2021) | Original |
+| Red Guardian | His file | A heavy round shield landing with a dull, deep clang | Avengers #43 (1967) | Original |
+| John Walker | His file | Dog tags jingling over heavy boots | Captain America #323 (1986) | Original |
+| Ghost | Her file | A glitching, reversed flicker as she phases | Iron Man #219 (1987); Ant-Man and the Wasp (2018) | Original |
+| Bob Reynolds / Sentry | His file | A golden radiant swell collapsing into a dark void rumble | The Sentry #1 (2000) | Original |
+| Shuri | Her file | The purple kinetic pulse of her suit releasing stored energy | Black Panther: Wakanda Forever (2022) | Original |
+| M'Baku | His file | A wooden war staff striking stone, mountain wind behind it | The Jabari, Black Panther (2018) | Original |
+| Namor | His file | A deep ocean swell, bubbles and the flutter of his ankle wings | Marvel Comics #1 (1939) | Original |
+| Loki | His file | A shimmering illusion chime over a slowly turning clock | Journey into Mystery #85 (1962); Loki season 2 (2023) | Original |
+| Peggy Carter | Her file | Crackling 1940s radio static and teletype keys | The SSR; Tales of Suspense #75 (1966) | Original |
+
+Comic issue numbers in this table are to be checked against each character's research file before the
+character pages are built; any that differ are corrected here first.
+
 ## Design system v2: the Latverian dossier (fourth interview, 26 October 2026)
 
 Every page uses this system; nothing is styled one page at a time. Tokens live in
