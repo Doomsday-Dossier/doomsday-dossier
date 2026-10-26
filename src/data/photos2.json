@@ -432,21 +432,37 @@
  "thor": [
   {
    "n": 1,
-   "w": 736,
-   "h": 1308,
-   "hd": false,
+   "w": 2944,
+   "h": 5232,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/thor/1-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/1-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/1-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/thor/1-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/1-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/1-cut-1920.webp"
     }
    ],
    "depth": [
@@ -455,7 +471,7 @@
      "src": "photos2/thor/1-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/thor/1-depth-1024.webp"
     }
    ],
@@ -487,21 +503,37 @@
   },
   {
    "n": 2,
-   "w": 736,
-   "h": 1308,
-   "hd": false,
+   "w": 2944,
+   "h": 5232,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/thor/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/thor/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -510,7 +542,7 @@
      "src": "photos2/thor/2-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/thor/2-depth-1024.webp"
     }
    ],
@@ -542,21 +574,37 @@
   },
   {
    "n": 3,
-   "w": 720,
-   "h": 1286,
-   "hd": false,
+   "w": 2880,
+   "h": 5144,
+   "hd": true,
    "focus": "50% 30%",
    "focusM": "50% 30%",
    "full": [
     {
      "w": 640,
      "src": "photos2/thor/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/thor/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/thor/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/thor/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -565,7 +613,7 @@
      "src": "photos2/thor/3-depth-512.webp"
     },
     {
-     "w": 720,
+     "w": 1024,
      "src": "photos2/thor/3-depth-1024.webp"
     }
    ],
@@ -1100,21 +1148,37 @@
   },
   {
    "n": 2,
-   "w": 736,
-   "h": 1049,
-   "hd": false,
+   "w": 2944,
+   "h": 4196,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/scott-lang/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/scott-lang/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/scott-lang/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/scott-lang/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/scott-lang/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/scott-lang/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1123,7 +1187,7 @@
      "src": "photos2/scott-lang/2-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/scott-lang/2-depth-1024.webp"
     }
    ],
@@ -1155,21 +1219,37 @@
   },
   {
    "n": 3,
-   "w": 736,
-   "h": 1308,
-   "hd": false,
+   "w": 2944,
+   "h": 5232,
+   "hd": true,
    "focus": "50% 20%",
    "focusM": "50% 20%",
    "full": [
     {
      "w": 640,
      "src": "photos2/scott-lang/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/scott-lang/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/scott-lang/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/scott-lang/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/scott-lang/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/scott-lang/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1178,7 +1258,7 @@
      "src": "photos2/scott-lang/3-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/scott-lang/3-depth-1024.webp"
     }
    ],
@@ -1212,21 +1292,37 @@
  "shang-chi": [
   {
    "n": 1,
-   "w": 736,
-   "h": 1306,
-   "hd": false,
+   "w": 2944,
+   "h": 5224,
+   "hd": true,
    "focus": "50% 30%",
    "focusM": "50% 30%",
    "full": [
     {
      "w": 640,
      "src": "photos2/shang-chi/1-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/1-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/1-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/shang-chi/1-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/1-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/1-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1235,7 +1331,7 @@
      "src": "photos2/shang-chi/1-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/shang-chi/1-depth-1024.webp"
     }
    ],
@@ -1267,21 +1363,37 @@
   },
   {
    "n": 2,
-   "w": 600,
-   "h": 900,
-   "hd": false,
+   "w": 2400,
+   "h": 3600,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
-     "w": 600,
+     "w": 640,
      "src": "photos2/shang-chi/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/2-1920.webp"
     }
    ],
    "cut": [
     {
-     "w": 600,
+     "w": 640,
      "src": "photos2/shang-chi/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1290,7 +1402,7 @@
      "src": "photos2/shang-chi/2-depth-512.webp"
     },
     {
-     "w": 600,
+     "w": 1024,
      "src": "photos2/shang-chi/2-depth-1024.webp"
     }
    ],
@@ -1322,21 +1434,37 @@
   },
   {
    "n": 3,
-   "w": 736,
-   "h": 1184,
-   "hd": false,
+   "w": 2944,
+   "h": 4736,
+   "hd": true,
    "focus": "50% 30%",
    "focusM": "50% 30%",
    "full": [
     {
      "w": 640,
      "src": "photos2/shang-chi/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/shang-chi/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shang-chi/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shang-chi/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1345,7 +1473,7 @@
      "src": "photos2/shang-chi/3-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/shang-chi/3-depth-1024.webp"
     }
    ],
@@ -1801,21 +1929,37 @@
  "sue-storm": [
   {
    "n": 1,
-   "w": 720,
-   "h": 1036,
-   "hd": false,
+   "w": 2880,
+   "h": 4144,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/sue-storm/1-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/1-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/1-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/sue-storm/1-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/1-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/1-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1824,7 +1968,7 @@
      "src": "photos2/sue-storm/1-depth-512.webp"
     },
     {
-     "w": 720,
+     "w": 1024,
      "src": "photos2/sue-storm/1-depth-1024.webp"
     }
    ],
@@ -1856,21 +2000,37 @@
   },
   {
    "n": 2,
-   "w": 736,
-   "h": 1308,
-   "hd": false,
+   "w": 2944,
+   "h": 5232,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/sue-storm/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/sue-storm/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1879,7 +2039,7 @@
      "src": "photos2/sue-storm/2-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/sue-storm/2-depth-1024.webp"
     }
    ],
@@ -1911,21 +2071,37 @@
   },
   {
    "n": 3,
-   "w": 720,
-   "h": 908,
-   "hd": false,
+   "w": 2880,
+   "h": 3632,
+   "hd": true,
    "focus": "50% 30%",
    "focusM": "50% 30%",
    "full": [
     {
      "w": 640,
      "src": "photos2/sue-storm/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/sue-storm/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/sue-storm/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/sue-storm/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -1934,7 +2110,7 @@
      "src": "photos2/sue-storm/3-depth-512.webp"
     },
     {
-     "w": 720,
+     "w": 1024,
      "src": "photos2/sue-storm/3-depth-1024.webp"
     }
    ],
@@ -2183,21 +2359,37 @@
  "ben-grimm": [
   {
    "n": 1,
-   "w": 735,
-   "h": 1013,
-   "hd": false,
+   "w": 2940,
+   "h": 4052,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/1-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/1-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/1-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/1-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/1-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/1-cut-1920.webp"
     }
    ],
    "depth": [
@@ -2206,7 +2398,7 @@
      "src": "photos2/ben-grimm/1-depth-512.webp"
     },
     {
-     "w": 735,
+     "w": 1024,
      "src": "photos2/ben-grimm/1-depth-1024.webp"
     }
    ],
@@ -2238,21 +2430,37 @@
   },
   {
    "n": 2,
-   "w": 735,
-   "h": 996,
-   "hd": false,
+   "w": 2940,
+   "h": 3984,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -2261,7 +2469,7 @@
      "src": "photos2/ben-grimm/2-depth-512.webp"
     },
     {
-     "w": 735,
+     "w": 1024,
      "src": "photos2/ben-grimm/2-depth-1024.webp"
     }
    ],
@@ -2293,21 +2501,37 @@
   },
   {
    "n": 3,
-   "w": 735,
-   "h": 796,
-   "hd": false,
+   "w": 2940,
+   "h": 3184,
+   "hd": true,
    "focus": "50% 35%",
    "focusM": "50% 35%",
    "full": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/ben-grimm/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/ben-grimm/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/ben-grimm/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -2316,7 +2540,7 @@
      "src": "photos2/ben-grimm/3-depth-512.webp"
     },
     {
-     "w": 735,
+     "w": 1024,
      "src": "photos2/ben-grimm/3-depth-1024.webp"
     }
    ],
@@ -3855,21 +4079,37 @@
  "yelena-belova": [
   {
    "n": 1,
-   "w": 736,
-   "h": 1308,
-   "hd": false,
+   "w": 2944,
+   "h": 5232,
+   "hd": true,
    "focus": "50% 20%",
    "focusM": "50% 20%",
    "full": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/1-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/1-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/1-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/1-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/1-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/1-cut-1920.webp"
     }
    ],
    "depth": [
@@ -3878,7 +4118,7 @@
      "src": "photos2/yelena-belova/1-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/yelena-belova/1-depth-1024.webp"
     }
    ],
@@ -3910,21 +4150,37 @@
   },
   {
    "n": 2,
-   "w": 736,
-   "h": 1285,
-   "hd": false,
+   "w": 2944,
+   "h": 5140,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -3933,7 +4189,7 @@
      "src": "photos2/yelena-belova/2-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/yelena-belova/2-depth-1024.webp"
     }
    ],
@@ -3965,21 +4221,37 @@
   },
   {
    "n": 3,
-   "w": 665,
-   "h": 827,
-   "hd": false,
+   "w": 2660,
+   "h": 3308,
+   "hd": true,
    "focus": "50% 30%",
    "focusM": "50% 30%",
    "full": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/yelena-belova/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/yelena-belova/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/yelena-belova/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -3988,7 +4260,7 @@
      "src": "photos2/yelena-belova/3-depth-512.webp"
     },
     {
-     "w": 665,
+     "w": 1024,
      "src": "photos2/yelena-belova/3-depth-1024.webp"
     }
    ],
@@ -4953,21 +5225,37 @@
   },
   {
    "n": 2,
-   "w": 736,
-   "h": 1278,
-   "hd": false,
+   "w": 2944,
+   "h": 5112,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/shuri/2-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shuri/2-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shuri/2-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/shuri/2-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shuri/2-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shuri/2-cut-1920.webp"
     }
    ],
    "depth": [
@@ -4976,7 +5264,7 @@
      "src": "photos2/shuri/2-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/shuri/2-depth-1024.webp"
     }
    ],
@@ -5008,21 +5296,37 @@
   },
   {
    "n": 3,
-   "w": 736,
-   "h": 920,
-   "hd": false,
+   "w": 2944,
+   "h": 3680,
+   "hd": true,
    "focus": "50% 25%",
    "focusM": "50% 25%",
    "full": [
     {
      "w": 640,
      "src": "photos2/shuri/3-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shuri/3-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shuri/3-1920.webp"
     }
    ],
    "cut": [
     {
      "w": 640,
      "src": "photos2/shuri/3-cut-640.webp"
+    },
+    {
+     "w": 1280,
+     "src": "photos2/shuri/3-cut-1280.webp"
+    },
+    {
+     "w": 1920,
+     "src": "photos2/shuri/3-cut-1920.webp"
     }
    ],
    "depth": [
@@ -5031,7 +5335,7 @@
      "src": "photos2/shuri/3-depth-512.webp"
     },
     {
-     "w": 736,
+     "w": 1024,
      "src": "photos2/shuri/3-depth-1024.webp"
     }
    ],

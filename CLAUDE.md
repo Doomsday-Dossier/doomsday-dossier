@@ -68,6 +68,21 @@ references were approved and mapped:
 | Quiz | Lena Varga | the result is the cut-out match over their giant name on a flood of their colour |
 | Planner, sources, credits | Oyla | editorial band of three prints that grow toward the reader (`components/OylaBand.astro`) |
 
+**Motion v3 (user report, 26 October 2026: "the animations have ruined it", names crossed by photos, countdown
+unreadable on the green, phone first).** The references were re-studied frame by frame from their preview videos
+(see the session log). What they share, now rules for every page: one subject and one idea per screen; text in clear
+space, in front, never covered by a photo; transitions are camera moves; one persistent thing transforms with scroll;
+order rather than scatter; few things move at once. Applied so far:
+
+| Page | Now |
+|---|---|
+| Home (`dossier/archive.ts`, `cloud.ts`, `cloud.worker.ts`) | One point cloud (42k desktop, 20k phone) built in 3D from each character's cut-out and subject depth, sampled in a worker. Intro: a loading count while a nebula gathers into Doom; the countdown sits on its own dark panel in bone white. Scroll morphs the cloud through all 29 characters (points swirl out, half a turn, the glow takes their colour), name bottom-left in front; points part for a real cursor or finger only. Two figure buffers so each step uploads one figure. |
+| Team pages | Lena Varga slides: a full-screen field in the member's colour wipes up, the subject (sized by its measured outline, head never cropped) arrives from close to the camera and floats, the name types in bottom-left in front in their own face. |
+| Character files | The hero name moved in front, bottom-left; the 3D subject stands right of centre on wide screens; the lens is mouse-only; on phones the record shows one card at a time. |
+
+Checks for this: `scripts/names-check.mjs` (every team name at three sizes), `scripts/walk.mjs` (a frame every half
+screen, for overlaps the clip audit cannot see), `scripts/record.mjs` + `scripts/video-sheet.mjs` (scroll recordings).
+
 v1 logic is reused, not rewritten: the arena, timeline strip, planner, predictions and quiz scripts
 run unchanged inside the v2 pages (v1 token names are aliased to v2 tokens in `system.css`; the v1
 scripts announce `dd:pair`, `dd:picks`, `dd:locked` and listen for `dd:fling` for the v2 effects).
@@ -107,7 +122,13 @@ and retries with smaller tiles; `scripts/check-upscales.mjs` moves black upscale
 as raw pixels. Other rollout lessons: a section class `.open` collided with the drawer's open state (use
 `is-open`); GSAP reads a CSS `translateY` as pixel `y`, so set `{ y: 0, yPercent }` explicitly; the 2560 px
 photo size was dropped (100 MB per push for very large monitors only). The clip audit treats the record
-track (`.rec-track`) as a sideways rail.
+track (`.rec-track`) as a sideways rail. **Motion v3 lessons:** check upscales band by band against the original,
+not just for all-black (Sam's went black halfway; `check-upscales.mjs`); load a page's character faces before fitting
+names (a hidden slide's face can arrive after `document.fonts.ready`, and a name measured in the fallback font
+overflows); a grid column must be `minmax(0, 1fr)` or a wide word widens it and the name is never fitted; names split
+into letters lose kerning, so leave 5% headroom and split into words and letters, never letters alone (they wrap
+mid-word); Astro's scoped attributes make `.a + .a` outrank `html.flag .a`, so set such states from script; the
+engine's idle pointer drift must not drive effects meant for a real pointer (it left a wandering hole in the cloud).
 
 **Showcase first.** The intro, the home fly-through and Doom's file are built at `/preview/`
 and approved by the user before any other page is rebuilt. Then every page is rebuilt to the

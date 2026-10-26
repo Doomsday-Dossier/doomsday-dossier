@@ -99,6 +99,9 @@ export class Diorama {
     const nt = new THREE.CanvasTexture(cv); nt.colorSpace = THREE.NoColorSpace;
     this.name = new THREE.Mesh(new THREE.PlaneGeometry(1, cv.height / cv.width), new THREE.MeshBasicMaterial({ map: nt, transparent: true, depthWrite: false, opacity: 0.94, toneMapped: false }));
     this.name.renderOrder = 2;
+    // the name is drawn by the page, in front of the subject, so no photo ever covers it; the plane stays
+    // available for a layout that wants the name in depth
+    this.name.visible = false;
     this.scene.add(this.name);
     // a glow in their colour behind the subject
     this.glow = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.ShaderMaterial({
@@ -137,7 +140,7 @@ export class Diorama {
     const [x0, y0, x1] = this.bbox;
     const k = Math.min(((phone ? 0.64 : 0.84) * this.viewH) / Math.max(0.2, 1 - y0), ((phone ? 2.4 : 0.62) * this.viewW) / Math.max(0.1, sp.width * (x1 - x0)));
     this.subject.scale.set(k, k, k);
-    this.subject.position.set(-(this.head - 0.5) * sp.width * k, -this.viewH / 2 + 0.5 * k, 0);
+    this.subject.position.set(-(this.head - 0.5) * sp.width * k + (phone ? 0 : this.viewW * 0.17), -this.viewH / 2 + 0.5 * k + (phone ? this.viewH * 0.12 : 0), 0);
     // the name sits half a unit behind; scale it so it spans the screen as the page's name did
     const zN = -0.55, kN = (this.D - zN) / this.D;
     // as wide as the page allows, but never taller than 62% of the screen (two-line names)
