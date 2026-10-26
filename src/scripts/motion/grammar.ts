@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
+import { glideTo } from './scroller';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -65,8 +66,11 @@ export function driftType(root: ParentNode, o: Opts) {
 }
 
 /**
- * Comics act: pinned horizontal timeline on wide screens, a vertical track with
- * a scrubbed progress line on phones.
+ * Comics act. Wide screens: Panel Flythrough, a pinned corridor of comic panels that
+ * scroll flies through; the panel in front is always flat and full size, panels ahead
+ * wait in depth on alternating sides, passed ones fly past the camera. It only runs when
+ * the tallest panel fits the screen; otherwise, and on phones, the eras stack with a
+ * scrubbed progress line.
  */
 export function comicsTimeline(root: ParentNode, o: Opts) {
   const sec = root.querySelector<HTMLElement>('[data-timeline]');
@@ -75,36 +79,60 @@ export function comicsTimeline(root: ParentNode, o: Opts) {
   const bar = sec.querySelector<HTMLElement>('.tl-progress i');
   const mm = gsap.matchMedia(); mms.push(mm);
   mm.add({ wide: '(min-width: 900px)', reduced: '(prefers-reduced-motion: reduce)' }, (c) => {
-    sec.classList.remove('tl-row');
+    sec.classList.remove('tl-fly');
     const { wide, reduced } = c.conditions as { wide: boolean; reduced: boolean };
     if (reduced || o.reduced) return;
     const cards = gsap.utils.toArray<HTMLElement>('.tl-card', track);
-    let row = false;
+    let fly = false;
+    let undo = () => {};
     if (wide) {
-      sec.classList.add('tl-row');
-      // every card must fit on screen while pinned, or text would be cut off
+      sec.classList.add('tl-fly');
+      // the front panel must fit on screen while pinned, or text would be cut off
       const tallest = Math.max(...cards.map((c) => c.getBoundingClientRect().height));
       const top = track.getBoundingClientRect().top - sec.getBoundingClientRect().top;
-      row = top + tallest + 40 <= window.innerHeight;
-      if (!row) sec.classList.remove('tl-row');
+      fly = top + tallest + 40 <= window.innerHeight;
+      if (fly) track.style.height = `${tallest}px`;
+      else sec.classList.remove('tl-fly');
     }
-    if (row) {
-      const dist = () => track.scrollWidth - window.innerWidth + parseFloat(getComputedStyle(track).paddingLeft);
-      const tw = gsap.to(track, {
-        x: () => -dist(), ease: 'none',
-        scrollTrigger: { trigger: sec, start: 'top top', end: () => `+=${dist()}`, pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
-          onUpdate: (st) => { if (bar) bar.style.transform = `scaleX(${st.progress})`; } },
-      });
-      cards.forEach((card) => {
-        gsap.from(card.querySelectorAll('.tl-in'), {
-          y: 50, opacity: 0, stagger: 0.06, duration: 0.8 * o.pace, ease: o.ease.startsWith('steps') ? 'power3.out' : o.ease,
-          scrollTrigger: { trigger: card, containerAnimation: tw, start: 'left 85%', once: true },
+    if (fly) {
+      const n = cards.length;
+      const depth = 560, side = Math.min(innerWidth * 0.2, 300);
+      const place = (t: number) => {
+        cards.forEach((card, i) => {
+          const d = i - t; // how far ahead of the front this panel is
+          const ahead = Math.max(0, d), passed = Math.min(0, d);
+          const dir = i % 2 ? 1 : -1;
+          // ahead: waits in depth on alternating sides; passed: peels away to its side and fades fast
+          gsap.set(card, {
+            x: dir * (Math.min(ahead, 3) * side * 1.7 - passed * side * 1.6), y: -Math.min(ahead, 3) * 40 + passed * 40,
+            z: -ahead * depth - passed * 260, rotationY: -dir * (Math.min(ahead, 1) * 14 - passed * 30),
+            opacity: d < 0 ? Math.max(0, 1 + d * 3.2) : Math.max(0, 1 - Math.max(0, d - 0.15) * 0.3),
+          });
+          // depth sorts the panels (z-index is ignored in 3D); touch pointer-events only when it changes
+          const live = Math.abs(d) < 0.5;
+          if (card.dataset.live !== String(live)) { card.dataset.live = String(live); card.style.pointerEvents = live ? 'auto' : 'none'; }
         });
+      };
+      place(0);
+      let rest = 0;
+      ScrollTrigger.create({
+        trigger: sec, start: 'top top', end: () => `+=${(n - 1) * innerHeight * 0.85}`, pin: true, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true,
+        onUpdate: (st) => {
+          place(st.progress * (n - 1));
+          // always come to rest with one panel squarely in front: when scrolling pauses, glide there
+          clearTimeout(rest);
+          rest = window.setTimeout(() => {
+            if (!st.isActive) return;
+            const target = st.start + (Math.round(st.progress * (n - 1)) / (n - 1)) * (st.end - st.start);
+            if (Math.abs(target - st.scroll()) > 2) glideTo(target, 0.5);
+          }, 160); if (bar) bar.style.transform = `scaleX(${st.progress})`; },
       });
+      undo = () => { track.style.height = ''; gsap.set(cards, { clearProps: 'all' }); };
     } else {
       if (bar && !wide) gsap.fromTo(bar, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: track, start: 'top 70%', end: 'bottom 70%', scrub: true } });
       cards.forEach((card) => gsap.from(card, { x: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 85%', once: true } }));
     }
+    return () => undo();
   });
 }
 

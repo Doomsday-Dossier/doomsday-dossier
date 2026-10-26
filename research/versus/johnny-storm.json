@@ -1,0 +1,199 @@
+{
+  "slug": "johnny-storm",
+  "powerGrid": {
+    "values": {
+      "intelligence": 4,
+      "strength": 4,
+      "speed": 5,
+      "durability": 4,
+      "energyProjection": 6,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Human Torch (Johnny Storm) (archived 30 June 2018)",
+      "url": "https://web.archive.org/web/20180630052750/http://marvel.com/universe/Human_Torch_(Johnny_Storm)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "cosmic-rays",
+      "detail": "Cosmic rays rewired his cells to make a far richer energy fuel, letting him turn his body into living flame at will.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    {
+      "name": "Plasma flame form",
+      "detail": "Turns all or part of his body into fiery plasma on command; bullets that do not melt pass straight through him. A vacuum or heavy soaking puts the flame out.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Fire shaping",
+      "detail": "Throws fire as streams, spheres or skywritten words. Shapes last about three minutes unless he feeds them, and he can steer some fire he did not make.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Nova flame",
+      "detail": "His hottest setting. A full nova burst dumps all his stored energy at around a million degrees Fahrenheit, then needs about twelve hours of recovery.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Flight",
+      "detail": "Rides a cloud of hydrogen and flame jets at about 140 mph, and can push to supersonic speed, enough to keep pace with the Silver Surfer in orbit.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Heat control and absorption",
+      "detail": "Raises or lowers the temperature around him even when not alight, and can soak up outside flames to snuff them out.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Fire and heat immunity",
+      "detail": "Fire and heat below his own peak output cannot harm him, flaming or not.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Mechanic, driver and fighter",
+      "detail": "A gifted mechanic since his teens who helped design the second Fantasticar, an experienced race driver, and a capable brawler trained by the Thing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Carried across space with the Watcher's help, he reached Galactus's worldship and brought back the Ultimate Nullifier that forced Galactus to spare Earth.",
+      "where": "Fantastic Four Vol 1 #49 to #50 (April to May 1966)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 49",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_49"
+        },
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 50",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_50"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Threw Ben back through the portal to Earth and stayed behind in the Negative Zone, holding Annihilus's endless insect army back on his own.",
+      "where": "Fantastic Four Vol 3 #587 (March 2011)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 3 587",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_3_587"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Hauled Ultron toward the Sun, soaking up the heat himself to shield Rogue and the Wasp from it.",
+      "where": "Uncanny Avengers Vol 3 #12 (October 2016)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Uncanny Avengers Vol 3 12",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_Avengers_Vol_3_12"
+        },
+        {
+          "label": "Marvel Fandom wiki: Jonathan Storm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Jonathan_Storm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Chased the Silver Surfer off Earth and into space, grabbing her board with one hand before she knocked him loose.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Human Torch",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Human_Torch"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Cracked the Surfer's language from years of old deep-space recordings, then used what he learned to turn her against Galactus.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Human Torch",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Human_Torch"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Flew above the atmosphere to catch Ben after Galactus hurled him into space, then brought him back down to strike Galactus.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Human Torch",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Human_Torch"
+        }
+      ]
+    }
+  ]
+}

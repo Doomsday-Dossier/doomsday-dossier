@@ -1,0 +1,193 @@
+{
+  "slug": "professor-x",
+  "powerGrid": {
+    "values": {
+      "intelligence": 7,
+      "strength": 4,
+      "speed": 2,
+      "durability": 4,
+      "energyProjection": 7,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Professor X (archived 4 May 2018)",
+      "url": "https://web.archive.org/web/20180504220634/http://marvel.com/universe/Professor_X"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant, later confirmed an Omega-level telepath; his telekinesis fully awakened only late in life.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Telepathy",
+      "detail": "Reads and projects thoughts across about 250 miles, further with great effort. Linked to Cerebro, he can reach every mind on the planet.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Mind control",
+      "detail": "Takes over, possesses or shuts down other minds, sometimes several at once, and can erase or alter memories.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Illusions and mental cloaking",
+      "detail": "Makes people experience events that are not happening, and hides himself or others from sight and from other telepaths.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Psionic blasts",
+      "detail": "Mental bolts that cause pain, unconsciousness or worse; at full force his thoughts have struck a Sentinel with physical power.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Astral projection",
+      "detail": "Leaves his body to travel and communicate on the astral plane, where he can shape objects from thought.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Telepathic teaching",
+      "detail": "Plants knowledge directly into minds, such as teaching the X-Men Russian or packing months of training into a few hours.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Telekinesis",
+      "detail": "Once only faint, his telekinesis later fully awakened, strong enough to shield him from several exploding missiles.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Genius scientist and strategist",
+      "detail": "A leading authority on genetics, mutation and psionics who builds mind-boosting equipment and plans long campaigns against foes such as Magneto and Apocalypse.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "As a young traveller in Cairo, he beat the Shadow King, Amahl Farouk, in a duel on the astral plane.",
+      "where": "X-Men Vol 1 #117 (January 1979)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 1 117",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_1_117"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "After Magneto tore the adamantium from Wolverine, Xavier shut down Magneto's mind, leaving his old friend in a vegetative state.",
+      "where": "X-Men Vol 2 #25 (October 1993)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men Vol 2 25",
+          "url": "https://marvel.fandom.com/wiki/X-Men_Vol_2_25"
+        },
+        {
+          "label": "Marvel Fandom wiki: Charles Xavier (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Charles_Xavier_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Inside an Orchis base, he unleashed a psionic storm that put Nimrod, the most advanced Sentinel, out of the fight.",
+      "where": "Inferno Vol 2 #4 (March 2022)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Inferno Vol 2 4",
+          "url": "https://marvel.fandom.com/wiki/Inferno_Vol_2_4"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Used Cerebro to find the runaway Rogue at a train station.",
+      "where": "X-Men (2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "An uncontrolled psychic seizure froze everyone in an Oklahoma City hotel in place, letting Logan take down the Reavers.",
+      "where": "Logan (2017)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Logan (film)",
+          "url": "https://marvel.fandom.com/wiki/Logan_(film)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "As Earth-838's Xavier, he entered the Scarlet Witch's mind to try to free that world's Wanda, but she overpowered him.",
+      "where": "Doctor Strange in the Multiverse of Madness (2022)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: Doctor Strange in the Multiverse of Madness",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Professor X/Earth-838",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Professor_X/Earth-838"
+        }
+      ]
+    }
+  ]
+}

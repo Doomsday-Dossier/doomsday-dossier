@@ -1,0 +1,31 @@
+{
+  "slug": "loki",
+  "powerGrid": {
+    "values": { "intelligence": 4, "strength": 5, "speed": 3, "durability": 4, "energyProjection": 5, "fightingSkills": 2 },
+    "source": { "label": "Marvel.com Marvel Universe wiki: Loki (archived 22 June 2018)", "url": "https://web.archive.org/web/20180622111502/https://marvel.com/universe/Loki" },
+    "note": null
+  },
+  "powerOrigins": [
+    { "key": "asgardian", "detail": "Born a Frost Giant of Jotunheim and raised in Asgard by Odin; his race gives him great strength, dense tough tissue and a very long life.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "key": "mystic", "detail": "Extensive training in sorcery powers his energy blasts, illusions, shapeshifting, teleportation and enchantments.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] }
+  ],
+  "powerType": "mystic",
+  "abilities": [
+    { "name": "Sorcery", "detail": "Ranked equal to Karnilla, Asgard's most skilled sorceress: mystic energy blasts, durable force fields and telekinesis.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Illusions", "detail": "Casts illusions strong enough to fool whole cities and mighty beings such as Surtur.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Shapeshifting", "detail": "Can become almost any animal, person or object, though copying a being's look does not give him its powers.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Teleportation", "detail": "Moves himself or others across great distances and between dimensions.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Psionics", "detail": "Projects his thoughts telepathically, even across dimensional barriers, and has potent hypnotic powers.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Frost Giant physique", "detail": "Can lift about 50 tons unaided; tissue roughly three times human density makes him far tougher than he looks.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Master schemer", "detail": "A genius strategist and manipulator who works through pawns and keeps winning back trust despite his crimes.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] },
+    { "name": "Enchantment", "detail": "Can bring objects to life and lend temporary superhuman powers to others, as he did for criminals like Cobra.", "sources": [{ "label": "Marvel Fandom wiki: Loki Laufeyson (Earth-616)", "url": "https://marvel.fandom.com/wiki/Loki_Laufeyson_(Earth-616)" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "Willed a leaf into Heimdall's eye to escape his tree prison, then panicked a city with a spell and hypnotised Thor into setting down Mjolnir.", "where": "Journey Into Mystery Vol 1 #85 (October 1962)", "sources": [{ "label": "Marvel Fandom wiki: Journey Into Mystery Vol 1 85", "url": "https://marvel.fandom.com/wiki/Journey_Into_Mystery_Vol_1_85" }] },
+    { "medium": "comics", "text": "Projected his mind from an Asgardian prison to Earth and framed the Hulk with an illusion, a scheme that brought the Avengers together.", "where": "Avengers Vol 1 #1 (September 1963)", "sources": [{ "label": "Marvel Fandom wiki: Avengers Vol 1 1", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_1" }] },
+    { "medium": "comics", "text": "Seized the Norn Stones and used them to empower the Avengers enough to wound the Void, who killed him for it.", "where": "Siege Vol 1 #4 (June 2010)", "sources": [{ "label": "Marvel Fandom wiki: Siege Vol 1 4", "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_4" }] },
+    { "medium": "screen", "text": "Killed Laufey with a single blast from Gungnir, then blasted Thor through a wall.", "where": "Thor (2011)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thor (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor_(film)" }] },
+    { "medium": "screen", "text": "Arrived through a Tesseract portal, shrugged off S.H.I.E.L.D. gunfire and took control of Hawkeye and Selvig with the Scepter.", "where": "The Avengers (2012)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: The Avengers", "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers" }] },
+    { "medium": "screen", "text": "Destroyed Kurse with a black hole grenade, then faked his own death with an illusion and slipped back to Asgard in disguise.", "where": "Thor: The Dark World (2013)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thor: The Dark World", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_The_Dark_World" }] }
+  ]
+}

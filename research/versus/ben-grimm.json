@@ -1,0 +1,195 @@
+{
+  "slug": "ben-grimm",
+  "powerGrid": {
+    "values": {
+      "intelligence": 2,
+      "strength": 6,
+      "speed": 2,
+      "durability": 6,
+      "energyProjection": 1,
+      "fightingSkills": 4
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Thing (Benjamin Grimm) (archived 6 July 2018)",
+      "url": "https://web.archive.org/web/20180706092852/http://marvel.com/universe/Thing_(Benjamin_Grimm)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "cosmic-rays",
+      "detail": "Cosmic rays mutated him into a huge, rock-hided being of enormous strength and toughness on the Fantastic Four's first flight.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    {
+      "name": "Rock-hide body",
+      "detail": "A craggy orange hide over denser muscle, bone and organs, about 6 feet 6 and nearly 500 pounds. He does not age while in this form.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman strength",
+      "detail": "Started around Class 5; years of training and further mutation pushed him to roughly Class 100, among the strongest beings on Earth.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Superhuman durability",
+      "detail": "Takes Hulk punches, bazooka shells and point-blank gunfire without injury, and survived a planet-splitting blast from Galactus. Adamantium claws can still cut him.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Stamina and lungs",
+      "detail": "Works at full effort for about an hour before fatigue sets in, and can hold his breath underwater for up to nine minutes.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Fast healing",
+      "detail": "Recovers from severe injuries at an accelerated rate, though he cannot regrow lost organs or limbs.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Pilot and astronaut",
+      "detail": "A former Air Force test pilot and astronaut who flew the Fantastic Four's ship, and once worked out an experimental Skrull craft in sixty seconds.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Brawler",
+      "detail": "Fights with a loose style of his own built on boxing and college wrestling, sharpened long before he became the Thing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Stopped a multi-storey building of roughly 30,000 tons from toppling over, then lifted it back into place.",
+      "where": "Fantastic Four Vol 1 #95 (February 1970)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 95",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_95"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "In a brawl across Central Park and Manhattan, he landed a blow strong enough to send the Hulk flying.",
+      "where": "Fantastic Four Vol 1 #112 (July 1971)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 1 112",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_112"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Defeated the Immortal Hulk, sent against him by the Puppet Master, seconds before turning human, breaking his arm and passing out for a week.",
+      "where": "Fantastic Four Vol 6 #13 (October 2019)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Fantastic Four Vol 6 13",
+          "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_6_13"
+        },
+        {
+          "label": "Marvel Fandom wiki: Benjamin Grimm (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Threw a fuel truck at Galactus so Johnny could ignite it, setting the giant's torso and neck alight.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thing",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Hurled into space by Galactus and pulled back by Johnny, he slammed into Galactus's face and made him release Reed.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thing",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Charged through a building's support columns to bring it down, letting Sue push Galactus into range of the teleportation bridge.",
+      "where": "The Fantastic Four: First Steps (2025)",
+      "sources": [
+        {
+          "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+        },
+        {
+          "label": "Marvel Cinematic Universe Wiki: Thing",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thing"
+        }
+      ]
+    }
+  ]
+}

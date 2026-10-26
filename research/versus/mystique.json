@@ -1,0 +1,183 @@
+{
+  "slug": "mystique",
+  "powerGrid": {
+    "values": {
+      "intelligence": 4,
+      "strength": 2,
+      "speed": 2,
+      "durability": 4,
+      "energyProjection": 1,
+      "fightingSkills": 5
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Mystique (archived 29 June 2018)",
+      "url": "https://web.archive.org/web/20180629102438/http://marvel.com/universe/Mystique"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "mutant-gene",
+      "detail": "Born a mutant with total control over the cells of her body, letting her take on the look of almost anyone.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "mutant",
+  "abilities": [
+    {
+      "name": "Shapeshifting",
+      "detail": "Instantly reshapes her cells to look and sound like nearly any humanoid, copying retinas, fingerprints, scent, heat signature and voice prints.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Metamorphic adaptation",
+      "detail": "Can camouflage herself to near invisibility, mimic glass or metal textures, grow tentacles, take animal shapes and hide items inside her body.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Regeneration",
+      "detail": "Repairs wounds, regrows limbs and recovers from near-fatal injuries far faster than a normal human.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Slowed ageing and resistances",
+      "detail": "Over a century old yet still in her prime, with fast-building immunity to toxins and disease and a natural shield against telepaths.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Master martial artist",
+      "detail": "A highly skilled fighter whose hand-to-hand ability the wiki ranks alongside Black Widow and Captain America.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Marksman and covert operative",
+      "detail": "An expert shot, trained actress and strategist of terrorist and commando operations.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Multilingual",
+      "detail": "Knows at least eleven languages, among them German, English, Spanish, Portuguese, French, Farsi, Japanese, Korean, Swedish and Czech.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Led her new Brotherhood of Mutants in an attempt to assassinate Senator Robert Kelly, a plot the X-Men stopped with help from a time-travelling Kate Pryde.",
+      "where": "Uncanny X-Men Vol 1 #142 (February 1981)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Uncanny X-Men Vol 1 142",
+          "url": "https://marvel.fandom.com/wiki/Uncanny_X-Men_Vol_1_142"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "With Sabretooth and Toad, raided Damage Control and stole files on Nimrod and the Mother Mold for Xavier, escaping with the data.",
+      "where": "House of X Vol 1 #1 (September 2019)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: House of X Vol 1 1",
+          "url": "https://marvel.fandom.com/wiki/House_of_X_Vol_1_1"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "With her powers boosted by Fabian Cortez, copied the powers of Magneto, Juggernaut, Cable and Marrow.",
+      "where": "Mystique Vol 2 #3 (February 2025)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Mystique Vol 2 3",
+          "url": "https://marvel.fandom.com/wiki/Mystique_Vol_2_3"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "At Liberty Island she fought Wolverine, then posed as Storm; stabbed by him, she survived and slipped past police disguised as a fallen officer.",
+      "where": "X-Men (2000)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X-Men (film)",
+          "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Posing as Stryker's aide she copied his files, then drugged a prison guard and injected him with liquid iron, which Magneto used to escape.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-41578)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Entered Stryker's Alkali Lake base disguised as Wolverine, dodged the guards' fire, beat them and took the control room to open the gates.",
+      "where": "X2 (2003)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: X2 (film)",
+          "url": "https://marvel.fandom.com/wiki/X2_(film)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Raven Darkhölme (Earth-41578)",
+          "url": "https://marvel.fandom.com/wiki/Raven_Darkhölme_(Earth-41578)"
+        }
+      ]
+    }
+  ]
+}

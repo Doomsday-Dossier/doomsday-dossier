@@ -1,0 +1,34 @@
+{
+  "slug": "mbaku",
+  "powerGrid": {
+    "values": null,
+    "source": { "label": "Marvel.com Marvel Universe wiki: Man-Ape (archived 25 June 2018)", "url": "https://web.archive.org/web/20180625050125/http://marvel.com/universe/Man-Ape" },
+    "note": "The archived Man-Ape page (real name M'Baku) draws all six bars at the minimum 1, in 2013 and 2018 snapshots alike. Unrated pages such as Batroc, Ulik and Moonstar show the same all-1 placeholder, so this is treated as no grid."
+  },
+  "powerOrigins": [
+    { "key": "mystic", "detail": "Hunted a sacred white gorilla, then bathed in its blood and ate its flesh; the ritual mystically passed the beast's strength to him.", "sources": [
+      { "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Avengers Vol 1 62", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_62" }
+    ] }
+  ],
+  "powerType": "mystic",
+  "abilities": [
+    { "name": "Superhuman strength", "detail": "The White Gorilla ritual lets him lift about 10 tons.", "sources": [{ "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" }] },
+    { "name": "Superhuman stamina", "detail": "His muscles tire slowly; he can fight at full effort for up to a day before fatigue sets in.", "sources": [{ "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" }] },
+    { "name": "Superhuman agility", "detail": "Balance and coordination well past the limits of the finest human athletes.", "sources": [{ "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" }] },
+    { "name": "Superhuman durability", "detail": "Tougher than a normal human: he can take repeated blows from super-strong foes or a fall of several storeys with little harm, though he is not invulnerable.", "sources": [{ "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" }] },
+    { "name": "Skilled warrior", "detail": "Once rated Wakanda's greatest warrior after T'Challa; a seasoned hand-to-hand fighter with a gorilla-like style.", "sources": [{ "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" }] },
+    { "name": "Arcane energy (former)", "detail": "After Baron Macabre raised him from the dead he could fire arcane energy blasts that grew stronger with use, until Macabre stripped the power away.", "sources": [
+      { "label": "Marvel Fandom wiki: M'Baku (Earth-616)", "url": "https://marvel.fandom.com/wiki/M%27Baku_(Earth-616)" },
+      { "label": "Marvel Fandom wiki: Black Panther: Long Live The King Vol 1 4", "url": "https://marvel.fandom.com/wiki/Black_Panther:_Long_Live_The_King_Vol_1_4" }
+    ] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "Drugged the visiting Avengers, then fought Black Panther across Wakanda to the atomic fire pits and knocked him out while being pulled to safety.", "where": "Avengers Vol 1 #62 (March 1969)", "sources": [{ "label": "Marvel Fandom wiki: Avengers Vol 1 62", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_62" }] },
+    { "medium": "comics", "text": "Followed T'Challa to New York, kidnapped Monica Lynne and used her to lure the Black Panther into captivity, until Captain America beat him.", "where": "Avengers Vol 1 #78 (July 1970)", "sources": [{ "label": "Marvel Fandom wiki: Avengers Vol 1 78", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_78" }] },
+    { "medium": "comics", "text": "Raised from the dead with arcane power, he took the combined efforts of Black Panther, Kantu and Shuri to bring down.", "where": "Black Panther: Long Live The King Vol 1 #4 (March 2018)", "sources": [{ "label": "Marvel Fandom wiki: Black Panther: Long Live The King Vol 1 4", "url": "https://marvel.fandom.com/wiki/Black_Panther:_Long_Live_The_King_Vol_1_4" }] },
+    { "medium": "screen", "text": "Challenged T'Challa for the throne at Warrior Falls and nearly crushed him in a bear hug before T'Challa broke free and made him yield.", "where": "Black Panther (2018)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Panther (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)" }] },
+    { "medium": "screen", "text": "Led the Jabari into the Battle of Mount Bashenga just as the Dora Milaje were about to fall, turning the fight against Killmonger's forces.", "where": "Black Panther (2018)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Panther (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)" }] },
+    { "medium": "screen", "text": "Fought the Talokanil aboard the Sea Leopard, taking many of them down with his new vibranium club.", "where": "Black Panther: Wakanda Forever (2022)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever" }] }
+  ]
+}

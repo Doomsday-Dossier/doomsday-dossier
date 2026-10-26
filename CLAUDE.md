@@ -84,7 +84,8 @@ of every session, then continue from the tracker at the bottom.
 | 4 | Thunderbolts* (abstract heroes, no photos yet) | done |
 | 5 | Wakanda and Talokan (Shuri, M'Baku, Namor) plus Loki and Peggy Carter, full depth | done |
 | 6 | Photos for every character from the user's set: photo hero, In frame gallery (three prints), Halftone Lens, developing prints, home and team photo cards, next-dossier photo, credits page (done). Still open: Trailer act, Two lives slider, Photo Hand-off | in progress |
-| 7 | Interactive features: team picker with Magnetic Team Chain, timeline, versus with power grid, Panel Flythrough, Film-Burn Scrubber | todo |
+| 7 | Interactive features: team picker with Magnetic Team Chain, timeline with Film-Burn Scrubber, versus with power grid and radar, Panel Flythrough | done |
+| 8+ | The twelve fan features, in the ranked backlog below | todo |
 
 ## Feature tracker
 
@@ -97,12 +98,46 @@ of every session, then continue from the tracker at the bottom.
 | Halftone Lens (gallery prints; long press on touch) | 6 | done |
 | Photo Hand-off | 6 | todo |
 | Developing prints (gallery prints develop like darkroom prints on reveal) | 6 | done |
-| Team picker on home | 7 | todo |
-| Magnetic Team Chain | 7 | todo |
-| Timeline page | 7 | todo |
-| Versus page with power grid | 7 | todo |
-| Panel Flythrough | 7 | todo |
-| Film-Burn Scrubber | 7 | todo |
+| Team picker on home (chips filter with Flip, #team= in URL, unnamed roles included) | 7 | done |
+| Magnetic Team Chain (drag a card, its team fans behind it on springs; fine pointers only) | 7 | done |
+| Timeline page (/timeline/: 55 titles, 29 debuts, 10 Marvel news frames; follow mode adds comics eras) | 7 | done |
+| Versus page (/versus/?a=&b=: split screen, radar, mirrored bars, abilities, sourced feats, connections) | 7 | done |
+| Panel Flythrough (comics act corridor on wide screens when the front panel fits; stacked otherwise) | 7 | done |
+| Film-Burn Scrubber (timeline strip: drag with momentum, decade scrubber, fling burns the edges) | 7 | done |
+
+## Fan features: ranked backlog (third interview, 26 October 2026)
+
+Built in this order, except that date-tied features jump the queue: the catch-up planner and
+prediction board go live well before 18 December, the spoiler shield is ready on release day.
+Every feat, stat, power origin, runtime and film link shows its source. Power grids only from an
+official grid; none means "Not rated in the Handbook". Fan votes and predictions are labelled
+"Fan vote" / "Fan prediction", never facts.
+
+| Rank | Feature | Data it needs | Where the data comes from | Backend | Status |
+|---|---|---|---|---|---|
+| 1 | Fight arena: two cards slam together in a split screen with documented feats (source tagged), fans vote, live split shown | feats, grids, photos; votes per matchup | research/versus/*.json (Marvel Fandom wiki issue pages, MCU Wiki film pages); votes in D1 | Cloudflare Worker + D1 + Turnstile | todo (builds on /versus/) |
+| 2 | Power radar in the arena, labelled comics stats | official power grids | Marvel.com Marvel Universe wiki via Wayback (research/versus) | none (static) | radar built on /versus/; arena overlay todo |
+| 3 | Most-wanted fights leaderboard, updating as people vote | vote totals per matchup | D1 aggregate | Worker + D1 | todo |
+| 4 | Catch-up planner: tick characters, get the smallest watch list (first and latest appearance with the Doomsday actor per character, shared titles once, series by episode), total hours and hours per day to 18 December | screen lists, runtimes, episode lists | research/<slug>.json screen; runtimes and episodes from each title's MCU Wiki / Marvel Fandom wiki page (to research, cited) | none (client) | todo, date-tied: live well before 18 Dec |
+| 5 | Prediction board: about 10 multiple-choice questions (drafted by Claude from confirmed facts only, approved by the user), sealing at the first midnight of 18 December anywhere (10:00 UTC, 17 December; moved earlier if Marvel confirms earlier openings), results settled by Claude from the MCU Wiki film page with citations and published only after the user says yes, shown behind the spoiler shield | questions, picks, outcomes | user-approved question file; picks in D1; outcomes cited | Worker + D1 + Turnstile | todo, date-tied |
+| 6 | Which Doomsday hero are you quiz: 10 questions drafted by Claude, all 29 characters as results, user approves the draft; shareable result card | trait scores per character | traits drawn from the dossiers (opinion questions need no source; results link the sourced dossier) | none (client) | todo |
+| 7 | Squad builder: pick five to face Doom, see coverage (power types, best Handbook stat per axis, origins) and gaps; download a squad card | grids, powerType, origins | research/versus | none (client) | todo |
+| 8 | Power-type filter (tech, mystic, mutant, cosmic, serums and experiments, no powers) rearranging the home roster | powerType per character | research/versus (Shuri retyped mystic to match M'Baku; Joaquin, Walker serum = closest fit, explained in powerOrigins) | none | todo (data ready) |
+| 9 | Power origin web: characters linked by how they got their powers; click a link to light up everyone who shares it | powerOrigins keys | research/versus | none | todo (data ready) |
+| 10 | Six degrees of Doomsday: shortest chain of shared titles between two characters, through the 29 Doomsday characters only; pairs that cannot connect say so | screen lists | research/<slug>.json screen (sourced) | none (client BFS) | todo |
+| 11 | Doombot trivia: questions generated from the site's sourced facts, answer shows the source; right answers shatter a Doombot; 10 in a row unlocks the hidden Latverian archive (Doom scene, deep-cut sourced Doom facts, downloadable "Latverian clearance" card) | facts with sources | research files | none (client; streak in localStorage) | todo |
+| 12 | Spoiler shield: after release every new fact sits under its own redaction bar, tap to reveal; a "Show all spoilers" switch remembered on this device only; shielded by default, no end date | post-release facts | MCU Wiki film page, Marvel | none | todo, ready on release day |
+
+**Backend decisions.** Cloudflare Workers + D1 on the free tier (100k requests a day, 5 GB, never
+sleeps). The user creates the free Cloudflare account; Claude writes and deploys the worker. Vote
+spam: Turnstile (free, invisible) on every write, plus one vote per matchup per visitor per day,
+deduplicated with a salted hash of IP and user agent whose salt rotates daily; no raw IPs, accounts,
+names or tracking cookies are stored. Predictions use the same protection; one set of picks per
+visitor (the daily hash plus a random id kept in the browser).
+
+**Shareable cards.** "Dossier file" style for every card: void black, character photos, each
+character's display face, mono labels, doom-green accent, "Unofficial fan site" marker, the generic
+image credit and the site URL; drawn client-side to PNG (1080x1350 and 1200x630).
 
 ## Stack and why
 
@@ -179,7 +214,9 @@ node scripts/shots.mjs http://localhost:4322 screenshots/wave-N   # contact shee
 node scripts/overflow.mjs http://localhost:4322                   # phone-width overflow check
 node scripts/fps.mjs http://localhost:4322 4                      # hero frame rates, CPU throttled 4x
 node scripts/behaviour.mjs http://localhost:4322                  # reduced motion + navigation chain
-node scripts/clip-audit.mjs http://localhost:4322 ["c/shuri,teams"] [desktop,laptop,phone]   # clipped or cut-off text
+node scripts/clip-audit.mjs http://localhost:4322 ["c/shuri,teams"] [desktop,laptop,phone]   # clipped or cut-off text, broken words
+node scripts/interaction-fps.mjs http://localhost:4322 4               # frame rates during wave 7 interactions
+node scripts/power-grid.mjs "Thor_(Thor_Odinson)"                      # official grid from the archived Marvel Universe wiki
 ```
 
 QA is run against the production preview, not the dev server; the dev server stalls under automated browsing.
@@ -258,6 +295,13 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - **Photos.** `scripts/photos-build.mjs` writes 400 px and native-width WebP (plus 800/1280/1920 for the 4K files), a halftone PNG (white dots, 4-colour palette, about 15 KB) and a 16 px placeholder per photo, about 11.7 MB in all; each page loads only its own. `src/components/Photo.astro` renders srcset, real width and height, lazy loading (eager plus fetchpriority high for the hero) and the crop centre. Two crop centres: `focus` for the wide desktop hero panel, `focusM` for every portrait-shaped frame. Landscape photos (wider than 1.2:1) get the `wide` hero panel (78vw) and a `sizes` hint that accounts for cover cropping, or the browser picks too small a file.
 - **Astro scoped CSS does not reach into child components.** Style the Photo component's `<img>` from a page with `:global(.photo)` under a scoped parent; a plain `.photo` selector silently does nothing (the hero photos stretched to natural height until this was fixed).
 - `clip-audit.mjs` also flags words broken across lines in headings and names (it caught nothing new, but a forced fault proved it catches 7 broken team names).
+- **Wave 7 performance lessons.** Measure interactions, not just heroes: `scripts/interaction-fps.mjs` (team filter, team chain drag, timeline fling, versus switching, flythrough scroll, CPU 4x). Never put `filter`, large blurred `box-shadow`, SVG blur filters or `mix-blend-mode` on elements that move or scale: each repaints every frame (team filter photos, radar glow, timeline glow and the flythrough shadows all cost 10 to 20 fps until replaced by overlays, wide translucent strokes and plain borders). Cache measurements that only change on filter or resize (timeline frame centres).
+- **Never use ScrollTrigger `snap` with Lenis.** It froze the page for 1.1 to 1.3 s when scrolling stopped. Snap by gliding through Lenis instead (`src/scripts/motion/scroller.ts`: `glideTo`). Lenis is exposed as `window.__ddLenis` on localhost only, so QA scripts scroll the way visitors do; `window.scrollTo` alone gets undone by Lenis.
+- **Astro `<template>` elements break the compiler** when they contain JSX expressions ("Expected ) but found }"). Use a hidden `<div>` instead.
+- In a 3D context (`preserve-3d` or perspective with 3D transforms) `z-index` does nothing between siblings; two rules with equal specificity also resolve by order (`.pk-team` beat `.pk-lead`). Set stacking inline when it matters.
+- Flip with `absolute: true` takes cards out of the layout: hold the grid's height while they fly, pin rows with `align-content: start` (or rows stretch), and set `overflow-anchor: none` so the browser does not use a flying card as its scroll anchor. Known cost: a team filter click is one ~55 ms frame (unthrottled) while Flip measures the grid; the flight itself is smooth.
+- **Power grids.** Source is Marvel.com's old Marvel Universe wiki through the Wayback Machine (the Marvel Fandom wiki no longer carries grids). `scripts/power-grid.mjs` reads bar widths (21 px per point). An all-1 grid is Marvel's blank placeholder: reported as not rated. That wiki was partly fan-edited, so some grids differ from the printed Handbooks (Nightcrawler 5/4/7/5/7/7): the site labels them "as published on Marvel.com's Marvel Universe wiki" and links the archived page. Not rated: Joaquin Torres, Red Guardian, Ghost, Shuri, M'Baku, Peggy Carter.
+- **Character fonts on multi-character pages** load from `src/styles/faces.ts`; the home roster section uses `content-visibility: auto` so its faces download only as the roster nears the screen.
 - `src/scripts/app.ts` runs DOM motion first, then lazy-loads Three.js (`gl/engine`) and the page's scene chunk. Critical JS is about 60 KB gzipped; Three.js is about 130 KB and loads in parallel.
 - One persistent WebGL canvas (`#gl`) for heroes, and a second tiny canvas (`#wipe`) used only for page transitions. Both survive navigation via `transition:persist`.
 - Scenes communicate to the DOM through `ctx.signal` (the storm uses it to flash Thor's name).
@@ -275,6 +319,7 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 
 ## Session log
 
+- 2026-10-26: Wave 7 built and checked: team picker with Magnetic Team Chain (home now also lists Kathryn Newton and Mabel Cadena, and loads the character fonts it was missing), /timeline/ with the Film-Burn Scrubber, /versus/ with official power grids for 23 of 29 characters (6 not rated), radar, feats and connections, Panel Flythrough on character pages. Research: six parallel agents wrote research/versus/*.json. Performance pass on interactions; Lenis-based snap. Third interview done: twelve fan features ranked in the backlog above, Cloudflare Workers + D1 + Turnstile chosen, Dossier-file share cards, Claude drafts quiz and predictions for approval.
 - 2026-10-25: Photos from the user's own set (87 files, three per character) replace the marvel.com picks. User chose a generic credit after being told many look fan-made or AI-made, and declined upscaling (2.5 hours). Built: photo hero (wide panel for landscape photos), In frame gallery with developing prints, tilt and Halftone Lens, photo cards on home and team pages, next-dossier photo, /credits/ page, footer link, about-page rule rewritten. Team names on phones were breaking mid-word after the photo column was added: now sized by longest word, and the audit checks for broken words.
 - 2026-10-25: Fix pass before photos (user report): names all caps (Shang-Chi, Scott Lang, Mystique, Beast, Thor were mixed case), act and timeline headings sized by longest word, comics cards no longer cut (rail pins only when cards fit, else stacks), opened source lists no longer clipped in the pinned act, Shuri's pin table edge to edge, header scrim on scroll, Shuri hero text legible on phones. New clip audit: 0 issues on all 38 pages at desktop, laptop and phone. 60 fps at 4x throttle, no phone overflow, reduced motion and navigation pass. Deployed. Still waiting on the user's photo swaps (their message listed none).
 - 2026-10-25: Wave 6 step 2: user approved all 62 files; downloaded into photo-originals/ (git-ignored; sizes all matched the list; SHA-256 in downloads.json). Viewed every image. Recommended one pick per character in research/photos/picks.json (with crops). Findings: Sam's listed first choice was a merchandise photo (rejected); the Days of Future Past banner has Patrick Stewart and Ian McKellen, giving Professor X and Magneto; X-Men (2000) gives Romijn's Mystique; X2 gives Cumming's Nightcrawler. No official photo of Marsden (Cyclops), Grammer (Beast) or Tatum (Gambit): those keep abstract heroes. Waiting on the user to confirm the picks.

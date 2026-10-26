@@ -1,0 +1,155 @@
+{
+  "slug": "joaquin-torres",
+  "powerGrid": {
+    "values": null,
+    "source": null,
+    "note": "Not rated: no archived marvel.com Marvel Universe wiki page exists for Joaquín Torres (CDX index searched for Falcon, Joaquin and Torres pages). His first comics appearance is Captain America: Sam Wilson #1 (2015)."
+  },
+  "powerOrigins": [
+    {
+      "key": "other",
+      "detail": "Karl Malus's experiments spliced him with Redwing, Sam Wilson's vampiric falcon, leaving him a bird-human hybrid whose change cannot revert.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "serum",
+  "abilities": [
+    {
+      "name": "Avian hybrid body",
+      "detail": "The experiments gave him feathered winged arms, enlarged eyes and bird-like talons on his hands and feet.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Flight",
+      "detail": "Flies by flapping his arms, which have been partly turned into wings.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Regenerative healing",
+      "detail": "Vampiric traits from Redwing give him a healing factor that has brought him back from fatal wounds and may even regrow body parts.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Psychic link",
+      "detail": "Shares Redwing's psychic bond, so he and Sam Wilson can pass thoughts to each other through the bird.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Sensing through Redwing that Sam Wilson had been thrown off a building, he flew to him and caught him in mid-air.",
+      "where": "Captain America: Sam Wilson Vol 1 #5 (March 2016)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America: Sam Wilson Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Came back from death after Cottonmouth bit his head, thanks to his healing factor, then took the Falcon name as Sam's partner.",
+      "where": "Captain America: Sam Wilson Vol 1 #6 (April 2016)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Captain America: Sam Wilson Vol 1 6",
+          "url": "https://marvel.fandom.com/wiki/Captain_America:_Sam_Wilson_Vol_1_6"
+        },
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Caught Patriot as the Skydream platform exploded, then helped disable its weapons so it could not attack the cities below.",
+      "where": "Sam Wilson, Captain America Vol 1 #5 (July 2025)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Sam Wilson, Captain America Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Sam_Wilson,_Captain_America_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Joaquín Torres (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Joaqu%C3%ADn_Torres_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "On his first mission as Falcon he chased three SERPENT mercenaries on motorbikes, shot out a tyre, took them down and recovered the stolen canister.",
+      "where": "Captain America: Brave New World (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Captain America: Brave New World",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+        },
+        {
+          "label": "MCU Wiki: Falcon (Joaquín Torres)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Falcon"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "At Camp Echo One he worked out that flashing lights had planted hidden commands set off by a song, then fought off mind-controlled soldiers with Sam.",
+      "where": "Captain America: Brave New World (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Captain America: Brave New World",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+        },
+        {
+          "label": "MCU Wiki: Falcon (Joaquín Torres)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Falcon"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Over Celestial Island he pulled a pilot from a disabled jet and destroyed a missile, but was caught in its blast and fell into the sea.",
+      "where": "Captain America: Brave New World (2025)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Captain America: Brave New World",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+        },
+        {
+          "label": "MCU Wiki: Falcon (Joaquín Torres)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Falcon"
+        }
+      ]
+    }
+  ]
+}

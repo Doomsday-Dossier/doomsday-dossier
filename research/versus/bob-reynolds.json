@@ -1,0 +1,29 @@
+{
+  "slug": "bob-reynolds",
+  "powerGrid": {
+    "values": { "intelligence": 5, "strength": 6, "speed": 5, "durability": 6, "energyProjection": 4, "fightingSkills": 3 },
+    "source": { "label": "Marvel.com Marvel Universe wiki: Sentry (Robert Reynolds) (archived 12 April 2016)", "url": "https://web.archive.org/web/20160412111252/http://marvel.com/universe/Sentry_(Robert_Reynolds)" },
+    "note": null
+  },
+  "powerOrigins": [
+    { "key": "serum", "detail": "Drank the Golden Sentry Serum, which shifted his molecules an instant ahead in time and gave him the power of a million exploding suns.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }, { "label": "Marvel Fandom wiki: Sentry Vol 1 1", "url": "https://marvel.fandom.com/wiki/Sentry_Vol_1_1" }] }
+  ],
+  "powerType": "cosmic",
+  "abilities": [
+    { "name": "Superhuman strength", "detail": "Lifts far beyond 100 tons; tore Carnage and Ares apart and has rivalled the Hulk, though his strength swings with his mental state.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] },
+    { "name": "Molecular manipulation", "detail": "Can reshape matter at the molecular level; rebuilt his own body and beat the Molecule Man with this power.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }, { "label": "Marvel Fandom wiki: Dark Avengers Vol 1 12", "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_12" }] },
+    { "name": "Regeneration and immortality", "detail": "Heals from almost anything, even being dispersed into molecules, and neither he nor the Void stays dead.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] },
+    { "name": "Nigh-invulnerability", "detail": "Shrugs off attacks that would destroy almost any other being.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] },
+    { "name": "Flight and speed", "detail": "Flies far past Mach 10 and has reached the Sun and back in moments; he can catch bullets.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] },
+    { "name": "Energy and light", "detail": "Fires energy blasts and generates and shapes light, from a blinding pulse to constructs that block attacks.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] },
+    { "name": "Teleportation", "detail": "Can teleport himself from place to place.", "sources": [{ "label": "Marvel Fandom wiki: Robert Reynolds (Earth-616)", "url": "https://marvel.fandom.com/wiki/Robert_Reynolds_(Earth-616)" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "During the siege of Asgard, shrugged off an axe wound from Ares, then tore the war god in half; the wound healed soon after.", "where": "Siege Vol 1 #2 (April 2010)", "sources": [{ "label": "Marvel Fandom wiki: Siege Vol 1 2", "url": "https://marvel.fandom.com/wiki/Siege_Vol_1_2" }] },
+    { "medium": "comics", "text": "Unleashed his full power on the Hulk across Manhattan, trading blows and pinning him down under a whirlwind of energy.", "where": "World War Hulk Vol 1 #5 (January 2008)", "sources": [{ "label": "Marvel Fandom wiki: World War Hulk Vol 1 5", "url": "https://marvel.fandom.com/wiki/World_War_Hulk_Vol_1_5" }] },
+    { "medium": "comics", "text": "Recovered within a minute from a ray-gun shot to the face, then plunged into the Sun and regenerated.", "where": "Dark Avengers Vol 1 #13 (March 2010)", "sources": [{ "label": "Marvel Fandom wiki: Dark Avengers Vol 1 13", "url": "https://marvel.fandom.com/wiki/Dark_Avengers_Vol_1_13" }] },
+    { "medium": "screen", "text": "Caught Bucky Barnes's metal-arm punch in one hand, tore the arm off and used it to swat him across the room.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: Sentry", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry" }] },
+    { "medium": "screen", "text": "With one sweep of his arms, sent a shockwave that threw Yelena, Walker and Ghost across the room.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: Sentry", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry" }] },
+    { "medium": "screen", "text": "As the Void, spread a darkness across Manhattan that pulled New Yorkers into a realm of their worst memories.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: Sentry", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Sentry" }] }
+  ]
+}

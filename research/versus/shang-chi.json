@@ -1,0 +1,215 @@
+{
+  "slug": "shang-chi",
+  "powerGrid": {
+    "values": {
+      "intelligence": 4,
+      "strength": 3,
+      "speed": 4,
+      "durability": 4,
+      "energyProjection": 3,
+      "fightingSkills": 7
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Shang-Chi (archived 27 June 2018)",
+      "url": "https://web.archive.org/web/20180627162135/http://marvel.com:80/universe/Shang-Chi"
+    },
+    "note": "Fighting skills bar is 146 px on the 21 px-per-point scale, read as 7."
+  },
+  "powerOrigins": [
+    {
+      "key": "training",
+      "detail": "Raised and trained from childhood by his father to be an assassin; his main edge is unmatched martial arts skill.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "mystic",
+      "detail": "Can focus his mystical chi to push his strength, durability, healing and reflexes past human limits.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "other",
+      "detail": "Now wields the Ten Rings, which grant superhuman power; a healing factor comes from his immortal father's herbal remedy.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "none",
+  "abilities": [
+    {
+      "name": "Master martial artist",
+      "detail": "Widely called the world's greatest martial artist, expert in every martial art on Earth, including kung fu and the Dragon, Leopard and Crane styles.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Pressure-point strikes",
+      "detail": "Knows exactly where to strike to knock out or immobilise a foe, even pressure points shared by animals.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Chi augmentation",
+      "detail": "Channels his chi to break brick, concrete and iron, endure heavy impacts, heal burns and poison quickly and dodge point-blank gunfire.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Peak human condition",
+      "detail": "Trained to the top of human strength, speed and stamina: he has kept pace with a subway train and survived a bear hug from the Thing.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Weapons master",
+      "detail": "Highly skilled with swords, staves and nunchaku, improvises with pipes or tree trunks, and throws shuriken with pinpoint accuracy.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Nervous system control",
+      "detail": "Can deaden pain, resist drugs and poisons, slow the spread of toxins and reduce his own bleeding.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "The Ten Rings",
+      "detail": "Wearing the Ten Rings gives him superhuman strength, speed and durability, plus flight, energy blasts, force fields, portals and teleportation.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Grown to giant size with Pym Particles, he tore the Gorgon's headquarters off Madripoor, threw it miles away and beat a dragon in combat.",
+      "where": "Avengers World Vol 1 #14 (December 2014)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers World Vol 1 14",
+          "url": "https://marvel.fandom.com/wiki/Avengers_World_Vol_1_14"
+        },
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Disabled the Thing's arm with a single pressure-point strike.",
+      "where": "Shang-Chi Vol 2 #4 (November 2021)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shang-Chi Vol 2 4",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_2_4"
+        },
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Lured Iron Man into the House of the Deadly Hand's arsenal and fought his armour with adamantium-plated weapons, taking one of his gauntlets.",
+      "where": "Shang-Chi Vol 2 #5 (December 2021)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Shang-Chi Vol 2 5",
+          "url": "https://marvel.fandom.com/wiki/Shang-Chi_Vol_2_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Zheng Shang-Chi (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Zheng_Shang-Chi_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "On a runaway San Francisco bus he fought off Ten Rings agents and Razor Fist, threw attackers off and got the passengers out safely.",
+      "where": "Shang-Chi and the Legend of the Ten Rings (2021)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Shang-Chi and the Legend of the Ten Rings",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+        },
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Fought Ten Rings agents on scaffolding high above Macau, then came close to beating the assassin Death Dealer before his father intervened.",
+      "where": "Shang-Chi and the Legend of the Ten Rings (2021)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Shang-Chi and the Legend of the Ten Rings",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+        },
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Given the Ten Rings by his dying father, he used them with Xialing and the Great Protector to destroy the Dweller-in-Darkness.",
+      "where": "Shang-Chi and the Legend of the Ten Rings (2021)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Shang-Chi and the Legend of the Ten Rings",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+        },
+        {
+          "label": "MCU Wiki: Shang-Chi",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi"
+        }
+      ]
+    }
+  ]
+}

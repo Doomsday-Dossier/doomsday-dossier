@@ -1,0 +1,28 @@
+{
+  "slug": "red-guardian",
+  "powerGrid": {
+    "values": null,
+    "source": { "label": "Marvel.com Marvel Universe wiki: Red Guardian (Alexei Shostakov) (archived 15 June 2018)", "url": "https://web.archive.org/web/20180615110949/http://marvel.com/universe/Red_Guardian_(Alexei_Shostakov)" },
+    "note": "Every archived copy of Marvel's page (2012 to 2018) shows only the blank default grid, all six bars at minimum width, so Marvel never recorded a rating. Not estimated."
+  },
+  "powerOrigins": [
+    { "key": "training", "detail": "No superpowers in the comics: a celebrated Soviet test pilot whom the KGB trained in combat and spycraft to be its answer to Captain America.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }, { "label": "Marvel Fandom wiki: Avengers Vol 1 43", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_43" }] },
+    { "key": "tech", "detail": "Fights with gear rather than powers: a returning magnetic belt disc and, in recent years, the Red Guardian shield.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }] }
+  ],
+  "powerType": "none",
+  "abilities": [
+    { "name": "Martial arts", "detail": "A superb, agile athlete schooled by the KGB in many forms of unarmed combat and martial arts.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }] },
+    { "name": "Ace pilot", "detail": "One of the Soviet Union's most acclaimed test pilots, trusted with its most secret and dangerous flights and rated the best in his field.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }] },
+    { "name": "Espionage", "detail": "Trained by the KGB as a covert operative after the state erased his old identity.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }] },
+    { "name": "Magnetic throwing disc", "detail": "Hurls a disc from his belt; magnets inside the disc and belt pull it back to him.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }] },
+    { "name": "Red Guardian shield", "detail": "Wielded the Red Guardian shield when he joined Bucky Barnes's Thunderbolts on their raid against the Red Skull.", "sources": [{ "label": "Marvel Fandom wiki: Alexei Shostakov (Earth-616)", "url": "https://marvel.fandom.com/wiki/Alexei_Shostakov_(Earth-616)" }, { "label": "Marvel Fandom wiki: Thunderbolts Vol 6 1", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_1" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "At a secret base in China, fought Captain America hand to hand, eager to prove the Soviet champion his better.", "where": "Avengers Vol 1 #43 (August 1967)", "sources": [{ "label": "Marvel Fandom wiki: Avengers Vol 1 43", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_43" }] },
+    { "medium": "comics", "text": "Already shot and dying, used his last strength to knock Colonel Ling's laser aside and save an unconscious Captain America.", "where": "Avengers Vol 1 #44 (September 1967)", "sources": [{ "label": "Marvel Fandom wiki: Avengers Vol 1 44", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_1_44" }] },
+    { "medium": "comics", "text": "Took out the defences of the Red Skull's hidden base in Latveria on his own before he was knocked out.", "where": "Thunderbolts Vol 6 #4 (May 2024)", "sources": [{ "label": "Marvel Fandom wiki: Thunderbolts Vol 6 4", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_6_4" }] },
+    { "medium": "screen", "text": "Won arm-wrestling bouts in a Russian prison, breaking the wrist of the hulking inmate Ursa Major.", "where": "Black Widow (2021)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Widow (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow_(film)" }, { "label": "Marvel Cinematic Universe Wiki: Red Guardian", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian" }] },
+    { "medium": "screen", "text": "Charged Taskmaster in the Red Room and swatted the shield away so hard it stuck in the floor.", "where": "Black Widow (2021)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Black Widow (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow_(film)" }, { "label": "Marvel Cinematic Universe Wiki: Red Guardian", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian" }] },
+    { "medium": "screen", "text": "During the Void's attack on Manhattan, took a huge falling chunk of debris on his back to shield a little girl.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: Red Guardian", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Red_Guardian" }] }
+  ]
+}

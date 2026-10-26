@@ -80,6 +80,9 @@ html.scrolled .hdr-scrim { opacity: 1; }
 .brand { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
 .brand b { width: 8px; height: 8px; border-radius: 50%; background: #fff; display: inline-block; }
 .hdr-right { display: flex; align-items: center; gap: 18px; }
+.hdr-nav { display: flex; gap: 18px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; }
+.hdr-nav a { padding: 12px 0; }
+@media (max-width: 760px) { .hdr-nav { display: none; } }
 .unofficial { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid currentColor; padding: 4px 8px; border-radius: 99px; white-space: nowrap; }
 .menu-btn { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; min-height: 44px; }
 .menu-btn i { display: grid; gap: 5px; }

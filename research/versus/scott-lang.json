@@ -1,0 +1,219 @@
+{
+  "slug": "scott-lang",
+  "powerGrid": {
+    "values": {
+      "intelligence": 4,
+      "strength": 2,
+      "speed": 2,
+      "durability": 2,
+      "energyProjection": 4,
+      "fightingSkills": 2
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Ant-Man (Scott Lang) (archived 8 July 2018)",
+      "url": "https://web.archive.org/web/20180708065202/http://marvel.com/universe/Ant-Man_(Scott_Lang)"
+    },
+    "note": null
+  },
+  "powerOrigins": [
+    {
+      "key": "pym-particles",
+      "detail": "Pym Particles carried in his belt let him shrink or grow, the power at the heart of the Ant-Man suit he stole from Hank Pym.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "Hank Pym's cybernetic helmet commands insects, and wrist gauntlets fire bio-electric blasts.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "An electrical engineer with a master's degree and a skilled thief before he ever wore the suit.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "powerType": "tech",
+  "abilities": [
+    {
+      "name": "Size alteration",
+      "detail": "Pym Particles let him shrink to about half an inch tall or grow to giant size, and can resize other objects too.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Full-size punch when tiny",
+      "detail": "Shrunk, he keeps his normal mass, so a blow from a half-inch Ant-Man lands like a punch from a full-sized man.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Giant-size strength",
+      "detail": "At large sizes he can lift more than 50 tons and shrug off Doctor Doom's energy blasts.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Pym Particle toughness",
+      "detail": "He learned to tap the strength and durability axes of Pym Particles without changing size, once surviving a point-blank nuclear blast unharmed.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Insect command",
+      "detail": "His cybernetic helmet lets him talk to and direct insects up to about a mile away, sending hundreds of ants against a single foe.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Gauntlet blasts",
+      "detail": "Wrist gauntlets fire bio-electric blasts whose force he can adjust.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Engineer and thief",
+      "detail": "Holds a master's in electrical engineering and could get past and hack advanced security systems even before he had the suit.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Stole the Ant-Man suit to save his sick daughter, broke into Cross Technological Enterprises, freed the surgeon held there and beat Darren Cross.",
+      "where": "Marvel Premiere Vol 1 #47-48 (April-June 1979)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Marvel Premiere Vol 1 47",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_47"
+        },
+        {
+          "label": "Marvel Fandom wiki: Marvel Premiere Vol 1 48",
+          "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Doctor Doom's gauntlet blasts had no effect on him; he crushed the gauntlets and tore Doom's armour apart with his bare hands.",
+      "where": "FF Vol 2 #16 (March 2014)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: FF Vol 2 16",
+          "url": "https://marvel.fandom.com/wiki/FF_Vol_2_16"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Shrank to microscopic size and, guided by Dr. Sondheim, fought his daughter Cassie's white blood cells so her body would accept a new heart.",
+      "where": "Ant-Man Vol 1 #5 (July 2015)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ant-Man Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Scott Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Scott_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Switched off his suit's regulator and shrank small enough to pass through the titanium of Darren Cross's Yellowjacket suit, disabling it from inside.",
+      "where": "Ant-Man (2015)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Ant-Man (film)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man (Scott Lang)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Grew into Giant-Man mid-battle at Leipzig-Halle Airport, a size he had tested only once, throwing War Machine and ripping the wing off a plane.",
+      "where": "Captain America: Civil War (2016)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Captain America: Civil War",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man (Scott Lang)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "As Giant-Man in the Battle of Earth he punched a Leviathan out of the sky and crushed Cull Obsidian underfoot.",
+      "where": "Avengers: Endgame (2019)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Avengers: Endgame",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man (Scott Lang)",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"
+        }
+      ]
+    }
+  ]
+}

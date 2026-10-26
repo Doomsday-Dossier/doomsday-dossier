@@ -397,13 +397,14 @@ const desc = `${heroName(slug)}: origin, comics history and screen history ahead
   .tl-sum { color: var(--c-ink); margin: 0 0 14px; font-size: 15px; line-height: 1.55; }
   .tl-keys { font-size: 13px; color: var(--c-dim); margin: 0; }
   .tl-head .act-title { font-size: min(calc(clamp(40px, 5vw, 84px) * var(--hero-scale, 1)), calc((100vw - 2 * var(--gutter)) / 8)); }
-  /* sideways rail: only when JS has confirmed every card fits the screen height */
+  /* Panel Flythrough: only when JS has confirmed the front panel fits the screen height */
   @media (min-width: 900px) {
-    .act-comics.tl-row { min-height: 100svh; }
-    .act-comics.tl-row .tl-track { display: flex; width: max-content; gap: 48px; padding-left: var(--gutter); padding-right: 20vw; }
-    .act-comics.tl-row .tl-card { width: min(38vw, 520px); flex: 0 0 auto; }
-    .act-comics:not(.tl-row) .tl-track { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); column-gap: 48px; }
-    .act-comics:not(.tl-row) .tl-progress { display: none; }
+    .act-comics.tl-fly { min-height: 100svh; }
+    .act-comics.tl-fly .tl-track { display: block; position: relative; perspective: 1100px; perspective-origin: 50% 35%; transform-style: preserve-3d; padding: 0; }
+    .act-comics.tl-fly .tl-card { position: absolute; left: 50%; top: 0; width: min(46vw, 600px); margin-left: calc(min(46vw, 600px) / -2); padding: 26px 30px 24px; border: 1px solid color-mix(in srgb, var(--c-accent) 45%, transparent); border-radius: 4px;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--c-bg) 88%, var(--c-accent)), color-mix(in srgb, var(--c-bg) 96%, black)); }
+    .act-comics:not(.tl-fly) .tl-track { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); column-gap: 48px; }
+    .act-comics:not(.tl-fly) .tl-progress { display: none; }
   }
   @media (max-width: 899px) {
     .tl-track { padding-left: calc(var(--gutter) + 18px); }

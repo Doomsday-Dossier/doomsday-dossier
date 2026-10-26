@@ -1,0 +1,31 @@
+{
+  "slug": "john-walker",
+  "powerGrid": {
+    "values": { "intelligence": 3, "strength": 5, "speed": 5, "durability": 5, "energyProjection": 4, "fightingSkills": 6 },
+    "source": { "label": "Marvel.com Marvel Universe wiki: USAgent (archived 30 January 2018)", "url": "https://web.archive.org/web/20180130230322/http://marvel.com:80/universe/USAgent" },
+    "note": null
+  },
+  "powerOrigins": [
+    { "key": "other", "detail": "An Army veteran who paid for the Power Broker's augmentation process, which raised his strength and body to superhuman levels; later boosted while recovering from Protocide's beating.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "key": "training", "detail": "Studied and copied Captain America's fighting style and was trained by Taskmaster in combat, gymnastics and acrobatics.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "key": "tech", "detail": "Fights with a run of shields, from a vibranium disc and star shield to an energy shield, plus a bulletproof costume.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] }
+  ],
+  "powerType": "serum",
+  "abilities": [
+    { "name": "Superhuman strength", "detail": "Can lift over 11 tons and jump more than 20 feet.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "name": "Superhuman durability", "detail": "Tougher than normal tissue lets him shrug off blows that would badly hurt a person; he has taken hits from Sasquatch and a bomb blast.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }, { "label": "Marvel Fandom wiki: Alpha Flight Vol 1 104", "url": "https://marvel.fandom.com/wiki/Alpha_Flight_Vol_1_104" }] },
+    { "name": "Superhuman stamina", "detail": "His muscles make far fewer fatigue toxins, so he can fight at full effort for hours.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "name": "Speed, agility and reflexes", "detail": "His speed, coordination and reaction time are all pushed slightly past human limits.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "name": "Expert fighter", "detail": "A superb soldier and tactician who modelled his style on Captain America and trained under Taskmaster.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "name": "Shield fighting", "detail": "Has used many shields over the years, including Captain America's own, a vibranium star shield, an eagle shield and a photon shield.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] },
+    { "name": "Pilot and linguist", "detail": "Flies aircraft and speaks Arabic and Spanish as well as English.", "sources": [{ "label": "Marvel Fandom wiki: Jonathan Walker (Earth-616)", "url": "https://marvel.fandom.com/wiki/Jonathan_Walker_(Earth-616)" }] }
+  ],
+  "feats": [
+    { "medium": "comics", "text": "As Super-Patriot, traded blows with Captain America for nearly an hour; neither man could truly beat the other.", "where": "Captain America Vol 1 #327 (March 1987)", "sources": [{ "label": "Marvel Fandom wiki: Captain America Vol 1 327", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_327" }] },
+    { "medium": "comics", "text": "Kept fighting after a pipe strike and a hit from a torchsword, beating Left-Winger and Right-Winger together.", "where": "Captain America Vol 1 #347 (November 1988)", "sources": [{ "label": "Marvel Fandom wiki: Captain America Vol 1 347", "url": "https://marvel.fandom.com/wiki/Captain_America_Vol_1_347" }] },
+    { "medium": "comics", "text": "As warden of the Raft, missing a leg and with a hook for a hand, swiftly put down inmates who tried to escape.", "where": "Thunderbolts Vol 2 #147 (October 2010)", "sources": [{ "label": "Marvel Fandom wiki: Thunderbolts Vol 2 147", "url": "https://marvel.fandom.com/wiki/Thunderbolts_Vol_2_147" }] },
+    { "medium": "screen", "text": "Fought Sam Wilson and Bucky Barnes at once, tearing off Sam's Falcon wings with little effort.", "where": "The Falcon and The Winter Soldier, episode 5 \"Truth\" (2021)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Truth", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Truth" }, { "label": "Marvel Cinematic Universe Wiki: U.S. Agent", "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent" }] },
+    { "medium": "screen", "text": "Held back a truck full of civilians with his bare hands while striking a Flag Smasher.", "where": "The Falcon and The Winter Soldier, episode 6 \"One World, One People\" (2021)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: One World, One People", "url": "https://marvelcinematicuniverse.fandom.com/wiki/One_World,_One_People" }, { "label": "Marvel Cinematic Universe Wiki: U.S. Agent", "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent" }] },
+    { "medium": "screen", "text": "Held up a giant slab of concrete wall to keep it off a civilian until his teammates helped flip it.", "where": "Thunderbolts* (2025)", "sources": [{ "label": "Marvel Cinematic Universe Wiki: Thunderbolts*", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*" }, { "label": "Marvel Cinematic Universe Wiki: U.S. Agent", "url": "https://marvelcinematicuniverse.fandom.com/wiki/U.S._Agent" }] }
+  ]
+}
