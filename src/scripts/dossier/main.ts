@@ -7,6 +7,7 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { reducedMotion, isPhone } from './tokens';
+import { setScroller } from '../motion/scroller';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,7 @@ if (!reduced) {
   gsap.ticker.add((t) => lenis!.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   if (/^(localhost|127\.)/.test(location.hostname)) (window as any).__ddLenis = lenis;
+  setScroller(lenis); // the v1 modules (arena, timeline, planner) glide through Lenis too
 }
 const onScroll = () => document.documentElement.classList.toggle('scrolled', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
@@ -42,6 +44,12 @@ async function boot() {
   const page = document.body.dataset.page;
   if (page === 'archive') (await import('./archive')).archive(env);
   if (page === 'file') (await import('./file')).filePage(env);
+  if (page === 'team') (await import('./team')).teamPage(env);
+  if (page === 'arena') (await import('./arenapage')).arenaPage(env);
+  if (page === 'timeline') (await import('./timeline')).timelinePage(env);
+  if (page === 'predictions') (await import('./predictpage')).predictPage(env);
+  if (page === 'quiz') (await import('./quizpage')).quizPageV2(env);
+  if (page === 'catchup' || page === 'about' || page === 'credits') (await import('./editorial')).editorialPage(env, page);
   requestAnimationFrame(() => ScrollTrigger.refresh());
   document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
 }

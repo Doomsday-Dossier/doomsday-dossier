@@ -1,0 +1,32 @@
+---
+// Editorial band (Oyla): three prints side by side that grow toward the reader as the band passes.
+import { heroName, u } from '../data/site';
+import { photos2For, pick2, srcset2, accentOf } from '../data/v2';
+interface Props { slugs: string[]; caption?: string }
+const { slugs, caption } = Astro.props;
+const prints = slugs.map((slug) => ({ slug, p: photos2For(slug)[0], name: heroName(slug).toUpperCase(), accent: accentOf(slug) })).filter((x) => x.p);
+---
+<section class="oyla wrap" data-oyla aria-label="Exhibits">
+  <div class="oy-row">
+    {prints.map((x, i) => (
+      <figure class={`oy oy${i + 1}`} data-oy style={`--a:${x.accent}`}>
+        <a class="oy-frame" href={u(`/preview/c/${x.slug}/`)} tabindex="-1" aria-hidden="true"><img src={pick2(x.p.full, 1280)} srcset={srcset2(x.p.full)} sizes="(min-width: 900px) 30vw, 80vw" width={x.p.w} height={x.p.h} alt="" loading="lazy" decoding="async" style={`object-position:${x.p.focusM}`} /></a>
+        <figcaption class="t-micro"><span class="t-accent">{x.name}</span></figcaption>
+      </figure>
+    ))}
+  </div>
+  {caption && <p class="t-micro t-ash oy-cap">{caption}</p>}
+</section>
+
+<style>
+  .oyla { position: relative; z-index: 2; padding: var(--s-7) 0; }
+  .oy-row { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: var(--s-5); align-items: end; }
+  .oy { margin: 0; }
+  .oy2 { margin-bottom: var(--s-8); }
+  .oy-frame { display: block; overflow: hidden; aspect-ratio: 3 / 4; border: 1px solid var(--iron); background: var(--gunmetal-2); }
+  .oy2 .oy-frame { aspect-ratio: 4 / 5; }
+  .oy-frame img { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+  .oy figcaption { padding-top: 8px; }
+  .oy-cap { margin: var(--s-4) 0 0; }
+  @media (max-width: 700px) { .oy-row { grid-template-columns: 1fr 1fr; } .oy2 { grid-column: 1 / -1; grid-row: 1; margin-bottom: 0; } }
+</style>

@@ -81,6 +81,8 @@ export function predictionBoard(root: ParentNode, o: Opts): () => void {
     delete status.dataset.keep;
     if (!o.reduced) gsap.fromTo(b, { scale: 0.94 }, { scale: 1, duration: 0.45, ease: 'back.out(3)' });
     paint();
+    // the v2 particle tree grows a branch for every answered question
+    document.dispatchEvent(new CustomEvent('dd:picks', { detail: { picks: { ...state.picks }, q } }));
   }));
 
   on(lock, 'click', async () => {
@@ -94,6 +96,7 @@ export function predictionBoard(root: ParentNode, o: Opts): () => void {
       if (!r.ok) throw new Error(j.error || String(r.status));
       state = { ...state, pid: j.pid, locked: true }; save(state);
       status.textContent = 'Locked in. Here is how fans are calling it so far.';
+      document.dispatchEvent(new CustomEvent('dd:locked'));
       showSplit(j);
       if (!o.reduced) gsap.timeline().set(stamp, { opacity: 0, scale: 3, rotate: -12, xPercent: -50, yPercent: -50 })
         .to(stamp, { opacity: 1, scale: 1, duration: 0.35, ease: 'power4.in' })
@@ -112,6 +115,7 @@ export function predictionBoard(root: ParentNode, o: Opts): () => void {
   });
 
   paint();
+  document.dispatchEvent(new CustomEvent('dd:picks', { detail: { picks: { ...state.picks }, q: null } }));
   if (enabled && (state.locked || sealed())) fetchSplit();
   return () => { offs.forEach((f) => f()); dropWidget(tsBox); };
 }

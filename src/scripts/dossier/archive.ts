@@ -60,6 +60,7 @@ class ArchiveScene implements HeroScene {
   bgMat!: THREE.ShaderMaterial;
   figure = new Figure();
   figureReady = false;
+  fig: Record<string, unknown> = {};
   files: { mesh: THREE.Mesh; info: FileInfo; base: THREE.Vector3; rot: number; seed: number }[] = [];
   dust!: THREE.Points;
   dustMat!: THREE.ShaderMaterial;
@@ -100,7 +101,7 @@ class ArchiveScene implements HeroScene {
   }
 
   async loadFigure(ctx: Ctx, src: string) {
-    await this.figure.build({ src, cols: ctx.mobile ? 140 : 230, ...FIGURES['victor-von-doom'] });
+    await this.figure.build({ src, cols: ctx.mobile ? 140 : 230, ...FIGURES['victor-von-doom'], ...this.fig });
     this.figure.mat.uniforms.uSize.value = ctx.mobile ? 2.6 : 2.1;
     this.scene.add(this.figure.points);
     this.figureReady = true;
@@ -280,7 +281,9 @@ export async function archive(env: Env) {
     await env.engine.mount(sc);
     env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
   }
-  const photo = root.dataset.figure!;
+  const figData = JSON.parse(root.dataset.fig || 'null');
+  if (sc && figData) sc.fig = figData;
+  const photo = figData?.src || root.dataset.figure!;
   const figureLoad = sc && env.engine ? sc.loadFigure(env.engine.ctx, photo) : Promise.resolve();
 
   const seen = (() => { try { return localStorage.getItem(INTRO_KEY) === '1'; } catch { return false; } })();

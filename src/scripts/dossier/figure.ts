@@ -14,6 +14,7 @@ export type FigureOpts = {
   depth: number;        // how far brightness pushes points toward the camera
   focus: [number, number]; // subject centre within the crop, 0..1 (x right, y down)
   crop?: [number, number, number, number]; // window of the photo to sample, 0..1: x0, y0, x1, y1
+  alphaCut?: boolean;   // the source is a cut-out: sample only the subject (alpha), no backdrop to thin out
   cut?: number;         // brightness under which pixels are skipped (the dark backdrop)
 };
 
@@ -33,7 +34,7 @@ export class Figure {
     const px = g.getImageData(0, 0, cols, rows).data;
     const cut = o.cut ?? 0.07;
     const lums: number[] = [];
-    for (let k = 0; k < px.length; k += 4) lums.push(0.2126 * px[k] / 255 + 0.7152 * px[k + 1] / 255 + 0.0722 * px[k + 2] / 255);
+    for (let k = 0; k < px.length; k += 4) if (!o.alphaCut || px[k + 3] > 128) lums.push(0.2126 * px[k] / 255 + 0.7152 * px[k + 1] / 255 + 0.0722 * px[k + 2] / 255);
     const sorted = lums.filter((l) => l >= cut).sort((a, b) => a - b);
     const hi = Math.max(cut + 0.05, sorted[Math.floor(sorted.length * 0.97)] ?? 1);
     const pos: number[] = [], start: number[] = [], col: number[] = [], seed: number[] = [], bright: number[] = [];
@@ -43,14 +44,14 @@ export class Figure {
       const k = (j * cols + i) * 4;
       const r = px[k] / 255, gg = px[k + 1] / 255, b = px[k + 2] / 255;
       const lum = 0.2126 * r + 0.7152 * gg + 0.0722 * b;
-      if (lum < cut) continue;
+      if (o.alphaCut ? px[k + 3] < 128 : lum < cut) continue;
       const u = i / (cols - 1), v = j / (rows - 1);
       const x = (u - fx) * W, y = -(v - fy) * H;
       // bust-like bulge around the subject plus brightness relief
       const d2 = ((u - fx) / 0.32) ** 2 + ((v - fy) / 0.42) ** 2;
       // thin out the backdrop (smoke, sky) away from the subject so the figure reads as a figure
       const keep = Math.min(1, Math.max(0, (1.75 - Math.sqrt(d2)) / 0.9));
-      if (Math.random() > keep) continue;
+      if (!o.alphaCut && Math.random() > keep) continue;
       const z = Math.exp(-d2) * o.depth * 0.9 + (lum - 0.25) * o.depth * 0.6;
       pos.push(x, y, z);
       // scattered start: a wide shell around the figure, deep in the dark

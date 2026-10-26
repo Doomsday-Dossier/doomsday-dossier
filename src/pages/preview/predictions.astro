@@ -1,0 +1,114 @@
+---
+import Dossier from '../../layouts/Dossier.astro';
+import pred from '../../../research/predictions.json';
+import { OFFICIAL, fmtDate } from '../../data/site';
+
+// the arena worker also keeps predictions; without it configured the board says it opens soon
+const api = import.meta.env.PUBLIC_ARENA_API ?? '';
+const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
+const data = JSON.stringify({ seal: pred.seal, questions: pred.questions, results: pred.results });
+---
+<Dossier title="Prediction board (design preview)" page="predictions" description="Lock in your Avengers: Doomsday predictions before they seal on 17 December 2026, then see how other fans are calling it. Fan predictions, not facts." >
+  <section class="pr" data-predict data-api={api} data-sitekey={sitekey}>
+    <div class="wrap pr-head">
+      <p class="label" data-hero-in>Prediction board &middot; fan predictions, not facts</p>
+      <h1 class="display pr-title" data-split="words" data-split-on="load">Call it.</h1>
+      <p class="pr-tree-note t-micro t-accent" data-hero-in>Each answer grows a branch of the tree &middot; locking in sends ripples through it</p>
+      <p class="pr-copy" data-hero-in>Ten questions about Avengers: Doomsday, written only from what Marvel has confirmed: no rumours, no leaks. Answer all ten and lock them in. You can change your picks until the board seals, then once the film is out we check every answer against the record and show who called it.</p>
+      <div class="pr-seal" data-hero-in>
+        <span class="label">Seals in</span>
+        <b data-seal-count>&nbsp;</b>
+        <span class="pr-seal-at" data-seal-at>at the first moment 18 December begins anywhere on Earth</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ol class="pr-list">
+        {pred.questions.map((q, i) => (
+          <li class="pr-q" data-q={q.id}>
+            <p class="pr-n">{String(i + 1).padStart(2, '0')}</p>
+            <div class="pr-body">
+              <h2 class="pr-text">{q.text}</h2>
+              {q.hint && <p class="pr-hint">{q.hint}</p>}
+              <div class="pr-opts" role="radiogroup" aria-label={q.text}>
+                {q.options.map((o) => (
+                  <button type="button" role="radio" aria-checked="false" data-opt={o.id}>
+                    <span class="pr-o-label">{o.label}</span>
+                    <span class="pr-o-bar" aria-hidden="true"><i></i></span>
+                    <span class="pr-o-pct"></span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div class="pr-dock" data-dock>
+        <p class="pr-progress"><b data-answered>0</b> of {pred.questions.length} answered</p>
+        <p class="pr-status" data-status role="status"></p>
+        <div class="pr-ts" data-ts></div>
+        <div class="pr-buttons">
+          <button type="button" class="pr-lock" data-lock disabled>Lock in my predictions</button>
+          <button type="button" class="pr-copy-btn" data-copy hidden>Copy my predictions</button>
+        </div>
+      </div>
+      <p class="pr-fine">Your picks are saved with a random code kept in this browser; nothing else about you is stored. Bots are kept out by Cloudflare Turnstile. The fan split appears once you lock in. Results are settled from the Marvel Cinematic Universe Wiki&rsquo;s page for the film after {fmtDate(OFFICIAL.film.releaseDate)}, and shown behind a spoiler warning.</p>
+      <div class="pr-stamp" data-stamp aria-hidden="true">Locked in</div>
+    </div>
+  </section>
+  <script type="application/json" id="pr-data" set:html={data} />
+</Dossier>
+
+<style>
+  @media (min-width: 900px) { .pr .wrap { margin-left: var(--margin); width: min(58vw, 860px); } }
+  .pr-title { font-weight: 900; }
+  .pr-text { font-family: var(--f-title) !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: -0.005em; }
+  .pr-dock { background: rgba(13, 16, 18, 0.94) !important; }
+  .pr-tree-note { margin: var(--s-4) 0 0; }
+  .pr { padding: calc(var(--header-h) + 60px) 0 90px; }
+  .pr-head { display: grid; gap: 16px; }
+  .pr-title { font-size: min(clamp(70px, 13vw, 210px), calc((100vw - 2 * var(--gutter)) / 3.6)); }
+  .pr-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
+  .pr-seal { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 8px; }
+  .pr-seal b { font-family: var(--font-mono); font-weight: 400; font-size: clamp(28px, 3.4vw, 46px); color: var(--doom); font-variant-numeric: tabular-nums; text-shadow: 0 0 24px rgba(61, 255, 138, 0.35); }
+  .pr-seal-at { font-size: 13px; color: var(--bone-dim); }
+
+  .pr-list { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 0; }
+  .pr-q { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 18px; padding: 28px 0; border-top: 1px solid var(--iron); }
+  .pr-n { font-family: var(--font-mono); font-size: 13px; color: var(--doom); margin: 6px 0 0; }
+  .pr-text { font-family: var(--font-serif); font-weight: 400; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; margin: 0; }
+  .pr-hint { margin: 6px 0 0; font-size: 13px; color: var(--bone-dim); }
+  .pr-opts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .pr-opts button { position: relative; overflow: hidden; display: grid; grid-template-columns: auto auto; align-items: center; gap: 2px 12px; min-height: 48px; padding: 10px 18px; border-radius: 99px; border: 1px solid var(--iron-2); color: var(--bone); text-align: left; transition: border-color 0.3s, background 0.3s, transform 0.3s var(--ease-out); }
+  .pr-opts button:hover { border-color: var(--bone-dim); transform: translateY(-1px); }
+  .pr-opts button[aria-checked='true'] { border-color: var(--doom); background: rgba(61, 255, 138, 0.12); }
+  .pr-o-label { position: relative; z-index: 1; font-size: 15px; }
+  .pr-o-bar { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .pr-o-bar i { position: absolute; inset: 0; background: rgba(232, 230, 225, 0.08); transform-origin: left; transform: scaleX(0); }
+  .pr-opts button[aria-checked='true'] .pr-o-bar i { background: rgba(61, 255, 138, 0.18); }
+  .pr-o-pct { position: relative; z-index: 1; font-family: var(--font-mono); font-size: 12px; color: var(--bone-dim); }
+  .pr-o-pct:empty { display: none; }
+  .pr.sealed .pr-opts button { pointer-events: none; }
+
+  .pr-dock { position: sticky; bottom: 0; z-index: 5; margin-top: 30px; padding: 18px clamp(16px, 2vw, 24px); border: 1px solid var(--iron); border-radius: 6px; background: var(--void); box-shadow: 0 -18px 30px -10px var(--void); display: grid; gap: 8px; }
+  .pr-progress { margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); }
+  .pr-progress b { color: var(--doom); font-weight: 400; }
+  .pr-status { margin: 0; min-height: 1.3em; font-size: 14px; color: var(--bone); }
+  .pr-ts:empty { display: none; }
+  .pr-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pr-lock { min-height: 52px; padding: 12px 26px; border-radius: 99px; background: var(--doom); color: var(--void); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; transition: opacity 0.3s, transform 0.3s var(--ease-out); }
+  .pr-lock:hover:not(:disabled) { transform: translateY(-2px); }
+  .pr-lock:disabled { opacity: 0.35; cursor: not-allowed; }
+  .pr-copy-btn { min-height: 52px; padding: 12px 20px; border-radius: 99px; border: 1px solid var(--iron-2); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone); }
+  .pr-fine { margin: 18px 0 0; font-size: 11px; color: var(--bone-dim); max-width: 90ch; }
+  .pr-stamp { position: fixed; left: 50%; top: 45%; z-index: 50; transform: translate(-50%, -50%) rotate(-12deg) scale(3); opacity: 0; pointer-events: none; font-family: var(--font-mono); font-size: clamp(30px, 6vw, 74px); letter-spacing: 0.2em; text-transform: uppercase; color: var(--doom); border: 4px solid var(--doom); border-radius: 8px; padding: 10px 26px; text-shadow: 0 0 30px rgba(61, 255, 138, 0.6); box-shadow: 0 0 60px rgba(61, 255, 138, 0.25); }
+  @media (max-width: 600px) {
+    .pr-dock { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 12px 14px; }
+    .pr-dock .pr-status { grid-column: 1 / -1; grid-row: 2; font-size: 13px; }
+    .pr-dock .pr-ts { grid-column: 1 / -1; }
+    .pr-dock .pr-buttons { grid-column: 2; grid-row: 1; }
+    .pr-lock { min-height: 44px; padding: 10px 16px; font-size: 11px; letter-spacing: 0.1em; }
+    .pr-copy-btn { display: none; }
+    .pr-q { grid-template-columns: 1fr; } .pr-n { margin: 0 0 6px; } .pr-opts button { flex: 1 1 calc(50% - 10px); } }
+</style>
