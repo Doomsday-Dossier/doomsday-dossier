@@ -45,9 +45,11 @@ for (const [name, opts] of Object.entries(VIEWS)) {
       // sideways rails move their text past the edges on purpose: only vertical cuts count there
       const inRail = (el) => !!el.closest('.tl-fly .tl-track, .sig-rail, [data-strip], .rec-track');
       const label = (el) => `${el.tagName.toLowerCase()}${el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''} "${(el.textContent || '').trim().slice(0, 40)}"`;
+      // text hidden on purpose for screen readers (clipped to nothing) is not cut off
+      const srOnly = (el) => { for (let a = el; a; a = a.parentElement) { const c = getComputedStyle(a); if (c.clip === 'rect(0px, 0px, 0px, 0px)' || c.clipPath === 'inset(50%)') return true; } return false; };
       const els = [...document.querySelectorAll('main h1, main h2, main h3, main p, main li, main dt, main dd, main a, main small, main b, footer p')];
       for (const el of els) {
-        if (!el.textContent.trim() || el.closest('.sr-only')) continue;
+        if (!el.textContent.trim() || el.closest('.sr-only') || srOnly(el)) continue;
         const rail = inRail(el);
         const cs = getComputedStyle(el);
         if (cs.display === 'none' || cs.visibility === 'hidden' || el.closest('[hidden]')) continue;
