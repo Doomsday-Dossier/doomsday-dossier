@@ -168,6 +168,46 @@ Each file's number, name (typed in letter by letter), team and "Open the file" s
 within three files of the one in front and are let go beyond six. Measured 60 fps scrolling the mask and the
 archive on desktop and phone emulation; the sound sits at about -40 dBFS against the forge's -16.
 
+### Character files: clearance levels (built 27 October 2026)
+
+`src/pages/c/[slug].astro` and `src/scripts/dossier/file.ts`, one template for all 29.
+- **Hero.** The subject in front of their name; the signature sound plays as it arrives when sound is already
+  running (the visitor came from another page), otherwise at the first click or key while the hero is in view.
+- **Level 1, the 30-second briefing**, on the sheet inside the folder: who they are (one sentence), what they
+  can do (one line), why they matter in Doomsday (Marvel's word only) and where you last saw them. The data is
+  `research/briefs.json` (drafted from the research files and `official.json`, every claim sourced; Steve's
+  last-seen uses Avengers: Endgame 2019 rather than the 2026 Encore re-release, whose note was too thin for a
+  newcomer; Shuri's Doomsday line says only "Shuri", as the teaser did). Scrolling lifts the cover, the redaction
+  bars tear off one by one (a rip each) and the stamp lands (a thud). The folder grows with the briefing so no
+  line is ever cut; short phones get a tighter sheet (every briefing measured to fit 375×667 and up).
+- **Level 2, on screen**, and **Level 3, the comics**, stay redacted (blurred, inert, eight black bars and a
+  request) until the reader asks: "Request level 2 clearance" tears the bars away and opens the level; level 3
+  opens level 2 first. Clearance is remembered across files (`localStorage` `dd-clearance`). Level 2: the subject
+  (one large graded print with numbered pins; on wide screens it stays while the callouts pass and each callout
+  lights its pin), every live-action appearance by year (MCU years in the accent), the prints, and what Marvel
+  confirmed. Level 3: origin, the comics record by era, abilities with the power grid, notes from the archive
+  (the research files' sourced trivia).
+- The v2 particle figure, the horizontal record and its drawer are gone (rule 4; the levels replace the drawer).
+
+**Photos.** Every photo is graded at build time by `scripts/grade.mjs` (called from `photos2-build.mjs`): shadows
+to gunmetal, a green cast through the mids, highlights to bone, 34% of the original colour kept so faces stay
+themselves. The old v1 photo helpers (`src/data/photos.ts`) now serve the graded set, so timeline, catch-up and
+credits match. The home hall's shader only deepens the prints a little (keep 0.75), as they arrive graded.
+
+**Seamless page changes** (`src/scripts/page-scope.ts`, `src/scripts/dossier/main.ts`, Astro's `ClientRouter`).
+The header, the index menu, the page-change cover, the grain and the WebGL canvas persist across pages; the
+sound engine, the score, Lenis and the renderer live for the whole session (set up inside `asGlobal`). Each
+page's own window and document listeners and intervals are tracked and taken down on `astro:before-swap`, with
+every ScrollTrigger and tween (the cover's tweens carry `data: 'keep'`); the forge's frame loop checks
+`alive(epoch)` and disposes its renderer on leaving. Timeouts and animation frames are deliberately not tracked:
+GSAP's ticker, ScrollTrigger and Lenis run on them, and a tracked library timer would die with the first page.
+Arriving at the home page with sound already running skips the gate and plays the forge. Checked by
+`scripts/seamless-check.mjs` (walks the site by clicking links: one full load, sound running throughout, window
+listeners flat at about 30). Lessons: library listeners must be created inside `asGlobal` (ScrollTrigger's are
+forced early with a throwaway trigger); Git Bash rewrites an argument like `/c/thor/` into a Windows path, so
+QA scripts take page paths without the leading slash; never time a page while another browser job runs (a
+background audit turned two smooth pages into one-second freezes in the numbers).
+
 ### Sound system
 
 All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (oscillators, filtered noise,
@@ -178,6 +218,17 @@ ticks about -36, the score settling about -43 (some 26 dB under the forge). Bus 
 forge 0.42, actions 0.22, score 0.02. Every reverb send goes through its own bus's send at the bus level
 (`wet(node, amount, bus)`); a send straight to the hall bypassed the bus and kept the score loud however low its
 bus was. A master gain sits behind one mute button; the choice is stored in `localStorage` `dd-sound` (on, off).
+The switch is in the header on every page. The score starts at the visitor's first click or key on any page (or
+from the forge on the home page) and carries on through page changes.
+
+**Action and signature sounds** (`sound/actions.ts`, `sound/signatures.ts`; audition all of them at
+`/lab/sounds/`). Measured by `scripts/sounds-record.mjs` (plays each in turn, records the mix, prints peak and
+RMS): signatures peak between -15 and -24 dBFS through per-character trims (soft textures such as wings, static
+and shimmer lifted up to 16 dB; heavy hits pulled down), the stamp -15, the clash -14, the tear -21, the green
+flood -15 (it first peaked at -5, louder than the forge, and was brought down). Nothing comes near the forge.
+Where they play: the signature as a file's hero arrives and when a quiz result is revealed; a tear as each
+redaction bar goes (the briefing, the level locks, the quiz result); the stamp on the briefing and the quiz
+result; the clash when the arena's cards or posters hit.
 
 **Forge build** (`src/scripts/forge/`: `timing.ts` the beats, `sdf.ts` the title's distance field, `glsl.ts`
 shared noise, blackbody and lighting, `scene.ts` the scene, `run.ts` the page; sound in `src/scripts/sound/`).
