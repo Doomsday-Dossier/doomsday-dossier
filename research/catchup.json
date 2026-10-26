@@ -1,0 +1,551 @@
+{
+ "rule": "first and latest appearance with the Doomsday actor; re-releases excluded; series by credited episode",
+ "characters": {
+  "victor-von-doom": {
+   "first": "The Fantastic Four: First Steps|2025",
+   "latest": null
+  },
+  "steve-rogers": {
+   "first": "Captain America: The First Avenger|2011",
+   "latest": "Avengers: Endgame|2019"
+  },
+  "thor": {
+   "first": "Thor|2011",
+   "latest": "Thor: Love and Thunder|2022"
+  },
+  "sam-wilson": {
+   "first": "Captain America: The Winter Soldier|2014",
+   "latest": "Captain America: Brave New World|2025"
+  },
+  "bucky-barnes": {
+   "first": "Captain America: The First Avenger|2011",
+   "latest": "Thunderbolts*|2025"
+  },
+  "scott-lang": {
+   "first": "Ant-Man|2015",
+   "latest": "Ant-Man and the Wasp: Quantumania|2023"
+  },
+  "shang-chi": {
+   "first": "Shang-Chi and the Legend of the Ten Rings|2021",
+   "latest": null
+  },
+  "joaquin-torres": {
+   "first": "The Falcon and The Winter Soldier|2021",
+   "latest": "Captain America: Brave New World|2025"
+  },
+  "reed-richards": {
+   "first": "The Fantastic Four: First Steps|2025",
+   "latest": null
+  },
+  "sue-storm": {
+   "first": "The Fantastic Four: First Steps|2025",
+   "latest": null
+  },
+  "johnny-storm": {
+   "first": "The Fantastic Four: First Steps|2025",
+   "latest": null
+  },
+  "ben-grimm": {
+   "first": "The Fantastic Four: First Steps|2025",
+   "latest": null
+  },
+  "professor-x": {
+   "first": "X-Men|2000",
+   "latest": "Doctor Strange in the Multiverse of Madness|2022"
+  },
+  "magneto": {
+   "first": "X-Men|2000",
+   "latest": "The Wolverine|2013"
+  },
+  "cyclops": {
+   "first": "X-Men|2000",
+   "latest": "X-Men: Days of Future Past|2014"
+  },
+  "nightcrawler": {
+   "first": "X2|2003",
+   "latest": null
+  },
+  "mystique": {
+   "first": "X-Men|2000",
+   "latest": "X-Men: The Last Stand|2006"
+  },
+  "beast": {
+   "first": "X-Men: The Last Stand|2006",
+   "latest": "The Marvels|2023"
+  },
+  "gambit": {
+   "first": "Deadpool & Wolverine|2024",
+   "latest": null
+  },
+  "yelena-belova": {
+   "first": "Black Widow|2021",
+   "latest": "Spider-Man: Brand New Day|2026"
+  },
+  "red-guardian": {
+   "first": "Black Widow|2021",
+   "latest": "Thunderbolts*|2025"
+  },
+  "john-walker": {
+   "first": "The Falcon and The Winter Soldier|2021",
+   "latest": "Thunderbolts*|2025"
+  },
+  "ghost": {
+   "first": "Ant-Man and the Wasp|2018",
+   "latest": "Thunderbolts*|2025"
+  },
+  "bob-reynolds": {
+   "first": "Thunderbolts*|2025",
+   "latest": null
+  },
+  "shuri": {
+   "first": "Black Panther|2018",
+   "latest": "Black Panther: Wakanda Forever|2022"
+  },
+  "mbaku": {
+   "first": "Black Panther|2018",
+   "latest": "Black Panther: Wakanda Forever|2022"
+  },
+  "namor": {
+   "first": "Black Panther: Wakanda Forever|2022",
+   "latest": null
+  },
+  "loki": {
+   "first": "Thor|2011",
+   "latest": "Loki (season 2)|2023"
+  },
+  "peggy-carter": {
+   "first": "Captain America: The First Avenger|2011",
+   "latest": "Doctor Strange in the Multiverse of Madness|2022"
+  }
+ },
+ "titles": {
+  "The Fantastic Four: First Steps|2025": {
+   "title": "The Fantastic Four: First Steps",
+   "year": 2025,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 115,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: The Fantastic Four: First Steps",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four%3A_First_Steps"
+   }
+  },
+  "Captain America: The First Avenger|2011": {
+   "title": "Captain America: The First Avenger",
+   "year": 2011,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 124,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Captain America: The First Avenger",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America%3A_The_First_Avenger"
+   }
+  },
+  "Avengers: Endgame|2019": {
+   "title": "Avengers: Endgame",
+   "year": 2019,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 181,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Avengers: Endgame",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers%3A_Endgame"
+   }
+  },
+  "Thor|2011": {
+   "title": "Thor",
+   "year": 2011,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 114,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Thor (film)",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor_(film)"
+   }
+  },
+  "Thor: Love and Thunder|2022": {
+   "title": "Thor: Love and Thunder",
+   "year": 2022,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 119,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Thor: Love and Thunder",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thor%3A_Love_and_Thunder"
+   }
+  },
+  "Captain America: The Winter Soldier|2014": {
+   "title": "Captain America: The Winter Soldier",
+   "year": 2014,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 136,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Captain America: The Winter Soldier",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America%3A_The_Winter_Soldier"
+   }
+  },
+  "Captain America: Brave New World|2025": {
+   "title": "Captain America: Brave New World",
+   "year": 2025,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 118,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Captain America: Brave New World",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America%3A_Brave_New_World"
+   }
+  },
+  "Thunderbolts*|2025": {
+   "title": "Thunderbolts*",
+   "year": 2025,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 126,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Thunderbolts*",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+   }
+  },
+  "Ant-Man|2015": {
+   "title": "Ant-Man",
+   "year": 2015,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 117,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Ant-Man (film)",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"
+   }
+  },
+  "Ant-Man and the Wasp: Quantumania|2023": {
+   "title": "Ant-Man and the Wasp: Quantumania",
+   "year": 2023,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 124,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Ant-Man and the Wasp: Quantumania",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp%3A_Quantumania"
+   }
+  },
+  "Shang-Chi and the Legend of the Ten Rings|2021": {
+   "title": "Shang-Chi and the Legend of the Ten Rings",
+   "year": 2021,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 132,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Shang-Chi and the Legend of the Ten Rings",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+   }
+  },
+  "X-Men|2000": {
+   "title": "X-Men",
+   "year": 2000,
+   "cont": "FOX",
+   "kind": "film",
+   "minutes": 104,
+   "source": {
+    "label": "Marvel Fandom wiki: X-Men (film)",
+    "url": "https://marvel.fandom.com/wiki/X-Men_(film)"
+   }
+  },
+  "Doctor Strange in the Multiverse of Madness|2022": {
+   "title": "Doctor Strange in the Multiverse of Madness",
+   "year": 2022,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 126,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Doctor Strange in the Multiverse of Madness",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
+   }
+  },
+  "The Wolverine|2013": {
+   "title": "The Wolverine",
+   "year": 2013,
+   "cont": "FOX",
+   "kind": "film",
+   "minutes": 126,
+   "source": {
+    "label": "Marvel Fandom wiki: The Wolverine (film)",
+    "url": "https://marvel.fandom.com/wiki/The_Wolverine_(film)"
+   }
+  },
+  "X-Men: Days of Future Past|2014": {
+   "title": "X-Men: Days of Future Past",
+   "year": 2014,
+   "cont": "FOX",
+   "kind": "film",
+   "minutes": 131,
+   "source": {
+    "label": "Marvel Fandom wiki: X-Men: Days of Future Past (film)",
+    "url": "https://marvel.fandom.com/wiki/X-Men%3A_Days_of_Future_Past_(film)"
+   }
+  },
+  "X2|2003": {
+   "title": "X2",
+   "year": 2003,
+   "cont": "FOX",
+   "kind": "film",
+   "minutes": 133,
+   "source": {
+    "label": "Marvel Fandom wiki: X2 (film)",
+    "url": "https://marvel.fandom.com/wiki/X2_(film)"
+   }
+  },
+  "X-Men: The Last Stand|2006": {
+   "title": "X-Men: The Last Stand",
+   "year": 2006,
+   "cont": "FOX",
+   "kind": "film",
+   "minutes": 104,
+   "source": {
+    "label": "Marvel Fandom wiki: X-Men: The Last Stand",
+    "url": "https://marvel.fandom.com/wiki/X-Men%3A_The_Last_Stand"
+   }
+  },
+  "The Marvels|2023": {
+   "title": "The Marvels",
+   "year": 2023,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 105,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: The Marvels",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Marvels"
+   }
+  },
+  "Deadpool & Wolverine|2024": {
+   "title": "Deadpool & Wolverine",
+   "year": 2024,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 127,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Deadpool & Wolverine",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_%26_Wolverine"
+   }
+  },
+  "Black Widow|2021": {
+   "title": "Black Widow",
+   "year": 2021,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 133,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Black Widow (film)",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow_(film)"
+   }
+  },
+  "Spider-Man: Brand New Day|2026": {
+   "title": "Spider-Man: Brand New Day",
+   "year": 2026,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 145,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Spider-Man: Brand New Day",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man%3A_Brand_New_Day"
+   }
+  },
+  "Ant-Man and the Wasp|2018": {
+   "title": "Ant-Man and the Wasp",
+   "year": 2018,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 118,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Ant-Man and the Wasp",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"
+   }
+  },
+  "Black Panther|2018": {
+   "title": "Black Panther",
+   "year": 2018,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 134,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Black Panther (film)",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther_(film)"
+   }
+  },
+  "Black Panther: Wakanda Forever|2022": {
+   "title": "Black Panther: Wakanda Forever",
+   "year": 2022,
+   "cont": "MCU",
+   "kind": "film",
+   "minutes": 161,
+   "source": {
+    "label": "Marvel Cinematic Universe Wiki: Black Panther: Wakanda Forever",
+    "url": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther%3A_Wakanda_Forever"
+   }
+  },
+  "The Falcon and The Winter Soldier|2021": {
+   "title": "The Falcon and The Winter Soldier",
+   "year": 2021,
+   "cont": "MCU",
+   "kind": "series",
+   "episodes": [
+    {
+     "n": 1,
+     "title": "New World Order",
+     "minutes": 49,
+     "who": [
+      "joaquin-torres",
+      "john-walker"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: New World Order",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/New_World_Order"
+     }
+    },
+    {
+     "n": 2,
+     "title": "The Star-Spangled Man",
+     "minutes": 50,
+     "who": [
+      "joaquin-torres",
+      "john-walker"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: The Star-Spangled Man",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Star-Spangled_Man"
+     }
+    },
+    {
+     "n": 3,
+     "title": "Power Broker",
+     "minutes": 53,
+     "who": [
+      "john-walker"
+     ],
+     "source": {
+      "label": "Wikipedia: Power Broker (The Falcon and the Winter Soldier)",
+      "url": "https://en.wikipedia.org/wiki/Power_Broker_(The_Falcon_and_the_Winter_Soldier)"
+     }
+    },
+    {
+     "n": 4,
+     "title": "The Whole World Is Watching",
+     "minutes": 53,
+     "who": [
+      "john-walker"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: The Whole World Is Watching",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/The_Whole_World_Is_Watching"
+     }
+    },
+    {
+     "n": 5,
+     "title": "Truth",
+     "minutes": 60,
+     "who": [
+      "joaquin-torres",
+      "john-walker"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Truth",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Truth"
+     }
+    },
+    {
+     "n": 6,
+     "title": "One World, One People",
+     "minutes": 51,
+     "who": [
+      "joaquin-torres",
+      "john-walker"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: One World, One People",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/One_World%2C_One_People"
+     }
+    }
+   ]
+  },
+  "Loki (season 2)|2023": {
+   "title": "Loki (season 2)",
+   "year": 2023,
+   "cont": "MCU",
+   "kind": "series",
+   "episodes": [
+    {
+     "n": 1,
+     "title": "Ouroboros",
+     "minutes": 47,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Ouroboros (episode)",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ouroboros_(episode)"
+     }
+    },
+    {
+     "n": 2,
+     "title": "Breaking Brad",
+     "minutes": 51,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Breaking Brad",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Breaking_Brad"
+     }
+    },
+    {
+     "n": 3,
+     "title": "1893",
+     "minutes": 55,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: 1893",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/1893"
+     }
+    },
+    {
+     "n": 4,
+     "title": "Heart of the TVA",
+     "minutes": 50,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Heart of the TVA",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Heart_of_the_TVA"
+     }
+    },
+    {
+     "n": 5,
+     "title": "Science/Fiction",
+     "minutes": 46,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Science/Fiction",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Science%2FFiction"
+     }
+    },
+    {
+     "n": 6,
+     "title": "Glorious Purpose",
+     "minutes": 58,
+     "who": [
+      "loki"
+     ],
+     "source": {
+      "label": "Marvel Cinematic Universe Wiki: Glorious Purpose (Loki Season Two)",
+      "url": "https://marvelcinematicuniverse.fandom.com/wiki/Glorious_Purpose_(Loki_Season_Two)"
+     }
+    }
+   ]
+  }
+ }
+}
