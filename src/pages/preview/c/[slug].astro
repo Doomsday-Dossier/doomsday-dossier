@@ -7,7 +7,7 @@ import Dossier from '../../../layouts/Dossier.astro';
 import '../../../styles/faces';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, fmtDate, heroName } from '../../../data/site';
 import { PHOTO_CREDIT } from '../../../data/photos';
-import { accentOf, photos2For, pick2, srcset2, figureFor, anchorsFor } from '../../../data/v2';
+import { accentOf, photos2For, pick2, srcset2, figureFor, anchorsFor, dioFor } from '../../../data/v2';
 
 const VS = import.meta.glob('../../../../research/versus/*.json', { eager: true, import: 'default' }) as Record<string, any>;
 
@@ -94,6 +94,24 @@ const heroCut = lead && lead.cut.length ? lead.cut : null;
 const heroLines = (() => { const w = name.split(' '); let best = [name]; for (let i = 1; i < w.length; i++) { const l = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (best.length === 1 || Math.max(...l.map((x) => x.length)) < Math.max(...best.map((x) => x.length))) best = l; } return best; })();
 const longest = Math.max(...heroLines.map((l) => l.length));
 const nextPh = photos2For(next)[0];
+// the record's stops: one line from each chapter (the full text stays in the chapter, opened in the drawer)
+// the first sentence; a long one ends at a whole word with an ellipsis, never mid-word
+const firstLine = (html: string) => {
+  const t = html.replace(/<[^>]+>/g, '').trim();
+  const m = t.match(/^.{20,220}?[.!?](\s|$)/);
+  if (m) return m[0].trim();
+  const cut = t.slice(0, 200);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:]$/, '') + '…';
+};
+const faYear = (fa.coverDate.match(/\d{4}/) || [''])[0];
+const stopImg = (i: number) => { const p = ph[i % Math.max(1, ph.length)]; return p ? { src: pick2(p.full, 1280), focus: p.focusM } : null; };
+const stops = [
+  { kind: 'origin', drawer: 'ch-origin', at: null, kicker: 'III · Origin', big: faYear, title: `${fa.title} ${fa.issue}`, sub: `Cover date ${fa.coverDate} · created by ${r.origin.creators.join(' and ')}`, line: firstLine(r.origin.summary[0]), cta: 'Read the origin', img: stopImg(2) },
+  ...comics.map((e, i) => ({ kind: 'comics', drawer: 'ch-comics', at: `rep-${i}`, kicker: `IV · Report ${pad(i + 1)} · ${e.era}`, big: e.years, title: e.title, sub: `Key issues: ${e.keyIssues.slice(0, 2).join(' · ')}`, line: firstLine(e.summary), cta: 'Read the report', img: i % 3 === 1 ? stopImg(i) : null })),
+  ...screen.map((x, i) => ({ kind: 'screen', drawer: 'ch-screen', at: `sig-${i}`, kicker: `V · Sighting ${pad(i + 1)} · ${x.continuity}${x.cameo ? ' · cameo' : ''}`, big: String(x.year), title: x.title, sub: `Performer: ${x.actor}`, line: firstLine(x.summary), cta: 'Read the sighting', img: null })),
+  { kind: 'doom', drawer: 'ch-doom', at: null, kicker: 'VI · In Avengers: Doomsday', big: '2026', title: named ? `${c.character}` : 'In the cast', sub: `${c.actor} · ${named ? 'role named by Marvel' : 'role not yet named by Marvel'}`, line: `Avengers: Doomsday opens in theaters on ${fmtDate(OFFICIAL.film.releaseDate)}.`, cta: 'What Marvel has confirmed', img: stopImg(0) },
+];
+const chapterOf = { origin: 'Origin', comics: 'Comics', screen: 'On screen', doom: 'Doomsday' } as Record<string, string>;
 const files = order.map((x, i) => ({ slug: x, no: i + 1, name: heroName(x).toUpperCase(), accent: accentOf(x) }));
 const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '#5c5f58' : accent};--longest:${longest}`;
 ---
@@ -102,16 +120,18 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   <article class="file" data-file data-slug={slug} data-scene={d.scene} data-fig={JSON.stringify(figure)} data-lens={lensSrc}>
 
     <!-- 0. THE SUBJECT, IN FRONT OF THEIR NAME (Obsidian, Lena Varga) -->
-    <section class="hero" data-hero aria-label={`${name}, file ${pad(no)}`}>
+    <section class="hero" data-hero data-dio={JSON.stringify(dioFor(slug, heroLines, d.font, d.fontWeight))} aria-label={`${name}, file ${pad(no)}`}>
       <div class="hero-stage">
         <div class="hero-flood" data-flood aria-hidden="true"></div>
+        {(p2 ?? lead) && <div class="hero-back" data-depth="0.12" aria-hidden="true"><img src={pick2((p2 ?? lead)!.full, 1280)} alt="" decoding="async" style={`object-position:${(p2 ?? lead)!.focus}`} /></div>}
+        <div class="hero-glow" data-depth="0.3" aria-hidden="true"></div>
         <div class="hero-top t-label">
           <span class="t-accent" data-hin>File {pad(no)} / {order.length}</span>
           <span data-hin>{team.name}</span>
           <span class="t-ash" data-hin>{named ? 'Role named by Marvel' : 'In the cast'}</span>
         </div>
-        <p class="hero-name" data-hero-name data-fit aria-hidden="true">{heroLines.map((l) => <Fragment><span class="hw">{l}</span>{' '}</Fragment>)}</p>
-        {lead && <div class={heroCut ? 'hero-subj' : 'hero-subj soft'}>{heroCut
+        <p class="hero-name" data-hero-name data-depth="0.45" data-fit aria-hidden="true">{heroLines.map((l) => <Fragment><span class="hw">{l}</span>{' '}</Fragment>)}</p>
+        {lead && <div class={heroCut ? 'hero-subj' : 'hero-subj soft'} data-depth="0.9">{heroCut
           ? <img class="hero-cut" data-hero-cut style={`translate:${Math.round((0.5 - (lead.head?.[0] ?? 0.5)) * 1000) / 10}% 0`} src={pick2(heroCut, 1280)} srcset={srcset2(heroCut)} sizes="(min-width: 900px) 60vw, 100vw" width={lead.w} height={lead.h} alt="" fetchpriority="high" decoding="async" />
           : <img class="hero-cut hero-soft" data-hero-cut src={pick2(lead.full, 1280)} srcset={srcset2(lead.full)} sizes="100vw" width={lead.w} height={lead.h} alt="" fetchpriority="high" decoding="async" style={`object-position:${lead.focusM}`} />}</div>}
         <div class="hero-foot">
@@ -229,8 +249,43 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
       </section>
     )}
 
+    <!-- THE RECORD (Loops, Space Voyage): one pinned horizontal journey; each stop opens its chapter in the drawer -->
+    <section class="record" data-record style={`--n:${stops.length}`} aria-label="The record">
+      <div class="rec-stage">
+        <div class="rec-track" data-rec-track>
+          <article class="stop stop-intro">
+            <p class="t-label t-accent">The record</p>
+            <p class="stop-big t-title" aria-hidden="true">{faYear}&ndash;2026</p>
+            <h2 class="stop-title t-title" data-fit>Everything on file</h2>
+            <p class="stop-line">One origin, {comics.length} comics reports and {screen.length} sightings on screen, ending in Avengers: Doomsday. Scroll to travel through them; open any stop for the full sourced record.</p>
+          </article>
+          {stops.map((st, i) => (
+            <article class={`stop stop-${st.kind}${st.img ? ' has-img' : ''}`} data-stop data-chapter={st.kind}>
+              {st.img && <img class="stop-img" src={st.img.src} alt="" loading="lazy" decoding="async" style={`object-position:${st.img.focus}`} />}
+              <p class="stop-big t-title" data-stop-big aria-hidden="true">{st.big}</p>
+              <div class="stop-body" data-stop-body>
+                <p class="t-label t-accent">{st.kicker}</p>
+                <h3 class="stop-title t-title" data-fit>{st.title}</h3>
+                <p class="t-micro t-ash stop-sub">{st.sub}</p>
+                <p class="stop-line">{st.line}</p>
+                <button type="button" class="stop-read t-label" data-read={st.drawer} data-at={st.at ?? ''} data-cursor="Read">{st.cta} &rarr;</button>
+              </div>
+            </article>
+          ))}
+        </div>
+        <ol class="rec-progress t-micro" aria-hidden="true">
+          {['origin', 'comics', 'screen', 'doom'].map((k) => <li data-prog={k}><span>{chapterOf[k]}</span><i></i></li>)}
+        </ol>
+      </div>
+    </section>
+    <aside class="drawer" data-drawer aria-hidden="true" aria-label="The full record">
+      <button type="button" class="drawer-close t-label" data-drawer-close>Close &times;</button>
+      <div class="drawer-body" data-drawer-body data-lenis-prevent></div>
+    </aside>
+
+    <div class="rec-chapters" data-rec-chapters>
     <!-- III. ORIGIN -->
-    <section class="chapter-sec wrap" aria-labelledby="or-h">
+    <section class="chapter-sec wrap" id="ch-origin" aria-labelledby="or-h">
       <p class="t-label t-accent">III &middot; Origin</p>
       <h2 id="or-h" class="t-title chap" data-fit data-rise>Where it began</h2>
       <div class="or-grid">
@@ -251,12 +306,12 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
     </section>
 
     <!-- IV. THE COMICS RECORD -->
-    <section class="chapter-sec wrap" aria-labelledby="rec-h">
+    <section class="chapter-sec wrap" id="ch-comics" aria-labelledby="rec-h">
       <p class="t-label t-accent">IV &middot; The comics record</p>
       <h2 id="rec-h" class="t-title chap" data-fit data-rise>{comics.length} reports, {comics[0].years.slice(0, 4)} to {comics[comics.length - 1].years.slice(-4)}</h2>
       <ol class="reports">
         {comics.map((e, i) => (
-          <li class="report" data-report>
+          <li class="report" data-report id={`rep-${i}`}>
             <div class="rep-years t-title">{e.years}</div>
             <div class="rep-body">
               <p class="t-micro t-accent">Report {pad(i + 1)} &middot; {e.era}</p>
@@ -273,12 +328,12 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
     </section>
 
     <!-- V. SIGHTINGS ON SCREEN -->
-    <section class="chapter-sec wrap" aria-labelledby="sig-h">
+    <section class="chapter-sec wrap" id="ch-screen" aria-labelledby="sig-h">
       <p class="t-label t-accent">V &middot; Sightings on screen</p>
       <h2 id="sig-h" class="t-title chap" data-fit data-rise>{screen.length} live-action sightings</h2>
       <ol class="log">
-        {screen.map((s) => (
-          <li data-reveal>
+        {screen.map((s, i) => (
+          <li data-reveal id={`sig-${i}`}>
             <span class="log-y t-title">{s.year}</span>
             <span class="log-main">
               <span class="log-tags t-micro"><span class="tag">{s.continuity}</span>{s.cameo && <span class="tag">Cameo</span>}</span>
@@ -295,7 +350,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
     </section>
 
     <!-- VI. CONFIRMED FOR DOOMSDAY -->
-    <section class="chapter-sec wrap doom-sec" aria-labelledby="dd-h">
+    <section class="chapter-sec wrap doom-sec" id="ch-doom" aria-labelledby="dd-h">
       <p class="t-label t-accent">VI &middot; In Avengers: Doomsday</p>
       <h2 id="dd-h" class="t-title chap" data-fit data-rise>What Marvel has confirmed</h2>
       <p class="t-ash">Only what Marvel has announced. No rumours, no leaks, no guesses.</p>
@@ -315,6 +370,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
         <ol>{cDoom.list.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}</ol>
       </details>
     </section>
+    </div>
 
     <nav class="voyage" data-voyage aria-label="Other files" style={`--na:${accentOf(next)}`}>
       <div class="voy-stage">
@@ -338,6 +394,54 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
 </Dossier>
 
 <style>
+
+  html.dio-on .hero-flood, html.dio-on .hero-back, html.dio-on .hero-glow, html.dio-on .hero-name, html.dio-on .hero-subj { visibility: hidden; }
+  /* hero depth layers */
+  .hero-back { position: absolute; inset: -6%; z-index: 0; opacity: 0.32; will-change: transform; }
+  .hero-back img { width: 100%; height: 100%; object-fit: cover; filter: blur(14px) saturate(0.7); transform: scale(1.08); }
+  .hero-glow { position: absolute; left: 50%; top: 58%; width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin; z-index: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent) 0%, transparent 68%); opacity: 0.75; will-change: transform; pointer-events: none; }
+
+  /* the record: a pinned horizontal journey */
+  .record { position: relative; z-index: 2; height: calc(var(--n) * 70vh + 120vh); background: var(--gunmetal); }
+  .rec-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .rec-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; gap: 3vw; padding: calc(var(--header-h) + 3svh) var(--margin) 9svh; will-change: transform; }
+  .stop { position: relative; flex: none; width: min(64vw, 980px); height: 100%; border: 1px solid var(--iron); border-radius: 6px; overflow: hidden; display: grid; align-items: end; padding: clamp(22px, 3.2vw, 52px); background: radial-gradient(ellipse at 80% 20%, color-mix(in srgb, var(--tone, var(--accent)) 26%, #0d1012), #101417 70%); }
+  .stop-intro { width: min(52vw, 760px); align-content: end; gap: 14px; display: grid; background: none; border-color: transparent; padding-left: 0; }
+  .stop-comics { --tone: color-mix(in srgb, var(--accent) 55%, #6d8cd8); }
+  .stop-screen { --tone: color-mix(in srgb, var(--accent) 55%, #ffb36b); }
+  .stop-doom { --tone: #1fd47a; }
+  .stop-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.22; }
+  .stop.has-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #0d1012 15%, transparent 75%); }
+  .stop-big { position: absolute; left: 0; right: 0; top: 6%; margin: 0; padding: 0 0.04em; font-size: min(22vw, 360px); font-weight: 900; line-height: 0.8; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--tone, var(--accent)) 60%, transparent); white-space: nowrap; will-change: transform; z-index: 1; }
+  .stop-intro .stop-big { position: static; font-size: min(12vw, 200px); -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .stop-body { position: relative; z-index: 2; display: grid; gap: 10px; max-width: 46ch; }
+  .stop-body p { margin: 0; }
+  .stop-title { font-size: clamp(34px, 4.6vw, 76px); font-weight: 900; margin: 0; }
+  .stop-intro .stop-title { font-size: var(--t-1); }
+  .stop-line { font-size: clamp(15px, 1.25vw, 19px); color: var(--bone); max-width: 52ch; }
+  .stop-read { justify-self: start; margin-top: 8px; color: var(--accent); border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+  .stop-read:hover { color: var(--bone); }
+  .rec-progress { position: absolute; left: var(--margin); right: var(--margin); bottom: 3svh; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 3fr 2fr 1fr; gap: 10px; }
+  .rec-progress li { display: grid; gap: 6px; color: var(--ash); }
+  .rec-progress i { display: block; height: 2px; background: var(--iron); position: relative; overflow: hidden; }
+  .rec-progress i::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
+  .rec-progress li.on { color: var(--bone); }
+  @media (max-width: 760px) {
+    .stop { width: 84vw; padding: 20px; }
+    .stop-intro { width: 80vw; }
+    .stop-big { font-size: 34vw; top: 4%; }
+    .rec-progress { grid-template-columns: repeat(4, 1fr); }
+  }
+  html.rm .record { display: none; }
+
+  /* the drawer: the full sourced chapter, sliding in from the right */
+  .drawer { position: fixed; z-index: 70; top: 0; right: 0; bottom: 0; width: min(720px, 100vw); background: #0f1316; border-left: 1px solid var(--iron-2); transform: translateX(102%); transition: transform 0.6s var(--e-file); display: grid; grid-template-rows: auto 1fr; box-shadow: -30px 0 60px rgba(0, 0, 0, 0.5); }
+  .drawer.is-open { transform: translateX(0); }
+  .drawer-close { justify-self: end; margin: calc(var(--header-h) + 4px) var(--margin) 0; padding: 10px 16px; border: 1px solid var(--iron-2); border-radius: 99px; color: var(--bone); }
+  .drawer-body { overflow-y: auto; padding: 0 0 var(--s-8); overscroll-behavior: contain; }
+  .drawer-body .chapter-sec { padding: var(--s-5) var(--margin) var(--s-7); width: auto; background: none; }
+  .drawer-body .or-grid, .drawer-body .report, .drawer-body .log li { grid-template-columns: minmax(0, 1fr); }
+  html.rec-on .rec-chapters { display: none; }
 
   /* 0. hero: the subject in front of their name */
   .hero { position: relative; height: 190vh; }

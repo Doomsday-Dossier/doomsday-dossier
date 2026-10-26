@@ -82,16 +82,32 @@ and `src/data/photos2.json` with each subject's measured bounding box and head p
 particle figures, centre the heroes and anchor the callouts (`src/data/v2.ts`). Approved accents come
 from `research/accents.json`.
 
-**3D images (requested 26 October 2026).** The user will generate new images per character (hero,
-portrait, scene, plate, optional loop) into `DIAMOND DOCS/MARVEL PHOTOS/3D/<CHARACTER>/`, following
-`research/photos/3d-brief.md` (a copy sits in that folder; all 29 folders exist, Bob's is `BOB - SENTRY`).
-When they land: check each file against the brief, cut out hero and portrait, build depth layers from
-scene and plate, rebuild and show the user before anything goes live.
+**3D heroes from the user's photos (user decision, 26 October 2026: "use the images in the marvel photos
+folder, but make them 3d").** The user dropped both the self-generated renders (the brief and the 29 empty
+folders in `DIAMOND DOCS/MARVEL PHOTOS/3D/` are no longer needed) and official images. Instead every photo
+gets a depth map from Depth Anything V2 Small (`scripts/depth-photos.mjs`, transformers.js, model in
+`photo-originals/models/onnx-community/depth-anything-v2-small`, fetched with curl). `photos2-build.mjs`
+writes `<n>-depth-{512,1024}.webp` and, for cut-out photos, `<n>-cdepth-1024.webp`: subject depth filled
+past the outline by a normalised blur so the relief has no cliff (jagged edges otherwise). Each file's hero
+is a `Diorama` (`dossier/depth.ts`): the cut-out as a displaced mesh lit with normals from the depth map, the
+name in its own face on a plane behind it, the second photo as a dimmed relief backdrop, dust between, a
+pointer orbit, scroll push-in, time drift and a light in the accent colour circling the subject. The
+subject is sized by its measured outline (head at a set height, width capped; phones may crop wide
+subjects), and two-line names are capped at 62% of the screen height. Flat DOM layers stay for reduced
+motion and no WebGL (`html.dio-on` hides them once the diorama draws). 55 to 60 fps at 4x throttle.
 
 **Lessons from the rollout.** String.replace treats `$$` in the replacement as a single `$`: write code
 edits with split/join or the Edit tool. A wide photo in a narrow box must be centred with flex (or the
 measured head), not `margin: auto`, or it pins to the left. A WebGL page's frame rate cannot be judged
-while the upscaler is using the same GPU.
+while the upscaler is using the same GPU. **Check generated images, not just exit codes:** 19 of 81
+Real-ESRGAN outputs were pure black (the GPU was starved while browser tests ran; the upscaler reported
+success), and sharp's `joinChannel` on encoded buffers wrote every cut-out with black colour. Both went
+unnoticed for a day because the pages only used the cut-outs as shapes. The upscaler now checks each output
+and retries with smaller tiles; `scripts/check-upscales.mjs` moves black upscales aside; cut-outs are joined
+as raw pixels. Other rollout lessons: a section class `.open` collided with the drawer's open state (use
+`is-open`); GSAP reads a CSS `translateY` as pixel `y`, so set `{ y: 0, yPercent }` explicitly; the 2560 px
+photo size was dropped (100 MB per push for very large monitors only). The clip audit treats the record
+track (`.rec-track`) as a sideways rail.
 
 **Showcase first.** The intro, the home fly-through and Doom's file are built at `/preview/`
 and approved by the user before any other page is rebuilt. Then every page is rebuilt to the
@@ -504,6 +520,8 @@ Home page: built. Team pages: built (all seven, with unbuilt members marked by w
 - Deploy runs show GitHub's Node 20 deprecation warnings for the checkout, setup-node and pages actions. Harmless for now; bump the action versions when newer majors ship.
 
 ## Session log
+
+- 2026-10-26: v2 preview: horizontal "record" with a chapter drawer replaces the text-heavy file sections; custom cursor and page transitions; 3D depth heroes (Diorama) for all 29 files from the user's photos. Found and fixed black cut-outs (all 87) and 19 black HD upscales (rebuilt from originals, re-upscale running). 55 to 60 fps at 4x throttle. Not committed or deployed yet; /preview/ swap still waits for the user's approval.
 
 - 2026-10-26: Fix pass from user report before posting on Reddit: unstyled pages after deploys (reload guard), cut descender in "Ready by Doomsday." (deeper masks, room under titles), planner said 53 days against the countdown's 52 (both floor now; pace uses exact time), Sam's screen act year and heading ran under the next column (fitText), hero/team name sizing regex bug, Magneto/Nightcrawler letters clipped, home loaded 33 fonts up front (now 4), faster page wipe and intro. Security check: no secrets in the repo, worker queries bound, but every commit shows the user's Gmail address.
 - 2026-10-26: Quiz live at /quiz/ ("Which Doomsday hero are you?"), questions approved by the user. Header now has five links (Quiz added) and hides them below 860 px (the menu has them all). Lessons: scoped Astro CSS does not style elements a script creates (use `:global`); estimating a name size from character count fails for wide faces like Syne, so measure after the font loads.

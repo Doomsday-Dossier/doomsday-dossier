@@ -42,7 +42,7 @@ for (const [name, opts] of Object.entries(VIEWS)) {
       const out = [];
       const W = document.documentElement.clientWidth;
       // sideways rails move their text past the edges on purpose: only vertical cuts count there
-      const inRail = (el) => !!el.closest('.tl-fly .tl-track, .sig-rail, [data-strip]');
+      const inRail = (el) => !!el.closest('.tl-fly .tl-track, .sig-rail, [data-strip], .rec-track');
       const label = (el) => `${el.tagName.toLowerCase()}${el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''} "${(el.textContent || '').trim().slice(0, 40)}"`;
       const els = [...document.querySelectorAll('main h1, main h2, main h3, main p, main li, main dt, main dd, main a, main small, main b, footer p')];
       for (const el of els) {
