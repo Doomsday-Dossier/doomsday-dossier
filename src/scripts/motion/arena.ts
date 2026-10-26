@@ -5,11 +5,11 @@
  * API the panel says voting opens soon instead of failing.
  */
 import { gsap } from './grammar';
+import { humanToken, dropWidget } from './turnstile';
 
 type Opts = { ease: string; pace: number; reduced: boolean };
 type Side = { slug: string; name: string; accent: string };
 type Tally = { a: string; b: string; votesA: number; votesB: number; total: number; already?: boolean };
-declare global { interface Window { turnstile?: any } }
 
 const esc = (s: unknown) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 const day = () => new Date().toISOString().slice(0, 10);
@@ -20,14 +20,6 @@ const remember = (k: string, pick: string) => {
   try { const m = remembered(); for (const x of Object.keys(m)) if (m[x].day !== day()) delete m[x]; m[k] = { day: day(), pick }; localStorage.setItem(STORE, JSON.stringify(m)); } catch { /* private mode: the server still dedupes */ }
 };
 
-let tsLoad: Promise<void> | null = null;
-const loadTurnstile = () => tsLoad ??= new Promise<void>((res, rej) => {
-  const s = document.createElement('script');
-  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-  s.async = true; s.onload = () => res(); s.onerror = () => { tsLoad = null; rej(new Error('turnstile')); };
-  document.head.append(s);
-});
-
 export function arenaVote(panel: HTMLElement | null, o: Opts) {
   if (!panel) return { update: (_a: Side, _b: Side) => {}, destroy: () => {} };
   const api = (panel.dataset.api || '').replace(/\/$/, '');
@@ -37,7 +29,7 @@ export function arenaVote(panel: HTMLElement | null, o: Opts) {
   const status = panel.querySelector<HTMLElement>('[data-status]')!;
   const peek = panel.querySelector<HTMLButtonElement>('[data-peek]')!;
   const tsBox = panel.querySelector<HTMLElement>('[data-ts]')!;
-  let A: Side | null = null, B: Side | null = null, widget: string | null = null, busy = false, gen = 0;
+  let A: Side | null = null, B: Side | null = null, busy = false, gen = 0;
 
   const say = (t: string) => { status.textContent = t; };
   const enabled = !!(api && sitekey);
@@ -67,17 +59,7 @@ export function arenaVote(panel: HTMLElement | null, o: Opts) {
     } catch { if (g === gen) say('The fan split could not be loaded. Try again in a moment.'); }
   };
 
-  const token = async () => {
-    await loadTurnstile();
-    return new Promise<string>((res, rej) => {
-      const ts = window.turnstile;
-      if (widget) ts.remove(widget);
-      widget = ts.render(tsBox, {
-        sitekey, appearance: 'interaction-only', execution: 'render', action: 'arena-vote',
-        callback: (t: string) => res(t), 'error-callback': () => rej(new Error('bot check')), 'timeout-callback': () => rej(new Error('bot check')),
-      });
-    });
-  };
+  const token = () => humanToken(tsBox, sitekey, 'arena-vote');
 
   const vote = async (side: 'a' | 'b') => {
     if (!enabled || busy || !A || !B) return;
@@ -112,6 +94,6 @@ export function arenaVote(panel: HTMLElement | null, o: Opts) {
       if (mine && mine.day === day()) { panel.classList.add('voted'); say('You voted on this fight today. Here is the fan split.'); fetchResult(mine.pick); }
       else say('');
     },
-    destroy() { btns.a.removeEventListener('click', onA); btns.b.removeEventListener('click', onB); peek.removeEventListener('click', onPeek); if (widget) window.turnstile?.remove(widget); },
+    destroy() { btns.a.removeEventListener('click', onA); btns.b.removeEventListener('click', onB); peek.removeEventListener('click', onPeek); dropWidget(tsBox); },
   };
 }

@@ -13,6 +13,7 @@ import { filmStrip } from './motion/filmstrip';
 import { versusPage } from './motion/versus';
 import { setScroller } from './motion/scroller';
 import { catchUp } from './motion/catchup';
+import { predictionBoard } from './motion/predict';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.documentElement.classList.toggle('rm', reduced);
@@ -123,7 +124,7 @@ async function initPage() {
   screenStrip(document, opts);
   magnets(document, opts);
   tiltCards(document, opts);
-  pageCleanups.push(heroPortrait(document, opts), gallery(document, opts), teamPicker(document, opts), filmStrip(document, opts), versusPage(document, opts), catchUp(document, opts));
+  pageCleanups.push(heroPortrait(document, opts), gallery(document, opts), teamPicker(document, opts), filmStrip(document, opts), versusPage(document, opts), catchUp(document, opts), predictionBoard(document, opts));
   pageCleanups.push(countdowns(document, body.dataset.release || '2026-12-18'));
   if (body.dataset.page === 'home') homeMotion(reduced);
   if (!reduced) gsap.from('[data-hero-in]', { opacity: 0, y: 20, duration: 1.2 * pace, stagger: 0.1, ease, delay: 0.6 });
