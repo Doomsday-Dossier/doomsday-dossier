@@ -40,6 +40,16 @@ export function dioFor(slug: string, lines: string[], font: string, weight: numb
   };
 }
 
+/** The home roll call's point cloud for a character: cut-out, subject depth and the bust window to sample. */
+export function cloudFor(slug: string) {
+  const p = photos2For(slug)[0];
+  if (!p?.cut.length || !p.figure) return null;
+  return {
+    cut: pick2(p.cut, 640), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 512),
+    crop: p.figure.crop, focus: p.figure.focus, aspect: p.w / p.h,
+  };
+}
+
 /** Four callout anchors on the subject (photo coordinates): head, chest, and both sides. */
 export function anchorsFor(slug: string): [number, number][] {
   const p = photos2For(slug)[0];

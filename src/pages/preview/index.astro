@@ -1,76 +1,70 @@
 ---
+// The archive (v2 home): Doom forms out of a cloud of points (Particle Self), then, as the visitor scrolls,
+// the one cloud morphs from character to character through all 29 files (Anchor), each named bottom-left
+// in front of it (Lena Varga). The countdown sits on its own solid panel so it reads over any colour.
 import Dossier from '../../layouts/Dossier.astro';
-import { DESIGN, castFor, publishedOrder, TEAMS, heroName, u } from '../../data/site';
-import { photosFor, srcOf } from '../../data/photos';
-import { figureFor } from '../../data/v2';
+import { castFor, publishedOrder, TEAMS, heroName, u } from '../../data/site';
+import { accentOf, cloudFor } from '../../data/v2';
 
-// the 29 files, in roster order (team by team); only Doom's file is rebuilt in the showcase so far
 const order = publishedOrder();
 const files = order.map((slug, i) => {
   const team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
-  const ph = photosFor(slug)[0];
   return {
-    slug, no: i + 1, total: order.length, name: heroName(slug).toUpperCase(), team: team.name, accent: DESIGN[slug].accent,
-    photo: ph ? srcOf(ph, 400) : null, focus: ph?.focusM ?? '50% 50%',
-    href: slug === 'victor-von-doom' ? u('/preview/c/victor-von-doom/') : u(`/c/${slug}/`),
+    slug, no: i + 1, total: order.length, name: heroName(slug).toUpperCase(), team: team.name, accent: accentOf(slug),
+    href: u(`/preview/c/${slug}/`), cloud: cloudFor(slug),
   };
 });
-const doom = photosFor('victor-von-doom')[0];
 const title = ['DOOMSDAY', 'DOSSIER'];
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
-<Dossier title="Doomsday Dossier: the archive (design preview)" description="Design preview of the Latverian dossier: the archive intro and fly-through." page="archive">
-  <div class="archive" data-archive data-figure={srcOf(doom, 800)} data-fig={JSON.stringify(figureFor('victor-von-doom'))}>
-    <section class="intro" data-intro aria-labelledby="dx-title">
-      <div class="intro-top">
-        <p class="t-label t-accent" data-after>Latverian state archive &middot; leaked</p>
-        <p class="t-label t-ash" data-after>{files.length} files &middot; 1 threat</p>
-      </div>
-      <div class="intro-foot">
-        <h1 id="dx-title" class="t-title intro-title" data-title aria-label="Doomsday Dossier">
-          {['burn', 'ink'].map((layer) => (
-            <span class={`layer ${layer}`} aria-hidden="true">
-              {title.map((w) => <span class="w">{[...w].map((ch) => <span class="ch">{ch}</span>)}</span>)}
-            </span>
-          ))}
-        </h1>
-        <div class="intro-row">
-          <div class="count" data-count data-after aria-label="Time until Avengers: Doomsday opens on 18 December 2026">
-            <span><b data-k="d">00</b><i>days</i></span>
-            <span><b data-k="h">00</b><i>hrs</i></span>
-            <span><b data-k="m">00</b><i>min</i></span>
-            <span><b data-k="s">00</b><i>sec</i></span>
+<Dossier title="Doomsday Dossier: the archive (design preview)" description="Design preview of the Latverian dossier: every confirmed character, ahead of Avengers: Doomsday." page="archive">
+  <div class="archive" data-archive>
+    <section class="roll" data-roll style={`--n:${files.length}`} aria-label="The archive: 29 files">
+      <div class="stage">
+        <div class="intro" data-intro>
+          <div class="intro-top">
+            <p class="t-label t-accent" data-after>Latverian state archive &middot; leaked</p>
+            <p class="t-label t-ash" data-after>{files.length} files &middot; 1 threat</p>
           </div>
-          <p class="t-label t-ash intro-cue" data-after>Avengers: Doomsday &middot; in theaters 18 December 2026<br />Scroll to enter the archive</p>
+          <div class="intro-foot">
+            <h1 id="dx-title" class="t-title intro-title" data-title aria-label="Doomsday Dossier">
+              {title.map((w) => <span class="w" aria-hidden="true">{[...w].map((ch) => <span class="ch">{ch}</span>)}</span>)}
+            </h1>
+            <div class="count-panel" data-after>
+              <div class="count" data-count aria-label="Time until Avengers: Doomsday opens on 18 December 2026">
+                <span><b data-k="d">00</b><i>days</i></span>
+                <span><b data-k="h">00</b><i>hrs</i></span>
+                <span><b data-k="m">00</b><i>min</i></span>
+                <span><b data-k="s">00</b><i>sec</i></span>
+              </div>
+              <p class="t-micro count-note">Avengers: Doomsday &middot; in theaters 18 December 2026</p>
+            </div>
+            <p class="t-label cue" data-after><span class="cue-line" aria-hidden="true"></span>Scroll to open the archive</p>
+          </div>
+          <p class="loader t-micro" data-loader aria-hidden="true"><b data-pct>000</b> %</p>
+          <button type="button" class="skip-intro t-label" data-skip hidden>Skip intro</button>
         </div>
-      </div>
-      <button type="button" class="skip-intro t-label" data-skip hidden>Skip intro</button>
-    </section>
 
-    <section class="fly" data-fly aria-label="The archive: 29 files">
-      <div class="fly-stick">
-        <div class="chapter" data-chapter aria-hidden="true">
-          <p class="t-label t-ash">Section</p>
-          <p class="chapter-name t-title"><span data-c-name>The Adversary</span></p>
+        <div class="call" data-call aria-live="polite">
+          <div class="call-top t-micro" aria-hidden="true"><span data-c-team>{files[0].team}</span><span><b data-c-no>01</b> / {pad(files.length)}</span></div>
+          <div class="call-copy">
+            <p class="t-micro call-kicker" data-c-in>File <span data-c-file>01</span> &middot; <span data-c-team2>{files[0].team}</span></p>
+            <a class="call-name t-title" data-c-name href={files[0].href}>{files[0].name}</a>
+            <a class="call-open t-label" data-c-in data-c-open href={files[0].href} data-cursor="Open">Open the file &rarr;</a>
+          </div>
+          <div class="call-bar" aria-hidden="true"><i data-c-bar></i></div>
         </div>
-        <p class="rail t-label" data-rail aria-hidden="true">FILE 01 / {files.length}</p>
-        <a class="flabel" data-label href={files[0].href}>
-          <span class="t-micro" data-l-in data-l-no>FILE 01</span>
-          <b class="t-title" data-l-in data-l-name>{files[0].name}</b>
-          <span class="t-micro fl-team" data-l-in data-l-team>{files[0].team}</span>
-          <span class="t-micro fl-open" data-l-in>Open file &rarr;</span>
-        </a>
       </div>
     </section>
 
     <section class="index wrap" aria-labelledby="idx-h">
       <p class="t-label t-accent">Archive index</p>
-      <h2 id="idx-h" class="t-title index-title">Every file, in one drawer.</h2>
-      <p class="index-copy">Only Doom&rsquo;s file has been rebuilt in this design preview. The other files open on the current site until the showcase is approved.</p>
+      <h2 id="idx-h" class="t-title index-title" data-fit>Every file, in one drawer.</h2>
       <ol class="index-list">
         {files.map((f) => (
           <li style={`--a:${f.accent}`}>
             <a href={f.href}>
-              <span class="t-micro">File {String(f.no).padStart(2, '0')}</span>
+              <span class="t-micro">File {pad(f.no)}</span>
               <b>{f.name}</b>
               <span class="t-micro t-ash">{f.team}</span>
             </a>
@@ -78,57 +72,67 @@ const title = ['DOOMSDAY', 'DOSSIER'];
         ))}
       </ol>
     </section>
-    <div class="veil" data-veil aria-hidden="true"></div>
   </div>
   <script type="application/json" id="dx-files" set:html={JSON.stringify(files)} />
 </Dossier>
 
 <style>
-  .intro { position: relative; height: 100svh; min-height: 560px; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-7); }
-  .intro-top { display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
-  .intro-foot { align-self: end; display: grid; gap: var(--s-5); }
-  .intro-title { position: relative; font-weight: 900; font-size: min(var(--t-mega), calc((100vw - 2 * var(--margin)) / 5.4)); line-height: 0.8; letter-spacing: -0.005em; }
-  .intro-title .layer { display: block; }
-  .intro-title .layer .w { display: block; white-space: nowrap; }
-  .intro-title .burn { position: absolute; inset: 0; color: var(--emerald-hot); text-shadow: 0 0 18px var(--emerald), 0 0 42px var(--emerald-deep); }
-  .intro-title .ch { display: inline-block; opacity: 0; }
-  .intro-title .burn .ch { opacity: 0; }
-  html.rm .intro-title .ink .ch { opacity: 1; }
-  .intro-row { display: flex; justify-content: space-between; align-items: end; gap: var(--s-5); flex-wrap: wrap; }
-  .count { display: flex; gap: clamp(14px, 3vw, 40px); font-family: var(--f-type); }
-  .count span { display: grid; }
-  .count b { font-weight: 700; font-size: clamp(30px, 4.4vw, 60px); line-height: 1; color: var(--emerald); font-variant-numeric: tabular-nums; text-shadow: 0 0 24px rgba(31, 212, 122, 0.45); }
-  .count i { font-style: normal; font-size: var(--t-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); margin-top: 6px; }
-  .intro-cue { text-align: right; margin: 0; }
-  [data-after] { opacity: 0; }
-  html.rm [data-after] { opacity: 1; }
-  .skip-intro { position: absolute; right: var(--margin); top: calc(var(--header-h) + 52px); border: 1px solid var(--iron-2); border-radius: 99px; padding: 10px 16px; min-height: 44px; color: var(--ash); }
-  .skip-intro:hover { color: var(--bone); border-color: var(--ash); }
-  @media (max-width: 640px) { .intro-cue { text-align: left; } .intro-top { flex-direction: column; } }
+  /* one pinned stage for the intro and the roll call; the canvas behind draws the cloud */
+  .roll { position: relative; height: calc((var(--n) + 1) * 42svh + 100svh); }
+  .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  html.rm .roll, html.no-gl .roll { height: auto; }
+  html.rm .stage, html.no-gl .stage { position: relative; }
 
-  .fly { position: relative; height: 950vh; }
-  .fly-stick { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-  .chapter { position: absolute; left: var(--margin); top: calc(var(--header-h) + var(--s-5)); z-index: 1; }
-  .chapter::before { content: ''; position: absolute; inset: -40px -80px -40px calc(-1 * var(--margin)); background: radial-gradient(ellipse at 20% 50%, rgba(13, 16, 18, 0.85), transparent 70%); z-index: -1; pointer-events: none; }
-  .chapter p { margin: 0; }
-  .chapter-name { display: block; overflow: hidden; font-size: var(--t-2); padding-bottom: 0.08em; }
-  .chapter-name span { display: inline-block; }
-  .rail { position: absolute; right: var(--margin); bottom: var(--s-6); margin: 0; color: var(--ash); }
-  .flabel { --a: var(--emerald); position: absolute; left: 0; top: 0; display: grid; gap: 4px; padding: 12px 14px; min-width: 170px; max-width: 46vw; background: rgba(13, 16, 18, 0.82); border: 1px solid color-mix(in srgb, var(--a) 55%, transparent); border-left: 3px solid var(--a); text-decoration: none; opacity: 0; pointer-events: none; transition: opacity 0.25s; will-change: transform; }
-  .flabel.on { opacity: 1; pointer-events: auto; }
-  .flabel b { font-size: clamp(22px, 2.4vw, 34px); font-weight: 800; line-height: 0.95; }
-  .flabel .fl-team { color: var(--a); }
-  .flabel .fl-open { color: var(--ash); margin-top: 4px; }
-  .flabel:hover .fl-open { color: var(--bone); }
-  html.rm .fly, html.no-gl .fly { display: none; }
+  .intro { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-rows: auto 1fr; padding: calc(var(--header-h) + var(--s-4)) var(--margin) var(--s-7); }
+  html.rm .intro, html.no-gl .intro { position: relative; min-height: 100svh; }
+  .intro-top { display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+  .intro-top p { margin: 0; }
+  .intro-foot { align-self: end; display: grid; gap: var(--s-5); justify-items: start; }
+  .intro-title { font-weight: 900; font-size: min(var(--t-mega), calc((100vw - 2 * var(--margin)) / 5.2)); line-height: 0.8; color: var(--bone); }
+  .intro-title .w { display: block; white-space: nowrap; }
+  .intro-title .ch { display: inline-block; opacity: 0; }
+  html.rm .intro-title .ch, html.no-gl .intro-title .ch { opacity: 1; }
+  /* the countdown on its own dark panel: bone digits, readable over any colour behind */
+  .count-panel { display: grid; gap: var(--s-2); padding: var(--s-4) var(--s-5); background: rgba(8, 10, 11, 0.86); border: 1px solid var(--iron-2); border-left: 2px solid var(--emerald); }
+  .count { display: flex; gap: clamp(16px, 3vw, 40px); font-family: var(--f-type); }
+  .count span { display: grid; }
+  .count b { font-weight: 700; font-size: clamp(30px, 4.2vw, 56px); line-height: 1; color: var(--bone); font-variant-numeric: tabular-nums; }
+  .count i { font-style: normal; font-size: var(--t-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ash); margin-top: 6px; }
+  .count-note { margin: 0; color: var(--ash); }
+  .cue { margin: 0; display: flex; align-items: center; gap: 12px; color: var(--bone); }
+  .cue-line { width: 40px; height: 1px; background: var(--bone); transform-origin: left; animation: cue 2.4s var(--e-file) infinite; }
+  @keyframes cue { 0% { transform: scaleX(0); } 50% { transform: scaleX(1); transform-origin: left; } 51% { transform-origin: right; } 100% { transform: scaleX(0); transform-origin: right; } }
+  [data-after] { opacity: 0; }
+  html.rm [data-after], html.no-gl [data-after] { opacity: 1; }
+  .loader { position: absolute; right: var(--margin); bottom: var(--s-7); margin: 0; color: var(--ash); opacity: 0; }
+  .loader b { font-family: var(--f-type); font-size: clamp(28px, 3.4vw, 46px); color: var(--bone); font-weight: 400; font-variant-numeric: tabular-nums; }
+  .skip-intro { position: absolute; right: var(--margin); top: calc(var(--header-h) + 52px); border: 1px solid var(--iron-2); border-radius: 99px; padding: 10px 16px; min-height: 44px; color: var(--ash); background: rgba(8, 10, 11, 0.6); }
+
+  /* the roll call: the name bottom-left, in front of the cloud */
+  .call { position: absolute; inset: 0; z-index: 2; pointer-events: none; visibility: hidden; }
+  html.rm .call, html.no-gl .call { display: none; }
+  .call-top { position: absolute; top: calc(var(--header-h) + 4px); left: var(--margin); right: var(--margin); display: flex; justify-content: space-between; color: var(--bone); }
+  .call-top b { font-weight: 700; }
+  .call-copy { position: absolute; left: var(--margin); right: var(--margin); bottom: var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); justify-items: start; max-width: 52vw; }
+  .call-kicker { margin: 0; color: var(--a, var(--emerald)); letter-spacing: 0.18em; }
+  .call-name { pointer-events: auto; text-decoration: none; color: var(--bone); font-weight: 900; font-size: min(var(--t-mega), 17svh); line-height: 0.84; padding-right: 5%; }
+  .call-open { pointer-events: auto; color: var(--bone); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  .call-bar { position: absolute; left: var(--margin); right: var(--margin); bottom: var(--s-6); height: 1px; background: color-mix(in srgb, var(--bone) 18%, transparent); }
+  .call-bar i { position: absolute; inset: 0; background: var(--bone); transform-origin: left; transform: scaleX(0); }
+  @media (max-width: 760px) {
+    .intro-title { font-size: calc((100vw - 2 * var(--margin)) / 4.6); }
+    .count-panel { padding: var(--s-3) var(--s-4); }
+    .call-copy { max-width: none; bottom: var(--s-7); }
+    .call-name { font-size: calc((100vw - 2 * var(--margin)) / 5.4); }
+    /* the cloud stands in the upper part; a scrim keeps the words clear */
+    .stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46svh; z-index: 1; pointer-events: none; background: linear-gradient(transparent, rgba(13, 16, 18, 0.9) 60%); }
+  }
 
   .index { position: relative; z-index: 2; padding: var(--s-10) 0 var(--s-9); background: var(--gunmetal); }
-  .index-title { font-size: var(--t-1); margin: var(--s-3) 0 var(--s-4); }
-  .index-copy { color: var(--ash); max-width: 60ch; margin: 0 0 var(--s-7); }
+  .index-title { font-size: var(--t-1); margin: var(--s-3) 0 var(--s-7); }
   .index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
   .index-list a { display: grid; gap: 6px; padding: var(--s-5) var(--s-4); background: var(--gunmetal); text-decoration: none; min-height: 120px; align-content: start; border-top: 3px solid transparent; transition: border-color var(--d-s), background var(--d-s); }
   .index-list a:hover { border-top-color: var(--a); background: var(--gunmetal-2); }
   .index-list b { font-family: var(--f-title); font-weight: 800; font-size: 28px; line-height: 0.95; text-transform: uppercase; }
   .index-list .t-micro:first-child { color: var(--a); }
-  .veil { position: fixed; inset: 0; z-index: 80; background: var(--gunmetal); opacity: 0; pointer-events: none; }
 </style>

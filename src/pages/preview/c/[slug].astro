@@ -395,7 +395,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
 
 <style>
 
-  html.dio-on .hero-flood, html.dio-on .hero-back, html.dio-on .hero-glow, html.dio-on .hero-name, html.dio-on .hero-subj { visibility: hidden; }
+  html.dio-on .hero-flood, html.dio-on .hero-back, html.dio-on .hero-glow, html.dio-on .hero-subj { visibility: hidden; }
   /* hero depth layers */
   .hero-back { position: absolute; inset: -6%; z-index: 0; opacity: 0.32; will-change: transform; }
   .hero-back img { width: 100%; height: 100%; object-fit: cover; filter: blur(14px) saturate(0.7); transform: scale(1.08); }
@@ -427,6 +427,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .rec-progress i::after { content: ''; position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
   .rec-progress li.on { color: var(--bone); }
   @media (max-width: 760px) {
+    .rec-track { gap: 16vw; }
     .stop { width: 84vw; padding: 20px; }
     .stop-intro { width: 80vw; }
     .stop-big { font-size: 34vw; top: 4%; }
@@ -448,7 +449,8 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .hero-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
   .hero-flood { position: absolute; left: 50%; top: 55%; width: 160vmax; height: 160vmax; margin: -80vmax 0 0 -80vmax; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 46%, #0d1012) 0%, color-mix(in srgb, var(--accent) 22%, #0d1012) 38%, #0d1012 70%); transform: scale(1); }
   .hero-top { position: absolute; left: var(--margin); right: var(--margin); top: calc(var(--header-h) + 8px); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; z-index: 3; }
-  .hero-name { position: absolute; left: var(--margin); right: var(--margin); top: 50%; transform: translateY(-58%); margin: 0; text-align: center; font-family: var(--sig); font-weight: var(--sig-w); text-transform: uppercase; line-height: 0.86; letter-spacing: 0.01em; color: color-mix(in srgb, var(--bone) 92%, var(--accent)); font-size: min(30vw, calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.72))); z-index: 1; }
+  /* the name stands in front of the subject, bottom-left (Lena Varga): a photo never covers it */
+  .hero-name { position: absolute; left: var(--margin); bottom: calc(var(--s-6) + 40px); width: min(56vw, 900px); margin: 0; padding-right: 5%; text-align: left; font-family: var(--sig); font-weight: var(--sig-w); text-transform: uppercase; line-height: 0.86; letter-spacing: 0.01em; color: var(--bone); font-size: min(10vw, 17svh, calc(min(56vw, 900px) / (var(--longest) * 0.62))); z-index: 3; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45); }
   .hero-name .hw { display: block; }
   .hero-subj { position: absolute; inset: 0; z-index: 2; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
   .hero-cut { flex: none; height: min(92svh, 120vw); width: auto; max-width: none; transform-origin: 50% 100%; }
@@ -456,7 +458,13 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .hero-foot { position: absolute; left: var(--margin); right: var(--margin); bottom: var(--s-6); display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; z-index: 3; }
   .hero-foot p { margin: 0; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8); }
   .hero-cue { color: var(--accent); }
-  @media (max-width: 760px) { .hero-cut { height: 78svh; } .hero-subj.soft .hero-cut { height: 100%; } .hero-name { top: 27%; } }
+  @media (max-width: 760px) {
+    .hero-cut { height: 70svh; } .hero-subj.soft .hero-cut { height: 100%; }
+    .hero-subj { padding-bottom: 16svh; }
+    .hero-name { width: auto; right: var(--margin); font-size: min(21vw, calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.62))); }
+    .hero-stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 44svh; z-index: 2; pointer-events: none; background: linear-gradient(transparent, rgba(13, 16, 18, 0.88) 62%); }
+  }
+  @media (min-width: 761px) { .hero-subj { justify-content: flex-end; padding-right: 8vw; } }
 
   /* exhibits: the prints grow toward you as you scroll */
   .exhibits { position: relative; z-index: 2; padding: var(--s-10) 0 var(--s-8); background: var(--gunmetal); }
@@ -577,6 +585,7 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
   .gb { height: 4px; background: var(--iron); position: relative; overflow: hidden; }
   .gb i { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(var(--v)); }
   .grid-note { margin: var(--s-3) 0 0; }
+  @media (pointer: coarse) { .lens { display: none !important; } }
   .lens { position: absolute; width: 170px; height: 170px; border-radius: 50%; border: 1px solid var(--accent); overflow: hidden; pointer-events: none; left: 0; top: 0; opacity: 0; z-index: 3; box-shadow: 0 0 0 6px rgba(13, 16, 18, 0.6); }
   .lens i { position: absolute; left: 0; top: 0; width: 1px; height: 1px; background-repeat: no-repeat; }
   .sub-more { position: relative; z-index: 2; padding: var(--s-7) 0 var(--s-9); background: var(--gunmetal); }

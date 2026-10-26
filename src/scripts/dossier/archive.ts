@@ -1,250 +1,204 @@
 /**
- * The archive (v2 home): intro, then a camera fly-through past the 29 floating files.
+ * The archive (v2 home), after Particle Self and Anchor AI. One cloud of points runs the whole page.
  *
- * Intro (first visit, at most 5 s, skippable): darkness, the emerald glow builds, Doom assembles out
- * of green particles, DOOMSDAY DOSSIER burns in, the countdown appears. Return visits get a short
- * glow-in. Scrolling the hero turns the figure (Particle Self) and the camera dives through it as it
- * scatters into dust; the fly-through then travels down a corridor of files (Loops). The file ahead
- * gets a typed label beside it, team chapters announce themselves, and opening a file flies the
- * camera into it before the page changes (Feathers).
+ * Intro (first visit, under five seconds, skippable): a loading count runs while a loose nebula gathers
+ * into Doom, built in real 3D from his photo and its depth map; DOOMSDAY DOSSIER types in and the
+ * countdown arrives on its own panel. Return visits gather in about a second.
+ *
+ * Roll call: scrolling the pinned stage morphs the same cloud from character to character through all
+ * 29 files. Between two figures the points swirl out and the cloud makes half a turn; the backdrop glow
+ * takes the next character's colour and their name types in bottom-left, in front of the cloud. The
+ * points scatter away from the cursor or a finger, and the cloud turns slowly toward the pointer.
  */
 import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import type { Ctx, HeroScene } from '../gl/engine';
-import { Figure } from './figure';
-import { drawCover, fontsReady, type FileInfo } from './filecover';
-import { C, EASE, FIGURES, INTRO_KEY, rgb, timeLeft } from './tokens';
+import { fullscreen, type Ctx, type HeroScene } from '../gl/engine';
+import { fitText } from '../motion/grammar';
+import { C, EASE, INTRO_KEY, timeLeft } from './tokens';
+import { BUST, sample, stream, type Cloud, type Points } from './cloud';
 import type Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SPACING = 3.1;
+type FileInfo = { slug: string; no: number; total: number; name: string; team: string; accent: string; href: string; cloud: Cloud | null };
 
-/**
- * File cover material: the drawn cover, a band of light that sweeps across it as the camera passes
- * (so each file reads as a physical object), an accent rim when hovered, and the corridor fog.
- */
-function fileMaterial(accent: string) {
-  return new THREE.ShaderMaterial({
-    transparent: true, depthWrite: false,
-    uniforms: { map: { value: null as THREE.Texture | null }, uOpacity: { value: 0 }, uLift: { value: 0 }, uPass: { value: 0 }, uAccent: { value: new THREE.Color(accent) }, uFog: { value: new THREE.Color(C.gunmetal) }, uFogNear: { value: 3.5 }, uFogFar: { value: 15 } },
-    vertexShader: /* glsl */ `
-      varying vec2 vUv; varying float vDepth;
-      void main(){ vUv = uv; vec4 mv = modelViewMatrix * vec4(position, 1.0); vDepth = -mv.z; gl_Position = projectionMatrix * mv; }`,
-    fragmentShader: /* glsl */ `
-      uniform sampler2D map; uniform float uOpacity, uLift, uPass, uFogNear, uFogFar; uniform vec3 uAccent, uFog;
-      varying vec2 vUv; varying float vDepth;
-      void main(){
-        vec4 t = texture2D(map, vUv);
-        // a soft diagonal band of light crossing the cover as the camera goes by
-        float d = (vUv.x * 0.8 + (1.0 - vUv.y)) * 0.6;
-        float sheen = smoothstep(0.16, 0.0, abs(d - uPass)) * 0.22;
-        vec3 c = t.rgb + vec3(sheen);
-        // accent rim on hover
-        vec2 e = min(vUv, 1.0 - vUv);
-        float rim = smoothstep(0.035, 0.0, min(e.x, e.y * 0.8)) * uLift;
-        c = mix(c, uAccent, rim * 0.9);
-        float fog = smoothstep(uFogNear, uFogFar, vDepth);
-        c = mix(c, uFog, fog * 0.35);
-        gl_FragColor = vec4(c, t.a * uOpacity * (1.0 - fog));
-      }`,
-  });
+/** The loose nebula the intro gathers from: a wide, flattened swirl in Doom's emerald. */
+function nebula(n: number): Points {
+  const rnd = stream(11), pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+  const e = new THREE.Color(C.emerald), d = new THREE.Color(C.emeraldDeep);
+  for (let i = 0; i < n; i++) {
+    const a = rnd() * Math.PI * 2, r = 1.2 + Math.pow(rnd(), 0.6) * 3.2;
+    pos[i * 3] = Math.cos(a) * r; pos[i * 3 + 1] = (rnd() - 0.5) * 1.4 + Math.sin(a * 3) * 0.2; pos[i * 3 + 2] = Math.sin(a) * r - 1;
+    const c = rnd() < 0.5 ? e : d; col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
+  }
+  return { pos, col };
 }
 
-class ArchiveScene implements HeroScene {
+const VERT = /* glsl */ `
+  attribute vec3 aP1; attribute vec3 aC0; attribute vec3 aC1; attribute float aR;
+  uniform float uT, uTime, uSize, uPx, uAlpha, uPtrOn, uFlip; uniform vec3 uPtr;
+  varying vec3 vC; varying float vA;
+  void main(){
+    // two figure buffers; uFlip says which one the cloud is leaving
+    vec3 pa = uFlip < 0.5 ? position : aP1, pb = uFlip < 0.5 ? aP1 : position;
+    vec3 ca = uFlip < 0.5 ? aC0 : aC1, cb = uFlip < 0.5 ? aC1 : aC0;
+    // each point leaves a little later than the last, so a morph ripples through the cloud
+    float d = aR * 0.45;
+    float t = smoothstep(d, d + 0.55, uT);
+    vec3 p = mix(pa, pb, t);
+    vec3 dir = normalize(vec3(sin(aR * 91.7), cos(aR * 47.3), sin(aR * 13.1 + 1.0)));
+    // between figures the points swirl outward and back
+    p += dir * sin(3.14159 * t) * (0.3 + aR * 0.55);
+    // a slow breath, so the cloud is never quite still
+    p += dir * 0.007 * sin(uTime * 1.3 + aR * 40.0);
+    vec4 wp = modelMatrix * vec4(p, 1.0);
+    // the cloud parts around the pointer
+    vec2 dd = wp.xy - uPtr.xy; float f = exp(-dot(dd, dd) * 7.0) * uPtrOn;
+    wp.xy += normalize(dd + 1e-4) * f * 0.3; wp.z += f * 0.25;
+    vec4 mv = viewMatrix * wp;
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = uSize * uPx * (0.7 + aR * 0.6) / -mv.z;
+    vC = mix(ca, cb, t); vA = uAlpha;
+  }`;
+const FRAG = /* glsl */ `
+  varying vec3 vC; varying float vA;
+  void main(){
+    vec2 q = gl_PointCoord - 0.5; float r = dot(q, q);
+    if (r > 0.25) discard;
+    gl_FragColor = vec4(vC, vA * smoothstep(0.25, 0.08, r));
+  }`;
+const BG = /* glsl */ `
+  uniform vec3 uAcc; uniform vec2 uCtr; uniform vec2 uRes; uniform float uK;
+  varying vec2 vUv;
+  void main(){
+    vec2 a = vec2(uRes.x / uRes.y, 1.0);
+    float d = length((vUv - uCtr) * a);
+    vec3 c = vec3(0.051, 0.063, 0.071) + uAcc * (0.55 * exp(-d * d * 3.0) + 0.12 * exp(-d * d * 0.6)) * uK;
+    c *= 1.0 - 0.4 * smoothstep(0.55, 1.4, length((vUv - 0.5) * a));
+    gl_FragColor = vec4(c, 1.0);
+  }`;
+
+class RollScene implements HeroScene {
   scene = new THREE.Scene();
+  cam = new THREE.PerspectiveCamera(35, 1, 0.1, 60);
   bgScene = new THREE.Scene();
   bgCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  cam = new THREE.PerspectiveCamera(42, 1, 0.05, 80);
-  bgMat!: THREE.ShaderMaterial;
-  figure = new Figure();
-  figureReady = false;
-  fig: Record<string, unknown> = {};
-  files: { mesh: THREE.Mesh; info: FileInfo; base: THREE.Vector3; rot: number; seed: number }[] = [];
-  dust!: THREE.Points;
-  dustMat!: THREE.ShaderMaterial;
-  // driven from the DOM side
-  glow = 0; assemble = 0; yaw = 0; dive = 0; fly = 0; hover = -1; flyTo: THREE.Vector3 | null = null; flyLook: THREE.Vector3 | null = null; flyK = 0;
-  mouse = new THREE.Vector2(9, 9);
-  camZ0 = 6.2;
-  get zEnd() { return -2 - (this.files.length || 29) * SPACING - 1.5; }
+  bg = fullscreen(BG, { uAcc: { value: new THREE.Color(C.emerald) }, uCtr: { value: new THREE.Vector2(0.5, 0.5) }, uK: { value: 0 } });
+  group = new THREE.Group();
+  geo = new THREE.BufferGeometry();
+  mat: THREE.ShaderMaterial;
+  clouds = new Map<number, Points>();
+  pair: [number, number] = [-9, -9];
+  private slot: [number, number] = [-9, -9]; // which figure each buffer holds
+  // driven by the page
+  gather = 0;           // intro: nebula (0) to Doom (1)
+  p = 0;                // roll call position, 0 .. files - 1
+  glow = 0;
+  accent = new THREE.Color(C.emerald);
+  private acc = new THREE.Color(C.emerald);
+  private ray = new THREE.Raycaster(); private plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0); private hit = new THREE.Vector3();
+  private phone = false;
 
-  mount(ctx: Ctx) {
-    this.scene.fog = new THREE.Fog(new THREE.Color(C.gunmetal), 3.5, 15);
-    const [r, g, b] = rgb(C.emerald);
-    this.bgMat = new THREE.ShaderMaterial({
-      depthTest: false, depthWrite: false,
-      uniforms: { uGlow: { value: 0 }, uTime: { value: 0 }, uRes: { value: new THREE.Vector2(1, 1) }, uEm: { value: new THREE.Vector3(r, g, b) }, uFly: { value: 0 } },
-      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
-      fragmentShader: /* glsl */ `
-        uniform float uGlow, uTime, uFly; uniform vec2 uRes; uniform vec3 uEm; varying vec2 vUv;
-        float hash(vec2 p){ return fract(sin(dot(p, vec2(41.3, 289.1))) * 43758.5); }
-        void main(){
-          vec2 p = (vUv - vec2(0.5, 0.52)) * vec2(uRes.x/uRes.y, 1.0);
-          float r = length(p);
-          // the glow builds from the centre, then thins into a far corridor light as we fly
-          float core = exp(-r*r*mix(5.5, 14.0, uFly)) * uGlow;
-          float breath = 0.92 + 0.08*sin(uTime*0.9);
-          vec3 base = vec3(0.051, 0.063, 0.071);
-          vec3 col = base * (0.35 + 0.65*uGlow) + uEm * core * 0.42 * breath;
-          col += uEm * 0.05 * smoothstep(0.9, 0.0, abs(p.y + 0.35)) * uFly; // floor sheen in the corridor
-          col *= smoothstep(1.25, 0.2, r);
-          col += (hash(vUv*uRes + uTime) - 0.5) * 0.012;
-          gl_FragColor = vec4(col, 1.0);
-        }`,
+  constructor(public n: number) {
+    const r = stream(3), rr = new Float32Array(n);
+    for (let i = 0; i < n; i++) rr[i] = r();
+    for (const k of ['position', 'aP1', 'aC0', 'aC1']) this.geo.setAttribute(k, new THREE.BufferAttribute(new Float32Array(n * 3), 3));
+    this.geo.setAttribute('aR', new THREE.BufferAttribute(rr, 1));
+    this.mat = new THREE.ShaderMaterial({
+      vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false,
+      uniforms: { uT: { value: 0 }, uTime: { value: 0 }, uSize: { value: 0.022 }, uPx: { value: 500 }, uAlpha: { value: 1 }, uPtr: { value: new THREE.Vector3(9, 9, 0) }, uPtrOn: { value: 0 }, uFlip: { value: 0 } },
     });
-    const q = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.bgMat);
-    this.bgScene.add(q);
-    this.buildDust(ctx);
-    this.resize(ctx);
+    const pts = new THREE.Points(this.geo, this.mat);
+    pts.frustumCulled = false;
+    this.group.add(pts);
+    this.scene.add(this.group);
+    this.bgScene.add(this.bg.mesh);
+    this.cam.position.set(0, 0, 5.2);
   }
 
-  async loadFigure(ctx: Ctx, src: string) {
-    await this.figure.build({ src, cols: ctx.mobile ? 140 : 230, ...FIGURES['victor-von-doom'], ...this.fig });
-    this.figure.mat.uniforms.uSize.value = ctx.mobile ? 2.6 : 2.1;
-    this.scene.add(this.figure.points);
-    this.figureReady = true;
+  /**
+   * Points the cloud at a pair of figures (a, b); false while one of them is still loading. Moving on one
+   * file keeps the figure both pairs share in its buffer and writes only the new one.
+   */
+  setPair(a: number, b: number) {
+    if (this.pair[0] === a && this.pair[1] === b) return true;
+    const A = this.clouds.get(a), B = this.clouds.get(b);
+    if (!A || !B) return false;
+    const at = this.geo.attributes;
+    const write = (slot: 0 | 1, i: number, pts: Points) => {
+      (at[slot ? 'aP1' : 'position'].array as Float32Array).set(pts.pos);
+      (at[slot ? 'aC1' : 'aC0'].array as Float32Array).set(pts.col);
+      at[slot ? 'aP1' : 'position'].needsUpdate = true; at[slot ? 'aC1' : 'aC0'].needsUpdate = true;
+      this.slot[slot] = i;
+    };
+    let from = this.slot.indexOf(a) as -1 | 0 | 1;
+    if (from < 0) { from = this.slot[0] === b ? 1 : 0; write(from, a, A); }
+    const to = (1 - from) as 0 | 1;
+    if (this.slot[to] !== b) write(to, b, B);
+    this.mat.uniforms.uFlip.value = from;
+    this.pair = [a, b];
+    return true;
   }
 
-  async loadFiles(ctx: Ctx, infos: FileInfo[]) {
-    await fontsReady();
-    const w = ctx.mobile ? 320 : 512;
-    const geo = new THREE.PlaneGeometry(1.2, 1.5);
-    let i = 0;
-    for (const info of infos) {
-      const side = i % 2 ? 1 : -1;
-      const seed = Math.random();
-      const z = -2 - i * SPACING;
-      const base = new THREE.Vector3(side * (ctx.mobile ? 0.95 : 1.55 + seed * 0.35) + this.swayX(z), (seed - 0.5) * 0.7 + this.swayY(z), z);
-      const mat = fileMaterial(info.accent);
-      const mesh = new THREE.Mesh(geo, mat);
-      mesh.position.copy(base);
-      const rot = -side * (0.32 + seed * 0.12);
-      mesh.rotation.set(0, rot, (seed - 0.5) * 0.12);
-      mesh.userData.i = i;
-      this.scene.add(mesh);
-      this.files.push({ mesh, info, base, rot, seed });
-      i++;
-    }
-    // draw covers in order of distance, a few at a time, so the first files arrive quickly
-    for (const f of this.files) {
-      const canvas = await drawCover(f.info, w);
-      const tex = new THREE.CanvasTexture(canvas);
-      tex.colorSpace = THREE.NoColorSpace; // the cover shader writes the drawn sRGB values straight out
-      tex.anisotropy = 4;
-      (f.mesh.material as THREE.ShaderMaterial).uniforms.map.value = tex;
-    }
-  }
-
-  swayX(z: number) { return Math.sin(z * 0.13) * 0.7; }
-  swayY(z: number) { return Math.cos(z * 0.09) * 0.25; }
-
-  buildDust(ctx: Ctx) {
-    const n = ctx.mobile ? 1400 : 4200;
-    const pos = new Float32Array(n * 3), seed = new Float32Array(n);
-    for (let i = 0; i < n; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 9; pos[i * 3 + 1] = (Math.random() - 0.5) * 5; pos[i * 3 + 2] = 4 - Math.random() * (29 * SPACING + 12);
-      seed[i] = Math.random();
-    }
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    geo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
-    this.dustMat = new THREE.ShaderMaterial({
-      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-      uniforms: { uTime: { value: 0 }, uPx: { value: 1 }, uAlpha: { value: 0 }, uEm: { value: new THREE.Vector3(...rgb(C.emeraldHot)) } },
-      vertexShader: /* glsl */ `
-        uniform float uTime, uPx; attribute float aSeed; varying float vA;
-        void main(){
-          vec3 p = position;
-          p.y += sin(uTime*0.2 + aSeed*30.0) * 0.15; p.x += cos(uTime*0.17 + aSeed*20.0) * 0.12;
-          vec4 mv = modelViewMatrix * vec4(p, 1.0);
-          gl_Position = projectionMatrix * mv;
-          gl_PointSize = uPx * (1.0 + aSeed*2.0) * (4.0 / -mv.z);
-          vA = smoothstep(14.0, 2.0, -mv.z) * (0.25 + aSeed*0.6);
-        }`,
-      fragmentShader: /* glsl */ `
-        uniform float uAlpha; uniform vec3 uEm; varying float vA;
-        void main(){ float d = length(gl_PointCoord-0.5); float a = smoothstep(0.5,0.0,d)*vA*uAlpha; gl_FragColor = vec4(uEm*a, 1.0); }`,
-    });
-    this.dust = new THREE.Points(geo, this.dustMat);
-    this.dust.frustumCulled = false;
-    this.scene.add(this.dust);
-  }
+  mount(ctx: Ctx) { this.phone = ctx.mobile; }
 
   resize(ctx: Ctx) {
-    this.cam.aspect = ctx.width / ctx.height;
-    // keep the figure's head comfortably in frame on tall phones
-    this.cam.fov = ctx.width < ctx.height ? 58 : 42;
-    this.cam.updateProjectionMatrix();
-    this.bgMat.uniforms.uRes.value.set(ctx.bufW, ctx.bufH);
+    const asp = ctx.width / ctx.height;
+    this.phone = ctx.width < 760;
+    this.cam.aspect = asp; this.cam.updateProjectionMatrix();
+    const viewH = 2 * this.cam.position.z * Math.tan((this.cam.fov * Math.PI) / 360), viewW = viewH * asp;
+    // phones: the cloud stands in the upper part of the screen; wider screens: right of centre, the words left
+    const s = this.phone ? Math.min(0.72, (viewW * 0.9) / 2.2) : Math.min(1.15, viewH * 0.86 / BUST);
+    this.group.scale.setScalar(s);
+    this.group.position.set(this.phone ? 0 : Math.min(viewW * 0.2, 1.3), this.phone ? viewH * 0.17 : 0.02, 0);
+    const ctr = this.group.position.clone().project(this.cam);
+    this.bg.mat.uniforms.uCtr.value.set(ctr.x * 0.5 + 0.5, ctr.y * 0.5 + 0.5);
+    this.bg.mat.uniforms.uRes.value.set(ctx.bufW, ctx.bufH);
+    this.mat.uniforms.uPx.value = ctx.bufH / (2 * Math.tan((this.cam.fov * Math.PI) / 360));
+    this.mat.uniforms.uSize.value = (this.phone ? 0.026 : 0.022) * s;
   }
-
-  /** Camera position for the hero dive (0..1) and the fly-through (0..1). */
-  camAt(out: THREE.Vector3, look: THREE.Vector3) {
-    const zDive = this.camZ0 - this.dive * 5.2; // through the figure to z = 1
-    const zFly = 1 + this.fly * (this.zEnd - 1);
-    const z = this.fly > 0 ? zFly : zDive;
-    out.set(this.swayX(z) * Math.min(1, this.fly * 6), this.swayY(z) * Math.min(1, this.fly * 6) + (1 - this.dive) * 0.05, z);
-    look.set(this.swayX(z - 4) * Math.min(1, this.fly * 6), this.swayY(z - 4) * 0.8 * Math.min(1, this.fly * 6), z - 4);
-  }
-
-  private tmp = new THREE.Vector3(); private tmpL = new THREE.Vector3(); private curL = new THREE.Vector3(0, 0, 0);
 
   update(ctx: Ctx, dt: number) {
-    const t = ctx.time;
-    this.bgMat.uniforms.uGlow.value = this.glow;
-    this.bgMat.uniforms.uTime.value = t;
-    this.bgMat.uniforms.uFly.value = Math.min(1, this.fly * 4 + this.dive * 0.4);
-    // camera: scroll-driven path, or a fly-in toward an opened file
-    this.camAt(this.tmp, this.tmpL);
-    if (this.flyTo && this.flyLook) { this.tmp.lerp(this.flyTo, this.flyK); this.tmpL.lerp(this.flyLook, this.flyK); }
-    this.cam.position.copy(this.tmp);
-    this.curL.lerp(this.tmpL, 1 - Math.exp(-dt * 8));
-    this.cam.lookAt(this.curL);
-
-    if (this.figureReady) {
-      const u = this.figure.mat.uniforms;
-      u.uAssemble.value = this.assemble; u.uTime.value = t;
-      u.uYaw.value = this.yaw + Math.sin(t * 0.35) * 0.05 * this.assemble;
-      u.uPitch.value = -0.04 + this.dive * 0.12;
-      u.uDisperse.value = Math.max(0, (this.dive - 0.45) / 0.55);
-      u.uPx.value = ctx.bufW / ctx.width;
-      u.uMouse.value.copy(this.mouse); u.uLift.value = ctx.mobile ? 0 : 1;
-      this.figure.points.visible = this.fly < 0.08;
-      this.figure.points.position.set(ctx.width > ctx.height ? 1.55 * (1 - this.dive) : 0, ctx.width > ctx.height ? 0 : 0.6, 0);
+    const u = this.mat.uniforms, t = ctx.time;
+    u.uTime.value = t;
+    // which two figures, and how far between them
+    let k: number, m: number;
+    if (this.gather < 1) { this.setPair(-1, 0); m = this.gather; k = 0; }
+    else {
+      const last = this.n0 - 1, p = Math.min(Math.max(this.p, 0), last);
+      k = Math.min(Math.floor(p), Math.max(0, last - 1));
+      const f = p - k;
+      if (last === 0 || !this.setPair(k, k + 1)) { m = this.pair[0] === k ? 0 : 1; }
+      else m = gsap.utils.clamp(0, 1, (f - 0.22) / 0.62);
+      m = m * m * (3 - 2 * m);
     }
-    this.dustMat.uniforms.uTime.value = t;
-    this.dustMat.uniforms.uPx.value = ctx.bufW / ctx.width;
-    this.dustMat.uniforms.uAlpha.value = Math.min(1, this.glow * 0.5 + this.dive);
-
-    for (const f of this.files) {
-      const i = f.mesh.userData.i as number;
-      const lift = this.hover === i ? 1 : 0;
-      f.mesh.userData.l = (f.mesh.userData.l || 0) + (lift - (f.mesh.userData.l || 0)) * (1 - Math.exp(-dt * 10));
-      const l = f.mesh.userData.l as number;
-      f.mesh.position.set(f.base.x * (1 - l * 0.12), f.base.y + Math.sin(t * 0.6 + f.seed * 9) * 0.06 + l * 0.06, f.base.z + l * 0.35);
-      f.mesh.rotation.y = f.rot * (1 - l * 0.45) + Math.sin(t * 0.4 + f.seed * 5) * 0.03;
-      const u = (f.mesh.material as THREE.ShaderMaterial).uniforms;
-      u.uOpacity.value = u.map.value ? Math.min(1, this.dive * 2.5 + this.fly * 20) : 0;
-      u.uLift.value = l;
-      // the light band travels across the cover as the camera closes in on it
-      u.uPass.value = 1.4 - Math.min(1.6, Math.max(0, (this.cam.position.z - f.base.z) / 6)) * 1.0;
-      f.mesh.visible = u.uOpacity.value > 0.01;
-    }
-
+    u.uT.value = m;
+    // the cloud turns slowly, leans toward the pointer and makes half a turn through each morph
+    const px = ctx.pointer.x - 0.5, py = ctx.pointer.y - 0.5;
+    const spin = Math.sin(Math.PI * m) * (this.gather < 1 ? 1.4 : 0.9);
+    this.group.rotation.y += ((Math.sin(t * 0.22) * 0.28 + px * 0.55 + spin) - this.group.rotation.y) * (1 - Math.exp(-dt * 4));
+    this.group.rotation.x += ((-py * 0.22) - this.group.rotation.x) * (1 - Math.exp(-dt * 4));
+    // the pointer on the cloud's plane, in world space
+    this.ray.setFromCamera(new THREE.Vector2(ctx.pointer.x * 2 - 1, ctx.pointer.y * 2 - 1), this.cam);
+    this.plane.constant = -this.group.position.z;
+    if (this.ray.ray.intersectPlane(this.plane, this.hit)) u.uPtr.value.copy(this.hit);
+    // only a real cursor or finger parts the cloud; the engine's idle drift would leave a wandering hole
+    u.uPtrOn.value += ((ctx.pointer.active ? 1 : 0) * this.gather - u.uPtrOn.value) * (1 - Math.exp(-dt * 3));
+    // the glow drifts toward the current character's colour
+    this.acc.lerp(this.accent, 1 - Math.exp(-dt * 2.5));
+    this.bg.mat.uniforms.uAcc.value.copy(this.acc);
+    this.bg.mat.uniforms.uK.value = this.glow;
     const r = ctx.renderer;
-    r.autoClear = false;
-    r.clear();
+    r.autoClear = false; r.clear();
     r.render(this.bgScene, this.bgCam);
     r.render(this.scene, this.cam);
     r.autoClear = true;
   }
 
-  dispose() {
-    this.scene.traverse((o: any) => { o.geometry?.dispose?.(); if (o.material) { o.material.map?.dispose?.(); o.material.uniforms?.map?.value?.dispose?.(); o.material.dispose?.(); } });
-    this.bgMat.dispose();
-  }
+  n0 = 1; // how many files the roll call has (set by the page)
+
+  dispose() { this.geo.dispose(); this.mat.dispose(); this.bg.mat.dispose(); }
 }
 
 type Env = { engine: { ctx: Ctx; mount(s: HeroScene): Promise<void>; renderer: THREE.WebGLRenderer } | null; lenis: Lenis | null; reduced: boolean; phone: boolean };
@@ -253,161 +207,146 @@ export async function archive(env: Env) {
   const root = document.querySelector<HTMLElement>('[data-archive]');
   const raw = document.getElementById('dx-files');
   if (!root || !raw) return;
-  const infos = JSON.parse(raw.textContent || '[]') as FileInfo[];
+  const files = JSON.parse(raw.textContent || '[]') as FileInfo[];
+  const roll = root.querySelector<HTMLElement>('[data-roll]')!;
   const intro = root.querySelector<HTMLElement>('[data-intro]')!;
-  const title = intro.querySelector<HTMLElement>('[data-title]')!;
+  const chars = [...intro.querySelectorAll<HTMLElement>('[data-title] .ch')];
   const after = [...intro.querySelectorAll<HTMLElement>('[data-after]')];
   const skip = intro.querySelector<HTMLButtonElement>('[data-skip]')!;
   const count = intro.querySelector<HTMLElement>('[data-count]')!;
-  const fly = root.querySelector<HTMLElement>('[data-fly]');
-  const label = root.querySelector<HTMLAnchorElement>('[data-label]');
-  const chapter = root.querySelector<HTMLElement>('[data-chapter]');
-  const rail = root.querySelector<HTMLElement>('[data-rail]');
+  const loader = intro.querySelector<HTMLElement>('[data-loader]')!;
+  const pct = intro.querySelector<HTMLElement>('[data-pct]')!;
+  const call = root.querySelector<HTMLElement>('[data-call]')!;
+  fitText(root);
 
   // countdown, the same maths as everywhere else
-  const tickCount = () => {
+  const tick = () => {
     const t = timeLeft();
-    const set = (k: string, v: number, l = 2) => { const n = count.querySelector(`[data-k="${k}"]`); const s = String(v).padStart(l, '0'); if (n && n.textContent !== s) n.textContent = s; };
-    set('d', t.d, 2); set('h', t.h); set('m', t.m); set('s', t.s);
+    const set = (k: string, v: number) => { const el = count.querySelector(`[data-k="${k}"]`); const s = String(v).padStart(2, '0'); if (el && el.textContent !== s) el.textContent = s; };
+    set('d', t.d); set('h', t.h); set('m', t.m); set('s', t.s);
   };
-  tickCount(); setInterval(tickCount, 1000);
+  tick(); setInterval(tick, 1000);
 
-  // title: two stacked copies per letter, an emerald burn and the bone ink, so the burn-in is opacity only
-  const letters = (layer: string) => [...title.querySelectorAll<HTMLElement>(`.${layer} .ch`)];
-  const burn = letters('burn'), ink = letters('ink');
+  if (!env.engine) { gsap.set([...chars, ...after], { opacity: 1 }); return; }
 
-  const sc = env.engine ? new ArchiveScene() : null;
-  if (env.engine && sc) {
-    await env.engine.mount(sc);
-    env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
-  }
-  const figData = JSON.parse(root.dataset.fig || 'null');
-  if (sc && figData) sc.fig = figData;
-  const photo = figData?.src || root.dataset.figure!;
-  const figureLoad = sc && env.engine ? sc.loadFigure(env.engine.ctx, photo) : Promise.resolve();
+  const N = env.phone ? 20000 : 42000;
+  const sc = new RollScene(N);
+  sc.n0 = files.length;
+  sc.clouds.set(-1, nebula(N));
+  // clouds load as the visitor nears them (the one on screen and the next two), built in a worker where
+  // the browser can, so scrolling never waits on one
+  let worker: Worker | null = null;
+  try { if (typeof OffscreenCanvas !== 'undefined') worker = new Worker(new URL('./cloud.worker.ts', import.meta.url), { type: 'module' }); } catch { worker = null; }
+  const waiting = new Map<number, (p: Points | null) => void>();
+  worker?.addEventListener('message', (e: MessageEvent<{ id: number; pos?: Float32Array; col?: Float32Array }>) => {
+    const done = waiting.get(e.data.id); waiting.delete(e.data.id);
+    done?.(e.data.pos && e.data.col ? { pos: e.data.pos, col: e.data.col } : null);
+  });
+  const build = (i: number, c: Cloud) => worker
+    ? new Promise<Points | null>((res) => { waiting.set(i, res); worker!.postMessage({ id: i, c, n: N }); })
+    : sample(c, N);
+  const loading = new Map<number, Promise<void>>();
+  const ensure = (i: number) => {
+    if (i < 0 || i >= files.length) return undefined;
+    if (!loading.has(i)) {
+      const c = files[i].cloud;
+      const fallback = () => { sc.clouds.set(i, sc.clouds.get(-1)!); };
+      loading.set(i, (c ? build(i, c) : Promise.resolve(null)).then((pts) => { if (pts) sc.clouds.set(i, pts); else fallback(); }, fallback));
+    }
+    return loading.get(i);
+  };
+  await ensure(0);
+  ensure(1); ensure(2);
 
   const seen = (() => { try { return localStorage.getItem(INTRO_KEY) === '1'; } catch { return false; } })();
-  const done = () => {
-    try { localStorage.setItem(INTRO_KEY, '1'); } catch { /* private mode */ }
-    root.classList.add('intro-done');
-    env.lenis?.start();
-    skip.hidden = true;
-    if (sc && env.engine) sc.loadFiles(env.engine.ctx, infos);
-  };
-
-  if (env.reduced || !sc) {
-    // still: everything in place, no camera moves
-    if (sc) { await figureLoad; sc.glow = 1; sc.assemble = 1; }
-    gsap.set([...ink, ...after], { opacity: 1 }); gsap.set(burn, { opacity: 0 });
-    done();
+  if (env.reduced) {
+    sc.gather = 1; sc.glow = 1; sc.setPair(0, 0);
+    await env.engine.mount(sc);
+    gsap.set([...chars, ...after], { opacity: 1 });
     return;
   }
+  await env.engine.mount(sc);
+  env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
 
+  // intro
   env.lenis?.stop();
-  await figureLoad;
-  const full = !seen;
+  const done = () => {
+    try { localStorage.setItem(INTRO_KEY, '1'); } catch { /* private mode */ }
+    env.lenis?.start(); skip.hidden = true;
+    gsap.to(loader, { opacity: 0, duration: 0.4 });
+  };
   const tl = gsap.timeline({ onComplete: done });
-  if (full) {
+  if (!seen) {
     skip.hidden = false;
-    tl.to(sc, { glow: 1, duration: 1.4, ease: EASE.glow }, 0)
-      .to(sc, { assemble: 1, duration: 3.0, ease: 'power2.out' }, 0.5)
-      .fromTo(burn, { opacity: 0 }, { opacity: 1, duration: 0.35, stagger: { each: 0.05, from: 'random' }, ease: 'power2.in' }, 2.8)
-      .to(ink, { opacity: 1, duration: 0.5, stagger: { each: 0.05, from: 'random' } }, 3.05)
-      .to(burn, { opacity: 0, duration: 0.6, stagger: { each: 0.05, from: 'random' } }, 3.25)
-      .fromTo(after, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: EASE.reveal }, 3.7);
+    const n = { v: 0 };
+    tl.to(loader, { opacity: 1, duration: 0.3 }, 0)
+      .to(n, { v: 100, duration: 2.6, ease: 'power2.inOut', onUpdate: () => { pct.textContent = String(Math.round(n.v)).padStart(3, '0'); } }, 0)
+      .to(sc, { glow: 1, duration: 2, ease: EASE.glow }, 0.2)
+      .to(sc, { gather: 1, duration: 3.1, ease: 'power3.inOut' }, 0.1)
+      .fromTo(chars, { opacity: 0, yPercent: 60 }, { opacity: 1, yPercent: 0, duration: 0.5, stagger: 0.045, ease: EASE.reveal }, 2.6)
+      .fromTo(after, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: EASE.reveal }, 3.2);
   } else {
     tl.to(sc, { glow: 1, duration: 0.8, ease: EASE.glow }, 0)
-      .to(sc, { assemble: 1, duration: 0.9, ease: 'power3.out' }, 0)
-      .to(ink, { opacity: 1, duration: 0.6, stagger: 0.02 }, 0.1)
-      .fromTo(after, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: EASE.reveal }, 0.3);
+      .to(sc, { gather: 1, duration: 1.3, ease: 'power3.out' }, 0)
+      .fromTo(chars, { opacity: 0, yPercent: 60 }, { opacity: 1, yPercent: 0, duration: 0.45, stagger: 0.025, ease: EASE.reveal }, 0.15)
+      .fromTo(after, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: EASE.reveal }, 0.4);
   }
-  const skipNow = () => { if (tl.progress() < 1) { tl.progress(1); } };
-  const onKey = (e: KeyboardEvent) => { if (!['Tab', 'Shift'].includes(e.key)) skipNow(); };
-  addEventListener('keydown', onKey, { once: true });
+  const skipNow = () => { if (tl.progress() < 1) tl.progress(1); };
+  addEventListener('keydown', (e) => { if (!['Tab', 'Shift'].includes(e.key)) skipNow(); }, { once: true });
   addEventListener('wheel', skipNow, { once: true, passive: true });
   addEventListener('touchstart', skipNow, { once: true, passive: true });
   addEventListener('pointerdown', skipNow, { once: true });
   skip.addEventListener('click', skipNow);
 
-  // hero scroll: the figure turns, then the camera dives through it as it scatters
-  ScrollTrigger.create({ trigger: intro, start: 'top top', end: 'bottom top', onUpdate: (st) => { sc.yaw = st.progress * 0.9; sc.dive = st.progress; } });
-  gsap.to(intro.querySelectorAll('.intro-foot, .intro-top'), { opacity: 0, y: -40, ease: 'none', scrollTrigger: { trigger: intro, start: 'top top', end: '60% top', scrub: true } });
+  // the roll call
+  const nameEl = call.querySelector<HTMLAnchorElement>('[data-c-name]')!;
+  const openEl = call.querySelector<HTMLAnchorElement>('[data-c-open]')!;
+  const bar = call.querySelector<HTMLElement>('[data-c-bar]')!;
+  const slots = {
+    no: call.querySelector<HTMLElement>('[data-c-no]')!, file: call.querySelector<HTMLElement>('[data-c-file]')!,
+    team: call.querySelector<HTMLElement>('[data-c-team]')!, team2: call.querySelector<HTMLElement>('[data-c-team2]')!,
+  };
+  const copy = call.querySelector<HTMLElement>('.call-copy')!;
+  let shown = -1;
+  const showName = (i: number) => {
+    if (i === shown) return;
+    const dir = i > shown ? 1 : -1;
+    shown = i;
+    const f = files[i];
+    sc.accent.set(f.accent);
+    call.style.setProperty('--a', f.accent);
+    const nn = String(f.no).padStart(2, '0');
+    slots.no.textContent = nn; slots.file.textContent = nn; slots.team.textContent = f.team; slots.team2.textContent = f.team;
+    nameEl.href = f.href; openEl.href = f.href; nameEl.dataset.ptLabel = f.name;
+    // letters inside whole words, so a long name wraps between words, never inside one
+    nameEl.innerHTML = f.name.split(' ').map((w) => `<span class="cw" style="display:inline-block;white-space:nowrap">${[...w].map((ch) => `<span class="cc" style="display:inline-block">${ch}</span>`).join('')}</span>`).join(' ');
+    nameEl.style.fontSize = ''; delete nameEl.dataset.fitted;
+    fitText(copy);
+    gsap.fromTo(nameEl.querySelectorAll('.cc'), { yPercent: 90 * dir, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.55, stagger: 0.025, ease: EASE.reveal, overwrite: true });
+    gsap.fromTo(call.querySelectorAll('[data-c-in]'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: EASE.reveal, delay: 0.15, overwrite: true });
+  };
+  nameEl.classList.add('t-title');
+  nameEl.setAttribute('data-fit', '');
 
-  if (!fly) return;
-  // the fly-through: progress along the corridor, labels for the file ahead, team chapters
-  let lastNear = -2, lastTeam = '';
-  const v = new THREE.Vector3();
   ScrollTrigger.create({
-    trigger: fly, start: 'top top', end: 'bottom bottom',
-    onUpdate: (st) => { sc.fly = st.progress; },
-  });
-  const placeLabel = () => {
-    if (!label || !sc.files.length) return;
-    const camZ = sc.cam.position.z;
-    let near = -1;
-    for (let i = 0; i < sc.files.length; i++) { const z = sc.files[i].base.z; if (z < camZ - 0.9 && z > camZ - 7.5) { near = i; break; } }
-    if (near !== lastNear) {
-      lastNear = near;
-      if (near >= 0) {
-        const f = sc.files[near].info;
-        label.href = f.href;
-        label.querySelector('[data-l-no]')!.textContent = `FILE ${String(f.no).padStart(2, '0')} / ${f.total}`;
-        label.querySelector('[data-l-name]')!.textContent = f.name;
-        label.querySelector('[data-l-team]')!.textContent = f.team;
-        label.style.setProperty('--a', f.accent);
-        gsap.fromTo(label.querySelectorAll('[data-l-in]'), { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.05, ease: EASE.reveal, overwrite: true });
-        if (rail) rail.textContent = `FILE ${String(f.no).padStart(2, '0')} / ${f.total}`;
-        if (chapter && f.team !== lastTeam) {
-          lastTeam = f.team;
-          const name = chapter.querySelector<HTMLElement>('[data-c-name]')!;
-          name.textContent = f.team;
-          gsap.fromTo(name, { yPercent: 105 }, { yPercent: 0, duration: 0.7, ease: EASE.reveal, overwrite: true });
-        }
+    trigger: roll, start: 'top top', end: 'bottom bottom',
+    onUpdate: (st) => {
+      // one unit to hand over from the intro, then one per file
+      const u = st.progress * (files.length + 1) - 1;
+      const fade = gsap.utils.clamp(0, 1, (u + 0.85) / 0.45);
+      gsap.set(intro, { opacity: 1 - fade, y: -40 * fade });
+      intro.style.visibility = fade >= 1 ? 'hidden' : '';
+      const p = gsap.utils.clamp(0, files.length - 1, u);
+      sc.p = p;
+      const on = u > -0.45;
+      call.style.visibility = on ? 'visible' : 'hidden';
+      if (on) {
+        const k = Math.floor(p), f = p - k;
+        showName(Math.min(files.length - 1, k + (f > 0.55 ? 1 : 0)));
+        gsap.set(bar, { scaleX: p / (files.length - 1) });
       }
-      label.classList.toggle('on', near >= 0);
-    }
-    if (near >= 0) {
-      const m = sc.files[near].mesh;
-      const side = sc.files[near].base.x - sc.cam.position.x > 0 ? 1 : -1;
-      v.set(side > 0 ? -0.66 : 0.66, 0.55, 0).applyMatrix4(m.matrixWorld).project(sc.cam);
-      const x = (v.x * 0.5 + 0.5) * innerWidth, y = (-v.y * 0.5 + 0.5) * innerHeight;
-      label.style.transform = `translate3d(${Math.round(side > 0 ? x - label.offsetWidth - 26 : x + 26)}px, ${Math.round(Math.max(90, Math.min(innerHeight - 120, y)))}px, 0)`;
-    }
-  };
-  gsap.ticker.add(placeLabel);
-
-  // hover and open (fine pointers lift the file; any click opens it)
-  const ray = new THREE.Raycaster();
-  const pick = (e: PointerEvent) => {
-    if (!sc.files.length || sc.fly <= 0) return -1;
-    const ndc = new THREE.Vector2((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
-    ray.setFromCamera(ndc, sc.cam);
-    const hit = ray.intersectObjects(sc.files.map((f) => f.mesh))[0];
-    return hit ? (hit.object.userData.i as number) : -1;
-  };
-  addEventListener('pointermove', (e) => {
-    sc.mouse.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
-    if (e.pointerType !== 'mouse') return;
-    const i = pick(e);
-    if (i !== sc.hover) { sc.hover = i; document.body.style.cursor = i >= 0 ? 'pointer' : ''; }
-  }, { passive: true });
-  const open = (i: number) => {
-    const f = sc.files[i];
-    env.lenis?.stop();
-    const n = new THREE.Vector3(0, 0, 1).applyEuler(f.mesh.rotation);
-    sc.flyTo = f.mesh.position.clone().addScaledVector(n, 1.05);
-    sc.flyLook = f.mesh.position.clone();
-    sessionStorage.setItem('dd-fly-in', f.info.slug);
-    gsap.to(sc, { flyK: 1, duration: 0.95, ease: EASE.file, onComplete: () => { location.href = f.info.href; } });
-    gsap.to('[data-veil]', { opacity: 1, duration: 0.35, delay: 0.7 });
-  };
-  addEventListener('click', (e) => {
-    if ((e.target as HTMLElement).closest('a, button')) return;
-    const i = pick(e as PointerEvent);
-    if (i >= 0) open(i);
-  });
-  label?.addEventListener('click', (e) => {
-    if (lastNear < 0 || e.metaKey || e.ctrlKey) return;
-    e.preventDefault(); open(lastNear);
+      const near = Math.round(p);
+      ensure(near + 1); ensure(near + 2); ensure(near - 1);
+    },
   });
 }

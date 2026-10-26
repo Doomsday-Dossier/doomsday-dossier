@@ -105,7 +105,7 @@ export async function filePage(env: Env) {
   const hero = file.querySelector<HTMLElement>('[data-hero]');
   if (hero && !R) {
     const flood = $('[data-flood]', hero), nameEl = $('[data-hero-name]', hero), cut = hero.querySelector<HTMLElement>('[data-hero-cut]'), hin = $$('[data-hin]', hero);
-    gsap.set(nameEl, { y: 0, yPercent: -58 });
+    gsap.set(nameEl, { y: 0, yPercent: 0, transformOrigin: '0% 100%' }); // bottom-left, in front of the subject
     const intro = gsap.timeline({ delay: 0.1 })
       .fromTo(flood, { scale: 0 }, { scale: 1, duration: 1.3, ease: EASE.file })
       .fromTo(nameEl.querySelectorAll('.hw'), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.08, ease: EASE.reveal }, 0.25)
@@ -113,7 +113,8 @@ export async function filePage(env: Env) {
     if (cut) intro.fromTo(cut, { yPercent: 14, scale: 0.86, opacity: 0 }, { yPercent: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'back.out(1.4)' }, 0.45);
     const push = gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.5 } });
     if (cut) push.to(cut, { scale: 1.55, yPercent: 10, ease: 'none' }, 0);
-    push.to(nameEl, { scale: 1.08, opacity: 0, ease: 'none' }, 0)
+    // the name drifts up and fades (it no longer grows: at the screen edge a larger box ran off the side)
+    push.to(nameEl, { y: -40, opacity: 0, ease: 'none' }, 0)
       .to(flood, { scale: 1.6, opacity: 0.25, ease: 'none' }, 0)
       .to(hin, { opacity: 0, ease: 'none', duration: 0.3 }, 0);
     // depth: the backdrop drifts and the glow swells as the camera pushes in
