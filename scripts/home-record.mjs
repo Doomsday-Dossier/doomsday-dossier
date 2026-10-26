@@ -1,7 +1,7 @@
 // Screen recording of a home version with its sound: the browser's own video of the page (so the real text is
 // in it) joined to the page's sound mix, recorded inside the page. The visitor clicks the gate, watches the
 // forge, then scrolls into the mask and through the first files.
-// Usage: node scripts/home-record.mjs <base> <out.webm> <1|2> [desktop|phone] [files]
+// Usage: node scripts/home-record.mjs <base> <out.webm> <1|2|site> [desktop|phone] [files] (site: the real home page)
 import { chromium, devices } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -15,7 +15,7 @@ const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blockli
 const ctx = await b.newContext({ ...(mode === 'phone' ? devices['Pixel 7'] : {}), viewport: size, recordVideo: { dir: tmp, size } });
 const p = await ctx.newPage();
 const videoStart = Date.now();
-await p.goto(`${base}/lab/home-${v}/?first&rec`);
+await p.goto(v === 'site' ? `${base}/?rec` : `${base}/lab/home-${v}/?first&rec`);
 await p.waitForFunction(() => window.__forgeReady, null, { timeout: 30000 });
 await p.waitForTimeout(2200);
 await p.mouse.click(size.width / 2, size.height / 2);
@@ -25,7 +25,7 @@ const glide = (y, s) => p.evaluate(([y, s]) => new Promise((r) => window.__ddLen
 await glide(0.75, 2.6); await p.waitForTimeout(700);
 await glide(1.5, 2.4); await p.waitForTimeout(400);
 await glide(2.25, 2.2); await p.waitForTimeout(1200);
-const per = v === '1' ? 0.75 : 0.48, step = v === '1' ? [1.6, 1100] : [1.0, 900];
+const hall = v !== '2', per = hall ? 0.75 : 0.48, step = hall ? [1.6, 1100] : [1.0, 900];
 for (let i = 1; i < Number(nFiles); i++) { await glide(2.2 + i * per, step[0]); await p.waitForTimeout(step[1]); }
 await p.waitForTimeout(800);
 const { data, at } = await p.evaluate(() => window.__stopAudio());

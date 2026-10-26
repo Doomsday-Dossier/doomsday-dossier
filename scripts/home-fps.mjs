@@ -5,7 +5,7 @@ const [base, v = '1', mode = 'desktop'] = process.argv.slice(2);
 const b = await chromium.launch({ args: ['--use-gl=angle', '--ignore-gpu-blocklist'] });
 const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewport: { width: 390, height: 844 } } : { viewport: { width: 1280, height: 720 } });
 const p = await ctx.newPage();
-await p.goto(`${base}/lab/home-${v}/?first`);
+await p.goto(v === "site" ? `${base}/` : `${base}/lab/home-${v}/?first`);
 await p.waitForFunction(() => window.__forgeReady, null, { timeout: 30000 });
 await p.evaluate(() => { window.__forgeBegin(); window.__forgeSeek(7.4); });
 await p.waitForTimeout(1500);

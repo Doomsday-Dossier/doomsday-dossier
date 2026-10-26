@@ -21,7 +21,7 @@ const SEEN = 'dd-forge-seen';
 
 /** What a page built on the forge (the home page) gets: the scene and camera to add to and take over each frame. */
 export type ForgeKit = { forge: Forge; renderer: THREE.WebGLRenderer; sound: Sound; timing: typeof SLOW; phone: boolean; reduced: boolean };
-export type ForgeExtension = { update(t: number, dt: number): void; resize?(w: number, h: number): void };
+export type ForgeExtension = { update(t: number, dt: number): void; resize?(w: number, h: number): void; /** true while nothing of the canvas is on screen */ idle?(): boolean };
 
 export async function runForge(root: HTMLElement, opts: {
   version: 'a' | 'b'; record?: boolean; first?: boolean;
@@ -34,7 +34,7 @@ export async function runForge(root: HTMLElement, opts: {
 }) {
   const canvas = root.querySelector<HTMLCanvasElement>('canvas')!;
   const gate = root.querySelector<HTMLButtonElement>('[data-gate]')!;
-  const muteBtn = root.querySelector<HTMLButtonElement>('[data-mute]')!;
+  const muteBtn = root.querySelector<HTMLButtonElement>('[data-mute]'); // the site's pages use the header's switch
   const phone = matchMedia('(pointer: coarse)').matches || innerWidth < 768;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const seen = (() => { try { return localStorage.getItem(SEEN) === '1'; } catch { return false; } })();
@@ -87,10 +87,12 @@ export async function runForge(root: HTMLElement, opts: {
   const tick = () => { const t = timeLeft(); forge.setCountdown([String(t.d).padStart(2, '0'), String(t.h).padStart(2, '0'), String(t.m).padStart(2, '0'), String(t.s).padStart(2, '0')]); };
   tick(); setInterval(tick, 1000);
 
-  const setMuteUi = (m: boolean) => { muteBtn.setAttribute('aria-pressed', String(m)); muteBtn.querySelector('span')!.textContent = m ? 'Sound off' : 'Sound on'; };
-  setMuteUi(sound.muted);
-  muteBtn.addEventListener('click', (e) => { e.stopPropagation(); sound.unlock(); sound.setMuted(!sound.muted); });
-  sound.onMute(setMuteUi);
+  if (muteBtn) {
+    const setMuteUi = (m: boolean) => { muteBtn.setAttribute('aria-pressed', String(m)); muteBtn.querySelector('span')!.textContent = m ? 'Sound off' : 'Sound on'; };
+    setMuteUi(sound.muted);
+    muteBtn.addEventListener('click', (e) => { e.stopPropagation(); sound.unlock(); sound.setMuted(!sound.muted); });
+    sound.onMute(setMuteUi);
+  }
 
   // recording: the canvas and the sound mix, captured together
   let recorder: MediaRecorder | null = null; const chunks: Blob[] = [];
@@ -136,7 +138,8 @@ export async function runForge(root: HTMLElement, opts: {
     try { localStorage.setItem(SEEN, '1'); } catch { /* private mode */ }
     // from now on any key, click or tap skips to the finished title
     setTimeout(() => {
-      const skip = () => {
+      const skip = (e: Event) => {
+        if ((e.target as Element | null)?.closest?.('a, button:not([data-gate])')) return; // the sound switch is not a skip
         const t = (performance.now() - startAt) / 1000;
         if (t >= timing.total - 0.3) return;
         startAt = performance.now() - timing.total * 1000;
@@ -160,6 +163,7 @@ export async function runForge(root: HTMLElement, opts: {
     forge.update(t, dt);
     if (!settled && (t >= timing.total || reduced)) { settled = true; opts.onSettled?.(); }
     ext?.update(t, dt);
+    if (ext?.idle?.()) { requestAnimationFrame(loop); return; }
     labelMat.opacity = t < 0 ? 0.55 + 0.25 * Math.sin(now * 0.002) : Math.max(0, 0.8 - t * 2);
     renderer.autoClear = true;
     composer.render();

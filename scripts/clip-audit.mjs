@@ -13,7 +13,8 @@ const filters = (process.argv[3] || '').split(',').filter(Boolean);
 function pages(dir = 'dist', rel = '') {
   const res = [];
   for (const e of fs.readdirSync(path.join(dir, rel), { withFileTypes: true })) {
-    if (e.isDirectory() && !e.name.startsWith('_')) res.push(...pages(dir, path.join(rel, e.name)));
+    // /preview/ only redirects since the switch, and /lab/ holds prototypes
+    if (e.isDirectory() && !e.name.startsWith('_') && !(rel === '' && ['preview', 'lab'].includes(e.name))) res.push(...pages(dir, path.join(rel, e.name)));
     else if (e.name === 'index.html') res.push('/' + rel.split(path.sep).join('/') + (rel ? '/' : ''));
   }
   return res;
