@@ -1,5 +1,6 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
+import OylaBand from '../components/OylaBand.astro';
 import '../styles/faces';
 import catchup from '../../research/catchup.json';
 import { DESIGN, castFor, publishedOrder, TEAMS, OFFICIAL, heroName, u, fmtDate } from '../data/site';
@@ -12,13 +13,14 @@ const roster = publishedOrder().map((slug) => {
 const teams = TEAMS.filter((t) => roster.some((c) => c.team === t.id));
 const data = JSON.stringify({ roster, titles: catchup.titles, release: OFFICIAL.film.releaseDate });
 ---
-<Base title="Catch-up planner" description="Tick the Avengers: Doomsday characters you care about and get the shortest watch list to be ready, with total hours and how much a day to finish by 18 December. Every runtime sourced." page="catchup">
+<Dossier title="Catch-up planner" page="catchup" description="Tick the Avengers: Doomsday characters you care about and get the shortest watch list to be ready, with total hours and how much a day to finish by 18 December. Every runtime sourced." >
   <section class="cu" data-catchup>
     <div class="wrap cu-head">
       <p class="label" data-hero-in>Catch-up planner &middot; {fmtDate(OFFICIAL.film.releaseDate)}</p>
       <h1 class="display cu-title" data-split="words" data-split-on="load">Ready by Doomsday.</h1>
       <p class="cu-copy" data-hero-in>Tick the characters you care about. For each one you get their first and their most recent screen appearance with the actor Marvel cast in Doomsday, so you see where they began and where they left off. Titles shared by several characters count once; for series, only the episodes they are in. Re-releases are left out.</p>
     </div>
+    <OylaBand slugs={['steve-rogers', 'thor', 'peggy-carter']} caption="Where they left off, and where they began." />
 
     <div class="wrap cu-grid">
       <div class="cu-pick">
@@ -55,9 +57,10 @@ const data = JSON.stringify({ roster, titles: catchup.titles, release: OFFICIAL.
     </div>
   </section>
   <script type="application/json" id="cu-data" set:html={data} />
-</Base>
+</Dossier>
 
 <style>
+  :global(h1.display) { font-weight: 900; }
   .cu { padding: calc(var(--header-h) + 60px) 0 90px; }
   .cu-head { display: grid; gap: 16px; }
   .cu-title { font-size: min(clamp(60px, 11vw, 180px), calc((100vw - 2 * var(--gutter)) / 5.6)); margin-bottom: 0.14em; }

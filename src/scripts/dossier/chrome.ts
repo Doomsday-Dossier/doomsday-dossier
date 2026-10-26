@@ -34,6 +34,35 @@ export function cursor(reduced: boolean) {
   document.addEventListener('pointerenter', () => el.classList.remove('out'));
 }
 
+/** The index: slides down like a drawer, its links rising in; Escape or the button closes it. */
+export function menu(reduced: boolean, lenis: { stop(): void; start(): void } | null) {
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-menu]');
+  if (!btn || !panel) return;
+  let open = false;
+  const set = (on: boolean) => {
+    if (on === open) return;
+    open = on;
+    btn.setAttribute('aria-expanded', String(on));
+    document.documentElement.classList.toggle('menu-open', on);
+    if (on) {
+      panel.hidden = false; lenis?.stop();
+      if (!reduced) {
+        gsap.fromTo(panel, { yPercent: -100 }, { yPercent: 0, duration: 0.7, ease: EASE.file, overwrite: true });
+        gsap.fromTo(panel.querySelectorAll('[data-menu-in]'), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.03, ease: EASE.reveal, delay: 0.25, overwrite: true });
+      }
+      panel.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    } else {
+      lenis?.start();
+      const done = () => { panel.hidden = true; };
+      if (reduced) done(); else gsap.to(panel, { yPercent: -100, duration: 0.55, ease: EASE.file, overwrite: true, onComplete: done });
+      btn.focus({ preventScroll: true });
+    }
+  };
+  btn.addEventListener('click', () => set(!open));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) set(false); });
+}
+
 const KEY = 'dd-pt';
 /** Page changes: the drawer closes over this page, the next page opens from under it. */
 export function transitions(reduced: boolean) {

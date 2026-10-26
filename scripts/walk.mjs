@@ -13,7 +13,7 @@ for (const mode of modes.split(',')) {
   for (const path of list.split(',')) {
     const p = await ctx.newPage();
     const errs = []; p.on('pageerror', (e) => errs.push(e.message));
-    // paths come without a leading slash (Git Bash rewrites /preview/... into a Windows path)
+    // paths come without a leading slash (Git Bash rewrites /... into a Windows path)
     await p.goto(base + '/' + path.replace(/^\//, '')); await p.waitForTimeout(3000);
     const name = path.replace(/^\/|\/$/g, '').replace(/\//g, '_') || 'home';
     const H = await p.evaluate(() => document.documentElement.scrollHeight), vh = SIZES[mode].viewport.height;

@@ -12,7 +12,7 @@ for (const [mode, opts] of Object.entries(SIZES)) {
   await ctx.addInitScript(() => { try { localStorage.setItem('dd-intro-seen', '1'); } catch {} });
   for (const team of list.split(',')) {
     const p = await ctx.newPage();
-    await p.goto(`${base}/preview/teams/${team}/`); await p.waitForTimeout(2500);
+    await p.goto(`${base}/teams/${team}/`); await p.waitForTimeout(2500);
     const n = await p.evaluate(() => document.querySelectorAll('[data-slide]').length);
     for (let i = 0; i < n; i++) {
       await p.evaluate((i) => { const c = document.querySelector('[data-carousel]'); const span = c.offsetHeight - innerHeight; window.__ddLenis.scrollTo(c.offsetTop + span * ((i + 0.5) / document.querySelectorAll('[data-slide]').length), { immediate: true }); }, i);

@@ -21,7 +21,7 @@ const glide = async (y, s) => {
 };
 const top = (sel) => p.evaluate((s) => document.querySelector(s).getBoundingClientRect().top + scrollY, sel);
 
-await p.goto(base + '/preview/');
+await p.goto(base + '/');
 await p.waitForTimeout(5600); // the full first-visit intro
 const fly = await top('[data-fly]');
 const flyH = await p.evaluate(() => document.querySelector('[data-fly]').offsetHeight);

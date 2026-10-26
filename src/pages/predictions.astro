@@ -1,5 +1,5 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
 import pred from '../../research/predictions.json';
 import { OFFICIAL, fmtDate } from '../data/site';
 
@@ -8,11 +8,12 @@ const api = import.meta.env.PUBLIC_ARENA_API ?? '';
 const sitekey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
 const data = JSON.stringify({ seal: pred.seal, questions: pred.questions, results: pred.results });
 ---
-<Base title="Prediction board" description="Lock in your Avengers: Doomsday predictions before they seal on 17 December 2026, then see how other fans are calling it. Fan predictions, not facts." page="predictions">
+<Dossier title="Prediction board" page="predictions" description="Lock in your Avengers: Doomsday predictions before they seal on 17 December 2026, then see how other fans are calling it. Fan predictions, not facts." >
   <section class="pr" data-predict data-api={api} data-sitekey={sitekey}>
     <div class="wrap pr-head">
       <p class="label" data-hero-in>Prediction board &middot; fan predictions, not facts</p>
       <h1 class="display pr-title" data-split="words" data-split-on="load">Call it.</h1>
+      <p class="pr-tree-note t-micro t-accent" data-hero-in>Each answer drops a token on Doom&rsquo;s war table &middot; locking in launches them at his citadel</p>
       <p class="pr-copy" data-hero-in>Ten questions about Avengers: Doomsday, written only from what Marvel has confirmed: no rumours, no leaks. Answer all ten and lock them in. You can change your picks until the board seals, then once the film is out we check every answer against the record and show who called it.</p>
       <div class="pr-seal" data-hero-in>
         <span class="label">Seals in</span>
@@ -57,11 +58,18 @@ const data = JSON.stringify({ seal: pred.seal, questions: pred.questions, result
     </div>
   </section>
   <script type="application/json" id="pr-data" set:html={data} />
-</Base>
+</Dossier>
 
 <style>
+  @media (min-width: 900px) { .pr .wrap { margin-left: var(--margin); width: min(58vw, 860px); } }
+  .pr-title { font-weight: 900; }
+  .pr-text { font-family: var(--f-title) !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: -0.005em; }
+  .pr-dock { background: rgba(13, 16, 18, 0.94) !important; }
+  .pr-tree-note { margin: var(--s-4) 0 0; }
   .pr { padding: calc(var(--header-h) + 60px) 0 90px; }
   .pr-head { display: grid; gap: 16px; }
+  /* phones: the top of the page is the war table's (it is drawn on the canvas behind) */
+  @media (max-width: 899px) { :global(html:not(.no-gl):not(.rm)) .pr-head { padding-top: 50svh; } }
   .pr-title { font-size: min(clamp(70px, 13vw, 210px), calc((100vw - 2 * var(--gutter)) / 3.6)); }
   .pr-copy { max-width: 66ch; color: var(--bone-dim); margin: 0; }
   .pr-seal { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-top: 8px; }

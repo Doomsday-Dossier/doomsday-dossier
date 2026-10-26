@@ -1,8 +1,9 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
 import '../styles/faces';
 import { DESIGN, getResearch, castFor, publishedOrder, TEAMS, heroName, u } from '../data/site';
-import { photosFor, srcOf } from '../data/photos';
+import { PHOTO_CREDIT } from '../data/photos';
+import { accentOf, photos2For, pick2 } from '../data/v2';
 
 // Versus data: official Handbook grids, abilities, feats and power origins (research/versus),
 // plus each character's screen titles for the connections panel.
@@ -12,11 +13,11 @@ const key = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, '');
 
 const roster = publishedOrder().map((slug) => {
   const d = DESIGN[slug], r = getResearch(slug)!, c = castFor(slug)!, v = bySlug[slug];
-  const ph = photosFor(slug)[0];
+  const ph = photos2For(slug)[0];
   return {
     slug, name: heroName(slug), alias: r.alias, actor: c.actor, team: TEAMS.find((t) => t.id === c.team)?.name ?? '', teamId: c.team,
-    accent: d.accent, font: d.font, weight: d.fontWeight, url: u(`/c/${slug}/`),
-    photo: ph ? { small: srcOf(ph, 400), big: srcOf(ph, 736), focus: ph.focusM } : null,
+    accent: accentOf(slug), font: d.font, weight: d.fontWeight, url: u(`/c/${slug}/`), no: publishedOrder().indexOf(slug) + 1,
+    photo: ph ? { small: pick2(ph.full, 640), big: pick2(ph.full, 1280), focus: ph.focusM } : null,
     grid: v?.powerGrid?.values ?? null, gridSource: v?.powerGrid?.source ?? null, gridNote: v?.powerGrid?.note ?? null,
     powerType: v?.powerType ?? null, origins: v?.powerOrigins ?? [], abilities: v?.abilities ?? [], feats: v?.feats ?? [],
     screens: [...r.screen].sort((a: any, b: any) => a.year - b.year).map((s: any) => ({ k: key(s.title) + s.year, title: s.title, year: s.year })),
@@ -28,7 +29,16 @@ const data = JSON.stringify(roster);
 const arenaApi = import.meta.env.PUBLIC_ARENA_API ?? '';
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
 ---
-<Base title="Arena" description="The Doomsday Dossier fight arena: pick any two Avengers: Doomsday characters, see their documented feats and official Marvel Handbook power grids side by side, and cast a fan vote. Every stat sourced." page="versus">
+<Dossier title="Fight arena" page="arena" description="The Doomsday Dossier fight arena: pick any two Avengers: Doomsday characters, see their documented feats and official Marvel Handbook power grids side by side, and cast a fan vote. Every stat sourced." >
+  <section class="cl-hero" data-cursor="Drag" data-cloth aria-label="Fight arena: grab a poster and throw it at the other">
+    <div class="cl-stage">
+      <p class="t-label t-accent cl-k">Fight arena &middot; fan vote, not fact</p>
+      <p class="t-title cl-title" aria-hidden="true">Grab them.<br />Fling them.</p>
+      <div class="cl-static" aria-hidden="true"><img data-static="a" alt="" /><img data-static="b" alt="" /></div>
+      <p class="cl-hint t-label t-ash">Drag a poster &middot; throw it at the other &middot; or scroll for the stats</p>
+      <i class="cl-flash" data-cloth-flash aria-hidden="true"></i>
+    </div>
+  </section>
   <section class="vs" data-versus>
     <div class="wrap vs-head">
       <p class="label" data-hero-in>Fight arena</p>
@@ -101,9 +111,24 @@ const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? '';
     <noscript><div class="wrap"><p>The versus page needs JavaScript. Every character&rsquo;s abilities and history are on their dossier pages.</p></div></noscript>
   </section>
   <script type="application/json" id="vs-data" set:html={data} />
-</Base>
+  <p class="wrap t-micro t-ash" style="padding: 0 0 var(--s-7)">{PHOTO_CREDIT}</p>
+</Dossier>
 
 <style>
+  .cl-hero { position: relative; height: 100svh; min-height: 560px; touch-action: pan-y; cursor: grab; }
+  .cl-hero:active { cursor: grabbing; }
+  .cl-stage { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+  .cl-k { position: absolute; left: var(--margin); top: calc(var(--header-h) + 12px); margin: 0; }
+  /* the title in clear space below the posters, in front (Peculiar Atelier: "Grab me / I dare you") */
+  .cl-title { position: absolute; left: var(--margin); right: var(--margin); bottom: calc(var(--s-6) + 34px); margin: 0; font-size: min(9vw, 13svh); font-weight: 900; line-height: 0.86; color: var(--bone); z-index: 2; }
+  .cl-hint { position: absolute; bottom: var(--s-6); left: var(--margin); right: var(--margin); margin: 0; z-index: 2; }
+  @media (max-width: 760px) { .cl-title { font-size: 15vw; } }
+  .cl-flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(231, 228, 220, 0.85), rgba(31, 212, 122, 0.3) 30%, transparent 65%); opacity: 0; }
+  .cl-static { display: none; gap: 4vw; }
+  .cl-static img { width: min(36vw, 340px); aspect-ratio: 3 / 4; object-fit: cover; border: 6px solid #d9d5ca; transform: rotate(-3deg); }
+  .cl-static img + img { transform: rotate(3deg); }
+  html.rm .cl-static, html.no-gl .cl-static { display: flex; }
+  html.rm .cl-hint, html.no-gl .cl-hint { display: none; }
   .vs { padding: calc(var(--header-h) + 60px) 0 90px; overflow-x: clip; }
   .vs-head { display: grid; gap: 16px; }
   .vs-title { font-size: min(clamp(64px, 12vw, 190px), calc((100vw - 2 * var(--gutter)) / 4.4)); }

@@ -1,13 +1,14 @@
 ---
-// Design system v2 layout (the Latverian dossier). Showcase pages under /preview/ use it until
-// the user approves the showcase; then every page moves to it.
+// The site layout, design system v2 (the Latverian dossier). Every page uses it since the switch on
+// 26 October 2026; the v1 layout (Base.astro) is no longer used by any page.
 import '@fontsource-variable/big-shoulders-display';
 import '@fontsource/courier-prime/400.css';
 import '@fontsource/courier-prime/700.css';
 import '@fontsource-variable/inter-tight';
 import '../styles/system.css';
-import { u } from '../data/site';
+import { TEAMS, CAST, isPublished, displayName, u } from '../data/site';
 import { PHOTO_CREDIT } from '../data/photos';
+import { accentOf } from '../data/v2';
 
 interface Props {
   title: string;
@@ -18,19 +19,26 @@ interface Props {
 }
 const { title, description, page, accent, styleVars = '' } = Astro.props;
 const vars = [accent ? `--accent:${accent}` : '', styleVars].filter(Boolean).join(';');
+const fullTitle = page === 'archive' ? 'Doomsday Dossier: an unofficial fan briefing for Avengers: Doomsday' : `${title} | Doomsday Dossier`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const NAV = [['/timeline/', 'Timeline'], ['/versus/', 'Arena'], ['/catch-up/', 'Catch-up'], ['/predictions/', 'Predict'], ['/quiz/', 'Quiz']];
+const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'Fight arena'], ['/catch-up/', 'Catch-up planner'], ['/predictions/', 'Prediction board'], ['/quiz/', 'Which hero are you?'], ['/about/', 'Sources and rules'], ['/credits/', 'Image credits']];
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#0d1012" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
     <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
     <script is:inline>
-      // Same stale-file guard as the live site: a cached page asking for files a deploy removed reloads once.
+      // A cached page asking for files a deploy removed (CSS and JS are renamed on every deploy) reloads once.
       (function () {
         var KEY = 'dd-asset-reload';
         function again() {
@@ -55,20 +63,48 @@ const vars = [accent ? `--accent:${accent}` : '', styleVars].filter(Boolean).joi
     <canvas id="dx-gl" aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
     <header class="dx-hdr">
-      <a class="dx-mark" href={u('/preview/')}><i></i><span>Doomsday Dossier</span></a>
+      <a class="dx-mark" href={u('/')}><i></i><span>Doomsday Dossier</span></a>
       <div class="dx-hdr-right">
-        <a class="dx-back" href={u('/')}>Current site</a>
-        <span class="dx-unofficial" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial fan site</span>
+        <nav class="dx-nav" aria-label="Features">{NAV.map(([h, l]) => <a href={u(h)}>{l}</a>)}</nav>
+        <span class="dx-unofficial" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial<span class="dx-more"> fan site</span></span>
+        <button type="button" class="dx-menu-btn" data-menu-toggle aria-expanded="false" aria-controls="dx-menu"><span>Index</span><i aria-hidden="true"></i></button>
       </div>
     </header>
+
+    <!-- the index: every page, team and file, sliding down over the page -->
+    <nav class="dx-menu" id="dx-menu" data-menu aria-label="Site index" hidden>
+      <div class="dx-menu-in wrap">
+        <div class="dx-menu-pages">
+          <p class="t-label t-accent">Dossier</p>
+          <ul>{PAGES.map(([h, l]) => <li data-menu-in><a href={u(h)}>{l}</a></li>)}</ul>
+        </div>
+        <div class="dx-menu-teams">
+          {TEAMS.map((t) => (
+            <div data-menu-in>
+              <p class="t-label"><a href={u(`/teams/${t.id}/`)}>{t.name}</a></p>
+              <ul>
+                {CAST.filter((c) => c.team === t.id).map((c) =>
+                  isPublished(c.slug)
+                    ? <li><a href={u(`/c/${c.slug}/`)} style={`--a:${accentOf(c.slug!)}`}>{displayName(c)}</a></li>
+                    : <li><span>{displayName(c)}</span></li>
+                )}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="dx-menu-foot t-micro t-ash">Avengers: Doomsday is in theaters 18 December 2026 &middot; Unofficial. Not affiliated with Marvel or Disney.</p>
+      </div>
+    </nav>
+
     <main id="main">
       <slot />
     </main>
     <footer class="dx-foot">
       <div class="wrap">
-        <p class="t-label t-accent" style="margin-bottom: 14px">Design preview &middot; awaiting approval</p>
-        <p>An unofficial, non-commercial fan site. Not affiliated with or endorsed by Marvel Studios, Marvel Entertainment or Disney. All names and characters belong to their owners. {PHOTO_CREDIT} Any image will be removed on request: open an issue at <a href="https://github.com/prejith77/doomsday-dossier/issues">github.com/prejith77/doomsday-dossier</a>.</p>
-        <p>Avengers: Doomsday is in theaters 18 December 2026.</p>
+        <p class="t-label t-accent" style="margin-bottom: 14px">Unofficial fan site</p>
+        <p><strong>Doomsday Dossier is an unofficial, non-commercial fan project.</strong> It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company. All character names, related marks and images belong to their owners. {PHOTO_CREDIT} Any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" rel="noopener" target="_blank">open an issue</a> and it comes down. No Marvel logos are used as design elements.</p>
+        <p>Film facts come only from Marvel announcements. Character history comes from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics, rewritten in our own words.</p>
+        <p>Avengers: Doomsday is in theaters 18 December 2026. <a href={u('/about/')}>Sources and rules</a> &middot; <a href={u('/credits/')}>Image credits</a></p>
       </div>
     </footer>
     <script>

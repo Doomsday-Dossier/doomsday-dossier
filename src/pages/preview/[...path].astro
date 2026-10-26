@@ -1,0 +1,27 @@
+---
+// The design ran at /preview/ until the switch on 26 October 2026. Links to it were shared, so every old
+// /preview/ address forwards to the same page at the root.
+import { TEAMS, publishedOrder, u } from '../../data/site';
+
+export function getStaticPaths() {
+  const paths = ['', 'timeline', 'versus', 'catch-up', 'predictions', 'quiz', 'about', 'credits',
+    ...TEAMS.map((t) => `teams/${t.id}`), ...publishedOrder().map((s) => `c/${s}`)];
+  return paths.map((p) => ({ params: { path: p || undefined } }));
+}
+const { path } = Astro.params as { path?: string };
+const to = u(path ? `/${path}/` : '/');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Doomsday Dossier</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(to, Astro.site)} />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <script is:inline define:vars={{ to }}>location.replace(to + location.search + location.hash);</script>
+  </head>
+  <body style="background:#0d1012;color:#e7e4dc;font-family:sans-serif">
+    <p><a href={to} style="color:#1fd47a">Doomsday Dossier has moved here.</a></p>
+  </body>
+</html>

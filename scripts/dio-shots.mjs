@@ -9,7 +9,7 @@ const ctx = await b.newContext(mode === 'phone' ? { ...devices['Pixel 7'], viewp
 for (const slug of list.split(',')) {
   const p = await ctx.newPage();
   const errs = []; p.on('pageerror', (e) => errs.push(e.message));
-  await p.goto(`${base}/preview/c/${slug}/`); await p.waitForTimeout(3200);
+  await p.goto(`${base}/c/${slug}/`); await p.waitForTimeout(3200);
   const on = await p.evaluate(() => document.documentElement.classList.contains('dio-on'));
   await p.screenshot({ path: `${out}/${slug}-${mode}-1.jpg`, quality: 70, type: 'jpeg' });
   if (mode !== 'phone') {

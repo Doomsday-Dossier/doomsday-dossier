@@ -24,7 +24,7 @@ for (const mode of modes) {
   const p = await ctx.newPage();
   const errs = []; p.on('pageerror', (e) => errs.push(e.message)); p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
   if (pages.includes('archive')) {
-    await p.goto(base + '/preview/');
+    await p.goto(base + '/');
     for (const t of [400, 1300, 2500, 3400, 4300, 5200]) { await p.waitForTimeout(t - (p.__t || 0)); p.__t = t; await p.screenshot({ path: `${out}/${mode}-intro-${t}.jpg`, quality: 72, type: 'jpeg' }); }
     p.__t = 0;
     const H = await p.evaluate(() => document.documentElement.scrollHeight);
@@ -38,7 +38,7 @@ for (const mode of modes) {
   }
   if (pages.includes('file')) {
     errs.length = 0;
-    await p.goto(base + '/preview/c/victor-von-doom/'); await p.waitForTimeout(2200);
+    await p.goto(base + '/c/victor-von-doom/'); await p.waitForTimeout(2200);
     await p.screenshot({ path: `${out}/${mode}-file-00.jpg`, quality: 72, type: 'jpeg' });
     const openH = await p.evaluate(() => document.querySelector('[data-open]').offsetHeight - innerHeight);
     for (const f of [0.15, 0.3, 0.5, 0.7, 0.95]) { await scrollTo(p, openH * f); await p.waitForTimeout(900); await p.screenshot({ path: `${out}/${mode}-file-open-${Math.round(f * 100)}.jpg`, quality: 72, type: 'jpeg' }); }

@@ -1,25 +1,28 @@
 ---
-import Base from '../layouts/Base.astro';
+import Dossier from '../layouts/Dossier.astro';
 import '../styles/faces';
 import quiz from '../../research/quiz.json';
 import { DESIGN, castFor, publishedOrder, TEAMS, heroName, u } from '../data/site';
-import { photosFor, srcOf, PHOTO_CREDIT } from '../data/photos';
+import { PHOTO_CREDIT } from '../data/photos';
+import { accentOf, photos2For, pick2, cloudFor } from '../data/v2';
 
 // every published character is a possible result; roster order breaks the last ties
 const roster = publishedOrder().map((slug) => {
-  const d = DESIGN[slug], ph = photosFor(slug)[0], team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
+  const d = DESIGN[slug], ph = photos2For(slug)[0], team = TEAMS.find((t) => t.id === castFor(slug)!.team)!;
   const name = heroName(slug).toUpperCase();
   return {
-    slug, name, team: team.name, accent: d.accent, font: d.font, weight: d.fontWeight, kicker: d.kicker, href: u(`/c/${slug}/`),
-    photo: ph ? { src: srcOf(ph, 800), card: srcOf(ph, 1280), focus: ph.focusM } : null,
+    slug, name, team: team.name, accent: accentOf(slug), font: d.font, weight: d.fontWeight, kicker: d.kicker, href: u(`/c/${slug}/`),
+    photo: ph ? { src: pick2(ph.cut.length ? ph.cut : ph.full, 1280), card: pick2(ph.full, 1280), focus: ph.cut.length ? '50% 100%' : ph.focusM, cut: ph.cut.length > 0 } : null,
+    cloud: cloudFor(slug),
   };
 });
 const site = 'prejith77.github.io' + u('/quiz/');
 const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_CREDIT, site });
 ---
-<Base title="Which Doomsday hero are you?" description="Ten quick questions match you with one of the 29 Avengers: Doomsday characters, then save your result as a Dossier-file card. A fan quiz, just for fun." page="quiz">
+<Dossier title="Which Doomsday hero are you?" page="quiz" description="Ten quick questions match you with one of the 29 Avengers: Doomsday characters, then save your result as a Dossier-file card. A fan quiz, just for fun." >
   <section class="qz" data-quiz>
     <div class="wrap qz-head">
+      <div class="qz-swarm" data-swarm-hero aria-hidden="true"></div>
       <p class="label" data-hero-in>Fan quiz &middot; just for fun, not facts</p>
       <h1 class="display qz-title" data-split="words" data-split-on="load">Who are you?</h1>
       <p class="qz-copy" data-hero-in>Ten quick questions match you with one of the {roster.length} characters in Avengers: Doomsday. There are no right answers. Your result links to that character&rsquo;s dossier, where every fact is sourced, and you can save it as a card to share.</p>
@@ -48,7 +51,7 @@ const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_C
       </div>
 
       <article class="qz-result" data-result hidden aria-live="polite">
-        <div class="qz-r-photo"><div class="qz-r-frame"><img data-r-img alt="" width="800" height="1000" /></div></div>
+        <div class="qz-r-photo"><div class="qz-r-frame" data-swarm-result><img data-r-img alt="" width="800" height="1000" /></div></div>
         <div class="qz-r-text">
           <p class="label qz-r-kicker">You are</p>
           <h2 class="qz-r-name" data-r-name></h2>
@@ -72,9 +75,25 @@ const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_C
     </div>
   </section>
   <script type="application/json" id="qz-data" set:html={data} />
-</Base>
+</Dossier>
 
 <style>
+  .qz-title { font-weight: 900; }
+  .qz-text { font-family: var(--f-title) !important; font-weight: 700 !important; text-transform: uppercase; }
+  /* the result: the cloud forms the match inside the frame (the photo stays for reduced motion and no WebGL) */
+  .qz-r-frame { background: radial-gradient(circle at 50% 70%, color-mix(in srgb, var(--a) 55%, #0d1012), color-mix(in srgb, var(--a) 18%, #0d1012) 55%, #0d1012 85%) !important; border-radius: 28px !important; }
+  .qz-r-frame img { position: relative; z-index: 2; object-fit: contain; }
+  :global(html.swarm-on) .qz-r-frame { background: none !important; box-shadow: none !important; }
+  :global(html.swarm-on) .qz-r-frame::after { opacity: 0 !important; }
+  :global(html.swarm-on) .qz-r-frame img { visibility: hidden; }
+  /* the hero cloud: beside the title on wide screens, above it on phones */
+  .qz-head { position: relative; }
+  .qz-swarm { display: none; }
+  :global(html.swarm-on) .qz-swarm { display: block; height: 40svh; }
+  @media (min-width: 900px) {
+    :global(html.swarm-on) .qz-swarm { position: absolute; right: 0; top: -40px; width: 38%; height: min(64svh, 560px); }
+    :global(html.swarm-on) .qz-head > :not(.qz-swarm) { max-width: 60%; }
+  }
   .qz { padding: calc(var(--header-h) + 60px) 0 100px; }
   .qz-head { display: grid; gap: 16px; }
   .qz-title { font-size: min(clamp(70px, 13vw, 210px), calc((100vw - 2 * var(--gutter)) / 4.4)); margin-bottom: 0.14em; }
@@ -103,14 +122,15 @@ const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_C
   .qz-hint { margin: 6px 0 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-dim); }
   @media (hover: none) { .qz-hint, .qz-key { display: none; } .qz-opts button { grid-template-columns: 1fr; } }
 
-  .qz-result { --a: var(--doom); margin-top: 56px; display: grid; gap: clamp(28px, 4vw, 64px); align-items: center; scroll-margin-top: calc(var(--header-h) + 16px); }
+  /* minmax: a wide name must not widen the column past the screen, or it is never shrunk to fit (SAM WILSO/N) */
+  .qz-result { --a: var(--doom); margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: center; scroll-margin-top: calc(var(--header-h) + 16px); }
   .qz-result[hidden] { display: none; }
   @media (min-width: 900px) { .qz-result { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
   .qz-r-frame { position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 4 / 5; background: var(--iron); box-shadow: 0 0 0 1px var(--iron-2); }
   .qz-r-frame::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 2px var(--a); border-radius: inherit; opacity: 0.7; pointer-events: none; }
   .qz-r-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
   @media (max-width: 899px) { .qz-r-frame { aspect-ratio: 4 / 3; } }
-  .qz-r-text { display: grid; gap: 14px; min-width: 0; container-type: inline-size; }
+  .qz-r-text { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; min-width: 0; container-type: inline-size; }
   .qz-r-kicker { color: var(--a); }
   .qz-r-name { font-family: var(--f); font-weight: var(--wt); text-transform: uppercase; line-height: 0.9; margin: 0; overflow-wrap: normal; font-size: min(140px, calc(100cqi / (var(--lw, 8) * 0.9))); }
   .qz-r-name :global(.ln) { display: block; overflow: hidden; padding-bottom: 0.06em; }
