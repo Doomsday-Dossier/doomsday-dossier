@@ -41,7 +41,7 @@ const FRAG = /* glsl */ `
     gl_FragColor = vec4(col, a * max(behind, mesh * 0.95 + band));
   }`;
 
-export type Scanner = { scan(seconds?: number): Promise<void>; colour(to: number, seconds?: number): void; head(): { x: number; y: number }; dispose(): void; el: HTMLCanvasElement };
+export type Scanner = { scan(seconds?: number): Promise<void>; colour(to: number, seconds?: number): void; head(): { x: number; y: number }; at(u: number, v: number): { x: number; y: number }; dispose(): void; el: HTMLCanvasElement };
 
 export async function createScanner(canvas: HTMLCanvasElement, photo: string, depth: string, headUV: [number, number] = [0.5, 0.2], gain = 2.4): Promise<Scanner> {
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
@@ -71,6 +71,7 @@ export async function createScanner(canvas: HTMLCanvasElement, photo: string, de
   let alive = true; const t0 = performance.now();
   const loop = () => { if (!alive) return; u.uTime.value = (performance.now() - t0) / 1000; renderer.render(scene, cam); requestAnimationFrame(loop); };
   loop();
+  const at = (pu: number, pv: number) => { const f = u.uFit.value, w = canvas.clientWidth, h = canvas.clientHeight; return { x: (f.x + pu * f.z) * w, y: (1 - (f.y + (1 - pv) * f.w)) * h }; };
   const tween = (key: 'uScan' | 'uColor', to: number, secs: number) => new Promise<void>((res) => {
     const from = u[key].value, s = performance.now();
     const step = () => { const k = Math.min(1, (performance.now() - s) / (secs * 1000)); u[key].value = from + (to - from) * (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2); if (k < 1 && alive) requestAnimationFrame(step); else res(); };
@@ -81,7 +82,9 @@ export async function createScanner(canvas: HTMLCanvasElement, photo: string, de
     scan: (secs = 2.2) => tween('uScan', 1.02, secs),
     colour: (to, secs = 1.6) => { tween('uColor', to, secs); },
     // where the face is on the canvas, in pixels, for the reticle
-    head: () => { const f = u.uFit.value, w = canvas.clientWidth, h = canvas.clientHeight; return { x: (f.x + headUV[0] * f.z) * w, y: (1 - (f.y + (1 - headUV[1]) * f.w)) * h }; },
+    head: () => at(headUV[0], headUV[1]),
+    // any point of the photo (u from the left, v from the top) on the canvas, in pixels
+    at,
     dispose: () => { alive = false; ro.disconnect(); removeEventListener('pointermove', onMove); renderer.dispose(); tp.dispose(); td.dispose(); mat.dispose(); },
   };
 }

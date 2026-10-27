@@ -51,3 +51,37 @@ html.os body { min-height: 100svh; overflow-x: hidden; }
 @keyframes os-spin { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) { .os-flicker, .os-reticle .spin, .os-cursor::after { animation: none; } }
+
+/* THE HUD LAYER (scripts/os/hud.ts) */
+.os-static { position: fixed; inset: 0; z-index: 59; pointer-events: none; opacity: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.24  0 0 0 0 1  0 0 0 0 0.56  0 0 0 1.4 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.radar { width: 100%; max-width: 300px; display: block; margin: 0 auto; overflow: visible; }
+.radar .rg { fill: none; stroke: rgba(61, 255, 143, 0.14); stroke-width: 0.8; }
+.radar .rg-out { stroke: rgba(61, 255, 143, 0.5); }
+.radar .ra { stroke: rgba(61, 255, 143, 0.18); stroke-width: 0.8; }
+.radar .rl { fill: var(--os-dim); font: 8px var(--os-mono); letter-spacing: 0.12em; text-anchor: middle; dominant-baseline: middle; }
+.radar .rp { fill: rgba(61, 255, 143, 0.18); stroke: var(--os-green); stroke-width: 1.4; filter: drop-shadow(0 0 4px rgba(61, 255, 143, 0.6)); }
+.radar .rd { fill: var(--os-green); }
+.co-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.co-dot { fill: var(--os-green); } .co-ring { fill: none; stroke: var(--os-green); stroke-width: 1; opacity: 0.7; }
+.co-line { fill: none; stroke: var(--os-line-hi); stroke-width: 1; }
+.co-k { fill: var(--os-green); font: 700 10.5px var(--os-mono); letter-spacing: 0.2em; text-transform: uppercase; }
+.co-t { fill: var(--os-text); font: 12px var(--os-mono); }
+@media (max-width: 640px) { .co-t { font-size: 10.5px; } .co-k { font-size: 9.5px; } .os-reticle .lock { display: none; } }
+.co text { paint-order: stroke; stroke: #020504; stroke-width: 4px; stroke-linejoin: round; }
+.co circle { transform-box: fill-box; transform-origin: center; }
+.rings { position: absolute; inset: -4% -2%; width: 104%; height: 108%; pointer-events: none; overflow: visible; }
+.rings line { stroke: rgba(61, 255, 143, 0.35); stroke-width: 0.5; }
+.rings .r1 { animation: os-spin 90s linear infinite; transform-origin: 0 0; }
+.rings .r2 { fill: none; stroke: rgba(61, 255, 143, 0.18); stroke-width: 0.5; stroke-dasharray: 2 4; animation: os-spin 40s linear infinite reverse; transform-origin: 0 0; }
+.rings .r3 { fill: none; stroke: rgba(61, 255, 143, 0.1); stroke-width: 0.5; }
+.rings .r4 { fill: none; stroke: var(--os-green); stroke-width: 1; opacity: 0.6; animation: os-spin 12s linear infinite; transform-origin: 0 0; }
+html.has-xhair, html.has-xhair * { cursor: none !important; }
+.xhair { position: fixed; left: 0; top: 0; z-index: 70; pointer-events: none; }
+.xhair i { position: absolute; background: var(--os-green); opacity: 0.8; }
+.xh-h { left: -14px; top: 0; width: 28px; height: 1px; } .xh-v { top: -14px; left: 0; width: 1px; height: 28px; }
+.xh-c { left: -9px; top: -9px; width: 18px !important; height: 18px !important; background: none !important; border: 1px solid var(--os-green); border-radius: 50%; transition: transform 0.2s; }
+.xhair.on .xh-c { transform: scale(1.8); }
+.xh-t { position: absolute; left: 14px; top: 10px; font: 9px var(--os-mono); letter-spacing: 0.14em; color: var(--os-green); white-space: nowrap; }
+.glyphs { position: fixed; top: 0; z-index: 1; pointer-events: none; height: 100vh; width: 46px; }
+.glyphs-l { left: 0; } .glyphs-r { right: 0; }
+@media (prefers-reduced-motion: reduce) { .rings * { animation: none !important; } }
