@@ -8,3 +8,6 @@ research-preview/
 photo-originals/
 research/photos/picks.jpg
 screenshots/showcase/*.webm
+
+# generated 3D model trials, not committed until chosen
+public/lab-models/
