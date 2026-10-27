@@ -24,7 +24,7 @@ const roster = publishedOrder().map((slug) => {
     scan: sp ? { photo: sp.photo, depth: sp.depth, head: sp.head } : null,
   };
 });
-const site = (Astro.site?.host ?? 'doomsdaydossier.github.io') + u('/quiz/');
+const site = (Astro.site?.host ?? 'doomsday-dossier.github.io') + u('/quiz/');
 const data = JSON.stringify({ questions: quiz.questions, roster, credit: PHOTO_CREDIT, site });
 const n = quiz.questions.length, pad = (x: number) => String(x).padStart(2, '0');
 const maxOpts = Math.max(...quiz.questions.map((q) => q.options.length));
