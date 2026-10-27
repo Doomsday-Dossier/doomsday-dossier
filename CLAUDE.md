@@ -41,6 +41,70 @@ of every session, then continue from the tracker at the bottom.
    roster as "Role not yet named by Marvel" and get no character page until Marvel
    names the role.
 
+## Design system v4: Doom's surveillance OS (27 October 2026; branch `doom-os`, not live)
+
+**Why.** The 3D action-figure route ran out of free generator quota at 8 of 29 and the visitor asked for "absolutely
+futuristic and doom inspired" instead. They chose **Doom's surveillance OS**, approved the prototype ("good, make it
+better") and then asked for more mesmerising ideas framed as **the visitor is Doom**. From the second round they chose:
+Battleworld home, universes-collide timeline, shatter page changes, heroes trace you back, Doom's verdict, the system
+speaking to you as Doom, the cursor locking on, the camera scan, the order of conquest, the royal log, decrees and
+Doom's will. They rejected rehashes of earlier ideas (forge, mask push-in, ring or hall of heroes): bring new ideas.
+
+**The system.** Every page is a screen of DOOM-OS (`src/layouts/OS.astro`, `src/styles/os.css`): phosphor green
+`#3dff8f` on `#020504`, JetBrains Mono readouts, Tektur for names and the clock, panels with corner brackets, a hex
+lattice, scan lines, a light vignette. Amber and red only for threat and alarms. The bar (brand, seven modules, the
+launch clock, the command line, sound, the unofficial marker), the command line, the HUD layer (crosshair, glyph
+columns), the counter-trace and the shatter layer persist across page changes (Astro ClientRouter). No Lenis and no
+shared WebGL engine: each screen owns its scanners or scene and frees them on leaving (`page-scope.ts` `onLeave`).
+Session code: `src/scripts/os/main.ts`; page code: `src/scripts/os/pages/<page>.ts`; data: `src/data/os.ts`.
+UI chrome addresses the visitor as His Majesty and calls the characters targets; facts stay neutral and sourced.
+
+**Sources for each idea.**
+- Battleworld, the home page (`os/battleworld.ts`): Secret Wars (2015), Doom gathers the fragments of dead universes
+  into one patchwork world and rules it as God Emperor from Doomstadt. One shard per target, Doomstadt at the north
+  pole, teams as continents, a green core through the cracks. Shards are true spherical Voronoi cells (the seeds'
+  convex hull is their Delaunay triangulation), one merged mesh, lift and assembly in the vertex shader; choosing a
+  shard turns it to face the visitor and dives into it, and the dive replaces the page change.
+- The shatter between pages (`os/shatter.ts`): the same Battleworld fragments; cracks from the click, dark glass shards
+  close the screen while the next page loads, then burst apart. SVG polygons, transform and opacity only.
+- The scanner (`os/scanner.ts`): the target's own photo swept in over its depth map (raw WebGL, GLSL 3.00 on WebGL2,
+  1.00 with the derivatives extension on WebGL1; draws only while something moves, 10 fps at rest).
+- The mask and the armour on Doom's callouts: Fantastic Four Annual #2 (1964) and Fantastic Four #5 (1962).
+- Universes collide, the timeline (`os/pages/timeline.ts`): the comics, the Fox films, Marvel Studios and other studios
+  as rings; the convergence is a fact of the cast list (Marvel's Doomsday cast brings actors from the Fox X-Men films
+  together with MCU heroes), never a plot claim.
+- Doom's will (the mask spreading over the register's faces) and Doom's seal on decrees are this site's own line
+  drawings, not Marvel designs. Verdicts, the order of conquest, decrees and the royal log are the visitor's fan
+  opinion, kept on the device (`os/reign.ts`, localStorage `dd-reign`), labelled so wherever they show.
+- The heroes trace you back (`os/trace.ts`): a game, labelled "A game: not part of the film". Six files in a session
+  and a target the visitor examined breaks in; Doom's countermeasure wipes them out; the breach is logged.
+- The camera scan in the profiler: optional, video only, drawn as a green wireframe, never stored or sent.
+
+**Modules.** 01 Target register (`/targets/`, team pages reuse it), 02 Temporal archive (`/timeline/`), 03 Combat
+simulation (`/versus/`), 04 Subject profiler (`/quiz/`), 05 Probability engine (`/predictions/`), 06 Briefing schedule
+(`/catch-up/`), 07 Royal chamber (`/chamber/`). The v1 logic of the arena, quiz, predictions and planner runs unchanged
+inside the new pages (their DOM hooks were kept).
+
+**DOOM-OS sounds** (`sound/os.ts`, original synthesis, licence: original work for this site, no third-party audio):
+
+| Sound | Where | How |
+|---|---|---|
+| Boot hum | The boot | Detuned saws through a low-pass opening 120 to 900 Hz, a relay clunk |
+| Relay tick | Typing, filters, the command line | A 30 ms square blip, 1.8 to 2.5 kHz |
+| Scanner sweep | Every scan, Battleworld forming | Pink noise band-passed 300 to 3600 Hz with a rising sine |
+| Target lock | Lock-on, Battleworld formed | Two triangle tones a fifth apart |
+| Decrypt | Brief, clearance, command line | Nine rising square chirps |
+| Static burst | A screen tearing in | High-passed white noise with a 90 to 45 Hz thump |
+| Machine drone | Under everything after the first click | Detuned saws at 41 and 82 Hz through a breathing low-pass |
+| Glass shatter | Page change | A bright noise crack, seven random sine tinkles, a low thump (Battleworld's shards) |
+| Shard burst | The new page arriving | Pink noise band-pass falling 2400 to 360 Hz |
+| Klaxon | A hero breaching the network | Two-tone square 660/440 through a band-pass, four times |
+
+**Lessons.** Python run from a Bash heredoc turned `\\n` inside a replacement into real newlines and broke a TS string:
+edit escaped strings with the Edit tool. WebGL2 contexts reject GLSL 1.00's derivatives extension (`fwidth` failed
+silently into the no-WebGL fallback): write GLSL 3.00 for WebGL2. In the in-app browser pane the first screenshot after
+a navigation can show a frame the screen never shows (full static): take a second one before judging.
+
 ## Design system v3: Doom's world, with sound (fifth interview, 26 October 2026)
 
 **The brief.** A Marvel fan, a comics reader and someone at Marvel should all open the site and ask how one

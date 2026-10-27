@@ -1,0 +1,95 @@
+---
+// The target register (DOOM-OS module 01): every target as a card, filtered by team, by His Majesty's verdict, and
+// sorted by file, threat or first appearance. Used by /targets/ and by each team's page (/teams/<team>/), which
+// opens with its team chosen.
+import { TEAMS, u } from '../data/site';
+import { targets, threatLevel } from '../data/os';
+import { photos2For } from '../data/v2';
+import { PICK } from '../data/os';
+
+interface Props { team?: string }
+const { team = '' } = Astro.props;
+const all = targets();
+const teams = TEAMS.filter((t) => all.some((x) => x.teamId === t.id));
+const cards = all.map((t) => {
+  const p = photos2For(t.slug).find((x) => x.n === PICK[t.slug]) ?? photos2For(t.slug)[0];
+  return { ...t, aspect: p.w / p.h, lv: t.threat !== null ? threatLevel(t.threat) : null };
+});
+---
+<div class="reg" data-register data-team-start={team}>
+  <div class="reg-tools">
+    <div class="filters" role="group" aria-label="Filter by team">
+      <button class="fbtn" data-team="" aria-pressed={!team}>All {all.length}</button>
+      {teams.map((t) => <button class="fbtn" data-team={t.id} aria-pressed={team === t.id}>{t.short}</button>)}
+    </div>
+    <div class="filters" role="group" aria-label="Filter by your verdict">
+      <span class="os-label">Verdict</span>
+      <button class="fbtn" data-verdict="" aria-pressed="true">Any</button>
+      <button class="fbtn" data-verdict="none" aria-pressed="false">Unjudged</button>
+      <button class="fbtn" data-verdict="ally" aria-pressed="false">Ally</button>
+      <button class="fbtn" data-verdict="pawn" aria-pressed="false">Pawn</button>
+      <button class="fbtn" data-verdict="obstacle" aria-pressed="false">Obstacle</button>
+      <button class="fbtn" data-verdict="beneath" aria-pressed="false">Beneath notice</button>
+    </div>
+    <label class="sortby os-label">Order
+      <select data-sort>
+        <option value="no">File number</option>
+        <option value="threat">Threat, highest first</option>
+        <option value="first">First appearance</option>
+        <option value="screens">Most seen on screen</option>
+      </select>
+    </label>
+  </div>
+  <p class="reg-count os-label" data-count aria-live="polite"></p>
+  <div class="grid" data-grid>
+    {cards.map((t) => (
+      <a class="card" href={t.href} data-card data-slug={t.slug} data-team-of={t.teamId} data-no={t.no} data-threat={t.threat ?? -1} data-first={t.firstYear} data-screens={t.screens}>
+        <span class="c-img scanhov" data-head={t.head.join(',')} data-bbox={t.bbox.join(',')} data-aspect={t.aspect}>
+          <img src={t.tile} alt="" loading="lazy" decoding="async" class="os-tint" />
+        </span>
+        <span class="c-no os-label">T-{String(t.no).padStart(2, '0')}<em class="c-v" data-v></em></span>
+        <span class="c-name">{t.name}</span>
+        <span class="c-meta os-label">{t.team}</span>
+        <span class="c-threat">{t.lv ? <Fragment><b class={t.lv.cls}>{t.threat}</b><i>/42 {t.lv.name}</i></Fragment> : <i>No grid on record</i>}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style is:global>
+  .reg-tools { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-bottom: 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .filters .os-label { margin-right: 4px; }
+  .fbtn { font: inherit; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green); background: rgba(61, 255, 143, 0.04); border: 1px solid var(--os-line); padding: 6px 9px; cursor: pointer; }
+  .fbtn:hover { border-color: var(--os-line-hi); }
+  .fbtn[aria-pressed='true'] { background: var(--os-green); color: #021008; border-color: var(--os-green); }
+  .sortby { display: flex; gap: 8px; align-items: center; }
+  .sortby select { font: 11px var(--os-mono); color: var(--os-text); background: #04100a; border: 1px solid var(--os-line); padding: 5px 6px; }
+  .reg-count { margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
+  .card { position: relative; display: grid; gap: 2px; padding: 0 0 10px; border: 1px solid var(--os-line); background: var(--os-panel); color: var(--os-text) !important; text-decoration: none; overflow: hidden; transition: border-color 0.2s; }
+  .card[hidden] { display: none; }
+  .c-img { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: radial-gradient(circle at 50% 40%, rgba(61, 255, 143, 0.14), transparent 70%); }
+  .c-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: filter 0.35s, transform 0.6s; }
+  .card:hover .c-img img, .card:focus-visible .c-img img { filter: none; transform: scale(1.04); }
+  .card:hover, .card:focus-visible { border-color: var(--os-line-hi); outline: none; }
+  /* a target under Doom's gaze flinches: a short shudder and a colour slip */
+  @media (hover: hover) { .card:hover .c-img { animation: os-flinch 0.34s steps(2, end); } }
+  @keyframes os-flinch { 0% { transform: translate(0); } 25% { transform: translate(-3px, 1px); filter: hue-rotate(60deg); } 50% { transform: translate(2px, -1px); } 75% { transform: translate(-1px, 0); filter: hue-rotate(-40deg); } 100% { transform: none; } }
+  .c-no, .c-name, .c-meta, .c-threat { padding: 0 10px; }
+  .c-no { padding-top: 8px; color: var(--os-green); display: flex; justify-content: space-between; gap: 6px; }
+  .c-v { font-style: normal; font-size: 9px; letter-spacing: 0.12em; }
+  .c-name { font-family: var(--os-display); font-weight: 700; font-size: 17px; text-transform: uppercase; line-height: 1.05; }
+  .c-meta { font-size: 9.5px; }
+  .c-threat { font-size: 10px; color: var(--os-dim); }
+  .c-threat b { font-family: var(--os-display); font-size: 15px; margin-right: 3px; }
+  .c-threat i { font-style: normal; letter-spacing: 0.1em; text-transform: uppercase; }
+  .v-ally { color: var(--os-green); } .v-pawn { color: #9fd8ff; } .v-obstacle { color: var(--os-red); } .v-beneath { color: var(--os-dim); }
+  /* Doom's will: his mask over a face, drawn in green line */
+  .dmask { position: absolute; pointer-events: none; transform: translate(-50%, -38%); opacity: 0.85; filter: drop-shadow(0 0 3px rgba(61, 255, 143, 0.8)); }
+  .dmask path, .dmask rect { fill: rgba(2, 16, 9, 0.55); stroke: var(--os-green); stroke-width: 1.4; }
+  .dmask .slit { fill: var(--os-green); stroke: none; }
+  .card.willed .c-img img { filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7) contrast(1.3); }
+  .card.willed:hover .c-img img { filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.9) contrast(1.3); }
+  .willed-tag { position: absolute; left: 6px; top: 6px; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #021008; background: var(--os-green); padding: 1px 5px; }
+</style>

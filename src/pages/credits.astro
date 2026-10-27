@@ -1,57 +1,74 @@
 ---
-import Dossier from '../layouts/Dossier.astro';
-import OylaBand from '../components/OylaBand.astro';
-import Photo from '../components/Photo.astro';
-import { DESIGN, publishedOrder, heroName, u } from '../data/site';
-import { photosFor, PHOTO_CREDIT } from '../data/photos';
+// DOOM-OS, image credits: every photo on the site, by target, as surveillance stills, each with the number to quote
+// when asking for its removal. The generic credit the site owner chose (CLAUDE.md rule 5) and the removal route lead
+// the page. Photos from the v1 helpers (data/photos.ts), which serve the graded set. No script (page="credits").
+import OS from '../layouts/OS.astro';
+import { publishedOrder, heroName, u } from '../data/site';
+import { photosFor, srcOf, srcsetOf, PHOTO_CREDIT } from '../data/photos';
 
-const rows = publishedOrder().map((slug) => ({ slug, d: DESIGN[slug], photos: photosFor(slug) })).filter((r) => r.photos.length);
+const pad = (n: number) => String(n).padStart(2, '0');
+const rows = publishedOrder().map((slug) => ({ slug, photos: photosFor(slug) })).filter((r) => r.photos.length);
 const total = rows.reduce((n, r) => n + r.photos.length, 0);
 ---
-<Dossier title="Image credits" page="credits" description="Every image used on Doomsday Dossier, by character. Images belong to their respective owners and any image will be removed on request." >
-  <section class="cr">
-    <div class="wrap cr-inner">
-      <p class="label" data-hero-in>Image credits</p>
-      <h1 class="display cr-title" data-split="words" data-split-on="load">Every frame, listed.</h1>
-      <OylaBand slugs={['loki', 'yelena-belova', 'professor-x']} />
-      <div class="cr-note" data-hero-in>
-        <p>{PHOTO_CREDIT} Doomsday Dossier is an unofficial, non-commercial fan project and claims no rights in any image shown here.</p>
-        <p>Any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" target="_blank" rel="noopener">open an issue</a> naming the image number below, and it comes down.</p>
-        <p class="cr-count">{total} images &middot; {rows.length} characters</p>
-      </div>
-      <ol class="cr-list">
-        {rows.map((r, ri) => (
-          <li class="cr-row" style={`--a:${r.d.accent}`} data-reveal>
-            <a class="cr-name" href={u(`/c/${r.slug}/`)}>{heroName(r.slug)}</a>
-            <ul class="cr-prints">
-              {r.photos.map((p, i) => (
-                <li class="cr-print">
-                  <div class="cr-frame"><Photo photo={p} alt={`${heroName(r.slug)}, image ${i + 1}`} sizes="(min-width: 900px) 150px, 28vw" /></div>
-                  <span class="cr-id">#{String(ri + 1).padStart(2, '0')}.{i + 1}</span>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ol>
+<OS title="Image credits" page="credits" description="Every image used on Doomsday Dossier, by character. Images belong to their respective owners and any image will be removed on request.">
+  <div class="mod-head">
+    <div>
+      <p class="os-label">Archive protocol // Image credits</p>
+      <h1 class="os-display os-hi mod-title">Every frame, listed.</h1>
+      <p class="mod-sub">Every still held on every target, Your Majesty, numbered so that any of them can be found and taken down.</p>
     </div>
+    <p class="os-label">{total} images &middot; {rows.length} characters</p>
+  </div>
+
+  <section class="os-panel cr-note" data-os-in aria-labelledby="cr-credit">
+    <header><b id="cr-credit">Credit and removal</b><span class="os-label os-amber">Unofficial // non-commercial</span></header>
+    <p>{PHOTO_CREDIT} Doomsday Dossier is an unofficial, non-commercial fan project and claims no rights in any image shown here.</p>
+    <p>Any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" target="_blank" rel="noopener">open an issue</a> naming the image number below, and it comes down.</p>
   </section>
-</Dossier>
-<style>
-  :global(h1.display) { font-weight: 900; }
-  .cr { padding: calc(var(--header-h) + 80px) 0 100px; }
-  .cr-inner { display: grid; gap: 36px; }
-  .cr-title { font-size: min(clamp(54px, 10vw, 160px), calc((100vw - 2 * var(--gutter)) / 6.4)); }
-  .cr-note { max-width: 70ch; color: var(--bone-dim); }
-  .cr-note p { margin: 0 0 10px; }
-  .cr-count { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--doom); }
-  .cr-list { list-style: none; margin: 0; padding: 0; }
-  .cr-row { display: grid; gap: 14px 30px; padding: 26px 0; border-top: 1px solid var(--iron); align-items: center; }
-  @media (min-width: 900px) { .cr-row { grid-template-columns: minmax(0, 1fr) auto; } }
-  .cr-name { font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 52px); line-height: 1; text-transform: uppercase; text-decoration: none; color: var(--bone); transition: color 0.4s; overflow-wrap: break-word; min-width: 0; }
-  .cr-name:hover { color: var(--a); }
-  .cr-prints { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 150px)); gap: 12px; }
-  .cr-frame { aspect-ratio: 3 / 4; overflow: hidden; border-radius: 3px; box-shadow: 0 0 0 1px var(--iron); }
-  .cr-frame :global(.photo) { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cr-id { display: block; margin-top: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--bone-dim); }
+
+  <ol class="cr-grid">
+    {rows.map((r, ri) => (
+      <li class="os-panel cr-target" data-os-in>
+        <header><b><a href={u(`/c/${r.slug}/`)}>T-{pad(ri + 1)} &middot; {heroName(r.slug)}</a></b><span class="os-label">{r.photos.length} stills</span></header>
+        <ul class="cr-stills">
+          {r.photos.map((p, i) => (
+            <li>
+              <figure class="cr-still">
+                <span class="cr-frame scanhov">
+                  <img src={srcOf(p, 400)} srcset={srcsetOf(p)} sizes="(min-width: 1200px) 160px, (min-width: 700px) 22vw, 30vw" width={p.w} height={p.h} alt={`${heroName(r.slug)}, image ${i + 1}`} loading="lazy" decoding="async" style={`object-position:${p.focusM};background-image:url(${p.lqip})`} />
+                  <span class="cr-rec os-label" aria-hidden="true">Rec</span>
+                </span>
+                <figcaption class="os-label"><b>#{pad(ri + 1)}.{i + 1}</b> Cam {i + 1}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ol>
+</OS>
+
+<style is:global>
+  .cr-note { margin-bottom: var(--os-gap); }
+  .cr-note p { margin: 0 0 8px; max-width: 90ch; }
+  .cr-note p:last-child { margin-bottom: 0; }
+  .cr-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--os-gap); }
+  .cr-target > header b { min-width: 0; overflow-wrap: anywhere; }
+  .cr-target > header a { color: var(--os-green); text-decoration: none; }
+  .cr-target > header a:hover, .cr-target > header a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+  .cr-target > header .os-label { white-space: nowrap; }
+  .cr-stills { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .cr-still { margin: 0; min-width: 0; }
+  .cr-frame { display: block; position: relative; overflow: hidden; border: 1px solid var(--os-line); }
+  .cr-frame img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; background-size: cover; }
+  /* the frame of a surveillance still: corner marks and a recording tag over the photo */
+  .cr-frame::before { content: ''; position: absolute; inset: 5px; pointer-events: none; z-index: 1;
+    background: linear-gradient(var(--os-green), var(--os-green)) 0 0 / 8px 1.5px, linear-gradient(var(--os-green), var(--os-green)) 0 0 / 1.5px 8px,
+      linear-gradient(var(--os-green), var(--os-green)) 100% 100% / 8px 1.5px, linear-gradient(var(--os-green), var(--os-green)) 100% 100% / 1.5px 8px; background-repeat: no-repeat; opacity: 0.8; }
+  .cr-rec { position: absolute; right: 7px; top: 6px; z-index: 1; font-size: 8px; letter-spacing: 0.16em; color: var(--os-red); text-shadow: 0 0 3px #000; }
+  .cr-rec::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--os-red); margin-right: 4px; vertical-align: 1px; animation: os-pulse 2.4s ease-in-out infinite; }
+  html.rm .cr-rec::before { animation: none; }
+  @media (prefers-reduced-motion: reduce) { .cr-rec::before { animation: none; } }
+  .cr-still figcaption { margin-top: 5px; font-size: 9.5px; letter-spacing: 0.12em; }
+  .cr-still figcaption b { color: var(--os-text); font-weight: 700; margin-right: 4px; }
 </style>

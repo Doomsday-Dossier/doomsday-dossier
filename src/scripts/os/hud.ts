@@ -22,7 +22,7 @@ export function glitchIn(el: HTMLElement) {
 }
 
 /** Marvel's power grid as a hexagonal radar (each rating out of 7), drawing itself out from the centre. */
-export function radar(host: HTMLElement, grid: Record<string, number>) {
+export function radar(host: HTMLElement, grid: Record<string, number>, other?: Record<string, number> | null) {
   const keys = ['intelligence', 'strength', 'speed', 'durability', 'energyProjection', 'fightingSkills'];
   const names: Record<string, string> = { intelligence: 'INT', strength: 'STR', speed: 'SPD', durability: 'DUR', energyProjection: 'NRG', fightingSkills: 'FGT' };
   const R = 80, cx = 110, cy = 100;
@@ -30,8 +30,9 @@ export function radar(host: HTMLElement, grid: Record<string, number>) {
   const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 220 200'); svg.classList.add('radar');
   let html = '';
   for (let ring = 1; ring <= 7; ring++) html += `<polygon points="${keys.map((_, i) => pt(i, (R * ring) / 7).join(',')).join(' ')}" class="rg${ring === 7 ? ' rg-out' : ''}"/>`;
-  keys.forEach((k, i) => { const [x, y] = pt(i, R), [lx, ly] = pt(i, R + 14); html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" class="ra"/><text x="${lx}" y="${ly}" class="rl">${names[k]} ${grid[k] ?? 0}</text>`; });
+  keys.forEach((k, i) => { const [x, y] = pt(i, R), [lx, ly] = pt(i, R + 14); html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" class="ra"/><text x="${lx}" y="${ly}" class="rl">${names[k]} ${grid[k] ?? 0}${other ? ' / ' + (other[k] ?? 0) : ''}</text>`; });
   const vals = keys.map((k, i) => pt(i, (R * Math.max(0.4, grid[k] ?? 0)) / 7).join(',')).join(' ');
+  if (other) html += `<polygon points="${keys.map((k, i) => pt(i, (R * Math.max(0.4, other[k] ?? 0)) / 7).join(',')).join(' ')}" class="rp2"/>`;
   html += `<g class="rv"><polygon points="${vals}" class="rp"/>${keys.map((k, i) => { const [x, y] = pt(i, (R * Math.max(0.4, grid[k] ?? 0)) / 7); return `<circle cx="${x}" cy="${y}" r="2.6" class="rd"/>`; }).join('')}</g>`;
   svg.innerHTML = html;
   host.append(svg);
@@ -78,18 +79,32 @@ export function rings(host: HTMLElement) {
   host.prepend(svg);
 }
 
+type LockPoint = { x: number; y: number; label: string };
+let lockFn: (() => LockPoint[]) | null = null;
+/** Points the crosshair is drawn to (a target's face on its file): it bends toward them and locks within reach. */
+export function setLockPoints(fn: (() => LockPoint[]) | null) { lockFn = fn; }
+
 /** The crosshair cursor, with the pointer's coordinates, on fine pointers only. */
-export function crosshair() {
-  if (!matchMedia('(pointer: fine)').matches) return;
+export function crosshair(host: HTMLElement = document.body) {
+  if (!matchMedia('(pointer: fine)').matches || host.querySelector('.xhair')) return;
   const el = document.createElement('div'); el.className = 'xhair'; el.setAttribute('aria-hidden', 'true');
   el.innerHTML = '<i class="xh-h"></i><i class="xh-v"></i><i class="xh-c"></i><span class="xh-t"></span>';
-  document.body.append(el); document.documentElement.classList.add('has-xhair');
+  host.append(el); document.documentElement.classList.add('has-xhair');
   const t = el.querySelector<HTMLElement>('.xh-t')!;
+  const R = 110;
   addEventListener('pointermove', (e) => {
-    el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    const over = (e.target as HTMLElement).closest('a, button');
-    el.classList.toggle('on', !!over);
-    t.textContent = over ? 'SELECT' : `X${String(e.clientX).padStart(4, '0')} Y${String(e.clientY).padStart(4, '0')}`;
+    let x = e.clientX, y = e.clientY, label = '';
+    // the aim is pulled toward a face within reach, and locks on when close
+    const pts = lockFn?.() ?? [];
+    for (const p of pts) {
+      const d = Math.hypot(p.x - x, p.y - y);
+      if (d < R) { const k = d < 34 ? 1 : Math.pow(1 - d / R, 1.5) * 0.85; x += (p.x - x) * k; y += (p.y - y) * k; if (d < 34) label = p.label; break; }
+    }
+    el.style.transform = `translate(${x}px, ${y}px)`;
+    const over = (e.target as HTMLElement).closest('a, button, select, input, summary, canvas[data-bw]');
+    el.classList.toggle('on', !!over || !!label);
+    el.classList.toggle('lock', !!label);
+    t.textContent = label || (over ? 'SELECT' : `X${String(e.clientX).padStart(4, '0')} Y${String(e.clientY).padStart(4, '0')}`);
   }, { passive: true });
 }
 
@@ -107,15 +122,15 @@ function glyph(g: CanvasRenderingContext2D, seed: number, x: number, y: number, 
 }
 
 /** Columns of glyphs scrolling slowly down the left and right edges, drawn twelve times a second at most. */
-export function glyphColumns() {
-  if (reduced() || innerWidth < 900) return;
+export function glyphColumns(host: HTMLElement = document.body) {
+  if (reduced() || innerWidth < 900 || host.querySelector('.glyphs')) return;
   for (const side of ['l', 'r']) {
     const c = document.createElement('canvas'); c.className = `glyphs glyphs-${side}`; c.width = 46; c.height = innerHeight; c.setAttribute('aria-hidden', 'true');
-    document.body.append(c);
+    host.append(c);
     const g = c.getContext('2d')!; g.strokeStyle = 'rgba(61,255,143,0.38)'; g.lineWidth = 1;
     let off = 0, last = 0, base = side === 'l' ? 1 : 977;
     const draw = (now: number) => {
-      if (now - last > 83) {
+      if (now - last > 83 && !document.hidden) {
         last = now; off += 1;
         g.clearRect(0, 0, c.width, c.height);
         for (let row = -1; row < c.height / 22 + 1; row++) {

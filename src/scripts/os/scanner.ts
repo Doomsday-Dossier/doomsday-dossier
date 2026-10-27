@@ -2,21 +2,38 @@
  * DOOM-OS's photo scanner (CLAUDE.md, "Design system v4"): a target's real photo, swept in by Doom's sensors. Its
  * depth map (Depth Anything V2, made locally) draws a glowing topographic mesh of the actual face and body, contour
  * lines and raised scan rows; a bright scan line travels down and leaves the photo behind it in phosphor green,
- * which then settles into full colour under a faint mesh. The pointer tilts it a little by its depth. One quad, one
- * shader: cheap on a phone.
+ * which then settles into full colour under a faint mesh. The pointer tilts it a little by its depth.
+ *
+ * One quad, one shader, raw WebGL (no three.js: a page with two scanners costs two small contexts and about 4 kB of
+ * code). It draws every frame only while something moves (the scan, the colour, the pointer); at rest it redraws
+ * ten times a second for the drifting contours, and not at all off screen or in a hidden tab. `dispose()` loses the
+ * context at once, so leaving a page frees the GPU memory straight away.
  */
-import * as THREE from 'three';
-
-const FRAG = /* glsl */ `
-  uniform sampler2D uPhoto, uDepth; uniform vec2 uRes, uImg; uniform float uScan, uColor, uTime, uMesh, uGain; uniform vec2 uMouse; uniform vec4 uFit;
+// WebGL2 runs the shaders as GLSL ES 3.00 (fwidth is built in); WebGL1 as 1.00 with the derivatives extension
+const V2 = `#version 300 es
+#define attribute in
+#define varying out
+`, F2 = `#version 300 es
+precision mediump float;
+out vec4 fragOut;
+#define gl_FragColor fragOut
+#define texture2D texture
+#define varying in
+`;
+const F1 = `#extension GL_OES_standard_derivatives : enable
+precision mediump float;
+`;
+const VERT = `attribute vec2 p; varying vec2 vUv; void main(){ vUv = p * 0.5 + 0.5; gl_Position = vec4(p, 0.0, 1.0); }`;
+const FRAG = `
+  uniform sampler2D uPhoto, uDepth; uniform float uScan, uColor, uTime, uMesh, uGain; uniform vec2 uMouse; uniform vec4 uFit;
   varying vec2 vUv;
   void main() {
-    // the photo fitted inside the canvas (uFit: offset and size in canvas units)
+    // the photo fitted inside the canvas (uFit: offset and size in canvas units); textures are stored top row first
     vec2 uv = (vUv - uFit.xy) / uFit.zw;
     if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) { gl_FragColor = vec4(0.0); return; }
-    float d = texture2D(uDepth, uv).r;
-    vec2 puv = uv + uMouse * (d - 0.5) * 0.012;
-    vec4 ph = texture2D(uPhoto, puv);
+    vec2 tuv = vec2(uv.x, 1.0 - uv.y);
+    float d = texture2D(uDepth, tuv).r;
+    vec4 ph = texture2D(uPhoto, tuv + uMouse * (d - 0.5) * 0.012);
     // dark film stills are lifted (a soft exposure curve), so the scan reads on a dark screen
     ph.rgb = 1.0 - exp(-ph.rgb * uGain);
     float a = smoothstep(0.35, 0.6, ph.a);
@@ -38,53 +55,108 @@ const FRAG = /* glsl */ `
     vec3 col = mix(green * mesh * 0.85 * (0.4 + d * 0.8), photo, behind) + green * band * 1.6;
     // fine scan rows of the display itself
     col *= 0.88 + 0.12 * step(0.5, fract(gl_FragCoord.y / 3.0));
-    gl_FragColor = vec4(col, a * max(behind, mesh * 0.95 + band));
+    float al = a * max(behind, mesh * 0.95 + band);
+    gl_FragColor = vec4(col * al, al);
   }`;
 
-export type Scanner = { scan(seconds?: number): Promise<void>; colour(to: number, seconds?: number): void; head(): { x: number; y: number }; at(u: number, v: number): { x: number; y: number }; dispose(): void; el: HTMLCanvasElement };
+export type Scanner = {
+  scan(seconds?: number): Promise<void>; colour(to: number, seconds?: number): Promise<void>; mesh(to: number, seconds?: number): Promise<void>;
+  head(): { x: number; y: number }; at(u: number, v: number): { x: number; y: number }; dispose(): void; el: HTMLCanvasElement; ready: boolean;
+};
+
+const loadImage = (src: string) => new Promise<HTMLImageElement>((res, rej) => {
+  const i = new Image(); i.crossOrigin = 'anonymous'; i.decoding = 'async';
+  i.onload = () => (i.decode ? i.decode().catch(() => {}) : Promise.resolve()).then(() => res(i)); i.onerror = rej; i.src = src;
+});
+
+/** True when the browser can draw the scanner at all; pages fall back to the plain photo otherwise. */
+export const canScan = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } };
 
 export async function createScanner(canvas: HTMLCanvasElement, photo: string, depth: string, headUV: [number, number] = [0.5, 0.2], gain = 2.4): Promise<Scanner> {
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
-  renderer.setClearColor(0, 0);
-  const loader = new THREE.TextureLoader();
-  const [tp, td] = await Promise.all([loader.loadAsync(photo), loader.loadAsync(depth)]);
-  tp.colorSpace = THREE.SRGBColorSpace;
-  const u = {
-    uPhoto: { value: tp }, uDepth: { value: td }, uRes: { value: new THREE.Vector2() }, uImg: { value: new THREE.Vector2(tp.image.width, tp.image.height) },
-    uScan: { value: 0 }, uColor: { value: 0 }, uTime: { value: 0 }, uMesh: { value: 1 }, uGain: { value: gain }, uMouse: { value: new THREE.Vector2() }, uFit: { value: new THREE.Vector4(0, 0, 1, 1) },
+  const [ip, id] = await Promise.all([loadImage(photo), loadImage(depth)]);
+  const opts = { alpha: true, antialias: false, premultipliedAlpha: true, powerPreference: 'low-power' as const };
+  const gl2 = canvas.getContext('webgl2', opts) as WebGL2RenderingContext | null;
+  const gl = (gl2 || canvas.getContext('webgl', opts)) as WebGLRenderingContext;
+  if (!gl) throw new Error('no webgl');
+  if (!gl2) gl.getExtension('OES_standard_derivatives');
+  const sh = (type: number, src: string) => { const s = gl.createShader(type)!; gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s) ?? 'shader'); return s; };
+  const prog = gl.createProgram()!;
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, (gl2 ? V2 : '') + VERT)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, (gl2 ? F2 : F1) + FRAG)); gl.linkProgram(prog); gl.useProgram(prog);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const tex = (img: HTMLImageElement, unit: number) => {
+    const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+    for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+    return t;
   };
-  const mat = new THREE.ShaderMaterial({ uniforms: u, transparent: true, vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }', fragmentShader: FRAG });
-  const scene = new THREE.Scene(), cam = new THREE.Camera();
-  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
-  const fit = () => {
-    const w = canvas.clientWidth, h = canvas.clientHeight;
-    renderer.setSize(w, h, false); u.uRes.value.set(w, h);
+  tex(ip, 0); tex(id, 1);
+  const U = (n: string) => gl.getUniformLocation(prog, n);
+  gl.uniform1i(U('uPhoto'), 0); gl.uniform1i(U('uDepth'), 1); gl.uniform1f(U('uGain'), gain);
+  const uScan = U('uScan'), uColor = U('uColor'), uTime = U('uTime'), uMesh = U('uMesh'), uMouse = U('uMouse'), uFit = U('uFit');
+  const v = { scan: 0, color: 0, mesh: 1, mx: 0, my: 0, tx: 0, ty: 0 };
+  const fit = [0, 0, 1, 1];
+  const resize = () => {
+    const dpr = Math.min(devicePixelRatio || 1, innerWidth < 768 ? 1.25 : 1.5);
+    const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); gl.viewport(0, 0, canvas.width, canvas.height);
     // contain: the whole photo inside the canvas, centred
-    const ia = tp.image.width / tp.image.height, ca = w / h;
-    const sw = ia > ca ? 1 : ia / ca, sh = ia > ca ? ca / ia : 1;
-    u.uFit.value.set((1 - sw) / 2, (1 - sh) / 2, sw, sh);
+    const ia = ip.naturalWidth / ip.naturalHeight, ca = w / h;
+    const sw = ia > ca ? 1 : ia / ca, shh = ia > ca ? ca / ia : 1;
+    fit.splice(0, 4, (1 - sw) / 2, (1 - shh) / 2, sw, shh);
+    dirty = true;
   };
-  const ro = new ResizeObserver(fit); ro.observe(canvas); fit();
-  const onMove = (e: PointerEvent) => { const r = canvas.getBoundingClientRect(); u.uMouse.value.set((e.clientX - r.left) / r.width - 0.5, (e.clientY - r.top) / r.height - 0.5); };
-  addEventListener('pointermove', onMove, { passive: true });
-  let alive = true; const t0 = performance.now();
-  const loop = () => { if (!alive) return; u.uTime.value = (performance.now() - t0) / 1000; renderer.render(scene, cam); requestAnimationFrame(loop); };
-  loop();
-  const at = (pu: number, pv: number) => { const f = u.uFit.value, w = canvas.clientWidth, h = canvas.clientHeight; return { x: (f.x + pu * f.z) * w, y: (1 - (f.y + (1 - pv) * f.w)) * h }; };
-  const tween = (key: 'uScan' | 'uColor', to: number, secs: number) => new Promise<void>((res) => {
-    const from = u[key].value, s = performance.now();
-    const step = () => { const k = Math.min(1, (performance.now() - s) / (secs * 1000)); u[key].value = from + (to - from) * (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2); if (k < 1 && alive) requestAnimationFrame(step); else res(); };
+  let alive = true, dirty = true, visible = true, busy = 0, last = 0;
+  const t0 = performance.now();
+  const draw = (now: number) => {
+    v.mx += (v.tx - v.mx) * 0.08; v.my += (v.ty - v.my) * 0.08;
+    gl.uniform1f(uScan, v.scan); gl.uniform1f(uColor, v.color); gl.uniform1f(uMesh, v.mesh); gl.uniform1f(uTime, (now - t0) / 1000);
+    gl.uniform2f(uMouse, v.mx, v.my); gl.uniform4f(uFit, fit[0], fit[1], fit[2], fit[3]);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3);
+  };
+  const loop = (now: number) => {
+    if (!alive) return;
+    requestAnimationFrame(loop);
+    if (!visible || document.hidden) return;
+    const moving = busy > 0 || dirty || Math.abs(v.tx - v.mx) + Math.abs(v.ty - v.my) > 0.002;
+    // at rest the contours still drift: ten frames a second is plenty for that
+    if (!moving && now - last < 100) return;
+    last = now; dirty = false; draw(now);
+  };
+  requestAnimationFrame(loop);
+  const ro = new ResizeObserver(resize); ro.observe(canvas); resize();
+  const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }); io.observe(canvas);
+  const fine = matchMedia('(pointer: fine)').matches;
+  const onMove = (e: PointerEvent) => { const r = canvas.getBoundingClientRect(); v.tx = (e.clientX - r.left) / r.width - 0.5; v.ty = (e.clientY - r.top) / r.height - 0.5; };
+  if (fine) addEventListener('pointermove', onMove, { passive: true });
+
+  const at = (pu: number, pv: number) => { const w = canvas.clientWidth, h = canvas.clientHeight; return { x: (fit[0] + pu * fit[2]) * w, y: (1 - (fit[1] + (1 - pv) * fit[3])) * h }; };
+  const tween = (key: 'scan' | 'color' | 'mesh', to: number, secs: number) => new Promise<void>((res) => {
+    if (secs <= 0 || matchMedia('(prefers-reduced-motion: reduce)').matches) { v[key] = to; dirty = true; res(); return; }
+    const from = v[key], s = performance.now(); busy++;
+    const step = () => {
+      const k = Math.min(1, (performance.now() - s) / (secs * 1000));
+      v[key] = from + (to - from) * (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+      if (k < 1 && alive) requestAnimationFrame(step); else { busy--; dirty = true; res(); }
+    };
     step();
   });
-  return {
-    el: canvas,
-    scan: (secs = 2.2) => tween('uScan', 1.02, secs),
-    colour: (to, secs = 1.6) => { tween('uColor', to, secs); },
+  const self: Scanner = {
+    el: canvas, ready: true,
+    scan: (secs = 2.2) => tween('scan', 1.02, secs),
+    colour: (to, secs = 1.6) => tween('color', to, secs),
+    mesh: (to, secs = 1) => tween('mesh', to, secs),
     // where the face is on the canvas, in pixels, for the reticle
     head: () => at(headUV[0], headUV[1]),
     // any point of the photo (u from the left, v from the top) on the canvas, in pixels
     at,
-    dispose: () => { alive = false; ro.disconnect(); removeEventListener('pointermove', onMove); renderer.dispose(); tp.dispose(); td.dispose(); mat.dispose(); },
+    dispose: () => {
+      if (!alive) return;
+      alive = false; ro.disconnect(); io.disconnect(); removeEventListener('pointermove', onMove);
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+    },
   };
+  return self;
 }

@@ -1,0 +1,120 @@
+---
+// DOOM-OS (CLAUDE.md, "Design system v4: Doom's surveillance OS"): every page is a screen of Doom's own command
+// system. The bar (brand, modules, launch clock, sound, the unofficial marker), the command line, the screen's
+// overlays and the HUD layer persist across page changes; each page is one screen inside them.
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+import '@fontsource-variable/tektur';
+import '../styles/os.css';
+import { publishedOrder, heroName, getResearch, castFor, TEAMS, u } from '../data/site';
+import { photos2For, pick2, accentOf } from '../data/v2';
+import { MODULES } from '../data/os';
+
+interface Props { title: string; description: string; page: string; module?: string }
+const { title, description, page, module } = Astro.props;
+const fullTitle = page === 'home' ? 'Doomsday Dossier: DOOM-OS, an unofficial fan briefing for Avengers: Doomsday' : `${title} | Doomsday Dossier`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// the command line's index: every target and every module
+const index = {
+  targets: publishedOrder().map((slug, i) => {
+    const r = getResearch(slug)!, c = castFor(slug)!, p = photos2For(slug)[0];
+    return { slug, no: i + 1, name: heroName(slug), alias: r.alias, team: TEAMS.find((t) => t.id === c.team)?.name ?? '', actor: c.actor, href: u(`/c/${slug}/`), accent: accentOf(slug), tile: p ? pick2(p.cut.length ? p.cut : p.full, 200) : '' };
+  }),
+  modules: [{ id: 'home', no: '00', name: 'Command', short: 'Home', href: u('/'), line: 'Doom-OS home' }, ...MODULES.map((m) => ({ ...m, href: u(m.href) })),
+    { id: 'about', no: '--', name: 'Sources and rules', short: 'About', href: u('/about/'), line: 'How this archive is sourced' },
+    { id: 'credits', no: '--', name: 'Image credits', short: 'Credits', href: u('/credits/'), line: 'Every photo, by target' }],
+  base: u('/'),
+};
+---
+<!doctype html>
+<html lang="en" class="os">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#020504" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <script is:inline>
+      // Each deploy renames the CSS and JS files. A page cached before a deploy can ask for files that are gone and
+      // show unstyled: if a stylesheet or script fails to load, reload once (at most once a minute, so never a loop).
+      (function () {
+        var KEY = 'dd-asset-reload';
+        function again() {
+          try { var t = +sessionStorage.getItem(KEY) || 0; if (Date.now() - t < 60000) return; sessionStorage.setItem(KEY, String(Date.now())); } catch (e) { return; }
+          location.reload();
+        }
+        addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && ((t.tagName === 'LINK' && /stylesheet|modulepreload/.test(t.rel)) || t.tagName === 'SCRIPT') && (t.href || t.src || '').indexOf('/_astro/') !== -1) again();
+        }, true);
+        addEventListener('unhandledrejection', function (e) {
+          if (/dynamically imported module|Importing a module script failed|error loading dynamically imported/i.test(String(e.reason && e.reason.message))) again();
+        });
+      })();
+    </script>
+    <ClientRouter fallback="swap" />
+  </head>
+  <body data-page={page} data-module={module ?? page}>
+    <a class="skip" href="#screen">Skip to content</a>
+    <!-- the screen itself: lattice behind, scan lines, static and flicker in front; the HUD layer holds the crosshair and glyph columns -->
+    <div class="os-lattice" aria-hidden="true" transition:persist="os-lattice"></div>
+    <div class="os-hud" aria-hidden="true" transition:persist="os-hud" data-hud></div>
+
+    <header class="bar" transition:persist="os-bar" data-bar>
+      <a class="bar-brand" href={u('/')}><i aria-hidden="true"></i><b>DOOM-OS</b><span class="hide-s">&nbsp;// Latveria</span></a>
+      <nav class="bar-nav" aria-label="Modules">
+        {MODULES.map((m) => <a href={u(m.href)} data-mod={m.id}><i>{m.no}</i>{m.short}</a>)}
+      </nav>
+      <div class="bar-right">
+        <span class="bar-clock os-label" title="Time to Avengers: Doomsday, 18 December 2026">T-<b data-clock-mini>--</b></span>
+        <button class="bar-btn" data-cmd-open aria-haspopup="dialog" title="Command line (press /)"><span aria-hidden="true">&gt;_</span><em class="hide-s">Command</em><em class="show-s">Menu</em></button>
+        <button class="bar-btn" data-sound aria-pressed="false" title="Sound"><i class="snd" aria-hidden="true"></i><span class="sr">Sound on</span></button>
+        <span class="bar-unoff" title="Not affiliated with or endorsed by Marvel or Disney">Unofficial fan site</span>
+      </div>
+    </header>
+
+    <!-- THE COMMAND LINE: type a target, a module or a command (scripts/os/command.ts) -->
+    <div class="cmd" data-cmd hidden transition:persist="os-cmd" role="dialog" aria-modal="true" aria-label="Command line">
+      <div class="cmd-box os-panel">
+        <header><b>Command line</b><span class="os-label">Esc to close</span></header>
+        <label class="cmd-line"><span aria-hidden="true">DOOM-OS:\&gt;</span><input data-cmd-input type="text" autocomplete="off" spellcheck="false" placeholder="a target, a module, or help" aria-label="Command" /></label>
+        <ol class="cmd-list" data-cmd-list role="listbox"></ol>
+        <p class="cmd-help os-label" data-cmd-help>Try: thor &middot; combat thor magneto &middot; archive &middot; mute</p>
+      </div>
+      <script type="application/json" data-cmd-index is:inline set:html={JSON.stringify(index)} />
+    </div>
+
+    <main class="screen" id="screen" data-screen>
+      <slot />
+    </main>
+
+    <footer class="os-foot">
+      <div class="os-foot-in">
+        <p class="os-label os-hi">Unofficial fan site // non-commercial</p>
+        <p>
+          <strong>Doomsday Dossier is an unofficial, non-commercial fan project.</strong>
+          It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company. All character names, related marks and images belong to their owners; images belong to their respective owners, and any image will be removed on request: <a href="https://github.com/prejith77/doomsday-dossier/issues" rel="noopener" target="_blank">open an issue</a> and it comes down. No Marvel logos are used as design elements.
+          Film facts come only from Marvel announcements; character history from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics, in our own words. DOOM-OS, its glyphs and its sounds are this site's own inventions.
+        </p>
+        <p class="os-label"><a href={u('/about/')}>Sources and rules</a> &middot; <a href={u('/credits/')}>Image credits</a> &middot; Facts checked 27 October 2026</p>
+      </div>
+    </footer>
+
+    <div class="trace" data-trace hidden transition:persist="os-trace" aria-live="polite"><p class="os-label">Counter-trace <b>0%</b> <em>Game</em></p><div class="trace-bar"><i></i></div><span>The heroes are tracing Your Majesty's access</span></div>
+    <svg class="shatter" data-shatter aria-hidden="true" transition:persist="os-shatter"></svg>
+    <div class="os-static" data-static aria-hidden="true" transition:persist="os-static"></div>
+    <div class="os-scan" aria-hidden="true" transition:persist="os-scan"></div>
+    <div class="os-flicker" aria-hidden="true" transition:persist="os-flicker"></div>
+
+    <script>
+      import '../scripts/os/main';
+    </script>
+  </body>
+</html>

@@ -56,6 +56,39 @@ export function staticBurst(s: Sound, t = s.ctx.currentTime + 0.005) {
   const th = s.osc('sine', 90, s.sfx); th.o.frequency.exponentialRampToValueAtTime(45, t + 0.2); s.env(th.g.gain, t, 0.25, 0.003, 0.2); th.o.start(t); th.o.stop(t + 0.3);
 }
 
+/** Glass breaking as the screen shatters: a hard bright crack, then tinkling shards and a dull thump under it. */
+export function shatter(s: Sound, t = s.ctx.currentTime + 0.005) {
+  if (!live(s)) return;
+  const v = s.noiseVoice('white', 'highpass', 2600, 0.8, s.sfx, false);
+  v.g.gain.setValueAtTime(0.0001, t); v.g.gain.exponentialRampToValueAtTime(0.2, t + 0.004); v.g.gain.exponentialRampToValueAtTime(0.0001, t + 0.28);
+  v.src.start(t, Math.random() * 2, 0.3);
+  for (let i = 0; i < 7; i++) {
+    const at = t + 0.02 + Math.random() * 0.22, o = s.osc('sine', 2400 + Math.random() * 4200, s.sfx);
+    s.env(o.g.gain, at, 0.05, 0.001, 0.05 + Math.random() * 0.08); o.o.start(at); o.o.stop(at + 0.2); s.wet(o.g, 0.25, s.sfx);
+  }
+  const th = s.osc('sine', 120, s.sfx); th.o.frequency.exponentialRampToValueAtTime(48, t + 0.18); s.env(th.g.gain, t, 0.18, 0.002, 0.16); th.o.start(t); th.o.stop(t + 0.25);
+}
+
+/** The shards flying apart onto the new screen: a falling rush of air. */
+export function burst(s: Sound, t = s.ctx.currentTime + 0.005) {
+  if (!live(s)) return;
+  const v = s.noiseVoice('pink', 'bandpass', 2200, 1.4, s.sfx, false);
+  v.f.frequency.setValueAtTime(2400, t); v.f.frequency.exponentialRampToValueAtTime(360, t + 0.55);
+  v.g.gain.setValueAtTime(0.0001, t); v.g.gain.exponentialRampToValueAtTime(0.16, t + 0.05); v.g.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
+  v.src.start(t, Math.random() * 2, 0.65);
+}
+
+/** Intrusion: a two-tone klaxon, four times, through a thin band-pass like a speaker in a control room. */
+export function alarm(s: Sound, t = s.ctx.currentTime + 0.01) {
+  if (!live(s)) return;
+  const bp = s.ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1200; bp.Q.value = 1.2; bp.connect(s.sfx);
+  for (let i = 0; i < 4; i++) {
+    const o = s.osc('square', i % 2 ? 440 : 660, bp); o.g.gain.value = 0;
+    o.g.gain.setValueAtTime(0.0001, t + i * 0.22); o.g.gain.exponentialRampToValueAtTime(0.07, t + i * 0.22 + 0.01); o.g.gain.setValueAtTime(0.07, t + i * 0.22 + 0.17); o.g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.22 + 0.2);
+    o.o.start(t + i * 0.22); o.o.stop(t + i * 0.22 + 0.21);
+  }
+}
+
 /** The machine underneath everything: two detuned low tones through a slowly breathing filter. Returns a stop. */
 export function drone(s: Sound) {
   if (!live(s)) return () => {};
