@@ -92,6 +92,9 @@ export function crosshair(host: HTMLElement = document.body) {
   host.append(el); document.documentElement.classList.add('has-xhair');
   const t = el.querySelector<HTMLElement>('.xh-t')!;
   const R = 110;
+  // gone when the pointer leaves the window, back as soon as it returns
+  el.classList.add('off');
+  document.addEventListener('mouseout', (e) => { if (!e.relatedTarget) el.classList.add('off'); });
   addEventListener('pointermove', (e) => {
     let x = e.clientX, y = e.clientY, label = '';
     // the aim is pulled toward a face within reach, and locks on when close
@@ -100,7 +103,7 @@ export function crosshair(host: HTMLElement = document.body) {
       const d = Math.hypot(p.x - x, p.y - y);
       if (d < R) { const k = d < 34 ? 1 : Math.pow(1 - d / R, 1.5) * 0.85; x += (p.x - x) * k; y += (p.y - y) * k; if (d < 34) label = p.label; break; }
     }
-    el.style.transform = `translate(${x}px, ${y}px)`;
+    el.style.transform = `translate(${x}px, ${y}px)`; el.classList.remove('off');
     const over = (e.target as HTMLElement).closest('a, button, select, input, summary, canvas[data-bw]');
     el.classList.toggle('on', !!over || !!label);
     el.classList.toggle('lock', !!label);

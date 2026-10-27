@@ -66,6 +66,8 @@ const index = {
     <!-- the screen itself: lattice behind, scan lines, static and flicker in front; the HUD layer holds the crosshair and glyph columns -->
     <div class="os-lattice" aria-hidden="true" transition:persist="os-lattice"></div>
     <div class="os-hud" aria-hidden="true" transition:persist="os-hud" data-hud></div>
+    <!-- the crosshair cursor sits above everything, the bar and the command line included -->
+    <div class="os-aim" aria-hidden="true" transition:persist="os-aim" data-aim></div>
 
     <header class="bar" transition:persist="os-bar" data-bar>
       <a class="bar-brand" href={u('/')}><i aria-hidden="true"></i><b>DOOM-OS</b><span class="hide-s">&nbsp;// Latveria</span></a>
