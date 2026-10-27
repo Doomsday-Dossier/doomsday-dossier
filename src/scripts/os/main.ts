@@ -51,7 +51,7 @@ asGlobal(() => {
   commandLine();
   keepTime();
   const hud = document.querySelector<HTMLElement>('[data-hud]')!;
-  crosshair(hud); glyphColumns(hud);
+  crosshair(document.querySelector<HTMLElement>('[data-aim]') ?? hud); glyphColumns(hud);
 
   // changing screen (Battleworld): the glass cracks from where the visitor clicked, shards close the screen while the
   // next page loads, then burst apart to show it
