@@ -109,6 +109,14 @@ const heroCut = lead && lead.cut.length ? lead.cut : null;
 const heroLines = (() => { const w = name.split(' '); let best = [name]; for (let i = 1; i < w.length; i++) { const l = [w.slice(0, i).join(' '), w.slice(i).join(' ')]; if (best.length === 1 || Math.max(...l.map((x) => x.length)) < Math.max(...best.map((x) => x.length))) best = l; } return best; })();
 const longest = Math.max(...heroLines.map((l) => l.length));
 const nextPh = photos2For(next)[0];
+// what the next file needs, fetched while the reader reaches the foot of this one: its page, its scene's code,
+// its title face and the photos its hero diorama uploads (scripts/dossier/file.ts)
+const nd = DESIGN[next], nDio = dioFor(next, [], nd.font, nd.fontWeight);
+const nextData = {
+  scene: nd.scene, font: nd.font, weight: nd.fontWeight, images: nDio ? [nDio.cut, nDio.depth, nDio.back, nDio.backDepth].filter(Boolean) : [],
+  // where the next hero's diorama stands its subject, so the handoff lands the photo on the same spot (chrome.ts)
+  frame: nDio ? { head: nDio.head[0], bbox: nDio.bbox, aspect: nDio.aspect } : null,
+};
 const files = order.map((x, i) => ({ slug: x, no: i + 1, name: heroName(x).toUpperCase(), accent: accentOf(x) }));
 const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '#5c5f58' : accent};--longest:${longest}`;
 ---
@@ -384,19 +392,19 @@ const styleVars = `--sig:${d.font};--sig-w:${d.fontWeight};--forged:${isDoom ? '
       </div>
     </div>
 
-    <nav class="voyage" data-voyage aria-label="Other files" style={`--na:${accentOf(next)}`}>
+    <nav class="voyage" data-voyage data-next={JSON.stringify(nextData)} aria-label="Other files" style={`--na:${accentOf(next)}`}>
       <div class="voy-stage">
         {nextPh && <img class="voy-bg" src={pick2(nextPh.full, 1920)} srcset={srcset2(nextPh.full)} sizes="100vw" width={nextPh.w} height={nextPh.h} alt="" loading="lazy" decoding="async" style={`object-position:${nextPh.focus}`} data-voy-bg />}
         <ol class="voy-list t-micro" aria-label="All files">
           {files.map((f) => <li class={f.slug === slug ? 'here' : f.slug === next ? 'next' : ''} style={`--fa:${f.accent}`}><a href={u(`/c/${f.slug}/`)} aria-current={f.slug === slug ? 'page' : undefined}><i></i>{f.name}</a></li>)}
         </ol>
-        <a class="voy-window" href={u(`/c/${next}/`)} data-voy-window>
+        <a class="voy-window" href={u(`/c/${next}/`)} data-voy-window data-handoff data-pt-label={`File ${pad((no % order.length) + 1)} · ${heroName(next)}`}>
           {nextPh && <span class="voy-img"><img src={pick2(nextPh.cut.length ? nextPh.cut : nextPh.full, 1280)} alt="" loading="lazy" decoding="async" style={`object-position:${nextPh.focusM}`} class={nextPh.cut.length ? 'cut' : ''} /></span>}
           <span class="voy-cap t-micro">Next file &middot; {pad((no % order.length) + 1)}</span>
         </a>
         <div class="voy-name">
           <p class="t-label t-ash">Open the next file</p>
-          <a class="voy-big t-title" href={u(`/c/${next}/`)} data-fit>{heroName(next).toUpperCase()}</a>
+          <a class="voy-big t-title" href={u(`/c/${next}/`)} data-fit data-handoff data-pt-label={`File ${pad((no % order.length) + 1)} · ${heroName(next)}`}>{heroName(next).toUpperCase()}</a>
           <a class="t-label voy-back" href={u('/')}>&larr; Back to the archive</a>
         </div>
       </div>

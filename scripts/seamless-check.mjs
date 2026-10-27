@@ -21,9 +21,11 @@ await p.evaluate(() => { window.__marker = 'same document'; });
 const state = (label) => p.evaluate((label) => ({
   label, path: location.pathname, marker: window.__marker ?? 'RELOADED', page: document.body.dataset.page,
   triggers: window.ScrollTrigger?.getAll?.().length ?? (document.querySelectorAll('.pin-spacer').length + '?'), listeners: window.__listeners(),
-  audio: (window.__ddSound?.ctx?.state) ?? 'n/a', cover: getComputedStyle(document.querySelector('[data-pt]')).transform,
+  audio: (window.__ddSound?.ctx?.state) ?? 'n/a', cover: document.querySelector('[data-pt].on, [data-ho].on') ? 'UP' : 'none',
 }), label);
-const go = async (sel, label) => { await p.locator(sel).first().click({ force: true }); await p.waitForTimeout(2600); console.log(JSON.stringify(await state(label))); };
+// a page change is done once its cover (the handoff or the wipe) has lifted; then a moment for the page to settle
+const settled = () => p.waitForFunction(() => !document.querySelector('[data-pt].on, [data-ho].on'), null, { timeout: 8000 }).then(() => p.waitForTimeout(500));
+const go = async (sel, label) => { await p.locator(sel).first().click({ force: true }); await p.waitForTimeout(300); await settled(); console.log(JSON.stringify(await state(label))); };
 console.log(JSON.stringify(await state('thor, first load')));
 await go('a.voy-big', 'next file');
 await go('.dx-nav a[href$="/timeline/"]', 'timeline');
@@ -31,6 +33,6 @@ await go('.dx-nav a[href$="/quiz/"]', 'quiz');
 await go('a.dx-mark', 'home');
 await p.waitForTimeout(3000); console.log(JSON.stringify(await state('home, forge played')));
 await go('.index-list a', 'file from home index');
-await p.goBack(); await p.waitForTimeout(2600); console.log(JSON.stringify(await state('back')));
+await p.goBack(); await p.waitForTimeout(300); await settled(); console.log(JSON.stringify(await state('back')));
 console.log('full loads:', loads, '| errors:', errs.length ? errs.slice(0, 6) : 'none');
 await b.close();

@@ -6,6 +6,8 @@
  *   the sound engine, the score and the header's sound switch, the index menu, and the page-change cover;
  * - the page, booted on every `astro:page-load` and taken down before the next swaps in (`page-scope.ts`):
  *   its own choreography (the home page's forge and hall, a file, a team, the arena...).
+ * On a page change the next page boots under the cover (the handoff or the redaction wipe, chrome.ts); the cover
+ * lifts once the page says it is ready, or after a time limit, so its entrance plays on a free main thread.
  */
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
@@ -16,6 +18,9 @@ import { cursor, transitions, menu } from './chrome';
 import { Sound } from '../sound/engine';
 import { startScore } from '../sound/score';
 import { installPageScope, asGlobal, leavePage } from '../page-scope';
+import { tear, redact } from '../sound/actions';
+import { fileArrive } from '../sound/home';
+import { isCovered, coverDown } from './cover';
 
 installPageScope();
 gsap.registerPlugin(ScrollTrigger);
@@ -27,6 +32,9 @@ const html = document.documentElement;
 let lenis: Lenis | null = null;
 let engine: any = null;
 let engineTried = false;
+let pageChange: { lift(): Promise<void> } = { lift: () => Promise.resolve() };
+/** How long a page may build under its cover before it is revealed anyway. */
+const READY_LIMIT = phone ? 1800 : 1200;
 
 // THE SESSION -----------------------------------------------------------------------------------------------
 asGlobal(() => {
@@ -62,15 +70,31 @@ asGlobal(() => {
   };
   addEventListener('pointerdown', first); addEventListener('keydown', first);
 
+  // Astro's router saves the scroll position to history on every scrollend, which smooth scroll fires every
+  // frame; save it once the scroll has come to rest instead
+  if (lenis) {
+    let rest = 0;
+    addEventListener('scrollend', (e) => {
+      e.stopImmediatePropagation();
+      clearTimeout(rest);
+      rest = window.setTimeout(() => { if (history.state) history.replaceState({ ...history.state, scrollX, scrollY }, ''); }, 250);
+    }, { capture: true });
+  }
+
   menu(reduced, lenis);
-  transitions(reduced);
+  const live = () => Sound.get().ctx.state === 'running';
+  pageChange = transitions(reduced, {
+    slide: () => { if (live()) fileArrive(Sound.get()); },
+    redact: () => redact(Sound.get()),
+    tear: () => tear(Sound.get(), undefined, 0.16),
+  });
 
   // page changes: take the old page down before the new one swaps in, then reset for it
   document.addEventListener('astro:before-swap', () => {
     leavePage();
     ScrollTrigger.getAll().forEach((t) => t.kill());
     gsap.globalTimeline.getChildren(true, true, false).forEach((t) => { if (t.data !== 'keep') t.kill(); });
-    if (engine) { engine.unmount(); engine.canvas.style.opacity = '0'; }
+    if (engine) { engine.hold(); engine.unmount(); engine.canvas.style.opacity = '0'; }
     lenis?.stop();
   });
   document.addEventListener('astro:after-swap', () => {
@@ -92,6 +116,7 @@ async function ensureEngine() {
     if (canvas && !!document.createElement('canvas').getContext('webgl2')) {
       const { Engine } = await import('../gl/engine');
       engine = asGlobal(() => new Engine(canvas));
+      if (/^(localhost|127\.)/.test(location.hostname)) (window as any).__ddEngine = engine;
       let last = performance.now();
       const loop = (now: number) => { engine.tick((now - last) / 1000); last = now; requestAnimationFrame(loop); };
       requestAnimationFrame(loop);
@@ -108,14 +133,26 @@ async function boot() {
   const env = { engine: eng, lenis, reduced, phone };
   cursor(reduced);
   const page = document.body.dataset.page;
+  let ready: Promise<void> | void = undefined;
   if (page === 'archive') (await import('../home/page')).forgeHome(env);
-  if (page === 'file') (await import('./file')).filePage(env);
+  if (page === 'file') ready = (await import('./file')).filePage(env);
   if (page === 'team') (await import('./team')).teamPage(env);
   if (page === 'arena') (await import('./arenapage')).arenaPage(env);
   if (page === 'timeline') (await import('./timeline')).timelinePage(env);
   if (page === 'predictions') (await import('./predictpage')).predictPage(env);
   if (page === 'quiz') (await import('./quizpage')).quizPageV2(env);
   if (page === 'catchup' || page === 'about' || page === 'credits') (await import('./editorial')).editorialPage(env, page);
-  requestAnimationFrame(() => ScrollTrigger.refresh());
+  if (isCovered()) {
+    // under the cover: let the page finish building, measure it once, paint it once, then reveal it
+    await Promise.race([Promise.resolve(ready).catch(() => {}), new Promise((res) => setTimeout(res, READY_LIMIT))]);
+    ScrollTrigger.refresh();
+    await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+    eng?.release();
+    coverDown();
+    pageChange.lift();
+  } else {
+    eng?.release();
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  }
   document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
 }
