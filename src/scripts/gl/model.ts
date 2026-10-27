@@ -71,6 +71,8 @@ export async function loadModel(url: string, envIntensity = 1): Promise<Model> {
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     geo.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
     geo.setAttribute('ao', new THREE.BufferAttribute(ao, 1));
+    // curvature, when baked: sharp edges positive, creases negative (relic materials wear and dirty by it)
+    if (p.cur !== null && p.cur !== undefined) { const cv = new Int8Array(raw, base + p.cur, V), cf = new Float32Array(V); for (let i = 0; i < V; i++) cf[i] = cv[i] / 127; geo.setAttribute('curv', new THREE.BufferAttribute(cf, 1)); }
     const all: number[] = [];
     for (const [m, list] of [...byMat.entries()].sort((x, y) => x[0] - y[0])) { geo.addGroup(all.length, list.length, m); for (const v of list) all.push(v); }
     geo.setIndex(V > 65535 ? new THREE.Uint32BufferAttribute(all, 1) : new THREE.Uint16BufferAttribute(all, 1));

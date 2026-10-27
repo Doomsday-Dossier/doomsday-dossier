@@ -12,7 +12,7 @@ import zlib from 'node:zlib';
  * Meshes a sculpt inside the box [min, max] with cells of size h. Returns positions, normals, materials (0-255),
  * occlusion (0-255) and triangle indices.
  */
-export function meshSDF(sdf, bmin, bmax, h, { ao = true } = {}) {
+export function meshSDF(sdf, bmin, bmax, h, { ao = true, aoScale = 1, curve = 0.004 } = {}) {
   const t0 = Date.now();
   const nx = Math.ceil((bmax[0] - bmin[0]) / h) + 1, ny = Math.ceil((bmax[1] - bmin[1]) / h) + 1, nz = Math.ceil((bmax[2] - bmin[2]) / h) + 1;
   const N = nx * ny * nz, field = new Float32Array(N);
@@ -64,7 +64,7 @@ export function meshSDF(sdf, bmin, bmax, h, { ao = true } = {}) {
     if (k < nz - 1 && d0 !== (field[at(i, j, k + 1)] < 0)) quad(cellVert[cat(i - 1, j - 1, k)], cellVert[cat(i, j - 1, k)], cellVert[cat(i, j, k)], cellVert[cat(i - 1, j, k)], !d0);
   }
   // pull each vertex onto the surface, then its normal, material and occlusion
-  const V = pos.length / 3, P = new Float32Array(pos), Nrm = new Float32Array(V * 3), M = new Uint8Array(V), A = new Uint8Array(V);
+  const V = pos.length / 3, P = new Float32Array(pos), Nrm = new Float32Array(V * 3), M = new Uint8Array(V), A = new Uint8Array(V), C = new Int8Array(V);
   const e = h * 0.5;
   const grad = (x, y, z) => {
     const gx = sdf.d(x + e, y, z) - sdf.d(x - e, y, z), gy = sdf.d(x, y + e, z) - sdf.d(x, y - e, z), gz = sdf.d(x, y, z + e) - sdf.d(x, y, z - e);
@@ -79,9 +79,14 @@ export function meshSDF(sdf, bmin, bmax, h, { ao = true } = {}) {
     if (ao) {
       // how much of the field crowds in along the normal: creases, under the brow, the folds of a hood
       let occ = 0, w = 1;
-      for (let s = 1; s <= 6; s++) { const dist = 0.006 * s * s; occ += w * Math.max(0, dist - sdf.d(x + g[0] * dist, y + g[1] * dist, z + g[2] * dist)) / dist; w *= 0.62; }
+      for (let s = 1; s <= 6; s++) { const dist = 0.006 * aoScale * s * s; occ += w * Math.max(0, dist - sdf.d(x + g[0] * dist, y + g[1] * dist, z + g[2] * dist)) / dist; w *= 0.62; }
       A[q] = Math.round(255 * Math.max(0, Math.min(1, 1 - occ * 0.55)));
     } else A[q] = 255;
+    // curvature (the field's Laplacian): sharp convex edges positive, creases negative; the materials polish the
+    // one and fill the other with grime
+    const ce = Math.max(h * 1.5, 0.0008), d0 = sdf.d(x, y, z);
+    const lap = (sdf.d(x + ce, y, z) + sdf.d(x - ce, y, z) + sdf.d(x, y + ce, z) + sdf.d(x, y - ce, z) + sdf.d(x, y, z + ce) + sdf.d(x, y, z - ce) - 6 * d0) / (ce * ce);
+    C[q] = Math.round(127 * Math.tanh(lap * curve));
   }
   // wind every triangle to face the way the field's gradient points (outward), so back faces can be culled
   for (let t = 0; t < idx.length; t += 3) {
@@ -92,7 +97,7 @@ export function meshSDF(sdf, bmin, bmax, h, { ao = true } = {}) {
     const nx_ = Nrm[a * 3] + Nrm[b * 3] + Nrm[c * 3], ny_ = Nrm[a * 3 + 1] + Nrm[b * 3 + 1] + Nrm[c * 3 + 1], nz_ = Nrm[a * 3 + 2] + Nrm[b * 3 + 2] + Nrm[c * 3 + 2];
     if (fx * nx_ + fy * ny_ + fz * nz_ < 0) { idx[t + 1] = c; idx[t + 2] = b; }
   }
-  return { positions: P, normals: Nrm, materials: M, ao: A, indices: Uint32Array.from(idx), stats: { grid: [nx, ny, nz], evals, vertices: V, triangles: idx.length / 3, ms: Date.now() - t0 } };
+  return { positions: P, normals: Nrm, materials: M, ao: A, curv: C, indices: Uint32Array.from(idx), stats: { grid: [nx, ny, nz], evals, vertices: V, triangles: idx.length / 3, ms: Date.now() - t0 } };
 }
 
 /**
@@ -114,7 +119,7 @@ export function writeDDM(file, parts, meta = {}) {
     const big = V > 65535, ind = big ? m.indices : Uint16Array.from(m.indices);
     head.parts.push({
       name: p.name, vertices: V, indices: m.indices.length, big, min: lo, max: hi, pivot: p.pivot ?? null,
-      pos: add(q), nrm: add(na), mat: add(m.materials), idx: add(ind),
+      pos: add(q), nrm: add(na), mat: add(m.materials), idx: add(ind), cur: m.curv ? add(m.curv) : null,
     });
   }
   const json = Buffer.from(JSON.stringify(head));
@@ -152,11 +157,11 @@ export async function budget(mesh, maxTris, { hidden = 0.05, error = 0.02 } = {}
     [out] = MeshoptSimplifier.simplifyWithAttributes(idx, P, 3, attrs, 4, [0.4, 0.4, 0.4, 0.8], lock, maxTris * 3, error);
   }
   const [remap, unique] = MeshoptSimplifier.compactMesh(out);
-  const P2 = new Float32Array(unique * 3), N2 = new Float32Array(unique * 3), M2 = new Uint8Array(unique), A2 = new Uint8Array(unique);
+  const P2 = new Float32Array(unique * 3), N2 = new Float32Array(unique * 3), M2 = new Uint8Array(unique), A2 = new Uint8Array(unique), C2 = new Int8Array(unique);
   for (let i = 0; i < remap.length; i++) {
     const j = remap[i]; if (j === 0xffffffff) continue;
     for (let c = 0; c < 3; c++) { P2[j * 3 + c] = P[i * 3 + c]; N2[j * 3 + c] = Nm[i * 3 + c]; }
-    M2[j] = M[i]; A2[j] = A[i];
+    M2[j] = M[i]; A2[j] = A[i]; if (mesh.curv) C2[j] = mesh.curv[i];
   }
-  return { positions: P2, normals: N2, materials: M2, ao: A2, indices: out, stats: { ...mesh.stats, vertices: unique, triangles: out.length / 3 } };
+  return { positions: P2, normals: N2, materials: M2, ao: A2, curv: mesh.curv ? C2 : null, indices: out, stats: { ...mesh.stats, vertices: unique, triangles: out.length / 3 } };
 }
