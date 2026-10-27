@@ -3,7 +3,7 @@ main = "src/index.ts"
 compatibility_date = "2026-10-01"
 
 [vars]
-ALLOWED_ORIGINS = "https://doomsdaydossier.github.io,https://prejith77.github.io,http://localhost:4322,http://localhost:4321"
+ALLOWED_ORIGINS = "https://doomsday-dossier.github.io,https://prejith77.github.io,http://localhost:4322,http://localhost:4321"
 
 # created with `wrangler d1 create doomsday-arena` (26 October 2026)
 [[d1_databases]]
