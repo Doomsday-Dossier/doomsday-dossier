@@ -1,0 +1,119 @@
+---
+// DOOM-OS module 07, the royal chamber: the visitor's reign, kept on this device only (scripts/os/reign.ts). The
+// order of conquest (drag the 29 targets into the order they fall), His Majesty's verdicts, a decree under Doom's
+// seal, the royal log and Doom's will. Everything here is the visitor's own fan opinion; cards say so.
+import OS from '../layouts/OS.astro';
+import { targets } from '../data/os';
+import { u } from '../data/site';
+
+const all = targets().map((t) => ({ slug: t.slug, no: t.no, name: t.name, team: t.team, teamId: t.teamId, href: t.href, tile: t.tile }));
+const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(([id]) => id !== 'adversary');
+---
+<OS title="Royal chamber" page="chamber" description="Doctor Doom's private chamber in the Doomsday Dossier fan site: rank the 29 Avengers: Doomsday characters in your order of conquest, judge them, and issue a decree. Fan opinion, kept on your device.">
+  <div class="mod-head">
+    <div>
+      <p class="os-label">Module 07 // Royal chamber</p>
+      <h1 class="os-display os-hi mod-title">Your chamber</h1>
+      <p class="mod-sub">Your Majesty's private rooms. Plans, judgements and decrees are kept on this device alone; nothing here leaves it. Every ranking and verdict is your own fan opinion, not fact.</p>
+    </div>
+    <div class="ch-stats os-label"><span>Reign: <b data-reign-days>0</b> days</span><span>Doom's will: <b data-will-n>0%</b></span><span>Breaches repelled: <b data-breaches>0</b></span></div>
+  </div>
+
+  <div class="ch">
+    <section class="os-panel conquest" data-os-in>
+      <header><b>Order of conquest</b><span class="os-label">Drag, or use the arrows &middot; first to fall at the top</span></header>
+      <ol class="cq" data-cq>
+        {all.filter((t) => t.slug !== 'victor-von-doom').map((t) => (
+          <li class="cq-i" data-slug={t.slug}>
+            <span class="cq-grip" aria-hidden="true">&#8942;&#8942;</span>
+            <span class="cq-n"></span>
+            <img src={t.tile} alt="" loading="lazy" class="os-tint" />
+            <a href={t.href}><b>{t.name}</b><span class="os-label">{t.team}</span></a>
+            <span class="cq-v" data-v></span>
+            <span class="cq-btns"><button data-up aria-label={`Move ${t.name} up`}>&#9650;</button><button data-down aria-label={`Move ${t.name} down`}>&#9660;</button></span>
+          </li>
+        ))}
+      </ol>
+      <div class="ch-act"><button class="os-btn" data-cq-card>Save the plan as a card</button><button class="os-btn" data-cq-reset>Reset order</button></div>
+    </section>
+
+    <div class="ch-side">
+      <section class="os-panel" data-os-in>
+        <header><b>Verdicts</b><span class="os-label" data-v-count></span></header>
+        <div class="vd" data-vd></div>
+        <a class="os-label vd-more" href={u('/targets/')}>Judge more targets in the register &rarr;</a>
+      </section>
+
+      <section class="os-panel decree" data-os-in>
+        <header><b>Issue a decree</b><span class="os-label">Under Doom's seal</span></header>
+        <label class="os-label" for="dc-to">To</label>
+        <select id="dc-to" data-dc-to>
+          <option value="All who would stand against Doom">All who would stand against Doom</option>
+          {teams.map(([, name]) => <option value={`The ${name}`}>The {name}</option>)}
+          {all.filter((t) => t.slug !== 'victor-von-doom').map((t) => <option value={t.name}>{t.name}</option>)}
+        </select>
+        <label class="os-label" for="dc-text">Decree <span data-dc-left>200</span> left</label>
+        <textarea id="dc-text" data-dc-text maxlength="200" rows="4" placeholder="Kneel before Latveria by the eighteenth of December."></textarea>
+        <div class="dc-prev" data-dc-prev aria-live="polite">
+          <div class="seal" data-seal aria-hidden="true"></div>
+          <p class="os-label">By order of Victor von Doom, Monarch of Latveria</p>
+          <p class="dc-to" data-dc-to-prev></p>
+          <p class="dc-body" data-dc-body></p>
+        </div>
+        <div class="ch-act"><button class="os-btn" data-dc-seal>Seal the decree</button><button class="os-btn" data-dc-card disabled>Save as an image</button></div>
+        <p class="os-label dc-fine">A fan decree: this site's own seal, not a Marvel design. Kept on this device.</p>
+      </section>
+
+      <section class="os-panel" data-os-in>
+        <header><b>Royal log</b><button class="os-label ch-erase" data-erase>Erase the reign</button></header>
+        <ol class="rlog-full" data-rlog-full></ol>
+      </section>
+    </div>
+  </div>
+  <script type="application/json" data-chamber is:inline set:html={JSON.stringify({ all, site: 'prejith77.github.io' + u('/') })} />
+</OS>
+
+<style is:global>
+  .ch-stats { display: grid; gap: 4px; text-align: right; }
+  .ch-stats b { color: var(--os-green); font-weight: 700; }
+  .ch { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--os-gap); align-items: start; }
+  .ch-side { display: grid; gap: var(--os-gap); }
+  .cq { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; counter-reset: cq; }
+  .cq-i { position: relative; display: grid; grid-template-columns: 16px 28px 38px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 5px 8px; border: 1px solid var(--os-line); background: rgba(4, 14, 9, 0.85); touch-action: none; user-select: none; }
+  .cq-i.drag { z-index: 5; border-color: var(--os-green); box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--os-green); background: rgba(8, 30, 18, 0.98); }
+  .cq-grip { color: var(--os-dim); cursor: grab; letter-spacing: -3px; font-size: 13px; }
+  .cq-n { font: 700 12px var(--os-mono); color: var(--os-green); }
+  .cq-i:nth-child(-n+3) .cq-n { color: var(--os-red); }
+  .cq-i img { width: 38px; height: 38px; object-fit: cover; object-position: 50% 15%; }
+  .cq-i a { text-decoration: none; color: var(--os-text) !important; display: grid; min-width: 0; }
+  .cq-i a b { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cq-i a .os-label { font-size: 9px; }
+  .cq-v { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .cq-btns { display: flex; gap: 2px; }
+  .cq-btns button { font: 9px var(--os-mono); color: var(--os-green); background: none; border: 1px solid var(--os-line); width: 22px; height: 22px; cursor: pointer; padding: 0; }
+  .cq-btns button:hover { border-color: var(--os-line-hi); }
+  .ch-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .vd { display: grid; gap: 8px; }
+  .vd-g { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px; align-items: center; }
+  .vd-g b { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .vd-g div { display: flex; flex-wrap: wrap; gap: 4px; }
+  .vd-g img { width: 30px; height: 30px; object-fit: cover; object-position: 50% 15%; border: 1px solid var(--os-line); }
+  .vd-more { display: inline-block; margin-top: 10px; text-decoration: none; }
+  .decree label { display: block; margin: 8px 0 4px; }
+  .decree select, .decree textarea { width: 100%; box-sizing: border-box; font: 13px var(--os-mono); color: var(--os-text); background: #04100a; border: 1px solid var(--os-line); padding: 8px; resize: vertical; }
+  .decree textarea:focus, .decree select:focus { border-color: var(--os-line-hi); outline: none; }
+  .dc-prev { position: relative; margin-top: 12px; padding: 18px 18px 18px 92px; min-height: 90px; border: 1px dashed var(--os-line); }
+  .dc-prev p { margin: 0 0 6px; }
+  .dc-to { font-family: var(--os-display); font-size: 18px; text-transform: uppercase; color: var(--os-green); }
+  .dc-body { font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .seal { position: absolute; left: 14px; top: 16px; width: 62px; height: 62px; opacity: 0.35; }
+  .seal.on { opacity: 1; }
+  .seal svg { width: 100%; height: 100%; }
+  .dc-fine { margin: 8px 0 0; text-transform: none; letter-spacing: 0.06em; }
+  .ch-erase { background: none; border: 0; cursor: pointer; color: var(--os-dim); }
+  .ch-erase:hover { color: var(--os-red); }
+  .rlog-full { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-height: 320px; overflow: auto; font-size: 12px; }
+  .rlog-full i { display: block; font-style: normal; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green-2); }
+  @media (max-width: 980px) { .ch { grid-template-columns: minmax(0, 1fr); } .ch-stats { text-align: left; } }
+  @media (max-width: 480px) { .cq-i { grid-template-columns: 12px 22px 32px minmax(0, 1fr) auto; gap: 6px; } .cq-v { display: none; } .cq-i img { width: 32px; height: 32px; } .dc-prev { padding-left: 18px; padding-top: 86px; } }
+</style>

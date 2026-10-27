@@ -14,6 +14,7 @@
       import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
       const qs = new URLSearchParams(location.search);
       const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+      (async () => {
       const canvas = document.querySelector<HTMLCanvasElement>('[data-stage]')!;
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
       renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -92,6 +93,7 @@ uniform sampler2D uPaint, uBands; uniform vec2 uMin, uMax; uniform vec4 uBox; va
         camera.position.set(0, 1.05, 4.2); camera.lookAt(0, 0.9, 0);
         renderer.render(scene, camera);
       });
+      })();
     </script>
   </body>
 </html>

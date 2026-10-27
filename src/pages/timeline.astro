@@ -1,293 +1,126 @@
 ---
-import Dossier from '../layouts/Dossier.astro';
-import Photo from '../components/Photo.astro';
-import '../styles/faces';
-import { DESIGN, getResearch, publishedOrder, OFFICIAL, SRC, heroName, u, fmtDate } from '../data/site';
-import { photosFor, PHOTO_CREDIT } from '../data/photos';
-import { accentOf, photos2For, pick2, srcset2 } from '../data/v2';
+// DOOM-OS module 02, the temporal archive: universes collide. Every confirmed character's comic debut, every released
+// live-action title with any of them, and Marvel's Doomsday announcements, in order. Beside the log (sticky), the
+// archive's map of the multiverse: the comics, the Fox films, Marvel Studios' MCU and other studios as rings of
+// light; each sighting lands on its universe's ring as the reader reaches its year; threads join a character's
+// sightings across universes; and as the log nears 2026 the rings drift together into one. That convergence is a
+// fact of the cast list: Marvel's Doomsday cast brings actors from the Fox X-Men films together with MCU heroes.
+import OS from '../layouts/OS.astro';
+import { getResearch, publishedOrder, OFFICIAL, SRC, heroName, fmtDate, u } from '../data/site';
+import { accentOf } from '../data/v2';
+import { targets } from '../data/os';
 
 type Src = { label: string; url: string };
-type Who = { slug: string; actor?: string; cameo?: boolean; first?: boolean };
-type Frame = { id: string; kind: 'debut' | 'screen' | 'era' | 'news' | 'release'; year: number; sort: number; title: string; sub: string; cont?: string; who: Who[]; text?: string; sources: Src[]; eraOf?: string };
-
+type Ev = { id: string; u: 'C' | 'F' | 'M' | 'O' | 'N'; kind: 'debut' | 'screen' | 'news' | 'release'; year: number; sort: number; title: string; sub: string; text?: string; who: { slug: string; actor?: string; cameo?: boolean }[]; sources: Src[] };
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const monthOf = (s: string) => { const i = MONTHS.findIndex((m) => s.toLowerCase().includes(m)); return i < 0 ? 6 : i + 1; };
 const key = (t: string) => t.toLowerCase().replace(/[^a-z0-9]/g, '');
 const issue = (s: string) => (s.startsWith('#') ? s : `#${s}`);
+const UNI = { C: 'The comics', F: 'Fox films', M: 'Marvel Studios', O: 'Other studios', N: 'Marvel announces' } as const;
+const CONT: Record<string, Ev['u']> = { MCU: 'M', FOX: 'F', OTHER: 'O' };
 
-const slugs = publishedOrder();
-const frames: Frame[] = [];
-const screens = new Map<string, Frame>();
-const firstScreen = new Map<string, string>();
-
-for (const slug of slugs) {
-  const r = getResearch(slug)!;
-  const fa = r.origin.firstAppearance;
-  const y = Number((fa.coverDate.match(/\d{4}/) || ['0'])[0]);
-  frames.push({ id: `debut-${slug}`, kind: 'debut', year: y, sort: y * 1000 + monthOf(fa.coverDate) * 10, title: `${fa.title} ${issue(fa.issue)}`, sub: `${heroName(slug)} first appears`, who: [{ slug }], text: `Cover date ${fa.coverDate}. Created by ${r.origin.creators.join(', ')}.`, sources: r.origin.sources.slice(0, 2) });
-  for (const e of r.comics) {
-    const ey = Number((e.years.match(/\d{4}/) || ['0'])[0]);
-    frames.push({ id: `era-${slug}-${key(e.title)}`, kind: 'era', year: ey, sort: ey * 1000 + 5, title: e.title, sub: `${heroName(slug)} in the comics, ${e.years}`, who: [{ slug }], text: e.summary.replace(/<[^>]+>/g, ''), sources: e.sources, eraOf: slug });
-  }
-  const mine = [...r.screen].sort((a, b) => a.year - b.year);
-  for (const e of mine) {
+const evs: Ev[] = [];
+const screens = new Map<string, Ev>();
+for (const slug of publishedOrder()) {
+  const r = getResearch(slug)!, fa = r.origin.firstAppearance, y = Number((fa.coverDate.match(/\d{4}/) || ['0'])[0]);
+  evs.push({ id: `d-${slug}`, u: 'C', kind: 'debut', year: y, sort: y * 1000 + monthOf(fa.coverDate) * 10, title: `${fa.title} ${issue(fa.issue)}`, sub: `${heroName(slug)} first appears`, text: `Cover date ${fa.coverDate}. Created by ${r.origin.creators.join(', ')}.`, who: [{ slug }], sources: r.origin.sources.slice(0, 2) });
+  for (const e of r.screen) {
     const k = key(e.title) + e.year;
-    if (!screens.has(k)) screens.set(k, { id: `screen-${k}`, kind: 'screen', year: e.year, sort: e.year * 1000 + 600, title: e.title, sub: '', cont: e.continuity, who: [], sources: [] });
+    if (!screens.has(k)) screens.set(k, { id: `s-${k}`, u: CONT[e.continuity] ?? 'O', kind: 'screen', year: e.year, sort: e.year * 1000 + 600, title: e.title, sub: '', who: [], sources: [] });
     const f = screens.get(k)!;
-    const first = !firstScreen.has(slug);
-    if (first) firstScreen.set(slug, k);
-    f.who.push({ slug, actor: e.actor, cameo: e.cameo, first });
+    f.who.push({ slug, actor: e.actor, cameo: e.cameo });
     for (const s of e.sources) if (!f.sources.some((x) => x.url === s.url)) f.sources.push(s);
   }
 }
-for (const f of screens.values()) { f.sub = `${f.who.length} of the Doomsday characters`; frames.push(f); }
-for (const m of OFFICIAL.milestones) {
-  const [yy, mm] = m.date.split('-').map(Number);
-  const isRelease = m.date === OFFICIAL.film.releaseDate;
-  frames.push({ id: `news-${m.date}`, kind: isRelease ? 'release' : 'news', year: yy, sort: yy * 1000 + (mm || 6) * 10 + 8, title: m.title, sub: isRelease ? 'In theaters' : `Marvel, ${fmtDate(m.date)}`, who: [], text: m.text.replace(/<[^>]+>/g, ''), sources: SRC[m.source] ? [SRC[m.source]] : [] });
+for (const f of screens.values()) { f.sub = `${f.who.length} target${f.who.length > 1 ? 's' : ''} sighted`; evs.push(f); }
+for (const m of OFFICIAL.milestones as any[]) {
+  const [yy, mm] = m.date.split('-').map(Number), rel = m.date === OFFICIAL.film.releaseDate;
+  evs.push({ id: `n-${m.date}`, u: 'N', kind: rel ? 'release' : 'news', year: yy, sort: yy * 1000 + (mm || 6) * 10 + 8, title: m.title, sub: rel ? 'In theaters' : `Marvel, ${fmtDate(m.date)}`, text: m.text.replace(/<[^>]+>/g, ''), who: [], sources: SRC[m.source] ? [SRC[m.source]] : [] });
 }
-frames.sort((a, b) => a.sort - b.sort || a.title.localeCompare(b.title));
-const main = frames.filter((f) => f.kind !== 'era');
-const years = [...new Set(main.map((f) => f.year))];
-const decades = [...new Set(main.map((f) => Math.floor(f.year / 10) * 10))];
-const counts = { screen: screens.size, debut: slugs.length, news: OFFICIAL.milestones.length };
-const face = (slug: string) => photosFor(slug)[0];
-// the decade hero: who debuted in each decade, and how much happened on screen and at Marvel
-const decadeInfo = decades.map((d) => {
-  const inD = main.filter((f) => Math.floor(f.year / 10) * 10 === d);
-  const debuts = inD.filter((f) => f.kind === 'debut').map((f) => f.who[0].slug);
-  // a decade with no debut shows someone from its screen titles (Doom for the 2020s, the decade of Doomsday)
-  const onScreen = inD.filter((f) => f.kind === 'screen').flatMap((f) => f.who.map((w) => w.slug));
-  const hasCut = (x: string) => !!photos2For(x)[0]?.cut.length;
-  const lead = debuts.find(hasCut) ?? (d >= 2020 ? 'victor-von-doom' : onScreen.find(hasCut)) ?? null;
-  const lp = lead ? photos2For(lead)[0] : null;
-  return { d, debuts: debuts.map((x) => heroName(x).toUpperCase()), screens: inD.filter((f) => f.kind === 'screen').length, news: inD.filter((f) => f.kind === 'news' || f.kind === 'release').length,
-    lead, leadName: lead ? heroName(lead).toUpperCase() : '', accent: lead ? accentOf(lead) : '#1fd47a',
-    // the decade's world: the lead's full photo, edge to edge
-    img: lp ? pick2(lp.full, 1280) : null, srcset: lp ? srcset2(lp.full) : '', focus: lp?.focusM ?? '50% 30%' };
-});
+if (!evs.some((e) => e.kind === 'release')) evs.push({ id: 'n-release', u: 'N', kind: 'release', year: 2026, sort: 2026 * 1000 + 128, title: 'Avengers: Doomsday', sub: 'In theaters, 18 December 2026', text: 'Marvel Studios releases Avengers: Doomsday.', who: [], sources: [SRC.S_FILM] });
+evs.sort((a, b) => a.sort - b.sort || a.title.localeCompare(b.title));
+const decades = [...new Set(evs.map((e) => Math.floor(e.year / 10) * 10))];
+const T = targets(), tile = new Map(T.map((t) => [t.slug, t.tile]));
+const chars = Object.fromEntries(T.map((t) => [t.slug, { name: t.name, accent: accentOf(t.slug) }]));
+const data = { evs: evs.map((e) => ({ id: e.id, u: e.u, y: e.year, s: e.sort, w: e.who.map((x) => x.slug), t: e.title })), chars };
+const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u === 'F').length, M: evs.filter((e) => e.u === 'M').length, O: evs.filter((e) => e.u === 'O').length, N: evs.filter((e) => e.u === 'N').length };
 ---
-<Dossier title="Timeline" page="timeline" description="Every live-action film and series and every comics debut of the Avengers: Doomsday characters, on one film strip, ending on 18 December 2026." >
-  <!-- the decades as worlds (Space Voyage): each decade is a full-screen world; the next waits in a window that
-       grows to fill the screen as you scroll, the photo inside held still, so you travel into it -->
-  <section class="vg" data-voyage-decades style={`--n:${decadeInfo.length}`} aria-label="The decades">
-    <div class="vg-stage">
-      {decadeInfo.map((x, i) => (
-        <div class="vw" data-vw style={`--a:${x.accent}`} aria-hidden="true">
-          <div class="vw-in" data-vw-in>
-            {x.img && <img src={x.img} srcset={x.srcset} sizes="100vw" alt="" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" style={`object-position:${x.focus}`} />}
-            <div class="vw-tint"></div>
-          </div>
-        </div>
-      ))}
-      <div class="vg-top">
-        <p class="t-label vg-k">Timeline &middot; {years[0]} to {years[years.length - 1]}</p>
-        <ol class="vg-list t-micro">
-          {decadeInfo.map((x) => <li data-vg-dot style={`--a:${x.accent}`}><button type="button" data-vg-go={x.d} aria-label={`Jump the film strip to the ${x.d}s`}><i></i><span>{String(x.d).slice(2)}</span></button></li>)}
-        </ol>
-      </div>
-      <p class="vg-next t-micro" data-vg-next aria-hidden="true">Next &middot; <b data-vg-next-d></b></p>
-      {decadeInfo.map((x, i) => (
-        <div class="vg-copy" data-vg-slide aria-hidden={i ? 'true' : undefined}>
-          <p class="t-micro vg-who" data-vg-in>{x.debuts.length ? 'First appearances · ' + x.debuts.join(', ') : 'On screen · ' + x.leadName}</p>
-          <p class="vg-year t-title" data-vg-year>{x.d}<span>s</span></p>
-          <dl class="vg-data" data-vg-in>
-            <div><dt class="t-micro">Live-action titles</dt><dd>{x.screens}</dd></div>
-            <div><dt class="t-micro">Marvel announcements</dt><dd>{x.news}</dd></div>
-            <div><dt class="t-micro">Comics debuts</dt><dd>{x.debuts.length}</dd></div>
-          </dl>
-        </div>
-      ))}
+<OS title="Temporal archive" page="timeline" description="Every comic debut and every live-action appearance of the 29 Avengers: Doomsday characters, from 1939 to 2026, mapped as the comics, Fox and Marvel Studios universes converging on Doomsday.">
+  <div class="mod-head">
+    <div>
+      <p class="os-label">Module 02 // Temporal archive</p>
+      <h1 class="os-display os-hi mod-title">Universes collide</h1>
+      <p class="mod-sub">Doom's archive watches every universe at once. Scroll through time: each sighting lands on its universe, threads join a target's lives across them, and the universes drift together as 18 December 2026 nears, when Marvel's Doomsday cast brings the Fox films' X-Men and the MCU's heroes together.</p>
     </div>
-  </section>
-  <section class="tlx" data-timeline-page>
-    <div class="wrap tlx-head">
-      <p class="label" data-hero-in>Timeline &middot; {years[0]} to {years[years.length - 1]}</p>
-      <h1 class="display tlx-title" data-split="words" data-split-on="load">Every road to Doomsday</h1>
-      <p class="tlx-copy" data-hero-in>{counts.screen} live-action films and series, {counts.debut} comics debuts and {counts.news - 1} Marvel announcements, on one strip of film. Drag it, scroll it or scrub the years below. Fling it fast and the film burns.</p>
-      <div class="tlx-controls" data-hero-in>
-        <div class="tlx-chips" role="group" aria-label="Show">
-          <button type="button" data-kind="all" aria-pressed="true">All</button>
-          <button type="button" data-kind="screen" aria-pressed="false">On screen <span>{counts.screen}</span></button>
-          <button type="button" data-kind="debut" aria-pressed="false">Comics debuts <span>{counts.debut}</span></button>
-          <button type="button" data-kind="news" aria-pressed="false">Marvel news <span>{counts.news}</span></button>
-        </div>
-        <label class="tlx-follow">
-          <span class="label">Follow</span>
-          <select data-follow>
-            <option value="">Everyone</option>
-            {slugs.map((s) => <option value={s}>{heroName(s)}</option>)}
-          </select>
-        </label>
-      </div>
+    <div class="tl-keys">
+      <span class="k kC">The comics &middot; {n.C}</span><span class="k kF">Fox films &middot; {n.F}</span><span class="k kM">Marvel Studios &middot; {n.M}</span><span class="k kO">Other studios &middot; {n.O}</span><span class="k kN">Marvel announces &middot; {n.N}</span>
     </div>
+  </div>
 
-    <div class="reel" data-reel>
-      <p class="reel-year" aria-hidden="true"><span data-year-out>{years[0]}</span></p>
-      <div class="strip" data-cursor="Drag" data-strip tabindex="0" aria-label="Timeline film strip. Use the arrow keys to move one frame." data-lenis-prevent>
-        <ol class="frames">
-          {frames.map((f) => (
-            <li class={`frame k-${f.kind}`} data-frame data-id={f.id} data-kind={f.kind === 'release' ? 'news' : f.kind} data-year={f.year} data-who={f.who.map((w) => w.slug).join(' ')} data-era-of={f.eraOf} hidden={f.kind === 'era'}>
-              <div class="frame-in">
-                <p class="fr-top"><span class="fr-year">{f.year}</span>{f.cont ? <span class="fr-tag" data-cont={f.cont}>{f.cont}</span> : <span class="fr-tag" data-kindtag={f.kind}>{f.kind === 'debut' ? 'Comics debut' : f.kind === 'era' ? 'Comics era' : f.kind === 'release' ? 'Release' : 'Marvel news'}</span>}</p>
-                <h2 class="fr-title">{f.title}</h2>
-                <p class="fr-sub">{f.sub}</p>
-                {f.who.length > 0 && <p class="fr-names">{f.who.map((w) => heroName(w.slug)).join(' · ')}</p>}
-                {f.who.length > 0 && (
-                  <ul class="fr-faces">
-                    {f.who.slice(0, 9).map((w) => face(w.slug) && (
-                      <li class={w.first ? 'first' : ''} style={`--a:${DESIGN[w.slug].accent}`} title={heroName(w.slug)}><Photo photo={face(w.slug)!} alt={heroName(w.slug)} sizes="44px" /></li>
-                    ))}
-                    {f.who.length > 9 && <li class="more">+{f.who.length - 9}</li>}
-                  </ul>
+  <div class="tl">
+    <div class="tl-stage">
+      <canvas data-mv aria-hidden="true"></canvas>
+      <div class="tl-read"><span class="os-label" data-mv-phase>Signal acquired</span><b class="os-display os-hi" data-mv-year>1939</b><span class="os-label" data-mv-now></span></div>
+    </div>
+    <div class="tl-log" data-log>
+      <nav class="tl-dec" aria-label="Jump to a decade">{decades.map((d) => <a href={`#dec-${d}`}>{d}s</a>)}</nav>
+      {decades.map((d) => (
+        <section class="dec" id={`dec-${d}`}>
+          <h2 class="dec-h os-display">{d}s</h2>
+          {evs.filter((e) => Math.floor(e.year / 10) * 10 === d).map((e) => (
+            <article class={`ev ev-${e.u} ${e.kind}`} data-ev={e.id} data-s={e.sort} data-y={e.year}>
+              <span class="ev-y">{e.year}</span>
+              <div>
+                <p class="ev-u os-label">{UNI[e.u]}{e.kind === 'debut' && ' · first appearance'}</p>
+                <h3>{e.title}</h3>
+                <p class="ev-sub">{e.sub}</p>
+                {e.who.length > 0 && e.kind === 'screen' && (
+                  <ul class="ev-who">{e.who.map((w) => <li><a href={u(`/c/${w.slug}/`)} title={`${heroName(w.slug)}${w.actor ? ', played by ' + w.actor : ''}${w.cameo ? ' (cameo)' : ''}`}><img src={tile.get(w.slug)} alt={heroName(w.slug)} loading="lazy" /></a></li>)}</ul>
                 )}
-                {f.who.some((w) => w.first) && <p class="fr-first">First on screen: {f.who.filter((w) => w.first).map((w) => heroName(w.slug)).join(', ')}</p>}
+                {e.text && <p class="ev-text">{e.text}</p>}
+                {e.sources.length > 0 && <details class="os-src"><summary>Sources</summary><ol class="srcs">{e.sources.map((s) => <li><a href={s.url} rel="noopener" target="_blank">{s.label}</a></li>)}</ol></details>}
               </div>
-              <div class="fr-detail" data-detail hidden>
-                <p class="dt-kind">{f.cont ? `${f.cont} · ${f.year}` : f.sub}</p>
-                <h3 class="dt-title">{f.title}</h3>
-                {f.text && <p class="dt-text">{f.text}</p>}
-                {f.kind === 'screen' && (
-                  <ul class="dt-who">
-                    {f.who.map((w) => <li><a href={u(`/c/${w.slug}/`)} style={`--a:${DESIGN[w.slug].accent}`}>{heroName(w.slug)}</a> <span>{/^uncredited$/i.test(w.actor || '') ? 'performer uncredited' : `played by ${w.actor}`}{w.cameo ? ', cameo' : ''}{w.first ? ', first time on screen' : ''}</span></li>)}
-                  </ul>
-                )}
-                {f.kind !== 'screen' && f.who.length > 0 && <p class="dt-link"><a href={u(`/c/${f.who[0].slug}/`)}>Open the {heroName(f.who[0].slug)} dossier &rarr;</a></p>}
-                {f.sources.length > 0 && <p class="dt-src">Sources: {f.sources.slice(0, 4).map((s, i) => <>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noopener">{s.label}</a></>)}</p>}
-              </div>
-            </li>
+            </article>
           ))}
-        </ol>
-      </div>
-      <div class="burn" aria-hidden="true"></div>
-      <div class="scrub" data-scrub>
-        <div class="scrub-track" data-track>
-          {decades.map((d) => <span class="tick" data-decade={d}>{d}s</span>)}
-          <i class="playhead" data-playhead></i>
-        </div>
-        <div class="scrub-btns">
-          <button type="button" data-step="-1" aria-label="Previous frame">&larr;</button>
-          <button type="button" data-step="1" aria-label="Next frame">&rarr;</button>
-        </div>
-      </div>
+        </section>
+      ))}
     </div>
+  </div>
+  <script type="application/json" data-mv-data is:inline set:html={JSON.stringify(data)} />
+</OS>
 
-    <div class="wrap">
-      <article class="detail" data-detail-out aria-live="polite"></article>
-      <p class="tlx-note">Titles are released live-action films and series in which an actor played one of these characters, tagged by continuity: MCU (Marvel Studios), FOX (20th Century Fox) or OTHER. Archive footage, photos and animation are left out. Comics history comes from the Marvel Fandom wiki; screen history from the Marvel Cinematic Universe Wiki and the films; news from Marvel.</p>
-    </div>
-  </section>
-  <p class="wrap t-micro t-ash" style="padding: var(--s-6) 0 var(--s-7)">{PHOTO_CREDIT}</p>
-</Dossier>
-
-<style>
-  .vg { position: relative; height: calc(var(--n) * 70svh + 100svh); }
-  .vg-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--gunmetal); }
-  /* every world is a full-screen layer; the script places the current one, and the next as the window */
-  .vw { position: absolute; inset: 0; overflow: hidden; visibility: hidden; transform-origin: 50% 50%; will-change: transform; }
-  .vw:first-child { visibility: visible; }
-  .vw-in { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; background: radial-gradient(ellipse at 60% 40%, color-mix(in srgb, var(--a) 40%, #0d1012), #0d1012 75%); }
-  .vw-in img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .vw-tint { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 16, 18, 0.55) 0%, rgba(13, 16, 18, 0.05) 28%, rgba(13, 16, 18, 0.25) 55%, rgba(13, 16, 18, 0.92) 100%), color-mix(in srgb, var(--a) 14%, transparent); }
-  .vg-top { position: absolute; z-index: 4; left: var(--margin); right: var(--margin); top: calc(var(--header-h) + 4px); display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
-  .vg-k { margin: 0; color: var(--bone); }
-  .vg-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
-  .vg-list button { display: grid; justify-items: center; gap: 4px; padding: 4px 6px; color: color-mix(in srgb, var(--bone) 60%, transparent); min-height: 32px; min-width: 32px; }
-  .vg-list i { width: 16px; height: 2px; background: currentColor; transition: background 0.3s, width 0.3s; }
-  .vg-list li.on button { color: var(--bone); }
-  .vg-list li.on i { width: 26px; background: var(--a); }
-  .vg-next { position: absolute; z-index: 4; margin: 0; color: var(--bone); left: 0; top: 0; opacity: 0; pointer-events: none; will-change: transform; }
-  .vg-next b { font-weight: 700; }
-  .vg-copy { position: absolute; z-index: 3; left: var(--margin); right: var(--margin); bottom: var(--s-7); display: grid; gap: var(--s-3); visibility: hidden; }
-  .vg-copy:first-of-type { visibility: visible; }
-  .vg-who { margin: 0; color: var(--bone); max-width: 60ch; letter-spacing: 0.14em; }
-  .vg-year { margin: 0; font-size: min(26vw, 30svh); font-weight: 900; line-height: 0.8; color: var(--bone); }
-  .vg-year span { font-size: 0.4em; }
-  .vg-data { margin: 0; display: flex; gap: var(--s-6); flex-wrap: wrap; }
-  .vg-data dt { color: color-mix(in srgb, var(--bone) 70%, transparent); }
-  .vg-data dd { margin: 4px 0 0; font-family: var(--f-title); font-weight: 800; font-size: 26px; line-height: 1; }
-  @media (max-width: 760px) {
-    .vg-top { flex-direction: column; align-items: flex-start; gap: 6px; }
-    .vg-list button { padding: 4px 3px; min-width: 30px; }
-    .vg-list span { font-size: 10px; }
-    .vg-year { font-size: 30vw; }
-    .vg-data { gap: var(--s-4); }
-    .vg-data dd { font-size: 20px; }
+<style is:global>
+  .tl-keys { display: flex; flex-wrap: wrap; gap: 6px; max-width: 520px; justify-content: flex-end; }
+  .tl-keys .k { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 7px; border: 1px solid currentColor; }
+  .kC { color: #ffb347; } .kF { color: #8fcaff; } .kM { color: #3dff8f; } .kO { color: #c79bff; } .kN { color: #e9fff3; }
+  .tl { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--os-gap); align-items: start; }
+  .tl-stage { position: sticky; top: 60px; height: calc(100svh - 76px); border: 1px solid var(--os-line); background: radial-gradient(ellipse at 50% 50%, rgba(61, 255, 143, 0.05), transparent 70%); overflow: hidden; }
+  .tl-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .tl-read { position: absolute; left: 16px; bottom: 12px; display: grid; gap: 2px; pointer-events: none; }
+  .tl-read b { font-size: clamp(48px, 7vw, 110px); line-height: 0.9; font-variant-numeric: tabular-nums; }
+  .tl-log { min-width: 0; }
+  .tl-dec { position: sticky; top: 52px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 0; background: rgba(2, 5, 4, 0.92); }
+  .tl-dec a { font-size: 10px; letter-spacing: 0.12em; text-decoration: none; border: 1px solid var(--os-line); padding: 3px 6px; }
+  .tl-dec a:hover { border-color: var(--os-line-hi); }
+  .dec { scroll-margin-top: 100px; }
+  .dec-h { font-size: 44px; color: var(--os-dim); margin: 26px 0 8px; }
+  .ev { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 12px 0 12px 12px; border-left: 2px solid var(--uc, var(--os-line)); border-bottom: 1px dashed rgba(61, 255, 143, 0.1); transition: background 0.3s; }
+  .ev.now { background: linear-gradient(90deg, rgba(61, 255, 143, 0.08), transparent); }
+  .ev-C { --uc: #ffb347; } .ev-F { --uc: #8fcaff; } .ev-M { --uc: #3dff8f; } .ev-O { --uc: #c79bff; } .ev-N { --uc: #e9fff3; }
+  .ev-y { font-weight: 700; color: var(--uc); font-size: 13px; }
+  .ev-u { margin: 0; color: var(--uc) !important; }
+  .ev h3 { margin: 2px 0 2px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .ev-sub { margin: 0; font-size: 11.5px; color: var(--os-dim); }
+  .ev-text { margin: 6px 0 0; font-size: 12.5px; max-width: 70ch; }
+  .ev-who { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+  .ev-who img { width: 30px; height: 30px; object-fit: cover; object-position: 50% 15%; border: 1px solid var(--uc); display: block; filter: grayscale(0.6); }
+  .ev-who a:hover img { filter: none; }
+  .ev.release h3 { font-family: var(--os-display); font-size: 26px; color: var(--os-green); }
+  @media (max-width: 900px) {
+    .tl { grid-template-columns: minmax(0, 1fr); }
+    .tl-stage { top: 48px; height: 38svh; z-index: 3; }
+    .tl-dec { top: calc(48px + 38svh); }
+    .tl-read b { font-size: 44px; }
+    .tl-keys { justify-content: flex-start; }
   }
-  html.rm .vg { display: none; }
-  .tlx { padding: calc(var(--header-h) + 60px) 0 80px; overflow-x: clip; }
-  .tlx-head { display: grid; gap: 18px; }
-  .tlx-title { font-size: min(clamp(54px, 10vw, 160px), calc((100vw - 2 * var(--gutter)) / 7)); }
-  .tlx-copy { max-width: 62ch; color: var(--bone-dim); margin: 0; }
-  .tlx-controls { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; margin-top: 8px; }
-  .tlx-chips { display: flex; gap: 8px; flex-wrap: wrap; }
-  .tlx-chips button { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--iron-2); padding: 10px 14px; border-radius: 99px; min-height: 44px; color: var(--bone-dim); }
-  .tlx-chips button span { color: var(--doom); margin-left: 4px; }
-  .tlx-chips button[aria-pressed='true'] { background: var(--bone); color: var(--void); border-color: var(--bone); }
-  .tlx-chips button[aria-pressed='true'] span { color: var(--void); }
-  .tlx-follow { display: flex; gap: 10px; align-items: center; }
-  .tlx-follow select { background: var(--void-2); color: var(--bone); border: 1px solid var(--iron-2); border-radius: 99px; padding: 10px 14px; min-height: 44px; font: inherit; font-size: 14px; }
-
-  /* the reel: a 35 mm strip with sprocket holes, scrolled sideways */
-  .reel { position: relative; margin-top: 46px; }
-  .reel-year { position: absolute; right: var(--gutter); top: -0.55em; margin: 0; font-family: var(--font-display, var(--font-serif)); font-size: clamp(80px, 14vw, 220px); line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(61, 255, 138, 0.45); pointer-events: none; font-variant-numeric: tabular-nums; z-index: 0; }
-  .strip { position: relative; z-index: 1; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; scrollbar-width: none; cursor: grab; outline: none; background: #0d0f10; padding: 34px 0; }
-  .strip::-webkit-scrollbar { display: none; }
-  .strip.dragging { cursor: grabbing; scroll-snap-type: none; }
-  .strip:focus-visible { box-shadow: inset 0 0 0 2px var(--doom); }
-  .frames { list-style: none; margin: 0; padding: 0 calc(50vw - 150px); display: flex; gap: 0; width: max-content; position: relative;
-    background-image: radial-gradient(circle at 50% 50%, #050607 0 4px, transparent 4.5px), radial-gradient(circle at 50% 50%, #050607 0 4px, transparent 4.5px);
-    background-size: 22px 22px, 22px 22px; background-repeat: repeat-x; background-position: 0 -28px, 0 calc(100% + 28px); }
-  .strip::before, .strip::after { content: ''; position: absolute; left: 0; right: 0; height: 14px; pointer-events: none;
-    background: repeating-linear-gradient(90deg, transparent 0 7px, #050607 7px 19px, transparent 19px 26px); background-attachment: local; }
-  .strip::before { top: 10px; } .strip::after { bottom: 10px; }
-  .frame { flex: 0 0 300px; scroll-snap-align: center; padding: 0 8px; }
-  .frame[hidden] { display: none; }
-  .frame-in { height: 400px; border-radius: 4px; background: linear-gradient(180deg, #16191b, #0a0c0d); box-shadow: inset 0 0 0 1px rgba(232, 230, 225, 0.08); padding: 20px; display: grid; grid-template-rows: auto auto auto 1fr auto; gap: 8px; transition: transform 0.5s var(--ease-out), opacity 0.5s; opacity: 0.55; transform: scale(0.94); }
-  .frame.on .frame-in { opacity: 1; transform: scale(1); box-shadow: inset 0 0 0 1px rgba(61, 255, 138, 0.6); }
-  .fr-top { display: flex; justify-content: space-between; align-items: center; margin: 0; }
-  .fr-year { font-family: var(--font-mono); font-size: 13px; color: var(--doom); letter-spacing: 0.1em; }
-  .fr-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid currentColor; padding: 3px 8px; border-radius: 99px; color: var(--doom); }
-  .fr-tag[data-cont='FOX'] { color: #ffb36b; } .fr-tag[data-cont='OTHER'] { color: var(--bone-dim); }
-  .fr-tag[data-kindtag='debut'], .fr-tag[data-kindtag='era'] { color: #8fb8ff; } .fr-tag[data-kindtag='news'] { color: var(--bone); } .fr-tag[data-kindtag='release'] { color: var(--void); background: var(--doom); border-color: var(--doom); }
-  .fr-title { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1; margin: 6px 0 0; overflow-wrap: break-word; }
-  .k-release .fr-title { font-size: 44px; color: var(--doom); }
-  .fr-sub { margin: 0; font-size: 13px; color: var(--bone-dim); }
-  .fr-names { margin: 4px 0 0; font-size: 14px; line-height: 1.45; color: var(--bone); }
-  .k-era .fr-names, .k-debut .fr-names { display: none; }
-  .fr-faces { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-self: end; }
-  .fr-faces li { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1px rgba(232, 230, 225, 0.18); }
-  .fr-faces li.first { box-shadow: 0 0 0 2px var(--a); }
-  .fr-faces :global(.photo) { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .fr-faces li.more { display: grid; place-items: center; font-family: var(--font-mono); font-size: 11px; color: var(--bone-dim); background: var(--void-2); }
-  .fr-first { margin: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-dim); }
-  @media (max-width: 600px) { .frame { flex-basis: 74vw; } .frames { padding: 0 13vw; } .frame-in { height: 380px; } .fr-title { font-size: 26px; } }
-
-  /* film burn: brightens and scorches the strip's edges when it is flung fast */
-  .burn { position: absolute; left: 0; right: 0; top: 0; height: calc(400px + 68px); z-index: 2; pointer-events: none; opacity: 0;
-    background: radial-gradient(60% 120% at 0% 50%, rgba(255, 214, 140, 0.95), rgba(255, 110, 20, 0.55) 30%, rgba(120, 20, 0, 0.35) 52%, transparent 70%),
-                radial-gradient(60% 120% at 100% 50%, rgba(255, 214, 140, 0.95), rgba(255, 110, 20, 0.55) 30%, rgba(120, 20, 0, 0.35) 52%, transparent 70%);
-  }
-  @media (max-width: 600px) { .burn { height: calc(380px + 68px); } }
-
-  .scrub { display: flex; gap: 14px; align-items: center; padding: 18px var(--gutter) 0; }
-  .scrub-track { position: relative; flex: 1; height: 44px; border-top: 1px solid var(--iron-2); cursor: pointer; touch-action: none; }
-  .tick { position: absolute; top: 10px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--bone-dim); transform: translateX(-50%); white-space: nowrap; }
-  .tick::before { content: ''; position: absolute; left: 50%; top: -11px; width: 1px; height: 8px; background: var(--iron-2); }
-  .playhead { position: absolute; top: -9px; left: 0; width: 2px; height: 18px; background: var(--doom); box-shadow: 0 0 16px var(--doom); transform: translateX(0); }
-  .scrub-btns { display: flex; gap: 8px; }
-  .scrub-btns button { width: 44px; height: 44px; border: 1px solid var(--iron-2); border-radius: 50%; color: var(--bone); }
-  .scrub-btns button:hover { border-color: var(--doom); color: var(--doom); }
-
-  .detail { margin-top: 40px; border-top: 1px solid var(--iron-2); padding-top: 26px; max-width: 900px; min-height: 220px; }
-  .detail :global(.dt-kind) { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--doom); margin: 0; }
-  .detail :global(.dt-title) { font-family: var(--font-serif); font-weight: 400; font-size: clamp(34px, 4vw, 58px); line-height: 1; margin: 10px 0 14px; }
-  .detail :global(.dt-text) { color: var(--bone-dim); max-width: 70ch; margin: 0 0 14px; }
-  .detail :global(.dt-who) { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; }
-  .detail :global(.dt-who a) { color: var(--a); text-decoration: none; font-weight: 500; }
-  .detail :global(.dt-who span) { color: var(--bone-dim); }
-  .detail :global(.dt-link a) { color: var(--bone); text-decoration-color: var(--doom); text-underline-offset: 3px; }
-  .detail :global(.dt-src) { font-size: 12px; color: var(--bone-dim); }
-  .detail :global(.dt-src a) { color: var(--bone-dim); }
-  .tlx-note { font-size: 12px; color: var(--bone-dim); max-width: 80ch; margin-top: 40px; }
 </style>
