@@ -302,6 +302,32 @@ times the triangles (cull what is buried); cloth must be dark with sheen, or rim
 a page's styles, so elements made by script need `is:global`; a hidden browser pane gives no animation frames (a
 stalled timeline there is not a bug); a portrait screen needs the camera further back (`1.25 / aspect`).
 
+### 3D action figures (chosen 27 October 2026)
+
+**What the visitor chose, and what they turned down.** Code-sculpted characters (statue busts and chunky
+collectibles, `scripts/sculpt/`, `/lab/characters/`) were "childish"; 3D reliefs raised from the photos
+(`scripts/figure/`, `/lab/figures/`) were "not at all"; they want realistic, full 3D action figures of every
+character, made from their own photos, coloured all round. Keep those labs only as records.
+
+**How each figure is made** (`scripts/figure3d/`, run all with `all.sh`):
+1. `prepare.mjs`: the chosen cut-out is cropped square with a margin and flattened onto white. A cut-out keeps
+   the whole original photo under its transparent pixels, and the generator ignores transparency: Doom's first
+   model grew slabs from the hidden throne room. Very dark photos are lifted for the generator. It also writes
+   the paint: the square sharp with its alpha, a blurred copy whose colours spread past the outline
+   (premultiplied blur divided by blurred alpha), and the figure's average colour in 48 bands down its height.
+2. `generate.mjs`: Tencent's public Hunyuan3D-2 demo on Hugging Face makes the shape (about 7 s of its GPU;
+   `shape_generation`, 30 steps, octree 256; 380 errors). Its texture step does not run anonymously. The visitor
+   approved sending the photos there. Calls go through Windows' curl (this PC's network re-signs TLS for Node).
+   Licence: Tencent Hunyuan 3D 2.0 Community License; its terms exclude the EU, UK and South Korea.
+3. `pack.mjs`: about 475,000 triangles cut to 90,000 with meshoptimizer (bundled with three.js), normals rebuilt,
+   positions quantised, gzipped `.d3f` (about 0.8 MB) in `public/figures3d/` with the paint notes.
+At run time `src/scripts/gl/figure3d.ts` paints it: the photo projected straight on wherever a surface faces the
+front, the spread colour round the sides and back (no chest emblem copied onto a back), the height colour where
+the photo reaches nothing, the back a touch darker. Review with `scripts/figure3d/review.mjs` (front, three
+quarter, back per character) and `/lab/turntable/?c=<slug>`. Raw models stay in `photo-originals/to3d/out/`
+(never committed). Photos chosen: the most complete figure in the clearest costume for each character (see
+`all.sh`); characters with only waist-up photos become waist-up figures.
+
 ### Sound system
 
 All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (oscillators, filtered noise,

@@ -1,0 +1,97 @@
+---
+// A turntable for trial 3D models (public/lab-models/, not committed): ?f=<file.glb>. The model is centred, stood
+// on the floor and turned once round under studio light, in a dark gunmetal finish when it has no texture.
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" /><title>Turntable | Doomsday Dossier</title></head>
+  <body>
+    <canvas data-stage></canvas>
+    <style is:global>html, body { margin: 0; height: 100%; overflow: hidden; background: #050606; } canvas { width: 100%; height: 100%; display: block; }</style>
+    <script>
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+      import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+      const qs = new URLSearchParams(location.search);
+      const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+      const canvas = document.querySelector<HTMLCanvasElement>('[data-stage]')!;
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      const scene = new THREE.Scene(); scene.background = new THREE.Color(0x050606);
+      scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+      scene.environmentIntensity = 0.35;
+      const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
+      const key = new THREE.DirectionalLight(0xfff0e0, 2.2); key.position.set(-2, 3, 3);
+      const rimA = new THREE.DirectionalLight(0x9fffc8, 4); rimA.position.set(3, 2, -3);
+      const rimB = new THREE.DirectionalLight(0xbfd5ff, 2.5); rimB.position.set(-3, 1, -2.5);
+      scene.add(key, rimA, rimB);
+      const resize = () => { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); };
+      addEventListener('resize', resize); resize();
+      const pivot = new THREE.Group(); scene.add(pivot);
+      // ?c=<slug>: a packed, painted action figure (public/figures3d/), stood on the floor 1.8 units tall
+      if (qs.get('c')) {
+        const { loadFigure3D } = await import('../../scripts/gl/figure3d');
+        const f = await loadFigure3D(base, qs.get('c')!);
+        const box = f.mesh.geometry.boundingBox!, size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+        const s = 1.8 / size.y;
+        f.mesh.scale.setScalar(s); f.mesh.position.set(-c.x * s, -box.min.y * s, -c.z * s);
+        pivot.add(f.mesh);
+        await renderer.compileAsync(scene, camera);
+        requestAnimationFrame(() => { (window as any).__ready = true; (window as any).__stats = { size: size.toArray(), tris: f.mesh.geometry.index!.count / 3 }; });
+      } else new GLTFLoader().load(`${base}/lab-models/${qs.get('f')}`, (g) => {
+        const obj = g.scene;
+        const box = new THREE.Box3().setFromObject(obj), size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+        const s = 1.8 / size.y;
+        obj.scale.setScalar(s); obj.position.set(-c.x * s, -box.min.y * s, -c.z * s);
+        const paint = qs.get('tex');
+        const paintInfo = paint ? fetch(`${base}/lab-models/${paint}.json`).then((r) => r.json()) : null;
+        const paintMap = paint ? new THREE.TextureLoader().loadAsync(`${base}/lab-models/${paint}-tex.png`) : null;
+        const jobs: Promise<void>[] = [];
+        obj.traverse((o: any) => jobs.push((async () => {
+          if (!o.isMesh) return;
+          const textured = !!o.material?.map;
+          o.geometry.computeVertexNormals();
+          if (paint) {
+            // painted from the photo it was made from: projected straight on from the front, and where a surface
+            // turns away, the photo's own colour at that height (the cloak stays the cloak, the boots the boots)
+            const [info, map] = await Promise.all([paintInfo!, paintMap!]);
+            map.colorSpace = THREE.SRGBColorSpace;
+            const bands = new THREE.DataTexture(new Uint8Array(info.bands.flatMap((c: number[]) => [...c, 255])), 1, info.bands.length);
+            bands.colorSpace = THREE.SRGBColorSpace; bands.magFilter = THREE.LinearFilter; bands.needsUpdate = true;
+            o.geometry.computeBoundingBox();
+            const bb = o.geometry.boundingBox;
+            const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.35, roughness: 0.5 });
+            mat.onBeforeCompile = (sh) => {
+              Object.assign(sh.uniforms, { uPaint: { value: map }, uBands: { value: bands }, uMin: { value: new THREE.Vector2(bb.min.x, bb.min.y) }, uMax: { value: new THREE.Vector2(bb.max.x, bb.max.y) }, uBox: { value: new THREE.Vector4(...info.bbox) } });
+              sh.vertexShader = sh.vertexShader.replace('#include <common>', `#include <common>
+varying vec3 vObjP; varying vec3 vObjN;`).replace('#include <begin_vertex>', `#include <begin_vertex>
+vObjP = position; vObjN = normal;`);
+              sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
+uniform sampler2D uPaint, uBands; uniform vec2 uMin, uMax; uniform vec4 uBox; varying vec3 vObjP; varying vec3 vObjN;`)
+                .replace('#include <map_fragment>', `
+                  vec2 q = (vObjP.xy - uMin) / (uMax - uMin);
+                  vec2 puv = vec2(mix(uBox.x, uBox.z, q.x), 1.0 - mix(uBox.y, uBox.w, 1.0 - q.y));
+                  vec4 photo = texture2D(uPaint, puv);
+                  vec3 band = texture2D(uBands, vec2(0.5, 1.0 - q.y)).rgb;
+                  float w = smoothstep(0.05, 0.6, normalize(vObjN).z) * photo.a;
+                  diffuseColor.rgb *= mix(band, photo.rgb, w);`);
+            };
+            o.material = mat;
+          } else if (!textured || qs.has('clay')) o.material = new THREE.MeshPhysicalMaterial({ color: 0x2a2c2e, metalness: 0.75, roughness: 0.38, clearcoat: 0.3 });
+        })()));
+        pivot.add(obj);
+        Promise.all(jobs).then(() => requestAnimationFrame(() => { (window as any).__ready = true; }));
+        (window as any).__stats = { size: size.toArray(), tris: (() => { let t = 0; obj.traverse((o: any) => { if (o.isMesh) t += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; }); return t; })() };
+      });
+      const t0 = performance.now();
+      renderer.setAnimationLoop(() => {
+        const t = (performance.now() - t0) / 1000;
+        const set = (window as any).__angle;
+        const a = set !== undefined ? (set * Math.PI) / 180 : qs.has('angle') ? Number(qs.get('angle')) * Math.PI / 180 : t * 0.5;
+        pivot.rotation.y = a;
+        camera.position.set(0, 1.05, 4.2); camera.lookAt(0, 0.9, 0);
+        renderer.render(scene, camera);
+      });
+    </script>
+  </body>
+</html>

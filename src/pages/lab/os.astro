@@ -1,0 +1,210 @@
+---
+// DOOM-OS prototype (CLAUDE.md, "Design system v4: Doom's surveillance OS"): the boot and home, the target register
+// and a target file, to approve before the site is rebuilt in it. Not linked from the site. #targets, #t/<slug>.
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
+import '@fontsource-variable/tektur';
+import '../../styles/os.css';
+import { publishedOrder, heroName, getResearch, castFor, TEAMS, OFFICIAL, u } from '../../data/site';
+import { photos2For, pick2 } from '../../data/v2';
+const BRIEFS = Object.values(import.meta.glob('../../../research/briefs.json', { eager: true, import: 'default' }))[0] as Record<string, any>;
+const VS = import.meta.glob('../../../research/versus/*.json', { eager: true, import: 'default' }) as Record<string, any>;
+// the photo each target is scanned from: the clearest, most complete figure
+const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 2, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 3, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 3 };
+const targets = publishedOrder().map((slug, i) => {
+  const r = getResearch(slug)!, c = castFor(slug)!, vs = VS[`../../../research/versus/${slug}.json`], b = BRIEFS[slug];
+  const ph = photos2For(slug), p = ph.find((x) => x.n === PICK[slug]) ?? ph[0];
+  const grid = vs?.powerGrid?.values ?? null;
+  const threat = grid ? Object.values(grid as Record<string, number>).reduce((a, v) => a + v, 0) : null;
+  return {
+    slug, no: i + 1, name: heroName(slug), alias: r.alias, real: r.name, team: TEAMS.find((t) => t.id === c.team)?.name ?? '', actor: c.actor,
+    tile: pick2(p.cut.length ? p.cut : p.full, 640), photo: pick2(p.cut.length ? p.cut : p.full, 1280), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 1024), head: p.head ?? [0.5, 0.15],
+    threat, grid, gridSource: vs?.powerGrid?.source?.label ?? null,
+    brief: b ? { who: b.who, powers: b.powers, doomsday: b.doomsday, last: b.lastSeen ? `${b.lastSeen.title} (${b.lastSeen.year}), as ${b.lastSeen.role}` : null } : null,
+    abilities: (vs?.abilities ?? []).slice(0, 4).map((a: any) => ({ name: a.name, detail: a.detail })),
+    screen: [...r.screen].sort((a: any, b: any) => a.year - b.year).map((s: any) => ({ year: s.year, title: s.title, mcu: s.continuity === 'MCU' })),
+    first: `${r.origin.firstAppearance.title} ${r.origin.firstAppearance.issue} (${r.origin.firstAppearance.coverDate})`,
+  };
+});
+// Doom on his throne: brighter armour than the hooded close-up, which stayed muddy once revealed
+const doomHome = photos2For('victor-von-doom').find((p) => p.n === 3) ?? photos2For('victor-von-doom')[0];
+const home = { photo: pick2(doomHome.cut, 1920), depth: doomHome.cdepth ? u('/' + doomHome.cdepth) : pick2(doomHome.depth, 1024), head: doomHome.head ?? [0.5, 0.2] };
+const teams = [...new Set(targets.map((t) => t.team))];
+// the home's system panel: the highest threat on file, and Marvel's confirmed milestones as the live feed
+const top = [...targets].filter((t) => t.threat !== null).sort((a, b) => b.threat! - a.threat!)[0];
+const feed = OFFICIAL.milestones.slice(-8).map((m: any) => ({ date: m.date, text: m.text }));
+---
+<!doctype html>
+<html lang="en" class="os">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" />
+    <title>DOOM-OS | Doomsday Dossier</title>
+  </head>
+  <body>
+    <div class="os-lattice" aria-hidden="true"></div>
+    <header class="bar">
+      <span class="os-hi"><b>LATVERIA</b> // DOOM-OS 9.66</span>
+      <span class="os-label hide-s">Sovereign network · secure link</span>
+      <span class="os-label">T-<span data-clock-mini>--</span></span>
+    </header>
+
+    <!-- THE GATE: sound needs a click, and Doom's machine wants a hand on the scanner -->
+    <section class="gate" data-gate>
+      <div class="gate-in">
+        <p class="os-label">Latverian sovereign network</p>
+        <button class="os-btn big" data-auth>&#9673;&nbsp; Authenticate</button>
+        <p class="os-label">Unofficial fan archive · not affiliated with Marvel</p>
+      </div>
+    </section>
+
+    <!-- BOOT: the terminal types itself in -->
+    <pre class="boot" data-boot aria-hidden="true"></pre>
+
+    <!-- HOME -->
+    <main class="view home" data-view="home">
+      <aside class="sys os-panel">
+        <header><b>System</b><span class="os-label os-hi">Online</span></header>
+        <div class="os-row"><span>Orbital array</span><span class="os-hi">Linked</span></div>
+        <div class="os-row"><span>Targets on file</span><span>{targets.length}</span></div>
+        <div class="os-row"><span>Highest threat</span><span class="os-red">{top.name} · {top.threat}/42</span></div>
+        <div class="os-row"><span>Protocol</span><span class="os-amber">Doomsday · armed</span></div>
+        <p class="os-label feed-h">Intercepted // Marvel, confirmed</p>
+        <ol class="feed" data-feed>{feed.map((f) => <li><i>{f.date}</i>{f.text}</li>)}</ol>
+      </aside>
+      <div class="h-scan">
+        <canvas data-home-scan aria-label="Victor von Doom, scanned"></canvas>
+        <div class="os-reticle" data-home-ret hidden><svg viewBox="0 0 120 120"><g class="spin" fill="none" stroke="#3dff8f" stroke-width="1.2"><circle cx="60" cy="60" r="44" stroke-dasharray="10 8" /></g><g fill="none" stroke="#3dff8f" stroke-width="1.5"><path d="M60 4v18M60 98v18M4 60h18M98 60h18" /><circle cx="60" cy="60" r="3" fill="#3dff8f" /></g></svg></div>
+      </div>
+      <div class="h-clock">
+        <p class="os-label">Doomsday launch // 18 · 12 · 2026</p>
+        <p class="os-display clock os-hi" data-clock>--</p>
+        <p class="os-label">Avengers: Doomsday · in cinemas</p>
+      </div>
+      <nav class="modules" aria-label="Modules">
+        <a class="mod live" href="#targets"><i>01</i><b>Target register</b><span>29 targets on file</span></a>
+        <a class="mod"><i>02</i><b>Temporal archive</b><span>Every appearance, in order</span></a>
+        <a class="mod"><i>03</i><b>Combat simulation</b><span>Two targets, one winner</span></a>
+        <a class="mod"><i>04</i><b>Subject profiler</b><span>Which of them are you</span></a>
+        <a class="mod"><i>05</i><b>Probability engine</b><span>Predictions before release</span></a>
+        <a class="mod"><i>06</i><b>Briefing schedule</b><span>What to watch first</span></a>
+      </nav>
+    </main>
+
+    <!-- THE TARGET REGISTER -->
+    <main class="view register" data-view="targets" hidden>
+      <div class="r-head">
+        <div><p class="os-label">Module 01</p><h1 class="os-display os-hi r-title">Target register</h1></div>
+        <div class="filters" role="group" aria-label="Filter by team"><button class="os-btn on" data-team="">All 29</button>{teams.map((t) => <button class="os-btn" data-team={t}>{t}</button>)}</div>
+      </div>
+      <div class="grid">
+        {targets.map((t) => (
+          <a class="card" href={`#t/${t.slug}`} data-card data-team-of={t.team}>
+            <span class="c-img"><img src={t.tile} alt="" loading="lazy" decoding="async" /></span>
+            <span class="c-no os-label">T-{String(t.no).padStart(2, '0')}</span>
+            <span class="c-name">{t.name}</span>
+            <span class="c-meta os-label">{t.team}{t.threat !== null && <Fragment> · threat {t.threat}</Fragment>}</span>
+          </a>
+        ))}
+      </div>
+    </main>
+
+    <!-- A TARGET FILE -->
+    <main class="view file" data-view="file" hidden>
+      <div class="f-top"><a class="os-btn" href="#targets">&larr; Register</a><span class="os-label" data-f-code></span></div>
+      <div class="f-main">
+        <div class="f-scan">
+          <canvas data-file-scan aria-label="The target, scanned"></canvas>
+          <div class="os-reticle" data-file-ret hidden><svg viewBox="0 0 120 120"><g class="spin" fill="none" stroke="#3dff8f" stroke-width="1.2"><circle cx="60" cy="60" r="44" stroke-dasharray="10 8" /></g><g fill="none" stroke="#3dff8f" stroke-width="1.5"><path d="M60 4v18M60 98v18M4 60h18M98 60h18" /><circle cx="60" cy="60" r="3" fill="#3dff8f" /></g></svg><span class="lock os-label os-hi">Target locked</span></div>
+          <span class="f-status os-label os-hi" data-f-status>Scanning</span>
+        </div>
+        <div class="f-read">
+          <p class="os-label" data-f-no></p>
+          <h1 class="os-display os-hi f-name" data-f-name></h1>
+          <div class="os-panel"><header><b>Identity</b><span class="os-label">Confirmed</span></header><div data-f-id></div></div>
+          <div class="os-panel"><header><b>Threat index</b><span class="os-label" data-f-tsrc></span></header><div data-f-threat></div></div>
+          <div class="os-panel"><header><b>Brief // decrypted</b><span class="os-label">30 s</span></header><div data-f-brief></div></div>
+        </div>
+      </div>
+      <div class="f-lower">
+        <div class="os-panel"><header><b>Capabilities</b><span class="os-label">Assessed</span></header><div data-f-abil></div></div>
+        <div class="os-panel"><header><b>Intercepted transmissions</b><span class="os-label" data-f-tx-n></span></header><ol class="tx" data-f-tx></ol></div>
+      </div>
+    </main>
+
+    <div class="os-scan" aria-hidden="true"></div><div class="os-flicker" aria-hidden="true"></div>
+    <script type="application/json" data-os is:inline set:html={JSON.stringify({ targets, home })} />
+    <style is:global>
+      .bar { position: fixed; z-index: 50; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 12px var(--os-margin); border-bottom: 1px solid var(--os-line); background: rgba(2, 5, 4, 0.85); backdrop-filter: blur(6px); font-size: 11px; letter-spacing: 0.16em; }
+      .gate { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: var(--os-bg); }
+      .gate-in { display: grid; gap: 22px; justify-items: center; text-align: center; }
+      .os-btn.big { font-size: 13px; padding: 16px 28px; }
+      .boot { position: fixed; z-index: 30; left: var(--os-margin); top: 70px; margin: 0; color: var(--os-green); text-shadow: var(--os-glow); font: 12px/1.7 var(--os-mono); pointer-events: none; white-space: pre-wrap; max-width: calc(100vw - 2 * var(--os-margin)); }
+      .view { position: relative; z-index: 2; padding: 70px var(--os-margin) 60px; }
+      .view[hidden] { display: none !important; }
+      .home { min-height: 100svh; box-sizing: border-box; display: grid; grid-template-columns: 1fr minmax(0, 1.3fr) 1fr; grid-template-rows: 1fr auto; gap: var(--os-gap); align-items: center; }
+      .h-scan { grid-column: 2; grid-row: 1; position: relative; height: min(58svh, 620px); }
+      .h-scan canvas, .f-scan canvas { width: 100%; height: 100%; display: block; }
+      .h-clock { grid-column: 1 / -1; grid-row: 2; text-align: center; display: grid; gap: 8px; }
+      .sys { grid-column: 1; grid-row: 1; align-self: center; font-size: 11.5px; }
+      .sys .os-row { grid-template-columns: 120px 1fr; }
+      .feed-h { margin: 14px 0 6px; }
+      .feed { list-style: none; margin: 0; padding: 0; height: 132px; overflow: hidden; position: relative; }
+      .feed li { padding: 5px 0; border-bottom: 1px dashed rgba(61, 255, 143, 0.12); font-size: 11px; line-height: 1.45; }
+      .feed li i { display: block; font-style: normal; color: var(--os-green); font-size: 10px; letter-spacing: 0.14em; }
+      .clock { font-size: clamp(30px, 5.4vw, 78px); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+      .modules { grid-column: 3; grid-row: 1; display: grid; gap: 10px; align-self: center; }
+      .modules .mod:nth-child(n+4) { }
+      .mod { display: grid; grid-template-columns: 34px 1fr; gap: 2px 10px; padding: 10px 12px; border: 1px solid var(--os-line); background: var(--os-panel); color: var(--os-text); text-decoration: none; opacity: 0.55; }
+      .mod.live { opacity: 1; border-color: var(--os-line-hi); }
+      .mod.live:hover { background: rgba(61, 255, 143, 0.12); }
+      .mod i { grid-row: span 2; font-style: normal; color: var(--os-green); font-weight: 700; }
+      .mod b { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+      .mod span { font-size: 11px; color: var(--os-dim); }
+      @media (max-width: 900px) {
+        .home { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+        .home { grid-template-rows: auto auto auto auto; }
+        .h-scan { grid-column: 1; grid-row: 1; height: 50svh; } .h-clock { grid-row: 2; } .modules { grid-column: 1; grid-row: 3; grid-template-columns: 1fr 1fr; } .sys { grid-column: 1; grid-row: 4; }
+        .hide-s { display: none; }
+      }
+      .r-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: var(--os-gap); }
+      .r-title { font-size: clamp(32px, 5vw, 64px); }
+      .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+      .filters .os-btn { padding: 6px 10px; font-size: 10px; }
+      .filters .os-btn.on { background: var(--os-green); color: #021008; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+      .card { position: relative; display: grid; gap: 2px; padding: 0 0 10px; border: 1px solid var(--os-line); background: var(--os-panel); color: var(--os-text); text-decoration: none; overflow: hidden; }
+      .card[hidden] { display: none; }
+      .c-img { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: radial-gradient(circle at 50% 40%, rgba(61, 255, 143, 0.14), transparent 70%); }
+      .c-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(2.4) brightness(0.85) contrast(1.2); transition: filter 0.35s, transform 0.6s; }
+      .card:hover .c-img img, .card:focus-visible .c-img img { filter: none; transform: scale(1.04); }
+      .card:hover, .card:focus-visible { border-color: var(--os-line-hi); outline: none; }
+      .c-no, .c-name, .c-meta { padding: 0 10px; }
+      .c-no { padding-top: 8px; color: var(--os-green); }
+      .c-name { font-family: var(--os-display); font-weight: 700; font-size: 17px; text-transform: uppercase; line-height: 1.05; }
+      .c-meta { font-size: 9.5px; }
+      .file .f-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: var(--os-gap); }
+      .f-main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: var(--os-gap); align-items: start; }
+      .f-scan { position: relative; height: min(76svh, 760px); border: 1px solid var(--os-line); background: radial-gradient(circle at 50% 35%, rgba(61, 255, 143, 0.08), transparent 70%); }
+      .f-status { position: absolute; left: 12px; bottom: 10px; }
+      .os-reticle .lock { position: absolute; left: 100%; top: 50%; white-space: nowrap; margin-left: 4px; opacity: 0; transition: opacity 0.3s; }
+      .os-reticle.locked .lock { opacity: 1; }
+      .f-read { display: grid; gap: 12px; }
+      .f-name { font-size: clamp(36px, 5.5vw, 76px); }
+      .f-lower { display: grid; grid-template-columns: 1fr 1fr; gap: var(--os-gap); margin-top: var(--os-gap); }
+      .tx { list-style: none; margin: 0; padding: 0; max-height: 300px; overflow: auto; }
+      .tx li { display: grid; grid-template-columns: 58px 1fr auto; gap: 10px; padding: 4px 0; border-bottom: 1px dashed rgba(61, 255, 143, 0.12); font-size: 12px; }
+      .tx li i { font-style: normal; color: var(--os-green); }
+      .tx li em { font-style: normal; font-size: 10px; letter-spacing: 0.14em; color: var(--os-dim); }
+      .abil { padding: 6px 0; border-bottom: 1px dashed rgba(61, 255, 143, 0.12); }
+      .abil b { display: block; color: var(--os-green); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+      .grid-row { display: grid; grid-template-columns: 130px 1fr 26px; gap: 10px; align-items: center; padding: 3px 0; font-size: 11px; }
+      .grid-row span:first-child { color: var(--os-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+      .threat-big { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+      .threat-big b { font-family: var(--os-display); font-size: 40px; line-height: 1; }
+      @media (max-width: 900px) { .f-main, .f-lower { grid-template-columns: 1fr; } .f-scan { height: 62svh; } .os-row { grid-template-columns: 110px 1fr; } }
+    </style>
+    <script>
+      import '../../scripts/os/lab';
+    </script>
+  </body>
+</html>
