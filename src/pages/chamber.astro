@@ -70,7 +70,7 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
       </section>
     </div>
   </div>
-  <script type="application/json" data-chamber is:inline set:html={JSON.stringify({ all, site: 'prejith77.github.io' + u('/') })} />
+  <script type="application/json" data-chamber is:inline set:html={JSON.stringify({ all, site: (Astro.site?.host ?? 'doomsdaydossier.github.io') + u('/') })} />
 </OS>
 
 <style is:global>
