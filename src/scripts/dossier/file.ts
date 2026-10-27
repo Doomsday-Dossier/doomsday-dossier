@@ -6,21 +6,28 @@
  * the bars tear away and the level opens (remembered across files, `localStorage` `dd-clearance`). In Level 2
  * the subject is one big graded print, pushed in slowly, its callouts lighting up pin by pin. The character's
  * signature WebGL scene stays live behind, with the hero photo as a depth diorama.
+ *
+ * On a page change the file builds under the cover (CLAUDE.md, "Page changes"): `filePage` returns once its
+ * type is fitted, its scene is built and its shaders and photos are on the GPU, and its entrance waits for the
+ * reveal. At the foot of the file, the next one is fetched ahead: its page, its scene's code, its face, its photos.
  */
 import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
 import type { Ctx, HeroScene } from '../gl/engine';
 import { fitText } from '../motion/grammar';
-import { Diorama, type DioOpts } from './depth';
+import { Diorama, preloadImage, type DioOpts } from './depth';
+import { revealed, arrivedBy } from './cover';
+import { rise, settle } from './reveal';
+import { onLeave, pageEpoch, alive } from '../page-scope';
+import { prefetch } from 'astro:prefetch';
 import { C, EASE, timeLeft } from './tokens';
 import { Sound } from '../sound/engine';
 import { tear, stamp as stampSound } from '../sound/actions';
 import { playSignature } from '../sound/signatures';
 import type Lenis from 'lenis';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 const CLEARANCE = 'dd-clearance';
 const cleared = () => { try { return Number(localStorage.getItem(CLEARANCE)) || 1; } catch { return 1; } };
@@ -38,27 +45,35 @@ class FileScene implements HeroScene {
   dispose() { this.back.dispose(); this.dio?.dispose(); }
 }
 
-type Env = { engine: { ctx: Ctx; mount(s: HeroScene): Promise<void>; setActive(on: boolean): void; renderer: THREE.WebGLRenderer } | null; lenis: Lenis | null; reduced: boolean; phone: boolean };
+type Env = { engine: { ctx: Ctx; mount(s: HeroScene): Promise<void>; setActive(on: boolean): void; prime(): void; compile(o: object): Promise<void>; renderer: THREE.WebGLRenderer } | null; lenis: Lenis | null; reduced: boolean; phone: boolean };
 
-export async function filePage(env: Env) {
+/** The faces the page uses, loaded: laid out first so the browser asks for every one, with a time limit. */
+const fontsLoaded = () => {
+  void document.body.offsetHeight;
+  return Promise.race([document.fonts.ready.then(() => {}), new Promise<void>((res) => setTimeout(res, 1500))]);
+};
+
+export async function filePage(env: Env): Promise<void> {
   const file = document.querySelector<HTMLElement>('[data-file]');
   if (!file) return;
+  const epoch = pageEpoch();
+  const handoff = arrivedBy() === 'handoff';
   const $ = <T extends HTMLElement = HTMLElement>(s: string, r: ParentNode = file) => r.querySelector<T>(s)!;
   const $$ = <T extends HTMLElement = HTMLElement>(s: string, r: ParentNode = file) => [...r.querySelectorAll<T>(s)];
   const R = env.reduced;
   const sound = Sound.get();
   const slug = file.dataset.slug!;
 
-  // display text measured to its box, then split for reveals
+  // display text measured to its box once its faces have loaded, then split for reveals
   fitText(document);
-  document.fonts.ready.then(() => { if (fitText(document)) ScrollTrigger.refresh(); }).catch(() => {});
+  const fontsIn = fontsLoaded().then(() => { if (alive(epoch) && fitText(document)) ScrollTrigger.refresh(); });
   addEventListener('resize', () => { if (fitText(document)) ScrollTrigger.refresh(); });
 
   // the signature sound: as the hero arrives if sound is already running (the visitor came from another
   // page), otherwise at the first click or key while the hero is still in view
   let signed = false;
   const sign = () => { if (signed || scrollY > innerHeight * 1.2) return; signed = playSignature(sound, slug); };
-  setTimeout(sign, 450);
+  revealed().then(() => setTimeout(sign, handoff ? 200 : 450));
   const onGesture = () => { setTimeout(sign, 60); };
   addEventListener('pointerdown', onGesture, { once: true }); addEventListener('keydown', onGesture, { once: true });
 
@@ -67,11 +82,17 @@ export async function filePage(env: Env) {
   if (hero && !R) {
     const flood = $('[data-flood]', hero), nameEl = $('[data-hero-name]', hero), cut = hero.querySelector<HTMLElement>('[data-hero-cut]'), hin = $$('[data-hin]', hero);
     gsap.set(nameEl, { y: 0, yPercent: 0, transformOrigin: '0% 100%' });
-    const intro = gsap.timeline({ delay: 0.1 })
-      .fromTo(flood, { scale: 0 }, { scale: 1, duration: 1.3, ease: EASE.file })
-      .fromTo(nameEl.querySelectorAll('.hw'), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.08, ease: EASE.reveal }, 0.25)
-      .fromTo(hin, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: EASE.reveal }, 0.9);
-    if (cut) intro.fromTo(cut, { yPercent: 14, scale: 0.86, opacity: 0 }, { yPercent: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'back.out(1.4)' }, 0.45);
+    // the entrance plays as the page is revealed; after the handoff the colour is already on screen, so the
+    // flood is there from the start and the name rises sooner
+    revealed().then(() => {
+      if (!alive(epoch)) return;
+      const t0 = handoff ? 0 : 0.25;
+      const intro = gsap.timeline({ delay: handoff ? 0 : 0.1 });
+      if (!handoff) intro.fromTo(flood, { scale: 0 }, { scale: 1, duration: 1.3, ease: EASE.file }, 0);
+      intro.fromTo(nameEl.querySelectorAll('.hw'), { yPercent: 70, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.08, ease: EASE.reveal }, t0)
+        .fromTo(hin, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: EASE.reveal }, t0 + 0.65);
+      if (cut) intro.fromTo(cut, { yPercent: 14, scale: 0.86, opacity: 0 }, { yPercent: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'back.out(1.4)' }, t0 + 0.2);
+    });
     const push = gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: 0.5 } });
     if (cut) push.to(cut, { scale: 1.55, yPercent: 10, ease: 'none' }, 0);
     push.to(nameEl, { y: -40, opacity: 0, ease: 'none' }, 0)
@@ -96,30 +117,39 @@ export async function filePage(env: Env) {
     tick(); setInterval(tick, 1000);
   }
 
-  // WebGL: the signature scene behind, the hero photo as a depth diorama
-  if (env.engine) {
+  // WebGL: the signature scene behind, the hero photo as a depth diorama. Built now, drawn once (`prime`) so its
+  // shaders compile and its photos upload while a page change still has its cover up
+  const html = document.documentElement;
+  onLeave(() => html.classList.remove('dio-on'));
+  const glReady = (async () => {
+    const eng = env.engine;
+    if (!eng) return;
     const { loadScene } = await import('../gl/registry');
     const back = await loadScene(file.dataset.scene || 'forge');
-    if (back) {
-      const sc = new FileScene(back);
-      await env.engine.mount(sc);
-      env.engine.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
-      const heroEl = file.querySelector<HTMLElement>('[data-hero]');
-      const dioOpts = heroEl && !R ? (JSON.parse(heroEl.dataset.dio || 'null') as DioOpts | null) : null;
-      if (heroEl && dioOpts) {
-        const dio = new Diorama();
-        dio.load(dioOpts, env.engine.ctx).then(() => {
-          sc.dio = dio;
-          document.documentElement.classList.add('dio-on');
-          gsap.fromTo(dio, { intro: 0 }, { intro: 1, duration: 1.8, ease: EASE.file });
-          heroEl.addEventListener('pointermove', (e) => dio.pointer.set(e.clientX / innerWidth - 0.5, -(e.clientY / innerHeight - 0.5)), { passive: true });
-          ScrollTrigger.create({ trigger: heroEl, start: 'top top', end: 'bottom top', onUpdate: (st) => { dio.scroll = st.progress; dio.alpha = 1 - gsap.utils.clamp(0, 1, (st.progress - 0.72) / 0.28); } });
-        }).catch(() => { /* the flat hero stays */ });
-      }
-      // the scene rests once the briefing is behind the reader
-      ScrollTrigger.create({ trigger: '[data-open]', start: 'bottom top', onEnter: () => env.engine?.setActive(false), onLeaveBack: () => env.engine?.setActive(true) });
-    }
-  }
+    if (!back || !alive(epoch)) { back?.dispose(); return; }
+    const sc = new FileScene(back);
+    await eng.mount(sc);
+    eng.renderer.setClearColor(new THREE.Color(C.gunmetal), 1);
+    await eng.compile(back);
+    if (!alive(epoch)) return;
+    eng.prime();
+    // the scene rests once the briefing is behind the reader
+    ScrollTrigger.create({ trigger: '[data-open]', start: 'bottom top', onEnter: () => eng.setActive(false), onLeaveBack: () => eng.setActive(true) });
+    const heroEl = file.querySelector<HTMLElement>('[data-hero]');
+    const dioOpts = heroEl && !R ? (JSON.parse(heroEl.dataset.dio || 'null') as DioOpts | null) : null;
+    if (!heroEl || !dioOpts) return;
+    const dio = new Diorama();
+    try { await dio.load(dioOpts, eng.ctx); } catch { return; /* the flat hero stays */ }
+    if (!alive(epoch)) { dio.dispose(); return; }
+    await eng.compile(dio);
+    if (!alive(epoch)) { dio.dispose(); return; }
+    sc.dio = dio;
+    html.classList.add('dio-on');
+    eng.prime();
+    revealed().then(() => { if (alive(epoch)) gsap.fromTo(dio, { intro: 0 }, { intro: 1, duration: 1.8, ease: EASE.file }); });
+    heroEl.addEventListener('pointermove', (e) => dio.pointer.set(e.clientX / innerWidth - 0.5, -(e.clientY / innerHeight - 0.5)), { passive: true });
+    ScrollTrigger.create({ trigger: heroEl, start: 'top top', end: 'bottom top', onUpdate: (st) => { dio.scroll = st.progress; dio.alpha = 1 - gsap.utils.clamp(0, 1, (st.progress - 0.72) / 0.28); } });
+  })();
 
   // LEVEL 1: the folder opens, scrubbed by scroll; each bar rips as it goes
   const cover = $('[data-cover]'), bars = $$('[data-bar]'), prints = $$('[data-print]'), stampEl = $('[data-stamp]'), hint = $('[data-hint]'), tint = document.querySelector<HTMLElement>('[data-tint]')!;
@@ -183,7 +213,6 @@ export async function filePage(env: Env) {
   };
   const have = cleared();
   levels.forEach((lv) => { if (Number(lv.dataset.level) > have) lock(lv); });
-  ScrollTrigger.refresh();
   levels.forEach((lv) => {
     const btn = lv.querySelector<HTMLButtonElement>('[data-request]');
     btn?.addEventListener('click', async () => {
@@ -225,11 +254,28 @@ export async function filePage(env: Env) {
       if (bg) gsap.fromTo(bg, { yPercent: -6, scale: 1.14 }, { yPercent: 6, scale: 1.04, ease: 'none', scrollTrigger: { trigger: voy, start: 'top bottom', end: 'bottom top', scrub: true } });
       if (win) gsap.fromTo(win, { scale: 0.82, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: voy, start: 'top bottom', end: 'top 25%', scrub: 0.5 } });
     }
-    $$('[data-rise]', document).forEach((el) => {
-      SplitText.create(el, { type: 'lines,words', mask: 'lines', linesClass: 'split-line', autoSplit: true, onSplit: (s) => gsap.from(s.words, { yPercent: 110, duration: 0.9, stagger: 0.05, ease: EASE.reveal, scrollTrigger: { trigger: el, start: 'top 85%', once: true } }) });
-    });
-    $$('[data-reveal]', document).forEach((el) => gsap.from(el, { y: 26, opacity: 0, duration: 0.8, ease: EASE.reveal, scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
-    $$('[data-report]').forEach((el, i) => gsap.from(el, { x: i % 2 ? -50 : 50, rotate: i % 2 ? -1.2 : 1.2, opacity: 0, duration: 0.9, ease: EASE.reveal, scrollTrigger: { trigger: el, start: 'top 86%', once: true } }));
+    // titles split once the faces are in (and only as they come near), so a late font never splits them again;
+    // blocks and reports settle in by class (reveal.ts)
+    fontsIn.then(() => { if (alive(epoch)) rise($$('[data-rise]', document)); });
+    settle($$('[data-reveal]', document));
+    settle($$('[data-report]'), 'top 86%', (_, i) => ({ x: i % 2 ? -50 : 50, y: 0, r: i % 2 ? -1.2 : 1.2 }));
     gsap.from('[data-bar-w]', { scaleX: 0, duration: 0.9, stagger: 0.06, ease: EASE.reveal, scrollTrigger: { trigger: '[data-key]', start: 'top 80%', once: true } });
   }
+
+  // THE NEXT FILE, fetched ahead as the reader nears the foot of this one: by the time they open it, its page,
+  // its scene's code, its title face and its photos are already here
+  const voy = file.querySelector<HTMLElement>('[data-voyage]');
+  const nextLink = voy?.querySelector<HTMLAnchorElement>('a[data-handoff]');
+  if (voy && nextLink) {
+    const ahead = () => {
+      const n = JSON.parse(voy.dataset.next || '{}') as { scene?: string; font?: string; weight?: number; images?: string[] };
+      prefetch(nextLink.href, { ignoreSlowConnection: true });
+      if (n.scene && env.engine) import('../gl/registry').then((m) => m.preloadScene(n.scene!)).catch(() => {});
+      if (n.font) document.fonts.load(`${n.weight ?? 400} 1em ${n.font}`).catch(() => {});
+      if (!R) (n.images ?? []).forEach((src) => preloadImage(src).catch(() => {}));
+    };
+    ScrollTrigger.create({ trigger: voy, start: 'top 300%', once: true, onEnter: ahead });
+  }
+
+  await Promise.all([fontsIn, glReady]);
 }

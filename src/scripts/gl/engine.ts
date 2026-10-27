@@ -107,6 +107,8 @@ export class Engine {
   scene: HeroScene | null = null;
   running = false;
   visible = true;
+  /** held while a page change is under its cover: nothing ticks, and the quality governor waits */
+  held = false;
   private frames = 0; private acc = 0; private sampling = true;
   private lastMove = 0;
   private target = { x: 0.5, y: 0.5 };
@@ -117,6 +119,9 @@ export class Engine {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance', stencil: false, depth: true });
     this.renderer.setClearColor(0x050607, 1);
+    // reading every program's log stalls until the GPU has compiled it; only worth it while developing
+    // (a local server checks them, unless the first page is opened with ?perf, as the profiling scripts do)
+    this.renderer.debug.checkShaderErrors = /^(localhost|127\.)/.test(location.hostname) && !/[?&]perf\b/.test(location.search);
     this.baseDpr = Math.min(devicePixelRatio || 1, mobile ? 1.25 : 1.5);
     this.ctx = {
       renderer: this.renderer, width: 1, height: 1, bufW: 1, bufH: 1,
@@ -150,7 +155,7 @@ export class Engine {
     this.unmount();
     this.scene = scene;
     this.ctx.intro = 0; this.ctx.scroll = 0; this.ctx.signal = 0;
-    this.frames = 0; this.acc = 0; this.sampling = !this.ctx.reduced;
+    this.frames = 0; this.acc = 0; this.sampling = !this.ctx.reduced && !this.held;
     scene.mount(this.ctx);
     scene.resize?.(this.ctx);
     this.canvas.style.opacity = '1';
@@ -171,6 +176,32 @@ export class Engine {
     this.renderer.clear();
   }
 
+  /** A page change is under way: stop ticking until the next page is revealed. */
+  hold() { this.held = true; this.sampling = false; }
+
+  /** The next page is revealed: tick again, and judge quality from the frames that follow, not the swap. */
+  release() {
+    if (!this.held) return;
+    this.held = false;
+    this.frames = 0; this.acc = 0; this.sampling = !this.ctx.reduced && !!this.scene;
+  }
+
+  /**
+   * Compiles a scene's shaders without blocking the main thread where the browser allows it (three's
+   * `compileAsync`, through KHR_parallel_shader_compile): every THREE.Scene the object holds, with its camera.
+   */
+  async compile(obj: object) {
+    const vals = Object.values(obj);
+    const cam = (vals.find((v) => v instanceof THREE.Camera) as THREE.Camera | undefined) ?? new THREE.PerspectiveCamera();
+    await Promise.all(vals.filter((v): v is THREE.Scene => v instanceof THREE.Scene).map((s) => this.renderer.compileAsync(s, cam).catch(() => {})));
+  }
+
+  /** Draws one frame now, whatever the state, so shaders compile and textures upload while the page is covered. */
+  prime() {
+    if (!this.scene) return;
+    this.scene.update(this.ctx, 1 / 60);
+  }
+
   setActive(on: boolean) {
     if (this.ctx.reduced || !this.scene) return;
     this.running = on;
@@ -178,7 +209,7 @@ export class Engine {
   }
 
   tick(dt: number) {
-    if (!this.running || !this.visible || !this.scene) return;
+    if (!this.running || this.held || !this.visible || !this.scene) return;
     dt = Math.min(dt, 1 / 20);
     const c = this.ctx;
     c.time += dt;

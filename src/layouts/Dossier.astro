@@ -58,13 +58,14 @@ const PAGES = [['/', 'The archive'], ['/timeline/', 'Timeline'], ['/versus/', 'F
           if (/dynamically imported module|Importing a module script failed|error loading dynamically imported/i.test(String(e.reason && e.reason.message))) again();
         });
         if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');
-        try { if (sessionStorage.getItem('dd-pt') === '1') document.documentElement.classList.add('pt-in'); } catch (e) {}
       })();
     </script>
   </head>
   <body data-page={page} data-gl={gl ? 'on' : 'off'} style={vars} transition:animate="none">
     <a class="skip" href="#main">Skip to content</a>
-    <div class="pt" data-pt aria-hidden="true" transition:persist="pt"><span class="pt-mark"><i></i>Doomsday Dossier</span><span class="pt-name t-label" data-pt-name></span></div>
+    <!-- page changes (scripts/dossier/chrome.ts): the redaction wipe, and the next-file handoff -->
+    <div class="pt" data-pt aria-hidden="true" transition:persist="pt"><div class="pt-bars"><i class="pt-bar"></i><i class="pt-bar"></i><i class="pt-bar"></i><i class="pt-bar"></i><i class="pt-bar"></i><i class="pt-bar"></i><i class="pt-bar"></i></div><span class="pt-name t-label" data-pt-name></span></div>
+    <div class="ho" data-ho aria-hidden="true" transition:persist="ho"><i class="ho-dim"></i><div class="ho-clip"><div class="ho-push"><img class="ho-img" alt="" /></div></div><span class="ho-cap t-label"></span></div>
     <canvas id="dx-gl" aria-hidden="true" transition:persist="gl"></canvas>
     <div class="grain" aria-hidden="true" transition:persist="grain"></div>
     <header class="dx-hdr" transition:persist="hdr">

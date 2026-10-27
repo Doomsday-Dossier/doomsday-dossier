@@ -20,6 +20,20 @@ export function tear(s: Sound, t = s.ctx.currentTime + 0.01, len = 0.22) {
   v.src.start(t, Math.random() * 2, len + 0.05); lfo.start(t); lfo.stop(t + len + 0.05);
 }
 
+/** A censor's marker drawn across the page: a felt-tip squeak, a dry stroke falling in pitch as it runs out. */
+export function redact(s: Sound, t = s.ctx.currentTime + 0.01, len = 0.42) {
+  if (!live(s)) return;
+  const v = s.noiseVoice('pink', 'bandpass', 2400, 2.2, s.sfx, false);
+  v.f.frequency.setValueAtTime(3200, t); v.f.frequency.exponentialRampToValueAtTime(1500, t + len);
+  s.env(v.g.gain, t, 0.9, 0.03, len);
+  v.src.start(t, Math.random() * 2, len + 0.05);
+  // the felt dragging on paper: a slow, uneven rasp
+  const am = s.ctx.createGain(); am.gain.value = 0.7; v.g.disconnect(); v.g.connect(am).connect(s.sfx);
+  const lfo = s.ctx.createOscillator(); lfo.type = 'triangle'; lfo.frequency.value = 18 + Math.random() * 8;
+  const d = s.ctx.createGain(); d.gain.value = 0.3; lfo.connect(d).connect(am.gain);
+  lfo.start(t); lfo.stop(t + len + 0.05);
+}
+
 /** A rubber stamp landing on paper: a dull 90 Hz thud and a slap. */
 export function stamp(s: Sound, t = s.ctx.currentTime + 0.01) {
   if (!live(s)) return;

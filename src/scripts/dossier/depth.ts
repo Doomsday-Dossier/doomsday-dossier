@@ -13,7 +13,27 @@ export type DioOpts = {
   lines: string[]; font: string; weight: number; accent: string; head: [number, number]; bbox: [number, number, number, number]; aspect: number;
 };
 
-export const loadTex = (src: string) => new Promise<THREE.Texture>((res, rej) => new THREE.TextureLoader().load(src, (t) => { t.colorSpace = THREE.NoColorSpace; t.minFilter = THREE.LinearFilter; t.generateMipmaps = false; res(t); }, undefined, rej));
+// photos decoded off the main thread (`decode()`), kept for the few most recent so the next file's, fetched
+// ahead of time, are ready to upload the moment its page swaps in
+const decoded = new Map<string, Promise<HTMLImageElement>>();
+export function preloadImage(src: string) {
+  let p = decoded.get(src);
+  if (p) { decoded.delete(src); decoded.set(src, p); return p; }
+  const im = new Image();
+  im.decoding = 'async';
+  im.src = src;
+  p = im.decode().then(() => im);
+  p.catch(() => decoded.delete(src));
+  decoded.set(src, p);
+  while (decoded.size > 12) decoded.delete(decoded.keys().next().value!);
+  return p;
+}
+
+export const loadTex = (src: string) => preloadImage(src).then((im) => {
+  const t = new THREE.Texture(im);
+  t.colorSpace = THREE.NoColorSpace; t.minFilter = THREE.LinearFilter; t.generateMipmaps = false; t.needsUpdate = true;
+  return t;
+});
 
 const VERT = /* glsl */ `
   uniform sampler2D uDepth; uniform float uAmp, uTime, uIntro;

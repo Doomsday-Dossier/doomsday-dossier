@@ -208,6 +208,60 @@ forced early with a throwaway trigger); Git Bash rewrites an argument like `/c/t
 QA scripts take page paths without the leading slash; never time a page while another browser job runs (a
 background audit turned two smooth pages into one-second freezes in the numbers).
 
+**Page changes: the handoff and the redaction wipe** (built 27 October 2026; `src/scripts/dossier/chrome.ts`
+`transitions`, `cover.ts`, `main.ts` `boot`). The visitor reported switching files (Doom to Steve Rogers) as
+hanging. Measured: the next page built itself while its cover lifted and its entrance played (about 1.1 s of
+long frames on a 4x-slowed phone: the swap, fonts and text fitting, the scene's construction, shader compiles,
+the diorama's texture uploads), so every movement stuttered. Now:
+- **The handoff** (the next-file window and name at the foot of a file, `data-handoff`): the next subject's
+  window opens out to the whole screen (clip-path from the window's rounded rect, the photo flown with uniform
+  scale from where it sits in the window), with the file-slide sound, and the photo lands exactly where the next
+  hero's diorama stands its subject (the same layout maths as `Diorama.resize`, from `data-next.frame`). It then
+  dissolves into the hero, whose colour flood is already in place.
+- **The redaction wipe** (every other link, and back and forward): seven near-black bars drawn across the page
+  in turn like a censor's marker (`redact` sound), the destination named in the middle; they tear away from the
+  centre out (two `tear`s). Source: the dossier's redaction bars (CLAUDE.md, clearance levels).
+- **Build under the cover, reveal when ready.** `coverUp` on the click; the page swaps and boots under it;
+  `filePage` returns once its faces are loaded and its type fitted, its scene built and shaders compiled
+  (`engine.compile`, three's `compileAsync` through KHR_parallel_shader_compile) and drawn once (`engine.prime`,
+  which also uploads the diorama's photos); `main.ts` waits for that (at most 1.2 s desktop, 1.8 s phone),
+  refreshes ScrollTrigger once, paints once, then `coverDown` and lifts. Entrances (`revealed()`) and the
+  signature sound start with the lift. The engine is held (no ticks) from the swap to the reveal, and its quality
+  governor samples only after the reveal, never the swap's frames.
+- **While waiting, only CSS moves** (the handoff's slow push, the pulsing dot): the compositor keeps
+  transform and opacity animations smooth however busy the main thread is. Clicks pass through as soon as the
+  lift starts (`.out`); a CSS safety net hides a cover after 7 s if a page never reports ready.
+- **The next file is fetched ahead** when the reader is within three screens of the foot of a file: its page
+  (`astro:prefetch`, enabled with `prefetchAll: false`), its scene's code chunk, its title face, and its
+  diorama photos decoded off the main thread (`preloadImage` in `depth.ts`, `img.decode()`, a cache of 12).
+- **Reveals by class, not GSAP `from`** (`reveal.ts` `settle`, `rise`; system.css "reveals"): a `from` per
+  element reads its computed style first, and on a freshly swapped page that forced a style recalculation per
+  word (370 ms of the phone's wait). Blocks and reports now settle, and titles' words rise, as CSS transitions
+  started by a class; titles split only as they come near. `scripts/reveal-check.mjs` confirms nothing is left
+  hidden on any page, loaded directly or reached by a page change.
+- **Smaller fixes**: text is fitted once after the faces load (it ran four times, once per face); the
+  `dio-on` class no longer outlives its page; three's per-program error check (which stalls on every compile)
+  is on only on a local server; Astro's router wrote the scroll position to history on every `scrollend`, which
+  smooth scroll fires every frame, and now writes it once the scroll rests; the index menu closes when a page
+  arrives from one of its links.
+
+Measured (`scripts/switch-profile.mjs`, Doom to Steve, same PC, live site against the branch): desktop, the
+live site's three visible stutters (100 to 233 ms) are gone, with every long frame inside the still wait (the
+handoff 0.97 s, the wait 0.77 s, a clean reveal); phone at 4x CPU, about 1.2 s of stutters during the entrance
+became a still 1.4 s wait and a smooth reveal. Scrolling after several hops: 48 to 57 fps. Not solved, and not
+caused by this work (the live site shows it too): in phone emulation only, one 0.85 to 1.75 s pause in frame
+delivery 2 to 3 s after a page change, with every traced thread idle; it disappears with the software renderer
+(SwiftShader) and with the 3D drawing stopped, so it is this PC's GPU driver path under emulation. Check on a real
+phone before trusting it either way. Tools: `switch-profile.mjs` (stages and long frames; `LINK=` for the wipe,
+`NOGL=1`, `NODIO=1`, `RATE=`, `NOSOUND=1`), `switch-cpu.mjs` (CPU profile by function; build with `NOMINIFY=1`),
+`switch-chain.mjs`, `switch-frames.mjs` and `contact-sheet.mjs` (stills), `switch-record.mjs` (recording with
+sound), `switch-checks.mjs` (reduced motion, menu, back button), `base-check.mjs` (a build under the live base
+path). Lessons: Git Bash rewrites `BASE_PATH=/doomsday-dossier/` into `C:/Program Files/Git/doomsday-dossier/`, so
+builds and previews under the live base path run from PowerShell; `astro preview` reads the base path from the
+same variable, so it needs it too; Playwright's ffmpeg has no JPEG encoder or `fps` filter (use `-r 6 -c:v png`);
+a screenshot taken mid-swap can show a blank frame that the screen never shows (check a recording); look before
+writing a new file (a new `reveal.ts` overwrote the shared reveals once, restored from git).
+
 ### Sound system
 
 All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (oscillators, filtered noise,
@@ -260,9 +314,10 @@ once); write such edits with the Edit tool.
 | Heavy clock tick | Forge, beat 7; countdown on the home page | A low wooden-metal tick (band-passed click plus a 180 Hz body) every second, in a large reverb | Doomsday as a deadline: the countdown to 18 December 2026 | Original |
 | Gate ember | The gate (first and return visits) | A barely audible crackle loop after the click is ready | The forge's last ember | Original |
 | Score: sorcery and science | Under every page | A low string-like drone (filtered saws, slow detune), bell harmonics drifting above (sine partials with long reverb), a faint machine pulse at 52 bpm (sub thump) | Doom as scientist and sorcerer: FF #5; Books of Doom; Triumph and Torment | Original |
-| File slides open | Opening a file, the archive (`fileArrive`, each file arriving on the home page) | Pink-noise band-pass swish rising 420 to 1400 Hz with a soft 92 Hz thud | The dossier conceit | Original |
+| File slides open | Opening a file, the archive (`fileArrive`, each file arriving on the home page); the next-file handoff | Pink-noise band-pass swish rising 420 to 1400 Hz with a soft 92 Hz thud | The dossier conceit | Original |
+| Censor's marker | The redaction wipe as it covers the page (`redact`) | Pink noise through a narrow band-pass falling 3200 to 1500 Hz over 0.42 s, with a slow uneven triangle tremolo (felt dragging on paper) | The dossier's redaction bars | Original |
 | Green flood | Home page, passing through the mask's eye slit (`floodRise`) | The green hum's chord (saws on 55, 82, 110, 131, 165 Hz) swelling through a low-pass opening 220 to 2600 Hz, with a rush of air rising into the eye | Doom's green sorcery seen through his mask (FF Annual #2; Triumph and Torment) | Original |
-| Redaction tears | Clearance levels, redaction reveals | A short ripping noise burst with a rising band-pass | Same | Original |
+| Redaction tears | Clearance levels, redaction reveals; the redaction wipe tearing away from the next page | A short ripping noise burst with a rising band-pass | Same | Original |
 | Stamp lands | Stamps (clearance, file states) | A dull thud (sine 90 Hz) plus a paper slap transient | Same | Original |
 | Arena clash | Fight arena poster hit | A metallic impact (inharmonic partials) with a sub thump and a short reverb | The arena slam | Original |
 | Victor von Doom | His file | Armoured gauntlet servos (filtered saw glides) and a crackling green mystic bolt | Scientist-sorcerer: FF #5; Triumph and Torment | Original |

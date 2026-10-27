@@ -34,6 +34,11 @@ const loaders: Record<string, () => Promise<{ default: new () => HeroScene }>> =
   dance: () => import('./scenes/dance'),
 };
 
+/** Downloads a scene's code ahead of time (the next file's), without building it. */
+export function preloadScene(id: string) {
+  loaders[id]?.().catch(() => {});
+}
+
 export async function loadScene(id: string): Promise<HeroScene | null> {
   const l = loaders[id];
   if (!l) return null;
