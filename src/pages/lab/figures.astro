@@ -1,0 +1,35 @@
+---
+// 3D figures built from the supplied photos (CLAUDE.md, "3D figures from the photos"). Not linked from the site.
+// ?c=<slug> chooses the first; window.__play() runs Doom, Steve Rogers and Thor in turn for recordings.
+import '../../styles/faces';
+import '@fontsource/courier-prime/400.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" />
+    <title>Figure lab | Doomsday Dossier</title>
+  </head>
+  <body>
+    <p class="back" data-backname aria-hidden="true"></p>
+    <canvas data-stage aria-label="A 3D figure"></canvas>
+    <div class="cap" data-cap><span data-kicker></span><b data-name></b></div>
+    <nav class="ui"><button data-char="victor-von-doom">Doom</button><button data-char="steve-rogers">Steve Rogers</button><button data-char="thor">Thor</button></nav>
+    <style is:global>
+      :root { color-scheme: dark; }
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #030404; color: #e7e4dc; font-family: 'Courier Prime', monospace; }
+      canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 2; }
+      .back { position: fixed; z-index: 1; left: 0; right: 0; top: 42%; transform: translateY(-50%); margin: 0; text-align: center; font-size: clamp(70px, 17vw, 300px); line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(231, 228, 220, 0.14); white-space: nowrap; text-transform: uppercase; }
+      .cap { position: fixed; z-index: 3; left: 4vw; bottom: 5vh; display: grid; gap: 8px; }
+      .cap span { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.7; }
+      .cap b { font-size: clamp(40px, 7vw, 110px); line-height: 0.88; font-weight: 400; text-transform: uppercase; }
+      .ui { position: fixed; z-index: 5; top: 16px; left: 16px; }
+      .ui button { font: inherit; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: inherit; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(231, 228, 220, 0.3); border-radius: 99px; padding: 7px 12px; margin-right: 6px; cursor: pointer; }
+      body.rec .ui { display: none; }
+    </style>
+    <script>
+      if (new URLSearchParams(location.search).has('rec')) document.body.classList.add('rec');
+      import '../../scripts/lab/figures';
+    </script>
+  </body>
+</html>

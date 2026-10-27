@@ -191,3 +191,23 @@ export const wrapY = (n, R) => node(
 );
 
 export const util = { clamp, mix, len3 };
+
+// NOISE, for natural irregularity: hammer pits, dents, rough stone ------------------------------------------
+
+const hash3 = (x, y, z) => { let h = (x * 374761393 + y * 668265263 + z * 1274126177) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+const fade = (t) => t * t * (3 - 2 * t);
+
+/** Smooth value noise in [-1, 1]; one unit per feature. */
+export function noise3(x, y, z) {
+  const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z), xf = fade(x - xi), yf = fade(y - yi), zf = fade(z - zi);
+  const c = (i, j, k) => hash3(xi + i, yi + j, zi + k);
+  const x00 = mix(c(0, 0, 0), c(1, 0, 0), xf), x10 = mix(c(0, 1, 0), c(1, 1, 0), xf), x01 = mix(c(0, 0, 1), c(1, 0, 1), xf), x11 = mix(c(0, 1, 1), c(1, 1, 1), xf);
+  return mix(mix(x00, x10, yf), mix(x01, x11, yf), zf) * 2 - 1;
+}
+
+/** Fractal noise: `oct` octaves, the first at `freq` features per metre. */
+export function fbm3(x, y, z, freq = 10, oct = 4) {
+  let v = 0, a = 0.5, f = freq;
+  for (let i = 0; i < oct; i++) { v += a * noise3(x * f, y * f, z * f); f *= 2.03; a *= 0.5; }
+  return v;
+}
