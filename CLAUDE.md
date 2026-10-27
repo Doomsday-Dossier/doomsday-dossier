@@ -262,6 +262,46 @@ same variable, so it needs it too; Playwright's ffmpeg has no JPEG encoder or `f
 a screenshot taken mid-swap can show a blank frame that the screen never shows (check a recording); look before
 writing a new file (a new `reveal.ts` overwrote the shared reveals once, restored from git).
 
+### 3D characters (sixth brief, 27 October 2026; prototypes)
+
+The visitor asked for the site to be rebuilt from the ground up around original 3D characters that Claude builds
+itself, replacing every photo, with six motionsites references: **Menuchi** (the starting page: a carved mask
+that burns and lacquers, a giant wordmark, diagonal colour bands), **Quantum Human** (the characters: a sculpted
+figure in studio light on black, slow macro camera moves, parts that separate, thin-line callouts, huge type
+behind), **FinSmith** (predictions: one giant word on a saturated field, a 3D object swimming through its
+letters), **Apex Pulse** (the quiz: a glass head that fills with growing things, eyes that open), **Particle
+Self** (catch-up: a point-cloud bust behind pixel type that scatters and reforms inside an app window of cards)
+and **Lena Varga Hero** (the arena: stylised 3D characters on their own colour fields, the name typing in). The
+prompts themselves are behind motionsites' paywall; only the public previews were studied.
+
+**How the characters are made** (`scripts/sculpt/`). Each is written as a signed distance field (`sdf.mjs`:
+spheres, ellipsoids, round cones, boxes, stars, smooth unions like clay, shells for cloth and helmets, cuts that
+paint their faces, reliefs for grooves). One shared anonymous anatomy (`body.mjs`: the statue bust and the
+collectible figure) carries every character; a character is recognised by mask, helmet, hood, hair, armour and
+gear, never by an actor's face. `preview.mjs` ray-marches a sculpt on the CPU across all cores (no browser, no
+GPU) for fast iteration; `build.mjs` meshes it (surface nets, `mesh.mjs`), bakes ambient occlusion into every
+vertex, drops triangles buried out of sight, simplifies with meshoptimizer (bundled with three.js) to a budget
+with material borders locked, and writes a gzipped `.ddm` (`public/models/`); `restyle.mjs` rewrites only the
+materials. At run time `src/scripts/gl/model.ts` loads it (DecompressionStream), groups triangles by material and
+wires the baked occlusion into three.js's lighting. The site draws meshes only: no full-screen noise shaders.
+
+**Sources for the prototypes.** Doom: the iron mask forged and put on hot (Fantastic Four Annual #2, 1964), hood,
+tunic, armour and cloak (Fantastic Four #5, 1962). Steve Rogers: cowl with the A and the wings, star, stripes
+(Captain America Comics #1, 1941), the round shield (Captain America Comics #2, 1941). Thor: winged helmet, the six
+discs, red cape, Mjolnir (Journey into Mystery #83, 1962), long hair and beard (Thor: God of Thunder, 2012).
+
+**Two styles prototyped, the visitor to choose** (`/lab/characters/`, `?s=statue|collectible`, recordings by
+`scripts/characters-record.mjs`, stills by `scripts/characters-frames.mjs`). The statue: realistic proportions,
+dark albedo with sheen and metal catching a warm key and two cool rims on black, the name huge and outlined
+behind, a slow orbit, a macro push to the face, the prop moment (Doom's mask moves out to show only shadow, the
+shield swings round from the back, Mjolnir rises and turns), callouts with sources. The collectible: a chunky
+vinyl figure on a field of its own colour, floating, the name typing in bottom left, the next one flying in as
+the colour wipes up. Budgets: statue about 190,000 triangles and 1.5 to 2 MB; collectible 90,000 and 0.85 MB.
+Shaders compile with `compileAsync` before a figure first appears. Lessons: shells make two surfaces and four
+times the triangles (cull what is buried); cloth must be dark with sheen, or rim lights flood it pale; Astro scopes
+a page's styles, so elements made by script need `is:global`; a hidden browser pane gives no animation frames (a
+stalled timeline there is not a bug); a portrait screen needs the camera further back (`1.25 / aspect`).
+
 ### Sound system
 
 All sound is synthesised live with the Web Audio API by `src/scripts/sound/` (oscillators, filtered noise,

@@ -1,0 +1,52 @@
+---
+// The 3D character prototypes, two styles to choose between (CLAUDE.md, "3D characters"). Not linked from the site.
+// ?s=statue|collectible chooses the style, ?c=<slug> the first character; window.__play() runs all three.
+import '../../styles/faces';
+import '@fontsource/courier-prime/400.css';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex" />
+    <title>Character lab | Doomsday Dossier</title>
+  </head>
+  <body data-style="statue">
+    <p class="back" data-backname aria-hidden="true"></p>
+    <canvas data-stage aria-label="A 3D character"></canvas>
+    <div class="shadow" data-shadow aria-hidden="true"></div>
+    <div class="notes" data-notes></div>
+    <p class="name" data-name></p>
+    <div class="wipe" data-wipe aria-hidden="true"></div>
+    <nav class="ui">
+      <span><button data-char="victor-von-doom">Doom</button><button data-char="steve-rogers">Steve Rogers</button><button data-char="thor">Thor</button></span>
+      <span><button data-style="statue">Statue</button><button data-style="collectible">Collectible</button></span>
+    </nav>
+    <style is:global>
+      :root { color-scheme: dark; }
+      html, body { margin: 0; height: 100%; overflow: hidden; }
+      body { background: #050606; color: #e7e4dc; font-family: 'Courier Prime', monospace; transition: background 0.6s; }
+      canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2; display: block; }
+      .back { position: fixed; z-index: 1; left: 0; right: 0; top: 50%; transform: translateY(-62%); margin: 0; text-align: center; font-size: clamp(64px, 15vw, 260px); line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(231, 228, 220, 0.16); white-space: nowrap; overflow: hidden; }
+      body[data-style='collectible'] .back { display: none; }
+      .name { position: fixed; z-index: 3; left: 4vw; bottom: 3vh; margin: 0; font-size: clamp(48px, 9vw, 150px); line-height: 0.86; color: #fff; text-transform: uppercase; }
+      body[data-style='statue'] .name { display: none; }
+      .shadow { position: fixed; z-index: 1; left: 50%; bottom: 13vh; width: 34vh; height: 5vh; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, 0.55), transparent); }
+      body[data-style='statue'] .shadow { display: none; }
+      .wipe { position: fixed; inset: 0; z-index: 4; transform: translateY(100%); pointer-events: none; }
+      .notes { position: fixed; inset: 0; z-index: 3; pointer-events: none; }
+      .note .dot { position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%; background: #e7e4dc; box-shadow: 0 0 10px #e7e4dc; }
+      .note .line { position: absolute; inset: 0; width: 100vw; height: 100vh; overflow: visible; }
+      .note line { stroke: rgba(231, 228, 220, 0.55); stroke-width: 1; }
+      .note .txt { position: absolute; left: 0; top: 0; width: min(260px, calc(100vw - 32px)); display: grid; gap: 4px; font-size: 12px; letter-spacing: 0.04em; line-height: 1.45; }
+      .note b { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+      .note em { font-style: normal; color: rgba(231, 228, 220, 0.5); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+      .ui { position: fixed; z-index: 5; top: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+      .ui button { font: inherit; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: inherit; background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(231, 228, 220, 0.3); border-radius: 99px; padding: 7px 12px; margin-right: 6px; cursor: pointer; }
+      body.rec .ui { display: none; }
+    </style>
+    <script>
+      if (new URLSearchParams(location.search).has('rec')) document.body.classList.add('rec');
+      import '../../scripts/lab/characters';
+    </script>
+  </body>
+</html>
