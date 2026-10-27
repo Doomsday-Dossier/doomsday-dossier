@@ -4,17 +4,18 @@
  * Hash routes: #targets, #t/<slug>. window.__start() skips the click for recordings.
  */
 import { Sound } from '../sound/engine';
-import { bootHum, tick, sweep, lock, decrypt } from '../sound/os';
+import { bootHum, tick, sweep, lock, decrypt, staticBurst, drone } from '../sound/os';
+import { glitchIn, radar, callouts, rings, crosshair, glyphColumns } from './hud';
 import { createScanner, type Scanner } from './scanner';
 import { timeLeft } from '../dossier/tokens';
 
 type T = {
-  slug: string; no: number; name: string; alias: string; real: string; team: string; actor: string; tile: string; photo: string; depth: string; head: [number, number];
+  slug: string; no: number; name: string; alias: string; real: string; team: string; actor: string; tile: string; photo: string; depth: string; head: [number, number]; bbox: [number, number, number, number];
   threat: number | null; grid: Record<string, number> | null; gridSource: string | null;
   brief: { who: string; powers: string; doomsday: string; last: string | null } | null; abilities: { name: string; detail: string }[];
   screen: { year: number; title: string; mcu: boolean }[]; first: string;
 };
-const DATA = JSON.parse(document.querySelector('[data-os]')!.textContent!) as { targets: T[]; home: { photo: string; depth: string; head: [number, number] } };
+const DATA = JSON.parse(document.querySelector('[data-os]')!.textContent!) as { targets: T[]; home: { photo: string; depth: string; head: [number, number]; bbox: [number, number, number, number] } };
 const $ = <E extends HTMLElement = HTMLElement>(s: string) => document.querySelector<E>(s)!;
 const sound = Sound.get();
 (window as any).__ddSound = sound;
@@ -60,6 +61,7 @@ async function boot() {
   for (const line of BOOT) { const span = document.createElement('div'); pre.append(span); await type(span, line, 140); await wait(90); }
   await wait(250);
   pre.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, fill: 'forwards' });
+  crosshair(); glyphColumns(); drone(sound);
   show('home');
 }
 async function start() { await sound.unlock(); boot(); }
@@ -68,11 +70,16 @@ $('[data-auth]').addEventListener('click', start);
 
 // THE VIEWS
 let fileScan: Scanner | null = null;
+let first = true;
 async function show(view: 'home' | 'targets' | 'file', slug?: string) {
   document.querySelectorAll<HTMLElement>('[data-view]').forEach((v) => { v.hidden = v.dataset.view !== view; });
   scrollTo(0, 0);
+  // every change of screen tears in like a signal (the first, out of the boot, too)
+  glitchIn(document.querySelector<HTMLElement>(`[data-view="${view === 'file' ? 'file' : view}"]`)!);
+  staticBurst(sound); first = false;
   if (view === 'home') {
     if (!homeScan) {
+      rings($('.h-scan'));
       homeScan = await createScanner($<HTMLCanvasElement>('[data-home-scan]'), DATA.home.photo, DATA.home.depth, DATA.home.head, 3.6);
       sweep(sound, 2.6);
       await homeScan.scan(2.6);
@@ -81,6 +88,13 @@ async function show(view: 'home' | 'targets' | 'file', slug?: string) {
       const feed = $('[data-feed]');
       setInterval(() => { const first = feed.firstElementChild as HTMLElement; first.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300 }).finished.then(() => { feed.append(first); first.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 400 }); tick(sound); }); }, 3200);
       lockOn($('[data-home-ret]'), homeScan.head());
+      // Doom's own callouts, from the comics
+      const [, y0, , y1] = DATA.home.bbox, [hx, hy] = DATA.home.head, sh = y1 - y0, hs = homeScan;
+      const face = hs.at(hx, hy + sh * 0.08), chest = hs.at(hx + 0.02, hy + sh * 0.3);
+      setTimeout(() => callouts($<SVGSVGElement>('[data-home-co]'), [
+        { ...face, k: 'The mask', t: 'Forged, worn hot · FF Annual #2' },
+        { ...chest, k: 'The armour', t: 'Iron under green · FF #5, 1962' },
+      ], $('.h-scan').clientWidth), 900);
     }
     document.querySelectorAll<HTMLElement>('.mod').forEach((m, i) => m.animate([{ opacity: 0, transform: 'translateX(16px)' }, { opacity: getComputedStyle(m).opacity, transform: 'none' }], { duration: 500, delay: i * 70, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }));
   }
@@ -99,7 +113,7 @@ async function openFile(slug: string) {
   $('[data-f-code]').textContent = `File T-${pad(t.no)} · ${t.slug.toUpperCase()}`;
   $('[data-f-no]').textContent = `Target ${pad(t.no)} of ${DATA.targets.length} · ${t.team}`;
   $('[data-f-status]').textContent = 'Scanning';
-  ['[data-f-id]', '[data-f-threat]', '[data-f-brief]', '[data-f-abil]', '[data-f-tx]'].forEach((s) => { $(s).innerHTML = ''; });
+  ['[data-f-id]', '[data-f-threat]', '[data-f-brief]', '[data-f-abil]', '[data-f-tx]', '[data-file-co]'].forEach((s) => { $(s).innerHTML = ''; });
   const nameEl = $('[data-f-name]'); nameEl.textContent = '';
   fileScan = await createScanner(canvas, t.photo, t.depth, t.head);
   sweep(sound, 2.2);
@@ -113,20 +127,22 @@ async function openFile(slug: string) {
   await fileScan.scan(2.2);
   fileScan.colour(1, 1.8);
   lockOn($('[data-file-ret]'), fileScan.head());
+  // callouts pinned to the figure: codename at the face, the first two abilities at the chest and a hand
+  { const [x0, y0, x1, y1] = t.bbox, [hx, hy] = t.head, sh = y1 - y0, sw = x1 - x0, fs = fileScan;
+    const pts = [
+      { ...fs.at(hx, hy + sh * 0.07), k: 'Codename', t: t.alias },
+      t.abilities[0] && { ...fs.at(hx + sw * 0.04, hy + sh * 0.3), k: 'Capability', t: t.abilities[0].name },
+      t.abilities[1] && { ...fs.at(x0 + sw * 0.22, hy + sh * 0.5), k: 'Capability', t: t.abilities[1].name },
+    ].filter(Boolean) as { x: number; y: number; k: string; t: string }[];
+    setTimeout(() => callouts($<SVGSVGElement>('[data-file-co]'), pts, canvas.clientWidth), 800); }
   $('[data-f-status]').textContent = 'Target locked · scan complete';
   // threat: Marvel's power grid, summed (6 to 42)
   const th = $('[data-f-threat]');
   if (t.grid && t.threat !== null) {
     const level = t.threat >= 30 ? ['Extreme', 'os-red'] : t.threat >= 22 ? ['High', 'os-amber'] : ['Elevated', 'os-hi'];
     th.innerHTML = `<div class="threat-big"><b class="${level[1]}">${t.threat}</b><span class="os-label">/ 42 · ${level[0]}</span></div>`;
-    const labels: Record<string, string> = { intelligence: 'Intelligence', strength: 'Strength', speed: 'Speed', durability: 'Durability', energyProjection: 'Energy', fightingSkills: 'Fighting' };
-    for (const [k, v] of Object.entries(t.grid)) {
-      const r = document.createElement('div'); r.className = 'grid-row';
-      r.innerHTML = `<span>${labels[k] ?? k}</span><span class="os-bar"><i style="transform:scaleX(0)"></i></span><span class="os-hi">${v}</span>`;
-      th.append(r);
-      r.querySelector('i')!.animate([{ transform: 'scaleX(0)' }, { transform: `scaleX(${v / 7})` }], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
-      tick(sound); await wait(90);
-    }
+    radar(th, t.grid);
+    for (let i = 0; i < 6; i++) setTimeout(() => tick(sound), i * 110);
     $('[data-f-tsrc]').textContent = 'Marvel power grid';
   } else th.innerHTML = '<span class="os-label">No power grid on record</span>';
   // the brief, decrypted line by line

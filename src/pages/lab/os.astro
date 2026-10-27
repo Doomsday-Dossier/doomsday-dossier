@@ -18,7 +18,7 @@ const targets = publishedOrder().map((slug, i) => {
   const threat = grid ? Object.values(grid as Record<string, number>).reduce((a, v) => a + v, 0) : null;
   return {
     slug, no: i + 1, name: heroName(slug), alias: r.alias, real: r.name, team: TEAMS.find((t) => t.id === c.team)?.name ?? '', actor: c.actor,
-    tile: pick2(p.cut.length ? p.cut : p.full, 640), photo: pick2(p.cut.length ? p.cut : p.full, 1280), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 1024), head: p.head ?? [0.5, 0.15],
+    tile: pick2(p.cut.length ? p.cut : p.full, 640), photo: pick2(p.cut.length ? p.cut : p.full, 1280), depth: p.cdepth ? u('/' + p.cdepth) : pick2(p.depth, 1024), head: p.head ?? [0.5, 0.15], bbox: p.bbox ?? [0, 0, 1, 1],
     threat, grid, gridSource: vs?.powerGrid?.source?.label ?? null,
     brief: b ? { who: b.who, powers: b.powers, doomsday: b.doomsday, last: b.lastSeen ? `${b.lastSeen.title} (${b.lastSeen.year}), as ${b.lastSeen.role}` : null } : null,
     abilities: (vs?.abilities ?? []).slice(0, 4).map((a: any) => ({ name: a.name, detail: a.detail })),
@@ -28,7 +28,7 @@ const targets = publishedOrder().map((slug, i) => {
 });
 // Doom on his throne: brighter armour than the hooded close-up, which stayed muddy once revealed
 const doomHome = photos2For('victor-von-doom').find((p) => p.n === 3) ?? photos2For('victor-von-doom')[0];
-const home = { photo: pick2(doomHome.cut, 1920), depth: doomHome.cdepth ? u('/' + doomHome.cdepth) : pick2(doomHome.depth, 1024), head: doomHome.head ?? [0.5, 0.2] };
+const home = { photo: pick2(doomHome.cut, 1920), depth: doomHome.cdepth ? u('/' + doomHome.cdepth) : pick2(doomHome.depth, 1024), head: doomHome.head ?? [0.5, 0.2], bbox: doomHome.bbox ?? [0, 0, 1, 1] };
 const teams = [...new Set(targets.map((t) => t.team))];
 // the home's system panel: the highest threat on file, and Marvel's confirmed milestones as the live feed
 const top = [...targets].filter((t) => t.threat !== null).sort((a, b) => b.threat! - a.threat!)[0];
@@ -73,6 +73,7 @@ const feed = OFFICIAL.milestones.slice(-8).map((m: any) => ({ date: m.date, text
       </aside>
       <div class="h-scan">
         <canvas data-home-scan aria-label="Victor von Doom, scanned"></canvas>
+        <svg class="co-layer" data-home-co aria-hidden="true"></svg>
         <div class="os-reticle" data-home-ret hidden><svg viewBox="0 0 120 120"><g class="spin" fill="none" stroke="#3dff8f" stroke-width="1.2"><circle cx="60" cy="60" r="44" stroke-dasharray="10 8" /></g><g fill="none" stroke="#3dff8f" stroke-width="1.5"><path d="M60 4v18M60 98v18M4 60h18M98 60h18" /><circle cx="60" cy="60" r="3" fill="#3dff8f" /></g></svg></div>
       </div>
       <div class="h-clock">
@@ -114,6 +115,7 @@ const feed = OFFICIAL.milestones.slice(-8).map((m: any) => ({ date: m.date, text
       <div class="f-main">
         <div class="f-scan">
           <canvas data-file-scan aria-label="The target, scanned"></canvas>
+          <svg class="co-layer" data-file-co aria-hidden="true"></svg>
           <div class="os-reticle" data-file-ret hidden><svg viewBox="0 0 120 120"><g class="spin" fill="none" stroke="#3dff8f" stroke-width="1.2"><circle cx="60" cy="60" r="44" stroke-dasharray="10 8" /></g><g fill="none" stroke="#3dff8f" stroke-width="1.5"><path d="M60 4v18M60 98v18M4 60h18M98 60h18" /><circle cx="60" cy="60" r="3" fill="#3dff8f" /></g></svg><span class="lock os-label os-hi">Target locked</span></div>
           <span class="f-status os-label os-hi" data-f-status>Scanning</span>
         </div>
@@ -131,7 +133,7 @@ const feed = OFFICIAL.milestones.slice(-8).map((m: any) => ({ date: m.date, text
       </div>
     </main>
 
-    <div class="os-scan" aria-hidden="true"></div><div class="os-flicker" aria-hidden="true"></div>
+    <div class="os-static" data-static aria-hidden="true"></div><div class="os-scan" aria-hidden="true"></div><div class="os-flicker" aria-hidden="true"></div>
     <script type="application/json" data-os is:inline set:html={JSON.stringify({ targets, home })} />
     <style is:global>
       .bar { position: fixed; z-index: 50; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 12px var(--os-margin); border-bottom: 1px solid var(--os-line); background: rgba(2, 5, 4, 0.85); backdrop-filter: blur(6px); font-size: 11px; letter-spacing: 0.16em; }

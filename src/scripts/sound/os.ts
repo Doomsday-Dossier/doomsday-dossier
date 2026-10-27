@@ -46,3 +46,25 @@ export function decrypt(s: Sound, t = s.ctx.currentTime + 0.01) {
   if (!live(s)) return;
   for (let i = 0; i < 9; i++) { const o = s.osc('square', 600 + i * 140 + Math.random() * 80, s.sfx); s.env(o.g.gain, t + i * 0.045, 0.04, 0.001, 0.03); o.o.start(t + i * 0.045); o.o.stop(t + i * 0.045 + 0.05); }
 }
+
+/** A signal tearing in: a short burst of static, high-passed, with a low thump under it. */
+export function staticBurst(s: Sound, t = s.ctx.currentTime + 0.005) {
+  if (!live(s)) return;
+  const v = s.noiseVoice('white', 'highpass', 1800, 0.7, s.sfx, false);
+  v.g.gain.setValueAtTime(0.0001, t); v.g.gain.exponentialRampToValueAtTime(0.16, t + 0.02); v.g.gain.exponentialRampToValueAtTime(0.0001, t + 0.32);
+  v.src.start(t, Math.random() * 2, 0.36);
+  const th = s.osc('sine', 90, s.sfx); th.o.frequency.exponentialRampToValueAtTime(45, t + 0.2); s.env(th.g.gain, t, 0.25, 0.003, 0.2); th.o.start(t); th.o.stop(t + 0.3);
+}
+
+/** The machine underneath everything: two detuned low tones through a slowly breathing filter. Returns a stop. */
+export function drone(s: Sound) {
+  if (!live(s)) return () => {};
+  const c = s.ctx, t = c.currentTime, g = c.createGain(), lp = c.createBiquadFilter(), lfo = c.createOscillator(), lg = c.createGain();
+  lp.type = 'lowpass'; lp.frequency.value = 260; lp.Q.value = 3;
+  lfo.frequency.value = 0.07; lg.gain.value = 120; lfo.connect(lg).connect(lp.frequency);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.09, t + 4);
+  lp.connect(g).connect(s.sfx); s.wet(g, 0.5, s.sfx);
+  const oscs = [41.2, 41.6, 82.4, 123.5].map((f) => { const o = c.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(lp); o.start(t); return o; });
+  lfo.start(t);
+  return () => { const n = c.currentTime; g.gain.cancelScheduledValues(n); g.gain.setTargetAtTime(0.0001, n, 0.4); setTimeout(() => { oscs.forEach((o) => o.stop()); lfo.stop(); }, 2500); };
+}
