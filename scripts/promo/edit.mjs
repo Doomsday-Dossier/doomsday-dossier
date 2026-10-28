@@ -1,4 +1,4 @@
-// The promo edit: cuts from the desktop and phone recordings (scripts/promo/capture.mjs + encode.mjs), the phone shown in
+// The promo edit: cuts from the frame-perfect desktop and phone takes (scripts/promo/vcapture.mjs + vencode.mjs), the phone shown in
 // a frame for the wide video, the end cards (cards.mjs), short audio fades at every cut and loudness brought up to a
 // social-video level. node scripts/promo/edit.mjs <promo dir>
 import { execFileSync } from 'node:child_process';
@@ -24,11 +24,11 @@ const finish = (n) => `${Array.from({ length: n }, (_, k) => `[v${k}][a${k}]`).j
 // THE WIDE CUT (16:9): the desktop tour, the phone in its frame, the end card
 {
   const D = path.join(dir, 'desktop-full.mp4'), P = path.join(dir, 'phone-full.mp4');
-  const segs = [[0, 4.4], [7.0, 23.0], [23.0, 31.5], [33.0, 35.5], [39.0, 48.0], [49.0, 59.5], [73.2, 81.0]];
+  const segs = [[0, 6.6], [7.0, 9.5], [15.0, 50.5], [51.3, 80.5], [82.6, 94.4]];
   let f = '', k = 0;
   for (const [a, b] of segs) f += cut(0, a, b, k++);
   // the phone, its screen rounded by the mask, on the backdrop, under the bezel
-  const pa = 11.0, pb = 21.0, pd = pb - pa;
+  const pa = 16.5, pb = 28.0, pd = pb - pa;
   f += `[1:v]trim=start=${pa}:end=${pb},setpts=PTS-STARTPTS,fps=30,scale=${S.w}:${S.h},format=rgba[pv];[4:v]format=gray,scale=${S.w}:${S.h}[pm];[pv][pm]alphamerge[pvm];` +
     `[2:v]fps=30,trim=0:${pd},setpts=PTS-STARTPTS[pbg];[pbg][pvm]overlay=${S.x}:${S.y}:shortest=1[pt];[pt][3:v]overlay=0:0:shortest=1,format=yuv420p,fade=t=in:st=0:d=0.3[v${k}];` +
     `[1:a]atrim=start=${pa}:end=${pb},asetpts=PTS-STARTPTS,afade=t=in:d=0.2,afade=t=out:st=${pd - 0.2}:d=0.2[a${k}];`;
@@ -43,7 +43,7 @@ const finish = (n) => `${Array.from({ length: n }, (_, k) => `[v${k}][a${k}]`).j
 // THE TALL CUT (9:16): the phone tour and the end card
 {
   const P = path.join(dir, 'phone-full.mp4');
-  const segs = [[0, 2.8], [4.5, 7.0], [8.6, 25.0], [25.0, 33.0], [35.5, 40.5]];
+  const segs = [[0, 4.6], [13.0, 65.4]];
   let f = '', k = 0;
   for (const [a, b] of segs) f += cut(0, a, b, k++);
   f += endPart(1, k++, 4);
