@@ -134,6 +134,8 @@ export async function home() {
         if (shown === k) world.pick(k); else world.select(k);
       }));
       world.setWill(will());
+      // recordings (scripts/promo) steer the world on a local server
+      if (/^(localhost|127\.)/.test(location.hostname)) (window as any).__bw = world;
       onLeave(() => world.dispose());
       return world;
     } catch { html.classList.add('no-gl'); return null; }
