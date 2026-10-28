@@ -21,7 +21,7 @@ const roster = publishedOrder().map((slug) => {
   return {
     slug, name, team: team.name, accent: accentOf(slug), font: d.font, weight: d.fontWeight, kicker: d.kicker, href: u(`/c/${slug}/`),
     photo: ph ? { src: pick2(ph.cut.length ? ph.cut : ph.full, 1280), card: pick2(ph.full, 1280), focus: ph.cut.length ? '50% 100%' : ph.focusM, cut: ph.cut.length > 0 } : null,
-    scan: sp ? { photo: sp.photo, depth: sp.depth, head: sp.head } : null,
+    scan: sp ? { photo: sp.photo, depth: sp.depth, head: sp.head, bbox: sp.bbox } : null,
   };
 });
 const site = (Astro.site?.host ?? 'doomsday-dossier.github.io') + u('/quiz/');

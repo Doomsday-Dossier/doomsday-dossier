@@ -107,7 +107,7 @@ export function crosshair(host: HTMLElement = document.body) {
     const over = (e.target as HTMLElement).closest('a, button, select, input, summary, canvas[data-bw]');
     el.classList.toggle('on', !!over || !!label);
     el.classList.toggle('lock', !!label);
-    t.textContent = label || (over ? 'SELECT' : `X${String(e.clientX).padStart(4, '0')} Y${String(e.clientY).padStart(4, '0')}`);
+    t.textContent = label || (over ? 'SELECT' : `X${String(Math.round(e.clientX)).padStart(4, '0')} Y${String(Math.round(e.clientY)).padStart(4, '0')}`);
   }, { passive: true });
 }
 

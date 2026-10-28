@@ -85,7 +85,7 @@ export async function file() {
   showVerdict(reign().verdicts[F.slug]);
   if (!canScan()) { document.querySelector('[data-acq]')?.classList.add('gone'); html.classList.add('no-scan'); status.textContent = 'Target on file'; return; }
   let sc: Scanner;
-  try { sc = await createScanner(host.querySelector<HTMLCanvasElement>('[data-scan]')!, F.photo, F.depth, F.head); }
+  try { sc = await createScanner(host.querySelector<HTMLCanvasElement>('[data-scan]')!, F.photo, F.depth, F.head, 2.4, F.bbox); }
   catch (e) { if (/^(localhost|127\.)/.test(location.hostname)) console.warn('scanner', e); document.querySelector('[data-acq]')?.classList.add('gone'); html.classList.add('no-scan'); status.textContent = 'Target on file'; return; }
   document.querySelector('[data-acq]')?.classList.add('gone');
   if (gone) { sc.dispose(); return; }

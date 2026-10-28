@@ -94,8 +94,8 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
   .cq-btns button:hover { border-color: var(--os-line-hi); }
   .ch-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
   .vd { display: grid; gap: 8px; }
-  .vd-g { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px; align-items: center; }
-  .vd-g b { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .vd-g { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px; align-items: center; }
+  .vd-g b { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
   .vd-g div { display: flex; flex-wrap: wrap; gap: 4px; }
   .vd-g img { width: 30px; height: 30px; object-fit: cover; object-position: 50% 15%; border: 1px solid var(--os-line); }
   .vd-more { display: inline-block; margin-top: 10px; text-decoration: none; }

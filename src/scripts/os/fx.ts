@@ -26,17 +26,25 @@ export async function typeIn(el: HTMLElement, text: string, cps = 90, ticks = tr
 
 const GLYPHS = '░▒▓█▚▞▙▟ΔΞΣΨΩ#%&@$0123456789';
 /** Text decrypted in place: every character starts as noise and settles left to right over `ms`. */
+// the true text of an element being decrypted, so a second decrypt over it (or a caller reading textContent mid-way)
+// never takes the noise for the text; and the latest run, so only one writes at a time
+const TRUE = new WeakMap<HTMLElement, string>(), RUN = new WeakMap<HTMLElement, number>();
 export function decryptIn(el: HTMLElement, text = el.textContent ?? '', ms = 900) {
+  // called again mid-way with the element's own (scrambled) text: carry on toward the true text
+  if (TRUE.has(el) && text === el.textContent) text = TRUE.get(el)!;
   if (reduced()) { el.textContent = text; return Promise.resolve(); }
+  TRUE.set(el, text);
+  const run = (RUN.get(el) ?? 0) + 1; RUN.set(el, run);
   return new Promise<void>((res) => {
     const s = performance.now();
     const frame = (now: number) => {
+      if (RUN.get(el) !== run) { res(); return; }
       const k = Math.min(1, (now - s) / ms), solid = Math.floor(text.length * k);
       let out = text.slice(0, solid);
       // only a short band of noise ahead of the settled text, so long paragraphs stay calm
       for (let i = solid; i < Math.min(text.length, solid + 14); i++) out += text[i] === ' ' ? ' ' : GLYPHS[(Math.random() * GLYPHS.length) | 0];
       el.textContent = out;
-      if (k < 1) requestAnimationFrame(frame); else { el.textContent = text; res(); }
+      if (k < 1) requestAnimationFrame(frame); else { el.textContent = text; TRUE.delete(el); res(); }
     };
     requestAnimationFrame(frame);
   });
@@ -48,6 +56,9 @@ export const RETICLE = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="
 export function lockOn(ret: HTMLElement, at: { x: number; y: number }, onLocked?: () => void) {
   ret.hidden = false; ret.classList.remove('locked');
   ret.style.left = `${at.x}px`; ret.style.top = `${at.y}px`;
+  // the label reads on whichever side of the reticle has room
+  const room = (ret.parentElement?.clientWidth ?? innerWidth) - at.x;
+  ret.classList.toggle('lbl-left', room < 170);
   const done = () => { ret.classList.add('locked'); lock(sound()); onLocked?.(); };
   if (reduced()) { done(); return; }
   ret.animate([{ transform: 'scale(2.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }], { duration: 700, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });

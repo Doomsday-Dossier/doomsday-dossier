@@ -14,7 +14,7 @@ import { lockOn, decryptIn, wait, reduced, sound, pad, RETICLE } from '../fx';
 import { log } from '../reign';
 
 type Side = 'a' | 'b';
-type T = { slug: string; name: string; no: number; grid: Record<string, number> | null; scan: { photo: string; depth: string; head: [number, number] } | null };
+type T = { slug: string; name: string; no: number; grid: Record<string, number> | null; scan: { photo: string; depth: string; head: [number, number]; bbox?: [number, number, number, number] } | null };
 
 export function combat() {
   const page = document.querySelector<HTMLElement>('[data-versus]'), raw = document.getElementById('vs-data');
@@ -42,7 +42,7 @@ export function combat() {
     const still = () => { box.classList.add('still'); status.textContent = 'Target on file'; };
     if (!t.scan || !scannable) { still(); return; }
     let sc: Scanner;
-    try { [sc] = await Promise.all([createScanner(box.querySelector('canvas')!, t.scan.photo, t.scan.depth, t.scan.head), wait(rm ? 0 : delay)]); }
+    try { [sc] = await Promise.all([createScanner(box.querySelector('canvas')!, t.scan.photo, t.scan.depth, t.scan.head, 2.4, t.scan.bbox), wait(rm ? 0 : delay)]); }
     catch (e) { if (/^(localhost|127\.)/.test(location.hostname)) console.warn('scanner', e); if (st.gen === g) still(); return; }
     if (gone || st.gen !== g) { sc.dispose(); return; }
     st.sc = sc;
