@@ -15,7 +15,7 @@ const teams = new Set(all.map((t) => t.team)).size;
 // each domain's face: the picked photo, full frame, cropped around the head in the browser
 const world = all.map((t) => {
   const ph = photos2For(t.slug), pk = ph.find((x) => x.n === PICK[t.slug]) ?? ph[0];
-  return { slug: t.slug, no: t.no, name: t.name, team: t.team, teamId: t.teamId, href: t.href, face: { src: pick2(pk.full, 640), head: pk.head ?? [0.5, 0.2], aspect: pk.w / pk.h } };
+  return { slug: t.slug, no: t.no, name: t.name, team: t.team, teamId: t.teamId, href: t.href, tile: t.tile, face: { src: pick2(pk.full, 640), head: pk.head ?? [0.5, 0.2], aspect: pk.w / pk.h } };
 });
 ---
 <OS title="DOOM-OS" page="home" description="An unofficial fan briefing for Avengers: Doomsday (18 December 2026), built as Doctor Doom's own surveillance system: all 29 confirmed characters as the domains of Battleworld, every appearance, and fan tools.">
@@ -33,9 +33,13 @@ const world = all.map((t) => {
   <div class="home" data-home>
     <h1 class="sr">Doomsday Dossier: DOOM-OS. Battleworld, 29 domains.</h1>
     <div class="bw-stage" data-bw-stage>
+      <div class="acq" data-acq aria-hidden="true"><i></i><span>Gathering the fragments</span></div>
       <canvas class="bw" data-bw aria-label="Battleworld: a planet of 29 domains, one for each target. Drag to turn it; choose a domain to open its file."></canvas>
-      <div class="bw-tag" data-bw-tag hidden><i data-bw-no></i><b data-bw-name></b><span data-bw-team></span><em data-bw-go>Enter the domain</em></div>
-      <p class="bw-title os-label" aria-hidden="true"><b class="os-hi">Battleworld</b> &middot; {all.length} domains under His Majesty &middot; drag to turn</p>
+      <div class="bw-tag" data-bw-tag hidden><i data-bw-no></i><b data-bw-name></b><span data-bw-team></span><button type="button" class="bw-go" data-bw-go>Enter the domain</button></div>
+      <div class="bw-strip" data-bw-strip role="group" aria-label="Choose a domain">
+        {world.map((w) => <button type="button" aria-pressed="false"><img src={w.tile} alt="" loading="lazy" /><span>{w.name}</span></button>)}
+      </div>
+      <p class="bw-title os-label" aria-hidden="true"><b class="os-hi">Battleworld</b> &middot; {all.length} domains under His Majesty &middot; drag to turn &middot; tap a domain</p>
     </div>
 
     <aside class="sys" data-os-panel>
@@ -83,7 +87,7 @@ const world = all.map((t) => {
   .boot:empty { display: none; }
   html.os-booting .home > :not(.bw-stage) { visibility: hidden; }
 
-  .home { position: relative; min-height: calc(100svh - 112px); display: grid; grid-template-columns: minmax(250px, 300px) minmax(0, 1fr) minmax(250px, 300px); grid-template-rows: 1fr auto; gap: var(--os-gap); align-items: center; }
+  .home { position: relative; min-height: calc(100svh - 112px); display: grid; grid-template-columns: clamp(250px, 17vw, 400px) minmax(0, 1fr) clamp(250px, 17vw, 400px); grid-template-rows: 1fr auto; gap: var(--os-gap); align-items: center; }
   .bw-stage { position: absolute; z-index: 0; top: -16px; bottom: 0; left: calc(-1 * var(--os-margin) - 30px); right: calc(-1 * var(--os-margin) - 30px); }
   .bw { width: 100%; height: 100%; display: block; }
   .bw-title { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); white-space: nowrap; pointer-events: none; }
@@ -97,6 +101,23 @@ const world = all.map((t) => {
   .bw-tag em { font-style: normal; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); margin-top: 3px; }
   .bw-tag.left { transform: translate(calc(-100% - 26px), -50%); border-left: 0; border-right: 2px solid var(--os-green); text-align: right; }
   .bw-tag.left::before { right: auto; left: 100%; }
+  .bw-go { font: inherit; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); background: none; border: 0; padding: 0; margin-top: 3px; text-align: inherit; }
+  /* touch and narrow screens: the card docks above the strip of faces, with a real Enter button */
+  .bw-tag.dock { left: 50%; top: auto; bottom: 104px; transform: translateX(-50%); pointer-events: auto; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; column-gap: 16px; align-items: center; width: min(92%, 440px); box-sizing: border-box; padding: 12px 12px 12px 16px; border: 1px solid var(--os-line-hi); border-left: 3px solid var(--os-green); background: rgba(2, 12, 7, 0.94); white-space: normal; }
+  .bw-tag.dock::before { display: none; }
+  .bw-tag.dock b { font-size: clamp(18px, 5.6vw, 26px); overflow-wrap: anywhere; }
+  .bw-tag.dock > :not(.bw-go) { grid-column: 1; min-width: 0; }
+  .bw-tag.dock .bw-go { grid-column: 2; grid-row: 1 / span 3; margin: 0; min-height: 48px; padding: 0 16px; border: 1px solid var(--os-green); background: var(--os-green); color: #021008; font-weight: 700; letter-spacing: 0.16em; cursor: pointer; }
+  .bw-strip { display: none; }
+  @media (max-width: 1099px), (pointer: coarse) {
+    .bw-strip { position: absolute; left: 0; right: 0; bottom: 6px; z-index: 3; display: flex; gap: 8px; overflow-x: auto; padding: 6px var(--os-margin) 10px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .bw-strip::-webkit-scrollbar { display: none; }
+    .bw-strip button { flex: 0 0 auto; width: 66px; display: grid; gap: 4px; justify-items: center; padding: 0; background: none; border: 0; color: var(--os-dim); font: 9px var(--os-mono); letter-spacing: 0.06em; text-transform: uppercase; scroll-snap-align: center; cursor: pointer; }
+    .bw-strip img { width: 56px; height: 56px; object-fit: cover; object-position: 50% 12%; border: 1px solid var(--os-line); border-radius: 50%; background: rgba(61, 255, 143, 0.06); filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(2.2) brightness(0.9); transition: filter 0.25s, border-color 0.25s, transform 0.25s; }
+    .bw-strip span { max-width: 66px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .bw-strip button[aria-pressed='true'] { color: var(--os-green); }
+    .bw-strip button[aria-pressed='true'] img { filter: none; border: 2px solid var(--os-green); transform: scale(1.08); box-shadow: 0 0 14px rgba(61, 255, 143, 0.5); }
+  }
   .sys, .modules, .h-clock { position: relative; z-index: 2; }
   .h-clock { pointer-events: none; }
   .sys { grid-column: 1; grid-row: 1; align-self: center; display: grid; gap: 12px; font-size: 11.5px; }
@@ -128,7 +149,7 @@ const world = all.map((t) => {
   html.no-gl .bw-stage { display: none; }
   @media (max-width: 1100px) {
     .home { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto; min-height: 0; }
-    .bw-stage { position: relative; grid-row: 1; top: 0; left: auto; right: auto; margin: 0 calc(-1 * var(--os-margin)); height: 62svh; }
+    .bw-stage { position: relative; grid-row: 1; top: 0; left: auto; right: auto; margin: 0 calc(-1 * var(--os-margin)); height: 74svh; min-height: 520px; }
     .bw-title { top: 6px; font-size: 9.5px; }
     .h-clock { grid-row: 2; }
     .modules { grid-column: 1; grid-row: 3; grid-template-columns: 1fr 1fr; }

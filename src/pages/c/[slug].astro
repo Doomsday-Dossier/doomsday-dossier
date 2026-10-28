@@ -106,6 +106,7 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   <section class="f-main">
     <div class="f-scan" data-f-scan>
       <img class="f-still" src={scan.photo} alt={`${name}, scanned`} />
+      <div class="acq" data-acq aria-hidden="true"><i></i><span>Acquiring signal</span></div>
       <canvas data-scan aria-hidden="true"></canvas>
       <svg class="co-layer" data-co aria-hidden="true"></svg>
       <div class="os-reticle" data-ret hidden><Fragment set:html={`<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill="none" stroke="#3dff8f" stroke-width="1.2"><circle cx="60" cy="60" r="44" stroke-dasharray="10 8" /></g><g fill="none" stroke="#3dff8f" stroke-width="1.5"><path d="M60 4v18M60 98v18M4 60h18M98 60h18" /><circle cx="60" cy="60" r="3" fill="#3dff8f" /></g></svg>`} /><span class="lock os-label os-hi">Target locked</span></div>
@@ -310,6 +311,15 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   .nextf b { display: block; font-size: clamp(26px, 4vw, 48px); }
   .nextf > i { font-style: normal; font-size: 40px; color: var(--os-green); }
   .nextf:hover .nextf-img img { filter: none; }
+  @media (min-width: 1600px) {
+    .f-main { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    .f-read { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+    .f-read > .os-label, .f-read > .f-name { grid-column: 1 / -1; }
+    .f-read > .verdict { grid-column: 2; }
+    .f-read > :nth-child(3) { grid-row: span 2; }
+    .f-scan { height: min(80svh, 900px); }
+    .st img { height: 340px; }
+  }
   @media (max-width: 1000px) {
     .f-main, .f-two { grid-template-columns: minmax(0, 1fr); }
     .f-scan { position: relative; top: 0; height: 64svh; }

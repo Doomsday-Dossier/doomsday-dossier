@@ -1,6 +1,7 @@
 /**
  * The heroes trace you back (a game, labelled so; nothing here is about the film). Every target file His Majesty
- * opens in a session lets the heroes trace the access a little further: a counter-trace meter climbs in the corner.
+ * opens in a session lets the heroes trace the access a little further: a six-step meter climbs in the bar (a line
+ * across the dock on phones) and a short message slides in, then out of the way.
  * At six files they break in: the screen floods with the colour of a target he examined, their name glitching over
  * it, a klaxon; a moment later Doom's countermeasure wipes them out in green and the breach goes in the royal log.
  * Then the trace starts again. Reduced motion: the alert and the log only, no flood.
@@ -15,40 +16,48 @@ const read = (): { n: number; seen: string[] } => { try { return JSON.parse(sess
 const write = (v: { n: number; seen: string[] }) => { try { sessionStorage.setItem(KEY, JSON.stringify(v)); } catch { /* private mode */ } };
 
 export function trace(index: T[]) {
-  const panel = document.querySelector<HTMLElement>('[data-trace]');
-  if (!panel) return;
+  const meter = document.querySelector<HTMLElement>('[data-trace-meter]'), toast = document.querySelector<HTMLElement>('[data-trace-toast]');
+  if (!meter || !toast) return;
   const by = new Map(index.map((t) => [t.slug, t]));
-  const bar = panel.querySelector<HTMLElement>('i')!, pct = panel.querySelector<HTMLElement>('b')!;
+  const html = document.documentElement, segs = [...meter.querySelectorAll('i')];
   const show = (n: number) => {
-    const k = (n % EVERY) / EVERY;
-    panel.hidden = n === 0;
-    bar.style.transform = `scaleX(${k})`; pct.textContent = `${Math.round(k * 100)}%`;
-    panel.classList.toggle('hot', k >= 0.66);
+    const step = n % EVERY, k = step / EVERY;
+    meter.hidden = n === 0;
+    segs.forEach((g, i) => g.classList.toggle('on', i < step));
+    document.querySelectorAll('[data-trace-pct]').forEach((p) => { p.textContent = `${Math.round(k * 100)}%`; });
+    html.style.setProperty('--trace', String(k));
+    html.dataset.trace = n === 0 ? '' : k >= 0.66 ? 'hot' : 'on';
   };
   show(read().n);
-  let newsT = 0;
+  // the message slides in for a few seconds each time the trace climbs, then gets out of the way
+  let t = 0;
+  const say = (msg: string) => {
+    toast.querySelector('[data-trace-msg]')!.textContent = msg;
+    toast.hidden = false; toast.classList.remove('out');
+    clearTimeout(t); t = window.setTimeout(() => { toast.classList.add('out'); t = window.setTimeout(() => { toast.hidden = true; }, 400); }, 4200);
+  };
   document.addEventListener('astro:page-load', () => {
     if (document.body.dataset.page !== 'file') return;
     const slug = location.pathname.split('/').filter(Boolean).pop() ?? '';
     const st = read();
     st.n++; if (slug !== 'victor-von-doom' && !st.seen.includes(slug)) st.seen.push(slug);
     write(st); show(st.n);
-    panel.classList.add('news'); clearTimeout(newsT); newsT = window.setTimeout(() => panel.classList.remove('news'), 5000);
-    if (!panel.hidden && !matchMedia('(prefers-reduced-motion: reduce)').matches) panel.animate([{ opacity: 0.3 }, { opacity: 1 }, { opacity: 0.5 }, { opacity: 1 }], { duration: 500, easing: 'steps(4, end)' });
+    const left = EVERY - (st.n % EVERY);
+    say(left === EVERY ? 'They are in. Countermeasures standing by.' : `The heroes are tracing Your Majesty's access. ${left} more file${left > 1 ? 's' : ''} and they break in.`);
     if (st.n % EVERY === 0 && st.seen.length) {
       const who = by.get(st.seen[Math.floor(Math.random() * st.seen.length)]);
-      if (who) setTimeout(() => breach(who, panel), 2600);
+      if (who) setTimeout(() => breach(who, say), 2600);
     }
   });
 }
 
-function breach(t: T, panel: HTMLElement) {
+function breach(t: T, say: (m: string) => void) {
   const s = Sound.get();
   alarm(s);
   const name = t.name.toUpperCase();
   breached(t.name);
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    panel.querySelector('span')!.textContent = `${name} breached the network. Repelled.`;
+    say(`${name} breached the network. Repelled.`);
     return;
   }
   const el = document.createElement('div');

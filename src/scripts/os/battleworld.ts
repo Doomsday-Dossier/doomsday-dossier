@@ -242,7 +242,8 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
   const resize = () => {
     const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false); cam.aspect = w / h;
-    dist = cam.aspect < 0.8 ? 5.6 / Math.max(0.55, cam.aspect) * 0.8 : 5.6;
+    // phones pull back so the whole world fits; big monitors bring it closer
+    dist = cam.aspect < 0.8 ? 5.6 / Math.max(0.55, cam.aspect) * 0.8 : w > 1700 ? 4.9 : 5.6;
     cam.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(resize); ro.observe(canvas); resize();
@@ -265,15 +266,15 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     const v = centre[i].clone().multiplyScalar(top[i] + lift[i]).applyMatrix4(world.matrixWorld).project(cam);
     return { x: (v.x * 0.5 + 0.5) * canvas.clientWidth, y: (-v.y * 0.5 + 0.5) * canvas.clientHeight, front: v.z < 1 && centre[i].clone().applyQuaternion(world.quaternion).dot(cam.position.clone().normalize()) > 0.15 };
   };
-  const setHover = (i: number | null) => {
-    if (i === hover || picked !== null) return;
+  const setHover = (i: number | null, force = false) => {
+    if ((i === hover && !force) || picked !== null) return;
     hover = i;
     liftTo.fill(0); warmTo.fill(0);
     if (i !== null) { liftTo[i] = 0.09; warmTo[i] = 1; }
     canvas.style.cursor = i !== null ? 'pointer' : 'grab';
     opts.onHover?.(i, i !== null ? screenOf(i) : null);
   };
-  const down = (e: PointerEvent) => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); };
+  const down = (e: PointerEvent) => { turn = null; dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); };
   const move = (e: PointerEvent) => {
     if (dragging) {
       const dx = e.clientX - lx, dy = e.clientY - ly; moved += Math.abs(dx) + Math.abs(dy); lx = e.clientX; ly = e.clientY;
@@ -287,13 +288,28 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     if (moved > 8) return;
     const i = hit(e.clientX, e.clientY);
     if (i === null) { if (e.pointerType !== 'mouse') setHover(null); return; }
-    // on touch the first tap chooses, the second opens
-    if (e.pointerType !== 'mouse' && hover !== i) { setHover(i); return; }
+    // on touch the first tap chooses (and turns the domain to face the visitor), the second opens
+    if (e.pointerType !== 'mouse' && hover !== i) { select(i); return; }
     pick(i);
   };
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointermove', move); canvas.addEventListener('pointerup', up);
-  canvas.addEventListener('pointerleave', () => { if (!dragging) setHover(null); });
+  // a lifted finger also "leaves": only a mouse leaving lets the domain go
+  canvas.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse' && !dragging) setHover(null); });
+  canvas.addEventListener('pointercancel', () => { dragging = false; });
   canvas.style.touchAction = 'pan-y'; canvas.style.cursor = 'grab';
+
+  // selecting a domain (a tap, or its face in the strip below): the planet stops and turns it to face the visitor
+  let turn: { t0: number; from: THREE.Quaternion; to: THREE.Quaternion } | null = null;
+  const facing = (i: number) => {
+    const want = cam.position.clone().normalize(), have = centre[i].clone().applyQuaternion(world.quaternion);
+    return new THREE.Quaternion().setFromUnitVectors(have, want).multiply(world.quaternion);
+  };
+  const select = (i: number) => {
+    if (picked !== null) return;
+    vy = 0; vx = 0;
+    turn = { t0: performance.now(), from: world.quaternion.clone(), to: facing(i) };
+    setHover(i, true);
+  };
 
   // choosing a domain: the planet turns it to face the visitor, it rises, and the camera dives into it
   let dive: { t0: number; from: THREE.Quaternion; to: THREE.Quaternion; i: number } | null = null;
@@ -319,10 +335,14 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     (halo.material as THREE.SpriteMaterial).opacity = u.uForm.value;
     // the core kindles as the shards gather round it
     core.scale.setScalar(0.08 + 0.92 * Math.min(1, u.uForm.value * 1.6)); core.visible = u.uForm.value > 0.01;
-    if (!dragging && !dive) {
+    if (turn && !dragging && !dive) {
+      const k = Math.min(1, (now - turn.t0) / (opts.reduced ? 1 : 900)), e = 1 - Math.pow(1 - k, 3);
+      world.quaternion.slerpQuaternions(turn.from, turn.to, e);
+      if (k >= 1) turn = null;
+    } else if (!dragging && !dive) {
       world.rotation.y += vy; world.rotation.x += vx; vx *= 0.92;
       vy += ((hover !== null ? 0 : opts.reduced ? 0 : 0.0016) - vy) * 0.02;
-      world.rotation.x += (0.3 - world.rotation.x) * 0.01;
+      if (hover === null) world.rotation.x += (0.3 - world.rotation.x) * 0.01;
     }
     for (let i = 0; i < N; i++) { lift[i] += (liftTo[i] - lift[i]) * 0.12; warm[i] += (warmTo[i] - warm[i]) * 0.1; }
     for (const r of rings) r.rotation.y += dt * 0.05;
@@ -345,6 +365,8 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     setWill(w: number) { u.uWill.value = w; },
     /** Lifts a domain from outside (the domain list beside the planet). */
     hover(i: number | null) { setHover(i); },
+    /** Selects a domain from outside: it turns to face the visitor and lifts, without diving. */
+    select,
     pick,
     screenOf,
     dispose() {

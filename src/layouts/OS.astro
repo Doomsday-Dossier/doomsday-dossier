@@ -6,10 +6,11 @@ import { ClientRouter } from 'astro:transitions';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/700.css';
 import '@fontsource-variable/tektur';
+import '@fontsource-variable/inter-tight';
 import '../styles/os.css';
-import { publishedOrder, heroName, getResearch, castFor, TEAMS, u } from '../data/site';
-import { photos2For, pick2, accentOf } from '../data/v2';
-import { MODULES } from '../data/os';
+import { u } from '../data/site';
+import { accentOf } from '../data/v2';
+import { MODULES, targets } from '../data/os';
 
 interface Props { title: string; description: string; page: string; module?: string }
 const { title, description, page, module } = Astro.props;
@@ -18,10 +19,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
 // the command line's index: every target and every module
 const index = {
-  targets: publishedOrder().map((slug, i) => {
-    const r = getResearch(slug)!, c = castFor(slug)!, p = photos2For(slug)[0];
-    return { slug, no: i + 1, name: heroName(slug), alias: r.alias, team: TEAMS.find((t) => t.id === c.team)?.name ?? '', actor: c.actor, href: u(`/c/${slug}/`), accent: accentOf(slug), tile: p ? pick2(p.cut.length ? p.cut : p.full, 200) : '' };
-  }),
+  // threat and first appearance feed the hover previews (scripts/os/preview.ts)
+  targets: targets().map((t) => ({ slug: t.slug, no: t.no, name: t.name, alias: t.alias, team: t.team, actor: t.actor, href: t.href, accent: accentOf(t.slug), tile: t.tile, threat: t.threat, first: t.first })),
   modules: [{ id: 'home', no: '00', name: 'Command', short: 'Home', href: u('/'), line: 'Doom-OS home' }, ...MODULES.map((m) => ({ ...m, href: u(m.href) })),
     { id: 'about', no: '--', name: 'Sources and rules', short: 'About', href: u('/about/'), line: 'How this archive is sourced' },
     { id: 'credits', no: '--', name: 'Image credits', short: 'Credits', href: u('/credits/'), line: 'Every photo, by target' }],
@@ -75,6 +74,7 @@ const index = {
         {MODULES.map((m) => <a href={u(m.href)} data-mod={m.id}><i>{m.no}</i>{m.short}</a>)}
       </nav>
       <div class="bar-right">
+        <span class="trc" data-trace-meter hidden title="Counter-trace: a game, not part of the film"><span>Trace</span><i></i><i></i><i></i><i></i><i></i><i></i><b data-trace-pct>0%</b></span>
         <span class="bar-clock os-label" title="Time to Avengers: Doomsday, 18 December 2026">T-<b data-clock-mini>--</b></span>
         <button class="bar-btn" data-cmd-open aria-haspopup="dialog" title="Command line (press /)"><span aria-hidden="true">&gt;_</span><em class="hide-s">Command</em><em class="show-s">Menu</em></button>
         <button class="bar-btn" data-sound aria-pressed="false" title="Sound"><i class="snd" aria-hidden="true"></i><span class="sr">Sound on</span></button>
@@ -109,7 +109,18 @@ const index = {
       </div>
     </footer>
 
-    <div class="trace" data-trace hidden transition:persist="os-trace" aria-live="polite"><p class="os-label">Counter-trace <b>0%</b> <em>Game</em></p><div class="trace-bar"><i></i></div><span>The heroes are tracing Your Majesty's access</span></div>
+    <!-- the counter-trace's message slides in when it climbs (scripts/os/trace.ts); the meter itself lives in the bar and the dock -->
+    <div class="trace-toast" data-trace-toast hidden transition:persist="os-trace" aria-live="polite"><p><b>Counter-trace</b><span data-trace-pct>0%</span><em>A game</em></p><span data-trace-msg>The heroes are tracing Your Majesty's access.</span><i class="tt-bar"><i></i></i></div>
+    <!-- phones: the modules within thumb reach -->
+    <nav class="dock" aria-label="Modules" transition:persist="os-dock" data-os-dock>
+      <i class="dock-trace" aria-hidden="true"></i>
+      <a href={u('/')} data-mod="home"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><ellipse cx="12" cy="12" rx="11" ry="3.6" transform="rotate(-18 12 12)"/></svg><span>Home</span></a>
+      <a href={u('/targets/')} data-mod="targets"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/></svg><span>Targets</span></a>
+      <a href={u('/timeline/')} data-mod="timeline"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="8" cy="9" rx="5.5" ry="2.6"/><ellipse cx="16" cy="9" rx="5.5" ry="2.6"/><ellipse cx="12" cy="16" rx="6.5" ry="3"/></svg><span>Archive</span></a>
+      <a href={u('/versus/')} data-mod="versus"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5l7 7-7 7M21 5l-7 7 7 7"/></svg><span>Combat</span></a>
+      <a href={u('/quiz/')} data-mod="quiz"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/><circle cx="12" cy="12" r="1.6"/></svg><span>Profiler</span></a>
+      <button type="button" data-cmd-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>All</span></button>
+    </nav>
     <svg class="shatter" data-shatter aria-hidden="true" transition:persist="os-shatter"></svg>
     <div class="os-static" data-static aria-hidden="true" transition:persist="os-static"></div>
     <div class="os-scan" aria-hidden="true" transition:persist="os-scan"></div>

@@ -100,6 +100,18 @@ inside the new pages (their DOM hooks were kept).
 | Shard burst | The new page arriving | Pink noise band-pass falling 2400 to 360 Hz |
 | Klaxon | A hero breaching the network | Two-tone square 660/440 through a band-pass, four times |
 
+**Phone, tablet and big-screen pass (28 October 2026, the visitor's choices).** Battleworld on touch: phones send a
+pointerleave after every tap, which deselected the shard; only a mouse leaving deselects now. A tap selects and turns
+the domain to face the visitor (`select`), the card docks above a strip of all 29 faces with an Enter button. Phones
+get a bottom dock (Home, Targets, Archive, Combat, Profiler, All) and one-row sideways filters; the counter-trace is a
+six-cell meter in the bar (a line along the dock on phones) with a message that slides in and away, never over content;
+the predictions readout is a slim bar above the dock with Details; combat puts the picker first as a swipeable row and
+the feats as swipeable cards. Big monitors: the screen widens to 1880 px (2240 px from 2200 px wide), files go three
+columns. Everyone: Inter Tight for reading text, larger type and buttons (44 px tap targets on touch), brighter dim text,
+a red-cyan fringe on big headings, titles decode on arrival, hover previews of any target link (`os/preview.ts`),
+images scan while loading and fade in, scanners show "acquiring" rings. Checks: `scripts/phone-probe.mjs` (taps the
+planet, full-page phone stills), `scripts/sizes-shots.mjs` (768, 1024, 1920, 2560), `scripts/os-check.mjs`.
+
 **Lessons.** Python run from a Bash heredoc turned `\\n` inside a replacement into real newlines and broke a TS string:
 edit escaped strings with the Edit tool. WebGL2 contexts reject GLSL 1.00's derivatives extension (`fwidth` failed
 silently into the no-WebGL fallback): write GLSL 3.00 for WebGL2. In the in-app browser pane the first screenshot after
