@@ -18,7 +18,7 @@ import { createScanner, canScan, type Scanner } from '../scanner';
 import { cameraScan, canCamera, type CamScan } from '../camera';
 import { lockOn, typeIn, wait, reduced, sound } from '../fx';
 
-type Entry = { slug: string; name: string; href: string; scan: { photo: string; depth: string; head: [number, number] } | null };
+type Entry = { slug: string; name: string; href: string; scan: { photo: string; depth: string; head: [number, number]; bbox?: [number, number, number, number] } | null };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
 export function profiler() {
@@ -113,7 +113,7 @@ export function profiler() {
       // a fresh canvas every time: a disposed scanner has lost its context for good
       const cv = document.createElement('canvas'); cv.setAttribute('aria-hidden', 'true'); frame.querySelector('canvas')!.replaceWith(cv);
       try {
-        const sc0 = await createScanner(cv, t.scan.photo, t.scan.depth, t.scan.head);
+        const sc0 = await createScanner(cv, t.scan.photo, t.scan.depth, t.scan.head, 2.4, t.scan.bbox);
         if (!live(me)) { sc0.dispose(); return; }
         sc = sc0; frame.classList.add('scanned'); status.textContent = 'Scanning target';
         sweep(s, 2.2);

@@ -72,7 +72,11 @@ const loadImage = (src: string) => new Promise<HTMLImageElement>((res, rej) => {
 /** True when the browser can draw the scanner at all; pages fall back to the plain photo otherwise. */
 export const canScan = () => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } };
 
-export async function createScanner(canvas: HTMLCanvasElement, photo: string, depth: string, headUV: [number, number] = [0.5, 0.2], gain = 2.4): Promise<Scanner> {
+/**
+ * `frame`, the figure's outline in the photo (x0, y0, x1, y1 from the top left), frames the figure rather than the whole
+ * photo: it fills the height of the canvas, and a wide cape or arm may run past the sides by up to a fifth.
+ */
+export async function createScanner(canvas: HTMLCanvasElement, photo: string, depth: string, headUV: [number, number] = [0.5, 0.2], gain = 2.4, frame?: [number, number, number, number]): Promise<Scanner> {
   const [ip, id] = await Promise.all([loadImage(photo), loadImage(depth)]);
   const opts = { alpha: true, antialias: false, premultipliedAlpha: true, powerPreference: 'low-power' as const };
   const gl2 = canvas.getContext('webgl2', opts) as WebGL2RenderingContext | null;
@@ -102,10 +106,19 @@ export async function createScanner(canvas: HTMLCanvasElement, photo: string, de
     const dpr = Math.min(devicePixelRatio || 1, innerWidth < 768 ? 1.25 : 1.5);
     const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); gl.viewport(0, 0, canvas.width, canvas.height);
-    // contain: the whole photo inside the canvas, centred
-    const ia = ip.naturalWidth / ip.naturalHeight, ca = w / h;
-    const sw = ia > ca ? 1 : ia / ca, shh = ia > ca ? ca / ia : 1;
-    fit.splice(0, 4, (1 - sw) / 2, (1 - shh) / 2, sw, shh);
+    const iw = ip.naturalWidth, ih = ip.naturalHeight;
+    if (frame) {
+      // the figure, framed: its outline fills the height, the sides may be cropped a little, centred on the figure
+      const [x0, y0, x1, y1] = frame, rw = Math.max(0.05, x1 - x0) * iw, rh = Math.max(0.05, y1 - y0) * ih;
+      const s = Math.min((w / rw) * 1.22, h / rh) * 0.94;
+      const pw = iw * s, ph = ih * s, ox = w / 2 - ((x0 + x1) / 2) * pw, oy = h / 2 - ((y0 + y1) / 2) * ph;
+      fit.splice(0, 4, ox / w, 1 - (oy + ph) / h, pw / w, ph / h);
+    } else {
+      // contain: the whole photo inside the canvas, centred
+      const ia = iw / ih, ca = w / h;
+      const sw = ia > ca ? 1 : ia / ca, shh = ia > ca ? ca / ia : 1;
+      fit.splice(0, 4, (1 - sw) / 2, (1 - shh) / 2, sw, shh);
+    }
     dirty = true;
   };
   let alive = true, dirty = true, visible = true, busy = 0, last = 0;
