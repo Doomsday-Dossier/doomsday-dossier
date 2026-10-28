@@ -14,6 +14,8 @@ type E = { id: string; u: 'C' | 'F' | 'M' | 'O' | 'N'; y: number; s: number; w: 
 const COL: Record<string, [number, number, number]> = { C: [255, 179, 71], F: [143, 202, 255], M: [61, 255, 143], O: [199, 155, 255], N: [233, 255, 243] };
 const NAME: Record<string, string> = { C: 'EARTH-616 // THE COMICS', F: '20TH CENTURY FOX FILMS', M: 'MARVEL STUDIOS // MCU', O: 'OTHER STUDIOS' };
 const HOME: Record<string, [number, number]> = { C: [0.28, 0.3], F: [0.72, 0.28], M: [0.7, 0.68], O: [0.3, 0.7] };
+// where each ring ends up: radius (share of the stage), roundness, angle
+const FIN: Record<string, [number, number, number]> = { M: [0.44, 0.3, 0], C: [0.36, 0.42, -0.42], F: [0.29, 0.55, 0.5], O: [0.2, 0.75, 1.15] };
 
 export function timeline() {
   const raw = document.querySelector('[data-mv-data]'); if (!raw) return;
@@ -52,11 +54,19 @@ export function timeline() {
 
   const pos = (u: string, k: number, t: number) => {
     // the rings drift together from 2019, meeting at the release
-    if (u === 'N') return { x: W / 2, y: H / 2, R: 0 };
-    const [hx, hy] = HOME[u], cx = hx * W + (W / 2 - hx * W) * k, cy = hy * H + (H / 2 - hy * H) * k;
-    const R = Math.min(W, H) * (0.17 + k * 0.13);
-    return { x: cx, y: cy, R, t };
+    if (u === 'N') return { x: W / 2, y: H / 2, R: 0, tilt: 0.36, rot: 0 };
+    // apart, each universe is a ring in its own corner; together they nest round one centre at their own sizes and
+    // angles, like the rings of a gyroscope, so converging never turns into a tangle
+    const [hx, hy] = HOME[u], m = Math.min(W, H);
+    const cx = hx * W + (W / 2 - hx * W) * k, cy = hy * H + (H / 2 - hy * H) * k;
+    return { x: cx, y: cy, R: m * (0.17 + (FIN[u][0] - 0.17) * k), tilt: 0.36 + (FIN[u][1] - 0.36) * k, rot: FIN[u][2] * k, t };
   };
+  // a point on a universe's ring: round the ellipse, then turned by the ring's angle
+  const onRing = (p: { x: number; y: number; R: number; tilt: number; rot: number }, a: number, r = 1) => {
+    const lx = Math.cos(a) * p.R * r, ly = Math.sin(a) * p.R * r * p.tilt, c = Math.cos(p.rot), sn = Math.sin(p.rot);
+    return { x: p.x + lx * c - ly * sn, y: p.y + lx * sn + ly * c };
+  };
+  const rgba = (hex: string, a: number) => `rgba(${parseInt(hex.slice(1, 3), 16)},${parseInt(hex.slice(3, 5), 16)},${parseInt(hex.slice(5, 7), 16)},${a})`;
   const ease = (x: number) => x * x * (3 - 2 * x);
 
   let last = 0, t0 = performance.now();
@@ -79,12 +89,13 @@ export function timeline() {
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
     g.clearRect(0, 0, W, H);
     g.globalCompositeOperation = 'lighter';
-    const tilt = 0.36, spin = reduced() ? 0 : t * 0.05;
+    const spin = reduced() ? 0 : t * 0.05, m = Math.min(W, H);
     const point = (e: (typeof evs)[number]) => {
       const p = pos(e.u, k, t);
-      if (e.u === 'N') { const a = e.a + spin * 2; return { x: p.x + Math.cos(a) * 14 * e.r, y: p.y + Math.sin(a) * 14 * e.r * tilt * 2 }; }
+      if (e.u === 'N') { const a = e.a + spin * 2; return { x: p.x + Math.cos(a) * m * 0.045 * e.r, y: p.y + Math.sin(a) * m * 0.03 * e.r }; }
       const a = e.a + spin * (e.u === 'C' ? 1 : e.u === 'F' ? -0.8 : e.u === 'M' ? 0.7 : -1.1);
-      return { x: p.x + Math.cos(a) * p.R * e.r, y: p.y + Math.sin(a) * p.R * e.r * tilt };
+      // sightings sit on the ring itself, a little in or out of it
+      return onRing(p, a, 0.9 + (e.r - 0.82) * 0.65);
     };
     // the rings
     for (const u of ['C', 'F', 'M', 'O']) {
@@ -93,16 +104,22 @@ export function timeline() {
       const age = Math.min(1, (shown - first.s) / 3000);
       for (let i = 0; i < 3; i++) {
         g.strokeStyle = `rgba(${r},${gg},${b},${(0.08 + i * 0.1) * age})`; g.lineWidth = [7, 3, 1][i];
-        g.beginPath(); g.ellipse(p.x, p.y, p.R, p.R * tilt, 0, 0, Math.PI * 2); g.stroke();
+        g.beginPath(); g.ellipse(p.x, p.y, p.R, p.R * p.tilt, p.rot, 0, Math.PI * 2); g.stroke();
       }
-      g.fillStyle = `rgba(${r},${gg},${b},${0.75 * age * (1 - k * 0.8)})`; g.font = '600 10px "JetBrains Mono", monospace'; g.textAlign = 'center';
-      g.fillText(NAME[u], p.x, p.y - p.R * tilt - 14);
+      // the names stand above their rings while the universes are apart, and fade as they come together
+      const la = 0.8 * age * (1 - ease(Math.min(1, k / 0.35)));
+      if (la > 0.01) {
+        g.fillStyle = `rgba(${r},${gg},${b},${la})`; g.font = `600 ${W < 520 ? 9 : 10}px "JetBrains Mono", monospace`; g.textAlign = 'center';
+        const tw = g.measureText(NAME[u]).width, lx = Math.min(W - tw / 2 - 6, Math.max(tw / 2 + 6, p.x));
+        g.fillText(NAME[u], lx, Math.max(12, p.y - p.R * p.tilt - 12));
+      }
     }
     // the threads: a character's sightings joined across universes
     for (const [slug, list] of lives) {
       const seen = list.filter((e) => e.s <= shown); if (seen.length < 2) continue;
       const acc = D.chars[slug]?.accent ?? '#3dff8f';
-      g.strokeStyle = acc + '55'; g.lineWidth = 1;
+      // fewer, fainter threads as the rings nest, so the centre stays readable
+      g.strokeStyle = rgba(acc, 0.32 * (1 - 0.7 * k)); g.lineWidth = 1;
       g.beginPath();
       for (let i = 1; i < seen.length; i++) {
         if (seen[i].u === seen[i - 1].u) continue;
@@ -121,10 +138,10 @@ export function timeline() {
     }
     // the convergence: one ring, Doom's
     if (k > 0.6) {
-      const m = (k - 0.6) / 0.4, R = Math.min(W, H) * 0.36;
-      g.strokeStyle = `rgba(61,255,143,${0.5 * m})`; g.lineWidth = 2;
-      g.beginPath(); g.ellipse(W / 2, H / 2, R, R * tilt, 0, 0, Math.PI * 2); g.stroke();
-      g.fillStyle = `rgba(61,255,143,${0.08 * m})`; g.beginPath(); g.arc(W / 2, H / 2, R * 0.5 * m, 0, Math.PI * 2); g.fill();
+      const mm = (k - 0.6) / 0.4, R = m * 0.49;
+      g.strokeStyle = `rgba(61,255,143,${0.55 * mm})`; g.lineWidth = 2;
+      g.beginPath(); g.ellipse(W / 2, H / 2, R, R * 0.24, 0, 0, Math.PI * 2); g.stroke();
+      g.fillStyle = `rgba(61,255,143,${0.07 * mm})`; g.beginPath(); g.arc(W / 2, H / 2, m * 0.12 * mm, 0, Math.PI * 2); g.fill();
     }
     // the current sighting, called out
     const cur = evs.find((e) => e.id === current?.dataset.ev);
@@ -133,12 +150,16 @@ export function timeline() {
       g.globalCompositeOperation = 'source-over';
       g.strokeStyle = '#3dff8f'; g.lineWidth = 1;
       g.beginPath(); g.arc(p.x, p.y, 12 + Math.sin(t * 4) * 2, 0, Math.PI * 2); g.stroke();
-      const lx = p.x > W * 0.6 ? p.x - 26 : p.x + 26, ly = p.y - 26;
-      g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(lx, ly); g.stroke();
-      g.font = '700 11px "JetBrains Mono", monospace'; g.textAlign = p.x > W * 0.6 ? 'right' : 'left';
-      const label = cur.t.length > 34 ? cur.t.slice(0, 33) + '…' : cur.t;
-      g.fillStyle = 'rgba(2,5,4,0.85)'; const tw = g.measureText(label).width; g.fillRect(p.x > W * 0.6 ? lx - tw - 4 : lx - 4, ly - 12, tw + 8, 17);
-      g.fillStyle = '#cdf5df'; g.fillText(label, lx, ly + 1);
+      // the label goes to whichever side has room, and never runs off the stage
+      g.font = `700 ${W < 520 ? 10 : 11}px "JetBrains Mono", monospace`; g.textAlign = 'left';
+      const max = W < 520 ? 26 : 34, label = cur.t.length > max ? cur.t.slice(0, max - 1) + '…' : cur.t, tw = g.measureText(label).width;
+      // ring names sit above their rings, so a sighting on a ring's upper half is labelled below it
+      const ring = pos(cur.u, k, t), below = cur.u !== 'N' && p.y < ring.y;
+      const right = p.x < W / 2, ly = below ? Math.min(H - 8, p.y + 32) : Math.max(16, p.y - 26);
+      const bx = Math.min(W - tw - 10, Math.max(6, right ? p.x + 22 : p.x - 22 - tw - 8));
+      g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(right ? bx : bx + tw + 8, ly - 3); g.stroke();
+      g.fillStyle = 'rgba(2,5,4,0.92)'; g.fillRect(bx, ly - 12, tw + 8, 17);
+      g.fillStyle = '#cdf5df'; g.fillText(label, bx + 4, ly + 1);
     }
     g.globalCompositeOperation = 'source-over';
   };
