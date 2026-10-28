@@ -274,11 +274,13 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     canvas.style.cursor = i !== null ? 'pointer' : 'grab';
     opts.onHover?.(i, i !== null ? screenOf(i) : null);
   };
-  const down = (e: PointerEvent) => { turn = null; dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); };
+  let aimX = 0, aimY = 0;
+  const down = (e: PointerEvent) => { turn = null; aimX = world.rotation.x; aimY = world.rotation.y; dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; canvas.setPointerCapture(e.pointerId); };
   const move = (e: PointerEvent) => {
     if (dragging) {
       const dx = e.clientX - lx, dy = e.clientY - ly; moved += Math.abs(dx) + Math.abs(dy); lx = e.clientX; ly = e.clientY;
-      vy = dx * 0.0045; vx = dy * 0.0035; world.rotation.y += vy; world.rotation.x = Math.max(-0.6, Math.min(1.1, world.rotation.x + vx));
+      // the drag sets where the world should be; the frame loop eases it there, so sparse pointer events still glide
+      vy = dx * 0.0045; vx = dy * 0.0035; aimY += vy; aimX = Math.max(-0.6, Math.min(1.1, aimX + vx));
       if (e.pointerType !== 'mouse') return;
     }
     if (e.pointerType === 'mouse' && !dragging) setHover(hit(e.clientX, e.clientY));
@@ -335,7 +337,9 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     (halo.material as THREE.SpriteMaterial).opacity = u.uForm.value;
     // the core kindles as the shards gather round it
     core.scale.setScalar(0.08 + 0.92 * Math.min(1, u.uForm.value * 1.6)); core.visible = u.uForm.value > 0.01;
-    if (turn && !dragging && !dive) {
+    if (dragging && !dive) {
+      world.rotation.y += (aimY - world.rotation.y) * 0.32; world.rotation.x += (aimX - world.rotation.x) * 0.32;
+    } else if (turn && !dragging && !dive) {
       const k = Math.min(1, (now - turn.t0) / (opts.reduced ? 1 : 900)), e = 1 - Math.pow(1 - k, 3);
       world.quaternion.slerpQuaternions(turn.from, turn.to, e);
       if (k >= 1) turn = null;
