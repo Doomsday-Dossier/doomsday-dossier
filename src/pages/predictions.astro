@@ -59,6 +59,7 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
       <aside class="os-panel pb-dock" data-dock aria-label="Probability readout">
         <header><b>Probability readout</b><span class="os-label">Fan prediction</span></header>
         <p class="pb-progress"><b data-answered>0</b> / {total} <span>calls entered</span></p>
+        <button type="button" class="pb-expand" data-pb-expand aria-expanded="false" aria-label="Show the full readout"><span>Details</span><i aria-hidden="true"></i></button>
         <div class="pb-cells" data-pb-cells aria-hidden="true">{pred.questions.map((q, i) => <i data-cell={q.id}>{pad(i + 1)}</i>)}</div>
         <div class="pb-odds">
           <span class="os-label">A perfect set by chance alone</span>
@@ -143,21 +144,28 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
 
   @media (max-width: 899px) {
     .pb-grid { grid-template-columns: minmax(0, 1fr); }
-    /* phones: the readout becomes a compact bar pinned to the foot of the screen */
-    .pb-dock { position: sticky; top: auto; bottom: 0; z-index: 5; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 8px 12px 10px; background: rgba(3, 12, 8, 0.96); box-shadow: 0 -16px 28px -10px var(--os-bg); }
-    .pb-dock > header { grid-column: 1 / -1; margin-bottom: 4px; }
-    .pb-cells, .pb-odds-k, .pb-copy, .pb-odds > .os-label:first-child { display: none; }
-    .pb-progress { grid-column: 1; grid-row: 2; }
+    /* phones: the readout is a slim bar just above the dock (calls, odds, lock in); Details opens the rest */
+    .pb-list { padding-bottom: 150px; }
+    .pb-dock { position: fixed; z-index: 51; left: 8px; right: 8px; top: auto; bottom: calc(70px + env(safe-area-inset-bottom)); grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 2px 10px; padding: 10px 12px; background: rgba(3, 13, 8, 0.97); border-color: var(--os-line-hi); box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6); max-height: 70svh; overflow: auto; }
+    .pb-dock > header, .pb-cells, .pb-odds-k, .pb-copy, .pb-odds > .os-label:first-child, .pb-agree, .pb-ts { display: none; }
+    .pb-dock.open > header { display: flex; grid-column: 1 / -1; margin: -10px -12px 8px; }
+    .pb-dock.open .pb-cells, .pb-dock.open .pb-odds-k, .pb-dock.open .pb-agree:not([hidden]), .pb-dock.open .pb-ts { display: revert; grid-column: 1 / -1; }
+    .pb-dock.open .pb-cells { display: grid; }
+    .pb-progress { grid-column: 1; grid-row: 2; margin: 0; }
     .pb-progress b { font-size: 22px; }
     .pb-odds { grid-column: 1; grid-row: 3; padding: 0; border: 0; }
-    .pb-odds b { font-size: 15px; }
+    .pb-odds b { font-size: 14px; }
     .pb-odds b::before { content: 'Chance alone: '; font-family: var(--os-mono); font-weight: 400; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-dim); }
-    .pb-buttons { grid-column: 2; grid-row: 2 / span 2; }
-    .pb-lock { min-height: 44px; padding: 8px 12px; font-size: 10px; letter-spacing: 0.12em; }
-    .pb-agree, .pb-sealed, .pb-status, .pb-ts { grid-column: 1 / -1; }
-    .pb-agree, .pb-status { font-size: 11px; }
-    .pb-status:empty { min-height: 0; }
+    .pb-expand { display: grid; grid-column: 2; grid-row: 2 / span 2; justify-items: center; gap: 4px; min-width: 52px; min-height: 44px; padding: 0 6px; font: 9.5px var(--os-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--os-dim); background: none; border: 1px solid var(--os-line); cursor: pointer; align-content: center; }
+    .pb-expand i { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(-45deg); transition: transform 0.25s; }
+    .pb-dock.open .pb-expand i { transform: rotate(135deg); }
+    .pb-buttons { grid-column: 3; grid-row: 2 / span 2; }
+    .pb-lock { min-height: 44px; padding: 0 12px; font-size: 10px; letter-spacing: 0.12em; }
+    .pb-sealed, .pb-status { grid-column: 1 / -1; }
+    .pb-status { font-size: 11px; margin: 4px 0 0; }
+    .pb-status:empty { display: none; }
   }
+  .pb-expand { display: none; }
   @media (max-width: 420px) {
     .pb-opts { grid-template-columns: minmax(0, 1fr); }
     .pb-count { font-size: 24px; }

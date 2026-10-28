@@ -64,6 +64,7 @@ export async function home() {
   }
   if (gone) return;
   const bw = await (bwP ?? makeWorld());
+  document.querySelector('[data-acq]')?.classList.add('gone');
   html.classList.remove('os-booting');
   if (gone) { bw?.dispose(); return; }
   if (!reduced()) {
@@ -90,25 +91,34 @@ export async function home() {
     const canvas = document.querySelector<HTMLCanvasElement>('[data-bw]')!;
     if (!document.createElement('canvas').getContext('webgl2')) { html.classList.add('no-gl'); return null; }
     const tag = document.querySelector<HTMLElement>('[data-bw-tag]')!, stage = document.querySelector<HTMLElement>('[data-bw-stage]')!;
-    const fine = matchMedia('(pointer: fine)').matches;
+    // touch screens (and narrow ones) get the card docked under the planet with an Enter button, and the strip of faces
+    const dock = () => !matchMedia('(pointer: fine)').matches || innerWidth < 1100;
+    const strip = document.querySelector<HTMLElement>('[data-bw-strip]');
     try {
       const { createBattleworld } = await import('../battleworld');
       let shown: number | null = null;
+      const mark = (i: number | null) => strip?.querySelectorAll<HTMLButtonElement>('button').forEach((b, k) => {
+        const on = k === i; b.setAttribute('aria-pressed', String(on));
+        if (on) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduced() ? 'auto' : 'smooth' });
+      });
       const world = await createBattleworld(canvas, D.world, {
         reduced: reduced(),
         onHover: (i, at) => {
-          if (i === null || !at || !at.front) { tag.hidden = true; shown = null; return; }
+          const docked = dock();
+          tag.classList.toggle('dock', docked);
+          if (i === null || !at || (!at.front && !docked)) { if (!docked || i === null) { tag.hidden = true; if (shown !== null) mark(null); shown = null; } return; }
           if (shown !== i) {
-            shown = i; tick(s);
+            shown = i; tick(s); mark(i);
             const w = D.world[i];
             tag.querySelector('[data-bw-no]')!.textContent = `T-${String(w.no).padStart(2, '0')} // ${w.teamId === 'adversary' ? 'Capital' : 'Domain'}`;
             tag.querySelector('[data-bw-name]')!.textContent = w.name;
             tag.querySelector('[data-bw-team]')!.textContent = w.teamId === 'adversary' ? 'Doomstadt · seat of His Majesty' : `${w.team} continent`;
-            tag.querySelector('[data-bw-go]')!.textContent = fine ? 'Click to enter the domain' : 'Tap again to enter';
+            tag.querySelector('[data-bw-go]')!.textContent = docked ? 'Enter the domain' : 'Click to enter the domain';
+            if (!reduced()) tag.animate([{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, clipPath: 'inset(0 0 0 0)' }], { duration: 260, easing: 'cubic-bezier(.2,.8,.2,1)' });
           }
           tag.hidden = false;
-          const left = at.x > stage.clientWidth * 0.62;
-          tag.classList.toggle('left', left);
+          if (docked) { tag.style.left = ''; tag.style.top = ''; return; }
+          tag.classList.toggle('left', at.x > stage.clientWidth * 0.62);
           tag.style.left = `${at.x}px`; tag.style.top = `${at.y}px`;
         },
         onPick: (i) => {
@@ -118,6 +128,11 @@ export async function home() {
           setTimeout(() => { if (!gone) navigate(w.href); }, reduced() ? 0 : 1150);
         },
       });
+      // the docked card's Enter button, and the faces
+      tag.querySelector('[data-bw-go]')!.addEventListener('click', () => { if (shown !== null) world.pick(shown); });
+      strip?.querySelectorAll<HTMLButtonElement>('button').forEach((b, k) => b.addEventListener('click', () => {
+        if (shown === k) world.pick(k); else world.select(k);
+      }));
       world.setWill(will());
       onLeave(() => world.dispose());
       return world;

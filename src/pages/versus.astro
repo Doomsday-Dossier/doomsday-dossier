@@ -169,8 +169,9 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .cb-side[data-side='b'] .vs-alias, .cb-side[data-side='b'] .vs-type, .cb-side[data-side='b'] .vs-open { color: var(--os-amber) !important; border-color: rgba(255, 179, 71, 0.5); }
   /* documented feats, one at a time: every feat in one grid cell, so the panel is as tall as the longest */
   .vs-feat { order: 2; display: grid; margin: 0 14px 14px; padding: 10px 12px; border: 1px dashed var(--os-line); background: rgba(2, 5, 4, 0.5); }
+  .vs-feat { grid-template-rows: auto 1fr; }
   .vs-feat::before { content: 'Intercept // documented feat'; grid-area: 1 / 1; align-self: start; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-dim); }
-  .feat { grid-area: 1 / 1; margin: 0; padding-top: 16px; font-size: 12px; line-height: 1.5; color: var(--os-text); opacity: 0; transform: translateY(6px); transition: opacity 0.5s, transform 0.5s cubic-bezier(.2,.8,.2,1), visibility 0.5s; }
+  .feat { grid-area: 2 / 1; margin: 0; padding-top: 6px; font-size: 12px; line-height: 1.5; color: var(--os-text); opacity: 0; transform: translateY(6px); transition: opacity 0.5s, transform 0.5s cubic-bezier(.2,.8,.2,1), visibility 0.5s; }
   .feat.on { opacity: 1; transform: none; }
   .feat:not(.on) { visibility: hidden; }
   .feat .where, .cb-body .where { display: inline-block; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--os-line); color: var(--os-dim); padding: 1px 6px; margin: 0 6px 4px 0; }
@@ -342,6 +343,25 @@ const pad = (n: number) => String(n).padStart(2, '0');
     .vs-feat::before { font-size: 8px; letter-spacing: 0.12em; }
     .lb-open { grid-template-columns: 22px auto minmax(0, 1fr); grid-template-areas: 'rank faces names' 'rank faces split' 'rank faces total'; }
     .lb-pct { display: none; }
+  }
+  /* PHONES: choose first (a swipeable row of faces), then the fighters; the feats as cards to swipe between */
+  @media (max-width: 899px) {
+    .cb { display: flex; flex-direction: column; }
+    .cb > .mod-head { order: 0; } .cb > .cb-pick { order: 1; margin-top: 0; } .cb > .cb-simline { order: 2; margin-top: var(--os-gap); } .cb > .cb-stage { order: 3; }
+    .cb > .cb-two { order: 4; } .cb > .cb-body { order: 5; } .cb > .cb-credit, .cb > noscript { order: 6; }
+    .cb-pick { padding-bottom: 12px; }
+    .cb-pick-head { gap: 8px; }
+    .cb-slots { flex: 1 1 100%; }
+    .cb-slot { flex: 1; min-height: 44px; font-size: 11px; }
+    .cb-tool { flex: 1; min-height: 44px; }
+    .cb-roster { display: flex; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x proximity; gap: 8px; margin: 0 -20px; padding: 4px 20px 10px; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+    .cb-roster::-webkit-scrollbar { display: none; }
+    .cb-roster li { flex: 0 0 82px; scroll-snap-align: center; }
+    .cb-roster button { min-height: 112px; }
+    .cb-tile { width: 60px !important; height: 60px !important; border-radius: 50%; }
+    .cb-body > section:first-child .cols { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 -16px; padding: 0 16px 6px; scrollbar-width: thin; }
+    .cb-body > section:first-child .cols > * { flex: 0 0 86%; scroll-snap-align: start; border: 1px solid var(--os-line); padding: 12px; background: rgba(2, 8, 5, 0.6); }
+    .cb-body > section:first-child .cols > :last-child { border-color: rgba(255, 179, 71, 0.35); }
   }
   @media (max-width: 420px) {
     .cb-roster { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }

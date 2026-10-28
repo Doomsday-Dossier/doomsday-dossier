@@ -16,6 +16,7 @@ import { timeLeft } from '../dossier/tokens';
 import { pad, reduced } from './fx';
 import { keepTime } from './reign';
 import { trace } from './trace';
+import { previews } from './preview';
 
 installPageScope();
 const html = document.documentElement;
@@ -61,6 +62,7 @@ asGlobal(() => {
     const idx = JSON.parse(document.querySelector('[data-cmd-index]')!.textContent!).targets;
     setShardTiles((idx as { tile: string }[]).map((t) => t.tile));
     trace(idx);
+    previews(idx, document.querySelector<HTMLElement>('[data-aim]') ?? document.body);
   } catch { /* no index */ }
   document.addEventListener('astro:before-preparation', (e: any) => {
     const load = e.loader;
@@ -109,6 +111,9 @@ async function boot() {
   first = false;
   const { settleIn } = await import('./fx');
   settleIn(screen);
+  acquire(screen);
+  // the screen's title decodes itself as it arrives
+  if (!(first && page === 'home')) { const { decryptIn } = await import('./fx'); screen.querySelectorAll<HTMLElement>('.mod-title').forEach((el) => { if (!el.children.length) decryptIn(el, el.textContent ?? '', 650); }); }
   if (page === 'home') (await import('./pages/home')).home();
   if (page === 'targets') (await import('./pages/register')).register();
   if (page === 'file') (await import('./pages/file')).file();
@@ -122,4 +127,15 @@ async function boot() {
   if (page === 'catchup') (await import('./pages/briefing')).briefing();
   if (page === 'chamber') (await import('./pages/chamber')).chamber();
   onLeave(() => {});
+}
+
+/** Images still on their way: their frame shows a scan sweeping ("acquiring"), and the image fades in when it lands. */
+function acquire(root: HTMLElement) {
+  root.querySelectorAll<HTMLImageElement>('img').forEach((img) => {
+    if (img.complete && img.naturalWidth) return;
+    const box = img.parentElement;
+    img.classList.add('ld'); box?.classList.add('acq-box');
+    const done = () => { img.classList.remove('ld'); img.classList.add('ldd'); box?.classList.remove('acq-box'); };
+    img.addEventListener('load', done, { once: true }); img.addEventListener('error', done, { once: true });
+  });
 }

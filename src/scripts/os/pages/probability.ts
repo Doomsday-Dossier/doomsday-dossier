@@ -103,4 +103,7 @@ export function probability() {
     cmd.replaceWith(span);
     onLeave(whenSeen(p, () => { if (!gone) typeIn(span, line, 70, false); }));
   });
+  // phones: the readout's Details toggle
+  const dockEl = document.querySelector<HTMLElement>('.pb-dock'), ex = document.querySelector<HTMLButtonElement>('[data-pb-expand]');
+  ex?.addEventListener('click', () => { const open = !dockEl!.classList.contains('open'); dockEl!.classList.toggle('open', open); ex.setAttribute('aria-expanded', String(open)); });
 }
