@@ -109,7 +109,8 @@ export function commandLine() {
     else if (e.key === 'Tab') { e.preventDefault(); const it = items[sel]; if (it && it.href && !it.run) { input.value = it.t; build(); } }
   });
   root.addEventListener('click', (e) => { if (e.target === root) close(); });
-  document.querySelector('[data-cmd-open]')?.addEventListener('click', () => open());
+  // the bar's Menu button and the phone dock's All button
+  document.querySelectorAll('[data-cmd-open]').forEach((b) => b.addEventListener('click', () => open()));
   addEventListener('keydown', (e) => {
     const typing = (e.target as HTMLElement).closest?.('input, textarea, select, [contenteditable]');
     if ((e.key === '/' && !typing) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); open(); }
