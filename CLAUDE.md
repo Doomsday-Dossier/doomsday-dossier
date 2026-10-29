@@ -99,6 +99,21 @@ inside the new pages (their DOM hooks were kept).
 | Glass shatter | Page change | A bright noise crack, seven random sine tinkles, a low thump (Battleworld's shards) |
 | Shard burst | The new page arriving | Pink noise band-pass falling 2400 to 360 Hz |
 | Klaxon | A hero breaching the network | Two-tone square 660/440 through a band-pass, four times |
+| Sever | Cutting an intrusion node in the breach | A square falling 1600 to 90 Hz with a band-passed static click |
+| Slam | Battleworld's shards closing in the countermeasure | A sine falling 110 to 32 Hz, four inharmonic metal partials, brown-noise impact |
+| The score | Under every page from the first click (replaces the machine drone) | `sound/score-os.ts`: original, D minor, 76 bpm, eight-bar phrases (i, VI, iv, V, i, VI, flat II, V); Doom's motif D, C sharp, D, B flat on low horns; layers by modules visited this session (1 strings and heartbeat, 2 spiccato ostinato, 3 drums and horns, 5 braams and tremolo; a breach brings everything in). Strings and horns are filtered saw ensembles, the choir saws through "ah" formants, drums pitch-dropping sines. About -22 dBFS RMS at its fullest (score bus 0.5). Render and measure with `scripts/score-render.mjs` (`SOLO=1` per instrument) |
+
+**Threat index (29 October 2026, the visitor's choice).** Marvel's six grid ratings added up (6 to 42) is shown as a rank
+among the 22 rated targets other than Doom ("#3 of 22", ties joint), a half dial in four bands named in Doom's voice
+(Nuisance to 20, Rival 21 to 26, Nemesis 27 to 31, Worthy of Doom 32 up) and Doom's one line per band; Doom himself is
+"Sovereign", the six unrated "Unmeasured". The numbers are Marvel's; the bands and lines are labelled as this site's
+(`data/os.ts` `threatOf`, `components/ThreatDial.astro`).
+
+**The breach, v2 (29 October 2026).** A takeover in the hero's own way (Loki fakes the all-clear, Professor X types
+into the command line, Nightcrawler teleports the panels, Ghost phases them, Shuri pours code; anyone else glitches in),
+then eight seconds to cut five nodes. Won: Doom's mask, green flood, shards slam shut. Lost: the hero steals a file
+(`reign.stolen`), sealed and blurred until "Take it back". `scripts/breach-check.mjs` plays it through; on a local
+build `__breach('loki', 'thor')` starts one.
 
 **Phone, tablet and big-screen pass (28 October 2026, the visitor's choices).** Battleworld on touch: phones send a
 pointerleave after every tap, which deselected the shard; only a mouse leaving deselects now. A tap selects and turns

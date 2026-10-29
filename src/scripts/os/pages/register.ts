@@ -69,5 +69,8 @@ export function register() {
     maskFace(box);
   });
   requestAnimationFrame(place);
+  // files a breaching hero got away with (trace.ts): marked until His Majesty takes them back
+  const stolen = reign().stolen ?? {};
+  cards.forEach((c) => { const by = stolen[c.dataset.slug!]; if (by) c.querySelector('.c-img')!.insertAdjacentHTML('beforeend', `<span class="stolen-tag">Stolen by ${by.replace(/[<>&]/g, '')}</span>`); });
   let rt = 0; addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(place, 200); });
 }

@@ -20,7 +20,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 // the command line's index: every target and every module
 const index = {
   // threat and first appearance feed the hover previews (scripts/os/preview.ts)
-  targets: targets().map((t) => ({ slug: t.slug, no: t.no, name: t.name, alias: t.alias, team: t.team, actor: t.actor, href: t.href, accent: accentOf(t.slug), tile: t.tile, threat: t.threat, first: t.first })),
+  targets: targets().map((t) => ({ slug: t.slug, no: t.no, name: t.name, alias: t.alias, team: t.team, actor: t.actor, href: t.href, accent: accentOf(t.slug), tile: t.tile, threat: t.threat, th: { rank: t.threatOf.rank, of: t.threatOf.of, joint: t.threatOf.joint, band: t.threatOf.band.name, id: t.threatOf.band.id }, first: t.first })),
   modules: [{ id: 'home', no: '00', name: 'Command', short: 'Home', href: u('/'), line: 'Doom-OS home' }, ...MODULES.map((m) => ({ ...m, href: u(m.href) })),
     { id: 'about', no: '--', name: 'Sources and rules', short: 'About', href: u('/about/'), line: 'How this archive is sourced' },
     { id: 'credits', no: '--', name: 'Image credits', short: 'Credits', href: u('/credits/'), line: 'Every photo, by target' }],

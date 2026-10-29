@@ -1,0 +1,47 @@
+---
+// The threat dial: a half gauge from 6 to 42 (Marvel's six power-grid ratings added up), cut into the four bands of
+// data/os.ts BANDS, with a needle that sweeps up to the target's total. Unrated targets get the gauge with no needle.
+import { BANDS } from '../data/os';
+
+interface Props { total: number | null; band: string; size?: 's' | 'l' }
+const { total, band, size = 's' } = Astro.props;
+const R = 84, C = 100;
+const f = (v: number) => Math.min(1, Math.max(0, (v - 6) / 36));
+const pt = (v: number, r = R) => { const a = Math.PI * (1 - f(v)); return [C + r * Math.cos(a), C - r * Math.sin(a)].map((n) => n.toFixed(2)).join(' '); };
+const arc = (a: number, b: number) => `M ${pt(a)} A ${R} ${R} 0 0 1 ${pt(b)}`;
+// band edges sit half a point between totals, so a total never lands on a seam
+const edges = [...BANDS].reverse().map((b, i, all) => ({ id: b.id, from: i === 0 ? 6 : b.min - 0.5, to: i === all.length - 1 ? 42 : all[i + 1].min - 0.5 }));
+const ticks = Array.from({ length: 7 }, (_, i) => 6 + i * 6);
+---
+<svg class={`tdial tdial-${size}`} data-band={band} viewBox="0 0 200 112" role="img" aria-label={total === null ? 'Not rated in Marvel’s power grid' : `Threat ${total} of 42`} style={total === null ? '' : `--f:${f(total).toFixed(4)}`}>
+  {edges.map((e) => <path class={`seg seg-${e.id}${e.id === band ? ' on' : ''}`} d={arc(e.from + 0.35, e.to - 0.35)} />)}
+  {size === 'l' && ticks.map((t) => <path class="tick" d={`M ${pt(t, R - 13)} L ${pt(t, R - 7)}`} />)}
+  {total !== null && (
+    <g class="needle">
+      <path d={`M ${C} ${C - 3.2} L ${C - R + 10} ${C} L ${C} ${C + 3.2} Z`} />
+      <circle cx={C} cy={C} r="6.5" />
+    </g>
+  )}
+  {size === 'l' && <text class="end" x={C - R} y="111">6</text>}
+  {size === 'l' && <text class="end" x={C + R} y="111">42</text>}
+</svg>
+
+<style is:global>
+  .tdial { display: block; overflow: visible; }
+  .tdial .seg { fill: none; stroke-width: 12; stroke-linecap: butt; opacity: 0.28; }
+  .tdial .seg.on { opacity: 1; }
+  .tdial .seg-nuisance { stroke: var(--os-dim); color: var(--os-dim); }
+  .tdial .seg-rival { stroke: var(--os-green); color: var(--os-green); }
+  .tdial .seg-nemesis { stroke: var(--os-amber); color: var(--os-amber); }
+  .tdial .seg-worthy { stroke: var(--os-red); color: var(--os-red); }
+  .tdial .seg.on { filter: drop-shadow(0 0 4px currentColor); }
+  .tdial[data-band='unmeasured'] .seg { stroke: var(--os-dim); opacity: 0.18; }
+  .tdial .tick { stroke: var(--os-dim); stroke-width: 1.4; }
+  .tdial .end { fill: var(--os-dim); font: 9px var(--os-mono); text-anchor: middle; }
+  .tdial .needle { fill: var(--os-text); transform-box: view-box; transform-origin: 100px 100px; transform: rotate(calc(var(--f) * 180deg)); animation: tdial-sweep 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+  .tdial .needle circle { fill: #021008; stroke: var(--os-text); stroke-width: 2; }
+  /* the needle swings past its mark and settles, like a heavy instrument */
+  @keyframes tdial-sweep { 0% { transform: rotate(0deg); } 70% { transform: rotate(calc(var(--f) * 180deg + 6deg)); } 100% { transform: rotate(calc(var(--f) * 180deg)); } }
+  @media (prefers-reduced-motion: reduce) { .tdial .needle { animation: none; } }
+  .tdial-s .seg { stroke-width: 16; }
+</style>

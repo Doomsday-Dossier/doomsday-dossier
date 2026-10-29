@@ -5,7 +5,7 @@
  * threat from Marvel's power grid and their first appearance. Links that already show the target large (the register's
  * cards, the next-file link, Battleworld) are left alone.
  */
-type T = { slug: string; no: number; name: string; alias: string; team: string; href: string; tile: string; accent: string; threat: number | null; first: string };
+type T = { slug: string; no: number; name: string; alias: string; team: string; href: string; tile: string; accent: string; threat: number | null; th: { rank: number | null; of: number; joint: boolean; band: string; id: string }; first: string };
 
 export function previews(index: T[], host: HTMLElement) {
   if (!matchMedia('(pointer: fine)').matches) return;
@@ -29,8 +29,8 @@ export function previews(index: T[], host: HTMLElement) {
     $('.pv-alias').textContent = t.alias !== t.name ? t.alias : 'Target on file';
     const k = t.threat !== null ? t.threat / 42 : 0;
     ($('.pv-bar i') as HTMLElement).style.width = `${Math.round(k * 100)}%`;
-    $('.pv-threat em').textContent = t.threat !== null ? `Threat ${t.threat}/42` : 'No power grid';
-    card.dataset.level = t.threat === null ? '' : t.threat >= 30 ? 'x' : t.threat >= 22 ? 'h' : 'e';
+    $('.pv-threat em').textContent = t.th.rank ? `Threat #${t.th.rank}${t.th.joint ? ' joint' : ''} of ${t.th.of} · ${t.th.band}` : t.th.band;
+    card.dataset.level = ({ worthy: 'x', sovereign: 'x', nemesis: 'h', rival: 'e' } as Record<string, string>)[t.th.id] ?? '';
     $('.pv-first').textContent = `First seen ${t.first}`;
     card.style.setProperty('--acc', t.accent);
     card.hidden = false; place(x, y);
