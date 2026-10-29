@@ -18,8 +18,9 @@ export const MODULES = [
   { id: 'chamber', no: '07', name: 'Royal chamber', short: 'Chamber', href: '/chamber/', line: 'Your verdicts, conquests, decrees' },
 ];
 
-// the photo each target is scanned from: the clearest, most complete figure
-export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 2, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 3, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 3 };
+// the photo each target is scanned from: the clearest, most complete figure. Reed's photo 2 is not used: the head
+// finder takes the top of the subject, which there is the rocket's tip, so every face crop of him came out empty.
+export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 3, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 3, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 3 };
 
 export const versusOf = (slug: string) => VS[`../../research/versus/${slug}.json`];
 export const briefOf = (slug: string) => BRIEFS[slug] ?? null;
