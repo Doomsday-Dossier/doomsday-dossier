@@ -262,7 +262,7 @@ export const DESIGN: Record<string, Design> = {
     sceneNote: "Timelines grow upward and keep forking, far more often near your cursor. Scrolling prunes the youngest branches first.",
     bg: '#030604', ink: '#eef5e8', dim: '#9fb09a', accent: '#5fd36f', accent2: '#e8c35a',
     font: "'Playfair Display Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.01em',
-    ease: 'power3.inOut', pace: 1.1, kicker: "The god of mischief, who schemed his way through every realm and found his purpose holding time itself together.",
+    ease: 'power3.inOut', pace: 1.1, kicker: "Once the god of mischief, now the God of Stories in the comics, and on screen the one holding time itself together.",
   },
   'peggy-carter': {
     heroScale: 0.82,

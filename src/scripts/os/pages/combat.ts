@@ -14,7 +14,7 @@ import { lockOn, decryptIn, wait, reduced, sound, pad, RETICLE } from '../fx';
 import { log } from '../reign';
 
 type Side = 'a' | 'b';
-type T = { slug: string; name: string; no: number; grid: Record<string, number> | null; scan: { photo: string; depth: string; head: [number, number]; bbox?: [number, number, number, number] } | null };
+type T = { slug: string; name: string; no: number; grid: Record<string, number> | null; gridNote?: string | null; scan: { photo: string; depth: string; head: [number, number]; bbox?: [number, number, number, number] } | null };
 
 export function combat() {
   const page = document.querySelector<HTMLElement>('[data-versus]'), raw = document.getElementById('vs-data');
@@ -63,7 +63,9 @@ export function combat() {
     legA.textContent = A.name; legB.textContent = B.name;
     legA.parentElement!.hidden = !A.grid; legB.parentElement!.hidden = !B.grid;
     const off = [A, B].filter((x) => !x.grid).map((x) => x.name);
-    note.textContent = NOTE + (off.length && off.length < 2 ? ` ${off[0]}: not rated in Marvel's power grid.` : '');
+    // a rated target's caption says what the grid leaves out (Loki as the God of Stories)
+    const said = [A, B].filter((x) => x.grid && x.gridNote).map((x) => ` ${x.name}: ${x.gridNote}`).join('');
+    note.textContent = NOTE + (off.length && off.length < 2 ? ` ${off[0]}: not rated in Marvel's power grid.` : '') + said;
     host.setAttribute('aria-label', [A, B].map((x) => x.grid ? `${x.name}: ${Object.entries(x.grid).map(([k, v]) => `${k} ${v}`).join(', ')}` : `${x.name}: not rated`).join('. '));
     glitchIn(host);
   };

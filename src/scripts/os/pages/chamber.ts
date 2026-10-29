@@ -103,7 +103,8 @@ export function chamber() {
   // THE DECREE
   const to = document.querySelector<HTMLSelectElement>('[data-dc-to]')!, text = document.querySelector<HTMLTextAreaElement>('[data-dc-text]')!;
   const seal = document.querySelector<HTMLElement>('[data-seal]')!; seal.innerHTML = SEAL;
-  const cardBtn = document.querySelector<HTMLButtonElement>('[data-dc-card]')!;
+  const cardBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-dc-card]')];
+  const cardBtn = { set disabled(v: boolean) { cardBtns.forEach((b) => (b.disabled = v)); } };
   const prev = () => {
     document.querySelector('[data-dc-to-prev]')!.textContent = `To ${to.value}:`;
     document.querySelector('[data-dc-body]')!.textContent = text.value || text.placeholder;
@@ -120,7 +121,7 @@ export function chamber() {
     seal.classList.add('on'); stamp(s); cardBtn.disabled = false;
     if (!reduced()) seal.animate([{ transform: 'scale(2.4) rotate(-20deg)', opacity: 0 }, { transform: 'scale(0.92) rotate(4deg)', opacity: 1, offset: 0.7 }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.5,0,.75,0)' });
   });
-  cardBtn.addEventListener('click', () => decreeCard(to.value, text.value.trim(), D.site));
+  cardBtns.forEach((b) => b.addEventListener('click', () => decreeCard(to.value, text.value.trim(), D.site, b.dataset.dcCard === 'story' ? 'story' : 'wide')));
 
   // ENDING THE REIGN (two clicks)
   const erase = document.querySelector<HTMLButtonElement>('[data-erase]')!;
@@ -176,22 +177,46 @@ async function conquestCard(order: T[], site: string) {
   save(c, 'doom-order-of-conquest.png');
 }
 
-async function decreeCard(to: string, body: string, site: string) {
-  const W = 1200, H = 630, { c, g } = await canvasFor(W, H);
-  const sealImg = await img('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(SEAL.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ')));
-  if (sealImg) g.drawImage(sealImg, W - 300, 70, 220, 220);
-  g.fillStyle = DIM; g.font = '700 18px "JetBrains Mono"'; g.fillText('BY ORDER OF VICTOR VON DOOM, MONARCH OF LATVERIA', 56, 92);
-  // the heading shrinks to fit beside the seal, then takes a second line, so no recipient is ever cut
-  const head = `TO ${to.toUpperCase()}`, room = W - 56 - 340;
-  let size = 46; g.font = `700 ${size}px "Tektur Variable"`;
-  while (size > 34 && g.measureText(head).width > room) { size -= 2; g.font = `700 ${size}px "Tektur Variable"`; }
-  const heads = wrap(g, head, room);
+// the heading shrinks to fit its room, then takes more lines, so no recipient is ever cut
+const fitHead = (g: CanvasRenderingContext2D, head: string, room: number, max: number, min: number) => {
+  let size = max; g.font = `700 ${size}px "Tektur Variable"`;
+  while (size > min && g.measureText(head).width > room) { size -= 2; g.font = `700 ${size}px "Tektur Variable"`; }
+  return { size, lines: wrap(g, head, room) };
+};
+const glow = (g: CanvasRenderingContext2D, lines: string[], x: number, y: number, step: number) => {
   g.fillStyle = G; g.shadowColor = G; g.shadowBlur = 14;
-  heads.forEach((l, i) => g.fillText(l, 56, 160 + i * size * 1.1)); g.shadowBlur = 0;
-  // the decree, wrapped
-  g.fillStyle = TXT; g.font = '400 30px "JetBrains Mono"';
-  const top = 230 + (heads.length - 1) * size * 1.1;
-  wrap(g, body, W - 420).slice(0, heads.length > 1 ? 6 : 7).forEach((l, i) => g.fillText(l, 56, top + i * 44));
-  foot(g, W, H, site, 'A fan decree');
-  save(c, 'doom-decree.png');
+  lines.forEach((l, i) => g.fillText(l, x, y + i * step)); g.shadowBlur = 0;
+};
+
+/** The decree as a 16:9 picture (1920x1080) or a 9:16 phone story (1080x1920). */
+async function decreeCard(to: string, body: string, site: string, fmt: 'wide' | 'story') {
+  const story = fmt === 'story', W = story ? 1080 : 1920, H = story ? 1920 : 1080, { c, g } = await canvasFor(W, H);
+  const sealImg = await img('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(SEAL.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ')));
+  const head = `TO ${to.toUpperCase()}`;
+  if (story) {
+    // stories cover the top and bottom 250 px with their own buttons, so everything sits between
+    // measured first, so the whole decree can sit in the middle of the safe area
+    const h = fitHead(g, head, W - 140, 64, 44), step = h.size * 1.12;
+    g.font = '400 40px "JetBrains Mono"'; const lines = wrap(g, body, W - 140).slice(0, 8);
+    const tall = 640 + h.lines.length * step + 50 + lines.length * 58, y = 280 + Math.max(0, (1360 - tall) / 2);
+    g.fillStyle = DIM; g.font = '700 26px "JetBrains Mono"'; g.textAlign = 'center';
+    g.fillText('BY ORDER OF VICTOR VON DOOM', W / 2, y); g.fillText('MONARCH OF LATVERIA', W / 2, y + 40);
+    if (sealImg) g.drawImage(sealImg, (W - 420) / 2, y + 100, 420, 420);
+    g.font = `700 ${h.size}px "Tektur Variable"`; glow(g, h.lines, W / 2, y + 640, step);
+    g.fillStyle = TXT; g.font = '400 40px "JetBrains Mono"';
+    const top = y + 640 + h.lines.length * step + 50;
+    lines.forEach((l, i) => g.fillText(l, W / 2, top + i * 58));
+    g.textAlign = 'left';
+    foot(g, W, H - 200, site, 'A fan decree');
+  } else {
+    if (sealImg) g.drawImage(sealImg, W - 480, 110, 360, 360);
+    g.fillStyle = DIM; g.font = '700 28px "JetBrains Mono"'; g.fillText('BY ORDER OF VICTOR VON DOOM, MONARCH OF LATVERIA', 90, 150);
+    const h = fitHead(g, head, W - 90 - 540, 74, 54);
+    glow(g, h.lines, 90, 260, h.size * 1.1);
+    g.fillStyle = TXT; g.font = '400 46px "JetBrains Mono"';
+    const top = 370 + (h.lines.length - 1) * h.size * 1.1;
+    wrap(g, body, W - 680).slice(0, h.lines.length > 1 ? 7 : 8).forEach((l, i) => g.fillText(l, 90, top + i * 66));
+    foot(g, W, H, site, 'A fan decree');
+  }
+  save(c, story ? 'doom-decree-story.png' : 'doom-decree.png');
 }
