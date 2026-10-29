@@ -93,6 +93,9 @@ export function chamber() {
     const ol = document.querySelector<HTMLElement>('[data-rlog-full]')!; ol.innerHTML = '';
     for (const l of r.log) { const li = document.createElement('li'); const i = document.createElement('i'); i.textContent = `${daysBefore(l.t)} days before Doomsday`; li.append(i, document.createTextNode(l.text)); ol.append(li); }
     if (!r.log.length) ol.innerHTML = '<li class="os-label">The log is empty.</li>';
+    // the chamber opens on the latest line of the royal log
+    const last = document.querySelector<HTMLElement>('[data-op-last]');
+    if (last) last.textContent = r.log[0] ? `${daysBefore(r.log[0].t)} days before Doomsday: ${r.log[0].text}` : 'Your reign begins today. Every judgement, plan and decree will be logged here.';
     document.querySelector('[data-reign-days]')!.textContent = String(Math.max(0, Math.floor((Date.now() - r.since) / 86400000)));
     document.querySelector('[data-will-n]')!.textContent = `${Math.round(will() * 100)}%`;
     document.querySelector('[data-breaches]')!.textContent = String(r.breaches);

@@ -75,7 +75,7 @@ function stolenFile(slug: string, by: Map<string, T>) {
   const name = by.get(slug)?.name ?? slug;
   document.body.classList.add('f-stolen');
   const el = document.createElement('div');
-  el.className = 'stolen os-panel'; el.setAttribute('role', 'alert');
+  el.className = 'stolen os-panel os-inst'; el.setAttribute('role', 'alert');
   el.innerHTML = `<p class="os-label">File compromised // a game: not part of the film</p><p class="st-h">Stolen by <b></b></p><p class="st-p">This file left the network during a breach. Its record is sealed until Your Majesty takes it back.</p><button class="os-btn" type="button">Take it back</button>`;
   el.querySelector('b')!.textContent = thief;
   top.before(el);

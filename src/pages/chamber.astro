@@ -12,8 +12,8 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
 <OS title="Royal chamber" page="chamber" description="Doctor Doom's private chamber in the Doomsday Dossier fan site: rank the 29 Avengers: Doomsday characters in your order of conquest, judge them, and issue a decree. Fan opinion, kept on your device.">
   <div class="mod-head">
     <div>
-      <p class="os-label">Module 07 // Royal chamber</p>
       <h1 class="os-display os-hi mod-title">Your chamber</h1>
+      <p class="op-last" data-op-last aria-live="polite"></p>
       <p class="mod-sub">Your Majesty's private rooms. Plans, judgements and decrees are kept on this device alone; nothing here leaves it. Every ranking and verdict is your own fan opinion, not fact.</p>
     </div>
     <div class="ch-stats os-label"><span>Reign: <b data-reign-days>0</b> days</span><span>Doom's will: <b data-will-n>0%</b></span><span>Breaches repelled: <b data-breaches>0</b></span></div>
@@ -87,10 +87,10 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
   .cq-i img { width: 38px; height: 38px; object-fit: cover; object-position: 50% 15%; }
   .cq-i a { text-decoration: none; color: var(--os-text) !important; display: grid; min-width: 0; }
   .cq-i a b { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .cq-i a .os-label { font-size: 9px; }
-  .cq-v { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .cq-i a .os-label { font-size: 11px; }
+  .cq-v { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
   .cq-btns { display: flex; gap: 2px; }
-  .cq-btns button { font: 9px var(--os-mono); color: var(--os-green); background: none; border: 1px solid var(--os-line); width: 22px; height: 22px; cursor: pointer; padding: 0; }
+  .cq-btns button { font: 11px var(--os-mono); color: var(--os-green); background: none; border: 1px solid var(--os-line); width: 22px; height: 22px; cursor: pointer; padding: 0; }
   .cq-btns button:hover { border-color: var(--os-line-hi); }
   .ch-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
   .vd { display: grid; gap: 8px; }
@@ -113,7 +113,7 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
   .ch-erase { background: none; border: 0; cursor: pointer; color: var(--os-dim); }
   .ch-erase:hover { color: var(--os-red); }
   .rlog-full { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-height: 320px; overflow: auto; font-size: 12px; }
-  .rlog-full i { display: block; font-style: normal; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green-2); }
+  .rlog-full i { display: block; font-style: normal; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green-2); }
   @media (max-width: 980px) { .ch { grid-template-columns: minmax(0, 1fr); } .ch-stats { text-align: left; } }
   @media (max-width: 480px) { .cq-i { grid-template-columns: 12px 22px 32px minmax(0, 1fr) auto; gap: 6px; } .cq-v { display: none; } .cq-i img { width: 32px; height: 32px; } .dc-prev { padding-left: 18px; padding-top: 86px; } }
 </style>

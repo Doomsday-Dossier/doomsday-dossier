@@ -21,29 +21,37 @@ const COLS = 6, CELL = 256;
 /** A small seeded random, so the world is the same on every visit. */
 const rand = (seed: number) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
 
-/** Seeds on the sphere: Doomstadt at the north pole, each team a continent, relaxed so the domains are even. */
+/**
+ * Seeds on the sphere: Doomstadt at the north pole, each team a continent. A patchwork, not a ball: the seeds are
+ * thrown hard round their continent, each pushes with its own strength, and they are only lightly relaxed, so the
+ * domains come out in very different sizes and the continents bunch (Secret Wars, 2015: a world stitched from the
+ * fragments of dead universes, never a tidy globe).
+ */
 function seeds(list: World[]) {
   const r = rand(66);
   const teams = [...new Set(list.map((w) => w.teamId))].filter((t) => t !== 'adversary');
   const centre: Record<string, THREE.Vector3> = { adversary: new THREE.Vector3(0, 1, 0) };
-  teams.forEach((t, i) => { const lon = (i / teams.length) * Math.PI * 2, lat = i % 2 ? -0.25 : 0.35; centre[t] = new THREE.Vector3(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon)); });
-  const pts = list.map((w) => (w.teamId === 'adversary' ? new THREE.Vector3(0, 1, 0) : centre[w.teamId].clone().add(new THREE.Vector3(r() - 0.5, r() - 0.5, r() - 0.5).multiplyScalar(0.5)).normalize()));
-  for (let it = 0; it < 80; it++) {
+  teams.forEach((t, i) => { const lon = (i / teams.length) * Math.PI * 2 + (r() - 0.5) * 0.5, lat = (i % 2 ? -0.35 : 0.3) + (r() - 0.5) * 0.4; centre[t] = new THREE.Vector3(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon)); });
+  const pts = list.map((w) => (w.teamId === 'adversary' ? new THREE.Vector3(0, 1, 0) : centre[w.teamId].clone().add(new THREE.Vector3(r() - 0.5, r() - 0.5, r() - 0.5).multiplyScalar(0.9)).normalize()));
+  // Doomstadt pushes hardest, so the capital is the largest domain; every other domain has its own reach
+  const reach = list.map((w) => (w.teamId === 'adversary' ? 2.6 : 0.45 + r() * 1.7));
+  for (let it = 0; it < 26; it++) {
     const f = pts.map(() => new THREE.Vector3());
     for (let i = 0; i < pts.length; i++) for (let j = 0; j < pts.length; j++) {
       if (i === j) continue;
       const d = pts[i].clone().sub(pts[j]), l = d.length() + 1e-3;
-      // Doomstadt pushes harder, so the capital is the largest domain
-      const w = list[j].teamId === 'adversary' ? 2.2 : 1;
-      f[i].add(d.multiplyScalar((w * 0.012) / (l * l)));
+      f[i].add(d.multiplyScalar((reach[j] * 0.011) / (l * l)));
     }
     pts.forEach((p, i) => {
       if (list[i].teamId === 'adversary') return;
-      p.add(f[i]).add(centre[list[i].teamId].clone().sub(p).multiplyScalar(0.02)).normalize();
+      p.add(f[i]).add(centre[list[i].teamId].clone().sub(p).multiplyScalar(0.035)).normalize();
     });
   }
   return pts;
 }
+
+/** A repeatable 0 to 1 hash, for the jagged rims. */
+const hash = (a: number, b: number, c: number) => { const x = Math.sin(a * 127.1 + b * 311.7 + c * 74.7) * 43758.5453; return x - Math.floor(x); };
 
 /**
  * The domains as true spherical Voronoi cells: the seeds' convex hull is their Delaunay triangulation on the sphere,
@@ -68,14 +76,17 @@ function buildGeometry(list: World[]) {
   });
   const centre = poly.map((vs) => vs.reduce((a, v) => a.add(v), new THREE.Vector3()).normalize());
   const radius = poly.map((vs, i) => Math.max(...vs.map((v) => v.angleTo(centre[i]))));
-  const top = list.map((w, i) => (w.teamId === 'adversary' ? 1.07 : 1 + ((i * 37) % 9) * 0.007));
-  const SHRINK = 0.95, CORE = 0.84, K = 7;
+  // heights differ, and a few domains stand well proud of the surface, so the outline breaks like broken ground
+  const top = list.map((w, i) => (w.teamId === 'adversary' ? 1.08 : 1 + ((i * 37) % 9) * 0.006 + (i % 6 === 2 ? 0.05 : 0)));
+  // each domain shrinks back by its own amount, so the cracks between them are of uneven width
+  const shrink = list.map((_, i) => 0.9 + ((i * 53) % 7) * 0.011);
+  const CORE = 0.84, K = 7;
   const frame = centre.map((cn) => {
     const up = Math.abs(cn.y) > 0.98 ? new THREE.Vector3(0, 0, -1) : new THREE.Vector3(0, 1, 0);
     const t1 = new THREE.Vector3().crossVectors(up, cn).normalize(), t2 = new THREE.Vector3().crossVectors(cn, t1).normalize();
     return { t1, t2 };
   });
-  const place = (v: THREE.Vector3, s: number, r: number) => v.clone().normalize().sub(centre[s]).multiplyScalar(SHRINK).add(centre[s]).normalize().multiplyScalar(r);
+  const place = (v: THREE.Vector3, s: number, r: number) => v.clone().normalize().sub(centre[s]).multiplyScalar(shrink[s]).add(centre[s]).normalize().multiplyScalar(r);
   const uvOf = (p: THREE.Vector3, s: number): [number, number] => {
     const q = p.clone().normalize(), k = 0.5 / Math.sin(radius[s] * 0.92);
     return [0.5 + q.dot(frame[s].t1) * k, 0.5 + q.dot(frame[s].t2) * k];
@@ -88,8 +99,11 @@ function buildGeometry(list: World[]) {
     for (let e = 0; e < vs.length; e++) {
       const a = vs[e], b = vs[(e + 1) % vs.length];
       // the wedge (centre, a, b) as a K by K triangle grid on the sphere
+      // the rim is broken, not cut: points along each edge (never the corners) are bitten back toward the centre
+      const rim = (j: number) => { const p = slerpish(a, b, j / K); return j === 0 || j === K ? p : slerpish(c, p, 1 - hash(s, e, j) * 0.1); };
       const pt = (i: number, j: number) => { // i steps from the centre toward the edge, j along it
         if (i === 0) return c.clone();
+        if (i === K) return rim(j);
         const ea = slerpish(c, a, i / K), eb = slerpish(c, b, i / K);
         return slerpish(ea, eb, j / i);
       };
@@ -100,7 +114,7 @@ function buildGeometry(list: World[]) {
       }
       // the wall under this edge, in K pieces so it follows the curve
       for (let j = 0; j < K; j++) {
-        const p0 = slerpish(a, b, j / K), p1 = slerpish(a, b, (j + 1) / K);
+        const p0 = rim(j), p1 = rim(j + 1);
         const at = place(p0, s, top[s]), bt = place(p1, s, top[s]), ab = place(p0, s, CORE), bb = place(p1, s, CORE);
         const n = new THREE.Vector3().subVectors(bt, at).cross(at.clone().normalize()).normalize();
         if (n.dot(at.clone().normalize().sub(c)) < 0) n.negate();
@@ -221,14 +235,14 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     sp.scale.setScalar(3.4); scene.add(sp);
     return sp;
   })();
-  // orbits: two tilted rings of ticks, turning slowly
+  // an orbit: one faint tilted ring of ticks, turning slowly (two bright ones made the planet read as a toy)
   const rings: THREE.Object3D[] = [];
-  for (const [r, tilt, n] of [[1.55, 0.42, 180], [1.85, -0.28, 120]] as const) {
+  for (const [r, tilt, n] of [[1.75, 0.38, 160]] as const) {
     const pts: number[] = [];
     for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2, l = i % 10 ? 0.012 : 0.04; pts.push(Math.cos(a) * r, 0, Math.sin(a) * r, Math.cos(a) * (r + l), 0, Math.sin(a) * (r + l)); }
     const lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
-    const ring = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x3dff8f, transparent: true, opacity: 0.35 }));
-    const circ = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 128 }, (_, i) => new THREE.Vector3(Math.cos((i / 128) * Math.PI * 2) * r, 0, Math.sin((i / 128) * Math.PI * 2) * r))), new THREE.LineBasicMaterial({ color: 0x3dff8f, transparent: true, opacity: 0.12 }));
+    const ring = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x3dff8f, transparent: true, opacity: 0.2 }));
+    const circ = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 128 }, (_, i) => new THREE.Vector3(Math.cos((i / 128) * Math.PI * 2) * r, 0, Math.sin((i / 128) * Math.PI * 2) * r))), new THREE.LineBasicMaterial({ color: 0x3dff8f, transparent: true, opacity: 0.06 }));
     const holder = new THREE.Group(); holder.add(ring, circ); holder.rotation.x = tilt; holder.rotation.z = tilt * 0.6; scene.add(holder); rings.push(ring);
   }
   // dust of dead universes, far out

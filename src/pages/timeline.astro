@@ -48,7 +48,7 @@ const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u =
 <OS title="Temporal archive" page="timeline" description="Every comic debut and every live-action appearance of the 29 Avengers: Doomsday characters, from 1939 to 2026, mapped as the comics, Fox and Marvel Studios universes converging on Doomsday.">
   <div class="mod-head">
     <div>
-      <p class="os-label">Module 02 // Temporal archive</p>
+      <svg class="op-rings" viewBox="0 0 640 220" aria-hidden="true"><ellipse cx="250" cy="110" rx="200" ry="70" /><ellipse cx="390" cy="110" rx="200" ry="70" /><ellipse cx="320" cy="118" rx="240" ry="86" /></svg>
       <h1 class="os-display os-hi mod-title">Universes collide</h1>
       <p class="mod-sub">Doom's archive watches every universe at once. Scroll through time: each sighting lands on its universe, threads join a target's lives across them, and the universes drift together as 18 December 2026 nears, when Marvel's Doomsday cast brings the Fox films' X-Men and the MCU's heroes together.</p>
     </div>
@@ -66,7 +66,7 @@ const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u =
       <nav class="tl-dec" aria-label="Jump to a decade">{decades.map((d) => <a href={`#dec-${d}`}>{d}s</a>)}</nav>
       {decades.map((d) => (
         <section class="dec" id={`dec-${d}`}>
-          <h2 class="dec-h os-display">{d}s</h2>
+          <h2 class="dec-h os-display">{d}<span class="dec-s">s</span></h2>
           {evs.filter((e) => Math.floor(e.year / 10) * 10 === d).map((e) => (
             <article class={`ev ev-${e.u} ${e.kind}`} data-ev={e.id} data-s={e.sort} data-y={e.year}>
               <span class="ev-y">{e.year}</span>
@@ -91,7 +91,7 @@ const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u =
 
 <style is:global>
   .tl-keys { display: flex; flex-wrap: wrap; gap: 6px; max-width: 520px; justify-content: flex-end; }
-  .tl-keys .k { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 7px; border: 1px solid currentColor; }
+  .tl-keys .k { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 7px; border: 1px solid currentColor; }
   .kC { color: #ffb347; } .kF { color: #8fcaff; } .kM { color: #3dff8f; } .kO { color: #c79bff; } .kN { color: #e9fff3; }
   .tl { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--os-gap); align-items: start; }
   /* the stage is opaque: the log scrolls beside it (desktop) or under it (phones), never through it */
@@ -101,11 +101,11 @@ const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u =
   .tl-read b { font-size: clamp(48px, 7vw, 110px); line-height: 0.9; font-variant-numeric: tabular-nums; }
   .tl-log { min-width: 0; }
   .tl-dec { position: sticky; top: 48px; z-index: 5; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 0; background: #020504; border-bottom: 1px solid var(--os-line); box-shadow: 0 10px 16px -8px #020504; }
-  .tl-dec a { font-size: 10px; letter-spacing: 0.12em; text-decoration: none; border: 1px solid var(--os-line); padding: 3px 6px; }
+  .tl-dec a { font-size: 11px; letter-spacing: 0.12em; text-decoration: none; border: 1px solid var(--os-line); padding: 3px 6px; }
   .tl-dec a:hover { border-color: var(--os-line-hi); }
   .dec { scroll-margin-top: 100px; }
   .dec-h { font-size: 44px; color: var(--os-dim); margin: 26px 0 8px; }
-  .ev { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 12px 0 12px 12px; border-left: 2px solid var(--uc, var(--os-line)); border-bottom: 1px dashed rgba(61, 255, 143, 0.1); transition: background 0.3s; }
+  .ev { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 12px 0 12px 12px; border-left: 1px solid var(--os-line); --tick: var(--uc, var(--os-line)); background-image: linear-gradient(var(--tick), var(--tick)), linear-gradient(var(--tick), var(--tick)); background-size: 12px 2px, 2px 12px; background-position: 0 0, 0 0; background-repeat: no-repeat; border-bottom: 1px dashed rgba(61, 255, 143, 0.1); transition: background 0.3s; }
   .ev.now { background: linear-gradient(90deg, rgba(61, 255, 143, 0.08), transparent); }
   .ev-C { --uc: #ffb347; } .ev-F { --uc: #8fcaff; } .ev-M { --uc: #3dff8f; } .ev-O { --uc: #c79bff; } .ev-N { --uc: #e9fff3; }
   .ev-y { font-weight: 700; color: var(--uc); font-size: 13px; }
@@ -124,7 +124,7 @@ const n = { C: evs.filter((e) => e.u === 'C').length, F: evs.filter((e) => e.u =
     .tl-dec::-webkit-scrollbar { display: none; }
     .tl-dec a { flex: 0 0 auto; padding: 8px 10px; font-size: 11px; }
     .tl-read { left: 12px; bottom: 8px; }
-    .tl-read .os-label { font-size: 9.5px; }
+    .tl-read .os-label { font-size: 11px; }
     .dec { scroll-margin-top: calc(110px + max(40svh, 260px)); }
     .tl-read b { font-size: 44px; }
     .tl-keys { justify-content: flex-start; }

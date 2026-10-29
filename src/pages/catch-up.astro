@@ -29,11 +29,10 @@ const data = JSON.stringify({ roster: roster.map(({ slug, name, team, accent, fi
   <div class="bs" data-catchup>
     <div class="mod-head">
       <div>
-        <p class="os-label">Module 06 // Briefing schedule</p>
         <h1 class="os-display os-hi mod-title" data-decrypt>Ready by Doomsday.</h1>
         <p class="mod-sub">Mark the targets Your Majesty wishes to study. For each one the schedule orders their first and their most recent screen appearance with the actor Marvel cast in Doomsday: where they began, and where they left off. A title shared by several targets is ordered once; for a series, only the episodes they are in. Re-releases are left out.</p>
       </div>
-      <p class="os-label">Deadline &middot; {release}</p>
+      <p class="op-date" aria-label={`Deadline: ${release}`}><span class="os-label">Deadline</span><b class="os-display os-hi">18.12</b><span class="os-label">2026</span></p>
     </div>
 
     <div class="bs-grid">
@@ -60,8 +59,12 @@ const data = JSON.stringify({ roster: roster.map(({ slug, name, team, accent, fi
         </ul>
       </section>
 
-      <aside class="os-panel bs-plan" aria-live="polite" aria-labelledby="bs-plan-h" data-os-in>
+      <aside class="os-panel os-inst bs-plan" aria-live="polite" aria-labelledby="bs-plan-h" data-os-in>
         <header><b id="bs-plan-h">Orders</b><span class="os-label">Release order</span></header>
+        <div class="bs-start">
+          <p class="bs-empty">Mark the targets you want to know before {release}, and the schedule works out what to watch, in what order, and how many hours a day it takes.</p>
+          <button type="button" class="os-btn" data-brief-all>Brief me on all {roster.length}</button>
+        </div>
         <div class="bs-read">
           <div class="bs-hours">
             <span class="os-label">Viewing required</span>
@@ -105,7 +108,7 @@ const data = JSON.stringify({ roster: roster.map(({ slug, name, team, accent, fi
 
   /* the targets: team quick picks, then a chip per target with its tile photo */
   .bs-quick { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
-  .bs-q { font: inherit; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green); background: rgba(61, 255, 143, 0.04); border: 1px solid var(--os-line); padding: 8px 10px; min-height: 36px; cursor: pointer; }
+  .bs-q { font: inherit; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-green); background: rgba(61, 255, 143, 0.04); border: 1px solid var(--os-line); padding: 8px 10px; min-height: 36px; cursor: pointer; }
   .bs-q:hover, .bs-q:focus-visible { border-color: var(--os-line-hi); background: rgba(61, 255, 143, 0.1); }
   .bs-q-clear { color: var(--os-amber); border-color: rgba(255, 179, 71, 0.35); }
   .bs-chips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 8px; }
@@ -116,9 +119,9 @@ const data = JSON.stringify({ roster: roster.map(({ slug, name, team, accent, fi
   .bs-chip-img > i { display: grid; place-items: center; height: 100%; font: 700 28px var(--os-display); font-style: normal; color: var(--os-dim); }
   .bs-chip:hover .bs-chip-img img { opacity: 1; }
   .bs-chip-no, .bs-chip-name { padding: 0 8px; }
-  .bs-chip-no { padding-top: 6px; font-size: 9px; }
+  .bs-chip-no { padding-top: 6px; font-size: 11px; }
   .bs-chip-name { font-family: var(--os-display); font-weight: 700; font-size: 11px; letter-spacing: 0; line-height: 1.1; text-transform: uppercase; overflow-wrap: break-word; color: var(--os-dim); }
-  .bs-chip-tag { position: absolute; left: 4px; top: 4px; font-style: normal; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #021008; background: var(--os-green); padding: 1px 5px; opacity: 0; transform: scale(1.4); transition: opacity 0.2s, transform 0.25s cubic-bezier(.5,0,.75,0); }
+  .bs-chip-tag { position: absolute; left: 4px; top: 4px; font-style: normal; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #021008; background: var(--os-green); padding: 1px 5px; opacity: 0; transform: scale(1.4); transition: opacity 0.2s, transform 0.25s cubic-bezier(.5,0,.75,0); }
   .bs-chip[aria-pressed='true'] { border-color: var(--os-green); background: rgba(61, 255, 143, 0.09); box-shadow: inset 0 0 0 1px var(--os-green); }
   .bs-chip[aria-pressed='true'] .bs-chip-img img { filter: none; opacity: 1; transform: scale(1.05); }
   .bs-chip[aria-pressed='true'] .bs-chip-name { color: var(--os-green); }
@@ -155,13 +158,13 @@ const data = JSON.stringify({ roster: roster.map(({ slug, name, team, accent, fi
   .bs-log { list-style: none; margin: 0; padding: 0; counter-reset: ord; overflow-x: clip; }
   .bs-log:empty::before { content: 'No orders. Mark a target to begin.'; display: block; padding: 18px 0; border-top: 1px dashed rgba(61, 255, 143, 0.16); color: var(--os-dim); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
   .bs-log > li { counter-increment: ord; position: relative; display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 4px 12px; align-items: start; padding: 12px 0; border-top: 1px dashed rgba(61, 255, 143, 0.16); }
-  .bs-log > li > span:first-of-type::before { content: 'Order ' counter(ord, decimal-leading-zero); display: block; margin-bottom: 3px; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--os-green-2); }
+  .bs-log > li > span:first-of-type::before { content: 'Order ' counter(ord, decimal-leading-zero); display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--os-green-2); }
   .bs-log input[type='checkbox'] { appearance: none; -webkit-appearance: none; width: 24px; height: 24px; margin: 15px 0 0; border: 1px solid var(--os-line-hi); background: rgba(61, 255, 143, 0.04); cursor: pointer; display: grid; place-items: center; }
   .bs-log input[type='checkbox']:hover { background: rgba(61, 255, 143, 0.12); }
   .bs-log input[type='checkbox']:checked { background: var(--os-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23021008' stroke-width='3'/%3E%3C/svg%3E") center / 18px no-repeat; border-color: var(--os-green); }
   .bs-log .cu-t { font-family: var(--os-display); font-weight: 700; font-size: 18px; line-height: 1.1; text-transform: uppercase; color: var(--os-text); overflow-wrap: anywhere; }
   .bs-log .cu-y { font-size: 11px; color: var(--os-dim); margin-left: 8px; }
-  .bs-log .cu-tag { display: inline-block; font-size: 9px; letter-spacing: 0.16em; border: 1px solid var(--os-line-hi); padding: 0 5px; margin-left: 6px; color: var(--os-green); vertical-align: 1px; }
+  .bs-log .cu-tag { display: inline-block; font-size: 11px; letter-spacing: 0.16em; border: 1px solid var(--os-line-hi); padding: 0 5px; margin-left: 6px; color: var(--os-green); vertical-align: 1px; }
   .bs-log .cu-tag[data-cont='FOX'] { color: var(--os-amber); border-color: rgba(255, 179, 71, 0.5); }
   .bs-log .cu-min { margin-top: 15px; font-size: 12px; color: var(--os-green); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .bs-log .cu-why { grid-column: 2 / -1; margin: 2px 0 0; font-size: 12px; color: var(--os-dim); }

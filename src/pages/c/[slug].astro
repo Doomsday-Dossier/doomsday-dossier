@@ -122,7 +122,7 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
         <header><b>Identity</b><span class="os-label">Confirmed</span></header>
         {identity.map((x) => <div class="os-row"><span>{x.k}</span><span><span data-type>{x.v}</span><Fragment set:html={sup(x.n, 'src-brief')} /></span></div>)}
       </div>
-      <div class="os-panel" data-os-in>
+      <div class="os-panel os-inst" data-os-in>
         <header><b>Threat index</b><span class="os-label">{grid ? 'Marvel power grid' : 'No grid'}</span></header>
         <div class="th-main">
           <div class="th-dial">
@@ -204,7 +204,7 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   </section>
 
   <section class="f-two">
-    <div class="os-panel" data-os-in>
+    <div class="os-panel os-inst" data-os-in>
       <header><b>Signal history</b><span class="os-label">{y0} to 2026 &middot; bars: screen &middot; line: comics eras</span></header>
       <div class="sig" data-sig role="img" aria-label={`Sightings of ${name} by year from ${y0} to 2026: ${screen.length} on screen.`}>
         {sig.map((x) => (
@@ -213,7 +213,7 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
       </div>
       <div class="sig-axis os-label"><span>{y0}</span><span>{Math.round((y0 + 2026) / 2)}</span><span>2026 &middot; Doomsday</span></div>
     </div>
-    <div class="os-panel" data-os-in>
+    <div class="os-panel os-inst" data-os-in>
       <header><b>Known associates</b><span class="os-label">Shared the screen</span></header>
       {assoc.length ? (
         <div class="assoc" data-assoc>
@@ -246,14 +246,14 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
 
 <style is:global>
   .f-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 6px 0 var(--os-gap); flex-wrap: wrap; }
-  .f-top .os-btn { padding: 7px 11px; font-size: 10px; }
+  .f-top .os-btn { padding: 7px 11px; font-size: 11px; }
   .f-pn { display: flex; gap: 6px; }
   .f-main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: var(--os-gap); align-items: start; }
   .f-scan { position: sticky; top: 64px; height: min(78svh, 780px); border: 1px solid var(--os-line); background: radial-gradient(circle at 50% 35%, rgba(61, 255, 143, 0.08), transparent 70%); }
   .f-scan canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .f-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
   html.no-scan .f-still { opacity: 1; filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(2) brightness(1.4); }
-  .f-status { position: absolute; left: 12px; bottom: 10px; }
+  .f-status { position: absolute; left: 12px; bottom: 10px; max-width: calc(100% - 24px); padding: 3px 8px; background: rgba(2, 8, 5, 0.82); white-space: nowrap; overflow: hidden; }
   .os-reticle .lock { position: absolute; left: 100%; top: 50%; white-space: nowrap; margin-left: 4px; opacity: 0; transition: opacity 0.3s; }
   .os-reticle.locked .lock { opacity: 1; }
   .f-stamp { position: absolute; right: 16px; top: 16px; font: 700 15px var(--os-mono); letter-spacing: 0.2em; text-transform: uppercase; border: 2px solid currentColor; padding: 6px 12px; transform: rotate(-8deg); background: rgba(2, 5, 4, 0.7); }
@@ -269,13 +269,13 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   .th-rank b { font-family: var(--os-display); font-size: 30px; line-height: 1; }
   .th-band { font-family: var(--os-display); font-size: 21px; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 2px !important; }
   .th-line { margin-top: 6px !important; font-size: 14px; line-height: 1.4; color: var(--os-text); }
-  .th-how { margin: 8px 0 6px; font-size: 9.5px; letter-spacing: 0.1em; line-height: 1.5; }
+  .th-how { margin: 8px 0 6px; font-size: 11px; letter-spacing: 0.1em; line-height: 1.5; }
   @media (max-width: 420px) { .th-main { grid-template-columns: minmax(0, 1fr); } .th-dial { max-width: 220px; } }
   .v-ask { margin: 0 0 10px; }
   .v-btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
   .v-btns button { font: inherit; text-align: left; display: grid; gap: 2px; padding: 9px 10px; color: var(--os-text); background: rgba(61, 255, 143, 0.03); border: 1px solid var(--os-line); cursor: pointer; }
   .v-btns button b { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
-  .v-btns button span { font-size: 10px; color: var(--os-dim); }
+  .v-btns button span { font-size: 11px; color: var(--os-dim); }
   .v-btns button:hover { border-color: var(--os-line-hi); }
   .v-btns button[aria-pressed='true'] { border-color: currentColor; background: rgba(61, 255, 143, 0.1); }
   .v-btns [data-v='ally'] b { color: var(--os-green); } .v-btns [data-v='pawn'] b { color: #9fd8ff; } .v-btns [data-v='obstacle'] b { color: var(--os-red); } .v-btns [data-v='beneath'] b { color: var(--os-dim); }
@@ -314,8 +314,8 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   .assoc-me b { font-family: var(--os-display); font-size: 13px; text-transform: uppercase; }
   .assoc-n { left: calc(50% + cos(var(--i) / var(--n) * 360deg - 90deg) * 40%); top: calc(50% + sin(var(--i) / var(--n) * 360deg - 90deg) * 40%); color: var(--os-text) !important; text-decoration: none; width: 90px; }
   .assoc-n img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; border: 1px solid var(--os-line-hi); }
-  .assoc-n b { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.15; }
-  .assoc-n span { font-size: 9px; color: var(--os-dim); }
+  .assoc-n b { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.15; }
+  .assoc-n span { font-size: 11px; color: var(--os-dim); }
   .assoc-n:hover img, .assoc-n:focus-visible img { filter: none; border-color: var(--os-green); }
   .st-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .st { margin: 0; position: relative; }
@@ -340,6 +340,10 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   @media (max-width: 1000px) {
     .f-main, .f-two { grid-template-columns: minmax(0, 1fr); }
     .f-scan { position: relative; top: 0; height: 64svh; }
+    /* on a narrow screen the target is named before the scan, not below the fold */
+    .f-main { display: flex; flex-direction: column; align-items: stretch; }
+    .f-read { display: contents; }
+    .f-read > .os-label { order: -2; } .f-read > .f-name { order: -1; margin-bottom: 4px; }
     .v-btns { grid-template-columns: 1fr 1fr; }
     .st-row { grid-template-columns: 1fr; }
     .st img { height: 220px; }
@@ -349,6 +353,6 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
     .rec li, .eras li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .os-row, .brief .os-row { grid-template-columns: 100px minmax(0, 1fr); }
     .assoc { height: 300px; }
-    .assoc-n { width: 70px; } .assoc-n b { font-size: 9px; } .assoc-n span { display: none; }
+    .assoc-n { width: 70px; } .assoc-n b { font-size: 11px; } .assoc-n span { display: none; }
   }
 </style>
