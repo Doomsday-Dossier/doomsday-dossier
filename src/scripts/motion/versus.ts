@@ -156,6 +156,8 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
         return `<div class="stat">${bar('a', A)}<span class="stat-name">${label}</span>${bar('b', B)}</div>`;
       }).join('');
       const gridSrc = (s: 'a' | 'b', c: Char) => c.grid && c.gridSource ? `${esc(c.name)}: ${cite(s, [c.gridSource])}` : `${esc(c.name)}: not rated in the Handbook`;
+      // a rated character's note says what the grid leaves out (Loki as the God of Stories)
+      const gridNotes = [A, B].filter((c) => c.grid && c.gridNote).map((c) => `<p class="srcs">${esc(c.name)}: ${esc(c.gridNote!)}</p>`).join('');
 
       const col = (s: 'a' | 'b', c: Char, html: string) => `<div class="col" style="--a:${esc(c.accent)}"><h3>${esc(c.name)}</h3>${html}</div>`;
       const abil = (s: 'a' | 'b', c: Char) => c.ready ? `<ul>${c.abilities.map((x) => `<li><b>${esc(x.name)}</b>${cite(s, x.sources)}<p>${esc(x.detail)}</p></li>`).join('')}</ul>` : `<p class="pending">Research for this character is still being added.</p>`;
@@ -171,7 +173,7 @@ export function versusPage(root: ParentNode, o: Opts): () => void {
 
       body.innerHTML = `
         <section><h2>Documented feats</h2><div class="cols">${col('a', A, feats('a', A))}${col('b', B, feats('b', B))}</div></section>
-        <section><h2>Power grid</h2><div class="stats">${statRows}</div><p class="srcs">Official Marvel Handbook ratings, comics only. ${gridSrc('a', A)}. ${gridSrc('b', B)}.</p></section>
+        <section><h2>Power grid</h2><div class="stats">${statRows}</div><p class="srcs">Official Marvel Handbook ratings, comics only. ${gridSrc('a', A)}. ${gridSrc('b', B)}.</p>${gridNotes}</section>
         <section><h2>Abilities</h2><div class="cols">${col('a', A, abil('a', A))}${col('b', B, abil('b', B))}</div></section>
         <section><h2>Connections</h2><ul class="links">${links}</ul></section>
         <section class="srcs"><h2>Sources</h2><div class="cols">

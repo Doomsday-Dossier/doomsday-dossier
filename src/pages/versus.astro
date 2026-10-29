@@ -23,7 +23,7 @@ const roster = publishedOrder().map((slug, i) => {
     // `big` is the scanner's own photo, so the v1 preload on hover warms the scan
     photo: ph ? { small: pick2(ph.full, 200), big: sp?.photo ?? pick2(ph.full, 1280), focus: ph.focusM } : null,
     scan: sp ? { photo: sp.photo, depth: sp.depth, head: sp.head, bbox: sp.bbox } : null,
-    grid: v?.powerGrid?.values ?? null, gridSource: v?.powerGrid?.source ?? null, gridNote: v?.powerGrid?.note ?? null,
+    grid: v?.powerGrid?.values ?? null, gridSource: v?.powerGrid?.source ?? null, gridNote: v?.powerGrid?.caption ?? null,
     powerType: v?.powerType ?? null, origins: v?.powerOrigins ?? [], abilities: v?.abilities ?? [], feats: v?.feats ?? [],
     screens: [...r.screen].sort((a: any, b: any) => a.year - b.year).map((s: any) => ({ k: key(s.title) + s.year, title: s.title, year: s.year })),
     ready: !!v,
