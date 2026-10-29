@@ -39,8 +39,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   <section class="cb" data-versus>
     <div class="mod-head">
       <div>
-        <p class="os-label">Module 03 // Combat simulation</p>
-        <h1 class="os-display os-hi mod-title">Two targets</h1>
+        <h1 class="os-display mod-title op-vs"><span class="os-hi">Two</span> <i aria-hidden="true"></i> <span class="op-b">targets</span></h1>
         <p class="mod-sub">Place any two targets in the chamber, Your Majesty. The system lays their documented feats and Marvel's published power grids side by side, every figure with its source. It computes no victor: the grids are the comics', the films don't always match them, and the only verdict on this screen is the fan vote.</p>
       </div>
       <p class="os-label">No verdict computed &middot; the fan vote is fan opinion</p>
@@ -55,7 +54,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
         <i class="vs-shock" aria-hidden="true"></i>
         <span class="vs-badge" aria-hidden="true">VS</span>
         <b class="cb-simtag" data-simtag aria-hidden="true">Simulate</b>
-        <div class="os-panel cb-radar">
+        <div class="os-panel os-inst cb-radar">
           <header><b>Power grid overlay</b><span class="os-label">Comics</span></header>
           <div class="cb-radar-host" data-cb-radar role="img" aria-label="Marvel power grid radar for both targets"></div>
           <p class="cb-legend"><span class="la"><i></i><b data-leg-a></b></span><span class="lb"><i></i><b data-leg-b></b></span></p>
@@ -163,20 +162,20 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .vs-name { margin: 0; font-family: var(--os-display); font-weight: 700; text-transform: uppercase; line-height: 0.95; letter-spacing: 0.01em; color: var(--os-text);
     font-size: max(14px, min(40px, calc((100cqi - 28px) / (var(--lw, 8) * 0.7)))); overflow-wrap: break-word; }
   .vs-meta { margin: 0; font-size: 11.5px; color: var(--os-dim); }
-  .vs-type { justify-self: start; font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--os-line-hi); color: var(--os-green); padding: 2px 6px; }
+  .vs-type { justify-self: start; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--os-line-hi); color: var(--os-green); padding: 2px 6px; }
   .vs-open { justify-self: start; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; margin-top: 2px; }
   .vs-open:hover { text-decoration: underline; }
   .cb-side[data-side='b'] .vs-alias, .cb-side[data-side='b'] .vs-type, .cb-side[data-side='b'] .vs-open { color: var(--os-amber) !important; border-color: rgba(255, 179, 71, 0.5); }
   /* documented feats, one at a time: every feat in one grid cell, so the panel is as tall as the longest */
   .vs-feat { order: 2; display: grid; margin: 0 14px 14px; padding: 10px 12px; border: 1px dashed var(--os-line); background: rgba(2, 5, 4, 0.5); }
   .vs-feat { grid-template-rows: auto 1fr; }
-  .vs-feat::before { content: 'Intercept // documented feat'; grid-area: 1 / 1; align-self: start; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-dim); }
+  .vs-feat::before { content: 'Intercept // documented feat'; grid-area: 1 / 1; align-self: start; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-dim); }
   .feat { grid-area: 2 / 1; margin: 0; padding-top: 6px; font-size: 12px; line-height: 1.5; color: var(--os-text); opacity: 0; transform: translateY(6px); transition: opacity 0.5s, transform 0.5s cubic-bezier(.2,.8,.2,1), visibility 0.5s; }
   .feat.on { opacity: 1; transform: none; }
   .feat:not(.on) { visibility: hidden; }
-  .feat .where, .cb-body .where { display: inline-block; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--os-line); color: var(--os-dim); padding: 1px 6px; margin: 0 6px 4px 0; }
+  .feat .where, .cb-body .where { display: inline-block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--os-line); color: var(--os-dim); padding: 1px 6px; margin: 0 6px 4px 0; }
   .feat .where.screen, .cb-body .where.screen { color: var(--os-green); border-color: var(--os-line-hi); }
-  .feat a { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-green-2) !important; }
+  .feat a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-green-2) !important; }
 
   /* the middle: the badge, the simulate flash and the power grid overlay */
   .cb-mid { position: relative; display: grid; justify-items: center; gap: 10px; min-width: 0; }
@@ -204,20 +203,20 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .cb-slot { font: inherit; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-text); background: rgba(61, 255, 143, 0.04); border: 1px solid var(--os-line); padding: 8px 11px; min-height: 36px; cursor: pointer; }
   .cb-slot[data-slot='a'][aria-pressed='true'] { background: var(--os-green); border-color: var(--os-green); color: #021008; }
   .cb-slot[data-slot='b'][aria-pressed='true'] { background: var(--os-amber); border-color: var(--os-amber); color: #120b00; }
-  .cb-tool { padding: 8px 11px; font-size: 10px; min-height: 36px; }
+  .cb-tool { padding: 8px 11px; font-size: 11px; min-height: 36px; }
   .cb-roster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
   .cb-roster button { position: relative; width: 100%; height: 100%; box-sizing: border-box; display: grid; justify-items: center; align-content: start; gap: 3px; padding: 6px 4px 8px; font: inherit; color: var(--os-text); background: rgba(61, 255, 143, 0.02); border: 1px solid var(--os-line); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
   .cb-roster button:hover, .cb-roster button:focus-visible { border-color: var(--os-line-hi); }
   .cb-tile { display: block; width: 56px; height: 56px; overflow: hidden; background: rgba(61, 255, 143, 0.06); }
   .cb-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cb-tile > span { display: grid; place-items: center; height: 100%; font-family: var(--os-display); font-size: 20px; color: var(--os-green); }
-  .cb-roster i { font-style: normal; font-size: 8.5px; letter-spacing: 0.14em; }
-  .cb-roster b { font-weight: 700; font-size: 9.5px; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; overflow-wrap: anywhere; color: var(--os-dim); }
+  .cb-roster i { font-style: normal; font-size: 10.5px; letter-spacing: 0.14em; }
+  .cb-roster b { font-weight: 700; font-size: 10.5px; line-height: 1.2; letter-spacing: 0.02em; text-transform: uppercase; text-align: center; overflow-wrap: normal; word-break: normal; hyphens: none; color: var(--os-dim); }
   .cb-roster button.is-a { border-color: var(--os-green); background: rgba(61, 255, 143, 0.12); }
   .cb-roster button.is-b { border-color: var(--os-amber); background: rgba(255, 179, 71, 0.1); }
   .cb-roster button.is-a b, .cb-roster button.is-b b { color: var(--os-text); }
   .cb-roster button.is-a img, .cb-roster button.is-b img { filter: none; }
-  .cb-roster button.is-a::after, .cb-roster button.is-b::after { position: absolute; right: 3px; top: 3px; font-size: 8.5px; font-weight: 700; padding: 0 4px; color: #021008; }
+  .cb-roster button.is-a::after, .cb-roster button.is-b::after { position: absolute; right: 3px; top: 3px; font-size: 10.5px; font-weight: 700; padding: 0 4px; color: #021008; }
   .cb-roster button.is-a::after { content: 'A'; background: var(--os-green); }
   .cb-roster button.is-b::after { content: 'B'; background: var(--os-amber); }
 
@@ -246,7 +245,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .split-nums span { min-width: 0; overflow-wrap: anywhere; }
   .split-nums span:first-child b { color: var(--os-green); } .split-nums span:last-child { text-align: right; } .split-nums span:last-child b { color: var(--os-amber); }
   .split-nums b { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
-  .split-total { margin: 0; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-dim); }
+  .split-total { margin: 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-dim); }
   .vote-ts:empty { display: none; }
   .vote-note { margin: 0; font-size: 11px; color: var(--os-dim); }
   .vote-peek { font: inherit; font-size: 11px; color: var(--os-green); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
@@ -264,10 +263,10 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .lb-open:hover .lb-faces img { filter: none; }
   .lb-names { grid-area: names; min-width: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; overflow-wrap: anywhere; }
   .lb-names b { font-weight: 700; }
-  .lb-names i { font-style: normal; font-size: 9.5px; letter-spacing: 0.16em; color: var(--os-dim); margin: 0 3px; }
+  .lb-names i { font-style: normal; font-size: 11px; letter-spacing: 0.16em; color: var(--os-dim); margin: 0 3px; }
   .lb-split { grid-area: split; position: relative; height: 6px; overflow: hidden; background: rgba(61, 255, 143, 0.06); }
   .lb-pct { grid-area: pct; font-size: 10.5px; color: var(--os-dim); white-space: nowrap; }
-  .lb-total { grid-area: total; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--os-dim); white-space: nowrap; }
+  .lb-total { grid-area: total; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--os-dim); white-space: nowrap; }
   .lb-total b { font-family: var(--os-display); font-size: 15px; color: var(--os-text); font-weight: 700; }
   .lb-empty { margin: 0; padding: 12px 0 2px; color: var(--os-dim); border-top: 1px dashed rgba(61, 255, 143, 0.14); }
   .lb-empty[hidden] { display: none; }
@@ -298,7 +297,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .cb-body .cols > :last-child sup a { color: #c98a2e !important; }
   .cb-body .stats { display: grid; gap: 8px; }
   .cb-body .stat { display: grid; grid-template-columns: minmax(0, 1fr) 110px minmax(0, 1fr); align-items: center; gap: 10px; }
-  .cb-body .stat-name { text-align: center; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--os-dim); }
+  .cb-body .stat-name { text-align: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--os-dim); }
   /* os.css's .bar is the top bar: undo it for the v1 stat bars */
   .cb-body .bar { display: block; inset: auto; z-index: auto; padding: 0; gap: 0; font-size: 11px; letter-spacing: 0; text-transform: none; box-sizing: border-box; }
   .cb-body .bar { position: relative; height: 20px; border: 1px solid var(--os-line); background: rgba(61, 255, 143, 0.04); overflow: hidden; }
@@ -308,7 +307,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   .cb-body .bar b { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; font-size: 11px; font-weight: 700; color: #021008; background: var(--os-green); padding: 0 4px; }
   .cb-body .bar.b b { background: var(--os-amber); }
   .cb-body .bar.a b { right: 3px; } .cb-body .bar.b b { left: 3px; }
-  .cb-body .bar.none { display: grid; place-items: center; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-dim); }
+  .cb-body .bar.none { display: grid; place-items: center; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-dim); }
   .cb-body p.srcs, .cb-body > section.srcs { padding-left: 16px; }
   .cb-body p.srcs { padding: 0; margin: 12px 0 0; }
   .cb-body > section.srcs { font-size: 11px; color: var(--os-dim); margin: 0; }
@@ -334,13 +333,13 @@ const pad = (n: number) => String(n).padStart(2, '0');
     .feat { font-size: 11px; }
     .cb-scan .os-reticle { width: 60px; height: 60px; margin: -30px 0 0 -30px; }
     .cb-body .stat { grid-template-columns: minmax(0, 1fr) 76px minmax(0, 1fr); gap: 6px; }
-    .cb-body .stat-name { font-size: 8.5px; letter-spacing: 0.08em; }
+    .cb-body .stat-name { font-size: 10.5px; letter-spacing: 0.08em; }
   }
   @media (max-width: 600px) {
     .cb-body .cols { grid-template-columns: minmax(0, 1fr); }
-    .cb-st, .cb-tag { font-size: 8.5px; letter-spacing: 0.12em; }
+    .cb-st, .cb-tag { font-size: 10.5px; letter-spacing: 0.12em; }
     .vs-meta { font-size: 10.5px; }
-    .vs-feat::before { font-size: 8px; letter-spacing: 0.12em; }
+    .vs-feat::before { font-size: 10.5px; letter-spacing: 0.12em; }
     .lb-open { grid-template-columns: 22px auto minmax(0, 1fr); grid-template-areas: 'rank faces names' 'rank faces split' 'rank faces total'; }
     .lb-pct { display: none; }
   }
@@ -366,7 +365,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
   @media (max-width: 420px) {
     .cb-roster { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
     .cb-tile { width: 48px; height: 48px; }
-    .vs-alias { font-size: 9px; letter-spacing: 0.14em; }
-    .vs-open, .vs-type { font-size: 9px; letter-spacing: 0.1em; }
+    .vs-alias { font-size: 11px; letter-spacing: 0.14em; }
+    .vs-open, .vs-type { font-size: 11px; letter-spacing: 0.1em; }
   }
 </style>

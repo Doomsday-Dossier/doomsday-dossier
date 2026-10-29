@@ -14,7 +14,6 @@ const unnamed = CAST.filter((c) => c.team === team && !c.slug);
 <OS title={t.name} page="targets" description={`${t.name} in Avengers: Doomsday: every confirmed member, filed by Doctor Doom's surveillance system. ${t.blurb}`}>
   <div class="mod-head">
     <div>
-      <p class="os-label">Module 01 // Target register // continent</p>
       <h1 class="os-display os-hi mod-title">{t.name}</h1>
       <p class="mod-sub">{t.blurb}</p>
       {unnamed.length > 0 && <p class="mod-sub os-label">Also on Marvel's cast list, role not yet named: {unnamed.map((c) => c.actor).join(', ')}.</p>}

@@ -34,14 +34,13 @@ const RET = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill=
   <section class="qz" data-quiz>
     <div class="mod-head">
       <div>
-        <p class="os-label">Module 04 // Subject profiler</p>
-        <h1 class="os-display os-hi mod-title">Who are you?</h1>
+        <h1 class="os-display os-hi mod-title op-prompt"><span class="op-caret" aria-hidden="true">&gt;</span>Who are you?<span class="os-cursor" aria-hidden="true"></span></h1>
         <p class="mod-sub">Ten questions, Your Majesty. The system profiles whoever sits before the screen and matches them with one of the {roster.length} targets of Avengers: Doomsday. There are no right answers. The match opens that target's file, where every fact is sourced, and saves as a card to share.</p>
       </div>
       <p class="qz-fan"><span class="os-chip amber">Fan quiz, just for fun, not facts</span></p>
     </div>
 
-    <div class="qz-stage os-panel" data-stage>
+    <div class="qz-stage os-panel os-inst" data-stage>
       <header><b>Profiling the subject</b><span class="os-label">Responses stay on this screen</span></header>
       <div class="qz-top">
         <p class="qz-count os-label">Query <b data-count>01</b> / {pad(n)}</p>
@@ -131,7 +130,7 @@ const RET = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill=
   .qz-count { margin: 0; white-space: nowrap; }
   .qz-count b { color: var(--os-green); font-weight: 700; }
   .qz-bar > i { width: 100%; transform: scaleX(0); }
-  .qz-back { padding: 7px 11px; font-size: 10px; }
+  .qz-back { padding: 7px 11px; font-size: 11px; }
   .qz-back:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
   .qz-deck { margin-top: 26px; }
   .qz.live .qz-q:not(.on) { display: none; }
@@ -146,7 +145,7 @@ const RET = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill=
   .qz-text .cur { position: relative; }
   .qz-text .cur::after { content: '\2588'; position: absolute; left: 1px; bottom: 0.08em; font-size: 0.8em; line-height: 1; color: var(--os-green); }
   .qz-opts { display: grid; gap: 4px; max-width: 920px; }
-  .qz-opts button { font: inherit; font-size: 14px; line-height: 1.4; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: baseline; text-align: left; color: var(--os-text); background: transparent; border: 1px solid transparent; border-left: 2px solid var(--os-line); padding: 11px 12px; min-height: 48px; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s; }
+  .qz-opts button { font: inherit; font-size: 14px; line-height: 1.4; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: baseline; text-align: left; color: var(--os-text); background: transparent; border: 1px solid transparent; border-left: 1px solid var(--os-line); padding: 11px 12px; min-height: 48px; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s; }
   .qz-key { color: var(--os-green); font-weight: 700; white-space: nowrap; }
   .qz-lbl { overflow-wrap: break-word; min-width: 0; }
   .qz-lbl::after { content: ' _'; color: var(--os-green); opacity: 0; }
@@ -174,7 +173,7 @@ const RET = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill=
   .qz-read li.warn { color: var(--os-amber); text-shadow: 0 1px 2px #000; }
   .qz-pts { position: absolute; z-index: 2; left: 10px; bottom: 10px; }
   .qz-pts b { color: var(--os-green); font-weight: 400; font-variant-numeric: tabular-nums; }
-  .qz-skip { position: absolute; z-index: 3; right: 8px; bottom: 8px; padding: 6px 9px; font-size: 9.5px; background: rgba(2, 5, 4, 0.8); }
+  .qz-skip { position: absolute; z-index: 3; right: 8px; bottom: 8px; padding: 6px 9px; font-size: 11px; background: rgba(2, 5, 4, 0.8); }
   .qz .os-reticle { z-index: 2; }
   .qz .os-reticle .lock { position: absolute; left: 100%; top: 50%; white-space: nowrap; margin-left: 4px; opacity: 0; transition: opacity 0.3s; }
   .qz .os-reticle.locked .lock { opacity: 1; }
@@ -219,7 +218,7 @@ const RET = `<svg viewBox="0 0 120 120" aria-hidden="true"><g class="spin" fill=
     .qz-top { gap: 10px; }
     .qz-opts button { font-size: 13.5px; padding: 10px 8px; gap: 9px; }
     .qz-gate .os-btn { width: 100%; letter-spacing: 0.12em; }
-    .qz-read { font-size: 10px; letter-spacing: 0.1em; }
+    .qz-read { font-size: 11px; letter-spacing: 0.1em; }
   }
   html.rm .qz-r-frame img { transition: none; }
 </style>

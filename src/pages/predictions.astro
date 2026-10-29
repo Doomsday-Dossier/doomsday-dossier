@@ -22,11 +22,10 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
   <section class="pb" data-predict data-api={api} data-sitekey={sitekey}>
     <div class="mod-head">
       <div>
-        <p class="os-label">Module 05 // Probability engine &middot; fan prediction</p>
         <h1 class="os-display os-hi mod-title">Call it</h1>
         <p class="mod-sub">Ten questions about Avengers: Doomsday, written only from what Marvel has confirmed: no rumours, no leaks. Feed the engine an answer to each, Your Majesty, and seal your calls. You can change them until the board seals; once the film is out, every call is checked against the record. Fan predictions, not facts.</p>
       </div>
-      <div class="os-panel pb-seal">
+      <div class="os-panel os-inst pb-seal">
         <header><b>Board seals in</b><span class="os-label">Fan prediction</span></header>
         <b class="pb-count" data-seal-count>&nbsp;</b>
         <p class="pb-seal-at os-label" data-seal-at>at the first moment 18 December begins anywhere on Earth</p>
@@ -56,7 +55,7 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
         ))}
       </ol>
 
-      <aside class="os-panel pb-dock" data-dock aria-label="Probability readout">
+      <aside class="os-panel os-inst pb-dock" data-dock aria-label="Probability readout">
         <header><b>Probability readout</b><span class="os-label">Fan prediction</span></header>
         <p class="pb-progress"><b data-answered>0</b> / {total} <span>calls entered</span></p>
         <button type="button" class="pb-expand" data-pb-expand aria-expanded="false" aria-label="Show the full readout"><span>Details</span><i aria-hidden="true"></i></button>
@@ -119,7 +118,7 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
   .pb-progress { margin: 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--os-dim); }
   .pb-progress b { font-family: var(--os-display); font-size: 30px; color: var(--os-green); text-shadow: var(--os-glow); letter-spacing: 0; font-weight: 700; }
   .pb-cells { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
-  .pb-cells i { font-style: normal; text-align: center; font-size: 10px; padding: 4px 0; border: 1px solid var(--os-line); color: var(--os-dim); transition: background 0.25s, color 0.25s; }
+  .pb-cells i { font-style: normal; text-align: center; font-size: 11px; padding: 4px 0; border: 1px solid var(--os-line); color: var(--os-dim); transition: background 0.25s, color 0.25s; }
   .pb-cells i.on { background: var(--os-green); border-color: var(--os-green); color: #021008; }
   .pb-cells i.agree { box-shadow: inset 0 -3px 0 var(--os-amber); }
   .pb-odds { display: grid; gap: 2px; padding: 8px 0; border-top: 1px dashed rgba(61, 255, 143, 0.14); border-bottom: 1px dashed rgba(61, 255, 143, 0.14); }
@@ -155,12 +154,12 @@ const questions = pred.questions.map((q) => ({ ...q, hint: (q as { hint?: string
     .pb-progress b { font-size: 22px; }
     .pb-odds { grid-column: 1; grid-row: 3; padding: 0; border: 0; }
     .pb-odds b { font-size: 14px; }
-    .pb-odds b::before { content: 'Chance alone: '; font-family: var(--os-mono); font-weight: 400; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-dim); }
-    .pb-expand { display: grid; grid-column: 2; grid-row: 2 / span 2; justify-items: center; gap: 4px; min-width: 52px; min-height: 44px; padding: 0 6px; font: 9.5px var(--os-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--os-dim); background: none; border: 1px solid var(--os-line); cursor: pointer; align-content: center; }
+    .pb-odds b::before { content: 'Chance alone: '; font-family: var(--os-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--os-dim); }
+    .pb-expand { display: grid; grid-column: 2; grid-row: 2 / span 2; justify-items: center; gap: 4px; min-width: 52px; min-height: 44px; padding: 0 6px; font: 11px var(--os-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--os-dim); background: none; border: 1px solid var(--os-line); cursor: pointer; align-content: center; }
     .pb-expand i { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(-45deg); transition: transform 0.25s; }
     .pb-dock.open .pb-expand i { transform: rotate(135deg); }
     .pb-buttons { grid-column: 3; grid-row: 2 / span 2; }
-    .pb-lock { min-height: 44px; padding: 0 12px; font-size: 10px; letter-spacing: 0.12em; }
+    .pb-lock { min-height: 44px; padding: 0 12px; font-size: 11px; letter-spacing: 0.12em; }
     .pb-sealed, .pb-status { grid-column: 1 / -1; }
     .pb-status { font-size: 11px; margin: 4px 0 0; }
     .pb-status:empty { display: none; }

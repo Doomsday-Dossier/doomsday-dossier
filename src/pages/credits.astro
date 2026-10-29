@@ -13,7 +13,6 @@ const total = rows.reduce((n, r) => n + r.photos.length, 0);
 <OS title="Image credits" page="credits" description="Every image used on Doomsday Dossier, by character. Images belong to their respective owners and any image will be removed on request.">
   <div class="mod-head">
     <div>
-      <p class="os-label">Archive protocol // Image credits</p>
       <h1 class="os-display os-hi mod-title">Every frame, listed.</h1>
       <p class="mod-sub">Every still held on every target, Your Majesty, numbered so that any of them can be found and taken down.</p>
     </div>
@@ -65,10 +64,10 @@ const total = rows.reduce((n, r) => n + r.photos.length, 0);
   .cr-frame::before { content: ''; position: absolute; inset: 5px; pointer-events: none; z-index: 1;
     background: linear-gradient(var(--os-green), var(--os-green)) 0 0 / 8px 1.5px, linear-gradient(var(--os-green), var(--os-green)) 0 0 / 1.5px 8px,
       linear-gradient(var(--os-green), var(--os-green)) 100% 100% / 8px 1.5px, linear-gradient(var(--os-green), var(--os-green)) 100% 100% / 1.5px 8px; background-repeat: no-repeat; opacity: 0.8; }
-  .cr-rec { position: absolute; right: 7px; top: 6px; z-index: 1; font-size: 8px; letter-spacing: 0.16em; color: var(--os-red); text-shadow: 0 0 3px #000; }
+  .cr-rec { position: absolute; right: 7px; top: 6px; z-index: 1; font-size: 10.5px; letter-spacing: 0.16em; color: var(--os-red); text-shadow: 0 0 3px #000; }
   .cr-rec::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--os-red); margin-right: 4px; vertical-align: 1px; animation: os-pulse 2.4s ease-in-out infinite; }
   html.rm .cr-rec::before { animation: none; }
   @media (prefers-reduced-motion: reduce) { .cr-rec::before { animation: none; } }
-  .cr-still figcaption { margin-top: 5px; font-size: 9.5px; letter-spacing: 0.12em; }
+  .cr-still figcaption { margin-top: 5px; font-size: 11px; letter-spacing: 0.12em; }
   .cr-still figcaption b { color: var(--os-text); font-weight: 700; margin-right: 4px; }
 </style>

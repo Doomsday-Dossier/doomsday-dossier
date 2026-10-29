@@ -37,7 +37,9 @@ export function briefing() {
   onLeave(() => mo.disconnect());
 
   const marked = root.querySelector<HTMLElement>('[data-marked]')!;
-  const count = () => { marked.textContent = String(root.querySelectorAll('[data-pick][aria-pressed="true"]').length).padStart(2, '0'); };
+  // with nothing marked the orders show one instruction and one button, not a gauge reading zero
+  const count = () => { const n = root.querySelectorAll('[data-pick][aria-pressed="true"]').length; marked.textContent = String(n).padStart(2, '0'); root.classList.toggle('bs-none', n === 0); };
+  root.querySelector('[data-brief-all]')?.addEventListener('click', () => { root.querySelector<HTMLButtonElement>('[data-all]')?.click(); });
 
   onLeave(catchUp(document, { ease: 'power3.out', pace: 1, reduced: reduced() }));
   read(); count();

@@ -44,7 +44,7 @@ const world = all.map((t) => {
     </div>
 
     <aside class="sys" data-os-panel>
-      <div class="os-panel">
+      <div class="os-panel os-inst">
         <header><b>System</b><span class="os-label os-hi">At your command</span></header>
         <p class="greet os-hi" data-greet>Welcome, Your Majesty.</p>
         <div class="os-row"><span>Orbital array</span><span class="os-hi">Linked</span></div>
@@ -93,18 +93,18 @@ const world = all.map((t) => {
   .bw { width: 100%; height: 100%; display: block; }
   .bw-title { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); white-space: nowrap; pointer-events: none; }
   .bw-title b { font-weight: 700; letter-spacing: 0.3em; }
-  .bw-tag { position: absolute; left: 0; top: 0; z-index: 3; display: grid; gap: 1px; padding: 8px 12px 8px 14px; border-left: 2px solid var(--os-green); background: rgba(2, 10, 6, 0.86); pointer-events: none; white-space: nowrap; transform: translate(26px, -50%); }
+  .bw-tag { position: absolute; left: 0; top: 0; z-index: 3; display: grid; gap: 1px; padding: 8px 12px 8px 14px; border: 1px solid var(--os-line); background-color: rgba(2, 10, 6, 0.86); --tick: var(--os-green); background-image: linear-gradient(var(--tick), var(--tick)), linear-gradient(var(--tick), var(--tick)); background-size: 12px 2px, 2px 12px; background-position: 0 0, 0 0; background-repeat: no-repeat; pointer-events: none; white-space: nowrap; transform: translate(26px, -50%); }
   .bw-tag[hidden] { display: none; }
   .bw-tag::before { content: ''; position: absolute; right: 100%; top: 50%; width: 26px; height: 1px; background: var(--os-green); }
-  .bw-tag i { font-style: normal; font-size: 10px; letter-spacing: 0.2em; color: var(--os-green); }
+  .bw-tag i { font-style: normal; font-size: 11px; letter-spacing: 0.2em; color: var(--os-green); }
   .bw-tag b { font-family: var(--os-display); font-size: 22px; line-height: 1; text-transform: uppercase; }
   .bw-tag span { font-size: 11px; color: var(--os-dim); }
-  .bw-tag em { font-style: normal; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); margin-top: 3px; }
+  .bw-tag em { font-style: normal; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); margin-top: 3px; }
   .bw-tag.left { transform: translate(calc(-100% - 26px), -50%); border-left: 0; border-right: 2px solid var(--os-green); text-align: right; }
   .bw-tag.left::before { right: auto; left: 100%; }
-  .bw-go { font: inherit; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); background: none; border: 0; padding: 0; margin-top: 3px; text-align: inherit; }
+  .bw-go { font: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--os-green); background: none; border: 0; padding: 0; margin-top: 3px; text-align: inherit; }
   /* touch and narrow screens: the card docks above the strip of faces, with a real Enter button */
-  .bw-tag.dock { left: 50%; top: auto; bottom: 104px; transform: translateX(-50%); pointer-events: auto; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; column-gap: 16px; align-items: center; width: min(92%, 440px); box-sizing: border-box; padding: 12px 12px 12px 16px; border: 1px solid var(--os-line-hi); border-left: 3px solid var(--os-green); background: rgba(2, 12, 7, 0.94); white-space: normal; }
+  .bw-tag.dock { left: 50%; top: auto; bottom: 104px; transform: translateX(-50%); pointer-events: auto; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; column-gap: 16px; align-items: center; width: min(92%, 440px); box-sizing: border-box; padding: 12px 12px 12px 16px; border: 1px solid var(--os-line-hi); border-left: 1px solid var(--os-line); background: rgba(2, 12, 7, 0.94); white-space: normal; }
   .bw-tag.dock::before { display: none; }
   .bw-tag.dock b { font-size: clamp(18px, 5.6vw, 26px); overflow-wrap: anywhere; }
   .bw-tag.dock > :not(.bw-go) { grid-column: 1; min-width: 0; }
@@ -113,9 +113,9 @@ const world = all.map((t) => {
   @media (max-width: 1099px), (pointer: coarse) {
     .bw-strip { position: absolute; left: 0; right: 0; bottom: 6px; z-index: 3; display: flex; gap: 8px; overflow-x: auto; padding: 6px var(--os-margin) 10px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
     .bw-strip::-webkit-scrollbar { display: none; }
-    .bw-strip button { flex: 0 0 auto; width: 66px; display: grid; gap: 4px; justify-items: center; padding: 0; background: none; border: 0; color: var(--os-dim); font: 9px var(--os-mono); letter-spacing: 0.06em; text-transform: uppercase; scroll-snap-align: center; cursor: pointer; }
+    .bw-strip button { flex: 0 0 auto; width: 80px; display: grid; gap: 4px; justify-items: center; padding: 0; background: none; border: 0; color: var(--os-dim); font: 10.5px var(--os-mono); letter-spacing: 0.02em; text-transform: uppercase; scroll-snap-align: center; cursor: pointer; }
     .bw-strip img { width: 56px; height: 56px; object-fit: cover; object-position: 50% 12%; border: 1px solid var(--os-line); border-radius: 50%; background: rgba(61, 255, 143, 0.06); filter: grayscale(1) sepia(1) hue-rotate(80deg) saturate(2.2) brightness(0.9); transition: filter 0.25s, border-color 0.25s, transform 0.25s; }
-    .bw-strip span { max-width: 66px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .bw-strip span { max-width: 80px; text-align: center; line-height: 1.2; overflow-wrap: normal; min-height: 2.4em; }
     .bw-strip button[aria-pressed='true'] { color: var(--os-green); }
     .bw-strip button[aria-pressed='true'] img { filter: none; border: 2px solid var(--os-green); transform: scale(1.08); box-shadow: 0 0 14px rgba(61, 255, 143, 0.5); }
   }
@@ -130,10 +130,10 @@ const world = all.map((t) => {
   .feed-h { margin: 12px 0 6px; }
   .feed { list-style: none; margin: 0; padding: 0; height: 112px; overflow: hidden; }
   .feed li { padding: 5px 0; border-bottom: 1px dashed rgba(61, 255, 143, 0.12); font-size: 11px; line-height: 1.45; }
-  .feed li i { display: block; font-style: normal; color: var(--os-green); font-size: 10px; letter-spacing: 0.14em; }
+  .feed li i { display: block; font-style: normal; color: var(--os-green); font-size: 11px; letter-spacing: 0.14em; }
   .logp header a { text-decoration: none; }
   .rlog { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 11px; line-height: 1.45; max-height: 120px; overflow: hidden; }
-  .rlog li i { display: block; font-style: normal; color: var(--os-green-2); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .rlog li i { display: block; font-style: normal; color: var(--os-green-2); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
   .h-clock { grid-column: 1 / -1; grid-row: 2; text-align: center; display: grid; gap: 6px; }
   .h-clock p { margin: 0; }
   .clock { font-size: clamp(30px, 5vw, 72px); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
@@ -151,7 +151,7 @@ const world = all.map((t) => {
   @media (max-width: 1100px) {
     .home { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto; min-height: 0; }
     .bw-stage { position: relative; grid-row: 1; top: 0; left: auto; right: auto; margin: 0 calc(-1 * var(--os-margin)); height: 74svh; min-height: 520px; }
-    .bw-title { top: 6px; font-size: 9.5px; }
+    .bw-title { top: 6px; font-size: 11px; }
     .h-clock { grid-row: 2; }
     .modules { grid-column: 1; grid-row: 3; grid-template-columns: 1fr 1fr; }
     .mod-cmd { grid-column: 1 / -1; }
