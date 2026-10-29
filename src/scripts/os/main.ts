@@ -8,7 +8,8 @@
  */
 import { installPageScope, asGlobal, leavePage, onLeave } from '../page-scope';
 import { Sound } from '../sound/engine';
-import { staticBurst, drone, shatter, burst } from '../sound/os';
+import { staticBurst, shatter, burst } from '../sound/os';
+import { startScore, renderScore, type Score } from '../sound/score-os';
 import { shatterCover, shatterReveal, setShardTiles } from './shatter';
 import { glitchIn, crosshair, glyphColumns } from './hud';
 import { commandLine } from './command';
@@ -25,12 +26,33 @@ const local = /^(localhost|127\.)/.test(location.hostname);
 // THE SESSION -----------------------------------------------------------------------------------------------
 asGlobal(() => {
   const sound = Sound.get();
-  if (local) (window as any).__ddSound = sound;
+  if (local) { (window as any).__ddSound = sound; (window as any).__ddRenderScore = renderScore; }
   if (reduced()) html.classList.add('rm');
 
-  // the machine underneath everything, from the first click or key (browsers allow sound only after one)
-  let droning = false;
-  const startDrone = () => { if (droning) return; sound.unlock().then(() => { if (sound.ctx.state === 'running' && !droning) { droning = true; drone(sound); } }); };
+  // the score (sound/score-os.ts), from the first click or key (browsers allow sound only after one). It grows
+  // with the modules His Majesty has visited this session: 1 arrival, 2 the ostinato, 3 drums and horns, 5 everything
+  const MODS = 'dd-score-mods';
+  const visited = () => { try { return new Set<string>(JSON.parse(sessionStorage.getItem(MODS) || '[]')); } catch { return new Set<string>(); } };
+  const levelFor = (n: number) => (n >= 5 ? 3 : n >= 3 ? 2 : n >= 2 ? 1 : 0);
+  const visit = () => {
+    const v = visited(); v.add(document.body.dataset.module || document.body.dataset.page || 'home');
+    try { sessionStorage.setItem(MODS, JSON.stringify([...v])); } catch { /* private mode */ }
+    score?.setLevel(levelFor(v.size));
+  };
+  let score: Score | null = null, droning = false;
+  visit(); document.addEventListener('astro:page-load', visit);
+  addEventListener('dd:breach', () => score?.hit());
+  const startDrone = () => {
+    if (droning) return;
+    sound.unlock().then(() => {
+      if (sound.ctx.state !== 'running' || droning) return;
+      droning = true;
+      sound.score.gain.value = 0.5; // the score is a feature now, no longer "felt, not noticed": about -22 dBFS RMS at its fullest
+      score = startScore(sound.ctx, sound.score, sound.reverb.buffer);
+      score.setLevel(levelFor(visited().size));
+      if (local) (window as any).__ddScore = score;
+    });
+  };
   (window as any).__osDrone = startDrone;
   addEventListener('pointerdown', startDrone); addEventListener('keydown', startDrone);
 

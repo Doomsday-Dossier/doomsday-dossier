@@ -89,6 +89,27 @@ export function alarm(s: Sound, t = s.ctx.currentTime + 0.01) {
   }
 }
 
+/** An intrusion node cut: a hard electrical snap falling away, with a click of static. */
+export function sever(s: Sound, t = s.ctx.currentTime + 0.005) {
+  if (!live(s)) return;
+  const o = s.osc('square', 1600, s.sfx); o.o.frequency.exponentialRampToValueAtTime(90, t + 0.16);
+  s.env(o.g.gain, t, 0.09, 0.001, 0.16); o.o.start(t); o.o.stop(t + 0.2); s.wet(o.g, 0.2, s.sfx);
+  const v = s.noiseVoice('white', 'bandpass', 3200, 1.5, s.sfx, false);
+  v.g.gain.setValueAtTime(0.0001, t); v.g.gain.exponentialRampToValueAtTime(0.12, t + 0.003); v.g.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+  v.src.start(t, Math.random() * 2, 0.1);
+}
+
+/** Shards slamming shut: a low iron impact with a metallic ring and a long tail in the hall. */
+export function slam(s: Sound, t = s.ctx.currentTime + 0.005) {
+  if (!live(s)) return;
+  const th = s.osc('sine', 110, s.sfx); th.o.frequency.exponentialRampToValueAtTime(32, t + 0.5);
+  s.env(th.g.gain, t, 0.5, 0.004, 0.7); th.o.start(t); th.o.stop(t + 0.8); s.wet(th.g, 0.5, s.sfx);
+  for (const r of [1, 2.76, 5.4, 8.93]) { const o = s.osc('sine', 140 * r, s.sfx); s.env(o.g.gain, t, 0.05 / r, 0.002, 0.9 / Math.sqrt(r)); o.o.start(t); o.o.stop(t + 1.1); s.wet(o.g, 0.6, s.sfx); }
+  const v = s.noiseVoice('brown', 'lowpass', 600, 0.7, s.sfx, false);
+  v.g.gain.setValueAtTime(0.0001, t); v.g.gain.exponentialRampToValueAtTime(0.4, t + 0.006); v.g.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+  v.src.start(t, Math.random() * 2, 0.4);
+}
+
 /** The machine underneath everything: two detuned low tones through a slowly breathing filter. Returns a stop. */
 export function drone(s: Sound) {
   if (!live(s)) return () => {};

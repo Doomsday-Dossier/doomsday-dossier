@@ -15,9 +15,10 @@ export const VERDICTS: Record<Verdict, { name: string; line: string; cls: string
 };
 
 type Log = { t: number; text: string };
-type Reign = { since: number; verdicts: Record<string, Verdict>; order: string[]; log: Log[]; seen: Record<string, number>; decree: string; minutes: number; breaches: number };
+// stolen: a file a breaching hero got away with (slug of the file to the thief's name), redacted until taken back
+type Reign = { since: number; verdicts: Record<string, Verdict>; order: string[]; log: Log[]; seen: Record<string, number>; decree: string; minutes: number; breaches: number; stolen: Record<string, string> };
 const KEY = 'dd-reign';
-const blank = (): Reign => ({ since: Date.now(), verdicts: {}, order: [], log: [], seen: {}, decree: '', minutes: 0, breaches: 0 });
+const blank = (): Reign => ({ since: Date.now(), verdicts: {}, order: [], log: [], seen: {}, decree: '', minutes: 0, breaches: 0, stolen: {} });
 
 let cache: Reign | null = null;
 export function reign(): Reign {
@@ -55,6 +56,9 @@ export function examined(slug: string, name: string) {
   return Object.keys(r.seen).length;
 }
 export function breached(name: string) { const r = reign(); r.breaches++; log(`${name} breached the network. Repelled.`); save(); }
+/** A breach His Majesty lost: the thief takes a file, which stays redacted until he takes it back. */
+export function stole(file: string, fileName: string, thief: string) { const r = reign(); r.stolen[file] = thief; log(`${thief} breached the network and stole the file on ${fileName}.`); save(); }
+export function reclaim(file: string, fileName: string) { const r = reign(); if (!r.stolen[file]) return; delete r.stolen[file]; log(`His Majesty took back the file on ${fileName}.`); save(); }
 
 /** Doom's will, 0 to 1: it spreads with the minutes spent and the files examined. */
 export const will = () => { const r = reign(); return Math.min(1, r.minutes / 40 + Object.keys(r.seen).length / 40); };

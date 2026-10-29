@@ -9,7 +9,8 @@ import { MODULES, PICK, targets } from '../data/os';
 import { photos2For, pick2 } from '../data/v2';
 
 const all = targets();
-const top = [...all].filter((t) => t.threat !== null).sort((a, b) => b.threat! - a.threat!)[0];
+// the greatest threat to Doom: rank 1 (he is the measure, never his own threat)
+const top = all.find((t) => t.threatOf.rank === 1)!;
 const feed = OFFICIAL.milestones.slice(-8).map((m: any) => ({ date: m.date, text: m.text }));
 const teams = new Set(all.map((t) => t.team)).size;
 // each domain's face: the picked photo, full frame, cropped around the head in the browser
@@ -48,7 +49,7 @@ const world = all.map((t) => {
         <p class="greet os-hi" data-greet>Welcome, Your Majesty.</p>
         <div class="os-row"><span>Orbital array</span><span class="os-hi">Linked</span></div>
         <div class="os-row"><span>Domains held</span><span>{all.length} in {teams} continents</span></div>
-        <div class="os-row"><span>Greatest threat</span><a class="os-red" href={top.href}>{top.name} &middot; {top.threat}/42</a></div>
+        <div class="os-row"><span>Greatest threat</span><a class="os-red" href={top.href}>{top.name} &middot; {top.threatOf.band.name}</a></div>
         <div class="os-row"><span>Doom's will</span><span><span class="willbar"><i data-will></i></span> <b data-will-n>0%</b></span></div>
         <p class="os-label feed-h">Intercepted // Marvel, confirmed</p>
         <ol class="feed" data-feed>{feed.map((f) => <li><i>{f.date}</i>{f.text}</li>)}</ol>

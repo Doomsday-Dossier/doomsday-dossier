@@ -9,7 +9,8 @@ import OS from '../../layouts/OS.astro';
 import { getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, heroName, fmtDate } from '../../data/site';
 import { PHOTO_CREDIT } from '../../data/photos';
 import { photos2For, pick2 } from '../../data/v2';
-import { scanPhoto, versusOf, briefOf, threatLevel, targets } from '../../data/os';
+import { scanPhoto, versusOf, briefOf, threatOf, targets } from '../../data/os';
+import ThreatDial from '../../components/ThreatDial.astro';
 
 export function getStaticPaths() {
   return publishedOrder().map((slug) => ({ params: { slug } }));
@@ -34,7 +35,8 @@ const faSrc = r.origin.sources.find((x) => x.label.includes(fa.title.split(':')[
 const nFa = cBrief.cite([faSrc]);
 const nB = cBrief.cite(b?.sources?.length ? b.sources : [faSrc]);
 const identity = [
-  { k: 'Real name', v: r.name, n: [] as number[] },
+  // `aka`: a second real name the reader will know, such as Magneto's Erik Lehnsherr from the films
+  { k: 'Real name', v: (r as any).aka ? `${r.name}; also ${(r as any).aka}` : r.name, n: [] as number[] },
   { k: 'Codename', v: r.alias, n: [] },
   { k: 'Continent', v: team.name, n: [] },
   { k: 'In Doomsday', v: named ? `${c.actor}, as ${c.character}` : `${c.actor} (on Marvel's cast list; role not yet named)`, n: nRole },
@@ -52,7 +54,7 @@ const brief = [
 // THREAT: Marvel's power grid
 const grid = (vs.powerGrid?.values ?? null) as Record<string, number> | null;
 const threat = grid ? Object.values(grid).reduce((a, v) => a + v, 0) : null;
-const lv = threat !== null ? threatLevel(threat) : null;
+const th = threatOf(slug);
 const nGrid = grid && vs.powerGrid.source ? cBrief.cite([vs.powerGrid.source]) : [];
 
 // LEVEL 2: the surveillance record
@@ -122,12 +124,19 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
       </div>
       <div class="os-panel" data-os-in>
         <header><b>Threat index</b><span class="os-label">{grid ? 'Marvel power grid' : 'No grid'}</span></header>
-        {grid && lv ? (
-          <Fragment>
-            <div class="threat-big"><b class={lv.cls}>{threat}</b><span class="os-label">/ 42 &middot; {lv.name}<Fragment set:html={sup(nGrid, 'src-brief')} /></span></div>
-            <div data-radar></div>
-          </Fragment>
-        ) : <p class="os-label">Not rated in Marvel's power grid. Doom's sensors draw no conclusion.</p>}
+        <div class="th-main">
+          <div class="th-dial">
+            <ThreatDial total={th.total} band={th.band.id} size="l" />
+            <p class="th-n"><b class={th.band.cls}>{th.total ?? '?'}</b><span class="os-label">/ 42</span></p>
+          </div>
+          <div class="th-read">
+            {th.rank && <p class="th-rank"><b class={th.band.cls}>#{th.rank}</b> <span class="os-label">{th.joint ? 'joint ' : ''}of {th.of} rated targets</span></p>}
+            <p class={`th-band ${th.band.cls}`}>{th.band.name}</p>
+            <p class="th-line"><span class="os-label">Doom:</span> {th.band.line}</p>
+          </div>
+        </div>
+        <p class="os-label th-how">{grid ? <Fragment>Marvel's six power ratings, 1 to 7 each, added up out of 42<Fragment set:html={sup(nGrid, 'src-brief')} />. The bands and Doom's words are this site's.</Fragment> : 'Marvel never published a power grid for this target.'}</p>
+        {grid && <div data-radar></div>}
       </div>
       {!isDoom ? (
         <div class="os-panel verdict" data-verdict-panel data-os-in>
@@ -252,8 +261,16 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
   .f-read { display: grid; gap: 12px; }
   .f-read > .os-label { margin: 0; }
   .f-name { font-size: clamp(36px, 5.4vw, 80px); overflow-wrap: anywhere; }
-  .threat-big { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-  .threat-big b { font-family: var(--os-display); font-size: 42px; line-height: 1; }
+  .th-main { display: grid; grid-template-columns: minmax(130px, 200px) minmax(0, 1fr); gap: 14px; align-items: center; }
+  .th-dial { display: grid; justify-items: center; gap: 2px; }
+  .th-n { display: flex; align-items: baseline; gap: 6px; margin: 0; }
+  .th-n b { font-family: var(--os-display); font-size: 30px; line-height: 1; }
+  .th-read p { margin: 0; }
+  .th-rank b { font-family: var(--os-display); font-size: 30px; line-height: 1; }
+  .th-band { font-family: var(--os-display); font-size: 21px; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 2px !important; }
+  .th-line { margin-top: 6px !important; font-size: 14px; line-height: 1.4; color: var(--os-text); }
+  .th-how { margin: 8px 0 6px; font-size: 9.5px; letter-spacing: 0.1em; line-height: 1.5; }
+  @media (max-width: 420px) { .th-main { grid-template-columns: minmax(0, 1fr); } .th-dial { max-width: 220px; } }
   .v-ask { margin: 0 0 10px; }
   .v-btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
   .v-btns button { font: inherit; text-align: left; display: grid; gap: 2px; padding: 9px 10px; color: var(--os-text); background: rgba(61, 255, 143, 0.03); border: 1px solid var(--os-line); cursor: pointer; }
