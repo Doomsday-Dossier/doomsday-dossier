@@ -152,6 +152,12 @@ const foot = (g: CanvasRenderingContext2D, w: number, h: number, site: string, w
   g.fillText(`${what} · Unofficial fan site, not affiliated with Marvel or Disney`, 48, h - 64);
   g.fillText(`Images belong to their respective owners. · ${site}`, 48, h - 40);
 };
+const wrap = (g: CanvasRenderingContext2D, text: string, width: number) => {
+  const lines: string[] = []; let line = '';
+  for (const w of text.split(/\s+/)) { const t = line ? line + ' ' + w : w; if (line && g.measureText(t).width > width) { lines.push(line); line = w; } else line = t; }
+  if (line) lines.push(line);
+  return lines;
+};
 const save = (c: HTMLCanvasElement, name: string) => c.toBlob((b) => { if (!b) return; const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }, 'image/png');
 
 async function conquestCard(order: T[], site: string) {
@@ -175,13 +181,17 @@ async function decreeCard(to: string, body: string, site: string) {
   const sealImg = await img('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(SEAL.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ')));
   if (sealImg) g.drawImage(sealImg, W - 300, 70, 220, 220);
   g.fillStyle = DIM; g.font = '700 18px "JetBrains Mono"'; g.fillText('BY ORDER OF VICTOR VON DOOM, MONARCH OF LATVERIA', 56, 92);
-  g.fillStyle = G; g.font = '700 46px "Tektur Variable"'; g.shadowColor = G; g.shadowBlur = 14; g.fillText(`TO ${to.toUpperCase()}`.slice(0, 34), 56, 160); g.shadowBlur = 0;
+  // the heading shrinks to fit beside the seal, then takes a second line, so no recipient is ever cut
+  const head = `TO ${to.toUpperCase()}`, room = W - 56 - 340;
+  let size = 46; g.font = `700 ${size}px "Tektur Variable"`;
+  while (size > 34 && g.measureText(head).width > room) { size -= 2; g.font = `700 ${size}px "Tektur Variable"`; }
+  const heads = wrap(g, head, room);
+  g.fillStyle = G; g.shadowColor = G; g.shadowBlur = 14;
+  heads.forEach((l, i) => g.fillText(l, 56, 160 + i * size * 1.1)); g.shadowBlur = 0;
   // the decree, wrapped
   g.fillStyle = TXT; g.font = '400 30px "JetBrains Mono"';
-  const words = body.split(/\s+/), lines: string[] = []; let line = '';
-  for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > W - 420) { lines.push(line); line = w; } else line = t; }
-  if (line) lines.push(line);
-  lines.slice(0, 7).forEach((l, i) => g.fillText(l, 56, 230 + i * 44));
+  const top = 230 + (heads.length - 1) * size * 1.1;
+  wrap(g, body, W - 420).slice(0, heads.length > 1 ? 6 : 7).forEach((l, i) => g.fillText(l, 56, top + i * 44));
   foot(g, W, H, site, 'A fan decree');
   save(c, 'doom-decree.png');
 }
