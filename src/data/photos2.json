@@ -6573,5 +6573,184 @@
     "depth": "photos2/peggy-carter/3-ring-depth-256.webp"
    }
   }
+ ],
+ "cassie-lang": [
+  {
+   "n": 1,
+   "w": 596,
+   "h": 830,
+   "hd": false,
+   "focus": "50% 32%",
+   "focusM": "50% 32%",
+   "full": [
+    {
+     "w": 596,
+     "src": "photos2/cassie-lang/1-640.webp"
+    }
+   ],
+   "cut": [
+    {
+     "w": 596,
+     "src": "photos2/cassie-lang/1-cut-640.webp"
+    }
+   ],
+   "depth": [
+    {
+     "w": 512,
+     "src": "photos2/cassie-lang/1-depth-512.webp"
+    },
+    {
+     "w": 596,
+     "src": "photos2/cassie-lang/1-depth-1024.webp"
+    }
+   ],
+   "bbox": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "head": [
+    0.355,
+    0.108
+   ],
+   "figure": {
+    "crop": [
+     0,
+     0,
+     1,
+     1
+    ],
+    "focus": [
+     0.355,
+     0.288
+    ]
+   },
+   "lqip": "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAADQBACdASoQABYAPu1iqU2ppaOiMAgBMB2JbACdMoAlyBbxAzRQ0SRbSm5x6pxoAAD+psD9VGDtVklXyE2/rVW5rZfa44q6fNamzEMrR8LJ34puQ5NTYGt+SfsHzjHrxyZ7frikFPEtHp0zmcmYLAWDwf2MzVWvZzy+Rsk0k0GhvYfcKunfC53719sM577ya6vFrwtiuKvzTyQz1vUGyCDKhwUN+GsCg2QbfNd5ryRV8m2ANFxs9W2+WswMDxBTrxc4BmCAAAA=",
+   "color": "rgb(24,8,24)",
+   "cdepth": "photos2/cassie-lang/1-cdepth-1024.webp",
+   "ring": {
+    "cut": "photos2/cassie-lang/1-ring-400.webp",
+    "depth": "photos2/cassie-lang/1-ring-depth-256.webp"
+   }
+  },
+  {
+   "n": 2,
+   "w": 1200,
+   "h": 675,
+   "hd": false,
+   "focus": "52% 30%",
+   "focusM": "52% 30%",
+   "full": [
+    {
+     "w": 640,
+     "src": "photos2/cassie-lang/2-640.webp"
+    }
+   ],
+   "cut": [
+    {
+     "w": 640,
+     "src": "photos2/cassie-lang/2-cut-640.webp"
+    }
+   ],
+   "depth": [
+    {
+     "w": 512,
+     "src": "photos2/cassie-lang/2-depth-512.webp"
+    },
+    {
+     "w": 1024,
+     "src": "photos2/cassie-lang/2-depth-1024.webp"
+    }
+   ],
+   "bbox": [
+    0.238,
+    0.069,
+    0.789,
+    1
+   ],
+   "head": [
+    0.496,
+    0.169
+   ],
+   "figure": {
+    "crop": [
+     0.239,
+     0.039,
+     0.753,
+     1
+    ],
+    "focus": [
+     0.5,
+     0.315
+    ]
+   },
+   "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAkAA4BaJZACdADu37KFwAD+9rJhKGMRwh/pvDn9GH8HXnNoW+gf2SVIjaBgATQq2Fa+Em8Ha2YTCk+MxRjj5FcDosAilMeBdumzsl2yYAAA",
+   "color": "rgb(8,8,8)",
+   "cdepth": "photos2/cassie-lang/2-cdepth-1024.webp",
+   "ring": {
+    "cut": "photos2/cassie-lang/2-ring-400.webp",
+    "depth": "photos2/cassie-lang/2-ring-depth-256.webp"
+   }
+  },
+  {
+   "n": 3,
+   "w": 387,
+   "h": 516,
+   "hd": false,
+   "focus": "50% 24%",
+   "focusM": "50% 24%",
+   "full": [
+    {
+     "w": 387,
+     "src": "photos2/cassie-lang/3-640.webp"
+    }
+   ],
+   "cut": [
+    {
+     "w": 387,
+     "src": "photos2/cassie-lang/3-cut-640.webp"
+    }
+   ],
+   "depth": [
+    {
+     "w": 387,
+     "src": "photos2/cassie-lang/3-depth-512.webp"
+    },
+    {
+     "w": 387,
+     "src": "photos2/cassie-lang/3-depth-1024.webp"
+    }
+   ],
+   "bbox": [
+    0.109,
+    0,
+    1,
+    1
+   ],
+   "head": [
+    0.5,
+    0.107
+   ],
+   "figure": {
+    "crop": [
+     0.079,
+     0,
+     1,
+     1
+    ],
+    "focus": [
+     0.457,
+     0.287
+    ]
+   },
+   "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JQBOmUABtT5kSUpVho6ENu8EAAP7r7p80dvBDT/n/gKKZIRhmN4jcGEbuka9ZVFCLskJ3BuUXtVXuixyE9cqXbTCLoc6f4LQiG0zIgtmzmySN49sny2jBHiAUGdYqNQkudAAA",
+   "color": "rgb(56,24,88)",
+   "cdepth": "photos2/cassie-lang/3-cdepth-1024.webp",
+   "ring": {
+    "cut": "photos2/cassie-lang/3-ring-400.webp",
+    "depth": "photos2/cassie-lang/3-ring-depth-256.webp"
+   }
+  }
  ]
 }

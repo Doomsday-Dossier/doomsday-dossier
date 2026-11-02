@@ -107,6 +107,13 @@ export const SIGNATURES: Record<string, (s: S, t: number) => void> = {
     tone(s, t + 0.62, { f0: 4200, peak: 0.12, a: 0.003, d: 0.05 });
     clicks(s, t + 0.2, 34, 1.0, 5200, 0.09, 6);
   },
+  // growing, as Stature does: the pitch falls away as she gets bigger, a shimmer of Pym particles over it
+  // (her comics codename, Young Avengers #6, 2005; her own suit in Ant-Man and the Wasp: Quantumania, 2023)
+  'cassie-lang': (s, t) => {
+    tone(s, t, { type: 'triangle', f0: 2400, f1: 160, peak: 0.2, a: 0.04, d: 0.7 });
+    tone(s, t + 0.05, { type: 'sine', f0: 1800, f1: 3600, peak: 0.05, a: 0.02, d: 0.5 });
+    clicks(s, t + 0.1, 22, 0.8, 6200, 0.07, 6);
+  },
   // the Ten Rings spinning up, a resonant chime as they lock
   'shang-chi': (s, t) => {
     for (let i = 0; i < 14; i++) { const d = 0.9 * (1 - Math.pow(1 - i / 14, 1.6)); burst(s, t + d, { f0: 700 + i * 90, q: 6, peak: 0.08 + i * 0.012, a: 0.005, d: 0.06, pan: Math.sin(i * 1.3) * 0.5 }); }

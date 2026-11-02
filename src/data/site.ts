@@ -87,6 +87,14 @@ export const DESIGN: Record<string, Design> = {
     font: "'Fraunces Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.03em',
     ease: 'back.out(1.6)', pace: 0.9, kicker: 'An ex-con electrical engineer who stole a shrinking suit and found out how small, and how big, he could get.',
   },
+  'cassie-lang': {
+    heroScale: 0.9,
+    slug: 'cassie-lang', wave: 8, scene: 'quantum', sceneName: 'Quantum Scale',
+    sceneNote: "Her father's quantum zoom, shared: an endless dive through nested worlds.",
+    bg: '#07040d', ink: '#f1ebfb', dim: '#a99bc0', accent: '#a77cff', accent2: '#ff4fd8',
+    font: "'Fraunces Variable', serif", fontWeight: 700, fontCase: 'uppercase', tracking: '-0.03em',
+    ease: 'back.out(1.6)', pace: 0.9, kicker: "Scott Lang's daughter, who grew up building her own suit and went into the Quantum Realm to bring her family home.",
+  },
   'shang-chi': {
     heroScale: 0.95,
     slug: 'shang-chi', wave: 1, scene: 'ink', sceneName: 'Ink and Rings',
@@ -364,5 +372,6 @@ export const HERO_NAMES: Record<string, string> = {
   'namor': 'Namor',
   'loki': 'Loki',
   'peggy-carter': 'Peggy Carter',
+  'cassie-lang': 'Cassie Lang',
 };
 export const heroName = (slug: string) => HERO_NAMES[slug] || slug;

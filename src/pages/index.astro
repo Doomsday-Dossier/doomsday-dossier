@@ -1,6 +1,6 @@
 ---
 // DOOM-OS home (project notes, "Design system v4"): the visitor is Doom. The gate and the boot on the first visit of a
-// session, then Battleworld (Secret Wars, 2015): the patchwork planet of 29 domains turning under the throne, one
+// session, then Battleworld (Secret Wars, 2015): the patchwork planet of 30 domains turning under the throne, one
 // shard per target. Beside it the system's panel, the royal log of this visitor's reign, the launch clock and the
 // modules.
 import OS from '../layouts/OS.astro';
@@ -17,7 +17,7 @@ const world = all.map((t) => {
   return { slug: t.slug, no: t.no, name: t.name, team: t.team, teamId: t.teamId, href: t.href, tile: t.tile, face: { src: pick2(pk.full, 640), head: pk.head ?? [0.5, 0.2], aspect: pk.w / pk.h } };
 });
 ---
-<OS title="DOOM-OS" page="home" description="An unofficial fan briefing for Avengers: Doomsday (18 December 2026), built as Doctor Doom's own surveillance system: all 29 confirmed characters as the domains of Battleworld, every appearance, and fan tools.">
+<OS title="DOOM-OS" page="home" description="An unofficial fan briefing for Avengers: Doomsday (18 December 2026), built as Doctor Doom's own surveillance system: all 30 confirmed characters as the domains of Battleworld, every appearance, and fan tools.">
   <!-- THE GATE: sound needs a click, and Doom's machine wants his hand on the scanner -->
   <section class="gate" data-gate hidden>
     <div class="gate-in">
@@ -30,10 +30,10 @@ const world = all.map((t) => {
   <pre class="boot" data-boot aria-hidden="true"></pre>
 
   <div class="home" data-home>
-    <h1 class="sr">Doomsday Dossier: DOOM-OS. Battleworld, 29 domains.</h1>
+    <h1 class="sr">Doomsday Dossier: DOOM-OS. Battleworld, {all.length} domains.</h1>
     <div class="bw-stage" data-bw-stage>
       <div class="acq" data-acq aria-hidden="true"><i></i><span>Gathering the fragments</span></div>
-      <canvas class="bw" data-bw aria-label="Battleworld: a planet of 29 domains, one for each target. Drag to turn it; choose a domain to open its file."></canvas>
+      <canvas class="bw" data-bw aria-label="Battleworld: a planet of 30 domains, one for each target. Drag to turn it; choose a domain to open its file."></canvas>
       <div class="bw-tag" data-bw-tag hidden><i data-bw-no></i><b data-bw-name></b><span data-bw-team></span><button type="button" class="bw-go" data-bw-go>Enter the domain</button></div>
       <div class="bw-strip" data-bw-strip role="group" aria-label="Choose a domain">
         {world.map((w) => <button type="button" aria-pressed="false"><img src={w.tile} alt="" loading="lazy" /><span>{w.name}</span></button>)}

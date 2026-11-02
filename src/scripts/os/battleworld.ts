@@ -1,6 +1,6 @@
 /**
  * Battleworld (Secret Wars, 2015: Doom gathers the fragments of dead universes into one patchwork world and rules
- * it as God Emperor from Doomstadt). The home page's planet: 29 glass shards, one per target, each a domain with the
+ * it as God Emperor from Doomstadt). The home page's planet: 30 glass shards, one per target, each a domain with the
  * target's photo trapped in it, grouped by team into continents, with Doomstadt (Doom's own shard) at the north
  * pole. A green core glows through the cracks. The shards fly in from space and lock together (the world being
  * made), the planet turns under the throne, a shard lifts and warms into colour under the pointer, and choosing one
@@ -15,7 +15,7 @@ import { ConvexHull } from 'three/examples/jsm/math/ConvexHull.js';
 export type World = { slug: string; name: string; team: string; teamId: string; face: { src: string; head: [number, number]; aspect: number } };
 type Opts = { onHover?: (i: number | null, at: { x: number; y: number } | null) => void; onPick?: (i: number) => void; reduced: boolean };
 
-const N = 30; // shader array size (29 targets)
+const N = 30; // shader array size: one per target (30 with Cassie Lang); raise it before adding more
 const COLS = 6, CELL = 256;
 
 /** A small seeded random, so the world is the same on every visit. */

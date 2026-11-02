@@ -81,7 +81,7 @@ const cards = all.map((t) => {
     .sortby select { flex: 1; min-height: 44px; font-size: 13px; }
   }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
-  /* six across on desktop: 29 targets fill five rows with no one left alone on the last */
+  /* six across on desktop: 30 targets fill five rows exactly */
   @media (min-width: 1100px) { .grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
   @media (min-width: 1700px) { .grid { gap: 16px; } .card .c-name { font-size: 20px; } }
   @media (min-width: 2100px) { .grid { grid-template-columns: repeat(10, minmax(0, 1fr)); } }

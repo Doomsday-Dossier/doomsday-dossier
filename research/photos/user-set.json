@@ -408,6 +408,20 @@
         "file": "PEGGY CARTER (2).jpeg",
         "focus": "50% 30%"
       }
+    ],
+    "cassie-lang": [
+      {
+        "file": "CASSIE LANG.jpeg",
+        "focus": "50% 32%"
+      },
+      {
+        "file": "CASSIE LANG (2).jpeg",
+        "focus": "52% 30%"
+      },
+      {
+        "file": "CASSIE LANG (3).jpeg",
+        "focus": "50% 24%"
+      }
     ]
   }
 }

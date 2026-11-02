@@ -9,7 +9,7 @@ const BRIEFS = Object.values(import.meta.glob('../../research/briefs.json', { ea
 const VS = import.meta.glob('../../research/versus/*.json', { eager: true, import: 'default' }) as Record<string, any>;
 
 export const MODULES = [
-  { id: 'targets', no: '01', name: 'Target register', short: 'Targets', href: '/targets/', line: 'All 29 targets on file' },
+  { id: 'targets', no: '01', name: 'Target register', short: 'Targets', href: '/targets/', line: 'All 30 targets on file' },
   { id: 'timeline', no: '02', name: 'Temporal archive', short: 'Archive', href: '/timeline/', line: 'Every appearance, in order' },
   { id: 'versus', no: '03', name: 'Combat simulation', short: 'Combat', href: '/versus/', line: 'Two targets, side by side' },
   { id: 'quiz', no: '04', name: 'Subject profiler', short: 'Profiler', href: '/quiz/', line: 'Which of them are you' },
@@ -20,7 +20,7 @@ export const MODULES = [
 
 // the photo each target is scanned from: the clearest, most complete figure. Reed's photo 2 is not used: the head
 // finder takes the top of the subject, which there is the rocket's tip, so every face crop of him came out empty.
-export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 3, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 1, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 1 };
+export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 3, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 1, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 1, 'cassie-lang': 3 };
 
 export const versusOf = (slug: string) => VS[`../../research/versus/${slug}.json`];
 export const briefOf = (slug: string) => BRIEFS[slug] ?? null;

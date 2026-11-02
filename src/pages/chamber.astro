@@ -1,6 +1,6 @@
 ---
 // DOOM-OS module 07, the royal chamber: the visitor's reign, kept on this device only (scripts/os/reign.ts). The
-// order of conquest (drag the 29 targets into the order they fall), His Majesty's verdicts, a decree under Doom's
+// order of conquest (drag the 30 targets into the order they fall), His Majesty's verdicts, a decree under Doom's
 // seal, the royal log and Doom's will. Everything here is the visitor's own fan opinion; cards say so.
 import OS from '../layouts/OS.astro';
 import { targets } from '../data/os';
@@ -9,7 +9,7 @@ import { u } from '../data/site';
 const all = targets().map((t) => ({ slug: t.slug, no: t.no, name: t.name, team: t.team, teamId: t.teamId, href: t.href, tile: t.tile }));
 const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(([id]) => id !== 'adversary');
 ---
-<OS title="Royal chamber" page="chamber" description="Doctor Doom's private chamber in the Doomsday Dossier fan site: rank the 29 Avengers: Doomsday characters in your order of conquest, judge them, and issue a decree. Fan opinion, kept on your device.">
+<OS title="Royal chamber" page="chamber" description="Doctor Doom's private chamber in the Doomsday Dossier fan site: rank the 30 Avengers: Doomsday characters in your order of conquest, judge them, and issue a decree. Fan opinion, kept on your device.">
   <div class="mod-head">
     <div>
       <h1 class="os-display os-hi mod-title">Your chamber</h1>

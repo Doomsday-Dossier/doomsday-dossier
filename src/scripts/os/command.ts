@@ -60,7 +60,7 @@ export function commandLine() {
     const tgItems = tgs.map(({ t }) => ({ k: `T-${String(t.no).padStart(2, '0')}`, t: t.name, s: `${t.alias !== t.name ? t.alias + ' · ' : ''}${t.team} · ${t.actor}`, href: t.href, img: t.tile }));
     // a target match beats a module match once a name is typed
     if (q && tgs[0] && (!mods[0] || tgs[0].s > mods[0].s)) out.push(...tgItems.slice(0, 8), ...modItems.slice(0, 3));
-    else out.push(...modItems.slice(0, q ? 4 : 9), ...tgItems.slice(0, q ? 8 : 29));
+    else out.push(...modItems.slice(0, q ? 4 : 9), ...tgItems.slice(0, q ? 8 : 40));
     items = out; sel = 0; render();
   };
 

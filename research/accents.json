@@ -260,11 +260,11 @@
         "url": "https://marvel.fandom.com/wiki/Benjamin_Grimm_(Earth-616)"
       },
       "hexNote": "matched by eye to the described skin colour (the Marvel Fandom comics page names it orange; the MCU page describes the rock-like hide). Softened toward sandstone to sit apart from Johnny's flame.",
-      "contrast": 9.0,
+      "contrast": 9,
       "current": "#ff8a3a",
       "nearest": {
         "slug": "john-walker",
-        "deltaE": 19.0
+        "deltaE": 19
       },
       "roleNote": "Marvel names the role (The Thing)."
     },
@@ -435,7 +435,7 @@
       "current": "#ff4d5e",
       "nearest": {
         "slug": "mbaku",
-        "deltaE": 24.0
+        "deltaE": 24
       },
       "roleNote": "Marvel lists Florence Pugh in the cast without naming the role; this uses the most recent released look (Yelena Belova)."
     },
@@ -456,7 +456,7 @@
       "current": "#ff3b3b",
       "nearest": {
         "slug": "peggy-carter",
-        "deltaE": 20.0
+        "deltaE": 20
       },
       "roleNote": "Marvel lists David Harbour in the cast without naming the role; this uses the most recent released look (Alexei Shostakov / Red Guardian)."
     },
@@ -477,7 +477,7 @@
       "current": "#c8a64a",
       "nearest": {
         "slug": "ben-grimm",
-        "deltaE": 19.0
+        "deltaE": 19
       },
       "roleNote": "Marvel lists Wyatt Russell in the cast without naming the role; this uses the most recent released look (John Walker / U.S. Agent)."
     },
@@ -629,6 +629,27 @@
         "deltaE": 15.9
       },
       "roleNote": "Marvel names the role (Peggy Carter)."
+    },
+    {
+      "slug": "cassie-lang",
+      "name": "CASSIE LANG",
+      "hex": "#a77cff",
+      "colorName": "Quantumania suit violet",
+      "basis": "film",
+      "title": "Cassie Lang suit, Ant-Man and the Wasp: Quantumania (2023)",
+      "fromWhat": "the violet panels of the suit she builds and wears in the film",
+      "source": {
+        "label": "MCU Wiki, Cassie Lang",
+        "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"
+      },
+      "hexNote": "the hex is our judgement from the suit as seen in the film, lifted so small text stays readable on the dark ground.",
+      "contrast": 6.34,
+      "current": "#a77cff",
+      "nearest": {
+        "slug": "nightcrawler",
+        "deltaE": 16.6
+      },
+      "roleNote": "Kathryn Newton has said publicly she returns as Cassie Lang; Marvel lists her in the cast without naming the role."
     }
   ]
 }
