@@ -1,0 +1,240 @@
+{
+  "slug": "cassie-lang",
+  "powerGrid": {
+    "values": {
+      "intelligence": 2,
+      "strength": 2,
+      "speed": 2,
+      "durability": 2,
+      "energyProjection": 1,
+      "fightingSkills": 3
+    },
+    "source": {
+      "label": "Marvel.com Marvel Universe wiki: Stature (archived 20 June 2018)",
+      "url": "https://web.archive.org/web/20180620023144/http://marvel.com:80/universe/Stature"
+    },
+    "note": "Marvel filed Cassie under her codename Stature; the archived page gives her real name as Cassandra Eleanore Lang. No archived copies exist for Stature_(Cassie_Lang) or Cassie_Lang."
+  },
+  "powerOrigins": [
+    {
+      "key": "pym-particles",
+      "detail": "Years of secretly exposing herself to Pym Particles changed her body, so she can shrink or grow without a suit.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Young Avengers Vol 1 3",
+          "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_3"
+        }
+      ]
+    },
+    {
+      "key": "tech",
+      "detail": "As Stinger she added a cybernetic helmet that commands insects and bio-synthetic wings for flight.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Astonishing Ant-Man Vol 1 7",
+          "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_7"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "detail": "Self-defence classes after being kidnapped as a child, lessons from Captain America and Wolverine, and Initiative training at Camp Hammond.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Astonishing Ant-Man Vol 1 6",
+          "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_6"
+        }
+      ]
+    }
+  ],
+  "powerType": "serum",
+  "abilities": [
+    {
+      "name": "Shrinking",
+      "detail": "She can shrink to the size of an ant, about half an inch tall.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Growing giant",
+      "detail": "She can grow to gigantic size, taking on extra mass that toughens her bones and muscles and gives her superhuman strength and durability. Her top height is about 250 feet, which she cannot hold for long.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Mighty Avengers Vol 1 24",
+          "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_24"
+        }
+      ]
+    },
+    {
+      "name": "Moods move her size",
+      "detail": "Her powers answer to her feelings: anger has made her grow without meaning to, and guilt once shrank her almost out of existence.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        },
+        {
+          "label": "Marvel Fandom wiki: Young Avengers Presents Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Young_Avengers_Presents_Vol_1_5"
+        }
+      ]
+    },
+    {
+      "name": "Flight",
+      "detail": "Stinger's bio-synthetic wings let her fly.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Insect command",
+      "detail": "Her Stinger helmet, with a boosted signal, lets her talk to and direct insects.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "name": "Hand-to-hand combat",
+      "detail": "Better than average in a fight, from self-defence classes and training with Captain America and Wolverine.",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "medium": "comics",
+      "text": "Believing Doctor Doom had crushed her father, she grew to enormous size and knocked Doom down while he held the Scarlet Witch's stolen power. He killed her in return.",
+      "where": "Avengers: The Children's Crusade Vol 1 #8 (January 2012)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Avengers: The Children's Crusade Vol 1 8",
+          "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_8"
+        },
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "In the Central Park battle that ended the Skrull invasion, she landed a giant-sized blow on the Skrull Yellowjacket.",
+      "where": "Secret Invasion Vol 1 #7 (December 2008)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Secret Invasion Vol 1 7",
+          "url": "https://marvel.fandom.com/wiki/Secret_Invasion_Vol_1_7"
+        },
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Brought down the Growing Man on her own, though he fell on her stepfather as he went.",
+      "where": "Young Avengers Presents Vol 1 #5 (July 2008)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Young Avengers Presents Vol 1 5",
+          "url": "https://marvel.fandom.com/wiki/Young_Avengers_Presents_Vol_1_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "comics",
+      "text": "Beat the villain Macrothrax herself while her father fought off his giant Bug Lords.",
+      "where": "Ant-Man Vol 2 #5 (August 2020)",
+      "sources": [
+        {
+          "label": "Marvel Fandom wiki: Ant-Man Vol 2 5",
+          "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_2_5"
+        },
+        {
+          "label": "Marvel Fandom wiki: Cassandra Lang (Earth-616)",
+          "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Covered for her father when FBI agents searched his house while he was out, keeping them from going upstairs by saying he was ill.",
+      "where": "Ant-Man and the Wasp (2018)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Cassie Lang",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man and the Wasp",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Escaped her Quantumnaut guards with Pym Particle discs, broke Jentorra out of her cell and took over Kang's broadcast to call the people of Axia to revolt.",
+      "where": "Ant-Man and the Wasp: Quantumania (2023)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Cassie Lang",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man and the Wasp: Quantumania",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"
+        }
+      ]
+    },
+    {
+      "medium": "screen",
+      "text": "Cornered by M.O.D.O.K., she fed a grow disc into her suit's regulator, turned giant and punched him off his feet.",
+      "where": "Ant-Man and the Wasp: Quantumania (2023)",
+      "sources": [
+        {
+          "label": "MCU Wiki: Cassie Lang",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"
+        },
+        {
+          "label": "MCU Wiki: Ant-Man and the Wasp: Quantumania",
+          "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"
+        }
+      ]
+    }
+  ]
+}

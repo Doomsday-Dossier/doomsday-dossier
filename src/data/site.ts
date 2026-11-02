@@ -329,20 +329,24 @@ export function fmtDate(iso: string) {
   return d ? `${d} ${months[m - 1]} ${y}` : `${months[m - 1]} ${y}`;
 }
 
-/** Short display names for hero titles and links. */
+/**
+ * The name each file goes by: the hero name first, everywhere (the visitor's rule, 2 November 2026, after fans asked why
+ * Ben Grimm and Sam Wilson went by their real names while Nightcrawler and Ghost did not). The real name sits underneath.
+ * Characters with no separate hero name keep their own: Steve Rogers passed the shield to Sam, Thor, Loki, Peggy Carter.
+ */
 export const HERO_NAMES: Record<string, string> = {
-  'victor-von-doom': 'Victor von Doom',
+  'victor-von-doom': 'Doctor Doom',
   'steve-rogers': 'Steve Rogers',
   'thor': 'Thor',
-  'sam-wilson': 'Sam Wilson',
-  'bucky-barnes': 'Bucky Barnes',
-  'scott-lang': 'Scott Lang',
+  'sam-wilson': 'Captain America',
+  'bucky-barnes': 'Winter Soldier',
+  'scott-lang': 'Ant-Man',
   'shang-chi': 'Shang-Chi',
-  'joaquin-torres': 'Joaquín Torres',
-  'reed-richards': 'Reed Richards',
-  'sue-storm': 'Sue Storm',
-  'johnny-storm': 'Johnny Storm',
-  'ben-grimm': 'Ben Grimm',
+  'joaquin-torres': 'Falcon',
+  'reed-richards': 'Mister Fantastic',
+  'sue-storm': 'Invisible Woman',
+  'johnny-storm': 'Human Torch',
+  'ben-grimm': 'The Thing',
   'professor-x': 'Professor X',
   'magneto': 'Magneto',
   'cyclops': 'Cyclops',
@@ -350,12 +354,12 @@ export const HERO_NAMES: Record<string, string> = {
   'mystique': 'Mystique',
   'beast': 'Beast',
   'gambit': 'Gambit',
-  'yelena-belova': 'Yelena Belova',
+  'yelena-belova': 'Black Widow',
   'red-guardian': 'Red Guardian',
-  'john-walker': 'John Walker',
+  'john-walker': 'U.S. Agent',
   'ghost': 'Ghost',
-  'bob-reynolds': 'Bob Reynolds',
-  'shuri': 'Shuri',
+  'bob-reynolds': 'Sentry',
+  'shuri': 'Black Panther',
   'mbaku': "M'Baku",
   'namor': 'Namor',
   'loki': 'Loki',

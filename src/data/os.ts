@@ -20,35 +20,12 @@ export const MODULES = [
 
 // the photo each target is scanned from: the clearest, most complete figure. Reed's photo 2 is not used: the head
 // finder takes the top of the subject, which there is the rocket's tip, so every face crop of him came out empty.
-export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 3, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 3, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 3 };
+export const PICK: Record<string, number> = { 'victor-von-doom': 2, 'steve-rogers': 1, thor: 1, 'sam-wilson': 2, 'bucky-barnes': 1, 'scott-lang': 2, 'shang-chi': 2, 'joaquin-torres': 3, 'reed-richards': 3, 'sue-storm': 2, 'johnny-storm': 2, 'ben-grimm': 2, 'professor-x': 3, magneto: 1, cyclops: 1, nightcrawler: 1, mystique: 2, beast: 2, gambit: 1, 'yelena-belova': 1, 'red-guardian': 1, 'john-walker': 1, ghost: 2, 'bob-reynolds': 3, shuri: 3, mbaku: 1, namor: 3, loki: 1, 'peggy-carter': 1 };
 
 export const versusOf = (slug: string) => VS[`../../research/versus/${slug}.json`];
 export const briefOf = (slug: string) => BRIEFS[slug] ?? null;
 
-/**
- * The threat index: Marvel's six power-grid ratings (1 to 7 each) added up, 6 to 42, judged in Doom's own words.
- * Bands are this site's reading of the numbers; the numbers are Marvel's. Doom is the measure, not a threat.
- */
-export const BANDS = [
-  { min: 32, id: 'worthy', name: 'Worthy of Doom', cls: 'os-red', line: 'At last, something worth my full attention.' },
-  { min: 27, id: 'nemesis', name: 'Nemesis', cls: 'os-amber', line: 'Dangerous. This one I will face myself.' },
-  { min: 21, id: 'rival', name: 'Rival', cls: 'os-hi', line: 'Capable. Not capable enough.' },
-  { min: 0, id: 'nuisance', name: 'Nuisance', cls: 'os-dim', line: 'An irritation. My Doombots will see to it.' },
-] as const;
-export const SOVEREIGN = { id: 'sovereign', name: 'Sovereign', cls: 'os-hi', line: 'The measure every other threat is taken against.' };
-export const UNMEASURED = { id: 'unmeasured', name: 'Unmeasured', cls: 'os-dim', line: 'Marvel never rated this one. I watch instead.' };
-export const threatLevel = (n: number) => BANDS.find((b) => n >= b.min)!;
-const gridTotal = (slug: string) => { const g = versusOf(slug)?.powerGrid?.values as Record<string, number> | undefined; return g ? Object.values(g).reduce((a, v) => a + v, 0) : null; };
-
-/** A target's threat: the total, its rank among the rated targets other than Doom (ties share a rank), its band. */
-export function threatOf(slug: string) {
-  const total = gridTotal(slug);
-  if (slug === 'victor-von-doom') return { total, rank: null, of: 0, joint: false, band: SOVEREIGN };
-  const rated = publishedOrder().filter((s) => s !== 'victor-von-doom').map(gridTotal).filter((x): x is number => x !== null);
-  if (total === null) return { total, rank: null, of: rated.length, joint: false, band: UNMEASURED };
-  return { total, rank: 1 + rated.filter((x) => x > total).length, of: rated.length, joint: rated.filter((x) => x === total).length > 1, band: threatLevel(total) };
-}
-export type Threat = ReturnType<typeof threatOf>;
+// The threat index is the fans' rating now (scripts/os/threat.ts); Marvel's grid stays on each file as its own chart.
 
 export function scanPhoto(slug: string, n = PICK[slug], size = 1280) {
   const ph = photos2For(slug), p = ph.find((x) => x.n === n) ?? ph[0];
@@ -69,7 +46,7 @@ export function targets() {
     return {
       slug, no: i + 1, name: heroName(slug), alias: r.alias, real: r.name, team: team.name, teamId: team.id, actor: c.actor, href: u(`/c/${slug}/`),
       ...scanPhoto(slug)!,
-      threat, threatOf: threatOf(slug), grid, powerType: (vs?.powerType ?? null) as string | null,
+      threat, grid, powerType: (vs?.powerType ?? null) as string | null,
       brief: b ? { who: b.who as string, powers: b.powers as string } : null,
       first: `${r.origin.firstAppearance.title} ${r.origin.firstAppearance.issue} (${r.origin.firstAppearance.coverDate})`,
       firstYear: Number((r.origin.firstAppearance.coverDate.match(/\d{4}/) ?? ['0'])[0]),

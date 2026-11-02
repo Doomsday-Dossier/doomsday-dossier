@@ -9,7 +9,7 @@ import OS from '../../layouts/OS.astro';
 import { getResearch, castFor, publishedOrder, TEAMS, OFFICIAL, SRC, Citer, u, heroName, fmtDate } from '../../data/site';
 import { PHOTO_CREDIT } from '../../data/photos';
 import { photos2For, pick2 } from '../../data/v2';
-import { scanPhoto, versusOf, briefOf, threatOf, targets } from '../../data/os';
+import { scanPhoto, versusOf, briefOf, targets } from '../../data/os';
 import ThreatDial from '../../components/ThreatDial.astro';
 
 export function getStaticPaths() {
@@ -54,7 +54,7 @@ const brief = [
 // THREAT: Marvel's power grid
 const grid = (vs.powerGrid?.values ?? null) as Record<string, number> | null;
 const threat = grid ? Object.values(grid).reduce((a, v) => a + v, 0) : null;
-const th = threatOf(slug);
+const arenaApi = import.meta.env.PUBLIC_ARENA_API ?? "", turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITEKEY ?? "";
 const nGrid = grid && vs.powerGrid.source ? cBrief.cite([vs.powerGrid.source]) : [];
 
 // LEVEL 2: the surveillance record
@@ -123,20 +123,38 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
         {identity.map((x) => <div class="os-row"><span>{x.k}</span><span><span data-type>{x.v}</span><Fragment set:html={sup(x.n, 'src-brief')} /></span></div>)}
       </div>
       <div class="os-panel os-inst" data-os-in>
-        <header><b>Threat index</b><span class="os-label">{grid ? 'Marvel power grid' : 'No grid'}</span></header>
-        <div class="th-main">
+        <header><b>Threat to Doom</b><span class="os-label">{isDoom ? 'The measure' : 'Rated by fans'}</span></header>
+        <div class="th-main" data-th data-slug={slug} data-api={arenaApi} data-sitekey={turnstileKey}>
           <div class="th-dial">
-            <ThreatDial total={th.total} band={th.band.id} size="l" />
-            <p class="th-n"><b class={th.band.cls}>{th.total ?? '?'}</b><span class="os-label">/ 42</span></p>
+            <ThreatDial band={isDoom ? 'sovereign' : 'awaiting'} f={isDoom ? 1 : null} size="l" />
+            <p class="th-n"><b class={isDoom ? 'os-hi' : 'os-dim'} data-th-avg>{isDoom ? '∞' : '?'}</b><span class="os-label" data-th-of>{isDoom ? '' : '/ 4'}</span></p>
           </div>
           <div class="th-read">
-            {th.rank && <p class="th-rank"><b class={th.band.cls}>#{th.rank}</b> <span class="os-label">{th.joint ? 'joint ' : ''}of {th.of} rated targets</span></p>}
-            <p class={`th-band ${th.band.cls}`}>{th.band.name}</p>
-            <p class="th-line"><span class="os-label">Doom:</span> {th.band.line}</p>
+            <p class="th-rank" data-th-rank>{isDoom ? 'Doom ranks no one above himself.' : 'No fan ratings yet.'}</p>
+            <p class={`th-band ${isDoom ? 'os-hi' : 'os-dim'}`} data-th-band>{isDoom ? 'Sovereign' : 'Awaiting the fans'}</p>
+            <p class="th-line"><span class="os-label">Doom:</span> <span data-th-line>{isDoom ? 'The measure every other threat is taken against.' : 'Rate this threat. Once three fans have, I will pass judgement.'}</span></p>
           </div>
         </div>
-        <p class="os-label th-how">{grid ? <Fragment>Marvel's six power ratings, 1 to 7 each, added up out of 42<Fragment set:html={sup(nGrid, 'src-brief')} />. The bands and Doom's words are this site's.</Fragment> : 'Marvel never published a power grid for this target.'}</p>
-        {grid && <div data-radar></div>}
+        {!isDoom && (
+          <div class="th-vote" data-th-vote>
+            <p class="th-q">How much of a threat is {name} to Doom?</p>
+            <div class="th-btns">
+              <button type="button" data-rate="1"><b>Nuisance</b></button>
+              <button type="button" data-rate="2"><b>Rival</b></button>
+              <button type="button" data-rate="3"><b>Nemesis</b></button>
+              <button type="button" data-rate="4"><b>Worthy of Doom</b></button>
+            </div>
+            <p class="os-label th-msg" data-th-msg aria-live="polite">{arenaApi ? 'Fan opinion · one rating a day' : 'Fan threat rating opens soon'}</p>
+            <div class="th-ts" data-th-ts></div>
+          </div>
+        )}
+        {grid && (
+          <Fragment>
+            <p class="os-label th-grid-h">Marvel's power grid, comics<Fragment set:html={sup(nGrid, 'src-brief')} /></p>
+            <div data-radar></div>
+            <p class="th-how">Marvel's own ratings, 1 to 7 on six stats. They measure raw power, not telepathy, reality-warping or cunning, so they set no ranking here.</p>
+          </Fragment>
+        )}
       </div>
       {!isDoom ? (
         <div class="os-panel verdict" data-verdict-panel data-os-in>

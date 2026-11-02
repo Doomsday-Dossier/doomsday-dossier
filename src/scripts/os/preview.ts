@@ -5,11 +5,16 @@
  * threat from Marvel's power grid and their first appearance. Links that already show the target large (the register's
  * cards, the next-file link, Battleworld) are left alone.
  */
-type T = { slug: string; no: number; name: string; alias: string; team: string; href: string; tile: string; accent: string; threat: number | null; th: { rank: number | null; of: number; joint: boolean; band: string; id: string }; first: string };
+import { fanThreat, standing, dialOf } from './threat';
+
+type T = { slug: string; no: number; name: string; alias: string; team: string; href: string; tile: string; accent: string; threat: number | null; first: string };
 
 export function previews(index: T[], host: HTMLElement) {
   if (!matchMedia('(pointer: fine)').matches) return;
   const bySlug = new Map(index.map((t) => [t.slug, t]));
+  let fan: Awaited<ReturnType<typeof fanThreat>> = {};
+  fanThreat(document.body.dataset.arena ?? '').then((v) => { fan = v; });
+  addEventListener('astro:page-load', () => { fanThreat(document.body.dataset.arena ?? '').then((v) => { fan = v; }); });
   const card = document.createElement('div');
   card.className = 'pv'; card.setAttribute('aria-hidden', 'true'); card.hidden = true;
   card.innerHTML = '<div class="pv-img"><img alt="" /><i></i></div><div class="pv-txt"><p class="pv-no"></p><b class="pv-name"></b><p class="pv-alias"></p><p class="pv-threat"><span class="pv-bar"><i></i></span><em></em></p><p class="pv-first"></p></div>';
@@ -27,10 +32,11 @@ export function previews(index: T[], host: HTMLElement) {
     $('.pv-no').textContent = `T-${String(t.no).padStart(2, '0')} // ${t.team}`;
     $('.pv-name').textContent = t.name;
     $('.pv-alias').textContent = t.alias !== t.name ? t.alias : 'Target on file';
-    const k = t.threat !== null ? t.threat / 42 : 0;
+    // the fans' threat, from the ratings the session already fetched (a hover never waits on the network)
+    const st = standing(fan, t.slug), k = st.band.id === 'sovereign' ? 1 : st.avg === null ? 0 : dialOf(st.avg);
     ($('.pv-bar i') as HTMLElement).style.width = `${Math.round(k * 100)}%`;
-    $('.pv-threat em').textContent = t.th.rank ? `Threat #${t.th.rank}${t.th.joint ? ' joint' : ''} of ${t.th.of} · ${t.th.band}` : t.th.band;
-    card.dataset.level = ({ worthy: 'x', sovereign: 'x', nemesis: 'h', rival: 'e' } as Record<string, string>)[t.th.id] ?? '';
+    $('.pv-threat em').textContent = st.rank ? `Fan threat #${st.rank} · ${st.band.name}` : st.band.id === 'sovereign' ? 'Sovereign' : 'Fan threat: not yet rated';
+    card.dataset.level = ({ worthy: 'x', sovereign: 'x', nemesis: 'h', rival: 'e' } as Record<string, string>)[st.band.id] ?? '';
     $('.pv-first').textContent = `First seen ${t.first}`;
     card.style.setProperty('--acc', t.accent);
     card.hidden = false; place(x, y);

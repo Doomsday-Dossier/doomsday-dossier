@@ -14,10 +14,10 @@ const all = targets();
 const teams = TEAMS.filter((t) => all.some((x) => x.teamId === t.id));
 const cards = all.map((t) => {
   const p = photos2For(t.slug).find((x) => x.n === PICK[t.slug]) ?? photos2For(t.slug)[0];
-  return { ...t, aspect: p.w / p.h, th: t.threatOf };
+  return { ...t, aspect: p.w / p.h };
 });
 ---
-<div class="reg" data-register data-team-start={team}>
+<div class="reg" data-register data-team-start={team} data-api={import.meta.env.PUBLIC_ARENA_API ?? ""}>
   <div class="reg-tools">
     <div class="filters" role="group" aria-label="Filter by team">
       <button class="fbtn" data-team="" aria-pressed={!team}>All {all.length}</button>
@@ -44,19 +44,18 @@ const cards = all.map((t) => {
   <p class="reg-count os-label" data-count aria-live="polite"></p>
   <div class="grid" data-grid>
     {cards.map((t) => (
-      <a class="card" href={t.href} data-card data-slug={t.slug} data-team-of={t.teamId} data-no={t.no} data-threat={t.threat ?? -1} data-first={t.firstYear} data-screens={t.screens}>
+      <a class="card" href={t.href} data-card data-slug={t.slug} data-team-of={t.teamId} data-no={t.no} data-threat="-1" data-first={t.firstYear} data-screens={t.screens}>
         <span class="c-img scanhov" data-head={t.head.join(',')} data-bbox={t.bbox.join(',')} data-aspect={t.aspect}>
           <img src={t.tile} alt="" loading="lazy" decoding="async" class="os-tint" />
           <img src={t.tile} alt="" loading="lazy" decoding="async" class="c-true" aria-hidden="true" />
         </span>
         <span class="c-no os-label">T-{String(t.no).padStart(2, '0')}<em class="c-v" data-v></em></span>
         <span class="c-name">{t.name}</span>
+        {t.real.toLowerCase() !== t.name.toLowerCase() && <span class="c-real">{t.real}</span>}
         <span class="c-meta os-label">{t.team}</span>
-        <span class="c-threat" title={`Threat ${t.th.total ?? 'unrated'}: Marvel's six power ratings added up, out of 42`}>
-          <ThreatDial total={t.th.total} band={t.th.band.id} />
-          {t.th.rank
-            ? <span class="c-th"><b class={t.th.band.cls}>#{t.th.rank}<small>{t.th.joint ? ' joint' : ''} of {t.th.of}</small></b><i class={t.th.band.cls}>{t.th.band.name}</i></span>
-            : <span class="c-th"><b class={t.th.band.cls}>{t.th.band.name}</b><i>{t.th.band.id === 'sovereign' ? 'The measure of all' : 'No Marvel rating'}</i></span>}
+        <span class="c-threat" title="Threat to Doom, rated by fans">
+          <ThreatDial band={t.slug === 'victor-von-doom' ? 'sovereign' : 'awaiting'} f={t.slug === 'victor-von-doom' ? 1 : null} />
+          <span class="c-th"><b class={t.slug === 'victor-von-doom' ? 'os-hi' : 'os-dim'} data-th-name>{t.slug === 'victor-von-doom' ? 'Sovereign' : 'Unrated'}</b><i data-th-rank>{t.slug === 'victor-von-doom' ? 'The measure of all' : 'Fan threat'}</i></span>
         </span>
       </a>
     ))}
@@ -104,6 +103,7 @@ const cards = all.map((t) => {
   .c-v { font-style: normal; font-size: 11px; letter-spacing: 0.12em; }
   .c-name { font-family: var(--os-display); font-weight: 700; font-size: 17px; text-transform: uppercase; line-height: 1.05; min-height: 2.1em; display: flex; align-items: flex-end; }
   .c-meta { font-size: 11px; }
+  .c-real { padding: 0 10px; margin-top: -1px; font-family: var(--os-body); font-size: 13px; color: var(--os-text); opacity: 0.8; }
   .c-threat { display: flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 11px; color: var(--os-dim); }
   .c-threat .tdial { flex: 0 0 auto; width: 46px; }
   .c-th { display: grid; min-width: 0; line-height: 1.15; }

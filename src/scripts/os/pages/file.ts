@@ -12,6 +12,7 @@ import { callouts, radar, setLockPoints } from '../hud';
 import { createScanner, canScan, type Scanner } from '../scanner';
 import { lockOn, decryptIn, wait, reduced, sound, whenSeen } from '../fx';
 import { reign, setVerdict, examined, VERDICTS, type Verdict } from '../reign';
+import { threatPanel } from '../threat';
 
 type F = { slug: string; no: number; name: string; alias: string; photo: string; depth: string; head: [number, number]; bbox: [number, number, number, number]; grid: Record<string, number> | null; threat: number | null; abilities: string[]; isDoom: boolean };
 const CLEAR = 'dd-clearance';
@@ -81,6 +82,8 @@ export async function file() {
 
   // the scan
   const host = document.querySelector<HTMLElement>('[data-f-scan]')!, status = document.querySelector<HTMLElement>('[data-status]')!;
+  // the fans' threat rating; a counted rating lands with a stamp
+  threatPanel((counted) => { if (counted) stampSound(s); });
   if (F.grid) { const rh = document.querySelector<HTMLElement>('[data-radar]'); if (rh) whenSeen(rh, () => { radar(rh, F.grid!); for (let i = 0; i < 6; i++) setTimeout(() => tick(s), i * 110); }); }
   showVerdict(reign().verdicts[F.slug]);
   if (!canScan()) { document.querySelector('[data-acq]')?.classList.add('gone'); html.classList.add('no-scan'); status.textContent = 'Target on file'; return; }

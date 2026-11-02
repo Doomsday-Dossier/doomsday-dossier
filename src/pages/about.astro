@@ -21,7 +21,7 @@ const sources = Object.values(SRC);
       <header><b id="ab-rules">The rules</b><span class="os-label">Standing orders</span></header>
       <ol class="ab-orders">
         <li><span class="os-label">Order 01</span><p>Every fact about Avengers: Doomsday comes from a Marvel announcement, listed below.</p></li>
-        <li><span class="os-label">Order 02</span><p>A page says an actor plays a named character only where Marvel has named that role. Otherwise it says the role is not yet named.</p></li>
+        <li><span class="os-label">Order 02</span><p>A page says an actor plays a named character only where Marvel has named that role, or where the actor has said so publicly, labelled that way (Kathryn Newton as Cassie Lang). Otherwise it says the role is not yet named.</p></li>
         <li><span class="os-label">Order 03</span><p>Character history comes from the Marvel Fandom wiki, the Marvel Cinematic Universe Wiki and the named films and comics. Every section lists its sources.</p></li>
         <li><span class="os-label">Order 04</span><p>All writing is our own. Nothing is copied from the wikis.</p></li>
         <li><span class="os-label">Order 05</span><p>No rumours, leaks, set reports or plot predictions. People who asked on stage to join the cast, but whom Marvel has not confirmed, are left out.</p></li>
@@ -38,10 +38,17 @@ const sources = Object.values(SRC);
     </section>
   </div>
 
+  <section class="os-panel ab-made" data-os-in aria-labelledby="ab-made">
+    <header><b id="ab-made">Who made this</b><span class="os-label">Credits</span></header>
+    <p>Doomsday Dossier was designed and directed by Prejith, a Marvel fan who wanted one place to get ready for Avengers: Doomsday. The idea of making the site Doctor Doom's own computer, every feature on it, the music, the hacks and the look were his decisions.</p>
+    <p>Every fact on the site is sourced on its own page, and corrections from readers are welcome: <a href="https://github.com/Doomsday-Dossier/doomsday-dossier/issues" rel="noopener" target="_blank">open an issue</a>.</p>
+    <p>Files go by each character's hero name, with their real name underneath; characters without a separate hero name keep their own. Threat rankings are fan votes, labelled as fan opinion; Marvel's own power-grid ratings appear separately on each file.</p>
+  </section>
+
   <section class="os-panel ab-legal" data-os-in aria-labelledby="ab-unoff">
     <header><b id="ab-unoff">Unofficial</b><span class="os-label os-amber">Fan project // non-commercial</span></header>
     <p>Doomsday Dossier is an unofficial, non-commercial fan project. It is not affiliated with, endorsed by or sponsored by Marvel, Marvel Studios or The Walt Disney Company. All character names, related marks and images are the property of their owners.</p>
-    <p>Fan votes in the combat simulation are opinions, not facts, and are labelled that way. Voting uses Cloudflare Turnstile to keep bots out. The site stores no account, name, email or IP address: a vote is counted once per fight per day using a code that changes daily and cannot be traced back to you.</p>
+    <p>Fan votes in the combat simulation and fan threat ratings are opinions, not facts, and are labelled that way. Voting uses Cloudflare Turnstile to keep bots out. The site stores no account, name, email or IP address: a vote is counted once per fight per day using a code that changes daily and cannot be traced back to you.</p>
     <p>DOOM-OS is drawn with WebGL (Three.js for Battleworld, a small shader for the scans), SVG and canvas; every sound is synthesised in the browser by this site's own code. Your verdicts, plans, decrees and royal log stay on your device. Reduced-motion settings are respected: with them on, every page is still and fully readable.</p>
   </section>
 </OS>

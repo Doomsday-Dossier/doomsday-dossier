@@ -426,3 +426,19 @@ html:not(.rm) .op-rings ellipse:nth-child(2) { animation: op-drift 9s ease-in-ou
 .op-date b { font-size: clamp(44px, 6vw, 88px); line-height: 0.9; letter-spacing: 0.02em; }
 .op-last { margin: 14px 0 0; max-width: 60ch; padding-left: 12px; border-left: 1px solid var(--os-line-hi); font-family: var(--os-body); font-size: 16px; line-height: 1.5; color: var(--os-text); }
 @media (max-width: 760px) { .op-date { justify-items: start; } }
+/* the fans' threat rating on a file */
+.th-vote { margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(61, 255, 143, 0.15); }
+.th-vote > .os-label:first-child { margin: 0 0 8px; }
+.th-btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.th-btns button { min-height: 44px; padding: 6px 4px; font: inherit; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2; color: var(--os-text); background: rgba(61, 255, 143, 0.04); border: 1px solid var(--os-line); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.th-btns button:nth-child(1) { --c: var(--os-dim); } .th-btns button:nth-child(2) { --c: var(--os-green); } .th-btns button:nth-child(3) { --c: var(--os-amber); } .th-btns button:nth-child(4) { --c: var(--os-red); }
+.th-btns button b { color: var(--c); font-weight: 700; }
+.th-btns button:hover:not(:disabled), .th-btns button:focus-visible { border-color: var(--c); background: rgba(255, 255, 255, 0.04); outline: none; }
+.th-btns button.on { border-color: var(--c); background: rgba(255, 255, 255, 0.07); }
+.th-btns button:disabled:not(.on) { opacity: 0.45; cursor: default; }
+.th-msg { margin: 8px 0 0; }
+.th-grid-h { margin: 18px 0 2px; }
+@media (max-width: 420px) { .th-btns { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#screen .ab-made p { max-width: 72ch; font-family: var(--os-body); font-size: 16px; line-height: 1.6; letter-spacing: 0.01em; font-weight: 420; }
+#screen .th-q { margin: 0 0 10px; font-family: var(--os-body); font-size: 15px; font-weight: 500; color: var(--os-text); }
+#screen .th-how { margin: 8px 0 4px; font-family: var(--os-body); font-size: 13.5px; line-height: 1.5; color: var(--os-dim); }

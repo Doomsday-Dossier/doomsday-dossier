@@ -18,6 +18,15 @@ CREATE TABLE IF NOT EXISTS seen (
 );
 CREATE INDEX IF NOT EXISTS seen_day ON seen (day);
 
+-- Fan threat ratings: how much of a threat each target is to Doom, 1 (nuisance) to 4 (worthy of Doom).
+-- One row per target with the running count and sum; the per-visitor daily marker lives in `seen`.
+CREATE TABLE IF NOT EXISTS threat (
+  slug    TEXT PRIMARY KEY,
+  n       INTEGER NOT NULL DEFAULT 0,
+  sum     INTEGER NOT NULL DEFAULT 0,
+  updated INTEGER NOT NULL
+);
+
 -- Fan predictions. One row per predictor (a random id kept in their browser), one row per answer.
 CREATE TABLE IF NOT EXISTS pred_people (
   pid     TEXT PRIMARY KEY,

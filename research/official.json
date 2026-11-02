@@ -63,6 +63,10 @@
     "S_SECRETWARS": {
       "label": "Marvel.com, Avengers: Secret Wars film page",
       "url": "https://www.marvel.com/movies/avengers-secret-wars"
+    },
+    "S_NEWTON": {
+      "label": "Deadline: Kathryn Newton returns to the MCU in Avengers: Doomsday as Cassie Lang, announced by Newton on Instagram (17 April 2026). An actor's own confirmation, not yet named by Marvel",
+      "url": "https://deadline.com/2026/04/kathryn-newton-mcu-avengers-doomsday-cassie-lang-1236864448/"
     }
   },
   "milestones": [
@@ -333,10 +337,11 @@
     },
     {
       "actor": "Kathryn Newton",
-      "character": null,
-      "slug": null,
-      "team": "unnamed",
-      "note": "Listed in Marvel's cast. Role not named by Marvel."
+      "character": "Cassie Lang",
+      "slug": "cassie-lang",
+      "team": "more",
+      "note": "Listed in Marvel's cast with no role named. Kathryn Newton has said publicly she returns as Cassie Lang; Marvel has not named the role.",
+      "roleSource": "S_NEWTON"
     },
     {
       "actor": "Mabel Cadena",

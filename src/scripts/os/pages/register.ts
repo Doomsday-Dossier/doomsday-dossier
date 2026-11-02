@@ -6,6 +6,20 @@
 import { tick } from '../../sound/os';
 import { reign, will, VERDICTS } from '../reign';
 import { sound, reduced } from '../fx';
+import { fanThreat, standing, setDial, rankLine } from '../threat';
+
+/** Each card's threat from the fans' ratings: the dial, the rank or how far from ranked, and the sort value. */
+export async function paintThreat(root: HTMLElement) {
+  const fan = await fanThreat(root.dataset.api ?? '');
+  root.querySelectorAll<HTMLElement>('[data-card]').forEach((c) => {
+    const st = standing(fan, c.dataset.slug!);
+    setDial(c.querySelector<SVGSVGElement>('.tdial'), st);
+    const name = c.querySelector<HTMLElement>('[data-th-name]'), rank = c.querySelector<HTMLElement>('[data-th-rank]');
+    if (name) { name.textContent = st.band.id === 'awaiting' ? 'Unrated' : st.band.name; name.className = st.band.cls; }
+    if (rank) rank.textContent = rankLine(st);
+    c.dataset.threat = String(st.band.id === 'sovereign' ? 99 : st.avg ?? -1);
+  });
+}
 
 export const MASK = `<svg class="dmask" viewBox="0 0 40 50" aria-hidden="true"><path d="M6 5 Q20 0 34 5 L36 30 Q34 44 20 49 Q6 44 4 30 Z"/><path d="M20 9 L20 31" fill="none"/><rect class="slit" x="8.5" y="17" width="9.5" height="2.6"/><rect class="slit" x="22" y="17" width="9.5" height="2.6"/><path d="M13 36 L27 36 M14 39 L26 39 M15.5 42 L24.5 42" fill="none"/></svg>`;
 
@@ -29,6 +43,7 @@ export function register() {
   const s = sound();
   const st = { team: root.dataset.teamStart ?? '', verdict: '', sort: 'no' };
   const r = reign();
+  paintThreat(root);
 
   // verdicts on the cards
   for (const c of cards) {

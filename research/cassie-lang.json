@@ -1,0 +1,226 @@
+{
+  "slug": "cassie-lang",
+  "name": "Cassie Lang",
+  "alias": "Stature / Stinger",
+  "origin": {
+    "firstAppearance": {
+      "title": "Marvel Premiere",
+      "issue": "47",
+      "coverDate": "April 1979"
+    },
+    "creators": ["David Michelinie", "John Byrne"],
+    "summary": [
+      "Cassie Lang came into comics as the reason her father became a hero. In Marvel Premiere #47 she is Scott Lang's young daughter, born with a heart defect that will kill her without surgery. The one doctor who can operate, Erica Sondheim, is being held by Darren Cross at Cross Technological Enterprises, so Scott steals Hank Pym's Ant-Man suit and Pym Particles to get her out. Cassie is seen only in flashback in that first issue; by the end of the next one the operation has worked.",
+      "Having Ant-Man for a father meant growing up among heroes. She lived for a time at Four Freedoms Plaza while Scott worked for the Fantastic Four, became close to Kristoff Vernard, the boy Doctor Doom had raised, and spent weekends at Avengers Mansion once her father joined the team. Without telling anyone, she used that access to expose herself to Pym Particles again and again over several years, hoping it would one day let her be a hero too.",
+      "It did. After Scott was killed in the attack on Avengers Mansion, Cassie went to the ruins to recover his equipment and ran into the newly formed Young Avengers. In the middle of a shouting match at the gates she suddenly grew to giant size, revealing powers she had been building in secret. She joined the team and chose the codename Stature."
+    ],
+    "sources": [
+      {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"},
+      {"label": "Marvel Database: Marvel Premiere Vol 1 47", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_47"},
+      {"label": "Marvel Database: Marvel Premiere Vol 1 48", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"},
+      {"label": "Marvel Database: Young Avengers Vol 1 3", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_3"},
+      {"label": "Marvel Database: Young Avengers Vol 1 6", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_6"}
+    ]
+  },
+  "comics": [
+    {
+      "era": "Bronze Age debut",
+      "years": "1979",
+      "title": "The Girl Ant-Man Was Made For",
+      "summary": "Cassie's first two appearances are really her father's story. In Marvel Premiere #47 she is the sick child, seen in flashback, whose failing heart pushes Scott into stealing the Ant-Man gear. By the end of #48 Scott has rescued Dr. Sondheim, Cassie's operation has succeeded and Hank Pym has let him keep the suit. The bond between a reformed thief and the daughter he did it for would drive both characters for decades.",
+      "keyIssues": ["Marvel Premiere #47 (1979)", "Marvel Premiere #48 (1979)"],
+      "sources": [
+        {"label": "Marvel Database: Marvel Premiere Vol 1 47", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_47"},
+        {"label": "Marvel Database: Marvel Premiere Vol 1 48", "url": "https://marvel.fandom.com/wiki/Marvel_Premiere_Vol_1_48"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Child of heroes",
+      "years": "1994-2004",
+      "title": "Growing Up in Headquarters",
+      "summary": "Cassie spent her childhood inside superhero bases. When Scott became the Fantastic Four's stand-in scientist, father and daughter moved into Four Freedoms Plaza, and while he worked with Heroes for Hire she accidentally switched on a dormant Super-Adaptoid. Once Scott joined the Avengers, her mother won a court order limiting his visits. Soon afterwards a disturbed man took Cassie from her school at gunpoint; Scott found her, and Jack of Hearts died ending the stand-off.",
+      "keyIssues": ["Fantastic Four #384 (1994)", "Heroes for Hire #10 (1998)", "Avengers Vol. 3 #76 (2004)"],
+      "sources": [
+        {"label": "Marvel Database: Fantastic Four Vol 1 384", "url": "https://marvel.fandom.com/wiki/Fantastic_Four_Vol_1_384"},
+        {"label": "Marvel Database: Heroes for Hire Vol 1 10", "url": "https://marvel.fandom.com/wiki/Heroes_for_Hire_Vol_1_10"},
+        {"label": "Marvel Database: Avengers Vol 3 76", "url": "https://marvel.fandom.com/wiki/Avengers_Vol_3_76"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Young Avengers",
+      "years": "2005-2006",
+      "title": "Stature Rises",
+      "summary": "With her father dead, Cassie teamed up with Kate Bishop to climb into the ruined Avengers Mansion and recover his gear. Facing down the Young Avengers, she grew to giant size for the first time, then confessed to Tony Stark that she had been stealing Pym Particles for years. After the team saw off Kang the Conqueror she stayed on, took the name Stature and fought beside them through a looming new Kree-Skrull War, even as her mother learned her secret.",
+      "keyIssues": ["Young Avengers #2 (2005)", "Young Avengers #3 (2005)", "Young Avengers #6 (2005)", "Young Avengers #12 (2006)"],
+      "sources": [
+        {"label": "Marvel Database: Young Avengers Vol 1 2", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_2"},
+        {"label": "Marvel Database: Young Avengers Vol 1 3", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_3"},
+        {"label": "Marvel Database: Young Avengers Vol 1 6", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_6"},
+        {"label": "Marvel Database: Young Avengers Vol 1 12", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Vol_1_12"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Civil War and the Initiative",
+      "years": "2006-2008",
+      "title": "Choosing a Side",
+      "summary": "Cassie first joined the Young Avengers in resisting the Superhuman Registration Act, but after Goliath was killed she walked out on Captain America's rebels, wanting to fight villains rather than fellow heroes. She registered and trained with the Initiative at Camp Hammond. One morning she stopped the Growing Man only to see him land on her stepfather, and guilt shrank her almost out of existence until her teammates reached her. In the last battle of the Skrull invasion she grew huge and landed a giant-sized blow on the Skrull Yellowjacket.",
+      "keyIssues": ["Civil War #4 (2006)", "Avengers: The Initiative #1 (2007)", "Young Avengers Presents #5 (2008)", "Secret Invasion #7 (2008)"],
+      "sources": [
+        {"label": "Marvel Database: Civil War Vol 1 4", "url": "https://marvel.fandom.com/wiki/Civil_War_Vol_1_4"},
+        {"label": "Marvel Database: Avengers: The Initiative Vol 1 1", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Initiative_Vol_1_1"},
+        {"label": "Marvel Database: Young Avengers Presents Vol 1 5", "url": "https://marvel.fandom.com/wiki/Young_Avengers_Presents_Vol_1_5"},
+        {"label": "Marvel Database: Secret Invasion Vol 1 7", "url": "https://marvel.fandom.com/wiki/Secret_Invasion_Vol_1_7"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Mighty Avengers",
+      "years": "2009-2010",
+      "title": "Recruited by a Trickster",
+      "summary": "Answering a call from Wiccan, Cassie and the Vision found the rest of the Young Avengers turned to stone, and were drafted into Hank Pym's new Mighty Avengers by a figure who looked like the Scarlet Witch but was really Loki in disguise. For a while she split her time between both teams, and she fought with the Mighty Avengers during the Siege of Asgard. Her file from this period puts her top height at roughly 250 feet, a size she cannot hold for long.",
+      "keyIssues": ["Mighty Avengers #21 (2009)", "Mighty Avengers #24 (2009)"],
+      "sources": [
+        {"label": "Marvel Database: Mighty Avengers Vol 1 21", "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_21"},
+        {"label": "Marvel Database: Mighty Avengers Vol 1 24", "url": "https://marvel.fandom.com/wiki/Mighty_Avengers_Vol_1_24"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "The Children's Crusade",
+      "years": "2010-2012",
+      "title": "Killed by Doom",
+      "summary": "The hunt for the missing Scarlet Witch took the Young Avengers to Latveria, where they found Wanda with no memory and engaged to Doctor Doom. Travelling back to the day Jack of Hearts exploded, Cassie pulled her father clear of the blast and brought him into the present. The reunion was brief. When Doom stole Wanda's power and turned on the heroes, Cassie believed he had crushed Scott, grew to enormous size and knocked Doom down. He struck back and killed her. The Avengers later unveiled a memorial to Stature and the Vision.",
+      "keyIssues": ["Avengers: The Children's Crusade #5 (2011)", "Avengers: The Children's Crusade #8 (2012)", "Avengers: The Children's Crusade #9 (2012)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 5", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_5"},
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 8", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_8"},
+        {"label": "Marvel Database: Avengers: The Children's Crusade Vol 1 9", "url": "https://marvel.fandom.com/wiki/Avengers:_The_Children%27s_Crusade_Vol_1_9"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Rebirth and Stinger",
+      "years": "2015-2016",
+      "title": "Doom's One Good Deed",
+      "summary": "An inversion spell briefly gave Doctor Doom a conscience. With only enough borrowed power to put right a single wrong, he chose to bring Cassie back to life. She returned to middle school and moved to Miami with her mother, and Scott followed. Augustine Cross then stole her Pym-charged heart to revive his father Darren, and Scott had to save her with a new one. Tired of being protected, she went undercover as Stinger to shut down a villains-for-hire app. When that went wrong Scott took the blame and stood trial, and her mother finally let the two work together as Ant-Man and Stinger.",
+      "keyIssues": ["Avengers World #16 (2015)", "Ant-Man #5 (2015)", "Astonishing Ant-Man #6 (2016)", "Astonishing Ant-Man #13 (2016)"],
+      "sources": [
+        {"label": "Marvel Database: Avengers World Vol 1 16", "url": "https://marvel.fandom.com/wiki/Avengers_World_Vol_1_16"},
+        {"label": "Marvel Database: Ant-Man Vol 1 1", "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_1_1"},
+        {"label": "Marvel Database: Ant-Man Vol 1 5", "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_1_5"},
+        {"label": "Marvel Database: Astonishing Ant-Man Vol 1 6", "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_6"},
+        {"label": "Marvel Database: Astonishing Ant-Man Vol 1 13", "url": "https://marvel.fandom.com/wiki/Astonishing_Ant-Man_Vol_1_13"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    },
+    {
+      "era": "Ant-Man and Stinger",
+      "years": "2017-2020",
+      "title": "The Family Business",
+      "summary": "When Hydra took over the United States, Scott sent Cassie to safety in France, but Hydra found her anyway and used her to force him to spy on the resistance. Afterwards she carried on working beside him as Stinger, though his habit of living in an anthill embarrassed her. When the villain Macrothrax set out to wipe out humanity with his giant Bug Lords, Cassie beat Macrothrax herself while her father dealt with the monsters.",
+      "keyIssues": ["Secret Empire #6 (2017)", "Ant-Man Vol. 2 #1 (2020)", "Ant-Man Vol. 2 #5 (2020)"],
+      "sources": [
+        {"label": "Marvel Database: Secret Empire Vol 1 6", "url": "https://marvel.fandom.com/wiki/Secret_Empire_Vol_1_6"},
+        {"label": "Marvel Database: Ant-Man Vol 2 1", "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_2_1"},
+        {"label": "Marvel Database: Ant-Man Vol 2 5", "url": "https://marvel.fandom.com/wiki/Ant-Man_Vol_2_5"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}
+      ]
+    }
+  ],
+  "screen": [
+    {
+      "title": "Ant-Man",
+      "year": 2015,
+      "continuity": "MCU",
+      "actor": "Abby Ryder Fortson",
+      "cameo": false,
+      "summary": "Cassie turns seven on the day her father, just out of prison, arrives late to her party with an ugly stuffed rabbit that she instantly loves. She has no idea he has become Ant-Man until Darren Cross, in the Yellowjacket suit, holds her hostage in her bedroom. She watches the two of them fight across her toy train set, sees her father shrink out of sight to stop Cross and come back, and keeps an enlarged ant as a pet afterwards.",
+      "sources": [
+        {"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"},
+        {"label": "MCU Wiki: Ant-Man (film)", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_(film)"}
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp",
+      "year": 2018,
+      "continuity": "MCU",
+      "actor": "Abby Ryder Fortson",
+      "cameo": false,
+      "summary": "Her visits are the highlight of Scott's house arrest, with cardboard tunnels, treasure hunts and a staircase turned into a slide. She tells FBI agent Jimmy Woo to leave her dad alone, covers for Scott when agents search the house while he is out, and tells him he needs a partner to watch his back, meaning her. Once his sentence ends she shrinks for the first time, with Scott and Hope, to watch a film in a tiny car.",
+      "sources": [
+        {"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"},
+        {"label": "MCU Wiki: Ant-Man and the Wasp", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"}
+      ]
+    },
+    {
+      "title": "Avengers: Endgame",
+      "year": 2019,
+      "continuity": "MCU",
+      "actor": "Emma Fuhrmann",
+      "cameo": true,
+      "summary": "Brief appearance. Five years after the Snap, a teenage Cassie opens her front door to find the father she believed had been wiped out, and the two share an emotional reunion before Scott leaves to find the Avengers. After the Blip she watches the celebration fireworks with Scott and Hope.",
+      "sources": [
+        {"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"},
+        {"label": "MCU Wiki: Avengers: Endgame", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"}
+      ]
+    },
+    {
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "year": 2023,
+      "continuity": "MCU",
+      "actor": "Kathryn Newton",
+      "cameo": false,
+      "summary": "Now an activist with an arrest for shrinking a police car at a protest, Cassie has built a satellite with Hank and Hope that sends a signal into the Quantum Realm, and it drags the whole family down there. In a suit of her own she is captured and used by Kang as leverage over her father, then escapes, rallies the people of Axia to revolt and grows giant to beat M.O.D.O.K. At the end she reopens the closing portal so Scott and Hope can get home.",
+      "sources": [
+        {"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"},
+        {"label": "MCU Wiki: Ant-Man and the Wasp: Quantumania", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"}
+      ]
+    }
+  ],
+  "trivia": [
+    {
+      "fact": "The Stinger name came from an alternate-future Cassie in Marvel's MC2 line, who used it as a founding member of that world's Avengers in A-Next #1 (1998), long before the main-universe Cassie took it in 2016.",
+      "sources": [
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"},
+        {"label": "Marvel Database: Cassandra Lang (Earth-982)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-982)"},
+        {"label": "Marvel Database: A-Next Vol 1 1", "url": "https://marvel.fandom.com/wiki/A-Next_Vol_1_1"}
+      ]
+    },
+    {
+      "fact": "Cassie was nine in her first appearance and almost fifteen when she joined the Young Avengers.",
+      "sources": [{"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}]
+    },
+    {
+      "fact": "Her first two crushes were both on boys with villainous ties: Kristoff Vernard, Doctor Doom's former ward, and Iron Lad, the teenage version of Kang the Conqueror.",
+      "sources": [{"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"}]
+    },
+    {
+      "fact": "Solicitation text for She-Hulk Vol. 2 #1 (2005) called her Titan rather than Stature; the wiki records no reason for the change.",
+      "sources": [
+        {"label": "Marvel Database: Cassandra Lang (Earth-616)", "url": "https://marvel.fandom.com/wiki/Cassandra_Lang_(Earth-616)"},
+        {"label": "Marvel Database: She-Hulk Vol 2 1", "url": "https://marvel.fandom.com/wiki/She-Hulk_Vol_2_1"}
+      ]
+    },
+    {
+      "fact": "Three actors have played Cassie in the MCU: Abby Ryder Fortson as a child, Emma Fuhrmann as a teenager in Endgame and Kathryn Newton in Quantumania. Fuhrmann has said she thought she was auditioning for a young Black Widow, and learned she had been recast only when Newton's casting was announced.",
+      "sources": [{"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"}]
+    },
+    {
+      "fact": "Marvel considered adding Cassie digitally to Tony Stark's funeral in Endgame, but Kevin Feige said they decided to keep that scene for the heroes.",
+      "sources": [{"label": "MCU Wiki: Cassie Lang", "url": "https://marvelcinematicuniverse.fandom.com/wiki/Cassie_Lang"}]
+    }
+  ],
+  "unverified": [
+    "Cassie's death: the Avengers: The Children's Crusade #8 issue page lists her death and describes it; #9 shows the aftermath and memorial. The Earth-616 page cites both. (research/scott-lang.json says she was killed in #9; that file was not changed.)",
+    "Her fight with Eric O'Grady at Camp Hammond is cited on the Earth-616 page to Avengers: The Initiative #8, but that issue page has an empty synopsis and lists her only in a flashback, so the fight is left out.",
+    "The 250-foot height limit is cited on the Earth-616 page to Mighty Avengers #24; the issue synopsis does not mention it, so it is given as the character file's figure.",
+    "The 2015-2016 Ant-Man and Astonishing Ant-Man issue pages fetched (Ant-Man #4 and #5, Astonishing Ant-Man #6 and #13) have empty or thin synopses; details of the heart theft, the Stinger mission and the trial rest on the Earth-616 page.",
+    "Middle name: the Marvel Fandom wiki gives Cassandra Eleanor Lang; the archived Marvel.com Marvel Universe wiki page spells it Eleanore. The site uses Cassie Lang only.",
+    "Not counted as screen appearances: The Marvels (mentioned), WHiH Newsfront (indirect mention), the book Look Out for the Little Guy! (photo and mention) and the tie-in comics Avengers: Infinity War Prelude and Ant-Man and the Wasp Prelude. Avengers: Doomsday is released on 18 December 2026, after today's date, so it is excluded even though the MCU Wiki already lists her for it.",
+    "Doomsday status: Kathryn Newton said on Instagram in April 2026 that she returns as Cassie Lang (reported by Deadline, 17 April 2026). Marvel lists her in the cast but has not named the role.",
+    "No non-MCU live-action portrayal and no animated appearances were checked; animation would not count in any case."
+  ]
+}

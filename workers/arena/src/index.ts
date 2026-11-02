@@ -6,6 +6,8 @@
  *   GET  /top?limit=10                   most-wanted fights: matchups with the most votes
  *   POST /predict { pid?, picks, token } a full set of fan predictions (until the seal)
  *   GET  /predict/split                  how fans have answered each prediction
+ *   POST /threat  { slug, rating, token } a fan's threat rating, 1 (nuisance) to 4 (worthy of Doom)
+ *   GET  /threat                         every target's fan threat: count and average
  *
  * Spam: every vote needs a valid Turnstile token, and each visitor gets one vote per
  * matchup per day. "Visitor" is an HMAC of IP and user agent keyed by a secret and the
@@ -126,6 +128,33 @@ export default {
         env.DB.prepare('DELETE FROM seen WHERE day < ?').bind(new Date(Date.now() - 86400000).toISOString().slice(0, 10)),
       ]);
       return json({ ...(await tally(env, a, b)), already: false }, h);
+    }
+
+    if (req.method === 'GET' && url.pathname === '/threat') {
+      const { results } = await env.DB.prepare('SELECT slug, n, sum FROM threat').all<{ slug: string; n: number; sum: number }>();
+      const t: Record<string, { n: number; avg: number }> = {};
+      for (const r of results) if (SLUGS.has(r.slug) && r.n) t[r.slug] = { n: r.n, avg: Math.round((r.sum / r.n) * 100) / 100 };
+      return json({ threat: t }, h, 200, 'public, max-age=15');
+    }
+
+    if (req.method === 'POST' && url.pathname === '/threat') {
+      let body: any;
+      try { body = await req.json(); } catch { return json({ error: 'bad request' }, h, 400); }
+      const { slug, rating, token } = body || {};
+      // Doom is the measure, never his own threat
+      if (!SLUGS.has(slug) || slug === 'victor-von-doom' || ![1, 2, 3, 4].includes(rating)) return json({ error: 'unknown rating' }, h, 400);
+      if (!(await human(env, req, token))) return json({ error: 'bot check failed' }, h, 403);
+      const day = today();
+      // one rating per visitor per target per day, the same atomic marker as the fight votes
+      const first = await env.DB.prepare('INSERT OR IGNORE INTO seen (k, day) VALUES (?, ?)').bind(await visitor(env, req, `threat|${slug}`), day).run();
+      if (first.meta.changes) {
+        await env.DB.batch([
+          env.DB.prepare('INSERT INTO threat (slug, n, sum, updated) VALUES (?, 1, ?, ?) ON CONFLICT(slug) DO UPDATE SET n = n + 1, sum = sum + excluded.sum, updated = excluded.updated').bind(slug, rating, Date.now()),
+          env.DB.prepare('DELETE FROM seen WHERE day < ?').bind(new Date(Date.now() - 86400000).toISOString().slice(0, 10)),
+        ]);
+      }
+      const row = await env.DB.prepare('SELECT n, sum FROM threat WHERE slug = ?').bind(slug).first<{ n: number; sum: number }>();
+      return json({ slug, n: row?.n ?? 0, avg: row?.n ? Math.round((row.sum / row.n) * 100) / 100 : null, already: !first.meta.changes }, h);
     }
 
     if (req.method === 'GET' && url.pathname === '/predict/split') {

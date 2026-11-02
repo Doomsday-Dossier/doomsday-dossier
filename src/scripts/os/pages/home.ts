@@ -9,6 +9,7 @@ import { onLeave } from '../../page-scope';
 import { bootHum, tick, sweep, lock } from '../../sound/os';
 import { typeIn, wait, reduced, sound } from '../fx';
 import { reign, log, logLine, will, daysBefore } from '../reign';
+import { fanThreat, standing } from '../threat';
 
 type W = { slug: string; no: number; name: string; team: string; teamId: string; href: string; face: { src: string; head: [number, number]; aspect: number } };
 const BOOTED = 'dd-os-booted';
@@ -33,7 +34,7 @@ export async function home() {
   const greet = document.querySelector<HTMLElement>('[data-greet]')!;
   if (!r.log.length) log('His Majesty took the throne.');
   else greet.textContent = 'Welcome back, Your Majesty.';
-  renderLog(); renderWill();
+  renderLog(); renderWill(); topThreat();
   addEventListener('dd:reign', () => { renderLog(); renderWill(); });
 
   const booted = (() => { try { return sessionStorage.getItem(BOOTED) === '1'; } catch { return false; } })();
@@ -159,4 +160,16 @@ function renderWill() {
   const w = will(), bar = document.querySelector<HTMLElement>('[data-will]'), n = document.querySelector('[data-will-n]');
   if (bar) bar.style.width = `${Math.round(w * 100)}%`;
   if (n) n.textContent = `${Math.round(w * 100)}%`;
+}
+
+/** The greatest threat to Doom, as the fans rate it: the top-ranked target, or a nudge to go and rate them. */
+async function topThreat() {
+  const a = document.querySelector<HTMLAnchorElement>('[data-top-threat]');
+  if (!a) return;
+  let idx: { slug: string; name: string; href: string }[] = [];
+  try { idx = JSON.parse(document.querySelector('[data-cmd-index]')!.textContent!).targets; } catch { return; }
+  const fan = await fanThreat(document.body.dataset.arena ?? '');
+  const best = idx.map((t) => ({ t, st: standing(fan, t.slug) })).filter((x) => x.st.rank === 1)[0];
+  if (!best) { a.textContent = 'Awaiting the fans · rate a target'; return; }
+  a.textContent = `${best.t.name} · ${best.st.band.name}`; a.href = best.t.href; a.className = best.st.band.cls;
 }
