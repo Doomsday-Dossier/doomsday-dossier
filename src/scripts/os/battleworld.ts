@@ -13,9 +13,45 @@ import * as THREE from 'three';
 import { ConvexHull } from 'three/examples/jsm/math/ConvexHull.js';
 
 export type World = { slug: string; name: string; team: string; teamId: string; face: { src: string; head: [number, number]; aspect: number } };
-type Opts = { onHover?: (i: number | null, at: { x: number; y: number } | null) => void; onPick?: (i: number) => void; reduced: boolean };
+type Opts = { onHover?: (i: number | null, at: { x: number; y: number } | null) => void; onPick?: (i: number) => void; reduced: boolean; daysLeft?: number };
 
 const N = 30; // shader array size: one per target (30 with Cassie Lang); raise it before adding more
+
+/**
+ * The second Earth (Secret Wars, 2015, and the Incursions that lead to it in New Avengers, 2013: two Earths meet in
+ * the sky and only one survives). This site's countdown, not a claim about the film: another Earth hangs behind
+ * Battleworld and closes in a little every day, from far off APPROACH days out until it fills the sky on release day.
+ * Drawn in threat colours (amber and red are kept for threat) with continents made of noise, a halftone of land, a
+ * night side and a burning rim. Its own small shader; it sits in the scene, not the turning world.
+ */
+const APPROACH = 90;
+const EARTH_VERT = /* glsl */ `varying vec3 vN; varying vec3 vV; varying vec3 vP; void main(){ vP = position; vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }`;
+const EARTH_FRAG = /* glsl */ `
+  uniform float uTime; uniform float uNear; uniform vec3 uSun;
+  varying vec3 vN; varying vec3 vV; varying vec3 vP;
+  float h(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
+  float n3(vec3 p) { vec3 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+    return mix(mix(mix(h(i), h(i + vec3(1,0,0)), f.x), mix(h(i + vec3(0,1,0)), h(i + vec3(1,1,0)), f.x), f.y),
+               mix(mix(h(i + vec3(0,0,1)), h(i + vec3(1,0,1)), f.x), mix(h(i + vec3(0,1,1)), h(i + vec3(1,1,1)), f.x), f.y), f.z); }
+  float fbm(vec3 p) { float a = 0.5, s = 0.0; for (int i = 0; i < 5; i++) { s += a * n3(p); p *= 2.03; a *= 0.5; } return s; }
+  void main() {
+    // the globe turns slowly: rotate the lookup, not the mesh
+    float r = uTime * 0.05; vec3 p = vec3(vP.x * cos(r) - vP.z * sin(r), vP.y, vP.x * sin(r) + vP.z * cos(r));
+    float land = smoothstep(0.5, 0.56, fbm(p * 2.1 + 3.0));
+    vec3 N = normalize(vN), V = normalize(vV);
+    float day = clamp(dot(N, normalize(uSun)) * 0.9 + 0.25, 0.0, 1.0);
+    // land as a halftone of amber points, the sea a deep red, the night side all but black
+    vec2 g = fract(gl_FragCoord.xy / 3.2) - 0.5; float dotm = step(length(g), 0.32);
+    vec3 sea = vec3(0.16, 0.015, 0.02), ground = vec3(1.0, 0.62, 0.22) * (0.55 + 0.45 * dotm);
+    vec3 col = mix(sea, ground, land) * day;
+    // a burning rim: the atmosphere of a world about to touch another
+    float rim = pow(1.0 - max(dot(N, V), 0.0), 2.6);
+    col += vec3(1.0, 0.24, 0.16) * rim * (0.8 + 0.6 * uNear) * (0.85 + 0.15 * sin(uTime * 1.7));
+    col *= 0.86 + 0.14 * step(0.5, fract(gl_FragCoord.y / 3.0));
+    gl_FragColor = vec4(col, 1.0);
+  }`;
+/** How far the second Earth has come, 0 (APPROACH days out or more) to 1 (release day). */
+export const incursion = (daysLeft: number) => 1 - Math.min(1, Math.max(0, daysLeft / APPROACH));
 const COLS = 6, CELL = 256;
 
 /** A small seeded random, so the world is the same on every visit. */
@@ -251,6 +287,18 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     const pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
     scene.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0x9dffc8, size: 0.025, transparent: true, opacity: 0.5, depthWrite: false }))); }
 
+  // the second Earth, closing in by the day; it sits up and to the right, further off the wider the screen allows
+  const near = incursion(opts.daysLeft ?? APPROACH);
+  const earthU = { uTime: u.uTime, uNear: { value: near }, uSun: { value: new THREE.Vector3(-1, 0.4, 0.6) } };
+  const earth = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 32), new THREE.ShaderMaterial({ uniforms: earthU, vertexShader: EARTH_VERT, fragmentShader: EARTH_FRAG }));
+  earth.renderOrder = -1; scene.add(earth);
+  const placeEarth = (aspect: number) => {
+    const spread = Math.min(1.6, Math.max(0.5, aspect)) / 1.6;
+    const far = new THREE.Vector3(2.6 * spread + 0.4, 1.55, -12), close = new THREE.Vector3(1.5 * spread + 0.35, 1.05, -3.4);
+    earth.position.lerpVectors(far, close, near);
+    earth.scale.setScalar(0.5 + near * 0.45);
+  };
+
   // the planet sits a little low, seen from the throne above it
   let dist = 5.6;
   const resize = () => {
@@ -258,6 +306,7 @@ export async function createBattleworld(canvas: HTMLCanvasElement, list: World[]
     renderer.setSize(w, h, false); cam.aspect = w / h;
     // phones pull back so the whole world fits; big monitors bring it closer
     dist = cam.aspect < 0.8 ? 5.6 / Math.max(0.55, cam.aspect) * 0.8 : w > 1700 ? 4.9 : 5.6;
+    placeEarth(cam.aspect);
     cam.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(resize); ro.observe(canvas); resize();

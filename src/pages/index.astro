@@ -48,6 +48,7 @@ const world = all.map((t) => {
         <div class="os-row"><span>Orbital array</span><span class="os-hi">Linked</span></div>
         <div class="os-row"><span>Domains held</span><span>{all.length} in {teams} continents</span></div>
         <div class="os-row"><span>Greatest threat</span><a class="os-dim" href={u("/targets/")} data-top-threat>Awaiting the fans</a></div>
+        <div class="os-row" title="This site's countdown, drawn from the Incursions of Secret Wars (2015): a second Earth closing in until release day. Not a claim about the film."><span>Second Earth</span><span class="os-amber" data-incursion>Closing in</span></div>
         <div class="os-row"><span>Doom's will</span><span><span class="willbar"><i data-will></i></span> <b data-will-n>0%</b></span></div>
         <p class="os-label feed-h">Intercepted // Marvel, confirmed</p>
         <ol class="feed" data-feed>{feed.map((f) => <li><i>{f.date}</i>{f.text}</li>)}</ol>

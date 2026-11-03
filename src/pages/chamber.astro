@@ -64,6 +64,24 @@ const teams = [...new Map(all.map((t) => [t.teamId, t.team])).entries()].filter(
         <p class="os-label dc-fine">A fan decree: this site's own seal, not a Marvel design. Kept on this device.</p>
       </section>
 
+      <section class="os-panel crown" data-crown data-os-in>
+        <header><b>Wear the mask</b><span class="os-label">Camera &middot; stays on this device</span></header>
+        <p class="cr-copy">Put on Doom's mask and take Your Majesty's royal identity card. The camera feeds this page only: nothing is recorded or sent, and it switches off the moment the picture is taken.</p>
+        <div class="cr-stage" data-cr-stage hidden>
+          <canvas data-cr-cam aria-label="Your camera, in green, with Doom's mask as a guide"></canvas>
+          <img data-cr-preview alt="Your royal identity card, wearing Doom's mask" hidden />
+        </div>
+        <p class="cr-msg" data-cr-msg aria-live="polite"></p>
+        <div class="ch-act">
+          <button class="os-btn" type="button" data-cr-start>Put on the mask</button>
+          <button class="os-btn" type="button" data-cr-seal hidden>Seal the mask</button>
+          <button class="os-btn" type="button" data-cr-save="wide" hidden>Save 16:9 image</button>
+          <button class="os-btn" type="button" data-cr-save="story" hidden>Save 9:16 image</button>
+          <button class="os-btn" type="button" data-cr-again hidden>Take it again</button>
+        </div>
+        <p class="os-label dc-fine">A fan game: this site's own mask drawing, not a Marvel design. The forged mask comes from Fantastic Four Annual #2 (1964).</p>
+      </section>
+
       <section class="os-panel" data-os-in>
         <header><b>Royal log</b><button class="os-label ch-erase" data-erase>Erase the reign</button></header>
         <ol class="rlog-full" data-rlog-full></ol>

@@ -448,3 +448,14 @@ html:not(.rm) .op-rings ellipse:nth-child(2) { animation: op-drift 9s ease-in-ou
 #screen .ab-made p { max-width: 72ch; font-family: var(--os-body); font-size: 16px; line-height: 1.6; letter-spacing: 0.01em; font-weight: 420; }
 #screen .th-q { margin: 0 0 10px; font-family: var(--os-body); font-size: 15px; font-weight: 500; color: var(--os-text); }
 #screen .th-how { margin: 8px 0 4px; font-family: var(--os-body); font-size: 13.5px; line-height: 1.5; color: var(--os-dim); }
+/* the mask, in the Royal chamber (scripts/os/mask.ts) */
+#screen .cr-copy, #screen .cr-msg { font-family: var(--os-body); font-size: 15px; line-height: 1.55; color: var(--os-text); margin: 0 0 12px; max-width: 60ch; }
+#screen .cr-msg { color: var(--os-green); min-height: 1.5em; }
+.cr-stage { position: relative; width: min(100%, 420px); aspect-ratio: 1; margin: 4px 0 14px; border: 1px solid var(--os-line-hi); background: #010302; overflow: hidden; }
+.cr-stage[hidden] { display: none; }
+.cr-stage canvas { display: block; width: 100%; height: 100%; }
+.cr-stage:has(img:not([hidden])) { aspect-ratio: 9 / 16; width: min(100%, 300px); }
+.cr-stage img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.cr-stage img[hidden], .cr-stage canvas[hidden] { display: none; }
+/* a hidden button stays hidden (.os-btn's own display would otherwise win) */
+.os-btn[hidden] { display: none !important; }

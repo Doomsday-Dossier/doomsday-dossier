@@ -8,6 +8,7 @@ import { tick } from '../../sound/os';
 import { stamp } from '../../sound/actions';
 import { reign, setOrder, setDecree, log, eraseReign, will, daysBefore, VERDICTS, type Verdict } from '../reign';
 import { reduced, sound } from '../fx';
+import { crown } from '../mask';
 
 type T = { slug: string; no: number; name: string; team: string; teamId: string; href: string; tile: string };
 
@@ -16,6 +17,8 @@ export const SEAL = `<svg viewBox="0 0 100 100"><defs><path id="sealp" d="M50 50
 export function chamber() {
   const raw = document.querySelector('[data-chamber]'); if (!raw) return;
   const D = JSON.parse(raw.textContent!) as { all: T[]; site: string };
+  // the mask: His Majesty's royal identity card, from the camera (scripts/os/mask.ts)
+  const cr = document.querySelector<HTMLElement>('[data-crown]'); if (cr) crown(cr, { site: D.site, seal: SEAL });
   const by = new Map(D.all.map((t) => [t.slug, t]));
   const s = sound();
   const list = document.querySelector<HTMLOListElement>('[data-cq]')!;

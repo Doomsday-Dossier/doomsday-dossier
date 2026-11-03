@@ -35,6 +35,9 @@ export async function home() {
   if (!r.log.length) log('His Majesty took the throne.');
   else greet.textContent = 'Welcome back, Your Majesty.';
   renderLog(); renderWill(); topThreat();
+  // the second Earth in the sky: how long until it touches Battleworld (this site's countdown, from Secret Wars)
+  const inc = document.querySelector<HTMLElement>('[data-incursion]');
+  if (inc) { const d = daysBefore(); inc.textContent = d > 0 ? `Contact in ${d} day${d === 1 ? '' : 's'}` : 'Contact'; }
   addEventListener('dd:reign', () => { renderLog(); renderWill(); });
 
   const booted = (() => { try { return sessionStorage.getItem(BOOTED) === '1'; } catch { return false; } })();
@@ -103,7 +106,8 @@ export async function home() {
         if (on) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduced() ? 'auto' : 'smooth' });
       });
       const world = await createBattleworld(canvas, D.world, {
-        reduced: reduced(),
+        // ?days=N previews the second Earth on another day, on a local build only
+        reduced: reduced(), daysLeft: /^(localhost|127\.)/.test(location.hostname) && new URLSearchParams(location.search).has('days') ? Number(new URLSearchParams(location.search).get('days')) : daysBefore(),
         onHover: (i, at) => {
           const docked = dock();
           tag.classList.toggle('dock', docked);
