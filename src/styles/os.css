@@ -138,6 +138,10 @@ html.os :focus-visible { outline: 1px solid var(--os-green); outline-offset: 2px
 .bar-unoff { border: 1px solid rgba(255, 179, 71, 0.5); color: var(--os-amber); padding: 6px 8px; font-size: 11px; letter-spacing: 0.16em; white-space: nowrap; }
 .show-s { display: none; }
 @media (max-width: 1240px) { .bar-nav a i { display: none; } .bar-nav a { padding: 6px 6px; } .bar-nav a[aria-current='page']::after { left: 6px; right: 6px; } }
+/* laptops: the bar sheds its extras in turn so the unofficial marker and the sound switch always stay on screen */
+@media (min-width: 1061px) and (max-width: 1640px) { .bar-nav a i { display: none; } .bar .hide-s { display: none; } .bar { gap: 12px; } .bar-nav a { padding: 6px 7px; } }
+@media (min-width: 1061px) and (max-width: 1360px) { .bar-clock { display: none; } .bar-nav a { padding: 6px 5px; letter-spacing: 0.08em; } }
+@media (min-width: 1061px) and (max-width: 1200px) { .bar-unoff { white-space: normal; width: 76px; text-align: center; line-height: 1.15; padding: 3px 6px; } .bar-nav a { font-size: 10.5px; } }
 @media (max-width: 1060px) { .bar-nav { display: none; } .show-s { display: inline; } .bar-btn em.hide-s { display: none; } }
 @media (max-width: 560px) { .bar { gap: 8px; } .bar-clock { display: none; } .hide-s { display: none; } .bar-unoff { font-size: 10.5px; padding: 3px 5px; letter-spacing: 0.08em; white-space: normal; width: 72px; text-align: center; line-height: 1.2; } .bar-btn { padding: 0 8px; } }
 
