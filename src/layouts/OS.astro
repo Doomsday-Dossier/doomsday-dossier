@@ -58,6 +58,8 @@ const index = {
         });
       })();
     </script>
+    <!-- without JavaScript nothing adds .in, so panels would stay invisible -->
+    <noscript><style>html [data-os-in] { opacity: 1; transform: none; }</style></noscript>
     <ClientRouter fallback="swap" />
   </head>
   <body data-page={page} data-module={module ?? page} data-arena={import.meta.env.PUBLIC_ARENA_API ?? ""}>

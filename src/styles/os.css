@@ -139,7 +139,7 @@ html.os :focus-visible { outline: 1px solid var(--os-green); outline-offset: 2px
 .show-s { display: none; }
 @media (max-width: 1240px) { .bar-nav a i { display: none; } .bar-nav a { padding: 6px 6px; } .bar-nav a[aria-current='page']::after { left: 6px; right: 6px; } }
 @media (max-width: 1060px) { .bar-nav { display: none; } .show-s { display: inline; } .bar-btn em.hide-s { display: none; } }
-@media (max-width: 560px) { .bar { gap: 8px; } .bar-clock { display: none; } .hide-s { display: none; } .bar-unoff { font-size: 10.5px; padding: 3px 5px; letter-spacing: 0.08em; white-space: normal; width: 60px; text-align: center; line-height: 1.2; } .bar-btn { padding: 0 8px; } }
+@media (max-width: 560px) { .bar { gap: 8px; } .bar-clock { display: none; } .hide-s { display: none; } .bar-unoff { font-size: 10.5px; padding: 3px 5px; letter-spacing: 0.08em; white-space: normal; width: 72px; text-align: center; line-height: 1.2; } .bar-btn { padding: 0 8px; } }
 
 .cmd { position: fixed; inset: 0; z-index: 80; background: rgba(1, 4, 3, 0.72); display: flex; justify-content: center; align-items: flex-start; padding: 70px 16px 16px; }
 .cmd[hidden] { display: none; }
@@ -337,6 +337,8 @@ body.f-stolen .f-read > .os-panel:not(.stolen), body.f-stolen .f-lv { filter: bl
 /* touch screens: every control at least a fingertip tall */
 @media (pointer: coarse) {
   .fbtn, .bar-btn, .cq-btns button, .v-btns button, .tl-dec a, details.os-src summary { min-height: 44px; }
+  .bar-btn { min-width: 44px; justify-content: center; }
+  .bar-brand { min-height: 44px; }
   .fbtn { padding: 0 14px; font-size: 11px; }
   .cq-btns button { width: 40px; }
   details.os-src summary { display: flex; align-items: center; }

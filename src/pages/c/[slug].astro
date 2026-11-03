@@ -193,7 +193,7 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
           </li>
         ))}
       </ol>
-      <h3 class="lv-h" data-head>What Marvel confirmed</h3>
+      <h2 class="lv-h" data-head>What Marvel confirmed</h2>
       <ul class="conf">
         <li><b>The film.</b> Avengers: Doomsday opens 18 December 2026.<Fragment set:html={sup(nFilm, 'src-rec')} /></li>
         {mentions.map((m: any) => <li><span class="os-label">{fmtDate(m.date)}</span> <b>{m.title}.</b> <Fragment set:html={m.text + sup(m.n, 'src-rec')} /></li>)}
@@ -206,17 +206,17 @@ const data = { slug, no, name, alias: r.alias, photo: scan.photo, depth: scan.de
     <header><b>Level 3 // Deep archive</b><span class="os-label">The comics &middot; since {fa.coverDate}</span></header>
     <div class="lock-gate" data-gate-for="3"><p>Origin, the comics by era, abilities and recorded feats.</p><button class="os-btn" data-clear="3">Request level 3 clearance</button></div>
     <div class="lv-body" inert>
-      <h3 class="lv-h" data-head>Origin</h3>
+      <h2 class="lv-h" data-head>Origin</h2>
       {r.origin.summary.map((p, i) => <p class="para">{p}{i === r.origin.summary.length - 1 && <Fragment set:html={sup(originN, 'src-arc')} />}</p>)}
-      <h3 class="lv-h" data-head>The record, by era</h3>
+      <h2 class="lv-h" data-head>The record, by era</h2>
       <ol class="eras">
         {comics.map((e) => <li><span class="rec-y">{e.years}</span><div><b data-head>{e.title}</b> <span class="os-chip">{e.era}</span><p>{e.summary}<Fragment set:html={sup(e.n, 'src-arc')} /></p>{e.keyIssues?.length > 0 && <p class="os-label">Key issues: {e.keyIssues.join(' · ')}</p>}</div></li>)}
       </ol>
-      <h3 class="lv-h" data-head>Capabilities</h3>
+      <h2 class="lv-h" data-head>Capabilities</h2>
       <div class="abil-grid">{abilities.map((a) => <div class="abil"><b>{a.name}</b><p>{a.detail}<Fragment set:html={sup(a.n, 'src-arc')} /></p></div>)}</div>
-      {origins.length > 0 && <Fragment><h3 class="lv-h" data-head>Source of power</h3>{origins.map((o) => <p class="para">{o.detail}<Fragment set:html={sup(o.n, 'src-arc')} /></p>)}</Fragment>}
-      {feats.length > 0 && <Fragment><h3 class="lv-h" data-head>Recorded feats</h3><ul class="conf">{feats.map((f) => <li><span class="os-chip">{f.medium}</span> {f.text} <span class="os-label">{f.where}</span><Fragment set:html={sup(f.n, 'src-arc')} /></li>)}</ul></Fragment>}
-      {notes.length > 0 && <Fragment><h3 class="lv-h" data-head>Notes from the archive</h3><ul class="conf">{notes.map((x) => <li>{x.fact}<Fragment set:html={sup(x.n, 'src-arc')} /></li>)}</ul></Fragment>}
+      {origins.length > 0 && <Fragment><h2 class="lv-h" data-head>Source of power</h2>{origins.map((o) => <p class="para">{o.detail}<Fragment set:html={sup(o.n, 'src-arc')} /></p>)}</Fragment>}
+      {feats.length > 0 && <Fragment><h2 class="lv-h" data-head>Recorded feats</h2><ul class="conf">{feats.map((f) => <li><span class="os-chip">{f.medium}</span> {f.text} <span class="os-label">{f.where}</span><Fragment set:html={sup(f.n, 'src-arc')} /></li>)}</ul></Fragment>}
+      {notes.length > 0 && <Fragment><h2 class="lv-h" data-head>Notes from the archive</h2><ul class="conf">{notes.map((x) => <li>{x.fact}<Fragment set:html={sup(x.n, 'src-arc')} /></li>)}</ul></Fragment>}
       <details class="os-src" id="src-arc"><summary>Sources</summary><ol class="srcs">{cArc.list.map((s) => <li><a href={s.url} rel="noopener" target="_blank">{s.label}</a></li>)}</ol></details>
     </div>
   </section>
